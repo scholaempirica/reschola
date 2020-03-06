@@ -8,6 +8,14 @@
 \description{
 A collection of utilies, themes and templates for data analysis at Schola Empirica.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/scholaempirica/reschola}
+  \item Report bugs at \url{https://github.com/scholaempirica/reschola/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Petr Bouchal \email{pbouchal@gmail.com} (\href{https://orcid.org/0000-0002-0471-716X}{ORCID})
 
