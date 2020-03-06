@@ -33,5 +33,7 @@ Imports:
     ggplot2 (>= 3.2.1)
 URL: https://github.com/scholaempirica/reschola
 BugReports: https://github.com/scholaempirica/reschola/issues
+Depends: 
+    tidyverse (>= 1.2.1)
 Remotes: 
     noamross/redoc
