@@ -14,7 +14,7 @@ usethis::use_pipe()
 
 usethis::use_git()
 usethis::use_github(organisation = "scholaempirica")
-usethis::use_github_links()
+usethis::use_github_links() # in fact happened automatically with the previous
 
 usethis::use_travis()
 travis::use_travis_deploy()
