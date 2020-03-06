@@ -1,0 +1,28 @@
+Package: reschola
+Title: The Schola Empirica package
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Petr",
+           family = "Bouchal",
+           role = c("aut", "cre"),
+           email = "pbouchal@gmail.com",
+           comment = c(ORCID = "0000-0002-0471-716X"))
+Description: A collection of utilies, themes and templates for data analysis at Schola Empirica.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Language: en
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.0
+Imports: 
+    magrittr,
+    bookdown (>= 0.15),
+    rmarkdown (>= 2.1),
+    dplyr (>= 0.8.4),
+    tidyr (>= 1.0.0.9000),
+    stringr (>= 1.4.0),
+    purrr (>= 0.3.3),
+    forcats (>= 0.4.0),
+    tibble (>= 2.1.3),
+    redoc (>= 0.1.0.9000),
+    usethis (>= 1.5.1.9000)
