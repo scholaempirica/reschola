@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of reschola is to provide a 
+The goal of reschola is to provide a set of utilities for data analysis at [Schola Empirica](https://scholaempirica.org).
 
 ## Installation
 
@@ -27,6 +27,7 @@ You can install the released version of reschola from [Github](https://github.co
 ``` r
 remotes::install("scholaempirica/reschola", ref = remotes::github_release())
 ```
+
 The current development version [Github](https://github.com) can be installed with:
 
 ``` r
