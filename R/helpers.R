@@ -15,3 +15,9 @@ create_word <- function(name = "draft.Rmd", open = T) {
   if(open) usethis:::edit_file(file)
   return(TRUE)
 }
+
+create_redoc <- function(name = "draft.Rmd", open = T) {
+  file <- rmarkdown::draft(name, template = "schola_redoc", "reschola", edit = F)
+  if(open) usethis:::edit_file(file)
+  return(TRUE)
+}
