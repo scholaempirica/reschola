@@ -2,7 +2,7 @@
 title: "S"
 author: "Schola Empirica"
 date: "The Date"
-output: schola::reschola_docx
+output: reschola::schola_word
 ---
 
 ```{r setup, include=FALSE}
