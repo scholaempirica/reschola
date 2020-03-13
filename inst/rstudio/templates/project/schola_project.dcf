@@ -13,7 +13,7 @@ Position: left
 Parameter: vcs
 Widget: SelectInput
 Label: Version control
-Fields: none, local git, private Github (mine), public Github (mine), public scholaempirica Github
+Fields: none, local git, Github: private owned by me, Github: public owned by me, Github: public owned by scholaempirica
 Default: local git
 Position: left
 
