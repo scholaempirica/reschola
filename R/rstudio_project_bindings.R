@@ -49,8 +49,8 @@ schola_project <- function(path, ...) {
   }
 
 
-  create_word(name = "First-Schola-styled-Word.Rmd", open = F)
-  create_redoc(name = "First-Schola-styled-redoc.Rmd", open = F)
+  draft_word(name = "First-Schola-styled-Word.Rmd", open = F)
+  draft_redoc(name = "First-Schola-styled-redoc.Rmd", open = F)
 
   return(TRUE)
 }
