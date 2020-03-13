@@ -7,17 +7,29 @@
 #'
 #' @examples
 #' \dontrun{
-#'   create_word("new_file")
+#' draft_word("new_file")
 #' }
 #' @export
-create_word <- function(name = "draft.Rmd", open = T) {
+draft_word <- function(name = "draft.Rmd", open = T) {
   file <- rmarkdown::draft(name, template = "schola_word", "reschola", edit = F)
-  if(open) usethis:::edit_file(file)
+  if (open) usethis:::edit_file(file)
   return(TRUE)
 }
 
-create_redoc <- function(name = "draft.Rmd", open = T) {
+#' Create a Rmd doc for reversible reviewing using schola_redoc template
+#'
+#' Shortcut function to create and a new Rmd file using schola_redoc template and open for editing.
+#'
+#' @param name name to use for new file.
+#' @param open whether to open file for editing, defaults to TRUE.
+#'
+#' @examples
+#' \dontrun{
+#' draft_word("new_file")
+#' }
+#' @export
+draft_redoc <- function(name = "draft.Rmd", open = T) {
   file <- rmarkdown::draft(name, template = "schola_redoc", "reschola", edit = F)
-  if(open) usethis:::edit_file(file)
+  if (open) usethis:::edit_file(file)
   return(TRUE)
 }
