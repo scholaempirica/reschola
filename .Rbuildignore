@@ -6,3 +6,6 @@
 ^R/setup\.md$
 ^setup\.md$
 ^\.pre-commit-config\.yaml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
