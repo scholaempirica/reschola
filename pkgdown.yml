@@ -1,0 +1,9 @@
+pandoc: '2.2'
+pkgdown: 1.4.1
+pkgdown_sha: ~
+articles:
+  reschola: reschola.html
+urls:
+  reference: https://scholaempirica.github.io/reschola/reference
+  article: https://scholaempirica.github.io/reschola/articles
+
