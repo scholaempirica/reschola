@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# reschola
+# reschola <a href='https://scholaempirica.github.io/reschola'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -42,3 +42,8 @@ This is a basic example which shows you how to solve a common problem:
 library(reschola)
 ## basic example code
 ```
+
+## Acknowledgments
+
+Logo made using https://connect.thinkr.fr/hexmake/.
+The approach to project templates and some other components is heavily inspired by [ratlas](https://github.com/atlas-aai/ratlas/), including the reuse of components from [hrbrthemes]()
