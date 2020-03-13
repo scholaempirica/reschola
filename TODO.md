@@ -23,6 +23,7 @@
 - [multishader] palette generator
 
 - plot saving function
+- plot branding
 
 - project template
 
