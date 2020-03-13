@@ -1,18 +1,17 @@
 
-#' FUNCTION_TITLE
+#' schola_project
 #'
-#' FUNCTION_DESCRIPTION
+#' Function to parse inputs from New project dialog and create new project
 #'
-#' @param  DESCRIPTION.
+#' @param path path
+#' @param ... other params from new project dialog, created in DCF file
 #'
-#' @return RETURN_DESCRIPTION
-#' @examples
-#' # ADD_EXAMPLES_HERE
+#' @return TRUE
 schola_project <- function(path, ...) {
   # print(usethis::proj_sitrep())
   dots <- list(...)
 
-  orig_dir <- usethis::proj_sitrep()[['active_rstudio_proj']]
+  orig_dir <- usethis::proj_sitrep()[["active_rstudio_proj"]]
 
   # create directory and project
 

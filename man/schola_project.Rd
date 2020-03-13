@@ -2,19 +2,18 @@
 % Please edit documentation in R/rstudio_project_bindings.R
 \name{schola_project}
 \alias{schola_project}
-\title{FUNCTION_TITLE}
+\title{schola_project}
 \usage{
 schola_project(path, ...)
 }
 \arguments{
-\item{DESCRIPTION.}{}
+\item{path}{path}
+
+\item{...}{other params from new project dialog, created in DCF file}
 }
 \value{
-RETURN_DESCRIPTION
+TRUE
 }
 \description{
-FUNCTION_DESCRIPTION
-}
-\examples{
-# ADD_EXAMPLES_HERE
+Function to parse inputs from New project dialog and create new project
 }
