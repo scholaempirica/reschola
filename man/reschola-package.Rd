@@ -6,6 +6,8 @@
 \alias{reschola-package}
 \title{reschola: The Schola Empirica package}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 A collection of utilies, themes and templates for data
     analysis at Schola Empirica.
 }
@@ -19,6 +21,13 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Petr Bouchal \email{pbouchal@gmail.com} (\href{https://orcid.org/0000-0002-0471-716X}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Jaromír Mazák [contributor]
+  \item Aleš Vomáčka [contributor]
+  \item Schola Empirica [copyright holder]
+}
 
 }
 \keyword{internal}
