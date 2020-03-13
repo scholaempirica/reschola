@@ -3,3 +3,28 @@ Binding: schola_project
 Subtitle: Create a new schola project
 Caption: Create a new schola project
 Icon: schola.png
+OpenFiles: "First-Schola-styled-Word.Rmd", "First-Schola-styled-redoc.Rmd"
+
+Parameter: title
+Widget: TextInput
+Label: Project title
+Position: left
+
+Parameter: vcs
+Widget: SelectInput
+Label: Version control
+Fields: none, local git, private Github (mine), public Github (mine), public scholaempirica Github
+Default: local git
+Position: left
+
+Parameter: copy_logos
+Widget: CheckboxInput
+Label: Copy logos
+Fields: myself, scholaempirica
+Default: scholaempirica
+Position: left
+
+Parameter: drive_folder
+Widget: TextInput
+Label: Google Drive link
+Position: left

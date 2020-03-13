@@ -2,7 +2,6 @@
 
 export("%>%")
 export(create_word)
-export(schola_project)
 export(schola_redoc)
 export(schola_word)
 importFrom(magrittr,"%>%")

@@ -6,7 +6,8 @@
 \alias{reschola-package}
 \title{reschola: The Schola Empirica package}
 \description{
-A collection of utilies, themes and templates for data analysis at Schola Empirica.
+A collection of utilies, themes and templates for data
+    analysis at Schola Empirica.
 }
 \seealso{
 Useful links:
