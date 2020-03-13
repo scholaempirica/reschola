@@ -1,0 +1,28 @@
+---
+title: "reschola"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{reschola}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document describes the basics of working with this package and provides signposting to more detailed documentation of setup and workflow used at Schola Empirica.
+
+```{r setup}
+library(reschola)
+```
+
+```{r}
+# ggplot(mtcars, aes(mpg)) +
+#   geom_bar() +
+#   scale_x_continuous(expand = flush_y)
+```
+
