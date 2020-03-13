@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/scholaempirica/reschola.svg?branch=master)](https://travis-ci.org/scholaempirica/reschola)
 <!-- badges: end -->
 
 The goal of reschola is to provide a set of utilities for data analysis
