@@ -44,7 +44,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
-    noamross/redoc
+    petrbouchal/redoc
 Encoding: UTF-8
 Language: en
 LazyData: true
