@@ -8,4 +8,7 @@
 ^\.pre-commit-config\.yaml$
 ^_pkgdown\.yml$
 ^docs$
+^prep$
+^logo$
 ^pkgdown$
+^\.travis\.yml$

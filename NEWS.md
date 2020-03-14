@@ -1,3 +1,5 @@
+# reschola (development version)
+
 # reschola 0.1.0
 
 * foundations of Rmarkdown templates and output format
