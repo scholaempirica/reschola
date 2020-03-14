@@ -21,3 +21,9 @@ specify using the standard Schola word document formatting.
   output: reschola::schola_word
 }
 }
+\seealso{
+Other Report templates and formats: 
+\code{\link{draft_redoc}()},
+\code{\link{schola_redoc}()}
+}
+\concept{Report templates and formats}

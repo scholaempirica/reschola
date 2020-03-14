@@ -1,2 +1,14 @@
 destination: docs
 url: https://scholaempirica.github.io/reschola
+template:
+  params:
+    bootswatch: united
+reference:
+- title: Report templates and output
+  desc:  Rmarkdown templates, output formats and helpers
+  contents:
+  - has_concept("Report templates and formats")
+- title: Making charts
+  desc:  Tools for making charts in ggplot2
+  contents:
+  - has_concept("Making charts")

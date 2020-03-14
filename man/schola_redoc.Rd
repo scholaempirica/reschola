@@ -28,3 +28,9 @@ The capabilities of this format are a bit more limited compared to \code{schola_
   output: reschola::schola_redoc
 }
 }
+\seealso{
+Other Report templates and formats: 
+\code{\link{draft_redoc}()},
+\code{\link{schola_word}()}
+}
+\concept{Report templates and formats}

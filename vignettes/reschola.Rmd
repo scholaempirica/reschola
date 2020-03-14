@@ -25,4 +25,6 @@ library(reschola)
 #   geom_bar() +
 #   scale_x_continuous(expand = flush_y)
 ```
+### A ggplot2 theme in the Schola style and related plotting utilities
 
+See [Making charts [TODO]](charts.html) vignette (`vignette('charts', package = 'reschola')`) for details.

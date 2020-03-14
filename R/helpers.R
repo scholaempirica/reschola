@@ -6,6 +6,7 @@
 #' @param open whether to open file for editing, defaults to TRUE.
 #'
 #' @examples
+#' @family Report templates and formats
 #' \dontrun{
 #' draft_word("new_file")
 #' }
@@ -23,6 +24,7 @@ draft_word <- function(name = "draft.Rmd", open = T) {
 #' @param name name to use for new file.
 #' @param open whether to open file for editing, defaults to TRUE.
 #'
+#' @family Report templates and formats
 #' @examples
 #' \dontrun{
 #' draft_word("new_file")

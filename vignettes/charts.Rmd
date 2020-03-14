@@ -1,0 +1,34 @@
+---
+title: "Making charts"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{charts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(reschola)
+library(ggplot2)
+```
+
+# Not done yet
+
+just a brief test of `theme_schola()`
+
+```{r}
+ggplot(iris, aes(Species, Sepal.Length)) +
+  geom_col(aes(fill = Petal.Length), width = 0.7) +
+  scale_y_continuous(expand = flush_axis) +
+  # scale_x_discrete(expand = flush_axis) +
+  theme_schola(legend.title = element_blank(), side_margin = 0) +
+  labs(title = "Tvary kytek", subtitle = "Barva zobrazuje délku okvětního lístku") +
+  scale_fill_viridis_b()
+```

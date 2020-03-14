@@ -14,8 +14,7 @@ draft_word(name = "draft.Rmd", open = T)
 \description{
 Shortcut function to create and a new Rmd file using schola_word template and open for editing.
 }
-\examples{
+\concept{Report templates and formats
 \dontrun{
 draft_word("new_file")
-}
-}
+}}

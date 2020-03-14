@@ -17,3 +17,4 @@ TRUE
 \description{
 Function to parse inputs from New project dialog and create new project
 }
+\keyword{internal}

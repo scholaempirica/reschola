@@ -6,6 +6,7 @@
 #' @param ... Arguments to be passed to `[bookdown::word_document2]`
 #'
 #' @return A modified `word_document2` with the standard Schola formatting.
+#' @family Report templates and formats
 #' @export
 #'
 #' @examples
@@ -48,6 +49,7 @@ schola_word <- function(...) {
 #' `word_document`.
 #'
 #' @return A modified `redoc` with the standard Schola formatting.
+#' @family Report templates and formats
 #' @export
 #'
 #' @examples

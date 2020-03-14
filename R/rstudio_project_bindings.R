@@ -5,7 +5,7 @@
 #'
 #' @param path path
 #' @param ... other params from new project dialog, created in DCF file
-#'
+#' @keywords internal
 #' @return TRUE
 schola_project <- function(path, ...) {
   # print(usethis::proj_sitrep())

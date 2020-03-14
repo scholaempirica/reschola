@@ -19,3 +19,9 @@ Shortcut function to create and a new Rmd file using schola_redoc template and o
 draft_word("new_file")
 }
 }
+\seealso{
+Other Report templates and formats: 
+\code{\link{schola_redoc}()},
+\code{\link{schola_word}()}
+}
+\concept{Report templates and formats}
