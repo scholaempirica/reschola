@@ -1,6 +1,8 @@
 # reschola (development version)
 
+* improved README and added "Getting started" vignette
 * basic `theme_schola()` added
+
 # reschola 0.1.0
 
 * foundations of Rmarkdown templates and output format
