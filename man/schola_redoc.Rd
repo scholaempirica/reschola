@@ -31,6 +31,7 @@ The capabilities of this format are a bit more limited compared to \code{schola_
 \seealso{
 Other Report templates and formats: 
 \code{\link{draft_redoc}()},
+\code{\link{draft_word}()},
 \code{\link{schola_word}()}
 }
 \concept{Report templates and formats}

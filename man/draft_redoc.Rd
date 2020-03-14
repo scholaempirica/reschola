@@ -21,6 +21,7 @@ draft_word("new_file")
 }
 \seealso{
 Other Report templates and formats: 
+\code{\link{draft_word}()},
 \code{\link{schola_redoc}()},
 \code{\link{schola_word}()}
 }

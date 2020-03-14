@@ -39,7 +39,9 @@ RETURN_DESCRIPTION
 FUNCTION_DESCRIPTION
 }
 \examples{
-# ADD_EXAMPLES_HERE
+library(ggplot2)
+ggplot(mtcars) +
+  geom_col(aes(y = mpg))
 }
 \seealso{
 Other Making charts: 

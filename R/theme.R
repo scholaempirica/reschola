@@ -15,7 +15,9 @@
 #' @return RETURN_DESCRIPTION
 #' @family Making charts
 #' @examples
-#' # ADD_EXAMPLES_HERE
+#' library(ggplot2)
+#' ggplot(mtcars) +
+#'   geom_col(aes(y = mpg))
 #' @export
 theme_schola <- function(base_size = 11,
                          gridlines = c("y", "x", "both", "scatter"),
