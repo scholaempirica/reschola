@@ -59,6 +59,6 @@ schola_project <- function(path, ...) {
 
   # usethis::ui_todo("You should run {usethis::ui_code('usethis::proj_set(getwd())')} in your original session to get your working directory sorted.")
   suppressMessages(usethis::proj_set(orig_dir))
-  setwd(orig_dir)
+  try(setwd(orig_dir), silent = T)
   return(TRUE)
 }
