@@ -1,0 +1,19 @@
+---
+title: "Tips and Tricks for R and Rstudio"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tips}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(reschola)
+```

@@ -1,5 +1,5 @@
 ---
-title: "reschola"
+title: "Getting started"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{reschola}
@@ -16,15 +16,24 @@ knitr::opts_chunk$set(
 
 This document describes the basics of working with this package and provides signposting to more detailed documentation of setup and workflow used at Schola Empirica.
 
-```{r setup}
-library(reschola)
-```
+The most important components include:
 
-```{r}
-# ggplot(mtcars, aes(mpg)) +
-#   geom_bar() +
-#   scale_x_continuous(expand = flush_y)
-```
+### Guidance on how to set up your computer and your mind for doing data analysis the Schola way
+
+See the [Setup [TODO]](setup.html) vignette (`vignette('setup', package = 'reschola')`).
+
+### An Rstudio project template for easy project setup
+
+This is accessed through the RStudion menu: File > New project > New directory > Standard Schola Empirica Project.
+
+See the [Workflow [TODO]](workflow.html) vignette for how to make the best use of the template in the context of the Schola Empirica workflow. (`vignette('workflow', package = 'reschola')`).
+
+### Templates for producing reports in the Schola style
+
+Accesed through the RStudio menu: File > New File > R Markdown > From Template > [scroll down to reschola package], or through `draft_*` functions in the reschola package.
+
+Notably, there is a templated based on `redoc` a package enabling collaboration between Rmarkdown and MS Word. See the [Workflow [TODO]](workflow.html) vignette (`vignette('workflow', package = 'reschola')`) for details.
+
 ### A ggplot2 theme in the Schola style and related plotting utilities
 
 See [Making charts [TODO]](charts.html) vignette (`vignette('charts', package = 'reschola')`) for details.
