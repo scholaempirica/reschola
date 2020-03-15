@@ -32,7 +32,8 @@ See the [Workflow [TODO]](workflow.html) vignette for how to make the best use o
 
 Accesed through the RStudio menu: File > New File > R Markdown > From Template > [scroll down to reschola package], or through `draft_*` functions in the reschola package.
 
-Notably, there is a templated based on `redoc` a package enabling collaboration between Rmarkdown and MS Word. See the [Workflow [TODO]](workflow.html) vignette (`vignette('workflow', package = 'reschola')`) for details.
+Notably, there is a templated based on `redoc` a package enabling collaboration between Rmarkdown and MS Word. 
+See the [Workflow [TODO]](workflow.html) vignette (`vignette('workflow', package = 'reschola')`) for details.
 
 ### A ggplot2 theme in the Schola style and related plotting utilities
 
