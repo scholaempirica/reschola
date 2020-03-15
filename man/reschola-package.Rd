@@ -8,8 +8,8 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-A collection of utilies, themes and templates for data
-    analysis at Schola Empirica.
+A collection of utilies, themes and templates for
+    data analysis at Schola Empirica.
 }
 \seealso{
 Useful links:
@@ -26,7 +26,7 @@ Other contributors:
 \itemize{
   \item Jaromír Mazák [contributor]
   \item Aleš Vomáčka [contributor]
-  \item Schola Empirica [copyright holder]
+  \item Schola Empirica [copyright holder, funder]
 }
 
 }
