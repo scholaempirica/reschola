@@ -16,7 +16,7 @@ A shorcut for making axis text flush with axis
 \examples{
 library(ggplot2)
 ggplot(mtcars) +
-  geom_col(aes(y = mpg)) +
+  geom_bar(aes(x = mpg)) +
   scale_x_continuous(expand = flush_axis)
 }
 \seealso{

@@ -1,0 +1,34 @@
+---
+title: "Developing this pacakge further"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{meta}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(reschola)
+```
+
+This package should be a living, evolving tool and a set of living documents. This vignette describes how this package is being developed and thus how it can be extended and updated.
+
+## Development process
+
+## Online documentation
+
+## Reusing/reshaping the documentation
+
+## Quality assurance
+
+### Checks
+
+### Test coverage
+

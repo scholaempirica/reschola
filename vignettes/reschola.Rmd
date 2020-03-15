@@ -37,3 +37,8 @@ Notably, there is a templated based on `redoc` a package enabling collaboration 
 ### A ggplot2 theme in the Schola style and related plotting utilities
 
 See [Making charts [TODO]](charts.html) vignette (`vignette('charts', package = 'reschola')`) for details.
+
+### Meta: keeping this packate up to date and up to scratch
+
+This package should be a living, evolving tool and a set of living documents.
+See the See [Making charts [TODO]](charts.html) vignette (`vignette('charts', package = 'reschola')`) to understand how this package is being developed and thus how it can be extended and updated.
