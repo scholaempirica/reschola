@@ -2,7 +2,11 @@ pandoc: '2.2'
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
+  charts: charts.html
   reschola: reschola.html
+  setup: setup.html
+  tips: tips.html
+  workflow: workflow.html
 urls:
   reference: https://scholaempirica.github.io/reschola/reference
   article: https://scholaempirica.github.io/reschola/articles

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Getting started • reschola</title>
+<title>Tips and Tricks for R and Rstudio • reschola</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -16,7 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Getting started">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Tips and Tricks for R and Rstudio">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png">
 <meta name="twitter:card" content="summary">
@@ -101,40 +101,17 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Getting started</h1>
+      <h1>Tips and Tricks for R and Rstudio</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/master/vignettes/reschola.Rmd"><code>vignettes/reschola.Rmd</code></a></small>
-      <div class="hidden name"><code>reschola.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/master/vignettes/tips.Rmd"><code>vignettes/tips.Rmd</code></a></small>
+      <div class="hidden name"><code>tips.Rmd</code></div>
 
     </div>
 
     
     
-<p>This document describes the basics of working with this package and provides signposting to more detailed documentation of setup and workflow used at Schola Empirica.</p>
-<p>The most important components include:</p>
-<div id="guidance-on-how-to-set-up-your-computer-and-your-mind-for-doing-data-analysis-the-schola-way" class="section level3">
-<h3 class="hasAnchor">
-<a href="#guidance-on-how-to-set-up-your-computer-and-your-mind-for-doing-data-analysis-the-schola-way" class="anchor"></a>Guidance on how to set up your computer and your mind for doing data analysis the Schola way</h3>
-<p>See the <a href="setup.html">Setup [TODO]</a> vignette (<code><a href="../articles/setup.html">vignette('setup', package = 'reschola')</a></code>).</p>
-</div>
-<div id="an-rstudio-project-template-for-easy-project-setup" class="section level3">
-<h3 class="hasAnchor">
-<a href="#an-rstudio-project-template-for-easy-project-setup" class="anchor"></a>An Rstudio project template for easy project setup</h3>
-<p>This is accessed through the RStudion menu: File &gt; New project &gt; New directory &gt; Standard Schola Empirica Project.</p>
-<p>See the <a href="workflow.html">Workflow [TODO]</a> vignette for how to make the best use of the template in the context of the Schola Empirica workflow. (<code><a href="../articles/workflow.html">vignette('workflow', package = 'reschola')</a></code>).</p>
-</div>
-<div id="templates-for-producing-reports-in-the-schola-style" class="section level3">
-<h3 class="hasAnchor">
-<a href="#templates-for-producing-reports-in-the-schola-style" class="anchor"></a>Templates for producing reports in the Schola style</h3>
-<p>Accesed through the RStudio menu: File &gt; New File &gt; R Markdown &gt; From Template &gt; [scroll down to reschola package], or through <code>draft_*</code> functions in the reschola package.</p>
-<p>Notably, there is a templated based on <code>redoc</code> a package enabling collaboration between Rmarkdown and MS Word. See the <a href="workflow.html">Workflow [TODO]</a> vignette (<code><a href="../articles/workflow.html">vignette('workflow', package = 'reschola')</a></code>) for details.</p>
-</div>
-<div id="a-ggplot2-theme-in-the-schola-style-and-related-plotting-utilities" class="section level3">
-<h3 class="hasAnchor">
-<a href="#a-ggplot2-theme-in-the-schola-style-and-related-plotting-utilities" class="anchor"></a>A ggplot2 theme in the Schola style and related plotting utilities</h3>
-<p>See <a href="charts.html">Making charts [TODO]</a> vignette (<code><a href="../articles/charts.html">vignette('charts', package = 'reschola')</a></code>) for details.</p>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(reschola)</a></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -10,7 +10,13 @@
     <loc>https://scholaempirica.github.io/reschola/reference/draft_word.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/flush_axis.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/reschola-package.html</loc>
@@ -25,6 +31,21 @@
     <loc>https://scholaempirica.github.io/reschola/reference/schola_word.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/theme_schola.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/charts.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/articles/reschola.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/setup.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/tips.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/workflow.html</loc>
   </url>
 </urlset>
