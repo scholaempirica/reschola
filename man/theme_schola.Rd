@@ -40,8 +40,15 @@ FUNCTION_DESCRIPTION
 }
 \examples{
 library(ggplot2)
-ggplot(mtcars) +
-  geom_bar(aes(y = mpg))
+ggplot(mpg) +
+  geom_bar(aes(y = class)) +
+  theme_schola("x")
+
+ggplot(mpg) +
+  geom_bar(aes(y = class)) +
+  theme_schola("x") +
+  scale_x_continuous(expand = flush_axis)
+
 }
 \seealso{
 Other Making charts: 

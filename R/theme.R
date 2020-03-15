@@ -56,8 +56,8 @@ theme_schola <- function(base_size = 11,
 #'
 #' @examples
 #' library(ggplot2)
-#' ggplot(mtcars) +
-#'   geom_bar(aes(x = mpg)) +
+#' ggplot(mpg) +
+#'   geom_bar(aes(y = class)) +
 #'   scale_x_continuous(expand = flush_axis)
 #' @family Making charts
 #' @export
