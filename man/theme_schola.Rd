@@ -5,8 +5,8 @@
 \title{A Schola Empirica ggplot2 theme}
 \usage{
 theme_schola(
-  base_size = 11,
   gridlines = c("y", "x", "both", "scatter"),
+  base_size = 11,
   family = "sans",
   title_family,
   side_margin = 6,
@@ -16,9 +16,9 @@ theme_schola(
 )
 }
 \arguments{
-\item{base_size}{DESCRIPTION.}
-
 \item{gridlines}{DESCRIPTION.}
+
+\item{base_size}{DESCRIPTION.}
 
 \item{family}{DESCRIPTION.}
 

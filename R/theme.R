@@ -16,11 +16,18 @@
 #' @family Making charts
 #' @examples
 #' library(ggplot2)
-#' ggplot(mtcars) +
-#'   geom_bar(aes(y = mpg))
+#' ggplot(mpg) +
+#'   geom_bar(aes(y = class)) +
+#'   theme_schola("x")
+#'
+#' ggplot(mpg) +
+#'   geom_bar(aes(y = class)) +
+#'   theme_schola("x") +
+#'   scale_x_continuous(expand = flush_axis)
+#'
 #' @export
-theme_schola <- function(base_size = 11,
-                         gridlines = c("y", "x", "both", "scatter"),
+theme_schola <- function(gridlines = c("y", "x", "both", "scatter"),
+                         base_size = 11,
                          family = "sans", title_family,
                          side_margin = 6,
                          plot.title.position = "plot",
