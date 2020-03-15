@@ -12,3 +12,24 @@ reference:
   desc:  Tools for making charts in ggplot2
   contents:
   - has_concept("Making charts")
+navbar:
+  structure:
+    left:  [home, intro, articles, reference, news]
+    right: [github]
+  components:
+    reference:
+      text: Functions
+      href: reference/index.html
+    articles:
+      text: How-tos
+      menu:
+      - text: 'Setup'
+        href: articles/setup.html
+      - text: 'Tips and tricks'
+        href: articles/tips.html
+      - text: 'The Workflow'
+        href: articles/workflow.html
+      - text: 'Making charts'
+        href: articles/charts.html
+      - text: 'Keeping this package up to scratch'
+        href: articles/meta.html
