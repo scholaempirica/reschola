@@ -17,7 +17,7 @@
 #' @examples
 #' library(ggplot2)
 #' ggplot(mtcars) +
-#'   geom_col(aes(y = mpg))
+#'   geom_bar(aes(y = mpg))
 #' @export
 theme_schola <- function(base_size = 11,
                          gridlines = c("y", "x", "both", "scatter"),
@@ -57,7 +57,7 @@ theme_schola <- function(base_size = 11,
 #' @examples
 #' library(ggplot2)
 #' ggplot(mtcars) +
-#'   geom_col(aes(y = mpg)) +
+#'   geom_bar(aes(x = mpg)) +
 #'   scale_x_continuous(expand = flush_axis)
 #' @family Making charts
 #' @export

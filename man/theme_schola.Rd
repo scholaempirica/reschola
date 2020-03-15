@@ -41,7 +41,7 @@ FUNCTION_DESCRIPTION
 \examples{
 library(ggplot2)
 ggplot(mtcars) +
-  geom_col(aes(y = mpg))
+  geom_bar(aes(y = mpg))
 }
 \seealso{
 Other Making charts: 
