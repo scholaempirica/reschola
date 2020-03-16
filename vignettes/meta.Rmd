@@ -22,7 +22,7 @@ This package should be a living, evolving tool and a set of living documents. Th
 
 ## Development process
 
-This package is being developed on Github using the workflow suggested Hadley Wickham's R Packages book and implemented by the [`usethis`](https://github.com/r-lib/usethis) package.
+This package is being developed on Github using the workflow suggested [Hadley Wickham's R Packages book](https://ropensci.org/technotes/2019/12/08/precompute-vignettes/) and implemented by the [`usethis`](https://github.com/r-lib/usethis) package.
 
 The development roadmap is stored in a primitive form in [Github Issues](https://github.com/scholaempirica/reschola/issues).
 
