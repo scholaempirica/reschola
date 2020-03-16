@@ -21,11 +21,13 @@ library(ggplot2)
 ```
 
 ```{r, echo=F, message=F, warning=F}
+library(extrafont)
 hrbrthemes::import_plex_sans()
 hrbrthemes::import_roboto_condensed()
 hrbrthemes::import_titillium_web()
 hrbrthemes::import_public_sans()
 hrbrthemes::import_econ_sans()
+loadfonts(quiet = TRUE)
 ```
 
 NB: This vignette temporarily serves to test and fine-tune the `theme_schola()` theme and to showcase typography.
@@ -34,12 +36,19 @@ When judging fonts, I would put quite a lot of emphasis on how they display figu
 
 Note the Arial Narrow theme would also be a good choice - this also has fixed width figures, but its normal-width sibling Arial does not.
 
+Open Sans, which the Schola website uses, also has nice figures (certainly could be used for text and tables) but is a bit too wide for charts.
+
+Both of these could be showcased here later and integrated in the package.
+
 ## The Schola ggplot2 theme
+
+First, let's see the default plot, no theme
 
 ```{r}
 p <- ggplot(mpg) +
  geom_bar(aes(y = class)) +
  labs(title = "Lots of cars", subtitle = "Count of numbers")
+p
 ```
 
 using `theme_schola()` defaults
