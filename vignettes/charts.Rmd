@@ -20,14 +20,13 @@ library(reschola)
 library(ggplot2)
 ```
 
-```{r, echo=F, message=F, warning=F}
+```{r}
 library(extrafont)
 hrbrthemes::import_plex_sans()
 hrbrthemes::import_roboto_condensed()
 hrbrthemes::import_titillium_web()
 hrbrthemes::import_public_sans()
 hrbrthemes::import_econ_sans()
-loadfonts(quiet = TRUE)
 ```
 
 NB: This vignette temporarily serves to test and fine-tune the `theme_schola()` theme and to showcase typography.
