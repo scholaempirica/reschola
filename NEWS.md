@@ -1,4 +1,4 @@
-# reschola (development version)
+# reschola 0.2.1
 
 * RStudio project template now creates default folder structure
 * New project creation option to show a Getting started guide
