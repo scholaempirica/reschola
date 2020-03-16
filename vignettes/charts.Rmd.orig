@@ -7,11 +7,32 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7, fig.height = 4, dev = "png", fig.retina = 3, fig.path = "charts-"
+)
+library(reschola)
+library(ggplot2)
+```
 
+```{r, echo=F, message=F, warning=F}
+if(requireNamespace("extrafont", quietly = TRUE)) {
+  library(extrafont)
+  hrbrthemes::import_plex_sans()
+  hrbrthemes::import_roboto_condensed()
+  hrbrthemes::import_titillium_web()
+  hrbrthemes::import_public_sans()
+  hrbrthemes::import_econ_sans()
+}
+```
 
-
-
-
+```{r, echo=F}
+# if(requireNamespace("extrafont", quietly = TRUE)) {
+#   extrafont::fonttable()
+# }
+```
 
 
 NB: This vignette temporarily serves to test and fine-tune the `theme_schola()` theme and to showcase typography.
@@ -31,67 +52,51 @@ When judging fonts, I would put quite a lot of emphasis on how they display figu
 
 First, let's see the default plot, no theme
 
-
-```r
+```{r no-theme}
 p <- ggplot(mpg) +
  geom_bar(aes(y = class)) +
  labs(title = "Lots of cars", subtitle = "Count of numbers")
 p
 ```
 
-<img src="charts-no-theme-1.png" title="plot of chunk no-theme" alt="plot of chunk no-theme" width="504" />
-
 using `theme_schola()` defaults
 
-
-```r
+```{r schola-default}
 p +
  theme_schola("x")
 ```
 
-<img src="charts-schola-default-1.png" title="plot of chunk schola-default" alt="plot of chunk schola-default" width="504" />
-
 
 in combination with `flush_axis`, and using the Titillium Web font:
 
-
-```r
+```{r titillium-flush}
 p +
  theme_schola("x", family = "Titillium Web") +
  scale_x_continuous(expand = flush_axis)
 ```
 
-<img src="charts-titillium-flush-1.png" title="plot of chunk titillium-flush" alt="plot of chunk titillium-flush" width="504" />
-
 
 Scatterplot, using yet another font
 
-
-```r
+```{r scatter-plexsans}
 ggplot(mpg) +
  geom_point(aes(cty, hwy)) +
  theme_schola("scatter", family = "IBM Plex Sans") +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
-<img src="charts-scatter-plexsans-1.png" title="plot of chunk scatter-plexsans" alt="plot of chunk scatter-plexsans" width="504" />
-
 Smaller text, flush plot alignment
 
-
-```r
+```{r scatter-plexsans-smaller}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", base_size = 9, side_margin = 0, family = "IBM Plex Sans") +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
-<img src="charts-scatter-plexsans-smaller-1.png" title="plot of chunk scatter-plexsans-smaller" alt="plot of chunk scatter-plexsans-smaller" width="504" />
-
 ### Override defaults changed inside `theme_schola()`
 
-
-```r
+```{r scatter-defaultschanged}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", base_size = 12, side_margin = 0, family = "Roboto Condensed") +
@@ -99,38 +104,29 @@ ggplot(mpg) +
  theme(panel.background = element_rect(fill = "lightpink"))
 ```
 
-<img src="charts-scatter-defaultschanged-1.png" title="plot of chunk scatter-defaultschanged" alt="plot of chunk scatter-defaultschanged" width="504" />
-
 ### Small mutliples
 
 Smaller text, using Arial Narrow
 
-
-```r
+```{r arial-narrow}
 p +
  theme_schola("x", multiplot = T, family = "Arial Narrow") +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
 
-<img src="charts-arial-narrow-1.png" title="plot of chunk arial-narrow" alt="plot of chunk arial-narrow" width="504" />
-
 Same without aesthetic adjustment for `facet_wrap()` and different font
 
-
-```r
+```{r publicans-nomultiplot}
 p +
  theme_schola("x", multiplot = F, family = "Public Sans") +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
 
-<img src="charts-publicans-nomultiplot-1.png" title="plot of chunk publicans-nomultiplot" alt="plot of chunk publicans-nomultiplot" width="504" />
-
 Small mutliples scatter and make it look like The Economist
 
-
-```r
+```{r economist}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = T, family = hrbrthemes::font_es,
@@ -139,13 +135,10 @@ ggplot(mpg) +
  facet_wrap(~ class, nrow = 2)
 ```
 
-<img src="charts-economist-1.png" title="plot of chunk economist" alt="plot of chunk economist" width="504" />
-
 
 Small mutliples grid, using another font setup
 
-
-```r
+```{r plexmix}
 p +
  theme_schola("x", multiplot = T, family = "IBM Plex Sans Light",
               title_family = "IBM Plex Sans Bold") +
@@ -153,12 +146,9 @@ p +
  facet_grid(cyl ~ drv)
 ```
 
-<img src="charts-plexmix-1.png" title="plot of chunk plexmix" alt="plot of chunk plexmix" width="504" />
-
 Small mutliples scatter grid, using mix of Roboto fonts
 
-
-```r
+```{r robotomix}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = T, family = "Roboto Condensed",
@@ -167,19 +157,14 @@ ggplot(mpg) +
  facet_grid(cyl ~ class)
 ```
 
-<img src="charts-robotomix-1.png" title="plot of chunk robotomix" alt="plot of chunk robotomix" width="504" />
-
 Same but without multiplot parameter
 
 
-
-```r
+```{r nomultiplot}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = F) +
  labs(title = "Lots of cars", subtitle = "Point by point") +
  facet_grid(cyl ~ class)
 ```
-
-<img src="charts-nomultiplot-1.png" title="plot of chunk nomultiplot" alt="plot of chunk nomultiplot" width="504" />
 

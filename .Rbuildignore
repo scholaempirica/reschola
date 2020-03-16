@@ -12,3 +12,6 @@
 ^logo$
 ^pkgdown$
 ^\.travis\.yml$
+^vignettes/charts\.Rmd\.orig$
+^doc$
+^Meta$
