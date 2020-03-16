@@ -22,13 +22,52 @@ This package should be a living, evolving tool and a set of living documents. Th
 
 ## Development process
 
+This package is being developed on Github using the workflow suggested Hadley Wickham's R Packages book and implemented by the [`usethis`](https://github.com/r-lib/usethis) package.
+
+The development roadmap is stored in a primitive form in [Github Issues](https://github.com/scholaempirica/reschola/issues).
+
+Releases (of the source package only) are made available in the Relaeses part of Github, meaning a last stable release can be installed using e.g. `remotes::install_github("scholaempirica/reschola", ref = github_release())` regardless of how messy the current state of the repository master branch is.
+
+Big changes or new features should be built in branches.
+
+### Quality assurance
+
+[Pre-commit checks](https://github.com/lorenzwalthert/precommit) are used to ensure that broken code is not committed.
+
+#### Checks / Continuous integration
+
+Commits are only pushed when they pass local R CMD checks with no errors or warnings.
+Checks are then run on Travis on an Ubuntu system as part of building the website. For releases (e.g. v0.1.0) checks are run on [r-hub](https://builder.r-hub.io/).
+
+An exception to the automatic continuous integration and check pipeline is the `chart.Rmd` vignette, which is prebuilt locally using `vignettes/prebuild.r` from `charts.Rmd.orig` to ensure fonts are used correctly.
+
+#### Test coverage
+
+Currently no tests are included.
+
+### Making package binaries available
+
+MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and X.Y.Z where Z != 9000) releases are made available on the [Schola drat](http://scholaempirica.github.io/drat) package repository.
+This is done manually, using the `ptrr::insert_package_into_drat()` utility in the ptrr package but can be done completely manually manually by downloading built binaries output by r-hub and inserting it into the `gh-pages` branch of the `drat` Github repository.
+
+See installation instructions in README.md for how to install these binaries.
+
 ## Online documentation
+
+The continuous integration pipeline (Travis CI and Github Pages) means that whenever code is pushed to Github, the documentation of the package is converted to a website by the `pkgdown` package and published on [scholaempirica.github.io/reschola](https://scholaempirica.github.io/reschola) via the `gh-pages` branch of the repository. 
 
 ## Reusing/reshaping the documentation
 
-## Quality assurance
+### Making changes
 
-### Checks
+In principle, small changes (e.g. correcting typos) can be made in the web interface on Github by any member of the scholaempirica Github team. 
+This is done by going to the relevant file on Github, clicking the pencil icon, and editing the text. 
+When saving changes, Github prompts you to make a commit, which triggers a rebuild and republish of the web documentation.
 
-### Test coverage
+Function documentation is contained in the functions' R files in `R/`, vignettes are in `/vignettes`. The `charts.Rmd`/`charts.Rmd.orig` vignette requires special treatment - see above. 
 
+Big changes should be done after cloning the repo and opening in RStudio, ideally on a separate branch.
+
+### Reusing
+
+The vignettes are in principle Rmd files with a special YAML header so can be reused and republished anywhere and in any format if needed.
