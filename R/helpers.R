@@ -13,7 +13,7 @@
 #' @export
 draft_word <- function(name = "draft.Rmd", open = T) {
   file <- rmarkdown::draft(name, template = "schola_word", "reschola", edit = F)
-  if (open) usethis:::edit_file(file)
+  if (open) usethis::edit_file(file)
   return(TRUE)
 }
 
@@ -32,6 +32,6 @@ draft_word <- function(name = "draft.Rmd", open = T) {
 #' @export
 draft_redoc <- function(name = "draft.Rmd", open = T) {
   file <- rmarkdown::draft(name, template = "schola_redoc", "reschola", edit = F)
-  if (open) usethis:::edit_file(file)
+  if (open) usethis::edit_file(file)
   return(TRUE)
 }
