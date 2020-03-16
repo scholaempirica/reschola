@@ -17,3 +17,53 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(reschola)
 ```
+
+This vignette provides some handy tips and tricks for working with R in RStudio. 
+For more fundamental principles and guidance on getting R and RStudio setup for the Schola workflow, see the [Setup](setup.html) vignette.
+For guidance on thw workflow itself, see the [Workflow](workflow.html) vignette.
+
+## RStudio tips
+
+All keyboard shortcuts below are for Windows.
+See <https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts> for all shortcuts on all platforms.
+
+
+### General helpers
+
+- code completion: when typing a function name, press `Tab` and RStudio will show functions/objects which match that name. Use the arrows to navigate the entry you need and press `Tab` again. Likewise with parameters once you are inside parentheses. Note that you can type e.g. `usegitrel` to get a suggestion for `use_github_release()` as RStudio looks intelligently through functions names some_function_name(). (This is also a good reason to use underscores in your own object/function names).
+- paths completion: when inside quotes, type or press tab and RStudio will suggest files inside the current project.
+- go to anything: in RStudio, press `ctrl`+ `.`, and start typing. RStudio will suggest files and functions in this project and if you click/arrow+enter into one, will take you to the code.
+- cheatsheets: in help > Cheatsheets, you can get to two-page cheatsheets on some of the most used packages.
+- multiple cursors: when making changes to similar lines, you can use multiple cursors:  press `alt` and drag up or down or press `ctrl`+`alt`+`up`/`down` to add cursor in the above or below line. Press `ctrl`+`alt` and click to add cursors anywhere. Then type, move around, delete etc.; when done, press `esc`.
+- holding `ctrl` while clicking on any object name in the code editor lets you view that object: code for functions, dataset viewer for data.
+
+### Handy keyboard shortcuts
+
+- `ctrl`+`enter` runs current line or expression (lines bound by ` %>% `)
+- `alt`+`-` inserts `<-`
+- `ctrl`+`D` deletes the current line
+- `alt`+`M` inserts ` %>% `
+- `alt`+`up`/`down` moves the current line/statement up or down
+- `ctrl`+`alt`+`up`/`down` copies the current line/statement above or below
+- `ctrl`+`shift`+`R` inserts section break in R code (visible in document outline which you can turn on in the top right corner of the code pane)
+- `ctrl`+`F10` restarts R (do it often!)
+
+In RMarkdown:
+
+- `ctrl`+`shift`+`enter` runs current chunk in Rmarkdown
+- `ctrl`+`alt`+`N` runs next chunk in Rmarkdown
+- `ctrl`+`alt`+`P` runs all previous chunk in Rmarkdown
+- `ctrl`+`alt`+`I` inserts new chunk in Rmarkdown
+
+Press `ctrl`+`alt`+`K` in RStudio for an overview of shortcuts.
+
+They can also be customised.
+
+
+## The `usethis` package: utilities for easy code development
+
+Mostly useful for package development, but some utilities also make your life easier in any project:
+
+- `edit_*` for shortcuts to editing setup files e.g. `.Rprofile`
+- `ui_*` for creating nice console output in your code
+- `use_git_*` to quickly set up or configure a git repo in your project, link to Github etc.
