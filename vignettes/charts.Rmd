@@ -20,7 +20,7 @@ library(reschola)
 library(ggplot2)
 ```
 
-```{r}
+```{r, echo=F, message=F, warning=F}
 library(extrafont)
 hrbrthemes::import_plex_sans()
 hrbrthemes::import_roboto_condensed()
@@ -29,8 +29,8 @@ hrbrthemes::import_public_sans()
 hrbrthemes::import_econ_sans()
 ```
 
-```{r}
-extrafont::fonts()
+```{r, echo=F}
+# extrafont::fonttable()
 ```
 
 
@@ -43,6 +43,8 @@ Note the Arial Narrow theme would also be a good choice - this also has fixed wi
 Open Sans, which the Schola website uses, also has nice figures (certainly could be used for text and tables) but is a bit too wide for charts.
 
 Both of these could be showcased here later and integrated in the package.
+
+NOTE: The fonts don't currently render correctly on the website; I will fix this soon but for now, you can download the package and render the Rmd file locally to see the fonts.
 
 ## The Schola ggplot2 theme
 
