@@ -29,6 +29,11 @@ hrbrthemes::import_public_sans()
 hrbrthemes::import_econ_sans()
 ```
 
+```{r}
+extrafont::fonts()
+```
+
+
 NB: This vignette temporarily serves to test and fine-tune the `theme_schola()` theme and to showcase typography.
 
 When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11. Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do. Roboto Sans is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.
