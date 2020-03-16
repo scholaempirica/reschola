@@ -116,18 +116,92 @@
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(reschola)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a></code></pre></div>
-<div id="not-done-yet" class="section level1">
-<h1 class="hasAnchor">
-<a href="#not-done-yet" class="anchor"></a>Not done yet</h1>
-<p>just a brief test of <code><a href="../reference/theme_schola.html">theme_schola()</a></code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(iris, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(Species, Sepal.Length)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">fill =</span> Petal.Length), <span class="dt">width =</span> <span class="fl">0.7</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="dt">expand =</span> flush_axis) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="co"># scale_x_discrete(expand = flush_axis) +</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="dt">legend.title =</span> <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span>(), <span class="dt">side_margin =</span> <span class="dv">0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Tvary kytek"</span>, <span class="dt">subtitle =</span> <span class="st">"Barva zobrazuje délku okvětního lístku"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_b</a></span>()</a></code></pre></div>
-<p><img src="charts_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<p>NB: This vignette temporarily serves to test and fine-tune the <code><a href="../reference/theme_schola.html">theme_schola()</a></code> theme and to showcase typography.</p>
+<p>When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11. Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do. Roboto Sans is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.</p>
+<p>Note the Arial Narrow theme would also be a good choice - this also has fixed width figures, but its normal-width sibling Arial does not.</p>
+<div id="the-schola-ggplot2-theme" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-schola-ggplot2-theme" class="anchor"></a>The Schola ggplot2 theme</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">y =</span> class)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Count of numbers"</span>)</a></code></pre></div>
+<p>using <code><a href="../reference/theme_schola.html">theme_schola()</a></code> defaults</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">p <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p>in combination with <code>flush_axis</code>, and using a different font:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">p <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">family =</span> <span class="st">"Titillium Web"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span>(<span class="dt">expand =</span> flush_axis)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<p>Scatterplot, using yet another font</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(cty, hwy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">family =</span> <span class="st">"IBM Plex Sans"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<p>Smaller text, flush alignment</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(cty, hwy), <span class="dt">alpha =</span> <span class="fl">.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">base_size =</span> <span class="dv">9</span>, <span class="dt">side_margin =</span> <span class="dv">0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<div id="override-defaults-changed-inside-theme_schola" class="section level3">
+<h3 class="hasAnchor">
+<a href="#override-defaults-changed-inside-theme_schola" class="anchor"></a>Override defaults changed inside <code>theme_schola()</code>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(cty, hwy), <span class="dt">alpha =</span> <span class="fl">.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">base_size =</span> <span class="dv">12</span>, <span class="dt">side_margin =</span> <span class="dv">0</span>, <span class="dt">family =</span> <span class="st">"Roboto Condensed"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">panel.background =</span> <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span>(<span class="dt">fill =</span> <span class="st">"lightpink"</span>))</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+</div>
+<div id="small-mutliples" class="section level3">
+<h3 class="hasAnchor">
+<a href="#small-mutliples" class="anchor"></a>Small mutliples</h3>
+<p>Smaller text, using Arial Narrow</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">p <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">multiplot =</span> T) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span>(<span class="dt">expand =</span> flush_axis) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span><span class="st"> </span>manufacturer, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<p>Same without aesthetic adjustment for <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">p <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">multiplot =</span> F, <span class="dt">family =</span> <span class="st">"Public Sans"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span>(<span class="dt">expand =</span> flush_axis) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span><span class="st"> </span>manufacturer, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p>Small mutliples scatter and make it look like The Economist</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(cty, hwy), <span class="dt">alpha =</span> <span class="fl">.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">multiplot =</span> T, <span class="dt">family =</span> hrbrthemes<span class="op">::</span>font_es,</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">              <span class="dt">title_family =</span> hrbrthemes<span class="op">::</span>font_es_bold) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span><span class="st"> </span>class, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p>Small mutliples grid, using another font setup</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">p <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">multiplot =</span> T, <span class="dt">family =</span> <span class="st">"IBM Plex Sans Light"</span>, </a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">              <span class="dt">title_family =</span> <span class="st">"IBM Plex Sans Bold"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span>(<span class="dt">expand =</span> flush_axis) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(cyl <span class="op">~</span><span class="st"> </span>drv)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<p>Small mutliples scatter grid, using Arial Narrow</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(cty, hwy), <span class="dt">alpha =</span> <span class="fl">.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">multiplot =</span> T, <span class="dt">family =</span> <span class="st">"Arial Narrow"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(cyl <span class="op">~</span><span class="st"> </span>class)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p>Same but without multiplot parameter</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mpg) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(cty, hwy), <span class="dt">alpha =</span> <span class="fl">.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">multiplot =</span> F) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(cyl <span class="op">~</span><span class="st"> </span>class)</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+</div>
 </div>
   </div>
 
@@ -137,7 +211,7 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#not-done-yet">Not done yet</a></li>
+<li><a href="#the-schola-ggplot2-theme">The Schola ggplot2 theme</a></li>
       </ul>
 </div>
       </div>
