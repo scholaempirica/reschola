@@ -43,3 +43,5 @@ See [Making charts [TODO]](charts.html) vignette (`vignette('charts', package = 
 
 This package should be a living, evolving tool and a set of living documents.
 See the See [Developing this pacakge further [TODO]](meta.html) vignette (`vignette('meta', package = 'reschola')`) to understand how this package is being developed and thus how it can be extended and updated.
+
+You can get a list of these vignettes in R by entering `browseVignettes('reschola')` and view them locally if you wish
