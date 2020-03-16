@@ -17,3 +17,5 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(reschola)
 ```
+
+This vignette describes the ideal data analytical workflow used by the Schola Empirica team.

@@ -17,3 +17,19 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(reschola)
 ```
+
+This vignette describes how to get from a computer with no R or software development tools to a system on which you can do data analysis the Schola way. It is written primarily with Windows systems in mind.
+
+# Overview
+
+[Note on quick option drat]
+
+# Installing R
+
+# Installing git
+
+## Git GUI
+
+# Optional: LaTex
+
+
