@@ -1,3 +1,5 @@
+# reschola (development version)
+
 # reschola 0.2.0
 
 * improved README and added "Getting started" vignette
