@@ -43,7 +43,8 @@
 
 
 <meta property="og:title" content="A Schola Empirica ggplot2 theme — theme_schola" />
-<meta property="og:description" content="FUNCTION_DESCRIPTION" />
+<meta property="og:description" content="A wrapper around theme() which provides several shortcuts to setting common options
+and several defaults. See more in Details." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -149,17 +150,19 @@
     </div>
 
     <div class="ref-description">
-    <p>FUNCTION_DESCRIPTION</p>
+    <p>A wrapper around <code>theme()</code> which provides several shortcuts to setting common options
+and several defaults. See more in Details.</p>
     </div>
 
     <pre class="usage"><span class='fu'>theme_schola</span>(
   <span class='kw'>gridlines</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"y"</span>, <span class='st'>"x"</span>, <span class='st'>"both"</span>, <span class='st'>"scatter"</span>),
   <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>11</span>,
   <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>,
-  <span class='no'>title_family</span>,
+  <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='no'>family</span>,
   <span class='kw'>side_margin</span> <span class='kw'>=</span> <span class='fl'>6</span>,
   <span class='kw'>plot.title.position</span> <span class='kw'>=</span> <span class='st'>"plot"</span>,
   <span class='kw'>axis.title</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span>(),
+  <span class='kw'>multiplot</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -168,41 +171,60 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>gridlines</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>Whether to display major gridlines along <code>"y"</code> (the default),
+<code>"x"</code>, <code>"both"</code> or draw a <code>"scatter"</code>, which has both gridlines and inverted colours.</p></td>
     </tr>
     <tr>
       <th>base_size</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>Numeric text size in pts, affects all text in plot. Defaults to 11.</p></td>
     </tr>
     <tr>
       <th>family</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>font family to use for the plot. Defaults to <code>"sans"</code>.</p></td>
     </tr>
     <tr>
       <th>title_family</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>font family to use for the title of the plot. Defaults to <code>"sans"</code>.</p></td>
     </tr>
     <tr>
       <th>side_margin</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>size of left and right margin around plot, in pts. Defaults to 5. Set to 0 to align flush with text in a Word document.</p></td>
     </tr>
     <tr>
       <th>plot.title.position</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>where to align the title. Either "plot" (the default, difference from <code>theme()</code> default) or <code>"panel"</code>.</p></td>
     </tr>
     <tr>
       <th>axis.title</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>same as in theme(), but with a default of <code>element_blank()</code>.</p></td>
+    </tr>
+    <tr>
+      <th>multiplot</th>
+      <td><p>if set to TRUE, provides better styling for small multiples created using <code>facet_*</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>DESCRIPTION.</p></td>
+      <td><p>Other parameters to be passed to <code>theme()</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>RETURN_DESCRIPTION</p>
+    <p>a ggtheme object</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>In particular, the theme:</p><ul>
+<li><p>displays only major gridlines, allowing you to quickly switch which ones; gridlines are thinner, panel has white background</p></li>
+<li><p>provides quick option to draw a scatter with grey background</p></li>
+<li><p>switches defaults for title alignment</p></li>
+<li><p>turns axis labels off by default: in practice, x axes are often obvious and
+y axes are better documented in a subtitle</p></li>
+<li><p>sets backgrounds to a schola-style shade</p></li>
+<li><p>sets plot title in bold and 120% of base_size</p></li>
+</ul>
+
+<p>All the changed defaults can be overrided by another call to <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme()</a></code>.</p>
+<p>See "Making charts" vignette for more complex examples: <code><a href='../articles/charts.html'>vignette('charts', package = 'reschola')</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Making charts: 
@@ -210,13 +232,41 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
+
+<span class='co'># the basic plot for illustration, theme not used</span>
+
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>class</span>)) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Lots of cars"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"Count of numbers"</span>)
+
+<span class='co'># using `theme_schola()` defaults</span>
+
+<span class='no'>p</span> +
   <span class='fu'>theme_schola</span>(<span class='st'>"x"</span>)</div><div class='img'><img src='theme_schola-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>class</span>)) +
+<span class='co'># in combination with `flush_axis`:</span>
+
+<span class='no'>p</span> +
   <span class='fu'>theme_schola</span>(<span class='st'>"x"</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span>(<span class='kw'>expand</span> <span class='kw'>=</span> <span class='no'>flush_axis</span>)</div><div class='img'><img src='theme_schola-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># scatter</span>
+
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) +
+  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Lots of cars"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"Point by point"</span>)</div><div class='img'><img src='theme_schola-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Smaller text, flush alignment</span>
+
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) +
+  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>, <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>side_margin</span> <span class='kw'>=</span> <span class='fl'>0</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Lots of cars"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"Point by point"</span>)</div><div class='img'><img src='theme_schola-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Override defaults changed inside `theme_schola()`</span>
+
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) +
+  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>, <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>side_margin</span> <span class='kw'>=</span> <span class='fl'>0</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Lots of cars"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"Point by point"</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span>(<span class='kw'>panel.background</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"lightpink"</span>))</div><div class='img'><img src='theme_schola-5.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -224,6 +274,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
