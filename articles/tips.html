@@ -115,10 +115,87 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(reschola)</a></code></pre></div>
+<p>This vignette provides some handy tips and tricks for working with R in RStudio. For more fundamental principles and guidance on getting R and RStudio setup for the Schola workflow, see the <a href="setup.html">Setup</a> vignette. For guidance on thw workflow itself, see the <a href="workflow.html">Workflow</a> vignette.</p>
+<div id="rstudio-tips" class="section level2">
+<h2 class="hasAnchor">
+<a href="#rstudio-tips" class="anchor"></a>RStudio tips</h2>
+<p>All keyboard shortcuts below are for Windows. See <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts" class="uri">https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts</a> for all shortcuts on all platforms.</p>
+<div id="general-helpers" class="section level3">
+<h3 class="hasAnchor">
+<a href="#general-helpers" class="anchor"></a>General helpers</h3>
+<ul>
+<li>code completion: when typing a function name, press <code>Tab</code> and RStudio will show functions/objects which match that name. Use the arrows to navigate the entry you need and press <code>Tab</code> again. Likewise with parameters once you are inside parentheses. Note that you can type e.g. <code>usegitrel</code> to get a suggestion for <code>use_github_release()</code> as RStudio looks intelligently through functions names some_function_name(). (This is also a good reason to use underscores in your own object/function names).</li>
+<li>paths completion: when inside quotes, type or press tab and RStudio will suggest files inside the current project.</li>
+<li>go to anything: in RStudio, press <code>ctrl</code>+ <code>.</code>, and start typing. RStudio will suggest files and functions in this project and if you click/arrow+enter into one, will take you to the code.</li>
+<li>cheatsheets: in help &gt; Cheatsheets, you can get to two-page cheatsheets on some of the most used packages.</li>
+<li>multiple cursors: when making changes to similar lines, you can use multiple cursors: press <code>alt</code> and drag up or down or press <code>ctrl</code>+<code>alt</code>+<code>up</code>/<code>down</code> to add cursor in the above or below line. Press <code>ctrl</code>+<code>alt</code> and click to add cursors anywhere. Then type, move around, delete etc.; when done, press <code>esc</code>.</li>
+<li>holding <code>ctrl</code> while clicking on any object name in the code editor lets you view that object: code for functions, dataset viewer for data.</li>
+</ul>
+</div>
+<div id="handy-keyboard-shortcuts" class="section level3">
+<h3 class="hasAnchor">
+<a href="#handy-keyboard-shortcuts" class="anchor"></a>Handy keyboard shortcuts</h3>
+<ul>
+<li>
+<code>ctrl</code>+<code>enter</code> runs current line or expression (lines bound by <code><a href="../reference/pipe.html">%&gt;%</a></code>)</li>
+<li>
+<code>alt</code>+<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> inserts <code>&lt;-</code>
+</li>
+<li>
+<code>ctrl</code>+<code>D</code> deletes the current line</li>
+<li>
+<code>alt</code>+<code>M</code> inserts <code><a href="../reference/pipe.html">%&gt;%</a></code>
+</li>
+<li>
+<code>alt</code>+<code>up</code>/<code>down</code> moves the current line/statement up or down</li>
+<li>
+<code>ctrl</code>+<code>alt</code>+<code>up</code>/<code>down</code> copies the current line/statement above or below</li>
+<li>
+<code>ctrl</code>+<code>shift</code>+<code>R</code> inserts section break in R code (visible in document outline which you can turn on in the top right corner of the code pane)</li>
+<li>
+<code>ctrl</code>+<code>F10</code> restarts R (do it often!)</li>
+</ul>
+<p>In RMarkdown:</p>
+<ul>
+<li>
+<code>ctrl</code>+<code>shift</code>+<code>enter</code> runs current chunk in Rmarkdown</li>
+<li>
+<code>ctrl</code>+<code>alt</code>+<code>N</code> runs next chunk in Rmarkdown</li>
+<li>
+<code>ctrl</code>+<code>alt</code>+<code>P</code> runs all previous chunk in Rmarkdown</li>
+<li>
+<code>ctrl</code>+<code>alt</code>+<code>I</code> inserts new chunk in Rmarkdown</li>
+</ul>
+<p>Press <code>ctrl</code>+<code>alt</code>+<code>K</code> in RStudio for an overview of shortcuts.</p>
+<p>They can also be customised.</p>
+</div>
+</div>
+<div id="the-usethis-package-utilities-for-easy-code-development" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-usethis-package-utilities-for-easy-code-development" class="anchor"></a>The <code>usethis</code> package: utilities for easy code development</h2>
+<p>Mostly useful for package development, but some utilities also make your life easier in any project:</p>
+<ul>
+<li>
+<code>edit_*</code> for shortcuts to editing setup files e.g. <code>.Rprofile</code>
+</li>
+<li>
+<code>ui_*</code> for creating nice console output in your code</li>
+<li>
+<code>use_git_*</code> to quickly set up or configure a git repo in your project, link to Github etc.</li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#rstudio-tips">RStudio tips</a></li>
+      <li><a href="#the-usethis-package-utilities-for-easy-code-development">The <code>usethis</code> package: utilities for easy code development</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
