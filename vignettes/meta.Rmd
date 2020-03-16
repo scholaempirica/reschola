@@ -43,7 +43,7 @@ An exception to the automatic continuous integration and check pipeline is the `
 
 #### Test coverage
 
-Currently no tests are included.
+Currently no tests are included or test coverage tracked, but vignettes are written so as to cover and implicitly test the basic functionality of the package.
 
 ### Making package binaries available
 
