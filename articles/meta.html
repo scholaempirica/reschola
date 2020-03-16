@@ -119,25 +119,52 @@
 <div id="development-process" class="section level2">
 <h2 class="hasAnchor">
 <a href="#development-process" class="anchor"></a>Development process</h2>
+<p>This package is being developed on Github using the workflow suggested Hadley Wickham’s R Packages book and implemented by the <a href="https://github.com/r-lib/usethis"><code>usethis</code></a> package.</p>
+<p>The development roadmap is stored in a primitive form in <a href="https://github.com/scholaempirica/reschola/issues">Github Issues</a>.</p>
+<p>Releases (of the source package only) are made available in the Relaeses part of Github, meaning a last stable release can be installed using e.g. <code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("scholaempirica/reschola", ref = github_release())</a></code> regardless of how messy the current state of the repository master branch is.</p>
+<p>Big changes or new features should be built in branches.</p>
+<div id="quality-assurance" class="section level3">
+<h3 class="hasAnchor">
+<a href="#quality-assurance" class="anchor"></a>Quality assurance</h3>
+<p><a href="https://github.com/lorenzwalthert/precommit">Pre-commit checks</a> are used to ensure that broken code is not committed.</p>
+<div id="checks-continuous-integration" class="section level4">
+<h4 class="hasAnchor">
+<a href="#checks-continuous-integration" class="anchor"></a>Checks / Continuous integration</h4>
+<p>Commits are only pushed when they pass local R CMD checks with no errors or warnings. Checks are then run on Travis on an Ubuntu system as part of building the website. For releases (e.g. v0.1.0) checks are run on <a href="https://builder.r-hub.io/">r-hub</a>.</p>
+<p>An exception to the automatic continuous integration and check pipeline is the <code>chart.Rmd</code> vignette, which is prebuilt locally using <code>vignettes/prebuild.r</code> from <code>charts.Rmd.orig</code> to ensure fonts are used correctly.</p>
+</div>
+<div id="test-coverage" class="section level4">
+<h4 class="hasAnchor">
+<a href="#test-coverage" class="anchor"></a>Test coverage</h4>
+<p>Currently no tests are included.</p>
+</div>
+</div>
+<div id="making-package-binaries-available" class="section level3">
+<h3 class="hasAnchor">
+<a href="#making-package-binaries-available" class="anchor"></a>Making package binaries available</h3>
+<p>MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and X.Y.Z where Z != 9000) releases are made available on the <a href="http://scholaempirica.github.io/drat">Schola drat</a> package repository. This is done manually, using the <code>ptrr::insert_package_into_drat()</code> utility in the ptrr package but can be done completely manually manually by downloading built binaries output by r-hub and inserting it into the <code>gh-pages</code> branch of the <code>drat</code> Github repository.</p>
+<p>See installation instructions in README.md for how to install these binaries.</p>
+</div>
 </div>
 <div id="online-documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#online-documentation" class="anchor"></a>Online documentation</h2>
+<p>The continuous integration pipeline (Travis CI and Github Pages) means that whenever code is pushed to Github, the documentation of the package is converted to a website by the <code>pkgdown</code> package and published on <a href="https://scholaempirica.github.io/reschola">scholaempirica.github.io/reschola</a> via the <code>gh-pages</code> branch of the repository.</p>
 </div>
 <div id="reusingreshaping-the-documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#reusingreshaping-the-documentation" class="anchor"></a>Reusing/reshaping the documentation</h2>
-</div>
-<div id="quality-assurance" class="section level2">
-<h2 class="hasAnchor">
-<a href="#quality-assurance" class="anchor"></a>Quality assurance</h2>
-<div id="checks" class="section level3">
+<div id="making-changes" class="section level3">
 <h3 class="hasAnchor">
-<a href="#checks" class="anchor"></a>Checks</h3>
+<a href="#making-changes" class="anchor"></a>Making changes</h3>
+<p>In principle, small changes (e.g. correcting typos) can be made in the web interface on Github by any member of the scholaempirica Github team. This is done by going to the relevant file on Github, clicking the pencil icon, and editing the text. When saving changes, Github prompts you to make a commit, which triggers a rebuild and republish of the web documentation.</p>
+<p>Function documentation is contained in the functions’ R files in <code>R/</code>, vignettes are in <code>/vignettes</code>. The <code>charts.Rmd</code>/<code>charts.Rmd.orig</code> vignette requires special treatment - see above.</p>
+<p>Big changes should be done after cloning the repo and opening in RStudio, ideally on a separate branch.</p>
 </div>
-<div id="test-coverage" class="section level3">
+<div id="reusing" class="section level3">
 <h3 class="hasAnchor">
-<a href="#test-coverage" class="anchor"></a>Test coverage</h3>
+<a href="#reusing" class="anchor"></a>Reusing</h3>
+<p>The vignettes are in principle Rmd files with a special YAML header so can be reused and republished anywhere and in any format if needed.</p>
 </div>
 </div>
   </div>
@@ -151,7 +178,6 @@
 <li><a href="#development-process">Development process</a></li>
       <li><a href="#online-documentation">Online documentation</a></li>
       <li><a href="#reusingreshaping-the-documentation">Reusing/reshaping the documentation</a></li>
-      <li><a href="#quality-assurance">Quality assurance</a></li>
       </ul>
 </div>
       </div>
