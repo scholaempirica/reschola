@@ -15,8 +15,8 @@ Authors@R:
              role = "ctb"),
       person(given = "Schola Empirica",
              role = c("cph", "fnd")))
-Description: A collection of utilies, themes and templates for
-    data analysis at Schola Empirica.
+Description: A collection of utilies, themes and templates for data
+    analysis at Schola Empirica.
 License: MIT + file LICENSE
 URL: https://github.com/scholaempirica/reschola
 BugReports: https://github.com/scholaempirica/reschola/issues
@@ -40,6 +40,7 @@ Imports:
     usethis (>= 1.5.1),
     writexl (>= 1.1)
 Suggests: 
+    extrafont (>= 0.17),
     knitr
 VignetteBuilder: 
     knitr

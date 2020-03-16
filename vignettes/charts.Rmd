@@ -21,16 +21,20 @@ library(ggplot2)
 ```
 
 ```{r, echo=F, message=F, warning=F}
-library(extrafont)
-hrbrthemes::import_plex_sans()
-hrbrthemes::import_roboto_condensed()
-hrbrthemes::import_titillium_web()
-hrbrthemes::import_public_sans()
-hrbrthemes::import_econ_sans()
+if(requireNamespace("extrafont", quietly = TRUE)) {
+  library(extrafont)
+  hrbrthemes::import_plex_sans()
+  hrbrthemes::import_roboto_condensed()
+  hrbrthemes::import_titillium_web()
+  hrbrthemes::import_public_sans()
+  hrbrthemes::import_econ_sans()
+}
 ```
 
 ```{r, echo=F}
-# extrafont::fonttable()
+# if(requireNamespace("extrafont", quietly = TRUE)) {
+#   extrafont::fonttable()
+# }
 ```
 
 
