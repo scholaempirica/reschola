@@ -14,21 +14,139 @@ knitr::opts_chunk$set(
 )
 ```
 
+
 ```{r setup}
 library(reschola)
 library(ggplot2)
 ```
 
-# Not done yet
+```{r, echo=F, message=F, warning=F}
+hrbrthemes::import_plex_sans()
+hrbrthemes::import_roboto_condensed()
+hrbrthemes::import_titillium_web()
+hrbrthemes::import_public_sans()
+hrbrthemes::import_econ_sans()
+```
 
-just a brief test of `theme_schola()`
+NB: This vignette temporarily serves to test and fine-tune the `theme_schola()` theme and to showcase typography.
+
+When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11. Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do. Roboto Sans is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.
+
+Note the Arial Narrow theme would also be a good choice - this also has fixed width figures, but its normal-width sibling Arial does not.
+
+## The Schola ggplot2 theme
 
 ```{r}
-ggplot(iris, aes(Species, Sepal.Length)) +
-  geom_col(aes(fill = Petal.Length), width = 0.7) +
-  scale_y_continuous(expand = flush_axis) +
-  # scale_x_discrete(expand = flush_axis) +
-  theme_schola(legend.title = element_blank(), side_margin = 0) +
-  labs(title = "Tvary kytek", subtitle = "Barva zobrazuje délku okvětního lístku") +
-  scale_fill_viridis_b()
+p <- ggplot(mpg) +
+ geom_bar(aes(y = class)) +
+ labs(title = "Lots of cars", subtitle = "Count of numbers")
 ```
+
+using `theme_schola()` defaults
+
+```{r}
+p +
+ theme_schola("x")
+```
+
+
+in combination with `flush_axis`, and using a different font:
+
+```{r}
+p +
+ theme_schola("x", family = "Titillium Web") +
+ scale_x_continuous(expand = flush_axis)
+```
+
+
+Scatterplot, using yet another font
+
+```{r}
+ggplot(mpg) +
+ geom_point(aes(cty, hwy)) +
+ theme_schola("scatter", family = "IBM Plex Sans") +
+ labs(title = "Lots of cars", subtitle = "Point by point")
+```
+
+Smaller text, flush alignment
+
+```{r}
+ggplot(mpg) +
+ geom_point(aes(cty, hwy), alpha = .2) +
+ theme_schola("scatter", base_size = 9, side_margin = 0) +
+ labs(title = "Lots of cars", subtitle = "Point by point")
+```
+
+### Override defaults changed inside `theme_schola()`
+
+```{r}
+ggplot(mpg) +
+ geom_point(aes(cty, hwy), alpha = .2) +
+ theme_schola("scatter", base_size = 12, side_margin = 0, family = "Roboto Condensed") +
+ labs(title = "Lots of cars", subtitle = "Point by point") +
+ theme(panel.background = element_rect(fill = "lightpink"))
+```
+
+### Small mutliples
+
+Smaller text, using Arial Narrow
+
+```{r}
+p +
+ theme_schola("x", multiplot = T) +
+ scale_x_continuous(expand = flush_axis) +
+ facet_wrap(~ manufacturer, nrow = 2)
+```
+
+Same without aesthetic adjustment for `facet_wrap()`
+
+```{r}
+p +
+ theme_schola("x", multiplot = F, family = "Public Sans") +
+ scale_x_continuous(expand = flush_axis) +
+ facet_wrap(~ manufacturer, nrow = 2)
+```
+ 
+Small mutliples scatter and make it look like The Economist
+
+```{r}
+ggplot(mpg) +
+ geom_point(aes(cty, hwy), alpha = .2) +
+ theme_schola("scatter", multiplot = T, family = hrbrthemes::font_es,
+              title_family = hrbrthemes::font_es_bold) +
+ labs(title = "Lots of cars", subtitle = "Point by point") +
+ facet_wrap(~ class, nrow = 2)
+```
+
+
+Small mutliples grid, using another font setup
+
+```{r}
+p +
+ theme_schola("x", multiplot = T, family = "IBM Plex Sans Light", 
+              title_family = "IBM Plex Sans Bold") +
+ scale_x_continuous(expand = flush_axis) +
+ facet_grid(cyl ~ drv)
+```
+
+Small mutliples scatter grid, using Arial Narrow
+
+```{r}
+ggplot(mpg) +
+ geom_point(aes(cty, hwy), alpha = .2) +
+ theme_schola("scatter", multiplot = T, family = "Arial Narrow") +
+ labs(title = "Lots of cars", subtitle = "Point by point") +
+ facet_grid(cyl ~ class)
+```
+
+Same but without multiplot parameter
+
+
+```{r}
+ggplot(mpg) +
+ geom_point(aes(cty, hwy), alpha = .2) +
+ theme_schola("scatter", multiplot = F) +
+ labs(title = "Lots of cars", subtitle = "Point by point") +
+ facet_grid(cyl ~ class)
+```
+
