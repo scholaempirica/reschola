@@ -1,0 +1,39 @@
+---
+title: "Getting Started"
+output: html_document
+---
+
+You have just created a reschola project.
+
+This document is just for you, to help you find out how to work with such a project. You can delete it afterwards.
+
+You can find guidelines for building Schola Empirica projects by running the following chunk:
+
+```{r setup, include=FALSE}
+vignette("workflow", package = "reschola")
+```
+
+If you are having trouble setting up your system, see
+
+```{r}
+vignette("setup", package = "reschola")
+```
+
+For tips on using R and RStudio efficiently, run
+
+```{r}
+vignette("tips", package = "reschola")
+```
+
+And if you would like to make changes to the rechola package, see
+
+```{r}
+vignette("tips", package = "reschola")
+```
+
+
+The whole documentation for the package is online, run the following chunk to go there:
+
+```{r}
+browseURL("https://scholaempirica.github.io/reschola")
+```

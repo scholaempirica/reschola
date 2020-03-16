@@ -3,7 +3,7 @@ Binding: schola_project
 Subtitle: Create a new schola project
 Caption: Create a new schola project
 Icon: schola.png
-OpenFiles: "First-Schola-styled-Word.Rmd", "First-Schola-styled-redoc.Rmd"
+OpenFiles: "getting-started.Rmd", README.md, "1-schola-styled-Word.Rmd", "2-schola-styled-redoc.Rmd"
 
 Parameter: title
 Widget: TextInput
@@ -20,11 +20,16 @@ Position: left
 Parameter: copy_logos
 Widget: CheckboxInput
 Label: Copy logos
-Fields: myself, scholaempirica
-Default: scholaempirica
+Default: off
 Position: left
 
 Parameter: drive_folder
 Widget: TextInput
 Label: Google Drive link
+Position: left
+
+Parameter: getting_started
+Widget: CheckboxInput
+Label: Show a "Getting started" guide
+Default: on
 Position: left

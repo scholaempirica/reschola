@@ -1,5 +1,9 @@
 # reschola (development version)
 
+* RStudio project template now creates default folder structure
+* New project creation option to show a Getting started guide
+* New project using template now contains README.md, shared.R and build.R with instructions
+
 # reschola 0.2.0
 
 * improved README and added "Getting started" vignette
