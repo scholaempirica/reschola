@@ -12,6 +12,10 @@ reference:
   desc:  Tools for making charts in ggplot2
   contents:
   - has_concept("Making charts")
+- title: All functions alphabetically
+  desc:  All functions, including uncategorised ones
+  contents:
+  - matches("")
 navbar:
   structure:
     left:  [home, intro, articles, reference, news]
