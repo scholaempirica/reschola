@@ -119,7 +119,7 @@
 <div id="development-process" class="section level2">
 <h2 class="hasAnchor">
 <a href="#development-process" class="anchor"></a>Development process</h2>
-<p>This package is being developed on Github using the workflow suggested Hadley Wickham’s R Packages book and implemented by the <a href="https://github.com/r-lib/usethis"><code>usethis</code></a> package.</p>
+<p>This package is being developed on Github using the workflow suggested <a href="https://ropensci.org/technotes/2019/12/08/precompute-vignettes/">Hadley Wickham’s R Packages book</a> and implemented by the <a href="https://github.com/r-lib/usethis"><code>usethis</code></a> package.</p>
 <p>The development roadmap is stored in a primitive form in <a href="https://github.com/scholaempirica/reschola/issues">Github Issues</a>.</p>
 <p>Releases (of the source package only) are made available in the Relaeses part of Github, meaning a last stable release can be installed using e.g. <code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("scholaempirica/reschola", ref = github_release())</a></code> regardless of how messy the current state of the repository master branch is.</p>
 <p>Big changes or new features should be built in branches.</p>
@@ -131,7 +131,7 @@
 <h4 class="hasAnchor">
 <a href="#checks-continuous-integration" class="anchor"></a>Checks / Continuous integration</h4>
 <p>Commits are only pushed when they pass local R CMD checks with no errors or warnings. Checks are then run on Travis on an Ubuntu system as part of building the website. For releases (e.g. v0.1.0) checks are run on <a href="https://builder.r-hub.io/">r-hub</a>.</p>
-<p>An exception to the automatic continuous integration and check pipeline is the <code>chart.Rmd</code> vignette, which is prebuilt locally using <code>vignettes/prebuild.r</code> from <code>charts.Rmd.orig</code> to ensure fonts are used correctly.</p>
+<p>An exception to the automatic continuous integration and check pipeline is the <code>chart.Rmd</code> vignette, which is prebuilt locally using <code>vignettes/prebuild.r</code> from <code>charts.Rmd.orig</code> to ensure fonts are used correctly. (The approach is taken from ropensci as described in <a href="https://ropensci.org/technotes/2019/12/08/precompute-vignettes/">this blog post</a> and applied in <a href="https://github.com/ropensci/eia/blob/master/vignettes/">this package</a>)</p>
 </div>
 <div id="test-coverage" class="section level4">
 <h4 class="hasAnchor">
