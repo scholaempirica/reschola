@@ -1,7 +1,13 @@
 # reschola (development version)
 
 * improved README and added "Getting started" vignette
-* basic `theme_schola()` added
+* basic `theme_schola()` added for early feedback, together with vignette
+* key R and RStudio tips in `tips.html` vignette
+* complete `meta.html` vignette on developing this package
+* handle pre-computing of `charts.html` vignette to get around missing fonts on Travis
+* working project template
+* rely on patched `redoc` which fixes addin error and an error in documentation
+* new pkdown site 
 
 # reschola 0.1.0
 
