@@ -119,12 +119,17 @@
 <p>NB: This vignette temporarily serves to test and fine-tune the <code><a href="../reference/theme_schola.html">theme_schola()</a></code> theme and to showcase typography.</p>
 <p>When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11. Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do. Roboto Sans is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.</p>
 <p>Note the Arial Narrow theme would also be a good choice - this also has fixed width figures, but its normal-width sibling Arial does not.</p>
+<p>Open Sans, which the Schola website uses, also has nice figures (certainly could be used for text and tables) but is a bit too wide for charts.</p>
+<p>Both of these could be showcased here later and integrated in the package.</p>
 <div id="the-schola-ggplot2-theme" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-schola-ggplot2-theme" class="anchor"></a>The Schola ggplot2 theme</h2>
+<p>First, let’s see the default plot, no theme</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mpg) <span class="op">+</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">y =</span> class)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Count of numbers"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Count of numbers"</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">p</a></code></pre></div>
+<p><img src="charts_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 <p>using <code><a href="../reference/theme_schola.html">theme_schola()</a></code> defaults</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">p <span class="op">+</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>)</a></code></pre></div>
