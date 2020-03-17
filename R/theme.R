@@ -39,6 +39,11 @@
 #' @examples
 #' library(ggplot2)
 #'
+#' # NB when `theme_schola()` is used in these examples, fonts
+#' # are set to 'sans' to pass checks on computers without the
+#' # sans included. If you have these fonts (see Note) you can
+#' # leave these parameters at their default values.
+#'
 #' # the basic plot for illustration, theme not used
 #'
 #' p <- ggplot(mpg) +
@@ -48,33 +53,35 @@
 #' # using `theme_schola()` defaults
 #'
 #' p +
-#'   theme_schola("x")
+#'   theme_schola("x", family = "sans", title_family = "sans")
 #'
 #' # in combination with `flush_axis`:
 #'
 #' p +
-#'   theme_schola("x") +
+#'   theme_schola("x", family = "sans", title_family = "sans") +
 #'   scale_x_continuous(expand = flush_axis)
 #'
 #' # scatter
 #'
 #' ggplot(mpg) +
 #'   geom_point(aes(cty, hwy)) +
-#'   theme_schola("scatter") +
+#'   theme_schola("scatter", family = "sans", title_family = "sans") +
 #'   labs(title = "Lots of cars", subtitle = "Point by point")
 #'
 #' # Smaller text, flush alignment
 #'
 #' ggplot(mpg) +
 #'   geom_point(aes(cty, hwy)) +
-#'   theme_schola("scatter", base_size = 9, side_margin = 0) +
+#'   theme_schola("scatter", base_size = 9, side_margin = 0,
+#'                 family = "sans", title_family = "sans") +
 #'   labs(title = "Lots of cars", subtitle = "Point by point")
 #'
 #' # Override defaults changed inside `theme_schola()`
 #'
 #' ggplot(mpg) +
 #'   geom_point(aes(cty, hwy)) +
-#'   theme_schola("scatter", base_size = 9, side_margin = 0) +
+#'   theme_schola("scatter", base_size = 9, side_margin = 0,
+#'                family = "sans", title_family = "sans") +
 #'   labs(title = "Lots of cars", subtitle = "Point by point") +
 #'   theme(panel.background = element_rect(fill = "lightpink"))
 #'

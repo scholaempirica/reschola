@@ -7,8 +7,8 @@
 theme_schola(
   gridlines = c("y", "x", "both", "scatter"),
   base_size = 11,
-  family = "sans",
-  title_family = family,
+  family = "Roboto Condensed",
+  title_family = "Roboto",
   side_margin = 6,
   plot.title.position = "plot",
   axis.title = ggplot2::element_blank(),
@@ -22,9 +22,9 @@ theme_schola(
 
 \item{base_size}{Numeric text size in pts, affects all text in plot. Defaults to 11.}
 
-\item{family}{font family to use for the plot. Defaults to \code{"sans"}.}
+\item{family}{font family to use for the plot. Defaults to \code{"Roboto Condensed"}.}
 
-\item{title_family}{font family to use for the title of the plot. Defaults to \code{"sans"}.}
+\item{title_family}{font family to use for the title of the plot. Defaults to \code{"Roboto"}.}
 
 \item{side_margin}{size of left and right margin around plot, in pts. Defaults to 5. Set to 0 to align flush with text in a Word document.}
 
@@ -55,12 +55,24 @@ y axes are better documented in a subtitle
 \item sets plot title in bold and 120\% of base_size
 }
 
-All the changed defaults can be overrided by another call to \code{theme()}.
+All the changed defaults can be overriden by another call to \code{theme()}.
 
 See "Making charts" vignette for more complex examples: \code{vignette('charts', package = 'reschola')}.
 }
+\note{
+The default fonts - Roboto and Roboto Condensed - are contained in this package and
+can be registered with the system using \code{import_fonts()}. You should then install them onto your
+system like any font, using files in the directories described in the \code{import_fonts()} messsage.
+You can also set the  \code{reschola.loadfonts} option to TRUE for the fonts
+to be registered at package load.
+}
 \examples{
 library(ggplot2)
+
+# NB when `theme_schola()` is used in these examples, fonts
+# are set to 'sans' to pass checks on computers without the
+# sans included. If you have these fonts (see Note) you can
+# leave these parameters at their default values.
 
 # the basic plot for illustration, theme not used
 
@@ -71,33 +83,35 @@ p <- ggplot(mpg) +
 # using `theme_schola()` defaults
 
 p +
-  theme_schola("x")
+  theme_schola("x", family = "sans", title_family = "sans")
 
 # in combination with `flush_axis`:
 
 p +
-  theme_schola("x") +
+  theme_schola("x", family = "sans", title_family = "sans") +
   scale_x_continuous(expand = flush_axis)
 
 # scatter
 
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
-  theme_schola("scatter") +
+  theme_schola("scatter", family = "sans", title_family = "sans") +
   labs(title = "Lots of cars", subtitle = "Point by point")
 
 # Smaller text, flush alignment
 
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
-  theme_schola("scatter", base_size = 9, side_margin = 0) +
+  theme_schola("scatter", base_size = 9, side_margin = 0,
+                family = "sans", title_family = "sans") +
   labs(title = "Lots of cars", subtitle = "Point by point")
 
 # Override defaults changed inside `theme_schola()`
 
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
-  theme_schola("scatter", base_size = 9, side_margin = 0) +
+  theme_schola("scatter", base_size = 9, side_margin = 0,
+               family = "sans", title_family = "sans") +
   labs(title = "Lots of cars", subtitle = "Point by point") +
   theme(panel.background = element_rect(fill = "lightpink"))
 
