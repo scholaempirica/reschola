@@ -1,11 +1,4 @@
-## adapted from ratlas
-
-#' @importFrom hrbrthemes font_rc
-#' @export
-hrbrthemes::font_rc
-#' @importFrom hrbrthemes font_rc
-#' @export
-hrbrthemes::font_rc_light
+## adapted from ratlas and hrbrthemes
 
 #' @importFrom hrbrthemes update_geom_font_defaults
 #' @export
@@ -13,7 +6,13 @@ hrbrthemes::update_geom_font_defaults
 
 #' @rdname Roboto
 #' @md
-#' @description `font_rc_bold` == "`Roboto Bold`"
+#' @description `font_rc` == "`Roboto Condensed`"
+#' @export
+font_rc <- "Roboto Condensed"
+
+#' @rdname Roboto
+#' @md
+#' @description `font_rc_bold` == "`Roboto Condensed Bold`"
 #' @export
 font_rc_bold <- "Roboto Condensed Bold"
 
