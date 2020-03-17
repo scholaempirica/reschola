@@ -4,6 +4,9 @@
     <loc>https://scholaempirica.github.io/reschola/index.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/Roboto.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/draft_redoc.html</loc>
   </url>
   <url>
@@ -11,6 +14,12 @@
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/flush_axis.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/import_fonts.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/import_roboto.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/pipe.html</loc>
@@ -29,6 +38,9 @@
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/schola_word.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/set_reschola_ggplot_fonts.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/theme_schola.html</loc>

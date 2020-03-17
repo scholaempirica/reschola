@@ -78,7 +78,7 @@ and several defaults. See more in Details." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -157,8 +157,8 @@ and several defaults. See more in Details.</p>
     <pre class="usage"><span class='fu'>theme_schola</span>(
   <span class='kw'>gridlines</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"y"</span>, <span class='st'>"x"</span>, <span class='st'>"both"</span>, <span class='st'>"scatter"</span>),
   <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>11</span>,
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>,
-  <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='no'>family</span>,
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"Roboto Condensed"</span>,
+  <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='st'>"Roboto"</span>,
   <span class='kw'>side_margin</span> <span class='kw'>=</span> <span class='fl'>6</span>,
   <span class='kw'>plot.title.position</span> <span class='kw'>=</span> <span class='st'>"plot"</span>,
   <span class='kw'>axis.title</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span>(),
@@ -180,11 +180,11 @@ and several defaults. See more in Details.</p>
     </tr>
     <tr>
       <th>family</th>
-      <td><p>font family to use for the plot. Defaults to <code>"sans"</code>.</p></td>
+      <td><p>font family to use for the plot. Defaults to <code>"Roboto Condensed"</code>.</p></td>
     </tr>
     <tr>
       <th>title_family</th>
-      <td><p>font family to use for the title of the plot. Defaults to <code>"sans"</code>.</p></td>
+      <td><p>font family to use for the title of the plot. Defaults to <code>"Roboto"</code>.</p></td>
     </tr>
     <tr>
       <th>side_margin</th>
@@ -223,8 +223,15 @@ y axes are better documented in a subtitle</p></li>
 <li><p>sets plot title in bold and 120% of base_size</p></li>
 </ul>
 
-<p>All the changed defaults can be overrided by another call to <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme()</a></code>.</p>
+<p>All the changed defaults can be overriden by another call to <code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme()</a></code>.</p>
 <p>See "Making charts" vignette for more complex examples: <code><a href='../articles/charts.html'>vignette('charts', package = 'reschola')</a></code>.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>The default fonts - Roboto and Roboto Condensed - are contained in this package and
+can be registered with the system using <code><a href='import_fonts.html'>import_fonts()</a></code>. You should then install them onto your
+system like any font, using files in the directories described in the <code><a href='import_fonts.html'>import_fonts()</a></code> messsage.
+You can also set the  <code>reschola.loadfonts</code> option to TRUE for the fonts
+to be registered at package load.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Making charts: 
@@ -232,6 +239,11 @@ y axes are better documented in a subtitle</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+
+<span class='co'># NB when `theme_schola()` is used in these examples, fonts</span>
+<span class='co'># are set to 'sans' to pass checks on computers without the</span>
+<span class='co'># sans included. If you have these fonts (see Note) you can</span>
+<span class='co'># leave these parameters at their default values.</span>
 
 <span class='co'># the basic plot for illustration, theme not used</span>
 
@@ -242,29 +254,31 @@ y axes are better documented in a subtitle</p></li>
 <span class='co'># using `theme_schola()` defaults</span>
 
 <span class='no'>p</span> +
-  <span class='fu'>theme_schola</span>(<span class='st'>"x"</span>)</div><div class='img'><img src='theme_schola-1.png' alt='' width='700' height='433' /></div><div class='input'>
+  <span class='fu'>theme_schola</span>(<span class='st'>"x"</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>, <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>)</div><div class='img'><img src='theme_schola-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># in combination with `flush_axis`:</span>
 
 <span class='no'>p</span> +
-  <span class='fu'>theme_schola</span>(<span class='st'>"x"</span>) +
+  <span class='fu'>theme_schola</span>(<span class='st'>"x"</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>, <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span>(<span class='kw'>expand</span> <span class='kw'>=</span> <span class='no'>flush_axis</span>)</div><div class='img'><img src='theme_schola-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># scatter</span>
 
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) +
-  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>) +
+  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>, <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Lots of cars"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"Point by point"</span>)</div><div class='img'><img src='theme_schola-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Smaller text, flush alignment</span>
 
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) +
-  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>, <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>side_margin</span> <span class='kw'>=</span> <span class='fl'>0</span>) +
+  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>, <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>side_margin</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+                <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>, <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Lots of cars"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"Point by point"</span>)</div><div class='img'><img src='theme_schola-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Override defaults changed inside `theme_schola()`</span>
 
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) +
-  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>, <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>side_margin</span> <span class='kw'>=</span> <span class='fl'>0</span>) +
+  <span class='fu'>theme_schola</span>(<span class='st'>"scatter"</span>, <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>side_margin</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+               <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>, <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Lots of cars"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"Point by point"</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span>(<span class='kw'>panel.background</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"lightpink"</span>))</div><div class='img'><img src='theme_schola-5.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
@@ -275,6 +289,7 @@ y axes are better documented in a subtitle</p></li>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#note">Note</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

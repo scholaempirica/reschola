@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -119,7 +119,7 @@
 <p>When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11.</p>
 <ul>
 <li>Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do.</li>
-<li>Roboto Sans is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.</li>
+<li>Roboto Condensed is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.</li>
 <li>Arial Narrow is fine - you can then use Arial in you word output or generic sans in web output and they would be visually consistent with the charts. But it is not open license so we cannot include it in the package; anyone using the package would have to make sure they have it on their computer.</li>
 <li>Open Sans, which your website uses, is fine and has good figures, but seems a bit too wide for charts.</li>
 </ul>
@@ -139,20 +139,21 @@
 <p><img src="charts-schola-default-1.png" title="plot of chunk schola-default" alt="plot of chunk schola-default" width="504"></p>
 <p>in combination with <code>flush_axis</code>, and using the Titillium Web font:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">p <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">family =</span> <span class="st">"Titillium Web"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">family =</span> <span class="st">"Titillium Web"</span>, <span class="dt">title_family =</span> <span class="st">"Titillium Web"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> flush_axis)</a></code></pre></div>
 <p><img src="charts-titillium-flush-1.png" title="plot of chunk titillium-flush" alt="plot of chunk titillium-flush" width="504"></p>
 <p>Scatterplot, using yet another font</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">ggplot</span>(mpg) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(cty, hwy)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">family =</span> <span class="st">"IBM Plex Sans"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">family =</span> <span class="st">"IBM Plex Sans"</span>, <span class="dt">title_family =</span> <span class="st">"IBM Plex Sans"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>)</a></code></pre></div>
 <p><img src="charts-scatter-plexsans-1.png" title="plot of chunk scatter-plexsans" alt="plot of chunk scatter-plexsans" width="504"></p>
 <p>Smaller text, flush plot alignment</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">ggplot</span>(mpg) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(cty, hwy), <span class="dt">alpha =</span> <span class="fl">.2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">base_size =</span> <span class="dv">9</span>, <span class="dt">side_margin =</span> <span class="dv">0</span>, <span class="dt">family =</span> <span class="st">"IBM Plex Sans"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="dt">base_size =</span> <span class="dv">9</span>, <span class="dt">side_margin =</span> <span class="dv">0</span>, <span class="dt">family =</span> <span class="st">"IBM Plex Sans"</span>,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">              <span class="dt">title_family =</span> <span class="st">"IBM Plex Sans"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>)</a></code></pre></div>
 <p><img src="charts-scatter-plexsans-smaller-1.png" title="plot of chunk scatter-plexsans-smaller" alt="plot of chunk scatter-plexsans-smaller" width="504"></p>
 <div id="override-defaults-changed-inside-theme_schola" class="section level3">
 <h3 class="hasAnchor">
@@ -170,13 +171,13 @@
 <a href="#small-mutliples" class="anchor"></a>Small mutliples</h3>
 <p>Smaller text, using Arial Narrow</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">p <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">multiplot =</span> T, <span class="dt">family =</span> <span class="st">"Arial Narrow"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">multiplot =</span> T, <span class="dt">family =</span> <span class="st">"Arial Narrow"</span>, <span class="dt">title_family =</span> <span class="st">"Arial Narrow"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> flush_axis) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>manufacturer, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="charts-arial-narrow-1.png" title="plot of chunk arial-narrow" alt="plot of chunk arial-narrow" width="504"></p>
 <p>Same without aesthetic adjustment for <code>facet_wrap()</code> and different font</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">p <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">multiplot =</span> F, <span class="dt">family =</span> <span class="st">"Public Sans"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="dt">multiplot =</span> F, <span class="dt">family =</span> <span class="st">"Public Sans"</span>, <span class="dt">title_family =</span> <span class="st">"Public Sans"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> flush_axis) <span class="op">+</span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>manufacturer, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="charts-publicans-nomultiplot-1.png" title="plot of chunk publicans-nomultiplot" alt="plot of chunk publicans-nomultiplot" width="504"></p>
@@ -210,6 +211,16 @@
 <a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Lots of cars"</span>, <span class="dt">subtitle =</span> <span class="st">"Point by point"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st"> </span><span class="kw">facet_grid</span>(cyl <span class="op">~</span><span class="st"> </span>class)</a></code></pre></div>
 <p><img src="charts-nomultiplot-1.png" title="plot of chunk nomultiplot" alt="plot of chunk nomultiplot" width="504"></p>
+</div>
+<div id="making-fonts-work-for-future-version-of-vignette" class="section level3">
+<h3 class="hasAnchor">
+<a href="#making-fonts-work-for-future-version-of-vignette" class="anchor"></a>Making fonts work [for future version of vignette]</h3>
+<p>The <code>schola_theme()</code> is set to use the Roboto and Roboto Condensed font families by default. These may not be present on your system. You can install them by running <code><a href="../reference/import_fonts.html">reschola::import_fonts()</a></code>. (once per machine) On package load, these will be registered with R. If the fonts do not show up in your charts, run <code><a href="https://rdrr.io/pkg/extrafont/man/loadfonts.html">extrafont::loadfonts()</a></code> (once per session). You can also set the option <code>reschola.loadfonts</code> to have <code>reschola</code> register these fonts with the PDF/PostScript ecosystem upon package load.</p>
+</div>
+<div id="using-fonts" class="section level3">
+<h3 class="hasAnchor">
+<a href="#using-fonts" class="anchor"></a>Using fonts</h3>
+<p>[ - width - figures]</p>
 </div>
 </div>
   </div>
