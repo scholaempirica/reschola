@@ -123,6 +123,13 @@
 <p>The development roadmap is stored in a primitive form in <a href="https://github.com/scholaempirica/reschola/issues">Github Issues</a>.</p>
 <p>Releases (of the source package only) are made available in the Relaeses part of Github, meaning a last stable release can be installed using e.g. <code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("scholaempirica/reschola", ref = github_release())</a></code> regardless of how messy the current state of the repository master branch is.</p>
 <p>Big changes or new features should be built in branches.</p>
+<div id="dependencies" class="section level3">
+<h3 class="hasAnchor">
+<a href="#dependencies" class="anchor"></a>Dependencies</h3>
+<p>Try to use as few as is reasonable; avoid obscure ones. Prefer CRAN releases.</p>
+<p>Prefer versions where CRAN binaries are available for all platforms.</p>
+<p>An exception currently is <code>redoc</code>, which is early stages and we even use a custom patch, but that is because it provides key functionality we cannot get otherwise.</p>
+</div>
 <div id="quality-assurance" class="section level3">
 <h3 class="hasAnchor">
 <a href="#quality-assurance" class="anchor"></a>Quality assurance</h3>
@@ -142,7 +149,7 @@
 <div id="making-package-binaries-available" class="section level3">
 <h3 class="hasAnchor">
 <a href="#making-package-binaries-available" class="anchor"></a>Making package binaries available</h3>
-<p>MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and X.Y.Z where Z != 9000) releases are made available on the <a href="http://scholaempirica.github.io/drat">Schola drat</a> package repository. This is done manually, using the <code>ptrr::insert_package_into_drat()</code> utility in the ptrr package but can be done completely manually manually by downloading built binaries output by r-hub and inserting it into the <code>gh-pages</code> branch of the <code>drat</code> Github repository.</p>
+<p>MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and X.Y.Z where Z != 9000) releases are made available on the <a href="http://scholaempirica.github.io/drat">Schola drat</a> package repository. This is done manually, using the <code>ptrr::insert_package_into_drat()</code> utility in the <code>ptrr</code> package but can be without it by downloading built binaries output by r-hub and inserting them into the <code>gh-pages</code> branch of the <code>drat</code> Github repository using the <code>drat</code> package.</p>
 <p>See installation instructions in README.md for how to install these binaries.</p>
 </div>
 </div>
