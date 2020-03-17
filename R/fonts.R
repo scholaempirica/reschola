@@ -11,12 +11,51 @@ hrbrthemes::font_rc_light
 #' @export
 hrbrthemes::update_geom_font_defaults
 
+#' @rdname Roboto
+#' @md
+#' @description `font_rc_bold` == "`Roboto Bold`"
+#' @export
 font_rc_bold <- "Roboto Condensed Bold"
+
+#' @rdname Roboto
+#' @md
+#' @description `font_rc_thin` == "`Roboto Condensed Thin`"
+#' @export
 font_rc_thin <- "Roboto Condensed Thin"
+
+#' @rdname Roboto
+#' @md
+#' @note `font_rc_light` (a.k.a. "`Roboto Condensed Light`") is not available on
+#'     Windows and will throw a warning if used in plots.
+#' @description `font_rc_light` == "`Roboto Condensed Light`"
+#' @export
 font_rc_light <- "Roboto Condensed Light"
+
+#' Roboto font shortcuts
+#' @rdname Roboto
+#' @md
+#' @description `font_bold` == "`Roboto Bold`"
+#' @export
 font_r_bold <- "Roboto Bold"
+
+#' @rdname Roboto
+#' @md
+#' @description `font_rc_thin` == "`Roboto Thin`"
+#' @export
 font_r_thin <- "Roboto Thin"
+
+#' @rdname Roboto
+#' @md
+#' @description `font_r` == "`Roboto`"
+#' @export
 font_r <- "Roboto"
+
+#' @rdname Roboto
+#' @md
+#' @note `font_r_light` (a.k.a. "`Roboto Light`") is not available on
+#'     Windows and will throw a warning if used in plots.
+#' @description `font_fc_light` == "`Roboto Light`"
+#' @export
 font_r_light <- "Roboto Light"
 
 #' Import Roboto Condensed font for use in charts
