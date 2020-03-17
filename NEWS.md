@@ -1,6 +1,7 @@
 # reschola (development version)
 
-* added the right logos into RStudio template
+* added the right logos into RStudio template*
+* improved RMarkdown template content
 
 # reschola 0.2.1
 
