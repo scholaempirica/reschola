@@ -1,6 +1,6 @@
 Package: reschola
 Title: The Schola Empirica package
-Version: 0.2.1.9000
+Version: 0.2.2
 Authors@R: 
     c(person(given = "Petr",
              family = "Bouchal",
