@@ -30,6 +30,14 @@ Releases (of the source package only) are made available in the Relaeses part of
 
 Big changes or new features should be built in branches.
 
+### Dependencies
+
+Try to use as few as is reasonable; avoid obscure ones. Prefer CRAN releases.
+
+Prefer versions where CRAN binaries are available for all platforms.
+
+An exception currently is `redoc`, which is early stages and we even use a custom patch, but that is because it provides key functionality we cannot get otherwise.
+
 ### Quality assurance
 
 [Pre-commit checks](https://github.com/lorenzwalthert/precommit) are used to ensure that broken code is not committed.
