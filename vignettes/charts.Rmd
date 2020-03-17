@@ -7,13 +7,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
-
-
-
-
-
-
 NB: This vignette temporarily serves to test and fine-tune the `theme_schola()` theme and to showcase typography.
 
 This is a bit hacky so ignore font sizes and resolution, which can be handled better in normal Word or HTML output outside of package documentation.
@@ -21,7 +14,7 @@ This is a bit hacky so ignore font sizes and resolution, which can be handled be
 When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11.
 
 - Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do.
-- Roboto Sans is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.
+- Roboto Condensed is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.
 - Arial Narrow is fine - you can then use Arial in you word output or generic sans in web output and they would be visually consistent with the charts. But it is not open license so we cannot include it in the package; anyone using the package would have to make sure they have it on their computer.
 - Open Sans, which your website uses, is fine and has good figures, but seems a bit too wide for charts.
 
