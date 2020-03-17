@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/scholaempirica/reschola.svg?branch=master)](https://travis-ci.org/scholaempirica/reschola)
+[![CRAN status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 <!-- badges: end -->
 
 The goal of reschola is to provide a set of utilities for data analysis at [Schola Empirica](https://scholaempirica.org). The vignettes for the package also document the Schola Empirica way of doing data analysis.
