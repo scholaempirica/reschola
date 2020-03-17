@@ -51,6 +51,9 @@ local({r <- getOption("repos")
 r["scholaempirica"] <- "scholaempirica.github.io/drat"
 options(repos=r)})
 ```
+
+(use `usethis::edit_r_profile()` to open .Rprofile for editing.)
+
 Then, you can simply run `install.packages("reschola")` and the latest binary release of `reschola` will be installed even though it is not on CRAN.
 
 
