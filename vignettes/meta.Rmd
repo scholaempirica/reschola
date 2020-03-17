@@ -79,3 +79,7 @@ Big changes should be done after cloning the repo and opening in RStudio, ideall
 ### Reusing
 
 The vignettes are in principle Rmd files with a special YAML header so can be reused and republished anywhere and in any format if needed.
+
+## Resources and acknowledgements
+
+

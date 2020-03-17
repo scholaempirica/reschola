@@ -3,6 +3,7 @@
 * added the right logos into RStudio template*
 * improved RMarkdown template content
 * font defaults in `theme_schola()` + functions for font import and setting `geom_*` defaults
+* font setup steps documented in vignettes and `theme_schola()` doc
 
 # reschola 0.2.1
 

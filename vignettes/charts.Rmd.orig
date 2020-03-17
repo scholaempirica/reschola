@@ -25,6 +25,8 @@ if(requireNamespace("extrafont", quietly = TRUE)) {
   hrbrthemes::import_titillium_web()
   hrbrthemes::import_public_sans()
   hrbrthemes::import_econ_sans()
+  reschola::import_fonts()
+  extrafont::loadfonts()
 }
 ```
 
@@ -42,7 +44,7 @@ This is a bit hacky so ignore font sizes and resolution, which can be handled be
 When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11.
 
 - Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do.
-- Roboto Sans is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.
+- Roboto Condensed is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.
 - Arial Narrow is fine - you can then use Arial in you word output or generic sans in web output and they would be visually consistent with the charts. But it is not open license so we cannot include it in the package; anyone using the package would have to make sure they have it on their computer.
 - Open Sans, which your website uses, is fine and has good figures, but seems a bit too wide for charts.
 
@@ -72,7 +74,7 @@ in combination with `flush_axis`, and using the Titillium Web font:
 
 ```{r titillium-flush}
 p +
- theme_schola("x", family = "Titillium Web") +
+ theme_schola("x", family = "Titillium Web", title_family = "Titillium Web") +
  scale_x_continuous(expand = flush_axis)
 ```
 
@@ -82,7 +84,7 @@ Scatterplot, using yet another font
 ```{r scatter-plexsans}
 ggplot(mpg) +
  geom_point(aes(cty, hwy)) +
- theme_schola("scatter", family = "IBM Plex Sans") +
+ theme_schola("scatter", family = "IBM Plex Sans", title_family = "IBM Plex Sans") +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
@@ -91,7 +93,8 @@ Smaller text, flush plot alignment
 ```{r scatter-plexsans-smaller}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 9, side_margin = 0, family = "IBM Plex Sans") +
+ theme_schola("scatter", base_size = 9, side_margin = 0, family = "IBM Plex Sans",
+              title_family = "IBM Plex Sans") +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
@@ -111,7 +114,7 @@ Smaller text, using Arial Narrow
 
 ```{r arial-narrow}
 p +
- theme_schola("x", multiplot = T, family = "Arial Narrow") +
+ theme_schola("x", multiplot = T, family = "Arial Narrow", title_family = "Arial Narrow") +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
@@ -120,7 +123,7 @@ Same without aesthetic adjustment for `facet_wrap()` and different font
 
 ```{r publicans-nomultiplot}
 p +
- theme_schola("x", multiplot = F, family = "Public Sans") +
+ theme_schola("x", multiplot = F, family = "Public Sans", title_family = "Public Sans") +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
@@ -169,3 +172,18 @@ ggplot(mpg) +
  facet_grid(cyl ~ class)
 ```
 
+### Making fonts work [for future version of vignette]
+
+The `schola_theme()` is set to use the Roboto and Roboto Condensed font families by default.
+These may not be present on your system.
+You can install them by running `reschola::import_fonts()`. (once per machine)
+On package load, these will be registered with R.
+If the fonts do not show up in your charts, run `extrafont::loadfonts()` (once per session).
+You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load.
+
+### Using fonts
+
+[
+- width
+- figures
+]

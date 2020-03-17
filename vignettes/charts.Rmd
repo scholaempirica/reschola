@@ -7,6 +7,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
+
+
+
+
+
+
 NB: This vignette temporarily serves to test and fine-tune the `theme_schola()` theme and to showcase typography.
 
 This is a bit hacky so ignore font sizes and resolution, which can be handled better in normal Word or HTML output outside of package documentation.
@@ -51,7 +58,7 @@ in combination with `flush_axis`, and using the Titillium Web font:
 
 ```r
 p +
- theme_schola("x", family = "Titillium Web") +
+ theme_schola("x", family = "Titillium Web", title_family = "Titillium Web") +
  scale_x_continuous(expand = flush_axis)
 ```
 
@@ -64,7 +71,7 @@ Scatterplot, using yet another font
 ```r
 ggplot(mpg) +
  geom_point(aes(cty, hwy)) +
- theme_schola("scatter", family = "IBM Plex Sans") +
+ theme_schola("scatter", family = "IBM Plex Sans", title_family = "IBM Plex Sans") +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
@@ -76,7 +83,8 @@ Smaller text, flush plot alignment
 ```r
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 9, side_margin = 0, family = "IBM Plex Sans") +
+ theme_schola("scatter", base_size = 9, side_margin = 0, family = "IBM Plex Sans",
+              title_family = "IBM Plex Sans") +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
@@ -102,7 +110,7 @@ Smaller text, using Arial Narrow
 
 ```r
 p +
- theme_schola("x", multiplot = T, family = "Arial Narrow") +
+ theme_schola("x", multiplot = T, family = "Arial Narrow", title_family = "Arial Narrow") +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
@@ -114,7 +122,7 @@ Same without aesthetic adjustment for `facet_wrap()` and different font
 
 ```r
 p +
- theme_schola("x", multiplot = F, family = "Public Sans") +
+ theme_schola("x", multiplot = F, family = "Public Sans", title_family = "Public Sans") +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
@@ -177,3 +185,18 @@ ggplot(mpg) +
 
 <img src="charts-nomultiplot-1.png" title="plot of chunk nomultiplot" alt="plot of chunk nomultiplot" width="504" />
 
+### Making fonts work [for future version of vignette]
+
+The `schola_theme()` is set to use the Roboto and Roboto Condensed font families by default.
+These may not be present on your system.
+You can install them by running `reschola::import_fonts()`. (once per machine)
+On package load, these will be registered with R.
+If the fonts do not show up in your charts, run `extrafont::loadfonts()` (once per session).
+You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load.
+
+### Using fonts
+
+[
+- width
+- figures
+]
