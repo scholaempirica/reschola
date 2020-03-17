@@ -33,7 +33,7 @@ remotes::install_github("scholaempirica/reschola")
 
 If you are having trouble installing packages from sources, the binaries
 of `reschola` are available in [the Schola `drat`
-repository](http://scholaempirica.github.io/drat). This is a package
+repository](https://scholaempirica.github.io/drat). This is a package
 repository that can be used in the same way as CRAN, meaning you can use
 `install.packages()` and if binaries are available, you don’t need
 development tools to compile source packages.
