@@ -1,3 +1,7 @@
+# reschola (development version)
+
+* added the right logos into RStudio template
+
 # reschola 0.2.1
 
 * RStudio project template now creates default folder structure
