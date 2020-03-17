@@ -39,7 +39,8 @@ development tools to compile source packages.
 You can install binaries from Schola `drat` like so:
 
 ``` r
-install.packages("reschola", repos = "https://scholaempirica.github.io/drat/")
+options(repos = c(getOption("repos"), "scholaempirica" = "scholaempirica.github.io/drat"))
+install.packages("reschola")
 ```
 
 If you want to always have direct access to this `drat` repository like
