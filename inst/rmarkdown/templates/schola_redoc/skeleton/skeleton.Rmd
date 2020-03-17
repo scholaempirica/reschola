@@ -14,3 +14,5 @@ library(tidyverse)
 library(readxl)
 library(writexl)
 source("shared.R")
+set_reschola_ggplot_fonts()
+```

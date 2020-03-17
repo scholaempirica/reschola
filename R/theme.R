@@ -13,15 +13,21 @@
 #' - sets backgrounds to a schola-style shade
 #' - sets plot title in bold and 120% of base_size
 #'
-#' All the changed defaults can be overrided by another call to `theme()`.
+#' All the changed defaults can be overriden by another call to `theme()`.
 #'
 #' See "Making charts" vignette for more complex examples: `vignette('charts', package = 'reschola')`.
+#'
+#' @note The default fonts - Roboto and Roboto Condensed - are contained in this package and
+#' can be registered with the system using `import_fonts()`. You should then install them onto your
+#' system like any font, using files in the directories described in the `import_fonts()` messsage.
+#' You can also set the  `reschola.loadfonts` option to TRUE for the fonts
+#' to be registered at package load.
 #'
 #' @param base_size Numeric text size in pts, affects all text in plot. Defaults to 11.
 #' @param gridlines Whether to display major gridlines along `"y"` (the default),
 #' `"x"`, `"both"` or draw a `"scatter"`, which has both gridlines and inverted colours.
-#' @param family font family to use for the plot. Defaults to `"sans"`.
-#' @param title_family font family to use for the title of the plot. Defaults to `"sans"`.
+#' @param family font family to use for the plot. Defaults to `"Roboto Condensed"`.
+#' @param title_family font family to use for the title of the plot. Defaults to `"Roboto"`.
 #' @param side_margin size of left and right margin around plot, in pts. Defaults to 5. Set to 0 to align flush with text in a Word document.
 #' @param plot.title.position where to align the title. Either "plot" (the default, difference from `theme()` default) or `"panel"`.
 #' @param axis.title same as in theme(), but with a default of `element_blank()`.
@@ -75,7 +81,7 @@
 #' @export
 theme_schola <- function(gridlines = c("y", "x", "both", "scatter"),
                          base_size = 11,
-                         family = "sans", title_family = family,
+                         family = "Roboto Condensed", title_family = "Roboto",
                          side_margin = 6,
                          plot.title.position = "plot",
                          axis.title = ggplot2::element_blank(),

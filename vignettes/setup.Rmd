@@ -33,3 +33,17 @@ This vignette describes how to get from a computer with no R or software develop
 # Optional: LaTex
 
 
+# Fonts for reschola charts
+
+To be able to produce charts in the default reschola font - Roboto and Roboto Condensed - you need to have these fonts on your machine and registered with R. The easiest way to do is to run:
+
+```r
+reschola::import_fonts()
+```
+
+and then install the fonts onto your system from the paths in the messages printed by these functions.
+
+
+
+
+
