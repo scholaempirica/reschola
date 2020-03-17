@@ -61,11 +61,11 @@ CRAN.
 
 ## What is inside the box and how to use it
 
-See the [Getting started](reschola.html) vignette (`vignette('reschola',
-package = 'reschola')`) for an overview of templates, utilities and
-guidance in this package that together provide the infrastructure and
-mental models for the Schola Empirica way of working with data and
-reporting.
+See the [Getting started](articles/reschola.html) vignette
+(`vignette('reschola', package = 'reschola')`) for an overview of
+templates, utilities and guidance in this package that together provide
+the infrastructure and mental models for the Schola Empirica way of
+working with data and reporting.
 
 ## Acknowledgments
 
