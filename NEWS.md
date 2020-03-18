@@ -1,3 +1,5 @@
+# reschola (development version)
+
 # reschola 0.2.2
 
 * added the right logos into RStudio template*
