@@ -20,10 +20,11 @@ Description: A collection of utilies, themes and templates for data
 License: MIT + file LICENSE
 URL: https://github.com/scholaempirica/reschola
 BugReports: https://github.com/scholaempirica/reschola/issues
+Depends: 
+    extrafont (>= 0.17)
 Imports: 
     bookdown (>= 0.15),
     dplyr (>= 0.8.4),
-    extrafont (>= 0.17),
     forcats (>= 0.4.0),
     fs (>= 1.3.2),
     ggplot2 (>= 3.3.0),
