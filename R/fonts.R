@@ -27,7 +27,6 @@ font_rc_thin <- "Roboto Condensed Thin"
 #' @note `font_rc_light` (a.k.a. "`Roboto Condensed Light`") is not available on
 #'     Windows and will throw a warning if used in plots.
 #' @description `font_rc_light` == "`Roboto Condensed Light`"
-#' @export
 font_rc_light <- "Roboto Condensed Light"
 
 #' Roboto font shortcuts
