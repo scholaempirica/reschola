@@ -55,7 +55,7 @@ Currently no tests are included or test coverage tracked, but vignettes are writ
 
 ### Making package binaries available
 
-MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and X.Y.Z where Z != 9000) releases are made available on the [Schola drat](http://scholaempirica.github.io/drat) package repository.
+MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and X.Y.Z where Z != 9000) releases are made available on the [Schola drat](https://scholaempirica.github.io/drat) package repository.
 This is done manually, using the `ptrr::insert_package_into_drat()` utility in the `ptrr` package but can be without it by downloading built binaries output by r-hub and inserting them into the `gh-pages` branch of the `drat` Github repository using the `drat` package.
 
 See installation instructions in README.md for how to install these binaries.
