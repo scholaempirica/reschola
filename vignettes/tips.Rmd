@@ -36,6 +36,7 @@ See <https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts>
 - cheatsheets: in help > Cheatsheets, you can get to two-page cheatsheets on some of the most used packages.
 - multiple cursors: when making changes to similar lines, you can use multiple cursors:  press `alt` and drag up or down or press `ctrl`+`alt`+`up`/`down` to add cursor in the above or below line. Press `ctrl`+`alt` and click to add cursors anywhere. Then type, move around, delete etc.; when done, press `esc`.
 - holding `ctrl` while clicking on any object name in the code editor lets you view that object: code for functions, dataset viewer for data.
+- pressing `F1` when your curser is on a function name will display the documentatin for that function, same for package names
 
 ### Handy keyboard shortcuts
 
