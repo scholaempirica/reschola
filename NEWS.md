@@ -2,7 +2,7 @@
 
 * removed `font_rc_light` as Roboto Condensed Light does not work in Windows with ggplot2
 * improved guidance in `import_fonts()`
-
+* added guidance in meta vignette on changing things in the package, plus acknowledgments
 
 # reschola 0.2.3
 

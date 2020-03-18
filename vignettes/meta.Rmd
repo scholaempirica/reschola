@@ -80,6 +80,19 @@ Big changes should be done after cloning the repo and opening in RStudio, ideall
 
 The vignettes are in principle Rmd files with a special YAML header so can be reused and republished anywhere and in any format if needed.
 
+## How to change key parts
+
+- word template styles: use Word to open and edit styles in `template.docx` in `inst/rmarkdown/templates/schola_*/resources/`; edit each one separately (do not copy one file to another folder as `redoc` has special parts in the `docx` file).
+- text in articles/vignettes: `vignettes/*.Rmd`
+- default content of Rmarkdown files created from `reschola` templates: `inst/rmarkdown/templates/schola_*/skeleton/skeleton.Rmd`
+- Rmarkdown templates knitr param defaults: look at the `base$knitr$opts_chunk` bits in `R/rmarkdown_output.R`
+- behaviour of project template: `inst/rstudio/templates/project` and `R/rstudio_project_bindings.R`; consult https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html.
+- text of function documentation: always next to each function in `R/{function_name/group}.R`; consult https://r-pkgs.org/man.html on documenting things.
+- font defaults: look through `R/fonts.R`
+
 ## Resources and acknowledgements
 
+The package architecture and many components draw heavily on [`ratlas`](https://github.com/atlas-aai/ratlas) by @ratlas-aai/@wjakethompson (Jake Thompson), and on [`hrbrthemes`](https://github.com/hrbrmstr/hrbrthemes) by Bob Rudis (@hrbrmstr).
+
+You can see Jake's Rstudio::conf talk on `ratlas` at https://resources.rstudio.com/rstudio-conf-2020/branding-and-packaging-reports-with-r-markdown-jake-thompson.
 
