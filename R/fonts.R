@@ -94,7 +94,10 @@ import_roboto <- function() {
 #'
 import_fonts <- function() {
   import_roboto()
+  usethis::ui_done("Done installing Roboto")
   hrbrthemes::import_roboto_condensed()
+  usethis::ui_done("Done installing Roboto Condensed")
+  usethis::ui_info("On Windows 7 and 10, you can install fonts by right-clicking the font file and clicking Install.")
 }
 
 
