@@ -12,9 +12,9 @@
 #' }
 #' @export
 draft_word <- function(name = "draft.Rmd", open = T) {
-  file <- rmarkdown::draft(name, template = "schola_word", "reschola", edit = F)
+  file <- suppressMessages(rmarkdown::draft(name, template = "schola_word", "reschola", edit = F))
   if (open) usethis::edit_file(file)
-  return(TRUE)
+  invisible(TRUE)
 }
 
 #' Create a Rmd doc for reversible reviewing using schola_redoc template
