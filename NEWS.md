@@ -1,3 +1,5 @@
+# reschola (development version)
+
 # reschola 0.2.3
 
 * fixed issue which prevented package from loading in some cases
