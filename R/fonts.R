@@ -84,12 +84,8 @@ import_roboto <- function() {
 
   suppressWarnings(suppressMessages(extrafont::font_import(r_font_dir, prompt=FALSE)))
 
-  message(
-    sprintf(
-      "You will likely need to install these fonts on your system as well.\n\nYou can find them in [%s]",
-      r_font_dir)
-  )
-
+  usethis::ui_done("Done registering Roboto with R.")
+  usethis::ui_todo("Now go to {usethis::ui_path(r_font_dir)} and install the fonts onto your system.")
 }
 
 
@@ -102,9 +98,11 @@ import_roboto <- function() {
 #'
 import_fonts <- function() {
   import_roboto()
-  usethis::ui_done("Done installing Roboto")
-  hrbrthemes::import_roboto_condensed()
-  usethis::ui_done("Done installing Roboto Condensed")
+  suppressMessages(hrbrthemes::import_roboto_condensed())
+  r_font_dir <- system.file("fonts", "roboto", package="reschola")
+  rc_font_dir <- system.file("fonts", "roboto-condensed", package="hrbrthemes")
+  usethis::ui_done("Done registering Roboto Condensed with R.")
+  usethis::ui_todo("Now go to {usethis::ui_path(rc_font_dir)} and install the fonts onto your system.")
   usethis::ui_info("On Windows 7 and 10, you can install fonts by right-clicking the font file and clicking Install.")
 }
 
