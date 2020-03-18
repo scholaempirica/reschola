@@ -9,3 +9,10 @@ import_fonts()
 \description{
 Imports Roboto and Roboto Condensed. Draws on the hrbrthemes package.
 }
+\seealso{
+Other Font helpers and shortcuts: 
+\code{\link{font_rc}},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+}
+\concept{Font helpers and shortcuts}

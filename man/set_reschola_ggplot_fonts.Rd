@@ -12,3 +12,10 @@ set_reschola_ggplot_fonts(font = "Roboto Condensed")
 \description{
 Wrapper around update_geom_font_defaults(), different default
 }
+\seealso{
+Other Font helpers and shortcuts: 
+\code{\link{font_rc}},
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()}
+}
+\concept{Font helpers and shortcuts}

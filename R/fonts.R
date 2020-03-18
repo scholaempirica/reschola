@@ -1,24 +1,23 @@
 ## adapted from ratlas and hrbrthemes
 
-#' @importFrom hrbrthemes update_geom_font_defaults
-#' @export
-hrbrthemes::update_geom_font_defaults
-
 #' @rdname Roboto
 #' @md
 #' @description `font_rc` == "`Roboto Condensed`"
+#' @family Font helpers and shortcuts
 #' @export
 font_rc <- "Roboto Condensed"
 
 #' @rdname Roboto
 #' @md
 #' @description `font_rc_bold` == "`Roboto Condensed Bold`"
+#' @family Font helpers and shortcuts
 #' @export
 font_rc_bold <- "Roboto Condensed Bold"
 
 #' @rdname Roboto
 #' @md
 #' @description `font_rc_thin` == "`Roboto Condensed Thin`"
+#' @family Font helpers and shortcuts
 #' @export
 font_rc_thin <- "Roboto Condensed Thin"
 
@@ -26,6 +25,7 @@ font_rc_thin <- "Roboto Condensed Thin"
 #' @md
 #' @note `font_rc_light` (a.k.a. "`Roboto Condensed Light`") is not available on
 #'     Windows and will throw a warning if used in plots.
+#' @family Font helpers and shortcuts
 #' @description `font_rc_light` == "`Roboto Condensed Light`"
 font_rc_light <- "Roboto Condensed Light"
 
@@ -33,18 +33,21 @@ font_rc_light <- "Roboto Condensed Light"
 #' @rdname Roboto
 #' @md
 #' @description `font_bold` == "`Roboto Bold`"
+#' @family Font helpers and shortcuts
 #' @export
 font_r_bold <- "Roboto Bold"
 
 #' @rdname Roboto
 #' @md
 #' @description `font_rc_thin` == "`Roboto Thin`"
+#' @family Font helpers and shortcuts
 #' @export
 font_r_thin <- "Roboto Thin"
 
 #' @rdname Roboto
 #' @md
 #' @description `font_r` == "`Roboto`"
+#' @family Font helpers and shortcuts
 #' @export
 font_r <- "Roboto"
 
@@ -53,12 +56,15 @@ font_r <- "Roboto"
 #' @note `font_r_light` (a.k.a. "`Roboto Light`") is not available on
 #'     Windows and will throw a warning if used in plots.
 #' @description `font_fc_light` == "`Roboto Light`"
+#' @family Font helpers and shortcuts
 #' @export
 font_r_light <- "Roboto Light"
 
-#' Import Roboto Condensed font for use in charts
+#' Import Roboto font for use in charts
 #'
 #' Roboto is a trademark of Google.
+#'
+#' This is an analogue of `hrbrthemes::import_roboto_condensed()`.
 #'
 #' There is an option `reschola.loadfonts` which -- if set to `TRUE` -- will
 #' call `extrafont::loadfonts()` to register non-core fonts with R PDF & PostScript
@@ -70,6 +76,7 @@ font_r_light <- "Roboto Light"
 #'   font directory is displayed after the base import is complete. It is highly
 #'   recommended that you install them on your system the same way you would any
 #'   other font you wish to use in other programs.
+#' @family Font helpers and shortcuts
 #' @export
 import_roboto <- function() {
 
@@ -90,6 +97,7 @@ import_roboto <- function() {
 #'
 #' Imports Roboto and Roboto Condensed. Draws on the hrbrthemes package.
 #'
+#' @family Font helpers and shortcuts
 #' @export
 #'
 import_fonts <- function() {
@@ -106,8 +114,9 @@ import_fonts <- function() {
 #' Wrapper around update_geom_font_defaults(), different default
 #'
 #' @param font font, defaults to `"Roboto Condensed"`
+#' @family Font helpers and shortcuts
 #' @export
 #'
 set_reschola_ggplot_fonts <- function(font = "Roboto Condensed") {
-  update_geom_font_defaults(font)
+  hrbrthemes::update_geom_font_defaults(font)
 }

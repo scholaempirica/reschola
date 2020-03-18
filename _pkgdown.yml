@@ -12,6 +12,10 @@ reference:
   desc:  Tools for making charts in ggplot2
   contents:
   - has_concept("Making charts")
+- title: Font helpers and shortcuts
+  desc:  Tools for installing, setting and using fonts contained in reschola
+  contents:
+  - has_concept("Font helpers and shortcuts")
 - title: All functions alphabetically
   desc:  All functions, including uncategorised ones
   contents:

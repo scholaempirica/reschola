@@ -69,4 +69,46 @@ Windows and will throw a warning if used in plots.
 \code{font_r_light} (a.k.a. "\verb{Roboto Light}") is not available on
 Windows and will throw a warning if used in plots.
 }
+\seealso{
+Other Font helpers and shortcuts: 
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+
+Other Font helpers and shortcuts: 
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+
+Other Font helpers and shortcuts: 
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+
+Other Font helpers and shortcuts: 
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+
+Other Font helpers and shortcuts: 
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+
+Other Font helpers and shortcuts: 
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+
+Other Font helpers and shortcuts: 
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+
+Other Font helpers and shortcuts: 
+\code{\link{import_fonts}()},
+\code{\link{import_roboto}()},
+\code{\link{set_reschola_ggplot_fonts}()}
+}
+\concept{Font helpers and shortcuts}
 \keyword{datasets}
