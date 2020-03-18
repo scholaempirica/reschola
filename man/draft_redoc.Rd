@@ -16,7 +16,7 @@ Shortcut function to create and a new Rmd file using schola_redoc template and o
 }
 \examples{
 \dontrun{
-draft_word("new_file")
+draft_redoc("new_file")
 }
 }
 \seealso{

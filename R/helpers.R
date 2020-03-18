@@ -27,7 +27,7 @@ draft_word <- function(name = "draft.Rmd", open = T) {
 #' @family Report templates and formats
 #' @examples
 #' \dontrun{
-#' draft_word("new_file")
+#' draft_redoc("new_file")
 #' }
 #' @export
 draft_redoc <- function(name = "draft.Rmd", open = T) {
