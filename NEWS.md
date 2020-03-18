@@ -1,5 +1,7 @@
 # reschola (development version)
 
+* fixed issue which prevented package from loading in some cases
+
 # reschola 0.2.2
 
 * added the right logos into RStudio template*
