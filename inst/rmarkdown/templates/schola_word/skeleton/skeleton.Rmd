@@ -1,7 +1,7 @@
 ---
 title: "Schola-styled Word document"
 author: "Schola Empirica"
-date: "The Date"
+date: '`r format(Sys.time(), "%d. %B %Y")`'
 output: reschola::schola_word
 ---
 
@@ -11,15 +11,16 @@ options(scipen = 10) # force R to show full numbers, not scientific notation
 
 library(reschola)
 library(tidyverse)
-library(readxl)
-library(writexl)
+library(scales)
 source("shared.R")
-update_geom_font_defaults("Roboto Condensed")
+set_reschola_ggplot_fonts()
 ```
 
 ```{r}
 
 ```
+
+\newpage
 
 
 

@@ -11,8 +11,7 @@ options(scipen = 10) # force R to show full numbers, not scientific notation
 
 library(reschola)
 library(tidyverse)
-library(readxl)
-library(writexl)
+library(scales)
 source("shared.R")
 set_reschola_ggplot_fonts()
 ```
