@@ -5,6 +5,7 @@
 * added guidance in meta vignette on changing things in the package, plus acknowledgments
 * improved UI for draft_word()
 * improved UI for draft_redoc(); it now also roundtrips the new file for cleaner reversion from docx edits
+* updated docx templates: page size, margins
 
 # reschola 0.2.3
 
