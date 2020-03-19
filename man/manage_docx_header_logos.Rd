@@ -17,6 +17,9 @@ manage_docx_header_logos(
 
 \item{png_logo_path}{a PNG file which will be added/used as replacement}
 
+\item{action}{whether to add new logo on the right (\code{"add_client"}) or
+replace default Schola logo on the left (\code{"replace_schola"})}
+
 \item{height}{height of the new logo in the resulting document, in \code{cm}.
 By default, uses the height of an existing document}
 }
@@ -32,7 +35,9 @@ the image file you point it to.
 \examples{
 \dontrun{
 library(reschola)
-manage_docx_header_logos("draft.docx", png_logo_path = "logos/newlogo.png", action = "add_client")
-manage_docx_header_logos("draft.docx", png_logo_path = "logos/newlogo.png", action = "replace_schola")
+manage_docx_header_logos("draft.docx", png_logo_path = "logos/newlogo.png",
+                         action = "add_client")
+manage_docx_header_logos("draft.docx", png_logo_path = "logos/newlogo.png",
+                         action = "replace_schola")
 }
 }
