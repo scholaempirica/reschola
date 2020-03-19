@@ -1,3 +1,13 @@
+# reschola (development version)
+
+# Bug fixes
+
+* updated `drat` repo link in README so `install.packages()` no longer fails
+
+# Improvements
+
+# New features
+
 # reschola 0.2.4
 
 * removed `font_rc_light` as Roboto Condensed Light does not work in Windows with ggplot2

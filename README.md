@@ -46,12 +46,13 @@ install.packages("reschola")
 ```
 
 If you want to always have direct access to this `drat` repository like
-you have to CRAN, you can put this into your .Rprofile:
+you have to CRAN, you can put this into your .Rprofile (after lines that
+set your CRAN mirror):
 
 ``` r
 local({r <- getOption("repos")
 # add drat repo
-r["scholaempirica"] <- "scholaempirica.github.io/drat"
+r["scholaempirica"] <- "https://scholaempirica.github.io/drat"
 options(repos=r)})
 ```
 
