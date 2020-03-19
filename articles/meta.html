@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -174,9 +174,28 @@
 <p>The vignettes are in principle Rmd files with a special YAML header so can be reused and republished anywhere and in any format if needed.</p>
 </div>
 </div>
+<div id="how-to-change-key-parts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-change-key-parts" class="anchor"></a>How to change key parts</h2>
+<ul>
+<li>word template styles: use Word to open and edit styles in <code>template.docx</code> in <code>inst/rmarkdown/templates/schola_*/resources/</code>; edit each one separately (do not copy one file to another folder as <code>redoc</code> has special parts in the <code>docx</code> file).</li>
+<li>text in articles/vignettes: <code>vignettes/*.Rmd</code>
+</li>
+<li>default content of Rmarkdown files created from <code>reschola</code> templates: <code>inst/rmarkdown/templates/schola_*/skeleton/skeleton.Rmd</code>
+</li>
+<li>Rmarkdown templates knitr param defaults: look at the <code>base$knitr$opts_chunk</code> bits in <code>R/rmarkdown_output.R</code>
+</li>
+<li>behaviour of project template: <code>inst/rstudio/templates/project</code> and <code>R/rstudio_project_bindings.R</code>; consult <a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html" class="uri">https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html</a>.</li>
+<li>text of function documentation: always next to each function in <code>R/{function_name/group}.R</code>; consult <a href="https://r-pkgs.org/man.html" class="uri">https://r-pkgs.org/man.html</a> on documenting things.</li>
+<li>font defaults: look through <code>R/fonts.R</code>
+</li>
+</ul>
+</div>
 <div id="resources-and-acknowledgements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#resources-and-acknowledgements" class="anchor"></a>Resources and acknowledgements</h2>
+<p>The package architecture and many components draw heavily on <a href="https://github.com/atlas-aai/ratlas"><code>ratlas</code></a> by <span class="citation">@ratlas-aai</span>/<span class="citation">@wjakethompson</span> (Jake Thompson), and on <a href="https://github.com/hrbrmstr/hrbrthemes"><code>hrbrthemes</code></a> by Bob Rudis (<span class="citation">@hrbrmstr</span>).</p>
+<p>You can see Jake’s Rstudio::conf talk on <code>ratlas</code> at <a href="https://resources.rstudio.com/rstudio-conf-2020/branding-and-packaging-reports-with-r-markdown-jake-thompson" class="uri">https://resources.rstudio.com/rstudio-conf-2020/branding-and-packaging-reports-with-r-markdown-jake-thompson</a>.</p>
 </div>
   </div>
 
@@ -189,6 +208,7 @@
 <li><a href="#development-process">Development process</a></li>
       <li><a href="#online-documentation">Online documentation</a></li>
       <li><a href="#reusingreshaping-the-documentation">Reusing/reshaping the documentation</a></li>
+      <li><a href="#how-to-change-key-parts">How to change key parts</a></li>
       <li><a href="#resources-and-acknowledgements">Resources and acknowledgements</a></li>
       </ul>
 </div>

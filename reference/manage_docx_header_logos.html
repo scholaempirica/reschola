@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a Rmd doc for reversible reviewing using schola_redoc template — draft_redoc • reschola</title>
+<title>Add or replace logo in the header of a Word document — manage_docx_header_logos • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,10 @@
 
 
 
-<meta property="og:title" content="Create a Rmd doc for reversible reviewing using schola_redoc template — draft_redoc" />
-<meta property="og:description" content="Shortcut function to create and a new Rmd file using schola_redoc template and open for editing." />
+<meta property="og:title" content="Add or replace logo in the header of a Word document — manage_docx_header_logos" />
+<meta property="og:description" content="Takes an existing Word document created using the reschola templates
+and adds (by default, or replaces if action = &quot;replace_schola&quot;) the logo with
+the image file you point it to." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -143,47 +145,67 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a Rmd doc for reversible reviewing using schola_redoc template</h1>
-    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/helpers.R'><code>R/helpers.R</code></a></small>
-    <div class="hidden name"><code>draft_redoc.Rd</code></div>
+    <h1>Add or replace logo in the header of a Word document</h1>
+    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/docx_header_logo.R'><code>R/docx_header_logo.R</code></a></small>
+    <div class="hidden name"><code>manage_docx_header_logos.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Shortcut function to create and a new Rmd file using schola_redoc template and open for editing.</p>
+    <p>Takes an existing Word document created using the <code>reschola</code> templates
+and adds (by default, or replaces if <code>action = "replace_schola"</code>) the logo with
+the image file you point it to.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>draft_redoc</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"draft.Rmd"</span>, <span class='kw'>open</span> <span class='kw'>=</span> <span class='no'>T</span>)</pre>
+    <pre class="usage"><span class='fu'>manage_docx_header_logos</span>(
+  <span class='no'>docx_path</span>,
+  <span class='no'>png_logo_path</span>,
+  <span class='kw'>action</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"add_client"</span>, <span class='st'>"replace_schola"</span>),
+  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>name to use for new file.</p></td>
+      <th>docx_path</th>
+      <td><p>The Word document in which to replace logos. Must contain the bookmarks
+<code>schola_logo</code> and <code>client_logo</code> in the header (files created from reschola templates do by default.)</p></td>
     </tr>
     <tr>
-      <th>open</th>
-      <td><p>whether to open file for editing, defaults to TRUE.</p></td>
+      <th>png_logo_path</th>
+      <td><p>a PNG file which will be added/used as replacement</p></td>
+    </tr>
+    <tr>
+      <th>action</th>
+      <td><p>whether to add new logo on the right (<code>"add_client"</code>) or
+replace default Schola logo on the left (<code>"replace_schola"</code>)</p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>height of the new logo in the resulting document, in <code>cm</code>.
+By default, uses the height of an existing document</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Other Report templates and formats: 
-<code><a href='draft_word.html'>draft_word</a>()</code>,
-<code><a href='schola_redoc.html'>schola_redoc</a>()</code>,
-<code><a href='schola_word.html'>schola_word</a>()</code></p></div>
+    <p>invisibly returns the name of the new Word doc, which is same as the input Word doc,
+with an an added <code>_addedlogo</code> suffix.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>draft_redoc</span>(<span class='st'>"new_file"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>reschola</span>)
+<span class='fu'>manage_docx_header_logos</span>(<span class='st'>"draft.docx"</span>, <span class='kw'>png_logo_path</span> <span class='kw'>=</span> <span class='st'>"logos/newlogo.png"</span>,
+                         <span class='kw'>action</span> <span class='kw'>=</span> <span class='st'>"add_client"</span>)
+<span class='fu'>manage_docx_header_logos</span>(<span class='st'>"draft.docx"</span>, <span class='kw'>png_logo_path</span> <span class='kw'>=</span> <span class='st'>"logos/newlogo.png"</span>,
+                         <span class='kw'>action</span> <span class='kw'>=</span> <span class='st'>"replace_schola"</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
