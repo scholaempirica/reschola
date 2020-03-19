@@ -31,7 +31,16 @@ draft_word <- function(name = "draft.Rmd", open = T) {
 #' }
 #' @export
 draft_redoc <- function(name = "draft.Rmd", open = T) {
-  file <- rmarkdown::draft(name, template = "schola_redoc", "reschola", edit = F)
-  if (open) usethis::edit_file(file)
-  return(TRUE)
+  file <-  rmarkdown::draft(name, template = "schola_redoc", "reschola", edit = F)
+  if(rstudioapi::isAvailable() & open) {
+    suppressMessages(usethis::edit_file(file))
+    usethis::ui_todo("Just a second while I prepare the file for reproducible collaboration with MS Word...")
+    redoc::roundtrip_active_file()
+    usethis::ui_done("Done. You can now edit the file. See the 'workflow' vignette for guidance.")
+  } else {
+    usethis::ui_done("File {usethis::ui_path('name')} created.")
+    usethis::ui_todo("You might want to roundtrip the file by running {usethis::ui_code(paste0('rmarkdown::render(\"',name,'.Rmd\")'))} and {usethis::ui_code(paste0('redoc::dedoc(\"',name,'.Rmd\")'))} before editing.
+                          See the 'workflow' vignette for guidance on reproducible collaboration with MS Word.")
+  }
+  invisible(TRUE)
 }
