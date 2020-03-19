@@ -6,6 +6,7 @@
 * improved UI for draft_word()
 * improved UI for draft_redoc(); it now also roundtrips the new file for cleaner reversion from docx edits
 * updated docx templates: page size, margins
+* new `manage_docx_header_logos()` function for adding/replacing logos in Word docs created using reschola templates
 
 # reschola 0.2.3
 
