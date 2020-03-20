@@ -62,8 +62,8 @@ schola_project <- function(path, ...) {
   "# As you work on the project, you should add commands to this file so that",
   "# it contains the commands needed to rebuild the whole project from scratch.",
   "# Typically, those will be source() or rmarkdown::render() calls, like below.\n\n",
-  "rmarkdown::render('2-schola-styled-redoc.Rmd', output_dir = 'report-output')",
-  "rmarkdown::render('2-schola-styled-redoc.Rmd', output_dir = 'report-output')",
+  "rmarkdown::render('01_schola-styled-Word.Rmd', output_dir = 'report-output')",
+  "rmarkdown::render('02_schola-styled-redoc.Rmd', output_dir = 'report-output')",
   sep = "\n\n")
 
   writeLines(build_code, con = "build.R")
@@ -98,8 +98,8 @@ schola_project <- function(path, ...) {
 
 
   # print(usethis::proj_sitrep())
-  draft_word(name  = "1-schola-styled-Word.Rmd", open = F)
-  draft_redoc(name = "2-schola-styled-redoc.Rmd", open = F)
+  draft_word(name  = "01_schola-styled-Word.Rmd", open = F)
+  draft_redoc(name = "02_schola-styled-redoc.Rmd", open = F)
 
   fs::dir_delete("R")
   fs::dir_create("data-input")

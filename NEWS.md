@@ -7,6 +7,8 @@
 
 # Improvements
 
+* better file names in default structure
+
 # New features
 
 # reschola 0.2.4
