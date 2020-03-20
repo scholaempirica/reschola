@@ -1,18 +1,19 @@
 # reschola (development version)
 
-# Bug fixes
+## Bug fixes
 
 * updated `drat` repo link in README so `install.packages()` no longer fails
 * fixed bug where project template failed when copying standard logos
 
-# Improvements
+## Improvements
 
 * added basic files to default project structure
 * better file names in default structure
 * clearer wording and layout of project template dialog
 * Bootstrap-style callouts can now be used in vignettes (will only show on website)
+* added tips on accessing documentation in tips vignette, and on snippets
 
-# New features
+## New features
 
 * new `gd_download_folder()` function for downloading all files in a GDrive folder
 * option in project template to download files from the listed GDrive folder

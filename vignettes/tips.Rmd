@@ -38,6 +38,11 @@ See <https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts>
 - holding `ctrl` while clicking on any object name in the code editor lets you view that object: code for functions, dataset viewer for data.
 - pressing `F1` when your curser is on a function name will display the documentatin for that function, same for package names
 
+### Snippets
+
+- when you start typing, some of the suggestions are snippets: they are marked 'snippet' and have a paper snippet icon.
+If you press tab, they insert bits (e.g. the snippet for `%in%` which appears when you type `in`) of code or mini-templates (e.g. the `fun` snippet). For the mini-templates, you can then `Tab` through the different bits to fill in.
+
 ### Handy keyboard shortcuts
 
 - `ctrl`+`enter` runs current line or expression (lines bound by ` %>% `)
@@ -60,6 +65,14 @@ Press `ctrl`+`alt`+`K` in RStudio for an overview of shortcuts.
 
 They can also be customised.
 
+## Retrieving documentation
+
+Besides the F1 key, you can use `?function` to get help for `function` and `??term` to search for `term` in all documentation of all installed packages.
+
+Longer-form documentation for packages is often found in vignettes.
+Run `vignette('vignette-name', 'package-name')` to get a particular one.
+(Intro vignettes often have the name of the package, e.g. `vignette('reschola', 'reschola')`).
+Get list of vignettes for any package `browseVignettes('package-name')`.
 
 ## The `usethis` package: utilities for easy code development
 
