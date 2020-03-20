@@ -120,6 +120,15 @@ schola_project <- function(path, ...) {
 
   fs::file_create("00_load-data.R")
   fs::file_create("000_check-and-process-data.R")
+
+
+  # print("adding GD files")
+
+  if (dots[["drive_download"]]) {
+    usethis::ui_todo("Downloading contents of GDrive to {usethis::ui_path('data-input')}")
+    reschola::gd_download_folder(dots$drive_folder, overwrite = F, files_from_subfolders = T)
+  }
+
   # usethis::ui_todo("You should run {usethis::ui_code('usethis::proj_set(getwd())')} in your original session to get your working directory sorted.")
   suppressMessages(usethis::proj_set(orig_dir))
   try(setwd(orig_dir), silent = T)

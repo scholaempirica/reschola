@@ -14,6 +14,7 @@
 # New features
 
 * new `gd_download_folder()` function for downloading all files in a GDrive folder
+* option in project template to download files from the listed GDrive folder
 # reschola 0.2.4
 
 * removed `font_rc_light` as Roboto Condensed Light does not work in Windows with ggplot2
