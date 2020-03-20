@@ -19,17 +19,23 @@ Position: left
 
 Parameter: copy_logos
 Widget: CheckboxInput
-Label: Copy logos
+Label: Put standard logos in project dir
 Default: off
-Position: left
+Position: right
 
 Parameter: drive_folder
 Widget: TextInput
-Label: Google Drive link
+Label: URL of project's GDrive folder
+Position: left
+
+Parameter: drive_download
+Widget: CheckboxInput
+Label: Download GDrive folder now
+Default: off
 Position: left
 
 Parameter: getting_started
 Widget: CheckboxInput
 Label: Show a "Getting started" guide
 Default: on
-Position: left
+Position: right

@@ -9,6 +9,7 @@
 
 * added basic files to default project structure
 * better file names in default structure
+* clearer wording and layout of project template dialog
 
 # New features
 
