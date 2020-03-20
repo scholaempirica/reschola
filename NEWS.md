@@ -1,4 +1,4 @@
-# reschola (development version)
+# reschola 0.2.5
 
 ## Bug fixes
 
