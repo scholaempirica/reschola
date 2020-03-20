@@ -16,7 +16,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Tips and Tricks for R and Rstudio">
+<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Tips and Tricks for R and Rstudio">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png">
 <meta name="twitter:card" content="summary">
@@ -38,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -133,6 +134,13 @@
 <li>pressing <code>F1</code> when your curser is on a function name will display the documentatin for that function, same for package names</li>
 </ul>
 </div>
+<div id="snippets" class="section level3">
+<h3 class="hasAnchor">
+<a href="#snippets" class="anchor"></a>Snippets</h3>
+<ul>
+<li>when you start typing, some of the suggestions are snippets: they are marked ‘snippet’ and have a paper snippet icon. If you press tab, they insert bits (e.g. the snippet for <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code> which appears when you type <code>in</code>) of code or mini-templates (e.g. the <code>fun</code> snippet). For the mini-templates, you can then <code>Tab</code> through the different bits to fill in.</li>
+</ul>
+</div>
 <div id="handy-keyboard-shortcuts" class="section level3">
 <h3 class="hasAnchor">
 <a href="#handy-keyboard-shortcuts" class="anchor"></a>Handy keyboard shortcuts</h3>
@@ -171,6 +179,12 @@
 <p>They can also be customised.</p>
 </div>
 </div>
+<div id="retrieving-documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#retrieving-documentation" class="anchor"></a>Retrieving documentation</h2>
+<p>Besides the F1 key, you can use <code>?function</code> to get help for <code>function</code> and <code>??term</code> to search for <code>term</code> in all documentation of all installed packages.</p>
+<p>Longer-form documentation for packages is often found in vignettes. Run <code>vignette('vignette-name', 'package-name')</code> to get a particular one. (Intro vignettes often have the name of the package, e.g. <code><a href="../articles/reschola.html">vignette('reschola', 'reschola')</a></code>). Get list of vignettes for any package <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes('package-name')</a></code>.</p>
+</div>
 <div id="the-usethis-package-utilities-for-easy-code-development" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-usethis-package-utilities-for-easy-code-development" class="anchor"></a>The <code>usethis</code> package: utilities for easy code development</h2>
@@ -194,6 +208,7 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#rstudio-tips">RStudio tips</a></li>
+      <li><a href="#retrieving-documentation">Retrieving documentation</a></li>
       <li><a href="#the-usethis-package-utilities-for-easy-code-development">The <code>usethis</code> package: utilities for easy code development</a></li>
       </ul>
 </div>

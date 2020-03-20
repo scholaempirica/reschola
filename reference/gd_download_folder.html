@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A shorcut for making axis text flush with axis — flush_axis • reschola</title>
+<title>Download files from Google Drive folder — gd_download_folder • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,8 +44,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="A shorcut for making axis text flush with axis — flush_axis" />
-<meta property="og:description" content="A shorcut for making axis text flush with axis" />
+<meta property="og:title" content="Download files from Google Drive folder — gd_download_folder" />
+<meta property="og:description" content="Downloads all downloadable files from given Google Drive folder
+and saves them to specified local directory. Files will have the same names.
+Use googledrive::drive_download() for downloading individual files." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -145,37 +147,69 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A shorcut for making axis text flush with axis</h1>
-    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/theme.R'><code>R/theme.R</code></a></small>
-    <div class="hidden name"><code>flush_axis.Rd</code></div>
+    <h1>Download files from Google Drive folder</h1>
+    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/gdrive.R'><code>R/gdrive.R</code></a></small>
+    <div class="hidden name"><code>gd_download_folder.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A shorcut for making axis text flush with axis</p>
+    <p>Downloads all downloadable files from given Google Drive folder
+and saves them to specified local directory. Files will have the same names.
+Use <code><a href='https://googledrive.tidyverse.org/reference/drive_download.html'>googledrive::drive_download()</a></code> for downloading individual files.</p>
     </div>
 
-    <pre class="usage"><span class='no'>flush_axis</span></pre>
+    <pre class="usage"><span class='fu'>gd_download_folder</span>(
+  <span class='no'>folder_url</span>,
+  <span class='kw'>dest_dir</span> <span class='kw'>=</span> <span class='st'>"data-input"</span>,
+  <span class='kw'>files_from_subfolders</span> <span class='kw'>=</span> <span class='no'>F</span>,
+  <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='no'>F</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>folder_url</th>
+      <td><p>Folder URL.</p></td>
+    </tr>
+    <tr>
+      <th>dest_dir</th>
+      <td><p>Local URL in which to store files.</p></td>
+    </tr>
+    <tr>
+      <th>files_from_subfolders</th>
+      <td><p>Whether to download also files from subdirectories.
+Defaults to <code>TRUE</code>. See Note.</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p>Whether to overwrite if file of same name exists.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>numeric</code> of length 4.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>vector of paths to downloaded files</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <div class='dont-index'><p>Other Making charts: 
-<code><a href='theme_schola.html'>theme_schola</a>()</code></p></div>
+    <p>As it would be very difficult to mirror the folder exactly,
+if <code>files_from_subfolders</code> is set to <code>TRUE</code>, files from subfolders will be
+saved in the same directory, not in the respective subdirectories.
+Bear this in mind when naming files in GDrive subfolders so as to avoid naming conflicts.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>class</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span>(<span class='kw'>expand</span> <span class='kw'>=</span> <span class='no'>flush_axis</span>)</div><div class='img'><img src='flush_axis-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>gd_url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://drive.google.com/drive/folders/1bCyR_VKAP_43NEujqisjN77hANnMKfHZ"</span>
+<span class='fu'>gd_download_folder</span>(<span class='kw'>folder_url</span> <span class='kw'>=</span> <span class='no'>gd_url</span>,
+                   <span class='kw'>files_from_subfolders</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='no'>T</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#note">Note</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

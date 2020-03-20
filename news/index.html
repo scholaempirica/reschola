@@ -41,6 +41,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 
 <meta property="og:title" content="Changelog" />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
@@ -76,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -146,9 +148,37 @@
       <small>Source: <a href='https://github.com/scholaempirica/reschola/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="reschola-development-version" class="section level1">
+    <div id="reschola-0-2-5" class="section level1">
 <h1 class="page-header">
-<a href="#reschola-development-version" class="anchor"></a>reschola (development version)</h1>
+<a href="#reschola-0-2-5" class="anchor"></a>reschola 0.2.5</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>updated <code>drat</code> repo link in README so <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> no longer fails</li>
+<li>fixed bug where project template failed when copying standard logos</li>
+</ul>
+</div>
+<div id="improvements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#improvements" class="anchor"></a>Improvements</h2>
+<ul>
+<li>added basic files to default project structure</li>
+<li>better file names in default structure</li>
+<li>clearer wording and layout of project template dialog</li>
+<li>Bootstrap-style callouts can now be used in vignettes (will only show on website)</li>
+<li>added tips on accessing documentation in tips vignette, and on snippets</li>
+</ul>
+</div>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>new <code><a href="../reference/gd_download_folder.html">gd_download_folder()</a></code> function for downloading all files in a GDrive folder</li>
+<li>option in project template to download files from the listed GDrive folder</li>
+<li>project template now helps user authenticate to GDrive if they set a GDrive URL</li>
+</ul>
+</div>
 </div>
     <div id="reschola-0-2-4" class="section level1">
 <h1 class="page-header">
@@ -226,7 +256,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#reschola-development-version">development version</a></li>
+        <li><a href="#reschola-0-2-5">0.2.5</a></li>
         <li><a href="#reschola-0-2-4">0.2.4</a></li>
         <li><a href="#reschola-0-2-3">0.2.3</a></li>
         <li><a href="#reschola-0-2-2">0.2.2</a></li>
