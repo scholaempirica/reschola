@@ -13,6 +13,13 @@ schola_project <- function(path, ...) {
   if(is.null(dots$title)) dots$title <- path
   if(is.null(dots$drive_folder)) dots$drive_folder <- ""
 
+  if(dots$drive_folder != "") {
+    gdrive_dribble <- googledrive::as_dribble(dots$drive_folder)
+    if(!googledrive::is_folder(gdrive_dribble)) {
+      usethis::ui_stop("It seems the GDrive folder URL you have given does not point to a folder.")
+    }
+  }
+
   orig_dir <- usethis::proj_sitrep()[["active_rstudio_proj"]]
 
   # create directory and project
