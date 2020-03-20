@@ -3,6 +3,7 @@
 # Bug fixes
 
 * updated `drat` repo link in README so `install.packages()` no longer fails
+* fixed bug where project template failed when copying standard logos
 
 # Improvements
 

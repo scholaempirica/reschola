@@ -82,7 +82,7 @@ schola_project <- function(path, ...) {
   if(dots$getting_started) {
     gs_rmd <- reschola_file(
       "rstudio", "templates", "project",
-      "schola_project_resources", "getting-started.Rmd"
+      "proj_fls", "getting-started.Rmd"
     )
     fs::file_copy(gs_rmd, "getting-started.Rmd")
   }
@@ -90,11 +90,12 @@ schola_project <- function(path, ...) {
   if (dots[["copy_logos"]]) {
     logos <- reschola_file(
       "rstudio", "templates", "project",
-      "schola_project_resources", "logos"
+      "proj_fls", "logos"
     )
 
     fs::dir_copy(logos, new_path = "logos")
   }
+
 
   # print(usethis::proj_sitrep())
   draft_word(name  = "1-schola-styled-Word.Rmd", open = F)
