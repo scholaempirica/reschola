@@ -7,6 +7,7 @@
 
 # Improvements
 
+* added basic files to default project structure
 * better file names in default structure
 
 # New features

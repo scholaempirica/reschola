@@ -5,6 +5,8 @@ output: html_document
 
 You have just created a reschola project.
 
+It comes with some files and directories to help you organise your work.
+
 This document is just for you, to help you find out how to work with such a project. You can delete it afterwards.
 
 You can find guidelines for building Schola Empirica projects by running the following chunk:

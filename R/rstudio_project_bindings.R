@@ -108,6 +108,18 @@ schola_project <- function(path, ...) {
   fs::dir_create("charts-output")
   fs::dir_create("reports-output")
 
+  # print("adding retrieve script")
+
+  gs_retrieve_script <- reschola_file(
+    "rstudio", "templates", "project",
+    "proj_fls", "0_retrieve-data.R"
+  )
+  fs::file_copy(gs_retrieve_script, "0_retrieve-data.R")
+
+  # print("Making dummy files")
+
+  fs::file_create("00_load-data.R")
+  fs::file_create("000_check-and-process-data.R")
   # usethis::ui_todo("You should run {usethis::ui_code('usethis::proj_set(getwd())')} in your original session to get your working directory sorted.")
   suppressMessages(usethis::proj_set(orig_dir))
   try(setwd(orig_dir), silent = T)
