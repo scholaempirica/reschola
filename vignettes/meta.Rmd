@@ -1,5 +1,5 @@
 ---
-title: "Developing this pacakge further"
+title: "Developing this package further"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{meta}
@@ -12,10 +12,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
-
-```{r setup}
-library(reschola)
 ```
 
 This package should be a living, evolving tool and a set of living documents. This vignette describes how this package is being developed and thus how it can be extended and updated.
@@ -86,7 +82,7 @@ The vignettes are in principle Rmd files with a special YAML header so can be re
 - text in articles/vignettes: `vignettes/*.Rmd`
 - default content of Rmarkdown files created from `reschola` templates: `inst/rmarkdown/templates/schola_*/skeleton/skeleton.Rmd`
 - Rmarkdown templates knitr param defaults: look at the `base$knitr$opts_chunk` bits in `R/rmarkdown_output.R`
-- behaviour of project template: `inst/rstudio/templates/project` and `R/rstudio_project_bindings.R`; consult https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html.
+- behaviour of project template: `inst/rstudio/templates/project` and `R/rstudio_project_bindings.R`; consult https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html. `inst/rstudio/templates/project/schola_project.dcf` sets up the dialog and lists files which will be opened in the new project
 - text of function documentation: always next to each function in `R/{function_name/group}.R`; consult https://r-pkgs.org/man.html on documenting things.
 - font defaults: look through `R/fonts.R`
 
