@@ -41,3 +41,10 @@ manage_docx_header_logos("draft.docx", png_logo_path = "logos/newlogo.png",
                          action = "replace_schola")
 }
 }
+\seealso{
+Other Workflow helpers: 
+\code{\link{draft_redoc}()},
+\code{\link{draft_word}()},
+\code{\link{gd_download_folder}()}
+}
+\concept{Workflow helpers}

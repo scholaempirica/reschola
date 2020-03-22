@@ -20,9 +20,9 @@ draft_word("new_file")
 }
 }
 \seealso{
-Other Report templates and formats: 
+Other Workflow helpers: 
 \code{\link{draft_redoc}()},
-\code{\link{schola_redoc}()},
-\code{\link{schola_word}()}
+\code{\link{gd_download_folder}()},
+\code{\link{manage_docx_header_logos}()}
 }
-\concept{Report templates and formats}
+\concept{Workflow helpers}

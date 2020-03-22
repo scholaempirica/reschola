@@ -23,8 +23,6 @@ specify using the standard Schola word document formatting.
 }
 \seealso{
 Other Report templates and formats: 
-\code{\link{draft_redoc}()},
-\code{\link{draft_word}()},
 \code{\link{schola_redoc}()}
 }
 \concept{Report templates and formats}

@@ -42,3 +42,10 @@ gd_download_folder(folder_url = gd_url,
                    files_from_subfolders = T, overwrite = T)
 }
 }
+\seealso{
+Other Workflow helpers: 
+\code{\link{draft_redoc}()},
+\code{\link{draft_word}()},
+\code{\link{manage_docx_header_logos}()}
+}
+\concept{Workflow helpers}
