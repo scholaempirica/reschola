@@ -15,8 +15,8 @@ Authors@R:
              role = "ctb"),
       person(given = "Schola Empirica",
              role = c("cph", "fnd")))
-Description: A collection of utilies, themes and templates for data
-    analysis at Schola Empirica.
+Description: A collection of utilies, themes and templates for
+    data analysis at Schola Empirica.
 License: MIT + file LICENSE
 URL: https://github.com/scholaempirica/reschola
 BugReports: https://github.com/scholaempirica/reschola/issues
@@ -38,6 +38,7 @@ Imports:
     redoc (>= 0.1.0.9000),
     rmarkdown (>= 2.1),
     rstudioapi,
+    sessioninfo (>= 1.1.1),
     stringr (>= 1.4.0),
     tibble (>= 2.1.3),
     tidyr (>= 1.0.0),
