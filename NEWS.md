@@ -1,5 +1,6 @@
 # reschola (development version)
 
+* first draft of new Setup vignette
 # reschola 0.2.5
 
 ## Bug fixes
