@@ -74,8 +74,11 @@ schola_project <- function(path, ...) {
   "# As you work on the project, you should add commands to this file so that",
   "# it contains the commands needed to rebuild the whole project from scratch.",
   "# Typically, those will be source() or rmarkdown::render() calls, like below.\n\n",
-  "rmarkdown::render('01_schola-styled-Word.Rmd', output_dir = 'report-output')",
-  "rmarkdown::render('02_schola-styled-redoc.Rmd', output_dir = 'report-output')",
+  "source('00_load-data.R')",
+  "source('000_check-and-transform-data.R')",
+  "rmarkdown::render('01_schola-styled-word.Rmd', output_dir = 'reports-output')",
+  "rmarkdown::render('02_schola-styled-redoc.Rmd', output_dir = 'reports-output')",
+  "rmarkdown::render('99_reproducibility.Rmd', output_dir = 'reports-output')",
   sep = "\n\n")
 
   writeLines(build_code, con = "build.R")
@@ -114,10 +117,17 @@ schola_project <- function(path, ...) {
     fs::dir_copy(logos, new_path = "logos")
   }
 
+  gs_repro <- reschola_file(
+    "rstudio", "templates", "project",
+    "proj_fls", "99_reproducibility.Rmd"
+  )
+  fs::file_copy(gs_repro, "getting-started.Rmd")
+
+  # Create sample files
 
   # print(usethis::proj_sitrep())
-  draft_word(name  = "01_schola-styled-Word.Rmd", open = F)
-  draft_redoc(name = "02_schola-styled-redoc.Rmd", open = F)
+  draft_word(name  = "NN_schola-styled-Word.Rmd", open = F)
+  draft_redoc(name = "NN_schola-styled-redoc.Rmd", open = F)
 
   # delete R directory which was created automatically
 
