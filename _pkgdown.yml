@@ -4,14 +4,18 @@ template:
   params:
     bootswatch: united
 reference:
-- title: Report templates and output
-  desc:  Rmarkdown templates, output formats and helpers
+- title: Workflow helpers
+  desc:  Other tools for streamlining work
   contents:
-  - has_concept("Report templates and formats")
+  - has_concept("Workflow helpers")
 - title: Making charts
   desc:  Tools for making charts in ggplot2
   contents:
   - has_concept("Making charts")
+- title: Report templates and output
+  desc:  Rmarkdown templates, output formats and helpers
+  contents:
+  - has_concept("Report templates and formats")
 - title: Font helpers and shortcuts
   desc:  Tools for installing, setting and using fonts contained in reschola
   contents:

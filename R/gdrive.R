@@ -17,6 +17,7 @@
 #' @param overwrite Whether to overwrite if file of same name exists.
 #'
 #' @return vector of paths to downloaded files
+#' @family Workflow helpers
 #' @examples
 #' \dontrun{
 #' gd_url <- "https://drive.google.com/drive/folders/1bCyR_VKAP_43NEujqisjN77hANnMKfHZ"

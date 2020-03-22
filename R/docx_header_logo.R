@@ -16,6 +16,7 @@
 #' @return invisibly returns the name of the new Word doc, which is same as the input Word doc,
 #' with an an added `_addedlogo` suffix.
 #' @export
+#' @family Workflow helpers
 #' @examples
 #' \dontrun{
 #' library(reschola)
