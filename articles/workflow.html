@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6.9000</span>
       </span>
     </div>
 
@@ -122,6 +122,8 @@
 <div id="section" class="section level4 bs-callout bs-callout-green">
 <h4></h4>
 <p>To do analysis and create great reports reproducibly and efficiently.</p>
+<p>To make our lives easier.</p>
+<p>To make life easier for our future selves.</p>
 </div>
 </div>
 <div id="principles" class="section level2">
@@ -136,7 +138,7 @@
 <h3 class="hasAnchor">
 <a href="#reproducible-reports" class="anchor"></a>2. Reproducible reports</h3>
 <p>Everything we submit to a client/partner/stakeholder should be based on data and code that together reproducibly create the report: no hacks, no manual edits if at all possible, no copy-pasting images from one place to another.</p>
-<p>Version control helps us track when each report was created, using what code and what data, and can help us go back and fix things if needed. It also helps us not have mostly duplicate versions of everything lying around.</p>
+<p>Version control helps us track when each report was created, using what code and what data, and can help us go back and fix things if needed. It also helps us avoid mostly duplicate versions of everything lying around.</p>
 <blockquote>
 <p>Code and data are real.</p>
 </blockquote>
@@ -149,7 +151,7 @@
 <div id="good-documentation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#good-documentation" class="anchor"></a>3. Good documentation</h3>
-<p>Projects and reports should be self-documenting by their structure, code, workflow, and comments inside.</p>
+<p>Projects and reports should be self-documenting by their structure, code, workflow, and comments inside, and the git history with good commit messages.</p>
 </div>
 <div id="efficiency" class="section level3">
 <h3 class="hasAnchor">
@@ -232,6 +234,7 @@
 <h3 class="hasAnchor">
 <a href="#read-in-check-and-process-the-data" class="anchor"></a>3. Read in, check and process the data</h3>
 <p>Use <code>00_load-data.R</code>. Add any other data reading that is needed.</p>
+<p>See <code><a href="https://readr.tidyverse.org/reference/locale.html">readr::locale()</a></code> for handling encoding, decimal marks and separators in CSVs. You might also need <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv2()</a></code>.</p>
 <p>Use <code>000_check-and-process-data.R</code>. You might need to move this into an RMarkdown document.</p>
 <p>See <a href="tips.html">tips</a> for packages that can help you set up a structured data checking pipeline.</p>
 <div id="data-and-git" class="section level4 bs-callout bs-callout-yellow">
@@ -255,8 +258,18 @@
 <h3 class="hasAnchor">
 <a href="#write-reports-using-a-template" class="anchor"></a>5. Write reports using a template</h3>
 <p>Use <code>draft_*</code> to quickly create a draft using the required template.</p>
-<p>See below for how to use the <code>redoc</code> template.</p>
+<div id="collaborating-with-ms-word-users" class="section level4 bs-callout bs-callout-blue">
+<h4 class="hasAnchor">
+<a href="#collaborating-with-ms-word-users" class="anchor"></a>Collaborating with MS Word users</h4>
+<p>If you would like to collaborate with stakeholders using MS Word for providing revisions and comments on your report, choose the <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> template, or switch your existing file’s <code>output</code> YAML field to <code>schola_redoc</code>.</p>
+<p>For now, you can work the same as with any RMarkdown file.</p>
+<p>See below in “Iterate the report” on the steps to make collaboration work.</p>
+</div>
+<div id="web-output" class="section level4">
+<h4 class="hasAnchor">
+<a href="#web-output" class="anchor"></a>Web output</h4>
 <p>In principle, if you want a HTML file you can just switch the format to <code>html_document</code> and it should work fine if perhaps the details might differ slightly. See <a href="">tips</a> on how to get that online.</p>
+</div>
 <div id="parameterising" class="section level4">
 <h4 class="hasAnchor">
 <a href="#parameterising" class="anchor"></a>Parameterising</h4>
@@ -293,7 +306,24 @@
 <div id="iterate-the-report-collaboratively" class="section level3">
 <h3 class="hasAnchor">
 <a href="#iterate-the-report-collaboratively" class="anchor"></a>7. Iterate the report collaboratively</h3>
-<p>[To be finished]</p>
+<p>If you used the schola_redoc output format, you can now send it to collaborators for feedback.</p>
+<p>Here is the workflow:</p>
+<ol style="list-style-type: decimal">
+<li><p>Edit the document - you have already done this.</p></li>
+<li><p>Generate word file</p></li>
+</ol>
+<p>Knit using RStudio button or run <code><a href="https://rdrr.io/pkg/rmarkdown/man/render.html">rmarkdown::render()</a></code>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Send the Word file to collaborators for review</li>
+</ol>
+<p>They can edit it in MS Word, either in tracked changes or not. The bits they cannot edit or comment on are by default highlighted in red - these are the bits your code generates, as opposed to text you write in RMarkdown; if they want to comment or change these, they should comment on an adjacent piece of text.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Collect changes back into RMarkdown</li>
+</ol>
+<p>When you get the document back, put it in your project directory and run <code><a href="https://rdrr.io/pkg/redoc/man/dedoc.html">redoc::dedoc("[edited_document.docx]")</a></code>. This will create a new Rmd file with (a) the comments inserted in CriticMarkup, (b) tracked and untracked changes reflected in the Rmd with no markup. You can add <code>track_changes = 'criticmarkup'</code> to have all tracked changes inserted with CriticMarkup.</p>
+<p>You can also run <code><a href="https://rdrr.io/pkg/redoc/man/dedoc.html">redoc::dedoc("[edited_document.docx]", to = "[your_original_rmarkdown_file.Rmd", overwrite = TRUE)</a></code> to have all the changes written into your original file. ONLY DO THIS IF YOUR ORIGINAL FILE WAS COMMITTED IN GIT WITH THE VERSION YOU RENDERED AND SENT FOR FEEDBACK!! You can then use git to view and accept/reject the changes from the reviewers.</p>
+<p>You can also run <code><a href="https://rdrr.io/r/base/print.html">print(redoc:::redoc_diff("[new_document.docx]"))</a></code> (note the <code>:::</code>) to see the comparison in the RStudio viewer pane (no Rmd files are updated.)</p>
+<p>You can also use the RStudio addins ‘Dedoc to new file’ or ‘Dedoc to active file’. This will automatically show the graphical view of the changes in RStudio viewer, but you have less control over how changes/revisions are picked up.</p>
 </div>
 <div id="finalise-report" class="section level3">
 <h3 class="hasAnchor">
@@ -350,10 +380,43 @@
 <p>You need to commit the <code>.gitignore</code> file.</p>
 </div>
 </div>
+<div id="other-bits-of-good-practice-to-follow" class="section level3">
+<h3 class="hasAnchor">
+<a href="#other-bits-of-good-practice-to-follow" class="anchor"></a>Other bits of good practice to follow:</h3>
+<div id="in-r-code" class="section level4">
+<h4 class="hasAnchor">
+<a href="#in-r-code" class="anchor"></a>In R code:</h4>
+<ul>
+<li>Document why you wrote that code (not necessarily just what it does, which should be obvious)</li>
+<li>don’t use T and F for TRUE and FALSE</li>
+<li>use only trustworthy packages, ideally CRAN-based unless there is a good reason to do otherwise.</li>
+</ul>
+<p>See the <a href="http://mangothecat.github.io/goodpractice/"><code>goodpractice</code></a> package for a list of good practice and automated checking for them.</p>
+</div>
+<div id="with-version-control" class="section level4">
+<h4 class="hasAnchor">
+<a href="#with-version-control" class="anchor"></a>With version control</h4>
+<ul>
+<li>Write informative commit messages</li>
+<li>don’t overwrite history (force push) unless absolutely necessary</li>
+<li>commit often, push carefully</li>
+<li>pushed commits should contain complete changes such that the code will run without errors.</li>
+</ul>
+</div>
+</div>
 <div id="style" class="section level3">
 <h3 class="hasAnchor">
 <a href="#style" class="anchor"></a>Style</h3>
 <p>Currently we have no explicitly agreed style.</p>
+<p>Still, following some basic code hygiene seems like a good idea:</p>
+<ul>
+<li>sensible indents</li>
+<li>lower_case_var_names</li>
+<li>functions are verbs, like do_something()</li>
+<li>spaces around operators like <code>=</code> and <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>
+</li>
+<li>break lines at around 80 characters</li>
+</ul>
 </div>
 </div>
 <div id="resources-for-building-reproducible-workflows" class="section level2">
