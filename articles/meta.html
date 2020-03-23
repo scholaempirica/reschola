@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Developing this pacakge further • reschola</title>
+<title>Developing this package further • reschola</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Developing this pacakge further">
+<meta property="og:title" content="Developing this package further">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
       </span>
     </div>
 
@@ -105,7 +105,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Developing this pacakge further</h1>
+      <h1>Developing this package further</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/master/vignettes/meta.Rmd"><code>vignettes/meta.Rmd</code></a></small>
@@ -115,7 +115,6 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(reschola)</a></code></pre></div>
 <p>This package should be a living, evolving tool and a set of living documents. This vignette describes how this package is being developed and thus how it can be extended and updated.</p>
 <div id="development-process" class="section level2">
 <h2 class="hasAnchor">
@@ -186,7 +185,7 @@
 </li>
 <li>Rmarkdown templates knitr param defaults: look at the <code>base$knitr$opts_chunk</code> bits in <code>R/rmarkdown_output.R</code>
 </li>
-<li>behaviour of project template: <code>inst/rstudio/templates/project</code> and <code>R/rstudio_project_bindings.R</code>; consult <a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html" class="uri">https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html</a>.</li>
+<li>behaviour of project template: <code>inst/rstudio/templates/project</code> and <code>R/rstudio_project_bindings.R</code>; consult <a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html" class="uri">https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html</a>. <code>inst/rstudio/templates/project/schola_project.dcf</code> sets up the dialog and lists files which will be opened in the new project</li>
 <li>text of function documentation: always next to each function in <code>R/{function_name/group}.R</code>; consult <a href="https://r-pkgs.org/man.html" class="uri">https://r-pkgs.org/man.html</a> on documenting things.</li>
 <li>font defaults: look through <code>R/fonts.R</code>
 </li>

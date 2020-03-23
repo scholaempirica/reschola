@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
       </span>
     </div>
 
@@ -115,38 +115,183 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(reschola)</a></code></pre></div>
 <p>This vignette describes how to get from a computer with no R or software development tools to a system on which you can do data analysis the Schola way. It is written primarily with Windows systems in mind.</p>
-<div id="overview" class="section level1">
-<h1 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h1>
-<p>[Note on quick option drat]</p>
+<p>It is written primarily with Windows computers in mind.</p>
+<div id="quick-note-on-installing-the-package-without-all-the-development-paraphernalia" class="section level2">
+<h2 class="hasAnchor">
+<a href="#quick-note-on-installing-the-package-without-all-the-development-paraphernalia" class="anchor"></a>Quick note on installing the package without all the development paraphernalia</h2>
+<p>You can install this package on a machine with none of the development-related stuff like Rtools or git. Just run</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="dt">repos =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/options.html">getOption</a></span>(<span class="st">"repos"</span>), <span class="st">"scholaempirica"</span> =<span class="st"> "scholaempirica.github.io/drat"</span>))</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"reschola"</span>)</a></code></pre></div>
+<p>This will install the binary version of the package (i.e. no compilation needed, hence no need for the stuff in Rtools) and install all the packages you need. You will be able to run code in Schola Empirica projects, but you will not be able to follow some components of the <a href="workflow.html">workflow</a>, which relies on git and Github for version control.</p>
 </div>
-<div id="installing-r" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installing-r" class="anchor"></a>Installing R</h1>
+<div id="overview" class="section level2">
+<h2 class="hasAnchor">
+<a href="#overview" class="anchor"></a>Overview</h2>
+<p>To get going, you will need:</p>
 <ul>
-<li>R</li>
-<li>packages</li>
-<li>devtools</li>
-<li>R tools ## TBD: renv</li>
+<li>an up-to-date installation of R</li>
+<li>an up-to-date installation of RStudio</li>
+<li>some additional tools to allow you to install and compile packages from source</li>
+<li>functioning Git and an account on Github, and the ability to link your R installation and projects to Github</li>
+<li>possibly a nicer text editor than Notepad</li>
+<li>possibly a graphical git client</li>
+<li>possibly Latex</li>
 </ul>
 </div>
-<div id="installing-git" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installing-git" class="anchor"></a>Installing git</h1>
-<div id="git-gui" class="section level2">
+<div id="i-already-have-r-and-all-the-other-stuff" class="section level2">
 <h2 class="hasAnchor">
-<a href="#git-gui" class="anchor"></a>Git GUI</h2>
+<a href="#i-already-have-r-and-all-the-other-stuff" class="anchor"></a>I already have R and all the other stuff</h2>
+<p>You can simply install the package - it will automatically install all R packages needed to run standard Schola Empirica projects. See above for the commands.</p>
+</div>
+<div id="installing-r" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installing-r" class="anchor"></a>Installing R</h2>
+<div id="r" class="section level3">
+<h3 class="hasAnchor">
+<a href="#r" class="anchor"></a>R</h3>
+<p>Install the latest ‘release’ version from <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</p>
+</div>
+<div id="rstudio" class="section level3">
+<h3 class="hasAnchor">
+<a href="#rstudio" class="anchor"></a>RStudio</h3>
+<p>Install the latest version from <a href="https://rstudio.com">rstudio.com</a>. There are <a href="https://www.rstudio.com/products/rstudio/download/preview">preview releases</a>, which are stable, and <a href="https://dailies.rstudio.com/">dailies</a>, which are not and are not meant for normal use.</p>
+<p>Once installed, set it up for git if you already have it (see below for setting up RStudio for git and for installing git.)</p>
+<p>Also, go to Global Options and under <code>Workspace</code>, uncheck <code>Restore .RData into workspace at startup</code> and set <code>Save workspace to .RData on exit</code> to <code>Never</code>.</p>
+<div id="workspace-in-rstudio" class="section level5 bs-callout bs-callout-red">
+<h5 class="hasAnchor">
+<a href="#workspace-in-rstudio" class="anchor"></a>Workspace in RStudio</h5>
+<p><strong>What this does:</strong> it makes sure that whatever objects you have in the workspace were created in this session, presumably from code or interactively. It also makes sure that when you restart R, you get a clean slate so no leftovers interfere with your work.</p>
+<p><strong>Why this is a good thing:</strong> it puts in practice the principle that code is real. It also forces you to work in scripts rather than typing things into the console (though you can retrieve code from history and store it in R files.)</p>
+<p><strong>What to watch out for:</strong> remember that once you close RStudio, whatever data is not saved, or whatever data you do not have code for recreating, will be lost.</p>
 </div>
 </div>
-<div id="optional-latex" class="section level1">
-<h1 class="hasAnchor">
-<a href="#optional-latex" class="anchor"></a>Optional: LaTex</h1>
+<div id="development-tools" class="section level3">
+<h3 class="hasAnchor">
+<a href="#development-tools" class="anchor"></a>Development tools</h3>
+<p>First, run <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")</a></code>. You may or may not be prompted to install Rtools. If you are, go along. If not, run <code>devtools::devtools::dev_sitrep()</code>. This might prompt you to install Rtools - if it does, again, go along. If you run <code>devtools::devtools::dev_sitrep()</code> again, you should see that Rtools is installed and a path to it.</p>
+<p>On a Mac, instead of installing Rtools, you install the Xcode development tools (<code>xcode-select --install</code> in the Terminal).</p>
 </div>
-<div id="fonts-for-reschola-charts" class="section level1">
-<h1 class="hasAnchor">
-<a href="#fonts-for-reschola-charts" class="anchor"></a>Fonts for reschola charts</h1>
+<div id="packages" class="section level3">
+<h3 class="hasAnchor">
+<a href="#packages" class="anchor"></a>Packages</h3>
+<p>All the packages you will normally need will be installed when you install <code>reschola</code>.</p>
+<div id="some-background-on-packages" class="section level4">
+<h4 class="hasAnchor">
+<a href="#some-background-on-packages" class="anchor"></a>Some background on packages</h4>
+<p>CRAN contains packages that are vetted for correctness, good documentation etc. You install these using <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>.</p>
+<p><strong>CRAN</strong> typically holds <em>binary</em> packages. This means they do not need compilation, i.e. you don’t need <code>devtools</code> and the other tools described above.</p>
+<p>For some recently released or updated packages, a binary may not be available just yet. R will ask you to build from source; go ahead if you have the tools above - but the build may fail for some complicated packages. Or you can wait, usually a matter of days.</p>
+<p><strong>Github</strong> contains packages without much quality control. Proxies of quality include how well documented the package is externally, how often/recently it has been updated, whether the author responds to issues etc.</p>
+<p>You need to build Github packages, i.e. your machine needs to have the build tools.</p>
+<p>Often a CRAN package will have a more recent, but less well tested, version on Github. You can install it if you need a newer version but beware. Often, package authors also accept issues (bug reports) on Github and Github is also where you would contribute to a package.</p>
+</div>
+</div>
+</div>
+<div id="tbd-renv" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tbd-renv" class="anchor"></a>TBD: renv</h2>
+</div>
+<div id="installing-git" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installing-git" class="anchor"></a>Installing git</h2>
+<p>For installing and setting up git <em>and</em> finding your way around Git and Github, the best you can do is follow Jenny Bryan’s <a href="https://happygitwithr.com/">Happy Git With R</a> step by step. This also has some useful troubleshooting tips for the usual hell around authentication to Github etc.</p>
+<p>This includes the setup of RStudio for git: there are a few options you need to check or change.</p>
+<p>Then run <code><a href="https://usethis.r-lib.org/reference/git_vaccinate.html">usethis::git_vaccinate</a></code> to get git to always ignore files which you never want committed. You only need to do this once per computer.</p>
+</div>
+<div id="github" class="section level2">
+<h2 class="hasAnchor">
+<a href="#github" class="anchor"></a>Github</h2>
+<p>In brief:</p>
+<ol style="list-style-type: decimal">
+<li>set up an account on Github.</li>
+<li>create a (toy) repo on Github or run <code><a href="https://usethis.r-lib.org/reference/use_github.html">usethis::use_github()</a></code> in an existing repo - you can add <code>organization = "scholaempirica"</code> to make a repo owned by the <code>scholaempirica</code> Github org. Or (recommended) <strong>create a project from the reschola project template</strong> (<code>File &gt; New Project &gt; New Directory &gt; Standard Reschola Project</code>) to guide you through this.</li>
+<li>If the former in (2), follow the instructions from Github to link the Github repo to your repository: run <code>git init</code> and <code>gir remote add origin {repo-url}</code>, then commit and <code>git push --set-upstream orgin master</code> (assuming you are on the master branch)</li>
+<li>To make sure things work (or diagnose why not), you can run <code><a href="https://usethis.r-lib.org/reference/git_sitrep.html">usethis::git_sitrep()</a></code>
+</li>
+</ol>
+<p>In particular, take a look at the <a href="https://happygitwithr.com/connect-intro.html">Connect</a> chapter of Happy Git With R for steps to streamline your connection with Github, including (much recommended) caching credentials and using a personal access token and (optionally) SSH setup.</p>
+<div id="some-basic-concepts-for-working-with-git" class="section level4 bs-callout bs-callout-blue">
+<h4 class="hasAnchor">
+<a href="#some-basic-concepts-for-working-with-git" class="anchor"></a>Some basic concepts for working with Git</h4>
+<p>The terminology of git can be daunting, so here are my attempts at common-sense explanations.</p>
+<div id="repository-repo" class="section level5">
+<h5 class="hasAnchor">
+<a href="#repository-repo" class="anchor"></a>Repository (repo)</h5>
+<p>On your computer, this is a folder (directory). Git knows it is a git repository because there is a hidden <code>.git</code> directory inside it which holds all the “metadata” on versions, commits etc. You can type <code>git status</code> in your git-bash to see if the current directory is a repository. In RStudio, you will see a Git tab on the top right if your RStudio is correctly set up and if the current project or working directory is a git repo.</p>
+<p>Note that this is different from a repository in the context of R, where it means “place (server) from which you can install packages”.</p>
+<p>You rename a repository on your machine just by renaming the directory - no other action needed. You can also move the directory at will.</p>
+</div>
+<div id="local-and-remote" class="section level5">
+<h5 class="hasAnchor">
+<a href="#local-and-remote" class="anchor"></a>Local and remote</h5>
+<p>Any repository lives in a local directory. In the context of working with Github, this is your local copy. Copies elsewhere with which you may want to “sync” (see <em>push</em> and <em>pull</em> below) are called <em>remotes</em>. (You can see the remotes for your repo by <code>git remotes -v</code>) Each remote has a name; github repose are customarily called origin - origin tends to be the default remote.</p>
+</div>
+<div id="working-copy-staging-area-committed-files" class="section level5">
+<h5 class="hasAnchor">
+<a href="#working-copy-staging-area-committed-files" class="anchor"></a>Working copy, staging area, committed files</h5>
+<p>This is the most crucial distinction which is not often described: as you work with a git repo, you are working with three different sets of objects:</p>
+<ol style="list-style-type: decimal">
+<li>working copy, i.e. what you see in your file viewer</li>
+<li>staging area (also staging index), i.e. what will be in your next commit</li>
+<li>commit history (also HEAD), i.e what has been committed and is currently checked out - also, the state of things in the git repo which will be the parent of your next commit. Typically that is the last commit on your active branch.</li>
+</ol>
+<p>This distinction means that if you have committed work on a file and then worked on it further, you can always easily revert your working copy to the last committed status.</p>
+<p>It also means that the staged files are not just a window in an application, but a particular snapshot stored in git’s database. If you stage in one client (say RStudio), you will see the same staging status in another (say, Fork). It also means that if you stage a file (which really means staging all lines changed between the last commit and now), and then make changes to it, those changes are not staged and hence will not be in the next commit. If you want them there, you need to stage those new changes.</p>
+<p>See <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">this guide</a> which I think is the best explanation of moving a file between these sets.</p>
+</div>
+<div id="diff-git-diff" class="section level5">
+<h5 class="hasAnchor">
+<a href="#diff-git-diff" class="anchor"></a>Diff (<code>git diff</code>)</h5>
+<p>The comparison, line-by-line, between two states of the file, typically between what is in your working copy and HEAD. Sometimes, e.g. when staging (see below) bits of a file that is already in the staging area, you will see a diff between working copy and staging area.</p>
+</div>
+<div id="staging-git-add" class="section level5">
+<h5 class="hasAnchor">
+<a href="#staging-git-add" class="anchor"></a>Staging (<code>git add</code>)</h5>
+<p>You stage changes to be committed - either whole files or individual lines.</p>
+</div>
+<div id="commit-git-commit" class="section level5">
+<h5 class="hasAnchor">
+<a href="#commit-git-commit" class="anchor"></a>Commit (<code>git commit</code>)</h5>
+<p>Committing means the current copy of</p>
+</div>
+<div id="push-git-push" class="section level5">
+<h5 class="hasAnchor">
+<a href="#push-git-push" class="anchor"></a>Push (<code>git push</code>)</h5>
+<p>Sending all that has been committed to a remote.</p>
+</div>
+<div id="pull" class="section level5">
+<h5 class="hasAnchor">
+<a href="#pull" class="anchor"></a>Pull</h5>
+<p>Retrieving the current state of the remote and updating your repository (committed stuff/HEAD) with that.</p>
+<p>For different workflows of how to use these commands together and in sequence, see <a href="https://happygitwithr.com/git-intro.html">Happy Git With R</a>.</p>
+</div>
+</div>
+<div id="troubleshooting" class="section level3">
+<h3 class="hasAnchor">
+<a href="#troubleshooting" class="anchor"></a>Troubleshooting</h3>
+<p>if any of this fails, there are a couple of components that may be at fault: your git setup, the <code>usethis</code> package, the <code>git2r</code> package, or the <code>gh</code> package. For git, try reinstalling it from the official installer. For the packages, try updating or installing the latest github version.</p>
+</div>
+<div id="git-gui-graphical-user-interface" class="section level3">
+<h3 class="hasAnchor">
+<a href="#git-gui-graphical-user-interface" class="anchor"></a>Git GUI (Graphical User Interface)</h3>
+<p>Git GUIs are tricky in that they sometimes do under the hood something different from what the UI shows. From what I can tell, Fork and Gittower largely avoid this, and I really like Fork. Gittower is now an annual subscription, Fork will soon cost $50.</p>
+<p>RStudio has a basic GUI in the Git tab. It is OK for making simple commits and pushing and pulling. Beyond that (even things like patch commits, i.e. committing only some changed lines in a file) I would suggest using something else. (Annoyingly it also lacks an option to force push and the ability to create a new branch on the remote when pushing a locally created new branch - both of which can leave you baffled in certain situation.)</p>
+</div>
+</div>
+<div id="optional-latex" class="section level2">
+<h2 class="hasAnchor">
+<a href="#optional-latex" class="anchor"></a>Optional: LaTEX</h2>
+<p>All I can suggest for now is to use <code>tidytex</code> for installing and troubleshooting your LaTEX distribution.</p>
+</div>
+<div id="optional-text-editor" class="section level2">
+<h2 class="hasAnchor">
+<a href="#optional-text-editor" class="anchor"></a>Optional: text editor</h2>
+<p>On Windows, TextMate is supposed to be fine, as is SublimeText. For writing a lot of RMarkdown, you can look for a Markdown editor or install a Markdown plugin into these text editors.</p>
+</div>
+<div id="fonts-for-reschola-charts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#fonts-for-reschola-charts" class="anchor"></a>Fonts for reschola charts</h2>
 <p>To be able to produce charts in the default reschola font - Roboto and Roboto Condensed - you need to have these fonts on your machine and registered with R. The easiest way to do is to run <code><a href="../reference/import_fonts.html">reschola::import_fonts()</a></code> and then install the fonts onto your system from the paths in the messages printed by these functions. You can also set the option <code>reschola.loadfonts</code> to have <code>reschola</code> register these fonts with the PDF/PostScript ecosystem upon package load.</p>
 </div>
   </div>
@@ -157,14 +302,15 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#overview">Overview</a></li>
+<li><a href="#quick-note-on-installing-the-package-without-all-the-development-paraphernalia">Quick note on installing the package without all the development paraphernalia</a></li>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#i-already-have-r-and-all-the-other-stuff">I already have R and all the other stuff</a></li>
       <li><a href="#installing-r">Installing R</a></li>
-      <li>
-<a href="#installing-git">Installing git</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#git-gui">Git GUI</a></li>
-      </ul>
-</li>
-      <li><a href="#optional-latex">Optional: LaTex</a></li>
+      <li><a href="#tbd-renv">TBD: renv</a></li>
+      <li><a href="#installing-git">Installing git</a></li>
+      <li><a href="#github">Github</a></li>
+      <li><a href="#optional-latex">Optional: LaTEX</a></li>
+      <li><a href="#optional-text-editor">Optional: text editor</a></li>
       <li><a href="#fonts-for-reschola-charts">Fonts for reschola charts</a></li>
       </ul>
 </div>
