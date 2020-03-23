@@ -269,6 +269,23 @@ The easiest way to do this is to run e.g. `usethis::use_git_ignore("secret_file.
 
 You need to commit the `.gitignore` file.
 
+### Other bits of good practice to follow:
+
+#### In R code:
+
+- Document why you wrote that code (not necessarily just what it does, which should be obvious)
+- don't use T and F for TRUE and FALSE
+- use only trustworthy packages, ideally CRAN-based unless there is a good reason to do otherwise.
+
+See the [`goodpractice`](http://mangothecat.github.io/goodpractice/) package for a list of good practice and automated checking for them.
+
+#### With version control
+
+- Write informative commit messages
+- don't overwrite history (force push) unless absolutely necessary
+- commit often, push carefully
+- pushed commits should contain complete changes such that the code will run without errors.
+
 ### Style
 
 Currently we have no explicitly agreed style.
