@@ -22,6 +22,10 @@ This vignette describes the ideal data analytical workflow used by the Schola Em
 
 To do analysis and create great reports reproducibly and efficiently.
 
+To make our lives easier.
+
+To make life easier for our future selves.
+
 ## Principles
 
 ### 1. Reproducible projects
