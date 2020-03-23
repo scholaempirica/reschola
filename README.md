@@ -12,7 +12,7 @@ status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.o
 <!-- badges: end -->
 
 The goal of reschola is to provide a set of utilities for data analysis
-at [Schola Empirica](https://scholaempirica.org). The vignettes for the
+at [Schola Empirica](http://scholaempirica.org). The vignettes for the
 package also document the Schola Empirica way of doing data analysis.
 
 ## Installation
@@ -82,4 +82,4 @@ contributions are contained in individual vignettes.
 Logo made using <https://connect.thinkr.fr/hexmake/>. The approach to
 project templates and some other components is heavily inspired by
 [ratlas](https://github.com/atlas-aai/ratlas/), including the reuse of
-components from [hrbrthemes]().
+components from [hrbrthemes](https://hrbrmstr.github.io/hrbrthemes/).

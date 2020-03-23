@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 <!-- badges: end -->
 
-The goal of reschola is to provide a set of utilities for data analysis at [Schola Empirica](https://scholaempirica.org). The vignettes for the package also document the Schola Empirica way of doing data analysis.
+The goal of reschola is to provide a set of utilities for data analysis at [Schola Empirica](http://scholaempirica.org). The vignettes for the package also document the Schola Empirica way of doing data analysis and provide guidance and tips on tools and good practice.
 
 ## Installation
 
@@ -70,4 +70,4 @@ All content in this package arose out of conversations with the guys at Schola E
 The tools and concepts contained in it are heavily inspired by many wonderful members of the R community; references to specific contributions are contained in individual vignettes.
 
 Logo made using https://connect.thinkr.fr/hexmake/.
-The approach to project templates and some other components is heavily inspired by [ratlas](https://github.com/atlas-aai/ratlas/), including the reuse of components from [hrbrthemes]().
+The approach to project templates and some other components is heavily inspired by [ratlas](https://github.com/atlas-aai/ratlas/), including the reuse of components from [hrbrthemes](https://hrbrmstr.github.io/hrbrthemes/).
