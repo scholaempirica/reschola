@@ -121,12 +121,12 @@ schola_project <- function(path, ...) {
     "rstudio", "templates", "project",
     "proj_fls", "99_reproducibility.Rmd"
   )
-  fs::file_copy(gs_repro, "getting-started.Rmd")
+  fs::file_copy(gs_repro, "99_reproducibility.Rmd")
 
   # Create sample files
 
   # print(usethis::proj_sitrep())
-  draft_word(name  = "01_schola-styled-Word.Rmd", open = F)
+  draft_word(name  = "01_schola-styled-word.Rmd", open = F)
   draft_redoc(name = "02_schola-styled-redoc.Rmd", open = F)
 
   # delete R directory which was created automatically
