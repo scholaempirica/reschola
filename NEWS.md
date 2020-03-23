@@ -1,5 +1,7 @@
 # reschola (development version)
 
+* fixed bug in project template where a newly created RMd file did not open
+
 # reschola 0.2.6
 
 * project template now creates a reproducibility script
