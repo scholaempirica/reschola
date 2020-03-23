@@ -11,6 +11,9 @@ draft_word(name = "draft.Rmd", open = T)
 
 \item{open}{whether to open file for editing, defaults to TRUE.}
 }
+\value{
+path to created file (invisibly)
+}
 \description{
 Shortcut function to create and a new Rmd file using schola_word template and open for editing.
 }

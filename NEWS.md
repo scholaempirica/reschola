@@ -1,6 +1,7 @@
 # reschola (development version)
 
 * fixed bug in project template where a newly created RMd file did not open
+* refactored `draft_redoc()` to fix roundtripping issue and improve UI
 
 # reschola 0.2.6
 
