@@ -37,7 +37,7 @@ Ideally, the structure also facilitates efficiency, i.e. during analysis things 
 
 Everything we submit to a client/partner/stakeholder should be based on data and code that together reproducibly create the report: no hacks, no manual edits if at all possible, no copy-pasting images from one place to another.
 
-Version control helps us track when each report was created, using what code and what data, and can help us go back and fix things if needed. It also helps us not have mostly duplicate versions of everything lying around.
+Version control helps us track when each report was created, using what code and what data, and can help us go back and fix things if needed. It also helps us avoid mostly duplicate versions of everything lying around.
 
 > Code and data are real.
 
@@ -47,7 +47,7 @@ Reports and charts are based on well-designed styles and templates which we use 
 
 ### 3. Good documentation
 
-Projects and reports should be self-documenting by their structure, code, workflow, and comments inside.
+Projects and reports should be self-documenting by their structure, code, workflow, and comments inside, and the git history with good commit messages.
 
 ### 4. Efficiency
 
