@@ -1,5 +1,6 @@
 # reschola (development version)
 
+* first draft of new Workflow vignette
 * first draft of new Setup vignette
 * more detail in Tips & Tricks vignette
 
