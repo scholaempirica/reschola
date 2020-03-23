@@ -79,6 +79,22 @@ If you run `devtools::devtools::dev_sitrep()` again, you should see that Rtools 
 
 On a Mac, instead of installing Rtools, you install the Xcode development tools (`xcode-select --install` in the Terminal).
 
+### Locale: language and related settings
+
+R formats some output - like dates - based on where in the world it thinks you are.
+It derives this information from your system.
+You can see what it thinks by running `sys.getlocale()`.
+If you something that contains 'CZ' or 'Czech', you should be all set for work on Czech-language projects.
+You might want to change this at the beginning of a script, in a shared `source()`d script, or globally in .Rprofile if you need a different setting.
+
+The best Czech locale you should set on Windows 7 is [TBD].
+
+Note that character encoding e.g. in images from `ggplot2` also depends on the font. The default fonts contained in this package and `theme_schola()` handle Czech characters well.
+
+Also, you have to tell `readr` separately how it should (a) read dates and (b) parse CSVs, which in CZ tend to be semicolon-separated with decimal comma. See `readr::locale()`.
+
+In LaTex this might be a whole different issue...
+
 ### Packages
 
 All the packages you will normally need will be installed when you install `reschola`. 

@@ -115,6 +115,8 @@ See [tips](tips.html) for some packages that can help you retrieve data from pub
 
 Use `00_load-data.R`. Add any other data reading that is needed.
 
+See `readr::locale()` for handling encoding, decimal marks and separators in CSVs. You might also need `readr::read_csv2()`.
+
 Use `000_check-and-process-data.R`. You might need to move this into an RMarkdown document.
 
 See [tips](tips.html) for packages that can help you set up a structured data checking pipeline.
