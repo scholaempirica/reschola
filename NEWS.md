@@ -1,4 +1,4 @@
-# reschola (development version)
+# reschola 0.2.6
 
 * project template now creates a reproducibility script
 * getting-started doc in project template is more fleshed out
