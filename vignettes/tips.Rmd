@@ -69,6 +69,7 @@ In RMarkdown:
 - `ctrl`+`alt`+`N` runs next chunk in Rmarkdown
 - `ctrl`+`alt`+`P` runs all previous chunk in Rmarkdown
 - `ctrl`+`alt`+`I` inserts new chunk in Rmarkdown
+- `ctrl`+`click` on a web link to open it in browser
 
 Press `ctrl`+`alt`+`K` in RStudio for an overview of shortcuts.
 
