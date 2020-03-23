@@ -290,6 +290,13 @@ See the [`goodpractice`](http://mangothecat.github.io/goodpractice/) package for
 
 Currently we have no explicitly agreed style.
 
+Still, following some basic code hygiene seems like a good idea:
+
+- sensible indents
+- lower_case_var_names
+- functions are verbs, like do_something()
+- spaces around operators like ` = ` and `+`
+- break lines at around 80 characters
 
 ## Resources for building reproducible workflows
 

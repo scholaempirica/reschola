@@ -9,6 +9,7 @@
 
 * added preliminary setup documentation on locales
 * added documentation on using schola_redoc template
+* new bits of workflow documentation on good practice and code style
 
 # reschola 0.2.6
 
