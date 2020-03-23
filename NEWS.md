@@ -1,5 +1,7 @@
 # reschola (development version)
 
+* project template now creates a reproducibility script
+* getting-started doc in project template is more fleshed out
 * first draft of new Workflow vignette
 * first draft of new Setup vignette
 * more detail in Tips & Tricks vignette
