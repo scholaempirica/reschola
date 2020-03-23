@@ -2,7 +2,10 @@
 title: "Reversible Word-Markdown document"
 author: "Schola Empirica"
 date: '`r format(Sys.time(), "%d. %B %Y")`'
-output: reschola::schola_redoc
+output:
+  reschola::schola_redoc:
+    highlight_outputs: TRUE
+  
 ---
 
 ```{r setup, include=FALSE}
