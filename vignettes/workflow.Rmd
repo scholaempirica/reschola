@@ -140,7 +140,15 @@ There is a real trade off here: one way to do it is to work through the analysis
 
 Use `draft_*` to quickly create a draft using the required template.
 
-See below for how to use the `redoc` template.
+#### Collaborating with MS Word users {.bs-callout .bs-callout-blue}
+
+If you would like to collaborate with stakeholders using MS Word for providing revisions and comments on your report, choose the `draft_redoc()` template, or switch your existing file's `output` YAML field to `schola_redoc`. 
+
+For now, you can work the same as with any RMarkdown file.
+
+See below in "Iterate the report" on the steps to make collaboration work.
+
+#### Web output
 
 In principle, if you want a HTML file you can just switch the format to `html_document` and it should work fine if perhaps the details might differ slightly. See [tips]() on how to get that online.
 
@@ -186,7 +194,32 @@ When a draft report goes out e.g. to stakeholders for feedback, it might be usef
 
 ### 7. Iterate the report collaboratively
 
-[To be finished]
+If you used the schola_redoc output format, you can now send it to collaborators for feedback.
+
+Here is the workflow:
+
+1. Edit the document - you have already done this.
+
+2. Generate word file
+
+Knit using RStudio button or run `rmarkdown::render()`.
+
+3. Send the Word file to collaborators for review
+
+They can edit it in MS Word, either in tracked changes or not. The bits they cannot edit or comment on are by default highlighted in red - these are the bits your code generates, as opposed to text you write in RMarkdown; if they want to comment or change these, they should comment on an adjacent piece of text.
+
+4. Collect changes back into RMarkdown
+
+When you get the document back, put it in your project directory and run `redoc::dedoc("[edited_document.docx]")`. 
+This will create a new Rmd file with (a) the comments inserted in CriticMarkup, (b) tracked and untracked changes reflected in the Rmd with no markup.
+You can add `track_changes = 'criticmarkup'` to have all tracked changes inserted with CriticMarkup.
+
+You can also run `redoc::dedoc("[edited_document.docx]", to = "[your_original_rmarkdown_file.Rmd", overwrite = TRUE)` to have all the changes written into your original file. ONLY DO THIS IF YOUR ORIGINAL FILE WAS COMMITTED IN GIT WITH THE VERSION YOU RENDERED AND SENT FOR FEEDBACK!!
+You can then use git to view and accept/reject the changes from the reviewers.
+
+You can also run `print(redoc:::redoc_diff("[new_document.docx]"))` (note the `:::`) to see the comparison in the RStudio viewer pane (no Rmd files are updated.)
+
+You can also use the RStudio addins 'Dedoc to new file' or 'Dedoc to active file'. This will automatically show the graphical view of the changes in RStudio viewer, but you have less control over how changes/revisions are picked up.
 
 ### 8. Finalise report
 

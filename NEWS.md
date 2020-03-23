@@ -8,6 +8,7 @@
 ## Improvements
 
 * added preliminary setup documentation on locales
+* added documentation on using schola_redoc template
 
 # reschola 0.2.6
 
