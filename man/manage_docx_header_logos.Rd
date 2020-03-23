@@ -32,6 +32,11 @@ Takes an existing Word document created using the \code{reschola} templates
 and adds (by default, or replaces if \code{action = "replace_schola"}) the logo with
 the image file you point it to.
 }
+\note{
+This requires specific bookmarks in the header of the input document.
+This is taken from the skeleton.docx template in the template components.
+If you overwrite the header in the input document, this function will not work.
+}
 \examples{
 \dontrun{
 library(reschola)

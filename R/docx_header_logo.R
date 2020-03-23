@@ -5,6 +5,10 @@
 #' and adds (by default, or replaces if `action = "replace_schola"`) the logo with
 #' the image file you point it to.
 #'
+#' @note This requires specific bookmarks in the header of the input document.
+#'   This is taken from the skeleton.docx template in the template components.
+#'   If you overwrite the header in the input document, this function will not work.
+#'
 #' @param docx_path The Word document in which to replace logos. Must contain the bookmarks
 #'   `schola_logo` and `client_logo` in the header (files created from reschola templates do by default.)
 #' @param png_logo_path a PNG file which will be added/used as replacement
