@@ -38,7 +38,7 @@ See <https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts>
 
 **Object view**: holding `ctrl` while clicking on any object name in the code editor lets you view that object: code for functions, dataset viewer for data.
 
-**Accessing help**: pressing `F1` when your curser is on a function name will display the documentatin for that function, same for package names
+**Accessing help**: pressing `F1` when your cursor is on a function name will display the documentatin for that function, same for package names
 
 ### Snippets
 
