@@ -1,4 +1,8 @@
 * `draft_redoc()` now works outside of a reschola-created project
+## Improvements
+
+* additions and clarifications in vignettes
+
 # reschola 0.2.7
 
 ## Bug fixes

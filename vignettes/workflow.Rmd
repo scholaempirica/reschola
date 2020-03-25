@@ -118,6 +118,8 @@ Use `00_load-data.R`. Add any other data reading that is needed.
 See `readr::locale()` for handling encoding, decimal marks and separators in CSVs. You might also need `readr::read_csv2()`.
 
 Use `000_check-and-process-data.R`. You might need to move this into an RMarkdown document.
+Use `readr::guess_encoding()` if the text comes in garbled.
+
 
 See [tips](tips.html) for packages that can help you set up a structured data checking pipeline.
 
@@ -285,6 +287,7 @@ See the [`goodpractice`](http://mangothecat.github.io/goodpractice/) package for
 - don't overwrite history (force push) unless absolutely necessary
 - commit often, push carefully
 - pushed commits should contain complete changes such that the code will run without errors.
+- always work in UTF-8: save code in RStudio as UTF-8, save input CSV as UTF-8, and save any R text output as UTF-8.
 
 ### Style
 

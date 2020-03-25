@@ -112,6 +112,8 @@ Mostly useful for package development, but some utilities also make your life ea
 - `data.table::fread()` for faster CSV reading
 - [`vroom`](https://vroom.r-lib.org/) for fast CSV reading of large datasets
 - `readr::read_csv2()` for reading semicolon-separated CSVs with decimal comma
+- `readr::guess_encoding()` if the text comes in garbled.
+- `haven` for importing SPSS, STATA, SAS files
 
 ### From LimeSurvey
 
