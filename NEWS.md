@@ -1,3 +1,4 @@
+* `draft_redoc()` now works outside of a reschola-created project
 # reschola 0.2.7
 
 ## Bug fixes
