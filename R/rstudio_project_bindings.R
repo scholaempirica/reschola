@@ -136,7 +136,9 @@ schola_project <- function(path, ...) {
   # create the rest of the project structure
 
   fs::dir_create("data-input")
+  usethis::use_git_ignore("data-input")
   fs::dir_create("data-processed")
+  usethis::use_git_ignore("data-processed")
   fs::dir_create("data-output")
   fs::dir_create("charts-output")
   fs::dir_create("reports-output")
