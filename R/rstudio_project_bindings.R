@@ -74,7 +74,7 @@ schola_project <- function(path, ...) {
   "# As you work on the project, you should add commands to this file so that",
   "# it contains the commands needed to rebuild the whole project from scratch.",
   "# Typically, those will be source() or rmarkdown::render() calls, like below.\n\n",
-  "source('00_load-data.R')",
+  "source('00_read-data.R')",
   "source('000_check-and-transform-data.R')",
   "rmarkdown::render('01_schola-styled-word.Rmd', output_dir = 'reports-output')",
   "rmarkdown::render('02_schola-styled-redoc.Rmd', output_dir = 'reports-output')",
@@ -149,12 +149,12 @@ schola_project <- function(path, ...) {
     "rstudio", "templates", "project",
     "proj_fls", "0_retrieve-data.R"
   )
-  fs::file_copy(gs_retrieve_script, "0_retrieve-data.R")
+  fs::file_copy(gs_retrieve_script, "001_retrieve-data.R")
 
   # print("Making dummy files")
 
-  fs::file_create("00_load-data.R")
-  fs::file_create("000_check-and-process-data.R")
+  fs::file_create("002_read-data.R")
+  fs::file_create("003_check-and-process-data.R")
 
 
   # print("adding GD files")

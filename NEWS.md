@@ -1,6 +1,8 @@
 * `draft_redoc()` now works outside of a reschola-created project
+* workflow vignette and getting started guide in new project now correctly refer to `data-processed` directory 
 ## Improvements
 
+* new naming scheme of scripts pre-created by project template for better sorting
 * additions and clarifications in vignettes
 
 # reschola 0.2.7
