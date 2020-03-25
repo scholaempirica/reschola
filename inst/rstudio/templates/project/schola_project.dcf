@@ -25,7 +25,7 @@ Position: right
 
 Parameter: drive_folder
 Widget: TextInput
-Label: URL of project's GDrive folder
+Label: URL of project's GDrive folder (copy from address line in web browser)
 Position: left
 
 Parameter: drive_download
