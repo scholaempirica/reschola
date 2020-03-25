@@ -14,10 +14,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(reschola)
-```
-
 This vignette provides some handy tips and tricks for working with R in RStudio. 
 For more fundamental principles and guidance on getting R and RStudio setup for the Schola workflow, see the [Setup](setup.html) vignette.
 For guidance on the workflow itself, see the [Workflow](workflow.html) vignette.
