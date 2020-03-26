@@ -109,9 +109,34 @@ Also, you have to tell `readr` separately how it should (a) read dates and (b) p
 
 In LaTex this might be a whole different issue...
 
+### R configuration
+
+Generally, the configuration that will affect how R behaves goes into `.Rprofile`. This lives somewhere in your user directory and can be edited in RStudio using `usethis::use_r_profile()`.
+
+Environment variables - used for things like passwords that you should not put in your code can be put into `.Renviron` (`usethis::use_r_environ()`).
+You then use the variable in code using `Sys.getenv("VARIABLE_NAME")`.
+Note that `.Renviron` is not a standard R file, so values are not put into quotes.
+
+#### More on this
+
+See the section in Colin Gillespie's *Efficient R Programming* on [R startup files](https://csgillespie.github.io/efficientR/set-up.html#an-overview-of-rs-startup-files).
+
 ### Packages
 
 All the packages you will normally need will be installed when you install `reschola`. 
+
+##### CRAN Mirror {.bs-callout .bs-callout-blue}
+
+To streamline downloading packages, R likes to use a geographically close CRAN mirror server.
+RStudio should set this for you to something sensible - see `Tools > Global Options > Packages`.
+
+If this fails or you want to set one yourself, you can put this somewhere close to the beginning of your `.Rprofile`:
+
+```
+local({r <- getOption("repos")
+r["CRAN"] <- "https://cran.rstudio.com" # change to CRAN mirror URL you like
+options(repos=r)})
+```
 
 #### Some background on packages
 
