@@ -16,6 +16,7 @@
 * clarified workflow text on project creation
 * added note on encoding in Workflow article
 * added guidance in setupa and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors
+* more guidance in RMarkdown templates
 
 # reschola 0.2.7
 
