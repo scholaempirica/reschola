@@ -104,7 +104,13 @@ It allows you to pull into Rmarkdown any edits, tracked changes and comments tha
 
 ### 4. ggplot2 theme
 
-[To be finished]
+`reschola` offers a ggplot2 theme, `theme_schola()`, which provides some sensible easthetic defaults, including font choice, to make charts beautiful and consistent. 
+
+The desired approach is to use this theme, alter its parameters if needed, and then if necessary make other changes using another `theme()` call.
+
+There are also a small number of other plotting utilities. 
+
+See the [Making charts](charts.html) vignette for details on everything graphics related.
 
 ### 5. Utilities
 
