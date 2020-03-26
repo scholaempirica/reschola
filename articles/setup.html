@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Getting everything ready for work • reschola</title>
+<title>Setup guide • reschola</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -19,8 +19,8 @@
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Getting everything ready for work">
-<meta property="og:description" content="">
+<meta property="og:title" content="Setup guide">
+<meta property="og:description" content="Getting everything ready for work">
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -119,7 +119,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Getting everything ready for work</h1>
+      <h1>Setup guide</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/master/vignettes/setup.Rmd"><code>vignettes/setup.Rmd</code></a></small>
@@ -179,6 +179,14 @@
 <p><strong>Why this is a good thing:</strong> it puts in practice the principle that code is real. It also forces you to work in scripts rather than typing things into the console (though you can retrieve code from history and store it in R files.)</p>
 <p><strong>What to watch out for:</strong> remember that once you close RStudio, whatever data is not saved, or whatever data you do not have code for recreating, will be lost.</p>
 </div>
+<div id="rstudio-cloud" class="section level5 bs-callout bs-callout-green">
+<h5 class="hasAnchor">
+<a href="#rstudio-cloud" class="anchor"></a>RStudio Cloud</h5>
+<p>If you need someone to run something in R but they don’t have anything installed, you can point them to <a href="https://rstudio.cloud/">RStudio Cloud</a>.</p>
+<p>It requires free registration.</p>
+<p>This is a well-functioning installation on a remote server which you can run in the browser.</p>
+<p>It is also great for teaching.</p>
+</div>
 </div>
 <div id="development-tools" class="section level3">
 <h3 class="hasAnchor">
@@ -196,10 +204,30 @@
 <p>Also, you have to tell <code>readr</code> separately how it should (a) read dates and (b) parse CSVs, which in CZ tend to be semicolon-separated with decimal comma. See <code><a href="https://readr.tidyverse.org/reference/locale.html">readr::locale()</a></code>.</p>
 <p>In LaTex this might be a whole different issue…</p>
 </div>
+<div id="r-configuration" class="section level3">
+<h3 class="hasAnchor">
+<a href="#r-configuration" class="anchor"></a>R configuration</h3>
+<p>Generally, the configuration that will affect how R behaves goes into <code>.Rprofile</code>. This lives somewhere in your user directory and can be edited in RStudio using <code>usethis::use_r_profile()</code>.</p>
+<p>Environment variables - used for things like passwords that you should not put in your code can be put into <code>.Renviron</code> (<code>usethis::use_r_environ()</code>). You then use the variable in code using <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("VARIABLE_NAME")</a></code>. Note that <code>.Renviron</code> is not a standard R file, so values are not put into quotes.</p>
+<div id="more-on-this" class="section level4">
+<h4 class="hasAnchor">
+<a href="#more-on-this" class="anchor"></a>More on this</h4>
+<p>See the section in Colin Gillespie’s <em>Efficient R Programming</em> on <a href="https://csgillespie.github.io/efficientR/set-up.html#an-overview-of-rs-startup-files">R startup files</a>.</p>
+</div>
+</div>
 <div id="packages" class="section level3">
 <h3 class="hasAnchor">
 <a href="#packages" class="anchor"></a>Packages</h3>
 <p>All the packages you will normally need will be installed when you install <code>reschola</code>.</p>
+<div id="cran-mirror" class="section level5 bs-callout bs-callout-blue">
+<h5 class="hasAnchor">
+<a href="#cran-mirror" class="anchor"></a>CRAN Mirror</h5>
+<p>To streamline downloading packages, R likes to use a geographically close CRAN mirror server. RStudio should set this for you to something sensible - see <code>Tools &gt; Global Options &gt; Packages</code>.</p>
+<p>If this fails or you want to set one yourself, you can put this somewhere close to the beginning of your <code>.Rprofile</code>:</p>
+<pre><code><a href="https://rdrr.io/r/base/eval.html">local({r &lt;- getOption("repos")
+r["CRAN"] &lt;- "https://cran.rstudio.com" # change to CRAN mirror URL you like
+options(repos=r)})</a></code></pre>
+</div>
 <div id="some-background-on-packages" class="section level4">
 <h4 class="hasAnchor">
 <a href="#some-background-on-packages" class="anchor"></a>Some background on packages</h4>

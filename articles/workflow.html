@@ -337,9 +337,9 @@
 <blockquote>
 <p>You can also designate certain snapshots as special with a tag, which is a name of your choosing. In a software project, it is typical to tag a release with its version, e.g., “v1.0.3”. For a manuscript or analytical project, you might tag the version submitted to a journal or transmitted to external collaborators. Figure 20.1 shows a tag, “draft-01”, associated with the last commit.</p>
 </blockquote>
-<div id="citations--bs-callout--bs-callout-blue" class="section level4">
+<div id="citations" class="section level4 bs-callout bs-callout-blue">
 <h4 class="hasAnchor">
-<a href="#citations--bs-callout--bs-callout-blue" class="anchor"></a>Citations {.bs-callout, .bs-callout-blue}</h4>
+<a href="#citations" class="anchor"></a>Citations</h4>
 <p>Knitr and Rmarkdown incorporate a system for managing citations and bibliographies, which can take reference lists from a number of citation managers. For the basics, see the <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">RMarkdown site</a>, details are in the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html">RMarkdown Cookbook</a>.</p>
 </div>
 </div>
@@ -373,7 +373,14 @@
 <div id="prepare-project-for-reuse" class="section level3">
 <h3 class="hasAnchor">
 <a href="#prepare-project-for-reuse" class="anchor"></a>9. Prepare project for reuse</h3>
-<p>[To be finished]</p>
+<p>Really just make sure that you have followed the steps. If you have, then:</p>
+<ul>
+<li>files should be named properly and with the correct order</li>
+<li>each Rmd file should run without error</li>
+<li>
+<code>build.R</code> should contain all scripts needed to run the whole thing in the right order; so should any other built-type script you may have created</li>
+<li>README.md should contain workable instructions</li>
+</ul>
 </div>
 </div>
 <div id="tools-for-implementing-good-practices" class="section level2">
