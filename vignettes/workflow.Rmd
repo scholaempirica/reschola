@@ -223,6 +223,11 @@ When a draft report goes out e.g. to stakeholders for feedback, it might be usef
 
 > You can also designate certain snapshots as special with a tag, which is a name of your choosing. In a software project, it is typical to tag a release with its version, e.g., “v1.0.3”. For a manuscript or analytical project, you might tag the version submitted to a journal or transmitted to external collaborators. Figure 20.1 shows a tag, “draft-01”, associated with the last commit.
 
+#### Citations {.bs-callout, .bs-callout-blue}
+
+Knitr and Rmarkdown incorporate a system for managing citations and bibliographies, which can take reference lists from a number of citation managers. 
+For the basics, see the [RMarkdown site](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html), details are in the [RMarkdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html).
+
 ### 7. Iterate the report collaboratively
 
 If you used the schola_redoc output format, you can now send it to collaborators for feedback.
