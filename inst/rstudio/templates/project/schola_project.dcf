@@ -20,7 +20,7 @@ Position: left
 Parameter: copy_logos
 Widget: CheckboxInput
 Label: Put standard logos in project dir
-Default: off
+Default: on
 Position: right
 
 Parameter: drive_folder
