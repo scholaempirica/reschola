@@ -3,7 +3,7 @@
 language: R
 cache: packages
 
-before_cache: Rscript -e 'remotes::install_version("pkgdown", "1.4.1")'
+before_cache: Rscript -e 'remotes::install_github("r-lib/pkgdown#1276")'
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github()'
