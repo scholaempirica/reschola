@@ -1,5 +1,6 @@
 ---
 title: "Tips and Tricks for R and Rstudio"
+description: "Tips and tricks for working with R in RStudio"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{tips}

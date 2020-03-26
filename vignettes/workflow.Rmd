@@ -1,5 +1,6 @@
 ---
 title: "The Workflow"
+description: "The Schola Empirica Workflows: Principles, Tools, Step-by-Step Guide"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{workflow}
