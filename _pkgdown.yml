@@ -3,6 +3,9 @@ url: https://scholaempirica.github.io/reschola
 template:
   params:
     bootswatch: united
+    docsearch:
+      api_key: 273d98fffff3ca7ed9727d978a8645c1
+      index_name: reschola
 reference:
 - title: Workflow helpers
   desc:  Other tools for streamlining work
