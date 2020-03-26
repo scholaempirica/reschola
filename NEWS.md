@@ -1,5 +1,12 @@
+# reschola (development version)
+
+## Bug fixes
+
 * `draft_redoc()` now works outside of a reschola-created project
+* project template should no longer fail on Google Drive authentication; guidance added to vignettes to prevent/handle this
 * workflow vignette and getting started guide in new project now correctly refer to `data-processed` directory 
+* data reading script created by project template now correctly named `001_read-data.R`.
+
 ## Improvements
 
 * new naming scheme of scripts pre-created by project template for better sorting

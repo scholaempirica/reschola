@@ -113,6 +113,10 @@ You need to build Github packages, i.e. your machine needs to have the build too
 	
 Often a CRAN package will have a more recent, but less well tested, version on Github. You can install it if you need a newer version but beware. Often, package authors also accept issues (bug reports) on Github and Github is also where you would contribute to a package.
 
+## Authorize R to access Google Drive
+
+If you plan to retrieve data from Google Drive using the `gd_download_folder()` utility in `reschola`, you will need to authorise R to access your Google Drive. Run `googledrive::drive_auth()` and follow the instructions. This is legitimate and you should allow access.
+
 ## TBD: renv
 
 ## Installing git

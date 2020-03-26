@@ -101,7 +101,13 @@ In RStudio, go to `File > New Project > New directory > Standard Schola Empirica
 
 Fill in the fields (only directory name is mandatory), switch the Git menu to get a (reschola/your) Github repo of you wish, select other options if needed and click `Create`.
 
+#### Google Authentication {.bs-callout .bs-callout-yellow}
+
 Other ways are possible but this gives you a good starting point and takes care of a lot of the setup hassle for you.
+
+If you haven't used the `googledrive` package before, the package may ask for authorisation to access Google Drive. This is legitimate and you should grant access.
+This happens in the browser and on some machines may cause project initiatition to freeze or stop.
+If that happens, run `googledrive::drive_auth()`, delete the directory created by the previous project creation attempt, and try creating the project again.
 
 ### 2. Download the data
 

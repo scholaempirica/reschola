@@ -16,7 +16,10 @@ schola_project <- function(path, ...) {
   # if drive folder given, check that it is a folder (not a file etc.)
 
   if(dots$drive_folder != "") {
-    gdrive_dribble <- googledrive::as_dribble(dots$drive_folder)
+    tryCatch(gdrive_dribble <- googledrive::as_dribble(dots$drive_folder),
+             error = function(cnd) usethis::ui_oops("You need to authenticate R to your Google Drive account.
+                                                    Run {usethis::ui_code('googledrive::drive_auth() after the project is created')}
+                                                    then download the files from drive using {usethis::ui_code('reschola::gd_download_folder(gd_url)'})"))
     if(!googledrive::is_folder(gdrive_dribble)) {
       usethis::ui_stop("It seems the GDrive folder URL you have given does not point to a folder.")
     }
@@ -160,8 +163,11 @@ schola_project <- function(path, ...) {
 
 
   # print("adding GD files")
-
-  if (dots[["drive_download"]]) {
+  if (dots[["drive_download"]] & (dots[["drive_folder"]] == "")) {
+    usethis::ui_oops("You asked for the GDrive files to be downloaded, but provided no URL.
+                     Not downloading anything.")
+  }
+  if (dots[["drive_download"]] & (dots[["drive_folder"]] != "")) {
     usethis::ui_todo("Downloading contents of GDrive to {usethis::ui_path('data-input')}")
     reschola::gd_download_folder(dots$drive_folder, overwrite = F, files_from_subfolders = T)
   }
