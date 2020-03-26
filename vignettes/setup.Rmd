@@ -1,6 +1,7 @@
 ---
-title: "Getting everything ready for work"
+title: "Setup guide"
 output: rmarkdown::html_vignette
+description: "Getting everything ready for work"
 vignette: >
   %\VignetteIndexEntry{setup}
   %\VignetteEngine{knitr::rmarkdown}
