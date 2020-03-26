@@ -30,13 +30,16 @@ reference:
 navbar:
   structure:
     left:  [home, intro, articles, reference, news]
-    right: [github]
+    right: [github, issues]
   components:
     reference:
       text: Functions
       href: reference/index.html
+    issues:
+      icon: fa-exclamation-circle fa-lg
+      href: https://github.com/scholaempirica/reschola/issues
     articles:
-      text: How-tos
+      text: How-to's
       menu:
       - text: 'Setup'
         href: articles/setup.html
