@@ -31,8 +31,7 @@ jobs:
         run: |
           install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_dev_deps(dependencies = TRUE)
-          remotes::install_dev("pkgdown")
+          remotes::install_github("petrbouchal/redoc")
         shell: Rscript {0}
 
       - name: Install package
