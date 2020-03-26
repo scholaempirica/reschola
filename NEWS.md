@@ -15,6 +15,7 @@
 * added search capability to website
 * clarified workflow text on project creation
 * added note on encoding in Workflow article
+* added guidance in setupa and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors
 
 # reschola 0.2.7
 
