@@ -13,6 +13,8 @@
 * `data-input` and `data-processed` directories in new project are now automatically added to `.gitignore`
 * additions and clarifications in vignettes
 * added search capability to website
+* clarified workflow text on project creation
+* added note on encoding in Workflow article
 
 # reschola 0.2.7
 

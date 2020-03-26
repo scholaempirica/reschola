@@ -83,13 +83,16 @@ On a Mac, instead of installing Rtools, you install the Xcode development tools 
 
 R formats some output - like dates - based on where in the world it thinks you are.
 It derives this information from your system.
-You can see what it thinks by running `sys.getlocale()`.
+You can see what it thinks by running `Sys.getlocale()`.
 If you something that contains 'CZ' or 'Czech', you should be all set for work on Czech-language projects.
-You might want to change this at the beginning of a script, in a shared `source()`d script, or globally in .Rprofile if you need a different setting.
+It can be changed by `Sys.setlocale(locale = "[LOCALE_STRING]")`.
+You might want to change this at the beginning of a script, in a shared `source()`d script, or globally in `.Rprofile` if you need a different setting. For English, something like `Sys.setlocale(category = "LC_ALL", locale = "English_United Kingdom.1252")` (or try with "UTF-8" or at the end.)
 
-The best Czech locale you should set on Windows 7 is [TBD].
+The Czech locale you should probably have in Windows 7 is `"LC_COLLATE=Czech_Czechia.1250;LC_CTYPE=Czech_Czechia.1250;LC_MONETARY=Czech_Czechia.1250;LC_NUMERIC=C;LC_TIME=Czech_Czechia.1250"` so run `Sys.setlocale(locale = "Czech_Czechia.1250")`. On newer Windows, you should attempt to run under a UTF-8 locale it at all possible.
 
-Note that character encoding e.g. in images from `ggplot2` also depends on the font. The default fonts contained in this package and `theme_schola()` handle Czech characters well.
+On a Mac, this is `Sys.setlocale(locale = "cs_CZ.UTF-8")`.
+
+Note that the ability to display non-ASCII characters e.g. in images from `ggplot2` also depends on the font. The default fonts contained in this package and `theme_schola()` handle Czech characters well.
 
 Also, you have to tell `readr` separately how it should (a) read dates and (b) parse CSVs, which in CZ tend to be semicolon-separated with decimal comma. See `readr::locale()`.
 
