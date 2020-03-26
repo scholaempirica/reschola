@@ -286,7 +286,13 @@
 <div id="approaches" class="section level4 bs-callout bs-callout-blue">
 <h4 class="hasAnchor">
 <a href="#approaches" class="anchor"></a>Approaches</h4>
-<p>There is a real trade off here: one way to do it is to work through the analysis in the report script, perhaps hiding most through chunk options (<code>include =  FALSE</code>) and only outputting into the final format stuff that is relevant. That way you get a sense of the thought process but also a bloated and circuitous script. Another is to do the analysis in one or more files and only moving bits into the report which are needed there. That way you get a tight report script but at times disconnected from the analytical process.</p>
+<p>There is a real trade off here: one way to do it is to work through the analysis in the report script, perhaps hiding most through chunk options (<code>include =  FALSE</code>) and only outputting into the final format stuff that is relevant.</p>
+<p>That way you get a sense of the thought process but also a bloated and circuitous script. Another is to do the analysis in one or more files and only moving bits into the report which are needed there.</p>
+<p>That way you get a tight report script but at times disconnected from the analytical process.</p>
+<p>One way to lighten the load is to hive off some work into partial Rmarkdown files, typically named <code>_something.Rmd</code>, and then “insert” them into the main document via</p>
+<pre><code># ```{r, child=c('one.Rmd', 'two.Rmd')} # remove the hash mark
+# ``` # remove the hash mark</code></pre>
+<p>See RMarkdown Cookbook <a href="https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html">on child documents</a>.</p>
 </div>
 </div>
 <div id="write-reports-using-a-template" class="section level3">
