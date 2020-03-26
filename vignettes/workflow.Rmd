@@ -114,7 +114,9 @@ It allows you to pull into Rmarkdown any edits, tracked changes and comments tha
 
 In RStudio, go to `File > New Project > New directory > Standard Schola Empirica Project`.
 
-Fill in the fields (only directory name is mandatory), switch the Git menu to get a (reschola/your) Github repo of you wish, select other options if needed and click `Create`.
+> Ideally, start from a clean RStudio session with no project open.
+
+Fill in the fields (only directory name is mandatory), switch the Git menu to get a (reschola/your) Github repo of you wish, select other options if needed, check "Open in new session", and click `Create`. 
 
 #### Google Authentication {.bs-callout .bs-callout-yellow}
 
