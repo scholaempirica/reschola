@@ -52,7 +52,7 @@ draft_redoc <- function(name = "draft.Rmd", open = T) {
   file_rendered <- suppressMessages(rmarkdown::render(file, quiet = T,
                                                       output_format = schola_redoc(),
                                                       clean = T))
-  file_new <- redoc::redoc_extract_rmd(file_rendered, type = "roundtrip", dir = tempdir())
+  file_new <- redoc::redoc_extract_rmd(file_rendered, type = "roundtrip", dir = tempdir(), overwrite = T)
   fs::file_copy(file_new, file, overwrite = T)
   if(open) {
     suppressMessages(usethis::edit_file(file))
