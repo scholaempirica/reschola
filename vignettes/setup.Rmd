@@ -70,6 +70,16 @@ Also, go to Global Options and under `Workspace`, uncheck `Restore .RData into w
 
 **What to watch out for:** remember that once you close RStudio, whatever data is not saved, or whatever data you do not have code for recreating, will be lost.
 
+##### RStudio Cloud {.bs-callout .bs-callout-green}
+
+If you need someone to run something in R but they don't have anything installed, you can point them to [RStudio Cloud](https://rstudio.cloud/).
+
+It requires free registration.
+
+This is a well-functioning installation on a remote server which you can run in the browser.
+
+It is also great for teaching.
+
 ### Development tools
 
 First, run `install.packages("devtools")`. You may or may not be prompted to install Rtools.
