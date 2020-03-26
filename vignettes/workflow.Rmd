@@ -55,6 +55,19 @@ Let's not repeat code and keep reinventing the wheel.
 
 ## Building blocks
 
+#### On reproducibility frameworks {.bs-callout .bs-callout-blue}
+
+The workflow described here does not rely on a particular framework that would enforce a project structure and a way of orchestrating all the bits together.
+
+It is more lightweight - it suggests a structure, a way of working, and provides suggested integrators (such as `build.R` and `shared.R` and the `00_` data load scripts).
+It relies on simple order of execution and on the analyst putting the right bits of code in the right places.
+
+You are free to change any of this, but also responsible for making sure that the system you create actually works.
+
+This lightweight approach also does not provide any optimalisation with regard to build time, like a `make`- or `drake`-based workflow would (e.g. by only rebuilding outputs when te code has changed.)
+
+If you would like a more rigid framework or need one that optimizes for computing time, look through your options in the [Resources](#resources-for-building-reproducible-workflows) section below.
+
 ### 1. Project initiation via the project template
 
 The `reschola` package provides an RStudio project template that (a) takes care of setting up your project on Github (if you let it) and (b) creates a default project structure, incorporating key parameters that you give it in setup.
@@ -322,3 +335,5 @@ Wilson et al. 2016, ["Good Enough Practices in Scientific Computing"](https://ar
 [Reproducible Analytical Pipelines](https://ukgovdatascience.github.io/rap-website/)
 
 [Workflowr](https://jdblischak.github.io/workflowr/)
+
+[orderly](https://vimc.github.io/orderly/)
