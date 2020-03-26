@@ -13,7 +13,8 @@ status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.o
 
 The goal of reschola is to provide a set of utilities for data analysis
 at [Schola Empirica](http://scholaempirica.org). The vignettes for the
-package also document the Schola Empirica way of doing data analysis.
+package also document the Schola Empirica way of doing data analysis and
+provide guidance and tips on tools and good practice.
 
 ## Installation
 
@@ -21,14 +22,17 @@ You can install the released version of reschola from
 [Github](https://github.com) with:
 
 ``` r
-remotes::install_github("scholaempirica/reschola", ref = remotes::github_release())
+remotes::install_github("scholaempirica/reschola", 
+                         ref = remotes::github_release(),
+                         build_vignettes = TRUE)
 ```
 
 The current development version [Github](https://github.com) can be
 installed with:
 
 ``` r
-remotes::install_github("scholaempirica/reschola")
+remotes::install_github("scholaempirica/reschola",
+                         build_vignettes = TRUE))
 ```
 
 If you are having trouble installing packages from sources, the binaries

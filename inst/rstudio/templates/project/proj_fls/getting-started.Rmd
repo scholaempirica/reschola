@@ -32,6 +32,8 @@ You can find guidelines for building Schola Empirica projects by running the fol
 vignette("workflow", package = "reschola")
 ```
 
+(If R cannot find the vignette, make sure you add `build_vignettes = TRUE` in `install_github("scholaempirica/reschola)`).
+
 If you are having trouble setting up your system, see
 
 ```{r}

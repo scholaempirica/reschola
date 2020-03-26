@@ -22,6 +22,8 @@ The most important components include:
 
 See the [Setup [TODO]](setup.html) vignette (`vignette('setup', package = 'reschola')`).
 
+(If R cannot find the vignette, make sure you add `build_vignettes = TRUE` in `install_github("scholaempirica/reschola)`).
+
 ### An Rstudio project template for easy project setup
 
 This is accessed through the RStudion menu: File > New project > New directory > Standard Schola Empirica Project.
