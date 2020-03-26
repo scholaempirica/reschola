@@ -263,7 +263,12 @@ Run `reschola::manage_docx_header_logos()` to replace default Schola logo or add
 
 ### 9. Prepare project for reuse
 
-[To be finished]
+Really just make sure that you have followed the steps. If you have, then:
+
+- files should be named properly and with the correct order
+- each Rmd file should run without error
+- `build.R` should contain all scripts needed to run the whole thing in the right order; so should any other built-type script you may have created
+- README.md should contain workable instructions
 
 ## Tools for implementing good practices
 
