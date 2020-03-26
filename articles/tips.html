@@ -12,21 +12,21 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Tips and Tricks for R and Rstudio">
-<meta property="og:description" content="">
+<meta property="og:description" content="Tips and tricks for working with R in RStudio">
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.7.9000</span>
       </span>
     </div>
 
@@ -56,16 +56,16 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    How-tos
+    Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/setup.html">Setup</a>
+      <a href="../articles/setup.html">Getting everything ready for work</a>
     </li>
     <li>
-      <a href="../articles/tips.html">Tips and tricks</a>
+      <a href="../articles/tips.html">Tips and Tricks for R and Rstudio</a>
     </li>
     <li>
       <a href="../articles/workflow.html">The Workflow</a>
@@ -74,7 +74,7 @@
       <a href="../articles/charts.html">Making charts</a>
     </li>
     <li>
-      <a href="../articles/meta.html">Keeping this package up to scratch</a>
+      <a href="../articles/meta.html">Developing this package further</a>
     </li>
   </ul>
 </li>
@@ -87,7 +87,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/scholaempirica/reschola">
+  <a href="https://github.com/scholaempirica/reschola/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -105,7 +105,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Tips and Tricks for R and Rstudio</h1>
+      <h1 data-toc-skip>Tips and Tricks for R and Rstudio</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/master/vignettes/tips.Rmd"><code>vignettes/tips.Rmd</code></a></small>
@@ -115,7 +115,6 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(reschola)</a></code></pre></div>
 <p>This vignette provides some handy tips and tricks for working with R in RStudio. For more fundamental principles and guidance on getting R and RStudio setup for the Schola workflow, see the <a href="setup.html">Setup</a> vignette. For guidance on the workflow itself, see the <a href="workflow.html">Workflow</a> vignette.</p>
 <div id="rstudio-tips" class="section level2">
 <h2 class="hasAnchor">
@@ -124,13 +123,13 @@
 <div id="general-helpers" class="section level3">
 <h3 class="hasAnchor">
 <a href="#general-helpers" class="anchor"></a>General helpers</h3>
-<p>**Code completion*: when typing a function name, press <code>Tab</code> and RStudio will show functions/objects which match that name. Use the arrows to navigate the entry you need and press <code>Tab</code> again. Likewise with parameters once you are inside parentheses. Note that you can type e.g. <code>usegitrel</code> to get a suggestion for <code>use_github_release()</code> as RStudio looks intelligently through functions names some_function_name(). (This is also a good reason to use underscores in your own object/function names).</p>
+<p>**Code completion*: when typing a function name, press <code>Tab</code> and RStudio will show functions/objects which match that name. Use the arrows to navigate the entry you need and press <code>Tab</code> again. Likewise with parameters once you are inside parentheses. Note that you can type e.g. <code>usegitrel</code> to get a suggestion for <code>use_github_release()</code> as RStudio looks intelligently through functions names some_function_name(). (This is also a good reason to use underscores in your own object/function names).</p>
 <p><strong>Paths completion</strong>: when inside quotes, type or press tab and RStudio will suggest files inside the current project.</p>
 <p><strong>Go to anything</strong>: in RStudio, press <code>ctrl</code>+ <code>.</code>, and start typing. RStudio will suggest files and functions in this project and if you click/arrow+enter into one, will take you to the code.</p>
 <p><strong>Cheatsheets</strong>: in help &gt; Cheatsheets, you can get to two-page cheatsheets on some of the most used packages. They are also <a href="https://rstudio.com/resources/cheatsheets/">online</a>.</p>
 <p><strong>Multiple cursors</strong>: when making changes to similar lines, you can use multiple cursors: press <code>alt</code> and drag up or down or press <code>ctrl</code>+<code>alt</code>+<code>up</code>/<code>down</code> to add cursor in the above or below line. Press <code>ctrl</code>+<code>alt</code> and click to add cursors anywhere. Then type, move around, delete etc.; when done, press <code>esc</code>.</p>
-<p><strong>Object view</strong>: holding <code>ctrl</code> while clicking on any object name in the code editor lets you view that object: code for functions, dataset viewer for data.</p>
-<p><strong>Accessing help</strong>: pressing <code>F1</code> when your curser is on a function name will display the documentatin for that function, same for package names</p>
+<p><strong>Object view</strong>: holding <code>ctrl</code> while clicking on any object name in the code editor, or pressing <code>F2</code>, lets you view that object: code for functions, dataset viewer for data.</p>
+<p><strong>Accessing help</strong>: pressing <code>F1</code> when your cursor is on a function name will display the documentatin for that function, same for package names</p>
 </div>
 <div id="snippets" class="section level3">
 <h3 class="hasAnchor">
@@ -183,7 +182,7 @@
 <h2 class="hasAnchor">
 <a href="#retrieving-documentation" class="anchor"></a>Retrieving documentation</h2>
 <p>Besides the F1 key, you can use <code>?function</code> to get help for <code>function</code> and <code>??term</code> to search for <code>term</code> in all documentation of all installed packages.</p>
-<p>Longer-form documentation for packages is often found in vignettes. Run <code>vignette('vignette-name', 'package-name')</code> to get a particular one. (Intro vignettes often have the name of the package, e.g. <code><a href="../articles/reschola.html">vignette('reschola', 'reschola')</a></code>). Get list of vignettes for any package <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes('package-name')</a></code>.</p>
+<p>Longer-form documentation for packages is often found in vignettes. Run <code>vignette('vignette-name', 'package-name')</code> to get a particular one. (Intro vignettes often have the name of the package, e.g. <code><a href="../articles/reschola.html">vignette('reschola', 'reschola')</a></code>). Get list of vignettes for any package <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes('package-name')</a></code>.</p>
 </div>
 <div id="getting-help-beyond-the-documentation" class="section level2">
 <h2 class="hasAnchor">
@@ -205,7 +204,7 @@
 <p>Mostly useful for package development, but some utilities also make your life easier in any project:</p>
 <ul>
 <li>
-<code>edit_*</code> for shortcuts to editing setup files e.g. <code>.Rprofile</code>
+<code>edit_*</code> for shortcuts to editing setup files e.g. <code>.Rprofile</code>
 </li>
 <li>
 <code>ui_*</code> for creating nice console output in your code</li>
@@ -221,7 +220,7 @@
 <code><a href="https://dplyr.tidyverse.org/reference/tally.html">dplyr::tally(weight = )</a></code> / <code><a href="https://dplyr.tidyverse.org/reference/tally.html">dplyr::add_tally(weight = )</a></code>
 </li>
 <li>
-<code>skimr::skim(df)</code> / <code>df %&gt;% group_by(var) %&gt;% skim()</code>
+<code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skimr::skim(df)</a></code> / <code>df %&gt;% group_by(var) %&gt;% skim()</code>
 </li>
 <li>
 <a href="https://docs.ropensci.org/visdat/">visdat</a> for quick data overview</li>
@@ -237,11 +236,15 @@
 <a href="#data-input" class="anchor"></a>Data input</h2>
 <ul>
 <li>
-<code>data.table::fread()</code> for faster CSV reading</li>
+<code><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">data.table::fread()</a></code> for faster CSV reading</li>
 <li>
 <a href="https://vroom.r-lib.org/"><code>vroom</code></a> for fast CSV reading of large datasets</li>
 <li>
 <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv2()</a></code> for reading semicolon-separated CSVs with decimal comma</li>
+<li>
+<code><a href="https://readr.tidyverse.org/reference/encoding.html">readr::guess_encoding()</a></code> if the text comes in garbled.</li>
+<li>
+<code>haven</code> for importing SPSS, STATA, SAS files</li>
 </ul>
 <div id="from-limesurvey" class="section level3">
 <h3 class="hasAnchor">
@@ -390,27 +393,11 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#rstudio-tips">RStudio tips</a></li>
-      <li><a href="#retrieving-documentation">Retrieving documentation</a></li>
-      <li><a href="#getting-help-beyond-the-documentation">Getting help beyond the documentation</a></li>
-      <li><a href="#the-usethis-package-utilities-for-easy-code-development">The <code>usethis</code> package: utilities for easy code development</a></li>
-      <li><a href="#data-exploration">Data exploration</a></li>
-      <li><a href="#data-input">Data input</a></li>
-      <li><a href="#data-output">Data output</a></li>
-      <li><a href="#data-checking">Data checking</a></li>
-      <li><a href="#data-cleaning">Data cleaning</a></li>
-      <li><a href="#resources-for-different-data-types-or-analysis-areas">Resources for different data types or analysis areas</a></li>
-      <li><a href="#getting-stuff-on-the-web">Getting stuff on the web</a></li>
-      <li><a href="#long-form-multipart-reports">Long-form, multipart reports</a></li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 
@@ -421,7 +408,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
 
       </footer>
