@@ -1,5 +1,5 @@
 ---
-title: "Setup"
+title: "Getting everything ready for work"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{setup}
@@ -109,7 +109,7 @@ For some recently released or updated packages, a binary may not be available ju
 
 **Github** contains packages without much quality control. Proxies of quality include how well documented the package is externally, how often/recently it has been updated, whether the author responds to issues etc.
 
-You need to build Github packages, i.e. your machine needs to have the build tools. 
+You need to build Github packages so your machine may need to have the build tools. 
 	
 Often a CRAN package will have a more recent, but less well tested, version on Github. You can install it if you need a newer version but beware. Often, package authors also accept issues (bug reports) on Github and Github is also where you would contribute to a package.
 

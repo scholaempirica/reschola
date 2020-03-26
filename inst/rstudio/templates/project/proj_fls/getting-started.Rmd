@@ -28,7 +28,7 @@ You may want to build different versions of `build_*.R` as helpers for running d
 
 You can find guidelines for building Schola Empirica projects by running the following chunk:
 
-```{r setup, include=FALSE}
+```{r}
 vignette("workflow", package = "reschola")
 ```
 
@@ -44,10 +44,10 @@ For tips on using R and RStudio efficiently, run
 vignette("tips", package = "reschola")
 ```
 
-And if you would like to make changes to the rechola package, see
+And if you would like to make changes to the reschola package, see
 
 ```{r}
-vignette("tips", package = "reschola")
+vignette("meta", package = "reschola")
 ```
 
 

@@ -15,7 +15,7 @@
 #' @param action whether to add new logo on the right (`"add_client"`) or
 #'  replace default Schola logo on the left (`"replace_schola"`)
 #' @param height height of the new logo in the resulting document, in `cm`.
-#' By default, uses the height of an existing document
+#' By default, uses the height of the existing Schola logo in the header.
 #'
 #' @return invisibly returns the name of the new Word doc, which is same as the input Word doc,
 #' with an an added `_addedlogo` suffix.

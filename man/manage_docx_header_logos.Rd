@@ -21,7 +21,7 @@ manage_docx_header_logos(
 replace default Schola logo on the left (\code{"replace_schola"})}
 
 \item{height}{height of the new logo in the resulting document, in \code{cm}.
-By default, uses the height of an existing document}
+By default, uses the height of the existing Schola logo in the header.}
 }
 \value{
 invisibly returns the name of the new Word doc, which is same as the input Word doc,
