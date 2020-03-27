@@ -88,14 +88,26 @@ schola_project <- function(path, ...) {
 
   # Text that will go into README.md
 
-  readme_text <- c(stringr::str_glue("# {dots$title}\n\n\n"),
+  title_readme <- ifelse(dots$title == "", path, dots$title)
+
+  readme_text <- c(stringr::str_glue("# {title_readme}\n\n\n"),
   "<!-- badges: start -->",
   "<!-- badges: end -->\n",
   "This is the README file for your project. Edit it as you like.\n",
   "It shows up when someone looks at the Github repository.\n",
   "It should inform others what the project is about and give basic",
   "information about what is in the repository and how to use it.\n\n",
-  "If you would like to run R code in your README, run `usethis::use_readme_rmd()`")
+  "If you would like to run R code in your README, run `usethis::use_readme_rmd()`",
+  "\n\n",
+  "This project was created using the `reschola` project template",
+  "and should follow the `reschola` workflow.\n",
+  "See <scholaemprica.github.io/reschola> for details.\n\n\n",
+  "Note that the `data-raw` and `data-processed` directories are intentionally configured",
+  "to disallow adding files to git, and hence empty on Github.",
+  "The raw data is to be inserted manually or downloaded from Google Drive",
+  "and the processed data is created by the scripts in the project.\n",
+  "See the project documentation to see exactly how to recreate the data files.",
+  "Only change the .gitignore files in those directories if you are sure it is a good idea.")
 
   writeLines(readme_text, con = "README.md")
 
@@ -139,9 +151,11 @@ schola_project <- function(path, ...) {
   # create the rest of the project structure
 
   fs::dir_create("data-input")
-  usethis::use_git_ignore("data-input")
+  usethis::use_git_ignore("*", "data-input") # have git ignore everything in that dir
+  usethis::use_git_ignore("!.gitignore", "data-input") # except the .gitignore, so the dir will be committed
   fs::dir_create("data-processed")
-  usethis::use_git_ignore("data-processed")
+  usethis::use_git_ignore("*", "data-processed") # ditto
+  usethis::use_git_ignore("!.gitignore", "data-processed") #ditto
   fs::dir_create("data-output")
   fs::dir_create("charts-output")
   fs::dir_create("reports-output")

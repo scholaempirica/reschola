@@ -126,6 +126,12 @@ Fill in the fields (only directory name is mandatory), switch the Git menu to ge
 
 Other ways are possible but this gives you a good starting point and takes care of a lot of the setup hassle for you.
 
+##### Not committing sensitive data to git {.bs-callout .bs-callout-red}
+
+The `data-input` and `data-processed` have `.gitignore` files in to stop you form committing sensitive data to git. 
+Commit these `.gitignore` files to git.
+But only alter them if you are sure you know what you are doing.
+
 #### Google Authentication {.bs-callout .bs-callout-yellow}
 
 If you haven't used the `googledrive` package before, the package may ask for authorisation to access Google Drive. This is legitimate and you should grant access.

@@ -1,5 +1,9 @@
 # reschola (development version)
 
+## Bug fixes
+
+* project setup now creates `data-raw` and `data-processed` such that the directories can go into git but not its contents; documentation explains this in multiple places.
+
 # reschola 0.2.8
 
 ## Bug fixes

@@ -20,6 +20,10 @@ It comes with some files and directories as suggested ways of organising your wo
 - `charts-output` and `reports-output` for the obvious
 - `99_reproducibility.R` by default contains a description of the system and environment used to run the analysis. Use it to store any other information useful for reproducing the analysis (but not passwords etc.)
 
+The `data-input` and `data-processed` have `.gitignore` files in to stop you form committing sensitive data to git. 
+Commit these `.gitignore` files to git.
+But only alter them if you are sure you know what you are doing.
+
 You should feel free to move code between the analysis and the `00*_*` scripts as you discover data transformations that should be made earlier on in the workflow.
 
 Use `build.R` to tie these together - when run, it should rebuild the whole project from scratch, except perhaps downloading data.
