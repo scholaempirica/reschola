@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.8.9000</span>
       </span>
     </div>
 
@@ -250,10 +250,15 @@
 <p>Ideally, start from a clean RStudio session with no project open.</p>
 </blockquote>
 <p>Fill in the fields (only directory name is mandatory), switch the Git menu to get a (reschola/your) Github repo of you wish, select other options if needed, check “Open in new session”, and click <code>Create</code>.</p>
+<p>Other ways are possible but this gives you a good starting point and takes care of a lot of the setup hassle for you.</p>
+<div id="not-committing-sensitive-data-to-git" class="section level5 bs-callout bs-callout-red">
+<h5 class="hasAnchor">
+<a href="#not-committing-sensitive-data-to-git" class="anchor"></a>Not committing sensitive data to git</h5>
+<p>The <code>data-input</code> and <code>data-processed</code> have <code>.gitignore</code> files in to stop you form committing sensitive data to git. Commit these <code>.gitignore</code> files to git. But only alter them if you are sure you know what you are doing.</p>
+</div>
 <div id="google-authentication" class="section level4 bs-callout bs-callout-yellow">
 <h4 class="hasAnchor">
 <a href="#google-authentication" class="anchor"></a>Google Authentication</h4>
-<p>Other ways are possible but this gives you a good starting point and takes care of a lot of the setup hassle for you.</p>
 <p>If you haven’t used the <code>googledrive</code> package before, the package may ask for authorisation to access Google Drive. This is legitimate and you should grant access. This happens in the browser and on some machines may cause project initiatition to freeze or stop. If that happens, run <code><a href="https://googledrive.tidyverse.org/reference/drive_auth.html">googledrive::drive_auth()</a></code>, delete the directory created by the previous project creation attempt, and try creating the project again.</p>
 </div>
 </div>
