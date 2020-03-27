@@ -58,7 +58,7 @@ Install the latest 'release' version from <https://cran.r-project.org/>.
 
 Install the latest version from [rstudio.com](https://rstudio.com). There are [preview releases](https://www.rstudio.com/products/rstudio/download/preview), which are stable, and [dailies](https://dailies.rstudio.com/), which are not and are not meant for normal use.
 
-Once installed, set it up for git if you already have it (see below for setting up RStudio for git and for installing git.)
+Once installed, set it up for git if you already have it (see [below](#rstudio-and-git) for setting up RStudio for git and for [installing git](#installing-git-1).)
 
 Also, go to Global Options and under `Workspace`, uncheck `Restore .RData into workspace at startup` and set `Save workspace to .RData on exit` to `Never`.
 
@@ -194,7 +194,7 @@ You rename a repository on your machine just by renaming the directory - no othe
 ##### Local and remote
 
 Any repository lives in a local directory. In the context of working with Github, this is your local copy. 
-Copies elsewhere with which you may want to "sync" (see *push* and *pull* below) are called *remotes*.
+Copies elsewhere with which you may want to "sync" (see [*push* and *pull*](#some-basic-concepts-for-working-with-git) below) are called *remotes*.
 (You can see the remotes for your repo by `git remotes -v`) 
 Each remote has a name; github repose are customarily called origin - origin tends to be the default remote.
 

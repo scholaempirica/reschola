@@ -68,7 +68,7 @@ In principle, small changes (e.g. correcting typos) can be made in the web inter
 This is done by going to the relevant file on Github, clicking the pencil icon, and editing the text. 
 When saving changes, Github prompts you to make a commit, which triggers a rebuild and republish of the web documentation.
 
-Function documentation is contained in the functions' R files in `R/`, vignettes are in `/vignettes`. The `charts.Rmd`/`charts.Rmd.orig` vignette requires special treatment - see above. 
+Function documentation is contained in the functions' R files in `R/`, vignettes are in `/vignettes`. The `charts.Rmd`/`charts.Rmd.orig` vignette requires special treatment - see [above](#checks-continuous-integration). 
 
 Big changes should be done after cloning the repo and opening in RStudio, ideally on a separate branch.
 

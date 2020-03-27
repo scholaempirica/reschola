@@ -100,7 +100,7 @@ There are two templates in the package: Schola Word report, and Schola redoc rep
 The Word report is simple: it creates a word document with some nice custom defaults and styles.
 
 The redoc-based template looks similar - and so does its output - but it has some superpowers. 
-It allows you to pull into Rmarkdown any edits, tracked changes and comments that people make *in the resulting Word document*. See below for how to work with it.
+It allows you to pull into Rmarkdown any edits, tracked changes and comments that people make *in the resulting Word document*. See [below](#7-iterate-the-report-collaboratively) for how to work with it.
 
 ### 4. ggplot2 theme
 
@@ -191,7 +191,7 @@ If you would like to collaborate with stakeholders using MS Word for providing r
 
 For now, you can work the same as with any RMarkdown file.
 
-See below in "Iterate the report" on the steps to make collaboration work.
+See below in ["Iterate the report"](#7-iterate-the-report-collaboratively) on the steps to make collaboration work.
 
 #### Web output
 
