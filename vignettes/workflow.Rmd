@@ -190,7 +190,7 @@ Use `draft_*` to quickly create a draft using the required template.
 
 If you would like to collaborate with stakeholders using MS Word for providing revisions and comments on your report, choose the `draft_redoc()` template, or switch your existing file's `output` YAML field to `schola_redoc`. 
 
-For now, you can work the same as with any RMarkdown file.
+For now, you can work it with it the same way as with any RMarkdown file.
 
 See below in ["Iterate the report"](#7-iterate-the-report-collaboratively) on the steps to make collaboration work.
 
