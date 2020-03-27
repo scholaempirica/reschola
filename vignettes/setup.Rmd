@@ -166,6 +166,12 @@ This includes the setup of RStudio for git: there are a few options you need to 
 
 Then run `usethis::git_vaccinate` to get git to always ignore files which you never want committed. You only need to do this once per computer.
 
+### RStudio and git
+
+Go to `Tools > Global Options > Git/SVN` and tick `Use version control...` You should see a git executable in the field below. If you don't, see [Jenny Bryan's troubleshooting guide](https://happygitwithr.com/rstudio-see-git.html).
+
+If you set a project to use git, you should see a Git pane in the top right. (This is done either in the `Project Options` menu or by `usethis::use_git()`).
+
 ## Github
 
 In brief:
