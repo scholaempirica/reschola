@@ -224,7 +224,7 @@
 <a href="#document-templates" class="anchor"></a>3. Document templates</h3>
 <p>There are two templates in the package: Schola Word report, and Schola redoc report.</p>
 <p>The Word report is simple: it creates a word document with some nice custom defaults and styles.</p>
-<p>The redoc-based template looks similar - and so does its output - but it has some superpowers. It allows you to pull into Rmarkdown any edits, tracked changes and comments that people make <em>in the resulting Word document</em>. See below for how to work with it.</p>
+<p>The redoc-based template looks similar - and so does its output - but it has some superpowers. It allows you to pull into Rmarkdown any edits, tracked changes and comments that people make <em>in the resulting Word document</em>. See <a href="#7-iterate-the-report-collaboratively">below</a> for how to work with it.</p>
 </div>
 <div id="ggplot2-theme" class="section level3">
 <h3 class="hasAnchor">
@@ -290,8 +290,9 @@
 <p>That way you get a sense of the thought process but also a bloated and circuitous script. Another is to do the analysis in one or more files and only moving bits into the report which are needed there.</p>
 <p>That way you get a tight report script but at times disconnected from the analytical process.</p>
 <p>One way to lighten the load is to hive off some work into partial Rmarkdown files, typically named <code>_something.Rmd</code>, and then “insert” them into the main document via</p>
-<pre><code># ```{r, child=c('one.Rmd', 'two.Rmd')} # remove the hash mark
-# ``` # remove the hash mark</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1">```{r child=c('_one.Rmd', '_two.Rmd')}</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">```</a></code></pre></div>
+<p>```</p>
 <p>See RMarkdown Cookbook <a href="https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html">on child documents</a>.</p>
 </div>
 </div>
@@ -303,8 +304,8 @@
 <h4 class="hasAnchor">
 <a href="#collaborating-with-ms-word-users" class="anchor"></a>Collaborating with MS Word users</h4>
 <p>If you would like to collaborate with stakeholders using MS Word for providing revisions and comments on your report, choose the <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> template, or switch your existing file’s <code>output</code> YAML field to <code>schola_redoc</code>.</p>
-<p>For now, you can work the same as with any RMarkdown file.</p>
-<p>See below in “Iterate the report” on the steps to make collaboration work.</p>
+<p>For now, you can work it with it the same way as with any RMarkdown file.</p>
+<p>See below in <a href="#7-iterate-the-report-collaboratively">“Iterate the report”</a> on the steps to make collaboration work.</p>
 </div>
 <div id="web-output" class="section level4">
 <h4 class="hasAnchor">

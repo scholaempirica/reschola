@@ -170,7 +170,7 @@
 <h3 class="hasAnchor">
 <a href="#rstudio" class="anchor"></a>RStudio</h3>
 <p>Install the latest version from <a href="https://rstudio.com">rstudio.com</a>. There are <a href="https://www.rstudio.com/products/rstudio/download/preview">preview releases</a>, which are stable, and <a href="https://dailies.rstudio.com/">dailies</a>, which are not and are not meant for normal use.</p>
-<p>Once installed, set it up for git if you already have it (see below for setting up RStudio for git and for installing git.)</p>
+<p>Once installed, set it up for git if you already have it (see <a href="#rstudio-and-git">below</a> for setting up RStudio for git and for <a href="#installing-git-1">installing git</a>.)</p>
 <p>Also, go to Global Options and under <code>Workspace</code>, uncheck <code>Restore .RData into workspace at startup</code> and set <code>Save workspace to .RData on exit</code> to <code>Never</code>.</p>
 <div id="workspace-in-rstudio" class="section level5 bs-callout bs-callout-red">
 <h5 class="hasAnchor">
@@ -255,6 +255,12 @@ options(repos=r)})</a></code></pre>
 <p>For installing and setting up git <em>and</em> finding your way around Git and Github, the best you can do is follow Jenny Bryan’s <a href="https://happygitwithr.com/">Happy Git With R</a> step by step. This also has some useful troubleshooting tips for the usual hell around authentication to Github etc.</p>
 <p>This includes the setup of RStudio for git: there are a few options you need to check or change.</p>
 <p>Then run <code><a href="https://usethis.r-lib.org/reference/git_vaccinate.html">usethis::git_vaccinate</a></code> to get git to always ignore files which you never want committed. You only need to do this once per computer.</p>
+<div id="rstudio-and-git" class="section level3">
+<h3 class="hasAnchor">
+<a href="#rstudio-and-git" class="anchor"></a>RStudio and git</h3>
+<p>Go to <code>Tools &gt; Global Options &gt; Git/SVN</code> and tick <code>Use version control...</code> You should see a git executable in the field below. If you don’t, see <a href="https://happygitwithr.com/rstudio-see-git.html">Jenny Bryan’s troubleshooting guide</a>.</p>
+<p>If you set a project to use git, you should see a Git pane in the top right. (This is done either in the <code>Project Options</code> menu or by <code><a href="https://usethis.r-lib.org/reference/use_git.html">usethis::use_git()</a></code>).</p>
+</div>
 </div>
 <div id="github" class="section level2">
 <h2 class="hasAnchor">
@@ -282,7 +288,7 @@ options(repos=r)})</a></code></pre>
 <div id="local-and-remote" class="section level5">
 <h5 class="hasAnchor">
 <a href="#local-and-remote" class="anchor"></a>Local and remote</h5>
-<p>Any repository lives in a local directory. In the context of working with Github, this is your local copy. Copies elsewhere with which you may want to “sync” (see <em>push</em> and <em>pull</em> below) are called <em>remotes</em>. (You can see the remotes for your repo by <code>git remotes -v</code>) Each remote has a name; github repose are customarily called origin - origin tends to be the default remote.</p>
+<p>Any repository lives in a local directory. In the context of working with Github, this is your local copy. Copies elsewhere with which you may want to “sync” (see <a href="#some-basic-concepts-for-working-with-git"><em>push</em> and <em>pull</em></a> below) are called <em>remotes</em>. (You can see the remotes for your repo by <code>git remotes -v</code>) Each remote has a name; github repose are customarily called origin - origin tends to be the default remote.</p>
 </div>
 <div id="working-copy-staging-area-committed-files" class="section level5">
 <h5 class="hasAnchor">
