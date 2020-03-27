@@ -173,9 +173,10 @@ That way you get a tight report script but at times disconnected from the analyt
 
 One way to lighten the load is to hive off some work into partial Rmarkdown files, typically named `_something.Rmd`, and then "insert" them into the main document via
 
+````markdown
+`r ''````{r child=c('_one.Rmd', '_two.Rmd')}
 ```
-# ```{r, child=c('one.Rmd', 'two.Rmd')} # remove the hash mark
-# ``` # remove the hash mark
+````
 ```
 
 See RMarkdown Cookbook [on child documents](https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html).
