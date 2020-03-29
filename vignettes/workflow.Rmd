@@ -114,6 +114,8 @@ See the [Making charts](charts.html) vignette for details on everything graphics
 
 ### 5. Utilities
 
+There are also utilities, e.g. for creating report drafts (`draft_*()`) and for interacting with Google Drive (`gdrive_*()`)
+
 ## Step by step
 
 ### 1. Start a new project
@@ -192,13 +194,45 @@ See RMarkdown Cookbook [on child documents](https://bookdown.org/yihui/rmarkdown
 
 Use `draft_*` to quickly create a draft using the required template.
 
-#### Collaborating with MS Word users {.bs-callout .bs-callout-blue}
+The Word output of the two templates is aesthetically equivalent, but the `_word` template (and output format as set in the YAML header) can do more sophisticated handling of e.g. [cross-references][Footnotes and cross-references].
+
+Note the `schola_word` format is based on the `bookdown::word_document2` format. This means it can be customised like [other bookdown documents](https://bookdown.org/yihui/bookdown/) and even strung into a whole book.
+
+##### Collaborating with MS Word users {.bs-callout .bs-callout-blue}
 
 If you would like to collaborate with stakeholders using MS Word for providing revisions and comments on your report, choose the `draft_redoc()` template, or switch your existing file's `output` YAML field to `schola_redoc`. 
 
 For now, you can work it with it the same way as with any RMarkdown file.
 
-See below in ["Iterate the report"](#7-iterate-the-report-collaboratively) on the steps to make collaboration work.
+See below on [collaborating with MS Word][7. Iterate the report collaboratively] on the steps to make collaboration work.
+
+#### Footnotes and cross-references
+
+You can create a cross-reference to any section, e.g. link to section Methods using `[Methods]` or `[the methods section][Methods]`.
+This will show up as a link in Word and HTML.
+
+Create a footnote by using `Text^[This is a footnote]`.
+
+You can also refer to tables, figures and equations.
+This only works in the `schola_word` output format (template). 
+
+Do it like this:
+
+- `See table \@ref(fig:graf6).` to ref to a table in a chunk named `graf6`
+- `As table \@ref(tab:tab3) shows...` for a table in a chunk named `tab3`
+
+Note that these chunks need to have the `fig.cap` set to a non-empty string, and they need to have a chunk name.
+
+Edit `_bookdown.yml` to change the words used for "Figure" and "Table" in captions.
+
+See more on cross-references [in the bookdown guide](https://bookdown.org/yihui/bookdown/cross-references.html).
+
+If you would like to use the `redoc` features, you can leave these references in while you collaborate with MS Word users (it will leave behind a little messy text, but that should be OK) and then switch the `output` field in the YAML header to `schola_word`. The `schola_word` template also has other features, like generating a table of contents and nnumbering sections.
+
+#### Citations {.bs-callout .bs-callout-blue}
+
+Knitr and Rmarkdown incorporate a system for managing citations and bibliographies, which can take reference lists from a number of citation managers. 
+For the basics, see the [RMarkdown site](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html), details are in the [RMarkdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html).
 
 #### Web output
 
@@ -212,7 +246,8 @@ This is also useful if you are running the same report for a number of units of 
 
 #### Visualising
 
-Charts should be created using `ggplot2` as far as possible. Use the `schola_theme()` theme.
+Charts should be created using `ggplot2` as far as possible.
+Use the `schola_theme()` theme.^[See the [Making charts](charts.html) vignette for more details.]
 
 ### 6. Iterate steps 3-6
 
@@ -243,11 +278,6 @@ See [workflow](workflow.html) guidance for a primer on git and Github, which sho
 When a draft report goes out e.g. to stakeholders for feedback, it might be useful to create a [git tag](https://happygitwithr.com/git-basics.html):
 
 > You can also designate certain snapshots as special with a tag, which is a name of your choosing. In a software project, it is typical to tag a release with its version, e.g., “v1.0.3”. For a manuscript or analytical project, you might tag the version submitted to a journal or transmitted to external collaborators. Figure 20.1 shows a tag, “draft-01”, associated with the last commit.
-
-#### Citations {.bs-callout .bs-callout-blue}
-
-Knitr and Rmarkdown incorporate a system for managing citations and bibliographies, which can take reference lists from a number of citation managers. 
-For the basics, see the [RMarkdown site](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html), details are in the [RMarkdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html).
 
 ### 7. Iterate the report collaboratively
 
@@ -305,11 +335,11 @@ See RStudio part in [setup](setup.html) for the options to set for this.)
 
 ### Safe paths
 
-Use the `here` package instead of `setwd()` to [make sure paths just work]().
+Use the `here` package instead of `setwd()` to [make sure paths just work](https://github.com/jennybc/here_here).
 
 ### File naming conventions
 
-See (Naming things)[https://speakerdeck.com/jennybc/how-to-name-files] by Jenny Bryan.
+See [Naming things](https://speakerdeck.com/jennybc/how-to-name-files) by Jenny Bryan.
 
 - machine readable: ASCII, no spaces, sensible separators (`_` between parts, `-` between words)
 - human readable: descriptive words in title, consistent logic across files

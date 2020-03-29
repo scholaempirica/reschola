@@ -138,6 +138,12 @@ schola_project <- function(path, ...) {
   )
   fs::file_copy(gs_repro, "99_reproducibility.Rmd")
 
+  gs_bookdown <- reschola_file(
+    "rstudio", "templates", "project",
+    "proj_fls", "_bookdown.yml"
+  )
+  fs::file_copy(gs_bookdown, "_bookdown.yml")
+
   # Create sample files
 
   # print(usethis::proj_sitrep())
