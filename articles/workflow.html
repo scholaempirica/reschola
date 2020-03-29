@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.8.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
       </span>
     </div>
 
@@ -237,6 +237,7 @@
 <div id="utilities" class="section level3">
 <h3 class="hasAnchor">
 <a href="#utilities" class="anchor"></a>5. Utilities</h3>
+<p>There are also utilities, e.g. for creating report drafts (<code>draft_*()</code>) and for interacting with Google Drive (<code>gdrive_*()</code>)</p>
 </div>
 </div>
 <div id="step-by-step" class="section level2">
@@ -305,12 +306,39 @@
 <h3 class="hasAnchor">
 <a href="#write-reports-using-a-template" class="anchor"></a>5. Write reports using a template</h3>
 <p>Use <code>draft_*</code> to quickly create a draft using the required template.</p>
-<div id="collaborating-with-ms-word-users" class="section level4 bs-callout bs-callout-blue">
-<h4 class="hasAnchor">
-<a href="#collaborating-with-ms-word-users" class="anchor"></a>Collaborating with MS Word users</h4>
+<p>The Word output of the two templates is aesthetically equivalent, but the <code>_word</code> template (and output format as set in the YAML header) can do more sophisticated handling of e.g. <a href="#footnotes-and-cross-references">cross-references</a>.</p>
+<p>Note the <code>schola_word</code> format is based on the <code><a href="https://rdrr.io/pkg/bookdown/man/html_document2.html">bookdown::word_document2</a></code> format. This means it can be customised like <a href="https://bookdown.org/yihui/bookdown/">other bookdown documents</a> and even strung into a whole book.</p>
+<div id="collaborating-with-ms-word-users" class="section level5 bs-callout bs-callout-blue">
+<h5 class="hasAnchor">
+<a href="#collaborating-with-ms-word-users" class="anchor"></a>Collaborating with MS Word users</h5>
 <p>If you would like to collaborate with stakeholders using MS Word for providing revisions and comments on your report, choose the <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> template, or switch your existing file’s <code>output</code> YAML field to <code>schola_redoc</code>.</p>
 <p>For now, you can work it with it the same way as with any RMarkdown file.</p>
-<p>See below in <a href="#7-iterate-the-report-collaboratively">“Iterate the report”</a> on the steps to make collaboration work.</p>
+<p>See below on <a href="#iterate-the-report-collaboratively">collaborating with MS Word</a> on the steps to make collaboration work.</p>
+</div>
+<div id="footnotes-and-cross-references" class="section level4">
+<h4 class="hasAnchor">
+<a href="#footnotes-and-cross-references" class="anchor"></a>Footnotes and cross-references</h4>
+<p>You can create a cross-reference to any section, e.g. link to section Methods using <code>[Methods]</code> or <code>[the methods section][Methods]</code>. This will show up as a link in Word and HTML.</p>
+<p>Create a footnote by using <code>Text^[This is a footnote]</code>.</p>
+<p>You can also refer to tables, figures and equations. This only works in the <code>schola_word</code> output format (template).</p>
+<p>Do it like this:</p>
+<ul>
+<li>
+<code>See table \@ref(fig:graf6).</code> to ref to a table in a chunk named <code>graf6</code>
+</li>
+<li>
+<code>As table \@ref(tab:tab3) shows...</code> for a table in a chunk named <code>tab3</code>
+</li>
+</ul>
+<p>Note that these chunks need to have the <code>fig.cap</code> set to a non-empty string, and they need to have a chunk name.</p>
+<p>Edit <code>_bookdown.yml</code> to change the words used for “Figure” and “Table” in captions.</p>
+<p>See more on cross-references <a href="https://bookdown.org/yihui/bookdown/cross-references.html">in the bookdown guide</a>.</p>
+<p>If you would like to use the <code>redoc</code> features, you can leave these references in while you collaborate with MS Word users (it will leave behind a little messy text, but that should be OK) and then switch the <code>output</code> field in the YAML header to <code>schola_word</code>. The <code>schola_word</code> template also has other features, like generating a table of contents and nnumbering sections.</p>
+</div>
+<div id="citations" class="section level4 bs-callout bs-callout-blue">
+<h4 class="hasAnchor">
+<a href="#citations" class="anchor"></a>Citations</h4>
+<p>Knitr and Rmarkdown incorporate a system for managing citations and bibliographies, which can take reference lists from a number of citation managers. For the basics, see the <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">RMarkdown site</a>, details are in the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html">RMarkdown Cookbook</a>.</p>
 </div>
 <div id="web-output" class="section level4">
 <h4 class="hasAnchor">
@@ -326,7 +354,7 @@
 <div id="visualising" class="section level4">
 <h4 class="hasAnchor">
 <a href="#visualising" class="anchor"></a>Visualising</h4>
-<p>Charts should be created using <code>ggplot2</code> as far as possible. Use the <code>schola_theme()</code> theme.</p>
+<p>Charts should be created using <code>ggplot2</code> as far as possible. Use the <code>schola_theme()</code> theme.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
 </div>
 <div id="iterate-steps-3-6" class="section level3">
@@ -349,11 +377,6 @@
 <blockquote>
 <p>You can also designate certain snapshots as special with a tag, which is a name of your choosing. In a software project, it is typical to tag a release with its version, e.g., “v1.0.3”. For a manuscript or analytical project, you might tag the version submitted to a journal or transmitted to external collaborators. Figure 20.1 shows a tag, “draft-01”, associated with the last commit.</p>
 </blockquote>
-<div id="citations" class="section level4 bs-callout bs-callout-blue">
-<h4 class="hasAnchor">
-<a href="#citations" class="anchor"></a>Citations</h4>
-<p>Knitr and Rmarkdown incorporate a system for managing citations and bibliographies, which can take reference lists from a number of citation managers. For the basics, see the <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">RMarkdown site</a>, details are in the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html">RMarkdown Cookbook</a>.</p>
-</div>
 </div>
 <div id="iterate-the-report-collaboratively" class="section level3">
 <h3 class="hasAnchor">
@@ -412,12 +435,12 @@
 <div id="safe-paths" class="section level3">
 <h3 class="hasAnchor">
 <a href="#safe-paths" class="anchor"></a>Safe paths</h3>
-<p>Use the <code>here</code> package instead of <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> to <a href="">make sure paths just work</a>.</p>
+<p>Use the <code>here</code> package instead of <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> to <a href="https://github.com/jennybc/here_here">make sure paths just work</a>.</p>
 </div>
 <div id="file-naming-conventions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#file-naming-conventions" class="anchor"></a>File naming conventions</h3>
-<p>See (Naming things)[<a href="https://speakerdeck.com/jennybc/how-to-name-files" class="uri">https://speakerdeck.com/jennybc/how-to-name-files</a>] by Jenny Bryan.</p>
+<p>See <a href="https://speakerdeck.com/jennybc/how-to-name-files">Naming things</a> by Jenny Bryan.</p>
 <ul>
 <li>machine readable: ASCII, no spaces, sensible separators (<code>_</code> between parts, <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> between words)</li>
 <li>human readable: descriptive words in title, consistent logic across files</li>
@@ -489,6 +512,12 @@
 <p><a href="https://ukgovdatascience.github.io/rap-website/">Reproducible Analytical Pipelines</a></p>
 <p><a href="https://jdblischak.github.io/workflowr/">Workflowr</a></p>
 <p><a href="https://vimc.github.io/orderly/">orderly</a></p>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>See the <a href="charts.html">Making charts</a> vignette for more details.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
   </div>
 
