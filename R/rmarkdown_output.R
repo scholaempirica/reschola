@@ -24,12 +24,12 @@ schola_word <- function(...) {
   base$knitr$opts_chunk$error <- FALSE
   base$knitr$opts_chunk$echo <- FALSE
   base$knitr$opts_chunk$cache <- FALSE
-  base$knitr$opts_chunk$fig.width <- 8
-  # base$knitr$opts_chunk$fig.asp <- 0.618
+  base$knitr$opts_chunk$fig.width <- 6.29 # 15.98 cm i.e. 2 x 2.5 cm margins
+  base$knitr$opts_chunk$dpi <- 300
+  # base$knitr$opts_chunk$fig.retina <- 3
+  base$knitr$opts_chunk$fig.asp <- .618 # default height is in golden ratio
   base$knitr$opts_chunk$fig.ext <- "png"
-  base$knitr$opts_chunk$fig.retina <- 3
   base$knitr$opts_chunk$fig.path <- "figures/"
-  # base$knitr$opts_chunk$fig.pos <- "H"
   # nolint end
 
   base
@@ -68,12 +68,12 @@ schola_redoc <- function(...) {
   base$knitr$opts_chunk$error <- FALSE
   base$knitr$opts_chunk$echo <- FALSE
   base$knitr$opts_chunk$cache <- FALSE
-  base$knitr$opts_chunk$fig.width <- 3
-  base$knitr$opts_chunk$fig.asp <- 2
+  base$knitr$opts_chunk$fig.width <- 6.69 # 17 cm i.e. 2 x 2 cm margins
+  base$knitr$opts_chunk$dpi <- 300 # will in reality be 300 so good for printing
+  # base$knitr$opts_chunk$fig.retina <- 2
+  base$knitr$opts_chunk$fig.asp <- .6 # default height is .6 times width
   base$knitr$opts_chunk$fig.ext <- "png"
-  base$knitr$opts_chunk$fig.retina <- 3
   base$knitr$opts_chunk$fig.path <- "figures/"
-  base$knitr$opts_chunk$fig.pos <- "H"
   # this to solve this issue: https://github.com/noamross/redoc/issues/63
   base$knitr$knit_hooks$plot <- knitr:::hook_plot_md_pandoc
   # nolint end
