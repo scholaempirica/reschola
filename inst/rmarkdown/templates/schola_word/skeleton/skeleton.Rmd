@@ -1,8 +1,16 @@
 ---
 title: "Schola-styled Word document"
-author: "Schola Empirica"
+subtitle: "A great one, too"
+author:
+- tým Schola Empirica
+- "kontakt: Jaromír Mazák, mazak@scholaempirica.org"
 date: '`r format(Sys.time(), "%d. %B %Y")`'
-output: reschola::schola_word
+output: 
+  reschola::schola_word:
+    fig_caption: yes
+    toc: no
+    number_sections: false
+abstract: Lorem ipsum abstract
 ---
 
 ```{r setup, include=FALSE}

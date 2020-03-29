@@ -1,7 +1,10 @@
 ---
 title: "Reversible Word-Markdown document"
-author: "Schola Empirica"
-date: "[insert date manually]"
+subtitle: "A great one, too"
+author:
+- tým Schola Empirica
+- "kontakt: Jaromír Mazák, mazak@scholaempirica.org"
+date: insert date manually
 output:
   reschola::schola_redoc:
     highlight_outputs: yes
