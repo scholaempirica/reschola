@@ -1,8 +1,16 @@
 # reschola (development version)
 
+## Improvements
+
+* updated styles in Word templates for both Rmd templates
+* switched logo in Word templates to right side
+* added preparation for using cross-refs in docx: localisation, documentation, examples
+* updated RMarkdown outputs to get figures nice and right size
+
 ## Bug fixes
 
 * project setup now creates `data-raw` and `data-processed` such that the directories can go into git but not its contents; documentation explains this in multiple places.
+* `draft_redoc()` no longer leaves behind a stray docx file
 
 # reschola 0.2.8
 
