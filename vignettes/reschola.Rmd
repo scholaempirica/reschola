@@ -20,26 +20,30 @@ The most important components include:
 
 ### Guidance on how to set up your computer and your mind for doing data analysis the Schola way
 
-See the [Setup [TODO]](setup.html) vignette (`vignette('setup', package = 'reschola')`).
+See the [Setup](setup.html) vignette (`vignette('setup', package = 'reschola')`).
 
 (If R cannot find the vignette, make sure you add `build_vignettes = TRUE` in `install_github("scholaempirica/reschola)`).
 
+There are tips for setup in the [tips](tips.html) vignette.
+
 ### An Rstudio project template for easy project setup
 
-This is accessed through the RStudion menu: File > New project > New directory > Standard Schola Empirica Project.
+This is accessed through the RStudio menu: File > New project > New directory > Standard Schola Empirica Project.
 
-See the [Workflow [TODO]](workflow.html) vignette for how to make the best use of the template in the context of the Schola Empirica workflow. (`vignette('workflow', package = 'reschola')`).
+See the [Workflow](workflow.html) vignette for how to make the best use of the template in the context of the Schola Empirica workflow. (`vignette('workflow', package = 'reschola')`).
 
 ### Templates for producing reports in the Schola style
 
-Accesed through the RStudio menu: File > New File > R Markdown > From Template > [scroll down to reschola package], or through `draft_*` functions in the reschola package.
+Accessed through the RStudio menu: `File > New File > R Markdown > From Template` > [scroll down to reschola package], or through `draft_*` functions in the reschola package.
 
-Notably, there is a templated based on `redoc` a package enabling collaboration between Rmarkdown and MS Word. 
-See the [Workflow [TODO]](workflow.html) vignette (`vignette('workflow', package = 'reschola')`) for details.
+Notably, there is a template based on `redoc`, a package enabling collaboration between Rmarkdown and MS Word. 
+See the [Workflow](workflow.html) vignette (`vignette('workflow', package = 'reschola')`) for details.
+
+There are tips for working efficiently and for packages for specific tasks in the [tips](tips.html) vignette.
 
 ### A ggplot2 theme in the Schola style and related plotting utilities
 
-See [Making charts [TODO]](charts.html) vignette (`vignette('charts', package = 'reschola')`) for details.
+See [Making charts [TODO]](charts.html) vignette (`vignette('charts', package = 'reschola')`) for details and related guidance and resources on making charts in `ggplot2`.
 
 ### Meta: keeping this packate up to date and up to scratch
 
