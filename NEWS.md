@@ -1,5 +1,6 @@
 # reschola (development version)
 
+* New Making charts vignette
 * minor additions to tips and workflow vignettes
 
 # reschola 0.2.9

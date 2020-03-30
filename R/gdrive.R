@@ -51,3 +51,19 @@ gd_download_folder <- function(folder_url, dest_dir = "data-input",
 
   invisible(file.path(dest_dir, drv_files$name))
 }
+
+
+#' Upload a file to a Google Drive folder
+#'
+#' FUNCTION_DESCRIPTION
+#'
+#' @param file path to file
+#' @param target_folder Google Drive Folder URL, defaults to gd_url
+#'
+#' @return RETURN_DESCRIPTION
+#' @examples
+#' # ADD_EXAMPLES_HERE
+gd_upload_file <- function(file, target_folder = gd_url) {
+  folder_dribble <- googledrive::as_dribble(target_folder)
+  googledrive::drive_upload(file, folder_dribble)
+}

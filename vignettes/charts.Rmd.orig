@@ -11,7 +11,9 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 7, fig.height = 4, dev = "png", fig.retina = 3, fig.path = "charts-"
+  fig.width = 7, fig.height = 4, dev = "png", fig.retina = 3,
+  out.width = "100%",
+  fig.path = "charts-"
 )
 library(reschola)
 library(ggplot2)
@@ -20,38 +22,42 @@ library(ggplot2)
 ```{r, echo=F, message=F, warning=F}
 if(requireNamespace("extrafont", quietly = TRUE)) {
   library(extrafont)
-  hrbrthemes::import_plex_sans()
-  hrbrthemes::import_roboto_condensed()
-  hrbrthemes::import_titillium_web()
-  hrbrthemes::import_public_sans()
-  hrbrthemes::import_econ_sans()
   reschola::import_fonts()
   extrafont::loadfonts()
 }
 ```
 
-```{r, echo=F}
-# if(requireNamespace("extrafont", quietly = TRUE)) {
-#   extrafont::fonttable()
-# }
-```
 
+<!-- Once done editing, rename this to charts.Rmd.orig -->
 
-NB: This vignette temporarily serves to test and fine-tune the `theme_schola()` theme and to showcase typography.
+<!-- If you are editing charts.Rmd, stop and go to charts.Rmd.orig -->
 
-This is a bit hacky so ignore font sizes and resolution, which can be handled better in normal Word or HTML output outside of package documentation.
+## `reschola` and charts
 
-When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11.
+This document assumes two things:
 
-- Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do.
-- Roboto Condensed is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.
-- Arial Narrow is fine - you can then use Arial in you word output or generic sans in web output and they would be visually consistent with the charts. But it is not open license so we cannot include it in the package; anyone using the package would have to make sure they have it on their computer.
-- Open Sans, which your website uses, is fine and has good figures, but seems a bit too wide for charts.
+- charts are made in ggplot2
+- you have a fair understanding of ggplot2, so this is not a guide to using that package.
 
-(If we are producing PNG figures, we don't need to worry about which fonts the user of the report has installed on their computer).
+It also does not reiterate the principles of data visualisation, though it does point to some resources in that vein.
 
+## The reschola theme
 
-## The Schola ggplot2 theme
+##### Global theme setting {.bs-callout .bs-callout-blue}
+
+You can set the theme for your whole Rmarkdown document (or session, for that matter) by putting `theme_set(theme_schola())`. Then you don't need to add it to your plots. As `theme_schola()` has parameters which you are likely to need, this seems impractical and anyway could be confusing.
+
+### Basic usage of `theme_schola()`
+
+`reschola` contains the `theme_schola()` theme, which has
+
+- sensible defaults so you are not forever changing the same parameters
+- some aesthetic choices custom for Schola Emppirica
+- good default fonts
+
+The examples below serve as (a) guide to the parameters of the theme, (b) test, and (c) showcase.
+
+> Resolution and sizes can be off on this page. The templates contained in this package are optimised to produce great looking and properly sized charts in Word documents.
 
 First, let's see the default plot, no theme
 
@@ -62,109 +68,99 @@ p <- ggplot(mpg) +
 p
 ```
 
-using `theme_schola()` defaults
+Now let's see what `theme_schola()` defaults do
 
 ```{r schola-default}
 p +
- theme_schola("x")
+ theme_schola("x") # only setting the first parameter to get the right gridlines
 ```
 
+in combination with `flush_axis`
 
-in combination with `flush_axis`, and using the Titillium Web font:
-
-```{r titillium-flush}
+```{r flush}
 p +
- theme_schola("x", family = "Titillium Web", title_family = "Titillium Web") +
+ theme_schola("x") +
  scale_x_continuous(expand = flush_axis)
 ```
 
+Scatterplot
 
-Scatterplot, using yet another font
-
-```{r scatter-plexsans}
+```{r scatter}
 ggplot(mpg) +
  geom_point(aes(cty, hwy)) +
- theme_schola("scatter", family = "IBM Plex Sans", title_family = "IBM Plex Sans") +
+ theme_schola("scatter") +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
 Smaller text, flush plot alignment
 
-```{r scatter-plexsans-smaller}
+```{r scatter-flush}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 9, side_margin = 0, family = "IBM Plex Sans",
-              title_family = "IBM Plex Sans") +
+ theme_schola("scatter", base_size = 9, side_margin = 0) +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
-### Override defaults changed inside `theme_schola()`
+#### Override defaults changed inside `theme_schola()`
 
 ```{r scatter-defaultschanged}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 12, side_margin = 0, family = "Roboto Condensed") +
+ theme_schola("scatter", base_size = 12, side_margin = 0) +
  labs(title = "Lots of cars", subtitle = "Point by point") +
  theme(panel.background = element_rect(fill = "lightpink"))
 ```
 
-### Small mutliples
+#### Small mutliples
 
-Smaller text, using Arial Narrow
-
-```{r arial-narrow}
+```{r multiples}
 p +
- theme_schola("x", multiplot = T, family = "Arial Narrow", title_family = "Arial Narrow") +
+ theme_schola("x", multiplot = T) +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
 
-Same without aesthetic adjustment for `facet_wrap()` and different font
+Same without aesthetic adjustment for `facet_wrap()`
 
-```{r publicans-nomultiplot}
+```{r multiples-nomultiplot}
 p +
- theme_schola("x", multiplot = F, family = "Public Sans", title_family = "Public Sans") +
+ theme_schola("x", multiplot = F) +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
 
-Small mutliples scatter and make it look like The Economist
+Small mutliples scatter
 
-```{r economist}
+```{r multiples-scatter}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", multiplot = T, family = hrbrthemes::font_es,
-              title_family = hrbrthemes::font_es_bold) +
+ theme_schola("scatter", multiplot = T) +
  labs(title = "Lots of cars", subtitle = "Point by point") +
  facet_wrap(~ class, nrow = 2)
 ```
 
+Small mutliples grid
 
-Small mutliples grid, using another font setup
-
-```{r plexmix}
+```{r multiples-grid}
 p +
- theme_schola("x", multiplot = T, family = "IBM Plex Sans Light",
-              title_family = "IBM Plex Sans Bold") +
+ theme_schola("x", multiplot = T) +
  scale_x_continuous(expand = flush_axis) +
  facet_grid(cyl ~ drv)
 ```
 
-Small mutliples scatter grid, using mix of Roboto fonts
+Small mutliples scatter grid
 
-```{r robotomix}
+```{r multiples-scatter-grid}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", multiplot = T, family = "Roboto Condensed",
-              title_family = "Roboto") +
+ theme_schola("scatter", multiplot = T) +
  labs(title = "Lots of cars", subtitle = "Point by point") +
  facet_grid(cyl ~ class)
 ```
 
 Same but without multiplot parameter
 
-
-```{r nomultiplot}
+```{r multiples-scatter-grid-nomultiplot}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = F) +
@@ -172,18 +168,76 @@ ggplot(mpg) +
  facet_grid(cyl ~ class)
 ```
 
-### Making fonts work [for future version of vignette]
+
+## Building a diverging Likert plot
+
+[To be completed once the function is in place]
+
+## Using colour scales
+
+[To be completed once the scales are in place]
+
+## Using custom numeric scales
+
+[To be completed once the scales are in place]
+
+## Making fonts work
 
 The `schola_theme()` is set to use the Roboto and Roboto Condensed font families by default.
 These may not be present on your system.
-You can install them by running `reschola::import_fonts()`. (once per machine)
+You can install them by running `reschola::import_fonts()`. (once per machine, and do follow the instructions in the message output when you call this function.)
 On package load, these will be registered with R.
 If the fonts do not show up in your charts, run `extrafont::loadfonts()` (once per session).
 You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load.
 
-### Using fonts
+## Using fonts
 
-[
-- width
-- figures
-]
+If you end up using different fonts, it is good to choose something that (a) has fixed-width figures in the default set of characters, and (b) has sensible widths or a narrow-width member of the type family (usually called "Condensed", "Narrow" or some such.)
+
+The `hrbrthemes` package has a good range of fonts, some of which tick these criteria. Arial Narrow is narrow and has fixed-width figures.
+IBM Plex Sans, Titillium Sans and Econ Sans all have fixed width figures but not all have Narrow companions.
+
+Public Sans does not have fixed-width figures.
+
+See the [hrbrthemes vignette](https://cran.r-project.org/web/packages/hrbrthemes/vignettes/why_hrbrthemes.html#kern-what) for an explanation of why these criteria matter
+
+## Tricks of the trade for ggplot2
+
+- `theme_void()` for visuals that don't need any gridlines, axes, etc., such as schematic maps
+- aes(..., group = 1) for making all data points in a `geom_line()` into one line
+- `key_glyph` parameter to geoms to pick a specific shape for the legend key
+- `geom_sf_label` for intelligently labelling spatial features plotted through `geom_sf()`
+- `labs(colour = NULL)` for switching off the colour legend, `labs(x = NULL)` to turn off colour label -  quicker than `theme(axis.label.x = element_blank())` and `guides(colour = "none")`
+
+## Resources on good practice
+
+Kieran Healy. [Data Visualisation: a practical introduction](http://socviz.co). With R code.
+
+Claus Wilke.    [Fundamentals of Data Visualisation](https://serialmentor.com/dataviz/) No R code, very strong on principles.
+
+Beyond that and in the world of paper books, anything by Alberto Cairo is solid.
+
+## Handy (or just cool) ggplot2 extensions
+
+### Crucial
+
+- `patchwork` for combining multiple plots into one in a simple, intuitive way, while merging legends and aligning everyhing as needed
+- `ggraph` in combination with `tidygraph` for network data
+- `ggcorr` for correlation matrices
+- `GGally` with a set of utilities, incl. `GGally::ggpairs()`
+- `sjPlot` also provides useful visual forms, most usefully the visual and tabular summaries of model results
+
+### Useful
+
+- `ggtext` for formatting pretty much any text in a ggplot using Markdown/HTML
+- `ggiraph` for basic web interactivity
+- `ggforce` for cool annotation
+- `ggrepel` for handling overlapping labels
+- `gghighlight` for highlighting individual points/series
+- `ggmosaic` for mosaic plots
+- `ggalluvial` for Sankey diagrams
+- `waffle` for waffle (square pie) charts incl Isotype-style charts using icons
+
+### Fun
+
+- `ggchiclet` for rounded bars
