@@ -9,8 +9,10 @@
 status](https://travis-ci.org/scholaempirica/reschola.svg?branch=master)](https://travis-ci.org/scholaempirica/reschola)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
-[![R build
-status](https://github.com/scholaempirica/reschola/workflows/R-CMD-check/badge.svg)](https://github.com/scholaempirica/reschola/actions)
+![GitHub release (latest by date including
+pre-releases)](https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 The goal of reschola is to provide a set of utilities for data analysis
