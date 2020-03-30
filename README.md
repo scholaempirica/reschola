@@ -32,7 +32,7 @@ remotes::install_github("scholaempirica/reschola",
                          build_vignettes = TRUE)
 ```
 
-The current development version [Github](https://github.com) can be
+The current development version on [Github](https://github.com) can be
 installed with:
 
 ``` r

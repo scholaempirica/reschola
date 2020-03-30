@@ -38,6 +38,9 @@ navbar:
     issues:
       icon: fa-exclamation-circle fa-lg
       href: https://github.com/scholaempirica/reschola/issues
+    news:
+      text: What's new
+      href: news/index.html
     articles:
       text: How-to's
       menu:
