@@ -383,22 +383,33 @@
 <a href="#iterate-the-report-collaboratively" class="anchor"></a>7. Iterate the report collaboratively</h3>
 <p>If you used the schola_redoc output format, you can now send it to collaborators for feedback.</p>
 <p>Here is the workflow:</p>
-<ol style="list-style-type: decimal">
-<li><p>Edit the document - you have already done this.</p></li>
-<li><p>Generate word file</p></li>
-</ol>
+<div id="edit-the-document---you-have-already-done-this-" class="section level4">
+<h4 class="hasAnchor">
+<a href="#edit-the-document---you-have-already-done-this-" class="anchor"></a>1. Edit the document - you have already done this.</h4>
+</div>
+<div id="generate-word-file" class="section level4">
+<h4 class="hasAnchor">
+<a href="#generate-word-file" class="anchor"></a>2. Generate word file</h4>
 <p>Knit using RStudio button or run <code><a href="https://rdrr.io/pkg/rmarkdown/man/render.html">rmarkdown::render()</a></code>.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Send the Word file to collaborators for review</li>
-</ol>
+</div>
+<div id="send-the-word-file-to-collaborators-for-review" class="section level4">
+<h4 class="hasAnchor">
+<a href="#send-the-word-file-to-collaborators-for-review" class="anchor"></a>3. Send the Word file to collaborators for review</h4>
 <p>They can edit it in MS Word, either in tracked changes or not. The bits they cannot edit or comment on are by default highlighted in red - these are the bits your code generates, as opposed to text you write in RMarkdown; if they want to comment or change these, they should comment on an adjacent piece of text.</p>
-<ol start="4" style="list-style-type: decimal">
-<li>Collect changes back into RMarkdown</li>
-</ol>
+<div id="repeated-use-of-the-redoc--bs-callout--bs-callout-yellow" class="section level5">
+<h5 class="hasAnchor">
+<a href="#repeated-use-of-the-redoc--bs-callout--bs-callout-yellow" class="anchor"></a>Repeated use of the redoc {.bs-callout, -bs-callout-yellow}</h5>
+<p>If you run through multiple iterations of knitting and “<code>dedoc</code>”-ing, don’t use <code><a href="../reference/manage_docx_header_logos.html">manage_docx_header_logos()</a></code> beforehand - the changes would be lost.</p>
+</div>
+</div>
+<div id="collect-changes-back-into-rmarkdown" class="section level4">
+<h4 class="hasAnchor">
+<a href="#collect-changes-back-into-rmarkdown" class="anchor"></a>4. Collect changes back into RMarkdown</h4>
 <p>When you get the document back, put it in your project directory and run <code><a href="https://rdrr.io/pkg/redoc/man/dedoc.html">redoc::dedoc("[edited_document.docx]")</a></code>. This will create a new Rmd file with (a) the comments inserted in CriticMarkup, (b) tracked and untracked changes reflected in the Rmd with no markup. You can add <code>track_changes = 'criticmarkup'</code> to have all tracked changes inserted with CriticMarkup.</p>
 <p>You can also run <code><a href="https://rdrr.io/pkg/redoc/man/dedoc.html">redoc::dedoc("[edited_document.docx]", to = "[your_original_rmarkdown_file.Rmd", overwrite = TRUE)</a></code> to have all the changes written into your original file. ONLY DO THIS IF YOUR ORIGINAL FILE WAS COMMITTED IN GIT WITH THE VERSION YOU RENDERED AND SENT FOR FEEDBACK!! You can then use git to view and accept/reject the changes from the reviewers.</p>
 <p>You can also run <code><a href="https://rdrr.io/r/base/print.html">print(redoc:::redoc_diff("[new_document.docx]"))</a></code> (note the <code>:::</code>) to see the comparison in the RStudio viewer pane (no Rmd files are updated.)</p>
 <p>You can also use the RStudio addins ‘Dedoc to new file’ or ‘Dedoc to active file’. This will automatically show the graphical view of the changes in RStudio viewer, but you have less control over how changes/revisions are picked up.</p>
+</div>
 </div>
 <div id="finalise-report" class="section level3">
 <h3 class="hasAnchor">

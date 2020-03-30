@@ -129,113 +129,223 @@
 
     
     
-<p>NB: This vignette temporarily serves to test and fine-tune the <code><a href="../reference/theme_schola.html">theme_schola()</a></code> theme and to showcase typography.</p>
-<p>This is a bit hacky so ignore font sizes and resolution, which can be handled better in normal Word or HTML output outside of package documentation.</p>
-<p>When judging fonts, I would put quite a lot of emphasis on how they display figures, in particular whether the numerals have fixed width by default, meaning they align well: 99 is the same width as 11.</p>
-<ul>
-<li>Roboto Condensed, IBM Plex Sans, Titillium Sans and Econ Sans all do.</li>
-<li>Roboto Condensed is nice in that it has a normal-width sibling, Roboto, which also has fixed-width figures. It is good to have the normal and condensed fonts when needed, e.g. the condensed works well for crowded axes or longer titles.</li>
-<li>Arial Narrow is fine - you can then use Arial in you word output or generic sans in web output and they would be visually consistent with the charts. But it is not open license so we cannot include it in the package; anyone using the package would have to make sure they have it on their computer.</li>
-<li>Open Sans, which your website uses, is fine and has good figures, but seems a bit too wide for charts.</li>
-</ul>
-<p>(If we are producing PNG figures, we don’t need to worry about which fonts the user of the report has installed on their computer).</p>
-<div id="the-schola-ggplot2-theme" class="section level2">
+<!-- Once done editing, rename this to charts.Rmd.orig -->
+<!-- If you are editing charts.Rmd, stop and go to charts.Rmd.orig -->
+<div id="reschola-and-charts" class="section level2">
 <h2 class="hasAnchor">
-<a href="#the-schola-ggplot2-theme" class="anchor"></a>The Schola ggplot2 theme</h2>
+<a href="#reschola-and-charts" class="anchor"></a><code>reschola</code> and charts</h2>
+<p>This document assumes two things:</p>
+<ul>
+<li>charts are made in ggplot2</li>
+<li>you have a fair understanding of ggplot2, so this is not a guide to using that package.</li>
+</ul>
+<p>It also does not reiterate the principles of data visualisation, though it does point to some resources in that vein.</p>
+</div>
+<div id="the-reschola-theme" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-reschola-theme" class="anchor"></a>The reschola theme</h2>
+<div id="global-theme-setting" class="section level5 bs-callout bs-callout-blue">
+<h5 class="hasAnchor">
+<a href="#global-theme-setting" class="anchor"></a>Global theme setting</h5>
+<p>You can set the theme for your whole Rmarkdown document (or session, for that matter) by putting <code>theme_set(theme_schola())</code>. Then you don’t need to add it to your plots. As <code><a href="../reference/theme_schola.html">theme_schola()</a></code> has parameters which you are likely to need, this seems impractical and anyway could be confusing.</p>
+</div>
+<div id="basic-usage-of-theme_schola" class="section level3">
+<h3 class="hasAnchor">
+<a href="#basic-usage-of-theme_schola" class="anchor"></a>Basic usage of <code>theme_schola()</code>
+</h3>
+<p><code>reschola</code> contains the <code><a href="../reference/theme_schola.html">theme_schola()</a></code> theme, which has</p>
+<ul>
+<li>sensible defaults so you are not forever changing the same parameters</li>
+<li>some aesthetic choices custom for Schola Emppirica</li>
+<li>good default fonts</li>
+</ul>
+<p>The examples below serve as (a) guide to the parameters of the theme, (b) test, and (c) showcase.</p>
+<blockquote>
+<p>Resolution and sizes can be off on this page. The templates contained in this package are optimised to produce great looking and properly sized charts in Word documents.</p>
+</blockquote>
 <p>First, let’s see the default plot, no theme</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu">ggplot</span>(<span class="no">mpg</span>) +
  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="kw">y</span> <span class="kw">=</span> <span class="no">class</span>)) +
  <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Count of numbers"</span>)
 <span class="no">p</span></pre></body></html></div>
-<p><img src="charts-no-theme-1.png" title="plot of chunk no-theme" alt="plot of chunk no-theme" width="504"></p>
-<p>using <code><a href="../reference/theme_schola.html">theme_schola()</a></code> defaults</p>
+<p><img src="charts-no-theme-1.png" title="plot of chunk no-theme" alt="plot of chunk no-theme" width="100%"></p>
+<p>Now let’s see what <code><a href="../reference/theme_schola.html">theme_schola()</a></code> defaults do</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>)</pre></body></html></div>
-<p><img src="charts-schola-default-1.png" title="plot of chunk schola-default" alt="plot of chunk schola-default" width="504"></p>
-<p>in combination with <code>flush_axis</code>, and using the Titillium Web font:</p>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>) <span class="co"># only setting the first parameter to get the right gridlines</span></pre></body></html></div>
+<p><img src="charts-schola-default-1.png" title="plot of chunk schola-default" alt="plot of chunk schola-default" width="100%"></p>
+<p>in combination with <code>flush_axis</code></p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"Titillium Web"</span>, <span class="kw">title_family</span> <span class="kw">=</span> <span class="st">"Titillium Web"</span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>) +
  <span class="fu">scale_x_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="no">flush_axis</span>)</pre></body></html></div>
-<p><img src="charts-titillium-flush-1.png" title="plot of chunk titillium-flush" alt="plot of chunk titillium-flush" width="504"></p>
-<p>Scatterplot, using yet another font</p>
+<p><img src="charts-flush-1.png" title="plot of chunk flush" alt="plot of chunk flush" width="100%"></p>
+<p>Scatterplot</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>)) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"IBM Plex Sans"</span>, <span class="kw">title_family</span> <span class="kw">=</span> <span class="st">"IBM Plex Sans"</span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>) +
  <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>)</pre></body></html></div>
-<p><img src="charts-scatter-plexsans-1.png" title="plot of chunk scatter-plexsans" alt="plot of chunk scatter-plexsans" width="504"></p>
+<p><img src="charts-scatter-1.png" title="plot of chunk scatter" alt="plot of chunk scatter" width="100%"></p>
 <p>Smaller text, flush plot alignment</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">base_size</span> <span class="kw">=</span> <span class="fl">9</span>, <span class="kw">side_margin</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"IBM Plex Sans"</span>,
-              <span class="kw">title_family</span> <span class="kw">=</span> <span class="st">"IBM Plex Sans"</span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">base_size</span> <span class="kw">=</span> <span class="fl">9</span>, <span class="kw">side_margin</span> <span class="kw">=</span> <span class="fl">0</span>) +
  <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>)</pre></body></html></div>
-<p><img src="charts-scatter-plexsans-smaller-1.png" title="plot of chunk scatter-plexsans-smaller" alt="plot of chunk scatter-plexsans-smaller" width="504"></p>
-<div id="override-defaults-changed-inside-theme_schola" class="section level3">
-<h3 class="hasAnchor">
+<p><img src="charts-scatter-flush-1.png" title="plot of chunk scatter-flush" alt="plot of chunk scatter-flush" width="100%"></p>
+<div id="override-defaults-changed-inside-theme_schola" class="section level4">
+<h4 class="hasAnchor">
 <a href="#override-defaults-changed-inside-theme_schola" class="anchor"></a>Override defaults changed inside <code>theme_schola()</code>
-</h3>
+</h4>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">base_size</span> <span class="kw">=</span> <span class="fl">12</span>, <span class="kw">side_margin</span> <span class="kw">=</span> <span class="fl">0</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"Roboto Condensed"</span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">base_size</span> <span class="kw">=</span> <span class="fl">12</span>, <span class="kw">side_margin</span> <span class="kw">=</span> <span class="fl">0</span>) +
  <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>) +
  <span class="fu">theme</span>(<span class="kw">panel.background</span> <span class="kw">=</span> <span class="fu">element_rect</span>(<span class="kw">fill</span> <span class="kw">=</span> <span class="st">"lightpink"</span>))</pre></body></html></div>
-<p><img src="charts-scatter-defaultschanged-1.png" title="plot of chunk scatter-defaultschanged" alt="plot of chunk scatter-defaultschanged" width="504"></p>
+<p><img src="charts-scatter-defaultschanged-1.png" title="plot of chunk scatter-defaultschanged" alt="plot of chunk scatter-defaultschanged" width="100%"></p>
 </div>
-<div id="small-mutliples" class="section level3">
-<h3 class="hasAnchor">
-<a href="#small-mutliples" class="anchor"></a>Small mutliples</h3>
-<p>Smaller text, using Arial Narrow</p>
+<div id="small-mutliples" class="section level4">
+<h4 class="hasAnchor">
+<a href="#small-mutliples" class="anchor"></a>Small mutliples</h4>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"Arial Narrow"</span>, <span class="kw">title_family</span> <span class="kw">=</span> <span class="st">"Arial Narrow"</span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>) +
  <span class="fu">scale_x_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="no">flush_axis</span>) +
  <span class="fu">facet_wrap</span>(~ <span class="no">manufacturer</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
-<p><img src="charts-arial-narrow-1.png" title="plot of chunk arial-narrow" alt="plot of chunk arial-narrow" width="504"></p>
-<p>Same without aesthetic adjustment for <code>facet_wrap()</code> and different font</p>
+<p><img src="charts-multiples-1.png" title="plot of chunk multiples" alt="plot of chunk multiples" width="100%"></p>
+<p>Same without aesthetic adjustment for <code>facet_wrap()</code></p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">F</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"Public Sans"</span>, <span class="kw">title_family</span> <span class="kw">=</span> <span class="st">"Public Sans"</span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">F</span>) +
  <span class="fu">scale_x_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="no">flush_axis</span>) +
  <span class="fu">facet_wrap</span>(~ <span class="no">manufacturer</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
-<p><img src="charts-publicans-nomultiplot-1.png" title="plot of chunk publicans-nomultiplot" alt="plot of chunk publicans-nomultiplot" width="504"></p>
-<p>Small mutliples scatter and make it look like The Economist</p>
+<p><img src="charts-multiples-nomultiplot-1.png" title="plot of chunk multiples-nomultiplot" alt="plot of chunk multiples-nomultiplot" width="100%"></p>
+<p>Small mutliples scatter</p>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="kw pkg">hrbrthemes</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/hrbrthemes/man/EconSansCondensed.html">font_es</a></span>,
-              <span class="kw">title_family</span> <span class="kw">=</span> <span class="kw pkg">hrbrthemes</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/hrbrthemes/man/EconSansCondensed.html">font_es_bold</a></span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>) +
  <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>) +
  <span class="fu">facet_wrap</span>(~ <span class="no">class</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
-<p><img src="charts-economist-1.png" title="plot of chunk economist" alt="plot of chunk economist" width="504"></p>
-<p>Small mutliples grid, using another font setup</p>
+<p><img src="charts-multiples-scatter-1.png" title="plot of chunk multiples-scatter" alt="plot of chunk multiples-scatter" width="100%"></p>
+<p>Small mutliples grid</p>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"IBM Plex Sans Light"</span>,
-              <span class="kw">title_family</span> <span class="kw">=</span> <span class="st">"IBM Plex Sans Bold"</span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>) +
  <span class="fu">scale_x_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="no">flush_axis</span>) +
  <span class="fu">facet_grid</span>(<span class="no">cyl</span> ~ <span class="no">drv</span>)</pre></body></html></div>
-<p><img src="charts-plexmix-1.png" title="plot of chunk plexmix" alt="plot of chunk plexmix" width="504"></p>
-<p>Small mutliples scatter grid, using mix of Roboto fonts</p>
+<p><img src="charts-multiples-grid-1.png" title="plot of chunk multiples-grid" alt="plot of chunk multiples-grid" width="100%"></p>
+<p>Small mutliples scatter grid</p>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"Roboto Condensed"</span>,
-              <span class="kw">title_family</span> <span class="kw">=</span> <span class="st">"Roboto"</span>) +
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>) +
  <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>) +
  <span class="fu">facet_grid</span>(<span class="no">cyl</span> ~ <span class="no">class</span>)</pre></body></html></div>
-<p><img src="charts-robotomix-1.png" title="plot of chunk robotomix" alt="plot of chunk robotomix" width="504"></p>
+<p><img src="charts-multiples-scatter-grid-1.png" title="plot of chunk multiples-scatter-grid" alt="plot of chunk multiples-scatter-grid" width="100%"></p>
 <p>Same but without multiplot parameter</p>
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
  <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">F</span>) +
  <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>) +
  <span class="fu">facet_grid</span>(<span class="no">cyl</span> ~ <span class="no">class</span>)</pre></body></html></div>
-<p><img src="charts-nomultiplot-1.png" title="plot of chunk nomultiplot" alt="plot of chunk nomultiplot" width="504"></p>
+<p><img src="charts-multiples-scatter-grid-nomultiplot-1.png" title="plot of chunk multiples-scatter-grid-nomultiplot" alt="plot of chunk multiples-scatter-grid-nomultiplot" width="100%"></p>
 </div>
-<div id="making-fonts-work-for-future-version-of-vignette" class="section level3">
-<h3 class="hasAnchor">
-<a href="#making-fonts-work-for-future-version-of-vignette" class="anchor"></a>Making fonts work [for future version of vignette]</h3>
-<p>The <code>schola_theme()</code> is set to use the Roboto and Roboto Condensed font families by default. These may not be present on your system. You can install them by running <code><a href="../reference/import_fonts.html">reschola::import_fonts()</a></code>. (once per machine) On package load, these will be registered with R. If the fonts do not show up in your charts, run <code><a href="https://rdrr.io/pkg/extrafont/man/loadfonts.html">extrafont::loadfonts()</a></code> (once per session). You can also set the option <code>reschola.loadfonts</code> to have <code>reschola</code> register these fonts with the PDF/PostScript ecosystem upon package load.</p>
 </div>
-<div id="using-fonts" class="section level3">
+</div>
+<div id="building-a-diverging-likert-plot" class="section level2">
+<h2 class="hasAnchor">
+<a href="#building-a-diverging-likert-plot" class="anchor"></a>Building a diverging Likert plot</h2>
+<p>[To be completed once the function is in place]</p>
+</div>
+<div id="using-colour-scales" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-colour-scales" class="anchor"></a>Using colour scales</h2>
+<p>[To be completed once the scales are in place]</p>
+</div>
+<div id="using-custom-numeric-scales" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-custom-numeric-scales" class="anchor"></a>Using custom numeric scales</h2>
+<p>[To be completed once the scales are in place]</p>
+</div>
+<div id="making-fonts-work" class="section level2">
+<h2 class="hasAnchor">
+<a href="#making-fonts-work" class="anchor"></a>Making fonts work</h2>
+<p>The <code>schola_theme()</code> is set to use the Roboto and Roboto Condensed font families by default. These may not be present on your system. You can install them by running <code><a href="../reference/import_fonts.html">reschola::import_fonts()</a></code>. (once per machine, and do follow the instructions in the message output when you call this function.) On package load, these will be registered with R. If the fonts do not show up in your charts, run <code><a href="https://rdrr.io/pkg/extrafont/man/loadfonts.html">extrafont::loadfonts()</a></code> (once per session). You can also set the option <code>reschola.loadfonts</code> to have <code>reschola</code> register these fonts with the PDF/PostScript ecosystem upon package load.</p>
+</div>
+<div id="using-fonts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-fonts" class="anchor"></a>Using fonts</h2>
+<p>If you end up using different fonts, it is good to choose something that (a) has fixed-width figures in the default set of characters, and (b) has sensible widths or a narrow-width member of the type family (usually called “Condensed”, “Narrow” or some such.)</p>
+<p>The <code>hrbrthemes</code> package has a good range of fonts, some of which tick these criteria. Arial Narrow is narrow and has fixed-width figures. IBM Plex Sans, Titillium Sans and Econ Sans all have fixed width figures but not all have Narrow companions.</p>
+<p>Public Sans does not have fixed-width figures.</p>
+<p>See the <a href="https://cran.r-project.org/web/packages/hrbrthemes/vignettes/why_hrbrthemes.html#kern-what">hrbrthemes vignette</a> for an explanation of why these criteria matter</p>
+</div>
+<div id="tricks-of-the-trade-for-ggplot2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tricks-of-the-trade-for-ggplot2" class="anchor"></a>Tricks of the trade for ggplot2</h2>
+<ul>
+<li>
+<code>theme_void()</code> for visuals that don’t need any gridlines, axes, etc., such as schematic maps</li>
+<li>aes(…, group = 1) for making all data points in a <code>geom_line()</code> into one line</li>
+<li>
+<code>key_glyph</code> parameter to geoms to pick a specific shape for the legend key</li>
+<li>
+<code>geom_sf_label</code> for intelligently labelling spatial features plotted through <code>geom_sf()</code>
+</li>
+<li>
+<code>labs(colour = NULL)</code> for switching off the colour legend, <code>labs(x = NULL)</code> to turn off colour label - quicker than <code>theme(axis.label.x = element_blank())</code> and <code>guides(colour = "none")</code>
+</li>
+</ul>
+</div>
+<div id="resources-on-good-practice" class="section level2">
+<h2 class="hasAnchor">
+<a href="#resources-on-good-practice" class="anchor"></a>Resources on good practice</h2>
+<p>Kieran Healy. <a href="http://socviz.co">Data Visualisation: a practical introduction</a>. With R code.</p>
+<p>Claus Wilke. <a href="https://serialmentor.com/dataviz/">Fundamentals of Data Visualisation</a> No R code, very strong on principles.</p>
+<p>Beyond that and in the world of paper books, anything by Alberto Cairo is solid.</p>
+</div>
+<div id="handy-or-just-cool-ggplot2-extensions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#handy-or-just-cool-ggplot2-extensions" class="anchor"></a>Handy (or just cool) ggplot2 extensions</h2>
+<div id="crucial" class="section level3">
 <h3 class="hasAnchor">
-<a href="#using-fonts" class="anchor"></a>Using fonts</h3>
-<p>[ - width - figures]</p>
+<a href="#crucial" class="anchor"></a>Crucial</h3>
+<ul>
+<li>
+<code>patchwork</code> for combining multiple plots into one in a simple, intuitive way, while merging legends and aligning everyhing as needed</li>
+<li>
+<code>ggraph</code> in combination with <code>tidygraph</code> for network data</li>
+<li>
+<code>ggcorr</code> for correlation matrices</li>
+<li>
+<code>GGally</code> with a set of utilities, incl. <code>GGally::ggpairs()</code>
+</li>
+<li>
+<code>sjPlot</code> also provides useful visual forms, most usefully the visual and tabular summaries of model results</li>
+</ul>
+</div>
+<div id="useful" class="section level3">
+<h3 class="hasAnchor">
+<a href="#useful" class="anchor"></a>Useful</h3>
+<ul>
+<li>
+<code>ggtext</code> for formatting pretty much any text in a ggplot using Markdown/HTML</li>
+<li>
+<code>ggiraph</code> for basic web interactivity</li>
+<li>
+<code>ggforce</code> for cool annotation</li>
+<li>
+<code>ggrepel</code> for handling overlapping labels</li>
+<li>
+<code>gghighlight</code> for highlighting individual points/series</li>
+<li>
+<code>ggmosaic</code> for mosaic plots</li>
+<li>
+<code>ggalluvial</code> for Sankey diagrams</li>
+<li>
+<code>waffle</code> for waffle (square pie) charts incl Isotype-style charts using icons</li>
+</ul>
+</div>
+<div id="fun" class="section level3">
+<h3 class="hasAnchor">
+<a href="#fun" class="anchor"></a>Fun</h3>
+<ul>
+<li>
+<code>ggchiclet</code> for rounded bars</li>
+</ul>
 </div>
 </div>
   </div>
