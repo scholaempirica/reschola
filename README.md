@@ -15,10 +15,11 @@ pre-releases)](https://img.shields.io/github/v/release/scholaempirica/reschola?i
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
-The goal of reschola is to provide a set of utilities for data analysis
-at [Schola Empirica](http://scholaempirica.org). The vignettes for the
-package also document the Schola Empirica way of doing data analysis and
-provide guidance and tips on tools and good practice.
+The goal of reschola is to support the workflow for data analysis at
+[Schola Empirica](http://scholaempirica.org) through a set of templates,
+themes, utilities, and documentation. The vignettes for the package
+document the Schola Empirica way of doing data analysis and provide
+guidance and tips on tools and good practice.
 
 ## Installation
 
