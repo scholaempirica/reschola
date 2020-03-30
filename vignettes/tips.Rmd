@@ -124,6 +124,10 @@ Mostly useful for package development, but some utilities also make your life ea
 
 - see [googlesheets4](https://github.com/tidyverse/googlesheets4)
 
+## Data manipulation
+
+- for heavy-duty data manipulation, `data.table` can be worth the speed improvement, and `dtplyr` and `tidytable` provide tidy "front ends" to it. 
+
 ## Data output
 
 - `readr::write_excel_csv[2]()` for Excel-friendly CSVs

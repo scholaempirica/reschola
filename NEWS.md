@@ -1,5 +1,7 @@
 # reschola (development version)
 
+* minor additions to tips and workflow vignettes
+
 # reschola 0.2.9
 
 ## Improvements

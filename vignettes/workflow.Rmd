@@ -285,17 +285,21 @@ If you used the schola_redoc output format, you can now send it to collaborators
 
 Here is the workflow:
 
-1. Edit the document - you have already done this.
+#### 1. Edit the document - you have already done this.
 
-2. Generate word file
+#### 2. Generate word file
 
 Knit using RStudio button or run `rmarkdown::render()`.
 
-3. Send the Word file to collaborators for review
+#### 3. Send the Word file to collaborators for review
 
 They can edit it in MS Word, either in tracked changes or not. The bits they cannot edit or comment on are by default highlighted in red - these are the bits your code generates, as opposed to text you write in RMarkdown; if they want to comment or change these, they should comment on an adjacent piece of text.
 
-4. Collect changes back into RMarkdown
+##### Repeated use of the redoc {.bs-callout, -bs-callout-yellow}
+
+If you run through multiple iterations of knitting and "`dedoc`"-ing, don't use `manage_docx_header_logos()` beforehand - the changes would be lost.
+
+#### 4. Collect changes back into RMarkdown
 
 When you get the document back, put it in your project directory and run `redoc::dedoc("[edited_document.docx]")`. 
 This will create a new Rmd file with (a) the comments inserted in CriticMarkup, (b) tracked and untracked changes reflected in the Rmd with no markup.
