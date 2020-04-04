@@ -47,7 +47,7 @@ diverging_chart <- function(data) {
   # dataframe to be fed in ggplot2
   # vertical_2 is generated as a helper for future reference
   df_chart <-
-    df_long %>% group_by(variable, value) %>% summarise(n=n()) %>% mutate(prop=n/sum(n)) %>%
+    df_long %>% group_by(variable, value, .drop = FALSE) %>% summarise(n=n()) %>% mutate(prop=n/sum(n)) %>%
     mutate(pos_sum = sum(prop[value %in% my_positivives]),
            neg_sum = sum(prop[value %in% my_negatives]),
            dkn_sum = sum(prop[value %in% my_dkn])) %>%
