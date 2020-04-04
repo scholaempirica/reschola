@@ -40,7 +40,8 @@ diverging_chart <- function(data) {
                 forcats::fct_expand("dummy1"))
 
   # long format needed for plotting
-  df_long <- df_mutated %>% pivot_longer(cols = all_of(my_cols), names_to = "variable", values_to = "value")
+  df_long <- df_mutated %>% pivot_longer(cols = all_of(my_cols), names_to = "variable", values_to = "value") %>% mutate(value = as.factor(value) %>% fct_expand(c(names(my_levels), "dummy1"))) %>%
+    complete(variable, value)
 
 
   # dataframe to be fed in ggplot2
