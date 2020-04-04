@@ -40,20 +40,26 @@ diverging_chart <- function(data) {
                 forcats::fct_expand("dummy1"))
 
   # long format needed for plotting
-  df_long <- df_mutated %>% pivot_longer(cols = all_of(my_cols), names_to = "variable", values_to = "value") %>% mutate(value = as.factor(value) %>% fct_expand(c(names(my_levels), "dummy1"))) %>%
+  df_long <- df_mutated %>%
+    pivot_longer(cols = all_of(my_cols), names_to = "variable",
+                 values_to = "value") %>%
+    mutate(value = as.factor(value) %>%
+             fct_expand(c(names(my_levels), "dummy1"))) %>%
     complete(variable, value)
 
 
   # dataframe to be fed in ggplot2
   # vertical_2 is generated as a helper for future reference
   df_chart <-
-    df_long %>% group_by(variable, value, .drop = FALSE) %>% summarise(n=n()) %>% mutate(prop=n/sum(n)) %>%
+    df_long %>%
+    group_by(variable, value, .drop = FALSE) %>%
+    summarise(n=n()) %>%
+    mutate(prop=n/sum(n)) %>%
     mutate(pos_sum = sum(prop[value %in% my_positivives]),
            neg_sum = sum(prop[value %in% my_negatives]),
            dkn_sum = sum(prop[value %in% my_dkn])) %>%
     ungroup() %>%
     mutate(vertical_2 = max(neg_sum) + 0.2)
-  levels(df_chart$value)
 
   # this adds dummy variables needed for the diverging chart
   # this workflow throws warnings and requires to change back to factors afterwards
