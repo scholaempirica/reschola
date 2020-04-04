@@ -108,7 +108,7 @@ diverging_chart <- function(data) {
     scale_x_continuous(breaks = seq(-max(0:(max(df_chart2$pos_sum)*100) - (0:(max(df_chart2$pos_sum)*100) %% 20))/100 - 0.2,
                                     max(0:(max(df_chart2$neg_sum)*100) - (0:(max(df_chart2$neg_sum)*100) %% 20))/100 +0.2,
                                     0.2),
-                       labels = function(x) percent(abs(x), suffix = " %"))
+                       labels = label_percent_cz_abs())
 
   diverging + expand_limits(x=c(-max(df_chart2$pos_sum) - 0.1, max(df_chart2$vertical_2) + max(df_chart2$dkn_sum) + 0.1))
 
