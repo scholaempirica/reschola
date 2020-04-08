@@ -201,7 +201,50 @@ ggplot(mpg) +
 
 ## Using custom numeric scales
 
-[To be completed once the scales are in place]
+The chartb below illustrates the custom scales
+
+
+```r
+ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
+  geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
+  theme_schola() +
+  scale_y_percent_cz() +
+  scale_x_number_cz() +
+  scale_color_binned(labels = label_percent_cz()) +
+  scale_size_binned(labels = label_number_cz())
+```
+
+<img src="charts-scales-1.png" title="plot of chunk scales" alt="plot of chunk scales" width="100%" />
+The percent formatter and number formatter also handle the decimal mark correctly. The parameters which you would normally find inside the `scales::format_*()` functions are accessible directly in the `scale_[xy]_continuous()` functions.
+
+
+```r
+ggplot(mpg, aes(hwy / 100, cty/max(cty)/100)) +
+  geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
+  theme_schola() +
+  scale_y_percent_cz(accuracy = .1) +
+  scale_x_number_cz(accuracy = .1) +
+  scale_color_binned(labels = label_percent_cz(accuracy = .1)) +
+  scale_size_binned(labels = label_number_cz(accuracy = 0.1))
+```
+
+<img src="charts-scales-decimal-1.png" title="plot of chunk scales-decimal" alt="plot of chunk scales-decimal" width="100%" />
+
+An English-locale version would look like this, using functions in `scales` or reexported from `hrbrthemes`:
+
+
+```r
+ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
+  geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
+  theme_schola() +
+  scale_y_percent(accuracy = .1) +
+  scale_x_comma(accuracy = .1) +
+  scale_color_binned(labels = scales::label_percent(accuracy = .1)) +
+  scale_size_binned(labels = scales::label_number(accuracy = .1))
+```
+
+<img src="charts-scales-en-1.png" title="plot of chunk scales-en" alt="plot of chunk scales-en" width="100%" />
+
 
 ## Making fonts work
 

@@ -4,6 +4,9 @@
 
 * New Making charts vignette
 * minor additions to tips and workflow vignettes
+* new scales: `scale_[x|y]_percent_cz()`, `scale_[x|y]_number_cz()`
+* analogous English-locale scales reexported from `hrbrthemes`: `scale_[x|y]_comma()` and `scale_[x|y]_percent()`
+* new label formatters: `label_number_cz()` and `label_percent_cz()` (the English-language analogs without `_cz` are in the package `scales`)
 
 ## Changes
 
