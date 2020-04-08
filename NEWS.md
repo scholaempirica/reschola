@@ -1,11 +1,16 @@
 # reschola (development version)
 
+## New features
+
 * New Making charts vignette
 * minor additions to tips and workflow vignettes
 
 ## Changes
 
 * minor changes to Word template files around image captions
+* added `margin_bottom` param to `theme_schola()`
+* renamed `left_margin` to `margin_left` in `theme_schola()`
+
 # reschola 0.2.9
 
 ## Improvements

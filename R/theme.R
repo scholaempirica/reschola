@@ -26,9 +26,8 @@
 #' @param base_size Numeric text size in pts, affects all text in plot. Defaults to 11.
 #' @param gridlines Whether to display major gridlines along `"y"` (the default),
 #' `"x"`, `"both"` or draw a `"scatter"`, which has both gridlines and inverted colours.
-#' @param family font family to use for the plot. Defaults to `"Roboto Condensed"`.
-#' @param title_family font family to use for the title of the plot. Defaults to `"Roboto"`.
-#' @param side_margin size of left and right margin around plot, in pts. Defaults to 5. Set to 0 to align flush with text in a Word document.
+#' @param family,title_family font family to use for the (title of the) plot. Defaults to `"Roboto"` for title and `"Roboto Condensed"` for plot.
+#' @param margin_side,margin_bottom size of left and right / bottom margin around plot, in pts. Defaults to 6. Set to 0 to align flush with text in a Word document.
 #' @param plot.title.position where to align the title. Either "plot" (the default, difference from `theme()` default) or `"panel"`.
 #' @param axis.title same as in theme(), but with a default of `element_blank()`.
 #' @param multiplot if set to TRUE, provides better styling for small multiples created using `facet_*`.
@@ -72,7 +71,7 @@
 #'
 #' ggplot(mpg) +
 #'   geom_point(aes(cty, hwy)) +
-#'   theme_schola("scatter", base_size = 9, side_margin = 0,
+#'   theme_schola("scatter", base_size = 9, margin_side = 0,
 #'                 family = "sans", title_family = "sans") +
 #'   labs(title = "Lots of cars", subtitle = "Point by point")
 #'
@@ -80,7 +79,7 @@
 #'
 #' ggplot(mpg) +
 #'   geom_point(aes(cty, hwy)) +
-#'   theme_schola("scatter", base_size = 9, side_margin = 0,
+#'   theme_schola("scatter", base_size = 9, margin_side = 0,
 #'                family = "sans", title_family = "sans") +
 #'   labs(title = "Lots of cars", subtitle = "Point by point") +
 #'   theme(panel.background = element_rect(fill = "lightpink"))
@@ -89,7 +88,8 @@
 theme_schola <- function(gridlines = c("y", "x", "both", "scatter"),
                          base_size = 11,
                          family = "Roboto Condensed", title_family = "Roboto",
-                         side_margin = 6,
+                         margin_side = 6,
+                         margin_bottom = 6,
                          plot.title.position = "plot",
                          axis.title = ggplot2::element_blank(),
                          multiplot = FALSE,
@@ -114,7 +114,8 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"),
                                                             colour = NA),
                    axis.title = axis.title,
                    strip.text.x = ggplot2::element_text(hjust = 0),
-                   plot.margin = ggplot2::unit(c(10, side_margin, 10, side_margin),
+                   plot.margin = ggplot2::unit(c(10, margin_side,
+                                                 margin_bottom, margin_side),
                                                units = "pt"))
   if(multiplot) thm <- thm +
     ggplot2::theme(strip.background = ggplot2::element_rect(fill = tonecol,

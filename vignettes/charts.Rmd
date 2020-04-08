@@ -94,11 +94,13 @@ Smaller text, flush plot alignment
 ```r
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 9, side_margin = 0) +
+ theme_schola("scatter", base_size = 9, margin_side = 0) +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
 <img src="charts-scatter-flush-1.png" title="plot of chunk scatter-flush" alt="plot of chunk scatter-flush" width="100%" />
+
+If you are adding a caption in your Rmarkdown chunk, you may also want `margin_bottom = 0` to cut the bottom margin in the plot and move the caption closer to the plot.
 
 #### Override defaults changed inside `theme_schola()`
 
@@ -106,7 +108,7 @@ ggplot(mpg) +
 ```r
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 12, side_margin = 0) +
+ theme_schola("scatter", base_size = 12, margin_side = 0) +
  labs(title = "Lots of cars", subtitle = "Point by point") +
  theme(panel.background = element_rect(fill = "lightpink"))
 ```

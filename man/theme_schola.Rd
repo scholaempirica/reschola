@@ -9,7 +9,8 @@ theme_schola(
   base_size = 11,
   family = "Roboto Condensed",
   title_family = "Roboto",
-  side_margin = 6,
+  margin_side = 6,
+  margin_bottom = 6,
   plot.title.position = "plot",
   axis.title = ggplot2::element_blank(),
   multiplot = FALSE,
@@ -22,11 +23,9 @@ theme_schola(
 
 \item{base_size}{Numeric text size in pts, affects all text in plot. Defaults to 11.}
 
-\item{family}{font family to use for the plot. Defaults to \code{"Roboto Condensed"}.}
+\item{family, title_family}{font family to use for the (title of the) plot. Defaults to \code{"Roboto"} for title and \code{"Roboto Condensed"} for plot.}
 
-\item{title_family}{font family to use for the title of the plot. Defaults to \code{"Roboto"}.}
-
-\item{side_margin}{size of left and right margin around plot, in pts. Defaults to 5. Set to 0 to align flush with text in a Word document.}
+\item{margin_side, margin_bottom}{size of left and right / bottom margin around plot, in pts. Defaults to 6. Set to 0 to align flush with text in a Word document.}
 
 \item{plot.title.position}{where to align the title. Either "plot" (the default, difference from \code{theme()} default) or \code{"panel"}.}
 
@@ -102,7 +101,7 @@ ggplot(mpg) +
 
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
-  theme_schola("scatter", base_size = 9, side_margin = 0,
+  theme_schola("scatter", base_size = 9, margin_side = 0,
                 family = "sans", title_family = "sans") +
   labs(title = "Lots of cars", subtitle = "Point by point")
 
@@ -110,7 +109,7 @@ ggplot(mpg) +
 
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
-  theme_schola("scatter", base_size = 9, side_margin = 0,
+  theme_schola("scatter", base_size = 9, margin_side = 0,
                family = "sans", title_family = "sans") +
   labs(title = "Lots of cars", subtitle = "Point by point") +
   theme(panel.background = element_rect(fill = "lightpink"))
