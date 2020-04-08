@@ -38,6 +38,7 @@ Imports:
     redoc (>= 0.1.0.9000),
     rmarkdown (>= 2.1),
     rstudioapi,
+    scales (>= 1.1.0),
     sessioninfo (>= 1.1.1),
     stringr (>= 1.4.0),
     tibble (>= 2.1.3),
