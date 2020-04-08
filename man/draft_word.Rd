@@ -18,7 +18,7 @@ path to created file (invisibly)
 Shortcut function to create and a new Rmd file using schola_word template and open for editing.
 }
 \examples{
-\dontrun{
+\donttest{
 draft_word("new_file")
 }
 }

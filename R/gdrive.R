@@ -19,7 +19,7 @@
 #' @return vector of paths to downloaded files
 #' @family Workflow helpers
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' gd_url <- "https://drive.google.com/drive/folders/1bCyR_VKAP_43NEujqisjN77hANnMKfHZ"
 #' gd_download_folder(folder_url = gd_url,
 #'                    files_from_subfolders = T, overwrite = T)
@@ -63,7 +63,7 @@ gd_download_folder <- function(folder_url, dest_dir = "data-input",
 #' @return RETURN_DESCRIPTION
 #' @examples
 #' # ADD_EXAMPLES_HERE
-gd_upload_file <- function(file, target_folder = gd_url) {
-  folder_dribble <- googledrive::as_dribble(target_folder)
-  googledrive::drive_upload(file, folder_dribble)
-}
+# gd_upload_file <- function(file, target_folder = gd_url) {
+#   folder_dribble <- googledrive::as_dribble(target_folder)
+#   googledrive::drive_upload(file, folder_dribble)
+# }
