@@ -3,6 +3,9 @@
 * New Making charts vignette
 * minor additions to tips and workflow vignettes
 
+## Changes
+
+* minor changes to Word template files around image captions
 # reschola 0.2.9
 
 ## Improvements
