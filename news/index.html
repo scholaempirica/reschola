@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
       </span>
     </div>
 
@@ -169,13 +169,33 @@
       <small>Source: <a href='https://github.com/scholaempirica/reschola/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="reschola-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#reschola-development-version" class="anchor"></a>reschola (development version)</h1>
+    <div id="reschola-0-2-10" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.10">
+<a href="#reschola-0-2-10" class="anchor"></a>reschola 0.2.10</h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
 <li>New Making charts vignette</li>
 <li>minor additions to tips and workflow vignettes</li>
+<li>new scales: <code>scale_[x|y]_percent_cz()</code>, <code>scale_[x|y]_number_cz()</code>
+</li>
+<li>analogous English-locale scales reexported from <code>hrbrthemes</code>: <code>scale_[x|y]_comma()</code> and <code>scale_[x|y]_percent()</code>
+</li>
+<li>new label formatters: <code><a href="../reference/formatscz.html">label_number_cz()</a></code> and <code><a href="../reference/formatscz.html">label_percent_cz()</a></code> (the English-language analogs without <code>_cz</code> are in the package <code>scales</code>)</li>
 </ul>
+</div>
+<div id="changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes" class="anchor"></a>Changes</h2>
+<ul>
+<li>minor changes to Word template files around image captions</li>
+<li>added <code>margin_bottom</code> param to <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
+</li>
+<li>renamed <code>left_margin</code> to <code>margin_left</code> in <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
+</li>
+</ul>
+</div>
 </div>
     <div id="reschola-0-2-9" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.9">
@@ -285,9 +305,9 @@
 <li>added tips on accessing documentation in tips vignette, and on snippets</li>
 </ul>
 </div>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li>new <code><a href="../reference/gd_download_folder.html">gd_download_folder()</a></code> function for downloading all files in a GDrive folder</li>
 <li>option in project template to download files from the listed GDrive folder</li>
@@ -339,7 +359,7 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#reschola-0-2-0" class="anchor"></a>reschola 0.2.0</h1>
 <ul>
-<li>improved README and added “Getting started” vignette</li>
+<li>improved README and added âGetting startedâ vignette</li>
 <li>basic <code><a href="../reference/theme_schola.html">theme_schola()</a></code> added for early feedback, together with vignette</li>
 <li>key R and RStudio tips in <code>tips.html</code> vignette</li>
 <li>complete <code>meta.html</code> vignette on developing this package</li>

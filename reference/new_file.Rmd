@@ -1,0 +1,65 @@
+---
+title: "Reversible Word-Markdown document"
+subtitle: "A great one, too"
+author:
+- tým Schola Empirica
+- "kontakt: Jaromír Mazák, mazak@scholaempirica.org"
+date: insert date manually
+output:
+  reschola::schola_redoc:
+    highlight_outputs: yes
+  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(include = F) # by default, chunk code and output is hidden
+options(scipen = 10) # force R to show full numbers, not scientific notation
+
+library(reschola)
+library(tidyverse)
+library(scales)
+# source("shared.R") # uncomment if working in a reschola project with a shared.R script
+set_reschola_ggplot_fonts() # make ggplot2 use Roboto fonts without you having to set it
+```
+
+# Heading 1
+
+This is a `schola_redoc()` document.
+It allows you to collaborate with others via editing and tracked changes in Word documents. It is based on the `redoc` package.
+
+Here is the workflow:
+
+1. Edit the document
+
+as you would a normal RMarkdown file.
+
+2. Generate word file
+
+Knit using RStudio button or run `rmarkdown::render()`.
+
+3. Send the Word file to collaborators for review
+
+They can edit it in MS Word, either in tracked changes or not. The bits they cannot edit or comment on are by default highlighted in red - these are the bits your code generates, as opposed to text you write in RMarkdown; if they want to comment or change these, they should comment on an adjacent piece of text.
+
+4. Collect changes back into RMarkdown
+
+When you get the document back, put it in your project directory and run `redoc::dedoc("[edited_document.docx]")`. 
+This will create a new Rmd file with (a) the comments inserted in CriticMarkup, (b) tracked and untracked changes reflected in the Rmd with no markup.
+You can add `track_changes = 'criticmarkup'` to have all tracked changes inserted with CriticMarkup.
+
+You can also run `redoc::dedoc("[edited_document.docx]", to = "[your_original_rmarkdown_file.Rmd", overwrite = TRUE)` to have all the changes written into your original file. ONLY DO THIS IF YOUR ORIGINAL FILE WAS COMMITTED IN GIT WITH THE VERSION YOU RENDERED AND SENT FOR FEEDBACK!!
+You can then use git to view and accept/reject the changes from the reviewers.
+
+You can also run `print(redoc:::redoc_diff("[new_document.docx]"))` (note the `:::`) to see the comparison in the RStudio viewer pane (no Rmd files are updated.)
+
+You can also use the RStudio addins 'Dedoc to new file' or 'Dedoc to active file'. This will automatically show the graphical view of the changes in RStudio viewer, but you have less control over how changes/revisions are picked up.
+
+See `vignette('workflow')` or https://scholaempirica.github.io/reschola/articles/workflow.html for more on the analysis workflow.
+
+\newpage
+<!-- "\newpage" is how you insert a page break which will be reflected in the Word doc -->
+
+
+## Heading 2
+
+### Heading 3

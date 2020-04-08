@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add or replace logo in the header of a Word document — manage_docx_header_logos • reschola</title>
+<title>Czech formatted scales for ggplot2 — formatscz • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,10 +54,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add or replace logo in the header of a Word document — manage_docx_header_logos" />
-<meta property="og:description" content="Takes an existing Word document created using the reschola templates
-and adds (by default, or replaces if action = &quot;replace_schola&quot;) the logo with
-the image file you point it to." />
+<meta property="og:title" content="Czech formatted scales for ggplot2 — formatscz" />
+<meta property="og:description" content="label_percent_cz() returns a formatter that outputs percent labels with a &quot; %&quot; suffix and a decimal comma.
+label_number_cz() uses space as thousand separator and decimal comma.
+Use these when you need to format labels on something other than X and Y axes" />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -168,71 +168,93 @@ the image file you point it to." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add or replace logo in the header of a Word document</h1>
-    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/docx_header_logo.R'><code>R/docx_header_logo.R</code></a></small>
-    <div class="hidden name"><code>manage_docx_header_logos.Rd</code></div>
+    <h1>Czech formatted scales for ggplot2</h1>
+    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/scales.R'><code>R/scales.R</code></a></small>
+    <div class="hidden name"><code>formatscz.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Takes an existing Word document created using the <code>reschola</code> templates
-and adds (by default, or replaces if <code>action = "replace_schola"</code>) the logo with
-the image file you point it to.</p>
+    <p><code>label_percent_cz()</code> returns a formatter that outputs percent labels with a " %" suffix and a decimal comma.
+<code>label_number_cz()</code> uses space as thousand separator and decimal comma.
+Use these when you need to format labels on something other than X and Y axes</p>
     </div>
 
-    <pre class="usage"><span class='fu'>manage_docx_header_logos</span>(
-  <span class='no'>docx_path</span>,
-  <span class='no'>png_logo_path</span>,
-  <span class='kw'>action</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"add_client"</span>, <span class='st'>"replace_schola"</span>),
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+    <pre class="usage"><span class='fu'>label_percent_cz</span>(
+  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>" %"</span>,
+  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
+  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>","</span>,
+  <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)
+
+<span class='fu'>label_number_cz</span>(
+  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
+  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>","</span>,
+  <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>docx_path</th>
-      <td><p>The Word document in which to replace logos. Must contain the bookmarks
-<code>schola_logo</code> and <code>client_logo</code> in the header (files created from reschola templates do by default.)</p></td>
+      <th>accuracy</th>
+      <td><p>A number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
+places of precision. If <code>NULL</code>, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.</p>
+<p>Applied to rescaled data.</p></td>
     </tr>
     <tr>
-      <th>png_logo_path</th>
-      <td><p>a PNG file which will be added/used as replacement</p></td>
+      <th>scale</th>
+      <td><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
+formating. This is useful if the underlying data is very small or very
+large.</p></td>
     </tr>
     <tr>
-      <th>action</th>
-      <td><p>whether to add new logo on the right (<code>"add_client"</code>) or
-replace default Schola logo on the left (<code>"replace_schola"</code>)</p></td>
+      <th>prefix</th>
+      <td><p>Symbols to display before and after value.</p></td>
     </tr>
     <tr>
-      <th>height</th>
-      <td><p>height of the new logo in the resulting document, in <code>cm</code>.
-By default, uses the height of the existing Schola logo in the header.</p></td>
+      <th>suffix</th>
+      <td><p>Symbols to display before and after value.</p></td>
+    </tr>
+    <tr>
+      <th>big.mark</th>
+      <td><p>Character used between every 3 digits to separate thousands.</p></td>
+    </tr>
+    <tr>
+      <th>decimal.mark</th>
+      <td><p>The character to be used to indicate the numeric
+decimal point.</p></td>
+    </tr>
+    <tr>
+      <th>trim</th>
+      <td><p>Logical, if <code>FALSE</code>, values are right-justified to a common
+width (see <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a></code>).</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments passed on to <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a></code>.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>invisibly returns the name of the new Word doc, which is same as the input Word doc,
-with an an added <code>_addedlogo</code> suffix.</p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>This requires specific bookmarks in the header of the input document.
-This is taken from the skeleton.docx template in the template components.
-If you overwrite the header in the input document, this function will not work.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Workflow helpers: 
-<code><a href='draft_redoc.html'>draft_redoc</a>()</code>,
-<code><a href='draft_word.html'>draft_word</a>()</code>,
-<code><a href='gd_download_folder.html'>gd_download_folder</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>reschola</span>)
-<span class='fu'>manage_docx_header_logos</span>(<span class='st'>"draft.docx"</span>, <span class='kw'>png_logo_path</span> <span class='kw'>=</span> <span class='st'>"logos/newlogo.png"</span>,
-                         <span class='kw'>action</span> <span class='kw'>=</span> <span class='st'>"add_client"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in png::readPNG(img.file): unable to open logos/newlogo.png</span></div><div class='input'><span class='fu'>manage_docx_header_logos</span>(<span class='st'>"draft.docx"</span>, <span class='kw'>png_logo_path</span> <span class='kw'>=</span> <span class='st'>"logos/newlogo.png"</span>,
-                         <span class='kw'>action</span> <span class='kw'>=</span> <span class='st'>"replace_schola"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in png::readPNG(img.file): unable to open logos/newlogo.png</span></div><div class='input'># }
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>reschola</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>hwy</span>, <span class='no'>cty</span>)) +
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>cty</span>/<span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>cty</span>), <span class='kw'>size</span> <span class='kw'>=</span> <span class='no'>hwy</span>*<span class='fl'>100</span>)) +
+  <span class='fu'><a href='theme_schola.html'>theme_schola</a></span>(<span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>, <span class='kw'>title_family</span> <span class='kw'>=</span> <span class='st'>"sans"</span>, <span class='kw'>gridlines</span> <span class='kw'>=</span> <span class='st'>"scatter"</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html'>scale_color_binned</a></span>(<span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_percent_cz</span>()) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_size.html'>scale_size_binned</a></span>(<span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_number_cz</span>())</div><div class='img'><img src='formatscz-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

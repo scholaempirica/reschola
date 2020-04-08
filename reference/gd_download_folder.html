@@ -90,7 +90,7 @@ Use googledrive::drive_download() for downloading individual files." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
       </span>
     </div>
 
@@ -225,11 +225,14 @@ Bear this in mind when naming files in GDrive subfolders so as to avoid naming c
 <code><a href='manage_docx_header_logos.html'>manage_docx_header_logos</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='no'>gd_url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://drive.google.com/drive/folders/1bCyR_VKAP_43NEujqisjN77hANnMKfHZ"</span>
 <span class='fu'>gd_download_folder</span>(<span class='kw'>folder_url</span> <span class='kw'>=</span> <span class='no'>gd_url</span>,
-                   <span class='kw'>files_from_subfolders</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='no'>T</span>)
-}</div></pre>
+                   <span class='kw'>files_from_subfolders</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='no'>T</span>)</div><div class='output co'>#&gt; <span class='message'>httpuv not installed, defaulting to out-of-band authentication</span></div><div class='output co'>#&gt; <span class='error'>Error: Can't get Google credentials.</span>
+#&gt; <span class='error'>Are you running googledrive in a non-interactive session? Consider:</span>
+#&gt; <span class='error'>  * `drive_deauth()` to prevent the attempt to get credentials.</span>
+#&gt; <span class='error'>  * Call `drive_auth()` directly with all necessary specifics.</span></div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
