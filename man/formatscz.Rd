@@ -64,7 +64,7 @@ library(reschola)
 library(ggplot2)
 ggplot(mpg, aes(hwy, cty)) +
 geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
-  theme_schola() +
+  theme_schola(family = "sans", title_family = "sans", gridlines = "scatter") +
   scale_color_binned(labels = label_percent_cz()) +
   scale_size_binned(labels = label_number_cz())
 }

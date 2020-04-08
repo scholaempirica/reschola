@@ -195,7 +195,7 @@ library(reschola)
 library(ggplot2)
 ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   geom_point() +
-  theme_schola() +
+  theme_schola(family = "sans", title_family = "sans", gridlines = "scatter") +
   scale_y_percent_cz() +
   scale_x_number_cz()
 }
