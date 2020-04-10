@@ -19,7 +19,7 @@
 #' @return vector of paths to downloaded files
 #' @family Workflow helpers
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' gd_url <- "https://drive.google.com/drive/folders/1bCyR_VKAP_43NEujqisjN77hANnMKfHZ"
 #' gd_download_folder(folder_url = gd_url,
 #'                    files_from_subfolders = T, overwrite = T)

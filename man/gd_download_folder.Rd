@@ -36,7 +36,7 @@ saved in the same directory, not in the respective subdirectories.
 Bear this in mind when naming files in GDrive subfolders so as to avoid naming conflicts.
 }
 \examples{
-\donttest{
+\dontrun{
 gd_url <- "https://drive.google.com/drive/folders/1bCyR_VKAP_43NEujqisjN77hANnMKfHZ"
 gd_download_folder(folder_url = gd_url,
                    files_from_subfolders = T, overwrite = T)
