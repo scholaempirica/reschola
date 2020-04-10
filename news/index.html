@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10.9000</span>
       </span>
     </div>
 
@@ -169,6 +169,24 @@
       <small>Source: <a href='https://github.com/scholaempirica/reschola/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="reschola-development-version" class="section level1">
+<h1 class="page-header" data-toc-text="development version">
+<a href="#reschola-development-version" class="anchor"></a>reschola (development version)</h1>
+<div id="changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes" class="anchor"></a>Changes</h2>
+<ul>
+<li>template-based project setup no longer runs redoc so things work on Windows with broken encoding settings</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>updated repo URLs in install instructions in README.[R]md</li>
+</ul>
+</div>
+</div>
     <div id="reschola-0-2-10" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.10">
 <a href="#reschola-0-2-10" class="anchor"></a>reschola 0.2.10</h1>
@@ -185,9 +203,9 @@
 <li>new label formatters: <code><a href="../reference/formatscz.html">label_number_cz()</a></code> and <code><a href="../reference/formatscz.html">label_percent_cz()</a></code> (the English-language analogs without <code>_cz</code> are in the package <code>scales</code>)</li>
 </ul>
 </div>
-<div id="changes" class="section level2">
+<div id="changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes" class="anchor"></a>Changes</h2>
+<a href="#changes-1" class="anchor"></a>Changes</h2>
 <ul>
 <li>minor changes to Word template files around image captions</li>
 <li>added <code>margin_bottom</code> param to <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
@@ -210,9 +228,9 @@
 <li>updated RMarkdown outputs to get figures nice and right size</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>project setup now creates <code>data-raw</code> and <code>data-processed</code> such that the directories can go into git but not its contents; documentation explains this in multiple places.</li>
 <li>
@@ -223,9 +241,9 @@
     <div id="reschola-0-2-8" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.8">
 <a href="#reschola-0-2-8" class="anchor"></a>reschola 0.2.8</h1>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> now works outside of a reschola-created project</li>
@@ -254,9 +272,9 @@
     <div id="reschola-0-2-7" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.7">
 <a href="#reschola-0-2-7" class="anchor"></a>reschola 0.2.7</h1>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>fixed bug in project template where a newly created RMd file did not open</li>
 <li>refactored <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> to fix roundtripping issue and improve UI</li>
@@ -286,9 +304,9 @@
     <div id="reschola-0-2-5" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.5">
 <a href="#reschola-0-2-5" class="anchor"></a>reschola 0.2.5</h1>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>updated <code>drat</code> repo link in README so <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> no longer fails</li>
 <li>fixed bug where project template failed when copying standard logos</li>
@@ -359,7 +377,7 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#reschola-0-2-0" class="anchor"></a>reschola 0.2.0</h1>
 <ul>
-<li>improved README and added âGetting startedâ vignette</li>
+<li>improved README and added “Getting started” vignette</li>
 <li>basic <code><a href="../reference/theme_schola.html">theme_schola()</a></code> added for early feedback, together with vignette</li>
 <li>key R and RStudio tips in <code>tips.html</code> vignette</li>
 <li>complete <code>meta.html</code> vignette on developing this package</li>
