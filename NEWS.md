@@ -1,5 +1,10 @@
 # reschola (development version)
 
+
+## Bug fixes
+
+* updated repo URLs in install instructions in README.[R]md
+
 # reschola 0.2.10
 
 ## New features
