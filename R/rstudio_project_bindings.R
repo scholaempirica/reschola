@@ -148,7 +148,7 @@ schola_project <- function(path, ...) {
 
   # print(usethis::proj_sitrep())
   draft_word(name  = "01_schola-styled-word.Rmd", open = F)
-  draft_redoc(name = "02_schola-styled-redoc.Rmd", open = F)
+  # draft_redoc(name = "02_schola-styled-redoc.Rmd", open = F)
 
   # delete R directory which was created automatically
 

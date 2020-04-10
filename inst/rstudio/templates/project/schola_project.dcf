@@ -3,7 +3,7 @@ Binding: schola_project
 Subtitle: Create a new schola project
 Caption: Create a new schola project
 Icon: schola.png
-OpenFiles: "getting-started.Rmd", README.md, "01_schola-styled-word.Rmd", "02_schola-styled-redoc.Rmd"
+OpenFiles: "getting-started.Rmd", README.md, "01_schola-styled-word.Rmd"
 
 Parameter: title
 Widget: TextInput

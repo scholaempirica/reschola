@@ -1,5 +1,8 @@
 # reschola (development version)
 
+## Changes
+
+* template-based project setup no longer runs redoc so things work on Windows with broken encoding settings 
 
 ## Bug fixes
 
