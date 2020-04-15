@@ -262,6 +262,31 @@
 <a href="#google-authentication" class="anchor"></a>Google Authentication</h4>
 <p>If you haven’t used the <code>googledrive</code> package before, the package may ask for authorisation to access Google Drive. This is legitimate and you should grant access. This happens in the browser and on some machines may cause project initiatition to freeze or stop. If that happens, run <code><a href="https://googledrive.tidyverse.org/reference/drive_auth.html">googledrive::drive_auth()</a></code>, delete the directory created by the previous project creation attempt, and try creating the project again.</p>
 </div>
+<div id="renv-managing-package-dependencies" class="section level4">
+<h4 class="hasAnchor">
+<a href="#renv-managing-package-dependencies" class="anchor"></a><code>renv</code>: managing package dependencies</h4>
+<p>One of the most annoying barriers do reproducibility is when packages on which your code depends change over time and as a result your code breaks or behaves differently.</p>
+<p>The most convenient and sophisticated way to handle this is to use the <code>renv</code> dependency management system. <code>renv</code></p>
+<p>In short, it makes sure that your project holds a complete record of the exact package versions you are using when creating it.</p>
+<p>When to use it:</p>
+<p>Always, really, but especaially when:</p>
+<ul>
+<li>you start collaborating on a project with someone else</li>
+<li>you are putting a project aside for a while</li>
+<li>you want it to run on a remote machine, e.g. to build and publish a website through Travis CI or Github Actions</li>
+</ul>
+<p>What it does:</p>
+<ul>
+<li>creates a project-specific library</li>
+<li>installs the packages on which your code depends into it</li>
+<li>records the exact versions of these packages in something called a lockfile - a small text file that you keep and commit into git alongside your code</li>
+<li>sets up the project such that the project library is rebuilt with the minimum amount of hassle when you open it up in the future or someone else clones it.</li>
+</ul>
+<p>To save avoid wasting time, disk space and download bandwidth, <code>renv</code> keeps a copy of all the package versions used in your projects in a shared per-computer cache. The project libraries only contain links to that cache. That way you are not committing the package code into your project, nor do the package files sit in your project directory, and they only get downloaded once if multiple projects’ libraries use the save version of a package.</p>
+<p>All you need to do is call <code>renv::init()</code> at the beginning and then <code>renv::snapshot()</code> anytime you install new packages or commit code.</p>
+<p>See <a href="https://rstudio.github.io/renv/" class="uri">https://rstudio.github.io/renv/</a> for an intro to the package and <a href="https://environments.rstudio.com/" class="uri">https://environments.rstudio.com/</a> for a broader intro.</p>
+<p>Renv is not part of the standard project setup in <code>reschola</code> so as not to increase the complexity of project initiation, but it is much recommended that you use it.</p>
+</div>
 </div>
 <div id="download-the-data" class="section level3">
 <h3 class="hasAnchor">
@@ -289,6 +314,7 @@
 <a href="#exploreanalyse-the-data" class="anchor"></a>4. Explore/Analyse the data</h3>
 <p>I suggest you keep your data exploration in a separate script from your report; often the EDA will happen in the report as you go, but a better process perhaps is to develop bits of your analysis in one script/Rmd and only move bits of code into the report Rmd which is essential for building the report.</p>
 <p>An RMarkdown Notebook might be an appropriate format for this.</p>
+<p>See <a href="tips">tips.html#data-exploration-1</a> for a list of appropriate tools for data exploration.</p>
 <div id="approaches" class="section level4 bs-callout bs-callout-blue">
 <h4 class="hasAnchor">
 <a href="#approaches" class="anchor"></a>Approaches</h4>
@@ -427,6 +453,7 @@
 <code>build.R</code> should contain all scripts needed to run the whole thing in the right order; so should any other built-type script you may have created</li>
 <li>README.md should contain workable instructions</li>
 </ul>
+<p>Additionally, you should use <code>renv</code> and snapshot the state of the project library using <code>renv::snapshot()</code>.</p>
 </div>
 </div>
 <div id="tools-for-implementing-good-practices" class="section level2">

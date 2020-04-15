@@ -172,6 +172,16 @@
 <a href="#online-documentation" class="anchor"></a>Online documentation</h2>
 <p>The continuous integration pipeline (Travis CI and Github Pages) means that whenever code is pushed to Github, the documentation of the package is converted to a website by the <code>pkgdown</code> package and published on <a href="https://scholaempirica.github.io/reschola">scholaempirica.github.io/reschola</a> via the <code>gh-pages</code> branch of the repository.</p>
 </div>
+<div id="future-proofing-the-package" class="section level2">
+<h2 class="hasAnchor">
+<a href="#future-proofing-the-package" class="anchor"></a>Future-proofing the package</h2>
+<p>There are three areas where I think future developments might make the package fragile:</p>
+<ol style="list-style-type: decimal">
+<li>R 4.0: let’s test when it is released and update if needed</li>
+<li>redoc: we currently use a “frozen” fork with some quick fixes; if the author accepts those fixes or develops the package further, we should switch how that dependency is recorded and update other code in the package and its documentation as needed</li>
+<li>The website: the Travis CI service sometimes acts funny, particularly when authenticating to Github. The recommended practice of running the checks and website build process on Github Actions is not available as GH Actions throws an error, possibly related to the non-standard redoc dependency. If a workflow becomes available for GH Actions that handles this, we can move it over.</li>
+</ol>
+</div>
 <div id="reusingreshaping-the-documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#reusingreshaping-the-documentation" class="anchor"></a>Reusing/reshaping the documentation</h2>
