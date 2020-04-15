@@ -1,4 +1,4 @@
-# reschola (development version)
+# reschola 0.2.11
 
 ## Documentation additions
 
