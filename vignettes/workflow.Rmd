@@ -140,6 +140,37 @@ If you haven't used the `googledrive` package before, the package may ask for au
 This happens in the browser and on some machines may cause project initiatition to freeze or stop.
 If that happens, run `googledrive::drive_auth()`, delete the directory created by the previous project creation attempt, and try creating the project again.
 
+#### `renv`: managing package dependencies
+
+One of the most annoying barriers do reproducibility is when packages on which your code depends change over time and as a result your code breaks or behaves differently.
+
+The most convenient and sophisticated way to handle this is to use the `renv` dependency management system. `renv`
+
+In short, it makes sure that your project holds a complete record of the exact package versions you are using when creating it.
+
+When to use it:
+
+Always, really, but especaially when:
+
+- you start collaborating on a project with someone else
+- you are putting a project aside for a while
+- you want it to run on a remote machine, e.g. to build and publish a website through Travis CI or Github Actions
+
+What it does:
+
+- creates a project-specific library
+- installs the packages on which your code depends into it
+- records the exact versions of these packages in something called a lockfile - a small text file that you keep and commit into git alongside your code
+- sets up the project such that the project library is rebuilt with the minimum amount of hassle when you open it up in the future or someone else clones it.
+
+To save avoid wasting time, disk space and download bandwidth, `renv` keeps a copy of all the package versions used in your projects in a shared per-computer cache. The project libraries only contain links to that cache. That way you are not committing the package code into your project, nor do the package files sit in your project directory, and they only get downloaded once if multiple projects' libraries use the save version of a package. 
+
+All you need to do is call `renv::init()` at the beginning and then `renv::snapshot()` anytime you install new packages or commit code.
+
+See https://rstudio.github.io/renv/ for an intro to the package and https://environments.rstudio.com/ for a broader intro.
+
+Renv is not part of the standard project setup in `reschola` so as not to increase the complexity of project initiation, but it is much recommended that you use it.
+
 ### 2. Download the data
 
 Use `001_retrieve-data.R`; if you have other data retrieval, ideally the code for it should live here.
@@ -326,6 +357,8 @@ Really just make sure that you have followed the steps. If you have, then:
 - each Rmd file should run without error
 - `build.R` should contain all scripts needed to run the whole thing in the right order; so should any other built-type script you may have created
 - README.md should contain workable instructions
+
+Additionally, you should use `renv` and snapshot the state of the project library using `renv::snapshot()`.
 
 ## Tools for implementing good practices
 
