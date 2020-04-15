@@ -1,5 +1,10 @@
 # reschola (development version)
 
+## Documentation additions
+
+* explainer on renv added to workflow vignettes
+* new tips on EDA and CRAN views
+
 ## Changes
 
 * template-based project setup no longer runs redoc so things work on Windows with broken encoding settings 
