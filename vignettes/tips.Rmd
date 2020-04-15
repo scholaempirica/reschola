@@ -107,6 +107,9 @@ Mostly useful for package development, but some utilities also make your life ea
 - [visdat](https://docs.ropensci.org/visdat/) for quick data overview
 - [naniar](http://naniar.njtierney.com/) for missing data analysis
 - [ggcorrplot](https://cran.r-project.org/package=ggcorrplot) for correlation matrices in `ggplot2`
+- [dlookr](https://cran.r-project.org/package=dlookr) is a fairly complete toolbox for EDA and related tasks.
+
+See the recent [R Journal article](https://journal.r-project.org/archive/2019/RJ-2019-033/index.html) for an overview of packages for automated EDA.
 
 ## Data input
 
@@ -144,6 +147,8 @@ Mostly useful for package development, but some utilities also make your life ea
 ## Resources for different data types or analysis areas
 
 This section points to packages and resources you can use in different parts of your analysis or to perform various specialised tasks.
+
+[CRAN's task views](https://cran.r-project.org/web/views/) can also be useful: they contain collections of packages organised by task.
 
 ### Web scraping
 

@@ -171,6 +171,8 @@ I suggest you keep your data exploration in a separate script from your report; 
 
 An RMarkdown Notebook might be an appropriate format for this.
 
+See [tips.html#data-exploration-1](tips) for a list of appropriate tools for data exploration.
+
 #### Approaches {.bs-callout .bs-callout-blue}
 
 There is a real trade off here: one way to do it is to work through the analysis in the report script, perhaps hiding most through chunk options (`include =  FALSE`) and only outputting into the final format stuff that is relevant. 
