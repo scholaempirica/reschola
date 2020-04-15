@@ -60,6 +60,14 @@ See installation instructions in README.md for how to install these binaries.
 
 The continuous integration pipeline (Travis CI and Github Pages) means that whenever code is pushed to Github, the documentation of the package is converted to a website by the `pkgdown` package and published on [scholaempirica.github.io/reschola](https://scholaempirica.github.io/reschola) via the `gh-pages` branch of the repository. 
 
+## Future-proofing the package
+
+There are three areas where I think future developments might make the package fragile:
+
+1. R 4.0: let's test when it is released and update if needed
+2. redoc: we currently use a "frozen" fork with some quick fixes; if the author accepts those fixes or develops the package further, we should switch how that dependency is recorded and update other code in the package and its documentation as needed
+3. The website: the Travis CI service sometimes acts funny, particularly when authenticating to Github. The recommended practice of running the checks and website build process on Github Actions is not available as GH Actions throws an error, possibly related to the non-standard redoc dependency. If a workflow becomes available for GH Actions that handles this, we can move it over.
+
 ## Reusing/reshaping the documentation
 
 ### Making changes
