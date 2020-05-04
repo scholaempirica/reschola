@@ -18,7 +18,7 @@ path to created file (invisibly)
 Shortcut function to create and a new Rmd file using schola_redoc template and open for editing.
 }
 \examples{
-\donttest{
+\dontrun{
 draft_redoc("new_file")
 }
 }

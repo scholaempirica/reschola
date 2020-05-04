@@ -8,7 +8,7 @@
 #' @family Workflow helpers
 #' @return path to created file (invisibly)
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' draft_word("new_file")
 #' }
 #' @export
@@ -28,7 +28,7 @@ draft_word <- function(name = "draft.Rmd", open = T) {
 #' @family Workflow helpers
 #' @return path to created file (invisibly)
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' draft_redoc("new_file")
 #' }
 #' @export
