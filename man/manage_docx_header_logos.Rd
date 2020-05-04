@@ -38,7 +38,7 @@ This is taken from the skeleton.docx template in the template components.
 If you overwrite the header in the input document, this function will not work.
 }
 \examples{
-\donttest{
+\dontrun{
 library(reschola)
 manage_docx_header_logos("draft.docx", png_logo_path = "logos/newlogo.png",
                          action = "add_client")

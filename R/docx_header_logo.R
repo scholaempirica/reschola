@@ -22,7 +22,7 @@
 #' @export
 #' @family Workflow helpers
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' library(reschola)
 #' manage_docx_header_logos("draft.docx", png_logo_path = "logos/newlogo.png",
 #'                          action = "add_client")

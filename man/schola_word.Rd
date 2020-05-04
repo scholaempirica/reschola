@@ -17,7 +17,7 @@ This is a function called in the output of the yaml of the Rmd file to
 specify using the standard Schola word document formatting.
 }
 \examples{
-\donttest{
+\dontrun{
   output: reschola::schola_word
 }
 }

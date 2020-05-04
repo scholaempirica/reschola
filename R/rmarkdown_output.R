@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'   output: reschola::schola_word
 #' }
 schola_word <- function(...) {
@@ -53,7 +53,7 @@ schola_word <- function(...) {
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'   output: reschola::schola_redoc
 #' }
 schola_redoc <- function(...) {

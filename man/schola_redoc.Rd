@@ -24,7 +24,7 @@ on the reversible editing.
 The capabilities of this format are a bit more limited compared to \code{schola_word}.
 }
 \examples{
-\donttest{
+\dontrun{
   output: reschola::schola_redoc
 }
 }
