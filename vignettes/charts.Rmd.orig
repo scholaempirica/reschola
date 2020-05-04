@@ -216,6 +216,31 @@ ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   scale_size_binned(labels = scales::label_number(accuracy = .1))
 ```
 
+## Sizing images
+
+The `schola_[word|redoc]` formats have opinionated sizing defaults to ensure that resolution, size and font size in the bitmap (PNG) image are in line with the rest of the document.
+This is particularly tricky in the context of Word documents, hence the baked in defaults. For this reason, the steps to change images sizes are a bit special - see below.
+
+Here is what the defaults are:
+
+- width is full-page, i.e. 15.98 cm (so the image is sized exactly to fit inside margings without any resizing which would degrade quality)
+- resolution at 300 DPI and pixel size to result in sharp image with exactly same font size as document
+- height is width divided by the golden ratio, i.e. default height is 9.92 cm
+
+Here is how to manipulate image sizes without messing up anything else, in Word:
+
+- to change the **height**, set the `fig.asp` chunk option to more or less than 0.62
+- to change the **width**, set chunk options `fig.width` and `out.width` to the same size in centimeters, e.g. for half-width you would do `fig.width=7.98/2.54, out.width="7.98cm"` (because `fig.width` is set in inches).
+Note the quotes around the `out.width` value - this is a special thing for pandoc to ensure the sizing is reflected in the layout of the Word document. The height in this case will be 7.98 * 0.62 cm (see above)
+- so to change **both width and height**, set the `fig.asp` param as per above.
+
+For **HTML** output, you can use e.g. `out.width="50%"`.
+
+For **PDF** output, you can just set `fig.width` in inches and the height using `fig.asp` as above, as long as you use the `pdf` or `cairo_pdf` device (using the `dev` option in the chunk or at per-document level.)
+Note that the font handling might be a bit tricky for PDF depending on your system.
+
+Image sizing works quite differently between output formats (HTML, PDF, Word).
+For that reason it is probably the one thing that will look odd or break if you try to render a document written in a reschola template into HTML or PDF without fiddling with sizing, graphic devices or font handling.
 
 ## Making fonts work
 
@@ -224,7 +249,7 @@ These may not be present on your system.
 You can install them by running `reschola::import_fonts()`. (once per machine, and do follow the instructions in the message output when you call this function.)
 On package load, these will be registered with R.
 If the fonts do not show up in your charts, run `extrafont::loadfonts()` (once per session).
-You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load.
+You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system - if not, first try using the `cairo_pdf` device and/or running `extrafont::embed_fonts()` on the whole resulting PDF document.)
 
 ## Using fonts
 
