@@ -286,10 +286,30 @@
   <span class="fu">scale_size_binned</span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="kw pkg">scales</span><span class="kw ns">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_number.html">label_number</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">.1</span>))</pre></body></html></div>
 <p><img src="charts-scales-en-1.png" title="plot of chunk scales-en" alt="plot of chunk scales-en" width="100%"></p>
 </div>
+<div id="sizing-images" class="section level2">
+<h2 class="hasAnchor">
+<a href="#sizing-images" class="anchor"></a>Sizing images</h2>
+<p>The <code>schola_[word|redoc]</code> formats have opinionated sizing defaults to ensure that resolution, size and font size in the bitmap (PNG) image are in line with the rest of the document. This is particularly tricky in the context of Word documents, hence the baked in defaults. For this reason, the steps to change images sizes are a bit special - see below.</p>
+<p>Here is what the defaults are:</p>
+<ul>
+<li>width is full-page, i.e. 15.98 cm (so the image is sized exactly to fit inside margings without any resizing which would degrade quality)</li>
+<li>resolution at 300 DPI and pixel size to result in sharp image with exactly same font size as document</li>
+<li>height is width divided by the golden ratio, i.e. default height is 9.92 cm</li>
+</ul>
+<p>Here is how to manipulate image sizes without messing up anything else, in Word:</p>
+<ul>
+<li>to change the <strong>height</strong>, set the <code>fig.asp</code> chunk option to more or less than 0.62</li>
+<li>to change the <strong>width</strong>, set chunk options <code>fig.width</code> and <code>out.width</code> to the same size in centimeters, e.g. for half-width you would do <code>fig.width=7.98/2.54, out.width="7.98cm"</code> (because <code>fig.width</code> is set in inches). Note the quotes around the <code>out.width</code> value - this is a special thing for pandoc to ensure the sizing is reflected in the layout of the Word document. The height in this case will be 7.98 * 0.62 cm (see above)</li>
+<li>so to change <strong>both width and height</strong>, set the <code>fig.asp</code> param as per above.</li>
+</ul>
+<p>For <strong>HTML</strong> output, you can use e.g. <code>out.width="50%"</code>.</p>
+<p>For <strong>PDF</strong> output, you can just set <code>fig.width</code> in inches and the height using <code>fig.asp</code> as above, as long as you use the <code>pdf</code> or <code>cairo_pdf</code> device (using the <code>dev</code> option in the chunk or at per-document level.) Note that the font handling might be a bit tricky for PDF depending on your system.</p>
+<p>Image sizing works quite differently between output formats (HTML, PDF, Word). For that reason it is probably the one thing that will look odd or break if you try to render a document written in a reschola template into HTML or PDF without fiddling with sizing, graphic devices or font handling.</p>
+</div>
 <div id="making-fonts-work" class="section level2">
 <h2 class="hasAnchor">
 <a href="#making-fonts-work" class="anchor"></a>Making fonts work</h2>
-<p>The <code>schola_theme()</code> is set to use the Roboto and Roboto Condensed font families by default. These may not be present on your system. You can install them by running <code><a href="../reference/import_fonts.html">reschola::import_fonts()</a></code>. (once per machine, and do follow the instructions in the message output when you call this function.) On package load, these will be registered with R. If the fonts do not show up in your charts, run <code><a href="https://rdrr.io/pkg/extrafont/man/loadfonts.html">extrafont::loadfonts()</a></code> (once per session). You can also set the option <code>reschola.loadfonts</code> to have <code>reschola</code> register these fonts with the PDF/PostScript ecosystem upon package load.</p>
+<p>The <code>schola_theme()</code> is set to use the Roboto and Roboto Condensed font families by default. These may not be present on your system. You can install them by running <code><a href="../reference/import_fonts.html">reschola::import_fonts()</a></code>. (once per machine, and do follow the instructions in the message output when you call this function.) On package load, these will be registered with R. If the fonts do not show up in your charts, run <code><a href="https://rdrr.io/pkg/extrafont/man/loadfonts.html">extrafont::loadfonts()</a></code> (once per session). You can also set the option <code>reschola.loadfonts</code> to have <code>reschola</code> register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system - if not, first try using the <code>cairo_pdf</code> device and/or running <code><a href="https://rdrr.io/pkg/extrafont/man/embed_fonts.html">extrafont::embed_fonts()</a></code> on the whole resulting PDF document.)</p>
 </div>
 <div id="using-fonts" class="section level2">
 <h2 class="hasAnchor">

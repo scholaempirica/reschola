@@ -227,12 +227,13 @@ If you overwrite the header in the input document, this function will not work.<
 <code><a href='gd_download_folder.html'>gd_download_folder</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>reschola</span>)
 <span class='fu'>manage_docx_header_logos</span>(<span class='st'>"draft.docx"</span>, <span class='kw'>png_logo_path</span> <span class='kw'>=</span> <span class='st'>"logos/newlogo.png"</span>,
-                         <span class='kw'>action</span> <span class='kw'>=</span> <span class='st'>"add_client"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in png::readPNG(img.file): unable to open logos/newlogo.png</span></div><div class='input'><span class='fu'>manage_docx_header_logos</span>(<span class='st'>"draft.docx"</span>, <span class='kw'>png_logo_path</span> <span class='kw'>=</span> <span class='st'>"logos/newlogo.png"</span>,
-                         <span class='kw'>action</span> <span class='kw'>=</span> <span class='st'>"replace_schola"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in png::readPNG(img.file): unable to open logos/newlogo.png</span></div><div class='input'># }
-</div></pre>
+                         <span class='kw'>action</span> <span class='kw'>=</span> <span class='st'>"add_client"</span>)
+<span class='fu'>manage_docx_header_logos</span>(<span class='st'>"draft.docx"</span>, <span class='kw'>png_logo_path</span> <span class='kw'>=</span> <span class='st'>"logos/newlogo.png"</span>,
+                         <span class='kw'>action</span> <span class='kw'>=</span> <span class='st'>"replace_schola"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
