@@ -35,6 +35,53 @@ schola_word <- function(...) {
   base
 }
 
+#' Schola Empirica Word document with customisable template
+#'
+#' This is a function called in the output part of the YAML section of the Rmd file
+#' while using the Word template provided at the same place (see example below).
+#'
+#' Compared to `schola_word`, this "version" comes with no predefined template,
+#' so the user can utilize a template stated in YAML header (see the example below, or read
+#' the [`bookdown` manual](https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html) for more details
+#' and for a brief guide to Word templating).
+#'
+#' @param ... Arguments to be passed to `[bookdown::word_document2]`
+#'
+#' @return A modified `word_document2` with the standard Schola formatting, but without hard-coded and unchangeable template.
+#' @family Report templates and formats
+#' @author Jan Netik
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' output:
+#'   reschola::schola_word2:
+#'   reference_docx: template.docx
+#' }
+schola_word2 <- function(...) {
+  # template <- find_resource("schola_word", "template.docx")
+  base <- bookdown::word_document2(
+    # reference_docx = template,
+    ...)
+
+  # nolint start
+  base$knitr$opts_chunk$comment <- "#>"
+  base$knitr$opts_chunk$message <- FALSE
+  base$knitr$opts_chunk$warning <- FALSE
+  base$knitr$opts_chunk$error <- FALSE
+  base$knitr$opts_chunk$echo <- FALSE
+  base$knitr$opts_chunk$cache <- FALSE
+  base$knitr$opts_chunk$fig.width <- 6.29 # 15.98 cm i.e. 2 x 2.5 cm margins
+  base$knitr$opts_chunk$dpi <- 300
+  # base$knitr$opts_chunk$fig.retina <- 3
+  base$knitr$opts_chunk$fig.asp <- .618 # default height is in golden ratio
+  base$knitr$opts_chunk$fig.ext <- "png"
+  base$knitr$opts_chunk$fig.path <- "figures/"
+  # nolint end
+
+  base
+}
+
 #' Reversible Schola Empirica word document
 #'
 #' This is a function called in the output of the yaml of the Rmd file to

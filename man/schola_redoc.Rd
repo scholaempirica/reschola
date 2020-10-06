@@ -30,6 +30,8 @@ The capabilities of this format are a bit more limited compared to \code{schola_
 }
 \seealso{
 Other Report templates and formats: 
+\code{\link{open_schola_word_template}()},
+\code{\link{schola_word2}()},
 \code{\link{schola_word}()}
 }
 \concept{Report templates and formats}
