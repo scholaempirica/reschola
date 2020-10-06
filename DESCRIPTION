@@ -1,6 +1,6 @@
 Package: reschola
 Title: The Schola Empirica package
-Version: 0.2.11
+Version: 0.2.12
 Authors@R: 
     c(person(given = "Petr",
              family = "Bouchal",
@@ -13,6 +13,11 @@ Authors@R:
       person(given = "Aleš",
              family = "Vomáčka",
              role = "ctb"),
+      person(given = "Jan",
+             family = "Netík",
+             role = "ctb",
+             email = "netikja@gmail.com",
+             comment = c(ORCID = "0000-0002-3888-3203")),
       person(given = "Schola Empirica",
              role = c("cph", "fnd")))
 Description: A collection of utilies, themes and templates for data
