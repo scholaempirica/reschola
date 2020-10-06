@@ -1,3 +1,20 @@
+# reschola 0.2.12
+
+## Documentation additions
+
+* "templating" explained in `schola_word2`, with a link to `bookdown` manual
+
+## Changes
+
+* the main Word template now uses Roboto font everywhere, pages are auto-numbered, ToC is properly formatted, text is justified
+* two new functions: `schola_word2` gives the user control over the reference Word document (a.k.a. template), `open_schola_word_template` automatically locates and opens up the aforementioned template that comes with the package to simplify and speed up the workd with the template
+
+## Bug fixes
+
+* default `theme_schola` now uses the same colour everywhere (caption colour was in solid black)
+* extra parenthesis in README removed
+
+
 # reschola 0.2.11
 
 ## Documentation additions
@@ -60,7 +77,7 @@
 * added search capability to website
 * clarified workflow text on project creation
 * added note on encoding in Workflow article
-* added guidance in setupa and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors
+* added guidance in setups and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors
 * more guidance in RMarkdown templates
 
 # reschola 0.2.7
@@ -141,7 +158,7 @@
 * handle pre-computing of `charts.html` vignette to get around missing fonts on Travis
 * working project template
 * rely on patched `redoc` which fixes addin error and an error in documentation
-* new pkdown site 
+* new pkgdown site 
 
 # reschola 0.1.0
 

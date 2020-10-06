@@ -37,7 +37,7 @@ installed with:
 
 ``` r
 remotes::install_github("scholaempirica/reschola",
-                         build_vignettes = TRUE))
+                         build_vignettes = TRUE)
 ```
 
 If you are having trouble installing packages from sources, the binaries
