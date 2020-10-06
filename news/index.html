@@ -169,27 +169,54 @@
       <small>Source: <a href='https://github.com/scholaempirica/reschola/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="reschola-0-2-11" class="section level1">
-<h1 class="page-header" data-toc-text="0.2.11">
-<a href="#reschola-0-2-11" class="anchor"></a>reschola 0.2.11</h1>
+    <div id="reschola-0-2-12" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.12">
+<a href="#reschola-0-2-12" class="anchor"></a>reschola 0.2.12</h1>
 <div id="documentation-additions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#documentation-additions" class="anchor"></a>Documentation additions</h2>
 <ul>
-<li>explainer on renv added to workflow vignettes</li>
-<li>new tips on EDA and CRAN views</li>
+<li>“templating” explained in <code>schola_word2</code>, with a link to <code>bookdown</code> manual</li>
 </ul>
 </div>
 <div id="changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#changes" class="anchor"></a>Changes</h2>
 <ul>
-<li>template-based project setup no longer runs redoc so things work on Windows with broken encoding settings</li>
+<li>the main Word template now uses Roboto font everywhere, pages are auto-numbered, ToC is properly formatted, text is justified</li>
+<li>two new functions: <code>schola_word2</code> gives the user control over the reference Word document (a.k.a. template), <code>open_schola_word_template</code> automatically locates and opens up the aforementioned template that comes with the package to simplify and speed up the workd with the template</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>default <code>theme_schola</code> now uses the same colour everywhere (caption colour was in solid black)</li>
+<li>extra parenthesis in README removed</li>
+</ul>
+</div>
+</div>
+    <div id="reschola-0-2-11" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.11">
+<a href="#reschola-0-2-11" class="anchor"></a>reschola 0.2.11</h1>
+<div id="documentation-additions-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation-additions-1" class="anchor"></a>Documentation additions</h2>
+<ul>
+<li>explainer on renv added to workflow vignettes</li>
+<li>new tips on EDA and CRAN views</li>
+</ul>
+</div>
+<div id="changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes-1" class="anchor"></a>Changes</h2>
+<ul>
+<li>template-based project setup no longer runs redoc so things work on Windows with broken encoding settings</li>
+</ul>
+</div>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>updated repo URLs in install instructions in README.[R]md</li>
 </ul>
@@ -211,9 +238,9 @@
 <li>new label formatters: <code><a href="../reference/formatscz.html">label_number_cz()</a></code> and <code><a href="../reference/formatscz.html">label_percent_cz()</a></code> (the English-language analogs without <code>_cz</code> are in the package <code>scales</code>)</li>
 </ul>
 </div>
-<div id="changes-1" class="section level2">
+<div id="changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-1" class="anchor"></a>Changes</h2>
+<a href="#changes-2" class="anchor"></a>Changes</h2>
 <ul>
 <li>minor changes to Word template files around image captions</li>
 <li>added <code>margin_bottom</code> param to <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
@@ -236,9 +263,9 @@
 <li>updated RMarkdown outputs to get figures nice and right size</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>project setup now creates <code>data-raw</code> and <code>data-processed</code> such that the directories can go into git but not its contents; documentation explains this in multiple places.</li>
 <li>
@@ -249,9 +276,9 @@
     <div id="reschola-0-2-8" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.8">
 <a href="#reschola-0-2-8" class="anchor"></a>reschola 0.2.8</h1>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> now works outside of a reschola-created project</li>
@@ -272,7 +299,7 @@
 <li>added search capability to website</li>
 <li>clarified workflow text on project creation</li>
 <li>added note on encoding in Workflow article</li>
-<li>added guidance in setupa and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors</li>
+<li>added guidance in setups and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors</li>
 <li>more guidance in RMarkdown templates</li>
 </ul>
 </div>
@@ -280,9 +307,9 @@
     <div id="reschola-0-2-7" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.7">
 <a href="#reschola-0-2-7" class="anchor"></a>reschola 0.2.7</h1>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>fixed bug in project template where a newly created RMd file did not open</li>
 <li>refactored <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> to fix roundtripping issue and improve UI</li>
@@ -312,9 +339,9 @@
     <div id="reschola-0-2-5" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.5">
 <a href="#reschola-0-2-5" class="anchor"></a>reschola 0.2.5</h1>
-<div id="bug-fixes-4" class="section level2">
+<div id="bug-fixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>updated <code>drat</code> repo link in README so <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> no longer fails</li>
 <li>fixed bug where project template failed when copying standard logos</li>
@@ -392,7 +419,7 @@
 <li>handle pre-computing of <code>charts.html</code> vignette to get around missing fonts on Travis</li>
 <li>working project template</li>
 <li>rely on patched <code>redoc</code> which fixes addin error and an error in documentation</li>
-<li>new pkdown site</li>
+<li>new pkgdown site</li>
 </ul>
 </div>
     <div id="reschola-0-1-0" class="section level1">
