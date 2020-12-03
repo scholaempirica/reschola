@@ -116,7 +116,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="tips_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="tips_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="tips_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Tips and Tricks for R and Rstudio</h1>
@@ -137,7 +138,7 @@
 <div id="general-helpers" class="section level3">
 <h3 class="hasAnchor">
 <a href="#general-helpers" class="anchor"></a>General helpers</h3>
-<p>**Code completion*: when typing a function name, press <code>Tab</code> and RStudio will show functions/objects which match that name. Use the arrows to navigate the entry you need and press <code>Tab</code> again. Likewise with parameters once you are inside parentheses. Note that you can type e.g. <code>usegitrel</code> to get a suggestion for <code>use_github_release()</code> as RStudio looks intelligently through functions names some_function_name(). (This is also a good reason to use underscores in your own object/function names).</p>
+<p>**Code completion*: when typing a function name, press <code>Tab</code> and RStudio will show functions/objects which match that name. Use the arrows to navigate the entry you need and press <code>Tab</code> again. Likewise with parameters once you are inside parentheses. Note that you can type e.g. <code>usegitrel</code> to get a suggestion for <code>use_github_release()</code> as RStudio looks intelligently through functions names some_function_name(). (This is also a good reason to use underscores in your own object/function names).</p>
 <p><strong>Paths completion</strong>: when inside quotes, type or press tab and RStudio will suggest files inside the current project.</p>
 <p><strong>Go to anything</strong>: in RStudio, press <code>ctrl</code>+ <code>.</code>, and start typing. RStudio will suggest files and functions in this project and if you click/arrow+enter into one, will take you to the code.</p>
 <p><strong>Cheatsheets</strong>: in help &gt; Cheatsheets, you can get to two-page cheatsheets on some of the most used packages. They are also <a href="https://rstudio.com/resources/cheatsheets/">online</a>.</p>
@@ -157,14 +158,14 @@
 <a href="#handy-keyboard-shortcuts" class="anchor"></a>Handy keyboard shortcuts</h3>
 <ul>
 <li>
-<code>ctrl</code>+<code>enter</code> runs current line or expression (lines bound by <code><a href="../reference/pipe.html">%&gt;%</a></code>)</li>
+<code>ctrl</code>+<code>enter</code> runs current line or expression (lines bound by <code><a href="../reference/%&gt;%.html">%&gt;%</a></code>)</li>
 <li>
-<code>alt</code>+<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> inserts <code>&lt;-</code>
+<code>alt</code>+<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> inserts <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>
 </li>
 <li>
 <code>ctrl</code>+<code>D</code> deletes the current line</li>
 <li>
-<code>alt</code>+<code>M</code> inserts <code><a href="../reference/pipe.html">%&gt;%</a></code>
+<code>alt</code>+<code>M</code> inserts <code><a href="../reference/%&gt;%.html">%&gt;%</a></code>
 </li>
 <li>
 <code>alt</code>+<code>up</code>/<code>down</code> moves the current line/statement up or down</li>
@@ -196,7 +197,7 @@
 <h2 class="hasAnchor">
 <a href="#retrieving-documentation" class="anchor"></a>Retrieving documentation</h2>
 <p>Besides the F1 key, you can use <code>?function</code> to get help for <code>function</code> and <code>??term</code> to search for <code>term</code> in all documentation of all installed packages.</p>
-<p>Longer-form documentation for packages is often found in vignettes. Run <code>vignette('vignette-name', 'package-name')</code> to get a particular one. (Intro vignettes often have the name of the package, e.g. <code><a href="../articles/reschola.html">vignette('reschola', 'reschola')</a></code>). Get list of vignettes for any package <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes('package-name')</a></code>.</p>
+<p>Longer-form documentation for packages is often found in vignettes. Run <code>vignette('vignette-name', 'package-name')</code> to get a particular one. (Intro vignettes often have the name of the package, e.g. <code><a href="../articles/reschola.html">vignette('reschola', 'reschola')</a></code>). Get list of vignettes for any package <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes('package-name')</a></code>.</p>
 </div>
 <div id="getting-help-beyond-the-documentation" class="section level2">
 <h2 class="hasAnchor">
@@ -218,7 +219,7 @@
 <p>Mostly useful for package development, but some utilities also make your life easier in any project:</p>
 <ul>
 <li>
-<code>edit_*</code> for shortcuts to editing setup files e.g. <code>.Rprofile</code>
+<code>edit_*</code> for shortcuts to editing setup files e.g. <code>.Rprofile</code>
 </li>
 <li>
 <code>ui_*</code> for creating nice console output in your code</li>
@@ -433,7 +434,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

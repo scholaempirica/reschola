@@ -116,7 +116,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="workflow_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="workflow_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="workflow_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>The Workflow</h1>
@@ -230,7 +231,7 @@
 <h3 class="hasAnchor">
 <a href="#ggplot2-theme" class="anchor"></a>4. ggplot2 theme</h3>
 <p><code>reschola</code> offers a ggplot2 theme, <code><a href="../reference/theme_schola.html">theme_schola()</a></code>, which provides some sensible easthetic defaults, including font choice, to make charts beautiful and consistent.</p>
-<p>The desired approach is to use this theme, alter its parameters if needed, and then if necessary make other changes using another <code>theme()</code> call.</p>
+<p>The desired approach is to use this theme, alter its parameters if needed, and then if necessary make other changes using another <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> call.</p>
 <p>There are also a small number of other plotting utilities.</p>
 <p>See the <a href="charts.html">Making charts</a> vignette for details on everything graphics related.</p>
 </div>
@@ -322,8 +323,8 @@
 <p>That way you get a sense of the thought process but also a bloated and circuitous script. Another is to do the analysis in one or more files and only moving bits into the report which are needed there.</p>
 <p>That way you get a tight report script but at times disconnected from the analytical process.</p>
 <p>One way to lighten the load is to hive off some work into partial Rmarkdown files, typically named <code>_something.Rmd</code>, and then “insert” them into the main document via</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb1-1" data-line-number="1">```{r child=c('_one.Rmd', '_two.Rmd')}</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">```</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="bn">```{r child=c('_one.Rmd', '_two.Rmd')}</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="bn">```</span></span></code></pre></div>
 <p>```</p>
 <p>See RMarkdown Cookbook <a href="https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html">on child documents</a>.</p>
 </div>
@@ -332,7 +333,7 @@
 <h3 class="hasAnchor">
 <a href="#write-reports-using-a-template" class="anchor"></a>5. Write reports using a template</h3>
 <p>Use <code>draft_*</code> to quickly create a draft using the required template.</p>
-<p>The Word output of the two templates is aesthetically equivalent, but the <code>_word</code> template (and output format as set in the YAML header) can do more sophisticated handling of e.g. <a href="#footnotes-and-cross-references">cross-references</a>.</p>
+<p>The Word output of the two templates is aesthetically equivalent, but the <code>_word</code> template (and output format as set in the YAML header) can do more sophisticated handling of e.g. <a href="#footnotes-and-cross-references">cross-references</a>.</p>
 <p>Note the <code>schola_word</code> format is based on the <code><a href="https://rdrr.io/pkg/bookdown/man/html_document2.html">bookdown::word_document2</a></code> format. This means it can be customised like <a href="https://bookdown.org/yihui/bookdown/">other bookdown documents</a> and even strung into a whole book.</p>
 <div id="collaborating-with-ms-word-users" class="section level5 bs-callout bs-callout-blue">
 <h5 class="hasAnchor">
@@ -433,7 +434,7 @@
 <a href="#collect-changes-back-into-rmarkdown" class="anchor"></a>4. Collect changes back into RMarkdown</h4>
 <p>When you get the document back, put it in your project directory and run <code><a href="https://rdrr.io/pkg/redoc/man/dedoc.html">redoc::dedoc("[edited_document.docx]")</a></code>. This will create a new Rmd file with (a) the comments inserted in CriticMarkup, (b) tracked and untracked changes reflected in the Rmd with no markup. You can add <code>track_changes = 'criticmarkup'</code> to have all tracked changes inserted with CriticMarkup.</p>
 <p>You can also run <code><a href="https://rdrr.io/pkg/redoc/man/dedoc.html">redoc::dedoc("[edited_document.docx]", to = "[your_original_rmarkdown_file.Rmd", overwrite = TRUE)</a></code> to have all the changes written into your original file. ONLY DO THIS IF YOUR ORIGINAL FILE WAS COMMITTED IN GIT WITH THE VERSION YOU RENDERED AND SENT FOR FEEDBACK!! You can then use git to view and accept/reject the changes from the reviewers.</p>
-<p>You can also run <code><a href="https://rdrr.io/r/base/print.html">print(redoc:::redoc_diff("[new_document.docx]"))</a></code> (note the <code>:::</code>) to see the comparison in the RStudio viewer pane (no Rmd files are updated.)</p>
+<p>You can also run <code><a href="https://rdrr.io/r/base/print.html">print(redoc:::redoc_diff("[new_document.docx]"))</a></code> (note the <code><a href="https://rdrr.io/r/base/ns-dblcolon.html">:::</a></code>) to see the comparison in the RStudio viewer pane (no Rmd files are updated.)</p>
 <p>You can also use the RStudio addins ‘Dedoc to new file’ or ‘Dedoc to active file’. This will automatically show the graphical view of the changes in RStudio viewer, but you have less control over how changes/revisions are picked up.</p>
 </div>
 </div>
@@ -496,7 +497,7 @@
 <h4 class="hasAnchor">
 <a href="#ignore-files-in-git" class="anchor"></a>Ignore files in git</h4>
 <p>You can add files you do not wish to commit to git’s ‘.gitignore’ file. That way, git will not even show those as new/changed. This works separately for each repo.</p>
-<p>The easiest way to do this is to run e.g. <code><a href="https://usethis.r-lib.org/reference/use_git_ignore.html">usethis::use_git_ignore("secret_file.R")</a></code>.</p>
+<p>The easiest way to do this is to run e.g. <code><a href="https://usethis.r-lib.org/reference/use_git_ignore.html">usethis::use_git_ignore("secret_file.R")</a></code>.</p>
 <p>You need to commit the <code>.gitignore</code> file.</p>
 </div>
 </div>
@@ -534,7 +535,7 @@
 <li>sensible indents</li>
 <li>lower_case_var_names</li>
 <li>functions are verbs, like do_something()</li>
-<li>spaces around operators like <code>=</code> and <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>
+<li>spaces around operators like <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> and <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>
 </li>
 <li>break lines at around 80 characters</li>
 </ul>
@@ -554,7 +555,7 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>See the <a href="charts.html">Making charts</a> vignette for more details.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>See the <a href="charts.html">Making charts</a> vignette for more details.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -574,7 +575,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

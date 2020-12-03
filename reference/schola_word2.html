@@ -177,7 +177,7 @@ while using the Word template provided at the same place (see example below)." /
 while using the Word template provided at the same place (see example below).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>schola_word2</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>schola_word2</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -203,13 +203,17 @@ and for a brief guide to Word templating).</p>
 <code><a href='open_schola_word_template.html'>open_schola_word_template</a>()</code>,
 <code><a href='schola_redoc.html'>schola_redoc</a>()</code>,
 <code><a href='schola_word.html'>schola_word</a>()</code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Jan Netik</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>output</span>:
-  <span class='kw pkg'>reschola</span><span class='kw ns'>::</span><span class='no'>schola_word2</span>:
-  <span class='no'>reference_docx</span>: <span class='no'>template.docx</span>
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>output</span><span class='op'>:</span>
+  <span class='fu'>reschola</span><span class='fu'>::</span><span class='va'>schola_word2</span><span class='op'>:</span>
+  <span class='va'>reference_docx</span><span class='op'>:</span> <span class='va'>template.docx</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -225,7 +229,7 @@ and for a brief guide to Word templating).</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

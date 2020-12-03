@@ -1,6 +1,6 @@
-pandoc: '2.2'
-pkgdown: 1.5.0.9000
-pkgdown_sha: 2bdebb7e4010d1b936558c79ad0b7ebf1e23f420
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
 articles:
   charts: charts.html
   meta: meta.html
@@ -8,7 +8,7 @@ articles:
   setup: setup.html
   tips: tips.html
   workflow: workflow.html
-last_built: 2020-10-06T20:43Z
+last_built: 2020-12-03T21:00Z
 urls:
   reference: https://scholaempirica.github.io/reschola/reference
   article: https://scholaempirica.github.io/reschola/articles

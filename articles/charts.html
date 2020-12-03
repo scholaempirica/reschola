@@ -116,7 +116,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="charts_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="charts_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="charts_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Making charts</h1>
@@ -147,7 +148,7 @@
 <div id="global-theme-setting" class="section level5 bs-callout bs-callout-blue">
 <h5 class="hasAnchor">
 <a href="#global-theme-setting" class="anchor"></a>Global theme setting</h5>
-<p>You can set the theme for your whole Rmarkdown document (or session, for that matter) by putting <code>theme_set(theme_schola())</code>. Then you don’t need to add it to your plots. As <code><a href="../reference/theme_schola.html">theme_schola()</a></code> has parameters which you are likely to need, this seems impractical and anyway could be confusing.</p>
+<p>You can set the theme for your whole Rmarkdown document (or session, for that matter) by putting <code><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set(theme_schola())</a></code>. Then you don’t need to add it to your plots. As <code><a href="../reference/theme_schola.html">theme_schola()</a></code> has parameters which you are likely to need, this seems impractical and anyway could be confusing.</p>
 </div>
 <div id="basic-usage-of-theme_schola" class="section level3">
 <h3 class="hasAnchor">
@@ -164,84 +165,96 @@
 <p>Resolution and sizes can be off on this page. The templates contained in this package are optimised to produce great looking and properly sized charts in Word documents.</p>
 </blockquote>
 <p>First, let’s see the default plot, no theme</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu">ggplot</span>(<span class="no">mpg</span>) +
- <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="kw">y</span> <span class="kw">=</span> <span class="no">class</span>)) +
- <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Count of numbers"</span>)
-<span class="no">p</span></pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Lots of cars"</span>, subtitle <span class="op">=</span> <span class="st">"Count of numbers"</span><span class="op">)</span>
+<span class="va">p</span></code></pre></div>
 <p><img src="charts-no-theme-1.png" title="plot of chunk no-theme" alt="plot of chunk no-theme" width="100%"></p>
 <p>Now let’s see what <code><a href="../reference/theme_schola.html">theme_schola()</a></code> defaults do</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>) <span class="co"># only setting the first parameter to get the right gridlines</span></pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"x"</span><span class="op">)</span> <span class="co"># only setting the first parameter to get the right gridlines</span></code></pre></div>
 <p><img src="charts-schola-default-1.png" title="plot of chunk schola-default" alt="plot of chunk schola-default" width="100%"></p>
 <p>in combination with <code>flush_axis</code></p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>) +
- <span class="fu">scale_x_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="no">flush_axis</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"x"</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="va">flush_axis</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-flush-1.png" title="plot of chunk flush" alt="plot of chunk flush" width="100%"></p>
 <p>Scatterplot</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
- <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>)) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>) +
- <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"scatter"</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Lots of cars"</span>, subtitle <span class="op">=</span> <span class="st">"Point by point"</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-scatter-1.png" title="plot of chunk scatter" alt="plot of chunk scatter" width="100%"></p>
 <p>Smaller text, flush plot alignment</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
- <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">base_size</span> <span class="kw">=</span> <span class="fl">9</span>, <span class="kw">margin_side</span> <span class="kw">=</span> <span class="fl">0</span>) +
- <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"scatter"</span>, base_size <span class="op">=</span> <span class="fl">9</span>, margin_side <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Lots of cars"</span>, subtitle <span class="op">=</span> <span class="st">"Point by point"</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-scatter-flush-1.png" title="plot of chunk scatter-flush" alt="plot of chunk scatter-flush" width="100%"></p>
 <p>If you are adding a caption in your Rmarkdown chunk, you may also want <code>margin_bottom = 0</code> to cut the bottom margin in the plot and move the caption closer to the plot.</p>
 <div id="override-defaults-changed-inside-theme_schola" class="section level4">
 <h4 class="hasAnchor">
 <a href="#override-defaults-changed-inside-theme_schola" class="anchor"></a>Override defaults changed inside <code>theme_schola()</code>
 </h4>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
- <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">base_size</span> <span class="kw">=</span> <span class="fl">12</span>, <span class="kw">margin_side</span> <span class="kw">=</span> <span class="fl">0</span>) +
- <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>) +
- <span class="fu">theme</span>(<span class="kw">panel.background</span> <span class="kw">=</span> <span class="fu">element_rect</span>(<span class="kw">fill</span> <span class="kw">=</span> <span class="st">"lightpink"</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"scatter"</span>, base_size <span class="op">=</span> <span class="fl">12</span>, margin_side <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Lots of cars"</span>, subtitle <span class="op">=</span> <span class="st">"Point by point"</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightpink"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-scatter-defaultschanged-1.png" title="plot of chunk scatter-defaultschanged" alt="plot of chunk scatter-defaultschanged" width="100%"></p>
 </div>
 <div id="small-mutliples" class="section level4">
 <h4 class="hasAnchor">
 <a href="#small-mutliples" class="anchor"></a>Small mutliples</h4>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>) +
- <span class="fu">scale_x_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="no">flush_axis</span>) +
- <span class="fu">facet_wrap</span>(~ <span class="no">manufacturer</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"x"</span>, multiplot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="va">flush_axis</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">manufacturer</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-multiples-1.png" title="plot of chunk multiples" alt="plot of chunk multiples" width="100%"></p>
-<p>Same without aesthetic adjustment for <code>facet_wrap()</code></p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">F</span>) +
- <span class="fu">scale_x_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="no">flush_axis</span>) +
- <span class="fu">facet_wrap</span>(~ <span class="no">manufacturer</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
+<p>Same without aesthetic adjustment for <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"x"</span>, multiplot <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="va">flush_axis</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">manufacturer</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-multiples-nomultiplot-1.png" title="plot of chunk multiples-nomultiplot" alt="plot of chunk multiples-nomultiplot" width="100%"></p>
 <p>Small mutliples scatter</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
- <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>) +
- <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>) +
- <span class="fu">facet_wrap</span>(~ <span class="no">class</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"scatter"</span>, multiplot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Lots of cars"</span>, subtitle <span class="op">=</span> <span class="st">"Point by point"</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">class</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-multiples-scatter-1.png" title="plot of chunk multiples-scatter" alt="plot of chunk multiples-scatter" width="100%"></p>
 <p>Small mutliples grid</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">p</span> +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"x"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>) +
- <span class="fu">scale_x_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="no">flush_axis</span>) +
- <span class="fu">facet_grid</span>(<span class="no">cyl</span> ~ <span class="no">drv</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"x"</span>, multiplot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="va">flush_axis</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="va">cyl</span> <span class="op">~</span> <span class="va">drv</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-multiples-grid-1.png" title="plot of chunk multiples-grid" alt="plot of chunk multiples-grid" width="100%"></p>
 <p>Small mutliples scatter grid</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
- <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">T</span>) +
- <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>) +
- <span class="fu">facet_grid</span>(<span class="no">cyl</span> ~ <span class="no">class</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"scatter"</span>, multiplot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Lots of cars"</span>, subtitle <span class="op">=</span> <span class="st">"Point by point"</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="va">cyl</span> <span class="op">~</span> <span class="va">class</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-multiples-scatter-grid-1.png" title="plot of chunk multiples-scatter-grid" alt="plot of chunk multiples-scatter-grid" width="100%"></p>
 <p>Same but without multiplot parameter</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>) +
- <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="no">cty</span>, <span class="no">hwy</span>), <span class="kw">alpha</span> <span class="kw">=</span> <span class="fl">.2</span>) +
- <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>(<span class="st">"scatter"</span>, <span class="kw">multiplot</span> <span class="kw">=</span> <span class="no">F</span>) +
- <span class="fu">labs</span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Lots of cars"</span>, <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Point by point"</span>) +
- <span class="fu">facet_grid</span>(<span class="no">cyl</span> ~ <span class="no">class</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="st">"scatter"</span>, multiplot <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Lots of cars"</span>, subtitle <span class="op">=</span> <span class="st">"Point by point"</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="va">cyl</span> <span class="op">~</span> <span class="va">class</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-multiples-scatter-grid-nomultiplot-1.png" title="plot of chunk multiples-scatter-grid-nomultiplot" alt="plot of chunk multiples-scatter-grid-nomultiplot" width="100%"></p>
 </div>
 </div>
@@ -260,30 +273,33 @@
 <h2 class="hasAnchor">
 <a href="#using-custom-numeric-scales" class="anchor"></a>Using custom numeric scales</h2>
 <p>The chartb below illustrates the custom scales</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>, <span class="fu">aes</span>(<span class="no">hwy</span> * <span class="fl">100</span>, <span class="no">cty</span>/<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">cty</span>))) +
-  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="kw">colour</span> <span class="kw">=</span> <span class="no">cty</span>/<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">cty</span>), <span class="kw">size</span> <span class="kw">=</span> <span class="no">hwy</span>*<span class="fl">100</span>)) +
-  <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>() +
-  <span class="fu"><a href="../reference/scalescz.html">scale_y_percent_cz</a></span>() +
-  <span class="fu"><a href="../reference/scalescz.html">scale_x_number_cz</a></span>() +
-  <span class="fu">scale_color_binned</span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="../reference/formatscz.html">label_percent_cz</a></span>()) +
-  <span class="fu">scale_size_binned</span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="../reference/formatscz.html">label_number_cz</a></span>())</pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">hwy</span> <span class="op">*</span> <span class="fl">100</span>, <span class="va">cty</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">cty</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">cty</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">cty</span><span class="op">)</span>, size <span class="op">=</span> <span class="va">hwy</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scalescz.html">scale_y_percent_cz</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scalescz.html">scale_x_number_cz</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html">scale_color_binned</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="../reference/formatscz.html">label_percent_cz</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size_binned</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="../reference/formatscz.html">label_number_cz</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-scales-1.png" title="plot of chunk scales" alt="plot of chunk scales" width="100%"> The percent formatter and number formatter also handle the decimal mark correctly. The parameters which you would normally find inside the <code>scales::format_*()</code> functions are accessible directly in the <code>scale_[xy]_continuous()</code> functions.</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>, <span class="fu">aes</span>(<span class="no">hwy</span> / <span class="fl">100</span>, <span class="no">cty</span>/<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">cty</span>)/<span class="fl">100</span>)) +
-  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="kw">colour</span> <span class="kw">=</span> <span class="no">cty</span>/<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">cty</span>), <span class="kw">size</span> <span class="kw">=</span> <span class="no">hwy</span>*<span class="fl">100</span>)) +
-  <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>() +
-  <span class="fu"><a href="../reference/scalescz.html">scale_y_percent_cz</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">.1</span>) +
-  <span class="fu"><a href="../reference/scalescz.html">scale_x_number_cz</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">.1</span>) +
-  <span class="fu">scale_color_binned</span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="../reference/formatscz.html">label_percent_cz</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">.1</span>)) +
-  <span class="fu">scale_size_binned</span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="../reference/formatscz.html">label_number_cz</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">0.1</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">hwy</span> <span class="op">/</span> <span class="fl">100</span>, <span class="va">cty</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">cty</span><span class="op">)</span><span class="op">/</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">cty</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">cty</span><span class="op">)</span>, size <span class="op">=</span> <span class="va">hwy</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scalescz.html">scale_y_percent_cz</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scalescz.html">scale_x_number_cz</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html">scale_color_binned</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="../reference/formatscz.html">label_percent_cz</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size_binned</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="../reference/formatscz.html">label_number_cz</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-scales-decimal-1.png" title="plot of chunk scales-decimal" alt="plot of chunk scales-decimal" width="100%"></p>
 <p>An English-locale version would look like this, using functions in <code>scales</code> or reexported from <code>hrbrthemes</code>:</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu">ggplot</span>(<span class="no">mpg</span>, <span class="fu">aes</span>(<span class="no">hwy</span> * <span class="fl">100</span>, <span class="no">cty</span>/<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">cty</span>))) +
-  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="kw">colour</span> <span class="kw">=</span> <span class="no">cty</span>/<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">cty</span>), <span class="kw">size</span> <span class="kw">=</span> <span class="no">hwy</span>*<span class="fl">100</span>)) +
-  <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span>() +
-  <span class="fu"><a href="https://rdrr.io/pkg/hrbrthemes/man/scale_x_percent.html">scale_y_percent</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">.1</span>) +
-  <span class="fu"><a href="https://rdrr.io/pkg/hrbrthemes/man/scale_x_percent.html">scale_x_comma</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">.1</span>) +
-  <span class="fu">scale_color_binned</span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="kw pkg">scales</span><span class="kw ns">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">label_percent</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">.1</span>)) +
-  <span class="fu">scale_size_binned</span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="kw pkg">scales</span><span class="kw ns">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_number.html">label_number</a></span>(<span class="kw">accuracy</span> <span class="kw">=</span> <span class="fl">.1</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">hwy</span> <span class="op">*</span> <span class="fl">100</span>, <span class="va">cty</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">cty</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">cty</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">cty</span><span class="op">)</span>, size <span class="op">=</span> <span class="va">hwy</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/theme_schola.html">theme_schola</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/hrbrthemes/man/scale_x_percent.html">scale_y_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/hrbrthemes/man/scale_x_percent.html">scale_x_comma</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html">scale_color_binned</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">label_percent</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size_binned</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_number.html">label_number</a></span><span class="op">(</span>accuracy <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="charts-scales-en-1.png" title="plot of chunk scales-en" alt="plot of chunk scales-en" width="100%"></p>
 </div>
 <div id="sizing-images" class="section level2">
@@ -302,7 +318,7 @@
 <li>to change the <strong>width</strong>, set chunk options <code>fig.width</code> and <code>out.width</code> to the same size in centimeters, e.g. for half-width you would do <code>fig.width=7.98/2.54, out.width="7.98cm"</code> (because <code>fig.width</code> is set in inches). Note the quotes around the <code>out.width</code> value - this is a special thing for pandoc to ensure the sizing is reflected in the layout of the Word document. The height in this case will be 7.98 * 0.62 cm (see above)</li>
 <li>so to change <strong>both width and height</strong>, set the <code>fig.asp</code> param as per above.</li>
 </ul>
-<p>For <strong>HTML</strong> output, you can use e.g. <code>out.width="50%"</code>.</p>
+<p>For <strong>HTML</strong> output, you can use e.g. <code>out.width="50%"</code>.</p>
 <p>For <strong>PDF</strong> output, you can just set <code>fig.width</code> in inches and the height using <code>fig.asp</code> as above, as long as you use the <code>pdf</code> or <code>cairo_pdf</code> device (using the <code>dev</code> option in the chunk or at per-document level.) Note that the font handling might be a bit tricky for PDF depending on your system.</p>
 <p>Image sizing works quite differently between output formats (HTML, PDF, Word). For that reason it is probably the one thing that will look odd or break if you try to render a document written in a reschola template into HTML or PDF without fiddling with sizing, graphic devices or font handling.</p>
 </div>
@@ -324,15 +340,15 @@
 <a href="#tricks-of-the-trade-for-ggplot2" class="anchor"></a>Tricks of the trade for ggplot2</h2>
 <ul>
 <li>
-<code>theme_void()</code> for visuals that don’t need any gridlines, axes, etc., such as schematic maps</li>
-<li>aes(…, group = 1) for making all data points in a <code>geom_line()</code> into one line</li>
+<code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void()</a></code> for visuals that don’t need any gridlines, axes, etc., such as schematic maps</li>
+<li>aes(…, group = 1) for making all data points in a <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code> into one line</li>
 <li>
 <code>key_glyph</code> parameter to geoms to pick a specific shape for the legend key</li>
 <li>
-<code>geom_sf_label</code> for intelligently labelling spatial features plotted through <code>geom_sf()</code>
+<code>geom_sf_label</code> for intelligently labelling spatial features plotted through <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf()</a></code>
 </li>
 <li>
-<code>labs(colour = NULL)</code> for switching off the colour legend, <code>labs(x = NULL)</code> to turn off colour label - quicker than <code>theme(axis.label.x = element_blank())</code> and <code>guides(colour = "none")</code>
+<code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs(colour = NULL)</a></code> for switching off the colour legend, <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs(x = NULL)</a></code> to turn off colour label - quicker than <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(axis.label.x = element_blank())</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides(colour = "none")</a></code>
 </li>
 </ul>
 </div>
@@ -357,7 +373,7 @@
 <li>
 <code>ggcorr</code> for correlation matrices</li>
 <li>
-<code>GGally</code> with a set of utilities, incl. <code>GGally::ggpairs()</code>
+<code>GGally</code> with a set of utilities, incl. <code>GGally::ggpairs()</code>
 </li>
 <li>
 <code>sjPlot</code> also provides useful visual forms, most usefully the visual and tabular summaries of model results</li>
@@ -411,7 +427,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
