@@ -9,7 +9,8 @@
 #' [`bookdown` manual](https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html)
 #' for more details and for a brief guide to Word templating).
 #'
-#' @param ... Arguments to be passed to `[bookdown::word_document2]`
+#' @param reference_docx Path to custom template. By default, the built-in one is used.
+#' @inheritDotParams bookdown::word_document2
 #'
 #' @return A modified `word_document2` with the standard Schola formatting.
 #' @family Report templates and formats
@@ -29,7 +30,7 @@
 #' }
 #' @export
 schola_word <- function(reference_docx = find_resource("schola_word", "template.docx"), ...) {
-  base <- bookdown::word_document2(reference_docx, ...)
+  base <- bookdown::word_document2(reference_docx = reference_docx, ...)
 
   # proper quotes
   quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")

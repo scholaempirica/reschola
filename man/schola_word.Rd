@@ -4,10 +4,19 @@
 \alias{schola_word}
 \title{Basic Schola Empirica Word document}
 \usage{
-schola_word(...)
+schola_word(
+  reference_docx = find_resource("schola_word", "template.docx"),
+  ...
+)
 }
 \arguments{
-\item{...}{Arguments to be passed to \verb{[bookdown::word_document2]}}
+\item{reference_docx}{Path to custom template. By default, the built-in one is used.}
+
+\item{...}{
+  Arguments passed on to \code{\link[bookdown:html_document2]{bookdown::word_document2}}
+  \describe{
+    \item{\code{}}{}
+  }}
 }
 \value{
 A modified \code{word_document2} with the standard Schola formatting.
