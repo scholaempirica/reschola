@@ -5,8 +5,8 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/scholaempirica/reschola.svg?branch=master)](https://travis-ci.org/scholaempirica/reschola)
+\[![Build
+status](https://github.com/scholaempirica/reschola/workflows/R-CMD-check/badge.svg)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 ![GitHub release (latest by date including
