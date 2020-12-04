@@ -25,7 +25,7 @@ The capabilities of this format are a bit more limited compared to \code{schola_
 }
 \examples{
 \dontrun{
-  output: reschola::schola_redoc
+output:reschola::schola_redoc
 }
 }
 \seealso{

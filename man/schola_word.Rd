@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmarkdown_output.R
 \name{schola_word}
 \alias{schola_word}
-\title{Basic Schola Empirica word document}
+\title{Basic Schola Empirica Word document}
 \usage{
 schola_word(...)
 }
@@ -13,12 +13,25 @@ schola_word(...)
 A modified \code{word_document2} with the standard Schola formatting.
 }
 \description{
-This is a function called in the output of the yaml of the Rmd file to
+This is a function called in the output of the YAML of the Rmd file to
 specify using the standard Schola word document formatting.
+}
+\details{
+If no template is specified, the function will use the \code{reschola}'s
+default template. Path to template is relative to document being compiled.
+See the examples below, or read the
+\href{https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html}{\code{bookdown} manual}
+for more details and for a brief guide to Word templating).
 }
 \examples{
 \dontrun{
-  output: reschola::schola_word
+output:
+  reschola::schola_word
+
+# with a user-specified template
+output:
+  reschola::schola_word:
+    reference_docx: template.docx
 }
 }
 \seealso{
@@ -26,5 +39,10 @@ Other Report templates and formats:
 \code{\link{open_schola_word_template}()},
 \code{\link{schola_redoc}()},
 \code{\link{schola_word2}()}
+}
+\author{
+Petr Bouchal
+
+Jan Netik
 }
 \concept{Report templates and formats}

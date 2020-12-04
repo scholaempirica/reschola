@@ -1,6 +1,6 @@
 Package: reschola
-Title: The Schola Empirica package
-Version: 0.2.12
+Title: The Schola Empirica Package
+Version: 0.2.13
 Authors@R: 
     c(person(given = "Petr",
              family = "Bouchal",
@@ -49,7 +49,8 @@ Imports:
     tibble (>= 2.1.3),
     tidyr (>= 1.0.0),
     usethis (>= 1.5.1),
-    writexl (>= 1.1)
+    writexl (>= 1.1),
+    lifecycle
 Suggests: 
     knitr
 VignetteBuilder: 
@@ -61,3 +62,4 @@ Language: en
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+RdMacros: lifecycle

@@ -4,7 +4,7 @@
 \name{reschola-package}
 \alias{reschola}
 \alias{reschola-package}
-\title{reschola: The Schola Empirica package}
+\title{reschola: The Schola Empirica Package}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 

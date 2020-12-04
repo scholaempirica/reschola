@@ -10,17 +10,21 @@ schola_word2(...)
 \item{...}{Arguments to be passed to \verb{[bookdown::word_document2]}}
 }
 \value{
-A modified \code{word_document2} with the standard Schola formatting, but without hard-coded and unchangeable template.
+A modified \code{word_document2} with the standard Schola formatting, but
+without hard-coded and unchangeable template.
 }
 \description{
-This is a function called in the output part of the YAML section of the Rmd file
-while using the Word template provided at the same place (see example below).
+\lifecycle{deprecated}
+
+This is a function called in the output part of the YAML section of the Rmd
+file while using the Word template provided at the same place (see example
+below).
 }
 \details{
-Compared to \code{schola_word}, this "version" comes with no predefined template,
-so the user can utilize a template stated in YAML header (see the example below, or read
-the \href{https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html}{\code{bookdown} manual} for more details
-and for a brief guide to Word templating).
+Compared to \code{schola_word}, this "version" comes with no predefined
+template, so the user can utilize a template stated in YAML header (see the
+example below, or read the \href{https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html}{\code{bookdown} manual} for
+more details and for a brief guide to Word templating).
 }
 \examples{
 \dontrun{

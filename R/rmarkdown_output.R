@@ -1,21 +1,57 @@
-#' Basic Schola Empirica word document
+#' Basic Schola Empirica Word document
 #'
-#' This is a function called in the output of the yaml of the Rmd file to
+#' This is a function called in the output of the YAML of the Rmd file to
 #' specify using the standard Schola word document formatting.
+#'
+#' If no template is specified, the function will use the \code{reschola}'s
+#' default template. Path to template is relative to document being compiled.
+#' See the examples below, or read the
+#' [`bookdown` manual](https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html)
+#' for more details and for a brief guide to Word templating).
 #'
 #' @param ... Arguments to be passed to `[bookdown::word_document2]`
 #'
 #' @return A modified `word_document2` with the standard Schola formatting.
 #' @family Report templates and formats
-#' @export
+#' @author Petr Bouchal
+#' @author Jan Netik
 #'
 #' @examples
 #' \dontrun{
-#'   output: reschola::schola_word
+#  # with the default template
+#' output:
+#'   reschola::schola_word
+#'
+#' # with a user-specified template
+#' output:
+#'   reschola::schola_word:
+#'     reference_docx: template.docx
 #' }
+#' @export
 schola_word <- function(...) {
-  template <- find_resource("schola_word", "template.docx")
-  base <- bookdown::word_document2(reference_docx = template, ...)
+  dots <- list(...)
+  if ("reference_docx" %in% names(dots)) {
+    base <- bookdown::word_document2( ...)
+  } else {
+    template <- find_resource("schola_word", "template.docx")
+    base <- bookdown::word_document2(reference_docx = template, ...)
+  }
+
+  # proper quotes
+  quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")
+  base$pandoc$lua_filters <- c(
+    quotes_lua_filter,
+    base$pandoc$lua_filters
+  )
+
+  # czech numbers
+  base$knitr$knit_hooks$inline <- function(x) {
+    if (!is.character(x)) {
+      prettyNum(x, big.mark = " ", decimal.mark = ",")
+    } else {
+      x
+    }
+  }
 
   # nolint start
   base$knitr$opts_chunk$comment <- "#>"
@@ -37,17 +73,23 @@ schola_word <- function(...) {
 
 #' Schola Empirica Word document with customisable template
 #'
-#' This is a function called in the output part of the YAML section of the Rmd file
-#' while using the Word template provided at the same place (see example below).
+#' @description
+#' \lifecycle{deprecated}
 #'
-#' Compared to `schola_word`, this "version" comes with no predefined template,
-#' so the user can utilize a template stated in YAML header (see the example below, or read
-#' the [`bookdown` manual](https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html) for more details
-#' and for a brief guide to Word templating).
+#' This is a function called in the output part of the YAML section of the Rmd
+#' file while using the Word template provided at the same place (see example
+#' below).
+#'
+#' @details Compared to `schola_word`, this "version" comes with no predefined
+#' template, so the user can utilize a template stated in YAML header (see the
+#' example below, or read the [`bookdown`
+#' manual](https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html) for
+#' more details and for a brief guide to Word templating).
 #'
 #' @param ... Arguments to be passed to `[bookdown::word_document2]`
 #'
-#' @return A modified `word_document2` with the standard Schola formatting, but without hard-coded and unchangeable template.
+#' @return A modified `word_document2` with the standard Schola formatting, but
+#'   without hard-coded and unchangeable template.
 #' @family Report templates and formats
 #' @author Jan Netik
 #' @export
@@ -59,10 +101,9 @@ schola_word <- function(...) {
 #'   reference_docx: template.docx
 #' }
 schola_word2 <- function(...) {
-  # template <- find_resource("schola_word", "template.docx")
-  base <- bookdown::word_document2(
-    # reference_docx = template,
-    ...)
+  lifecycle::deprecate_warn("0.2.13", "reschola::schola_word2()", "reschola::schola_word()")
+
+  base <- bookdown::word_document2(...)
 
   # nolint start
   base$knitr$opts_chunk$comment <- "#>"
@@ -81,6 +122,7 @@ schola_word2 <- function(...) {
 
   base
 }
+
 
 #' Reversible Schola Empirica word document
 #'
@@ -101,12 +143,14 @@ schola_word2 <- function(...) {
 #'
 #' @examples
 #' \dontrun{
-#'   output: reschola::schola_redoc
+#' output:reschola::schola_redoc
 #' }
 schola_redoc <- function(...) {
   template <- find_resource("schola_word", "template.docx")
-  base <- redoc::redoc(reference_docx = template,
-                       ...)
+  base <- redoc::redoc(
+    reference_docx = template,
+    ...
+  )
 
   # nolint start
   base$knitr$opts_chunk$comment <- "#>"
@@ -127,4 +171,3 @@ schola_redoc <- function(...) {
 
   base
 }
-
