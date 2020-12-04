@@ -28,14 +28,8 @@
 #'     reference_docx: template.docx
 #' }
 #' @export
-schola_word <- function(...) {
-  dots <- list(...)
-  if ("reference_docx" %in% names(dots)) {
-    base <- bookdown::word_document2( ...)
-  } else {
-    template <- find_resource("schola_word", "template.docx")
-    base <- bookdown::word_document2(reference_docx = template, ...)
-  }
+schola_word <- function(reference_docx = find_resource("schola_word", "template.docx"), ...) {
+  base <- bookdown::word_document2(reference_docx, ...)
 
   # proper quotes
   quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")

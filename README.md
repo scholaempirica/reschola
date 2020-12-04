@@ -5,12 +5,12 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/scholaempirica/reschola.svg?branch=master)](https://travis-ci.org/scholaempirica/reschola)
+[![Build
+status](https://github.com/scholaempirica/reschola/workflows/R-CMD-check/badge.svg)](https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
-![GitHub release (latest by date including
-pre-releases)](https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases)
+[![GitHub release (latest by date including
+pre-releases)](https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases)](https://github.com/scholaempirica/reschola/releases)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
