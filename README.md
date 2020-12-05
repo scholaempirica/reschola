@@ -5,8 +5,8 @@
 
 <!-- badges: start -->
 
-[![Build
-status](https://github.com/scholaempirica/reschola/workflows/R-CMD-check/badge.svg)](https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check)
+[![GitHub Workflow
+Status](https://img.shields.io/github/workflow/status/scholaempirica/reschola/R-CMD-check)](https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 [![GitHub release (latest by date including
