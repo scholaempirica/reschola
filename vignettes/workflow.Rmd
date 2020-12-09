@@ -249,12 +249,12 @@ Create a footnote by using `Text^[This is a footnote]`.
 You can also refer to tables, figures and equations.
 This only works in the `schola_word` output format (template). 
 
-Do it like this:
+Do it like this (note that `@` is escaped with `\`):
 
 - `See table \@ref(fig:graf6).` to ref to a table in a chunk named `graf6`
 - `As table \@ref(tab:tab3) shows...` for a table in a chunk named `tab3`
 
-Note that these chunks need to have the `fig.cap` set to a non-empty string, and they need to have a chunk name.
+Note that these chunks need to have the `fig.cap` set to a non-empty string, and they need to have a chunk name **without underscores or any special character** (camelCase style is recommended).
 
 Edit `_bookdown.yml` to change the words used for "Figure" and "Table" in captions.
 
