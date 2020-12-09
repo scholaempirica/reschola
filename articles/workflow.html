@@ -348,7 +348,7 @@
 <p>You can create a cross-reference to any section, e.g. link to section Methods using <code>[Methods]</code> or <code>[the methods section][Methods]</code>. This will show up as a link in Word and HTML.</p>
 <p>Create a footnote by using <code>Text^[This is a footnote]</code>.</p>
 <p>You can also refer to tables, figures and equations. This only works in the <code>schola_word</code> output format (template).</p>
-<p>Do it like this:</p>
+<p>Do it like this (note that <code><a href="https://rdrr.io/r/base/slotOp.html">@</a></code> is escaped with <code>\</code>):</p>
 <ul>
 <li>
 <code>See table \@ref(fig:graf6).</code> to ref to a table in a chunk named <code>graf6</code>
@@ -357,7 +357,7 @@
 <code>As table \@ref(tab:tab3) shows...</code> for a table in a chunk named <code>tab3</code>
 </li>
 </ul>
-<p>Note that these chunks need to have the <code>fig.cap</code> set to a non-empty string, and they need to have a chunk name.</p>
+<p>Note that these chunks need to have the <code>fig.cap</code> set to a non-empty string, and they need to have a chunk name <strong>without underscores or any special character</strong> (camelCase style is recommended).</p>
 <p>Edit <code>_bookdown.yml</code> to change the words used for “Figure” and “Table” in captions.</p>
 <p>See more on cross-references <a href="https://bookdown.org/yihui/bookdown/cross-references.html">in the bookdown guide</a>.</p>
 <p>If you would like to use the <code>redoc</code> features, you can leave these references in while you collaborate with MS Word users (it will leave behind a little messy text, but that should be OK) and then switch the <code>output</code> field in the YAML header to <code>schola_word</code>. The <code>schola_word</code> template also has other features, like generating a table of contents and nnumbering sections.</p>
@@ -571,7 +571,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Petr Bouchal, Schola Empirica.</p>
+  <p>Developed by Petr Bouchal, SCHOLA EMPIRICA, z. s..</p>
 </div>
 
 <div class="pkgdown">
