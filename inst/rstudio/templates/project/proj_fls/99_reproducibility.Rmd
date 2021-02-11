@@ -7,6 +7,6 @@ This file contains the session information to aid reproducibility.
 You might want to add any other related information or code to it that can help reproduce the work in the future. 
 
 ```{r sessioninfo, include=T}
-sessioninfo::session_info()
+sessionInfo()
 ```
 

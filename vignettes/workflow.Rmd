@@ -91,13 +91,15 @@ Feel free to adapt this in any way that works and remains understandable to some
 You should feel free to move code between the analysis and the `00*` scripts as you discover data transformations that should be made earlier on in the workflow.
 
 Use `build.R` to tie these together - when run, it should rebuild the whole project from scratch, except perhaps downloading data.
-You may want to build different versions of `build_*.R` as helpers for running different parts of the workflow while you work.
+You may want to build different versions of `build_*.R` as helpers for running different parts of the workflow while you work. If you deal with lots of build scripts, use the wonderful (pun intended) [{buildr}](https://netique.github.io/buildr/) package.
 
 ### 3. Document templates
 
-There are two templates in the package: Schola Word report, and Schola redoc report. 
+There are three templates in the package: Schola PDF report (prefered), Schola Word report, and Schola redoc report (soft-deprecated due to unstability).
 
-The Word report is simple: it creates a word document with some nice custom defaults and styles.
+The PDF report use LaTeX to create typographically correct, completely vector-graphics document. Also, it incorporates some advanced tools, e.g. cropping the figures and plots, and offers captions that renders above the plot, reference-ready. Note that `pdfcrop` LaTeX package (use `tinytex::tlmgr_install("pdfcrop")`) and `Ghostscript` are needed for figure cropping. Note further that `Ghostscript` may not automatically added to PATH on Windows, so you have to do it manually. 
+
+The Word report is simple: it creates a Word document with some nice custom defaults and styles.
 
 The redoc-based template looks similar - and so does its output - but it has some superpowers. 
 It allows you to pull into Rmarkdown any edits, tracked changes and comments that people make *in the resulting Word document*. See [below](#7-iterate-the-report-collaboratively) for how to work with it.
@@ -254,9 +256,11 @@ Do it like this (note that `@` is escaped with `\`):
 - `See table \@ref(fig:graf6).` to ref to a table in a chunk named `graf6`
 - `As table \@ref(tab:tab3) shows...` for a table in a chunk named `tab3`
 
-Note that these chunks need to have the `fig.cap` set to a non-empty string, and they need to have a chunk name **without underscores or any special character** (camelCase style is recommended).
+Note that these chunks need to have the `fig.cap` set to a non-empty string, and they need to have a chunk name **without underscores or any special character** (camelCase style is recommended). Yihui Xie [says](https://yihui.org/knitr/options/):
 
-Edit `_bookdown.yml` to change the words used for "Figure" and "Table" in captions.
+> Try to avoid spaces, periods (.), and underscores (_) in chunk labels and paths. If you need separators, you are recommended to use hyphens (-) instead. For example, setup-options is a good label, whereas setup.options and chunk 1 are bad; fig.path = 'figures/mcmc-' is a good path for figure output, and fig.path = 'markov chain/monte carlo' is bad.
+
+Edit `_bookdown.yml` to change the words used for "Figure" and "Table" in captions (doesn't apply for PDF).
 
 See more on cross-references [in the bookdown guide](https://bookdown.org/yihui/bookdown/cross-references.html).
 

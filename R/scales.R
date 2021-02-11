@@ -85,7 +85,7 @@ scale_x_percent_cz <- function(name = waiver(),
     trans = trans,
     guide = guide,
     position = position,
-    super = ScaleContinuousPosition
+    super = ggplot2::ScaleContinuousPosition
   ) -> sc
 
 
@@ -160,7 +160,7 @@ scale_y_percent_cz <- function(name = waiver(),
     trans = trans,
     guide = guide,
     position = position,
-    super = ScaleContinuousPosition
+    super = ggplot2::ScaleContinuousPosition
   ) -> sc
 
   if (!is.waive(sec.axis)) {
@@ -244,7 +244,7 @@ scale_x_number_cz <- function(name = waiver(),
     trans = trans,
     guide = guide,
     position = position,
-    super = ScaleContinuousPosition
+    super = ggplot2::ScaleContinuousPosition
   ) -> sc
 
 
@@ -317,7 +317,7 @@ scale_y_number_cz <- function(name = waiver(),
     trans = trans,
     guide = guide,
     position = position,
-    super = ScaleContinuousPosition
+    super = ggplot2::ScaleContinuousPosition
   ) -> sc
 
   if (!is.waive(sec.axis)) {

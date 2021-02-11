@@ -1,6 +1,6 @@
 Package: reschola
 Title: The Schola Empirica Package
-Version: 0.2.13
+Version: 0.2.14.9000
 Authors@R: 
     c(person(given = "Petr",
              family = "Bouchal",
@@ -50,15 +50,19 @@ Imports:
     tidyr (>= 1.0.0),
     usethis (>= 1.5.1),
     writexl (>= 1.1),
-    lifecycle
+    lifecycle,
+    httr,
+    jsonlite,
+    rlang
 Suggests: 
-    knitr
+    knitr,
+    spelling
 VignetteBuilder: 
     knitr
 Remotes: 
     petrbouchal/redoc
 Encoding: UTF-8
-Language: en
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

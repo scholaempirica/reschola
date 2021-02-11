@@ -1,3 +1,26 @@
+# reschola 0.2.14.9000 "Limy Schola"
+
+## Changes
+
+-   `reschola` is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:
+
+    -   `ls_call()` implements general and fully customisable call to the API (you must adhere to [the documentation](https://api.limesurvey.org/classes/remotecontrol_handle.html))
+
+    -   `ls_export()` is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from  `ls_participants()`, and `ls_responses()`
+    -   `ls_login()` is used for manual session key request; it may be never used, as every `ls_` call ensures the key is cached and not expired (key is stale after 2 hrs)
+    
+- new function `compile_and_open()` provides safe and comfortable way to render/compile `.Rmd` documents
+
+- `99_reproducibility.Rmd` now uses base R `sessionInfo()`, not `sessioninfo` package, which seems like an unnecessary dependency
+
+- spellcheck on package introduced via `usethis`
+
+## Bug fixes
+
+- organization name change to correct form
+- `ggplot2::ScaleContinuousPosition` correctly imported, but still WIP
+
+
 # reschola 0.2.13
 
 ## Documentation additions
@@ -18,7 +41,7 @@
 -   better-looking date without leading zeros
 -   ToC now present in YAML by default
 -   `lifecycle` package introduced
--    switched from Travis continuous integration to GitHub Actions
+-   switched from Travis continuous integration to GitHub Actions
 -   GitHub issue templates
 
 ## Bug fixes
