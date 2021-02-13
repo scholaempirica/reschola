@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14.9000</span>
       </span>
     </div>
 
@@ -49,7 +49,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -90,13 +90,13 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/scholaempirica/reschola/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/scholaempirica/reschola/issues">
-    <span class="fa fa-exclamation-circle fa-lg"></span>
+    <span class="fas fa-exclamation-circle fa-lg"></span>
      
   </a>
 </li>
@@ -116,8 +116,7 @@
 
       
 
-      </header><script src="workflow_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="workflow_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="workflow_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="workflow_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>The Workflow</h1>
@@ -218,13 +217,14 @@
 <code>99_reproducibility.R</code> by default contains a description of the system and environment used to run the analysis. Use it to store any other information useful for reproducing the analysis (but not passwords etc.)</li>
 </ul>
 <p>You should feel free to move code between the analysis and the <code>00*</code> scripts as you discover data transformations that should be made earlier on in the workflow.</p>
-<p>Use <code>build.R</code> to tie these together - when run, it should rebuild the whole project from scratch, except perhaps downloading data. You may want to build different versions of <code>build_*.R</code> as helpers for running different parts of the workflow while you work.</p>
+<p>Use <code>build.R</code> to tie these together - when run, it should rebuild the whole project from scratch, except perhaps downloading data. You may want to build different versions of <code>build_*.R</code> as helpers for running different parts of the workflow while you work. If you deal with lots of build scripts, use the wonderful (pun intended) <a href="https://netique.github.io/buildr/">{buildr}</a> package.</p>
 </div>
 <div id="document-templates" class="section level3">
 <h3 class="hasAnchor">
 <a href="#document-templates" class="anchor"></a>3. Document templates</h3>
-<p>There are two templates in the package: Schola Word report, and Schola redoc report.</p>
-<p>The Word report is simple: it creates a word document with some nice custom defaults and styles.</p>
+<p>There are three templates in the package: Schola PDF report (prefered), Schola Word report, and Schola redoc report (soft-deprecated due to unstability).</p>
+<p>The PDF report use LaTeX to create typographically correct, completely vector-graphics document. Also, it incorporates some advanced tools, e.g. cropping the figures and plots, and offers captions that renders above the plot, reference-ready. Note that <code>pdfcrop</code> LaTeX package (use <code><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tinytex::tlmgr_install("pdfcrop")</a></code>) and <code>Ghostscript</code> are needed for figure cropping. Note further that <code>Ghostscript</code> may not automatically added to PATH on Windows, so you have to do it manually.</p>
+<p>The Word report is simple: it creates a Word document with some nice custom defaults and styles.</p>
 <p>The redoc-based template looks similar - and so does its output - but it has some superpowers. It allows you to pull into Rmarkdown any edits, tracked changes and comments that people make <em>in the resulting Word document</em>. See <a href="#7-iterate-the-report-collaboratively">below</a> for how to work with it.</p>
 </div>
 <div id="ggplot2-theme" class="section level3">
@@ -357,8 +357,11 @@
 <code>As table \@ref(tab:tab3) shows...</code> for a table in a chunk named <code>tab3</code>
 </li>
 </ul>
-<p>Note that these chunks need to have the <code>fig.cap</code> set to a non-empty string, and they need to have a chunk name <strong>without underscores or any special character</strong> (camelCase style is recommended).</p>
-<p>Edit <code>_bookdown.yml</code> to change the words used for “Figure” and “Table” in captions.</p>
+<p>Note that these chunks need to have the <code>fig.cap</code> set to a non-empty string, and they need to have a chunk name <strong>without underscores or any special character</strong> (camelCase style is recommended). Yihui Xie <a href="https://yihui.org/knitr/options/">says</a>:</p>
+<blockquote>
+<p>Try to avoid spaces, periods (.), and underscores (_) in chunk labels and paths. If you need separators, you are recommended to use hyphens (-) instead. For example, setup-options is a good label, whereas setup.options and chunk 1 are bad; fig.path = ‘figures/mcmc-’ is a good path for figure output, and fig.path = ‘markov chain/monte carlo’ is bad.</p>
+</blockquote>
+<p>Edit <code>_bookdown.yml</code> to change the words used for “Figure” and “Table” in captions (doesn’t apply for PDF).</p>
 <p>See more on cross-references <a href="https://bookdown.org/yihui/bookdown/cross-references.html">in the bookdown guide</a>.</p>
 <p>If you would like to use the <code>redoc</code> features, you can leave these references in while you collaborate with MS Word users (it will leave behind a little messy text, but that should be OK) and then switch the <code>output</code> field in the YAML header to <code>schola_word</code>. The <code>schola_word</code> template also has other features, like generating a table of contents and nnumbering sections.</p>
 </div>

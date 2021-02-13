@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>reschola: The Schola Empirica Package — reschola-package • reschola</title>
+<title>Export Responses with Participants Attached — ls_export • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,10 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="reschola: The Schola Empirica Package — reschola-package" />
-<meta property="og:description" content="
-A collection of utilies, themes and templates for data
-    analysis at Schola Empirica." />
+<meta property="og:title" content="Export Responses with Participants Attached — ls_export" />
+<meta property="og:description" content="Export Responses with Participants Attached" />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -168,39 +166,76 @@ A collection of utilies, themes and templates for data
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>reschola: The Schola Empirica Package</h1>
-    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/reschola-package.R'><code>R/reschola-package.R</code></a></small>
-    <div class="hidden name"><code>reschola-package.Rd</code></div>
+    <h1>Export Responses with Participants Attached</h1>
+    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/limesurvey.R'><code>R/limesurvey.R</code></a></small>
+    <div class="hidden name"><code>ls_export.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><img src='figures/logo.png' align='right' alt='logo' width='120' /></p>
-<p>A collection of utilies, themes and templates for data
-    analysis at Schola Empirica.</p>
+    <p>Export Responses with Participants Attached</p>
     </div>
 
+    <pre class="usage"><span class='fu'>ls_export</span><span class='op'>(</span>
+  <span class='va'>survey_id</span>,
+  attributes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  n_participants <span class='op'>=</span> <span class='fl'>999</span>,
+  lang <span class='op'>=</span> <span class='st'>"cs"</span>,
+  part <span class='op'>=</span> <span class='st'>"all"</span>,
+  only_unused_tokens <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>survey_id</th>
+      <td><p><em>integer</em>, ID of the survey (as found with <code>ls_surveys</code>,
+e.g.).</p></td>
+    </tr>
+    <tr>
+      <th>attributes</th>
+      <td><p><em>character vector or list</em> not used at the moment,
+LimeSurvey API error</p></td>
+    </tr>
+    <tr>
+      <th>n_participants</th>
+      <td><p><em>integer</em>, the number of participants to list, defualt
+to 999.</p></td>
+    </tr>
+    <tr>
+      <th>lang</th>
+      <td><p><em>character</em>, ISO 639 language code, default to <code>cs</code>.</p></td>
+    </tr>
+    <tr>
+      <th>part</th>
+      <td><p><em>character</em>, completion status, either <code>complete</code>, <code>incomplete</code>
+or <code>all</code> (the default).</p></td>
+    </tr>
+    <tr>
+      <th>only_unused_tokens</th>
+      <td><p><em>logical</em>, should only the unused tokens be listed?
+Default to FALSE.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://github.com/scholaempirica/reschola'>https://github.com/scholaempirica/reschola</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/scholaempirica/reschola/issues'>https://github.com/scholaempirica/reschola/issues</a></p></li>
-</ul>
+    <div class='dont-index'><p>Other LimeSurvey functions: 
+<code><a href='ls_call.html'>ls_call</a>()</code>,
+<code><a href='ls_login.html'>ls_login</a>()</code>,
+<code><a href='ls_participants.html'>ls_participants</a>()</code>,
+<code><a href='ls_responses.html'>ls_responses</a>()</code>,
+<code><a href='ls_surveys.html'>ls_surveys</a>()</code></p></div>
 
-</div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>ls_export</span><span class='op'>(</span><span class='fl'>123456</span><span class='op'>)</span>
+<span class='op'>}</span>
 
-    <p><strong>Maintainer</strong>: Petr Bouchal <a href='mailto:pbouchal@gmail.com'>pbouchal@gmail.com</a> (<a href='https://orcid.org/0000-0002-0471-716X'>ORCID</a>)</p>
-<p>Other contributors:</p><ul>
-<li><p>Jaromír Mazák [contributor]</p></li>
-<li><p>Aleš Vomáčka [contributor]</p></li>
-<li><p>Jan Netík <a href='mailto:netikja@gmail.com'>netikja@gmail.com</a> (<a href='https://orcid.org/0000-0002-3888-3203'>ORCID</a>) [contributor]</p></li>
-<li><p>SCHOLA EMPIRICA, z. s. [copyright holder, funder]</p></li>
-</ul>
-
-
-
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

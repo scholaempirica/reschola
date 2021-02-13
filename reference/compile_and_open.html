@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a Rmd doc for reversible reviewing using schola_redoc template — draft_redoc • reschola</title>
+<title>Safely Compile RMarkdown Document(s) — compile_and_open • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create a Rmd doc for reversible reviewing using schola_redoc template — draft_redoc" />
-<meta property="og:description" content="Shortcut function to create and a new Rmd file using schola_redoc template and open for editing." />
+<meta property="og:title" content="Safely Compile RMarkdown Document(s) — compile_and_open" />
+<meta property="og:description" content="Saves everything opened in a current project, renders (compiles) chosen
+.Rmd document(s), and opens the resulting file if everything went OK." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -166,44 +167,126 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a Rmd doc for reversible reviewing using schola_redoc template</h1>
-    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/helpers.R'><code>R/helpers.R</code></a></small>
-    <div class="hidden name"><code>draft_redoc.Rd</code></div>
+    <h1>Safely Compile RMarkdown Document(s)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/compile_and_open.R'><code>R/compile_and_open.R</code></a></small>
+    <div class="hidden name"><code>compile_and_open.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Shortcut function to create and a new Rmd file using schola_redoc template and open for editing.</p>
+    <p>Saves everything opened in a current project, renders (compiles) chosen
+<code>.Rmd</code> document(s), and opens the resulting file if everything went OK.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>draft_redoc</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"draft.Rmd"</span>, open <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>compile_and_open</span><span class='op'>(</span>
+  <span class='va'>input</span>,
+  output_dir <span class='op'>=</span> <span class='st'>"reports-output"</span>,
+  open_on_success <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>name to use for new file.</p></td>
+      <th>input</th>
+      <td><p>path to source <code>.Rmd</code> file</p></td>
     </tr>
     <tr>
-      <th>open</th>
-      <td><p>whether to open file for editing, defaults to TRUE.</p></td>
+      <th>output_dir</th>
+      <td><p>output directory, default to "reports-output"</p></td>
+    </tr>
+    <tr>
+      <th>open_on_success</th>
+      <td><p>if compilation went successul, open the result,
+default to TRUE</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/rmarkdown/man/render.html'>rmarkdown::render</a></code></p><dl>
+    <dt><code>output_format</code></dt><dd><p>The R Markdown output format to convert to. The option
+<code>"all"</code> will render all formats defined within the file. The option can
+be the name of a format (e.g. <code>"html_document"</code>) and that will render
+the document to that single format. One can also use a vector of format
+names to render to multiple formats. Alternatively, you can pass an output
+format object (e.g. <code>html_document()</code>). If using <code>NULL</code> then the
+output format is the first one defined in the YAML frontmatter in the input
+file (this defaults to HTML if no format is specified there).
+If you pass an output format object to <code>output_format</code>, the options
+specified in the YAML header or <code>_output.yml</code> will be ignored and you
+must explicitly set all the options you want when you construct the object.
+If you pass a string, the output format will use the output parameters in
+the YAML header or <code>_output.yml</code>.</p></dd>
+    <dt><code>output_file</code></dt><dd><p>The name of the output file. If using <code>NULL</code> then the
+output filename will be based on filename for the input file. If a filename
+is provided, a path to the output file can also be provided. Note that the
+<code>output_dir</code> option allows for specifying the output file path as well,
+however, if also specifying the path, the directory must exist. If
+<code>output_file</code> is specified but does not have a file extension, an
+extension will be automatically added according to the output format. To
+avoid the automatic file extension, put the <code>output_file</code> value in
+<code><a href='https://rdrr.io/r/base/AsIs.html'>I</a>()</code>, e.g., <code><a href='https://rdrr.io/r/base/AsIs.html'>I('my-output')</a></code>.</p></dd>
+    <dt><code>output_options</code></dt><dd><p>List of output options that can override the options
+specified in metadata (e.g. could be used to force <code>self_contained</code> or
+<code>mathjax = "local"</code>). Note that this is only valid when the output
+format is read from metadata (i.e. not a custom format object passed to
+<code>output_format</code>).</p></dd>
+    <dt><code>output_yaml</code></dt><dd><p>Paths to YAML files specifying output formats and their
+configurations. The first existing one is used. If none are found, then
+the function searches YAML files specified to the <code>output_yaml</code> top-level
+parameter in the YAML front matter, _output.yml or _output.yaml, and then uses
+the first existing one.</p></dd>
+    <dt><code>intermediates_dir</code></dt><dd><p>Intermediate files directory. If a path is specified
+then intermediate files will be written to that path. If <code>NULL</code>,
+intermediate files are written to the same directory as the input file.</p></dd>
+    <dt><code>knit_root_dir</code></dt><dd><p>The working directory in which to knit the document;
+uses knitr's <code>root.dir</code> knit option. If <code>NULL</code> then the behavior
+will follow the knitr default, which is to use the parent directory of the
+document.</p></dd>
+    <dt><code>runtime</code></dt><dd><p>The runtime target for rendering. The <code>static</code> option
+produces output intended for static files; <code>shiny</code> produces output
+suitable for use in a Shiny document (see <code><a href='https://rdrr.io/pkg/rmarkdown/man/run.html'>run</a></code>). The default,
+<code>auto</code>, allows the <code>runtime</code> target specified in the YAML metadata
+to take precedence, and renders for a <code>static</code> runtime target otherwise.</p></dd>
+    <dt><code>clean</code></dt><dd><p>Using <code>TRUE</code> will clean intermediate files that are created
+during rendering.</p></dd>
+    <dt><code>params</code></dt><dd><p>A list of named parameters that override custom params
+specified within the YAML front-matter (e.g. specifying a dataset to read or
+a date range to confine output to). Pass <code>"ask"</code> to start an
+application that helps guide parameter configuration.</p></dd>
+    <dt><code>knit_meta</code></dt><dd><p>(This option is reserved for expert use.) Metadata
+generated by <span class="pkg">knitr</span>.</p></dd>
+    <dt><code>envir</code></dt><dd><p>The environment in which the code chunks are to be evaluated
+during knitting (can use <code><a href='https://rdrr.io/r/base/environment.html'>new.env</a>()</code> to guarantee an empty new
+environment).</p></dd>
+    <dt><code>run_pandoc</code></dt><dd><p>An option for whether to run pandoc to convert Markdown
+output.</p></dd>
+    <dt><code>quiet</code></dt><dd><p>An option to suppress printing of the pandoc command line.</p></dd>
+    <dt><code>encoding</code></dt><dd><p>Ignored. The encoding is always assumed to be UTF-8.</p></dd>
+  
+</dl></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>path to created file (invisibly)</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Workflow helpers: 
-<code><a href='draft_word.html'>draft_word</a>()</code>,
-<code><a href='gd_download_folder.html'>gd_download_folder</a>()</code>,
-<code><a href='manage_docx_header_logos.html'>manage_docx_header_logos</a>()</code></p></div>
+    <p>No return value. Called for side effects.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>draft_redoc</span><span class='op'>(</span><span class='st'>"new_file"</span><span class='op'>)</span>
+<span class='co'># for which REDIZOs should the reports be compiled?</span>
+<span class='va'>red_izos</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"600000001"</span>, <span class='st'>"600000002"</span>, <span class='st'>"600000003"</span><span class='op'>)</span>
+
+<span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span>
+  <span class='va'>red_izos</span>,
+  <span class='op'>~</span> <span class='fu'>compile_and_open</span><span class='op'>(</span><span class='st'>"05_ucitele-reditele_ms.Rmd"</span>,
+                     open_on_success <span class='op'>=</span> <span class='cn'>FALSE</span>,
+                     output_dir <span class='op'>=</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"reports-output"</span>, <span class='st'>"ucitele-reditele-ms"</span><span class='op'>)</span>,
+                     output_file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"02_ucitele-reditele-ms_"</span>, <span class='va'>.x</span>, <span class='st'>".docx"</span><span class='op'>)</span>,
+                     params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>redizo <span class='op'>=</span> <span class='va'>.x</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
 <span class='op'>}</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
