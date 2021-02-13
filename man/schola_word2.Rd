@@ -29,8 +29,8 @@ more details and for a brief guide to Word templating).
 \examples{
 \dontrun{
 output:
-  reschola::schola_word2:
-  reference_docx: template.docx
+reschola::schola_word2:
+reference_docx:template.docx
 }
 }
 \seealso{

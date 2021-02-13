@@ -34,13 +34,14 @@ for more details and for a brief guide to Word templating).
 }
 \examples{
 \dontrun{
+#  # with the default template
 output:
-  reschola::schola_word
+reschola::schola_word
 
 # with a user-specified template
 output:
-  reschola::schola_word:
-    reference_docx: template.docx
+reschola::schola_word:
+reference_docx:template.docx
 }
 }
 \seealso{
