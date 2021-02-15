@@ -50,7 +50,7 @@ ls_export <- function(survey_id, attributes = TRUE, n_participants = 999, lang =
   res <- left_join(participants, responses, by = "token")
 
   # put back variable labels stripped during the merge, using safe tidyselect approach
-  resp_names <- responses %>% names
+  resp_names <- responses %>% names()
   resp_vals <- responses %@% "variable.labels"
   names(resp_names) <- resp_vals
   loc <- eval_rename(resp_names, res)
@@ -301,7 +301,7 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999, 
       ui_info("No attributes we found.")
       return(res)
     } else {
-      attrs %>%
+      attrs <- attrs %>%
         fromJSON() %>%
         map_chr("description")
 
