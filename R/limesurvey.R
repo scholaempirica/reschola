@@ -34,6 +34,7 @@ ls_surveys <- function() {
 #' }
 #'
 #' @importFrom dplyr left_join
+#' @importFrom tidyselect eval_rename
 #' @importFrom rlang %@% %@%<-
 #'
 #' @family LimeSurvey functions
@@ -48,8 +49,14 @@ ls_export <- function(survey_id, attributes = TRUE, n_participants = 999, lang =
 
   res <- left_join(participants, responses, by = "token")
 
-  # put back variable labels stripped during the merge
-  res %@% "variable.labels" <- c(names(participants), responses %@% "variable.labels")
+  # put back variable labels stripped during the merge, using safe tidyselect approach
+  resp_names <- responses %>% names
+  resp_vals <- responses %@% "variable.labels"
+  names(resp_names) <- resp_vals
+  loc <- eval_rename(resp_names, res)
+  attrs <- names(res)
+  attrs[loc] <- names(loc)
+  res %@% "variable.labels" <- attrs
 
   res
 }
