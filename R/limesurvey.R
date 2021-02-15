@@ -414,7 +414,8 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
 
   syntax <- readLines(textConnection(rawToChar(base64_dec(syntax))), encoding = "UTF-8")[-1] # exclude first line (data already read)
 
-  source(textConnection(syntax), local = TRUE)
+  # suppres those "NAs introduced by coercion" warnings of no value but disturbing
+  suppressWarnings(source(textConnection(syntax), local = TRUE))
 
   as_tibble(data, .name_repair = ~ make.unique(.x, "_"))
 
