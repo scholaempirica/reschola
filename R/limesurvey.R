@@ -250,12 +250,15 @@ ls_call <- function(method, params = list()) {
 #' List Participants
 #'
 #' Fetches participant list of the solicited survey. The function tries to
-#' retrieve as many attributes as possible and those are translated to their
-#' "semantic" version by default.
+#' retrieve as many attributes as possible and translate them to their
+#' "semantic" version by default. You can also provide character vector of
+#' requested attributes, but not in the "semantic" form (use, e.g.,
+#' `attribute_1` or `usesleft`).
 #'
-#' @param survey_id *integer*, ID of the survey (as found, e.g., with `ls_surveys()`).
-#' @param attributes *character vector or list* not used at the moment,
-#'   LimeSurvey API error
+#' @param survey_id *integer*, ID of the survey (as found, e.g., with
+#'   `ls_surveys()`).
+#' @param attributes *logical* try to recover all attributes (default to TRUE),
+#'   or *character vector* specifying requested attributes.
 #' @param n_participants *integer*, the number of participants to list, defualt
 #'   to 999.
 #' @param only_unused_tokens *logical*, should only the unused tokens be listed?
@@ -279,7 +282,8 @@ ls_call <- function(method, params = list()) {
 #'
 #' @family LimeSurvey functions
 #' @export
-ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999, only_unused_tokens = FALSE, translate_attrs = TRUE) {
+ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
+                            only_unused_tokens = FALSE, translate_attrs = TRUE) {
   attrs_call <- attributes
   if (is.logical(attributes)) {
     if (attributes) {
