@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.14.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -181,7 +181,9 @@
   n_participants <span class='op'>=</span> <span class='fl'>999</span>,
   lang <span class='op'>=</span> <span class='st'>"cs"</span>,
   part <span class='op'>=</span> <span class='st'>"all"</span>,
-  only_unused_tokens <span class='op'>=</span> <span class='cn'>FALSE</span>
+  only_unused_tokens <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  join_by <span class='op'>=</span> <span class='st'>"token"</span>,
+  <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -216,6 +218,28 @@ or <code>all</code> (the default).</p></td>
       <td><p><em>logical</em>, should only the unused tokens be listed?
 Default to FALSE.</p></td>
     </tr>
+    <tr>
+      <th>join_by</th>
+      <td><p><em>character</em>, the joining variable present in both responses
+and participans tibbles. Default to <code>token</code>. Pass <code>NULL</code> to join by common
+variables.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments passed on to <code><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>dplyr::left_join</a></code></p><dl>
+    <dt><code>copy</code></dt><dd><p>If <code>x</code> and <code>y</code> are not from the same data source,
+and <code>copy</code> is <code>TRUE</code>, then <code>y</code> will be copied into the
+same src as <code>x</code>.  This allows you to join tables across srcs, but
+it is a potentially expensive operation so you must opt into it.</p></dd>
+    <dt><code>suffix</code></dt><dd><p>If there are non-joined duplicate variables in <code>x</code> and
+<code>y</code>, these suffixes will be added to the output to disambiguate them.
+Should be a character vector of length 2.</p></dd>
+    <dt><code>keep</code></dt><dd><p>Should the join keys from both <code>x</code> and <code>y</code> be preserved in the
+output? Only applies to <code>nest_join()</code>, <code>left_join()</code>, <code>right_join()</code>, and
+<code>full_join()</code>.</p></dd>
+  
+</dl></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -247,7 +271,7 @@ Default to FALSE.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Petr Bouchal, SCHOLA EMPIRICA, z. s..</p>
+  <p>Developed by Petr Bouchal, Jan Netík, SCHOLA EMPIRICA, z. s..</p>
 </div>
 
 <div class="pkgdown">
