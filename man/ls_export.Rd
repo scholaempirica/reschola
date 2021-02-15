@@ -10,7 +10,9 @@ ls_export(
   n_participants = 999,
   lang = "cs",
   part = "all",
-  only_unused_tokens = FALSE
+  only_unused_tokens = FALSE,
+  join_by = "token",
+  ...
 )
 }
 \arguments{
@@ -30,6 +32,25 @@ or \code{all} (the default).}
 
 \item{only_unused_tokens}{\emph{logical}, should only the unused tokens be listed?
 Default to FALSE.}
+
+\item{join_by}{\emph{character}, the joining variable present in both responses
+and participans tibbles. Default to \code{token}. Pass \code{NULL} to join by common
+variables.}
+
+\item{...}{
+  Arguments passed on to \code{\link[dplyr:mutate-joins]{dplyr::left_join}}
+  \describe{
+    \item{\code{copy}}{If \code{x} and \code{y} are not from the same data source,
+and \code{copy} is \code{TRUE}, then \code{y} will be copied into the
+same src as \code{x}.  This allows you to join tables across srcs, but
+it is a potentially expensive operation so you must opt into it.}
+    \item{\code{suffix}}{If there are non-joined duplicate variables in \code{x} and
+\code{y}, these suffixes will be added to the output to disambiguate them.
+Should be a character vector of length 2.}
+    \item{\code{keep}}{Should the join keys from both \code{x} and \code{y} be preserved in the
+output? Only applies to \code{nest_join()}, \code{left_join()}, \code{right_join()}, and
+\code{full_join()}.}
+  }}
 }
 \value{
 A tibble.

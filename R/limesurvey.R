@@ -26,6 +26,10 @@ ls_surveys <- function() {
 #'
 #' @inheritParams ls_responses
 #' @inheritParams ls_participants
+#' @param join_by *character*, the joining variable present in both responses
+#'   and participans tibbles. Default to `token`. Pass `NULL` to join by common
+#'   variables.
+#' @inheritDotParams dplyr::left_join -x -y -by
 #'
 #' @return A tibble.
 #' @examples
@@ -34,12 +38,13 @@ ls_surveys <- function() {
 #' }
 #'
 #' @importFrom dplyr left_join
+#' @importFrom usethis ui_stop ui_code
 #' @importFrom tidyselect eval_rename
 #' @importFrom rlang %@% %@%<-
 #'
 #' @family LimeSurvey functions
 #' @export
-ls_export <- function(survey_id, attributes = TRUE, n_participants = 999, lang = "cs", part = "all", only_unused_tokens = FALSE) {
+ls_export <- function(survey_id, attributes = TRUE, n_participants = 999, lang = "cs", part = "all", only_unused_tokens = FALSE, join_by = "token", ...) {
   participants <- ls_participants(survey_id,
     n_participants = n_participants,
     only_unused_tokens = only_unused_tokens, attributes = attributes
@@ -47,13 +52,21 @@ ls_export <- function(survey_id, attributes = TRUE, n_participants = 999, lang =
 
   responses <- ls_responses(survey_id, lang = lang, part = part)
 
-  res <- left_join(participants, responses, by = "token")
+  res <- left_join(participants, responses, by = join_by, ...)
 
   # put back variable labels stripped during the merge, using safe tidyselect approach
   resp_names <- responses %>% names()
   resp_vals <- responses %@% "variable.labels"
   names(resp_names) <- resp_vals
-  loc <- eval_rename(resp_names, res)
+  loc <- tryCatch(eval_rename(resp_names, res), error = function(e) {
+    ui_stop(c(
+      "Column names of joined participant and response tables are likely duplicated.",
+      ifelse(attributes,
+        "Passing {ui_code('attributes = FALSE')} to function call may help.",
+        "Please treat participant and response data separately."
+      )
+    ))
+  })
   attrs <- names(res)
   attrs[loc] <- names(loc)
   res %@% "variable.labels" <- attrs
@@ -399,7 +412,7 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
 
   source(textConnection(syntax), local = TRUE)
 
-  as_tibble(data, .name_repair = "unique")
+  as_tibble(data, .name_repair = ~ make.unique(.x, "_"))
 
   # TODO: think how to handle attributes
 }
