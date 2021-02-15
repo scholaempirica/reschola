@@ -275,8 +275,7 @@ ls_call <- function(method, params = list()) {
 #'
 #' @importFrom tidyr unpack
 #' @importFrom dplyr rename
-#' @importFrom rlang !!!
-#' @importFrom stats setNames
+#' @importFrom rlang !!! set_names
 #' @importFrom purrr pluck map_chr
 #' @importFrom usethis ui_stop ui_value
 #'
@@ -322,7 +321,7 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
         fromJSON() %>%
         map_chr("description")
 
-      attrs <- setNames(names(attrs), attrs) # swap names-values
+      attrs <- set_names(names(attrs), attrs) # swap names-values
 
       res %>% rename(!!!attrs)
     }
