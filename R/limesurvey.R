@@ -186,11 +186,11 @@ ls_call <- function(method, params = list()) {
   }
   if (!exists("sess_key_expiration", envir = ls_sess_cache) || ls_sess_cache$sess_key_expiration < Sys.time()) {
     ui_oops(c(
-      "Cannot find a valid session key in a cache.",
-      "Either the code wasn't entered at all or it may have expired."
+      "Cannot find valid session key in the cache.",
+      "Either the key wasn't entered at all or it may have expired."
     ))
 
-    ui_info("Calling {ui_code('ls_login()')}.")
+    ui_info("Remedy by calling {ui_code('ls_login()')}.")
     ls_login()
   }
 
@@ -260,6 +260,7 @@ ls_call <- function(method, params = list()) {
 #' @family LimeSurvey functions
 #' @export
 ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999, only_unused_tokens = FALSE, translate_attrs = TRUE) {
+  attrs_call <- attributes
   if (is.logical(attributes)) {
     if (attributes) {
       attributes <- .ls_all_attributes
@@ -285,15 +286,22 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999, 
 
   res <- unpack(res, "participant_info")
 
-  if (translate_attrs) {
+  if (translate_attrs && isTRUE(attrs_call)) {
     attrs <- ls_call("get_survey_properties", params = list(iSurveyID = survey_id)) %>%
-      pluck("attributedescriptions") %>%
-      fromJSON() %>%
-      map_chr("description")
+      pluck("attributedescriptions")
 
-    attrs <- setNames(names(attrs), attrs) # swap names-values
+    if (is.null(attrs)) {
+      ui_info("No attributes we found.")
+      return(res)
+    } else {
+      attrs %>%
+        fromJSON() %>%
+        map_chr("description")
 
-    res %>% rename(!!!attrs)
+      attrs <- setNames(names(attrs), attrs) # swap names-values
+
+      res %>% rename(!!!attrs)
+    }
   } else {
     res
   }
