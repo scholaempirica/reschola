@@ -1,23 +1,23 @@
 Package: reschola
 Title: The Schola Empirica Package
-Version: 0.2.14.9000
+Version: 0.3.0
 Authors@R: 
     c(person(given = "Petr",
              family = "Bouchal",
              role = c("aut", "cre"),
              email = "pbouchal@gmail.com",
              comment = c(ORCID = "0000-0002-0471-716X")),
+      person(given = "Jan",
+             family = "Netík",
+             role = "aut",
+             email = "netikja@gmail.com",
+             comment = c(ORCID = "0000-0002-3888-3203")),
       person(given = "Jaromír",
              family = "Mazák",
              role = "ctb"),
       person(given = "Aleš",
              family = "Vomáčka",
              role = "ctb"),
-      person(given = "Jan",
-             family = "Netík",
-             role = "ctb",
-             email = "netikja@gmail.com",
-             comment = c(ORCID = "0000-0002-3888-3203")),
       person(given = "SCHOLA EMPIRICA, z. s.",
              role = c("cph", "fnd")))
 Description: A collection of utilies, themes and templates for data
@@ -53,7 +53,8 @@ Imports:
     lifecycle,
     httr,
     jsonlite,
-    rlang
+    rlang,
+    tidyselect
 Suggests: 
     knitr,
     spelling
