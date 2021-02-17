@@ -1,0 +1,4 @@
+name: "Schola Empirica: PDF report"
+description: >
+   A template for a PDF report in the SCHOLA EMPIRICA style
+create_dir: FALSE

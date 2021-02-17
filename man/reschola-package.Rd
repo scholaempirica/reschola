@@ -22,11 +22,15 @@ Useful links:
 \author{
 \strong{Maintainer}: Petr Bouchal \email{pbouchal@gmail.com} (\href{https://orcid.org/0000-0002-0471-716X}{ORCID})
 
+Authors:
+\itemize{
+  \item Jan Netík \email{netikja@gmail.com} (\href{https://orcid.org/0000-0002-3888-3203}{ORCID})
+}
+
 Other contributors:
 \itemize{
   \item Jaromír Mazák [contributor]
   \item Aleš Vomáčka [contributor]
-  \item Jan Netík \email{netikja@gmail.com} (\href{https://orcid.org/0000-0002-3888-3203}{ORCID}) [contributor]
   \item SCHOLA EMPIRICA, z. s. [copyright holder, funder]
 }
 

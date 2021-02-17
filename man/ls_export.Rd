@@ -19,8 +19,8 @@ ls_export(
 \item{survey_id}{\emph{integer}, ID of the survey (as found with \code{ls_surveys},
 e.g.).}
 
-\item{attributes}{\emph{character vector or list} not used at the moment,
-LimeSurvey API error}
+\item{attributes}{\emph{logical} try to recover all attributes (default to TRUE),
+or \emph{character vector} specifying requested attributes.}
 
 \item{n_participants}{\emph{integer}, the number of participants to list, defualt
 to 999.}
@@ -34,7 +34,7 @@ or \code{all} (the default).}
 Default to FALSE.}
 
 \item{join_by}{\emph{character}, the joining variable present in both responses
-and participans tibbles. Default to \code{token}. Pass \code{NULL} to join by common
+and participants tibbles. Default to \code{token}. Pass \code{NULL} to join by common
 variables.}
 
 \item{...}{

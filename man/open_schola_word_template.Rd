@@ -19,10 +19,13 @@ You can either edit the template directly (see \link{schola_word2} for more deta
 use "Save as" option and keep it within the project directory, as described in \link{schola_word2}.
 }
 \examples{
-\dontrun{open_schola_word_template()}
+\dontrun{
+open_schola_word_template()
+}
 }
 \seealso{
 Other Report templates and formats: 
+\code{\link{schola_pdf}()},
 \code{\link{schola_redoc}()},
 \code{\link{schola_word2}()},
 \code{\link{schola_word}()}

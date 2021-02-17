@@ -1,3 +1,73 @@
+
+#' Basic Schola Empirica PDF document
+#'
+#' This is a function called in the output of the YAML of the Rmd file to
+#' specify using the standard Schola PDF document formatting.
+#'
+#' @inheritDotParams bookdown::pdf_document2
+#'
+#' @return A modified `pdf_document2` with the standard Schola formatting.
+#' @author Jan Netik
+#'
+#' @examples
+#' \dontrun{
+#' output:
+#'   reschola::schola_pdf:
+#'     toc: no
+#' }
+#' @family Report templates and formats
+#'
+#' @importFrom bookdown pdf_document2
+#' @export
+#'
+schola_pdf <- function(num_format = "cs", ...) {
+  base <- pdf_document2(...)
+
+  # GS needed to crop figures
+  # Sys.setenv(R_GSCMD="C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe")
+
+  # force plot cropping (see https://github.com/rstudio/rmarkdown/issues/2016)
+  base$knitr$knit_hooks$crop <- knitr::hook_pdfcrop
+  base$knitr$opts_chunk$crop <- TRUE
+
+  # replaces plain quotation marks with typographic ones
+  quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")
+  base$pandoc$lua_filters <- c(
+    quotes_lua_filter,
+    base$pandoc$lua_filters
+  )
+
+  # czech numbers
+  if (num_format == "cs") {
+    base$knitr$knit_hooks$inline <- function(x) {
+      if (!is.character(x)) {
+        prettyNum(x, big.mark = " ", decimal.mark = ",")
+      } else {
+        x
+      }
+    }
+  }
+
+  # nolint start
+  base$knitr$opts_chunk$comment <- "#>" # as in reprex package, standard MD
+  base$knitr$opts_chunk$message <- FALSE
+  base$knitr$opts_chunk$warning <- FALSE
+  base$knitr$opts_chunk$error <- FALSE
+  base$knitr$opts_chunk$echo <- FALSE
+  base$knitr$opts_chunk$cache <- FALSE
+  base$knitr$opts_chunk$fig.width <- 6.29 # 15.98 cm i.e. 2 x 2.5 cm margins, or possibly "\\textwidth"
+  base$knitr$opts_chunk$dev <- "cairo_pdf" # for support of non-ASCII chars, namely
+  base$knitr$opts_chunk$fig.asp <- .618 # golden ratio
+  base$knitr$opts_chunk$fig.path <- "figs/" # if Ghostscript and pdfcrop are avaiable, they are cropped
+  base$knitr$opts_chunk$fig.align <- "center"
+  # nolint end
+
+  base
+}
+
+
+
+
 #' Basic Schola Empirica Word document
 #'
 #' This is a function called in the output of the YAML of the Rmd file to
@@ -61,72 +131,6 @@ schola_word <- function(reference_docx = find_resource("schola_word", "template.
   base$knitr$opts_chunk$fig.asp <- .618 # default height is in golden ratio
   base$knitr$opts_chunk$fig.ext <- "png"
   base$knitr$opts_chunk$fig.path <- "figures/"
-  # nolint end
-
-  base
-}
-
-
-
-#' Basic Schola Empirica PDF document
-#'
-#' This is a function called in the output of the YAML of the Rmd file to
-#' specify using the standard Schola PDF document formatting.
-#'
-#' @inheritDotParams bookdown::pdf_document2
-#'
-#' @return A modified `pdf_document2` with the standard Schola formatting.
-#' @author Jan Netik
-#'
-#' @examples
-#' \dontrun{
-#' #  # with the default template
-#' output:
-#' reschola::schola_pdf
-#' }
-#' @noRd
-#' @keywords internal
-#' @note dont forget to export... and add family "Report templates and formats"
-schola_pdf <- function(num_format = "cs", ...) {
-  base <- bookdown::pdf_document2(...)
-
-  # GS needet to crop figures
-  # Sys.setenv(R_GSCMD="C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe")
-
-  # force plot cropping (see https://github.com/rstudio/rmarkdown/issues/2016)
-  base$knitr$knit_hooks$crop <- knitr::hook_pdfcrop
-  base$knitr$opts_chunk$crop <- TRUE
-
-  # proper quotes
-  quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")
-  base$pandoc$lua_filters <- c(
-    quotes_lua_filter,
-    base$pandoc$lua_filters
-  )
-
-  # czech numbers
-  if (num_format == "cs") {
-    base$knitr$knit_hooks$inline <- function(x) {
-      if (!is.character(x)) {
-        prettyNum(x, big.mark = " ", decimal.mark = ",")
-      } else {
-        x
-      }
-    }
-  }
-
-  # nolint start
-  base$knitr$opts_chunk$comment <- "#>" # as in reprex package, standard MD
-  base$knitr$opts_chunk$message <- FALSE
-  base$knitr$opts_chunk$warning <- FALSE
-  base$knitr$opts_chunk$error <- FALSE
-  base$knitr$opts_chunk$echo <- FALSE
-  base$knitr$opts_chunk$cache <- FALSE
-  base$knitr$opts_chunk$fig.width <- 6.29 # 15.98 cm i.e. 2 x 2.5 cm margins, or possibly "\\textwidth"
-  base$knitr$opts_chunk$dev <- "cairo_pdf" # for support of non-ASCII chars, namely
-  base$knitr$opts_chunk$fig.asp <- .618 # golden ratio
-  base$knitr$opts_chunk$fig.path <- "figs/" # if Ghostscript and pdfcrop are avaiable, they are cropped
-  base$knitr$opts_chunk$fig.align <- "center"
   # nolint end
 
   base

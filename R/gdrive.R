@@ -21,33 +21,45 @@
 #' @examples
 #' \dontrun{
 #' gd_url <- "https://drive.google.com/drive/folders/1bCyR_VKAP_43NEujqisjN77hANnMKfHZ"
-#' gd_download_folder(folder_url = gd_url,
-#'                    files_from_subfolders = T, overwrite = T)
+#' gd_download_folder(
+#'   folder_url = gd_url,
+#'   files_from_subfolders = T, overwrite = T
+#' )
 #' }
+#'
+#' @importFrom purrr walk2 map_chr
+#' @importFrom usethis ui_path ui_info
+#' @importFrom dplyr mutate filter
+#' @importFrom googledrive as_id as_dribble is_folder drive_ls drive_download
+#'
 #' @export
+#'
 gd_download_folder <- function(folder_url, dest_dir = "data-input",
                                files_from_subfolders = F,
                                overwrite = F) {
-  url_id <- googledrive::as_id(folder_url)
-  url_dribble <- googledrive::as_dribble(folder_url)
+  url_id <- as_id(folder_url)
+  url_dribble <- as_dribble(folder_url)
 
 
-  stopifnot(googledrive::is_folder(url_dribble))
+  stopifnot(is_folder(url_dribble))
 
-  if(files_from_subfolders) usethis::ui_info("Downloading files from subdirectories also into {usethis::ui_path(dest_dir)} (no subdirectories will be created).")
+  if (files_from_subfolders) ui_info("Downloading files from subdirectories also into {ui_path(dest_dir)} (no subdirectories will be created).")
 
-  drv_items <- googledrive::drive_ls(url_id, recursive = files_from_subfolders)
+  drv_items <- drive_ls(url_id, recursive = files_from_subfolders)
 
   drv_files <- drv_items %>%
-    dplyr::mutate(mimetype = purrr::map_chr(drive_resource, 'mimeType')) %>%
-    dplyr::filter(mimetype != "application/vnd.google-apps.folder")
+    mutate(mimetype = map_chr(drive_resource, "mimeType")) %>%
+    filter(mimetype != "application/vnd.google-apps.folder")
 
   # print(drv_files)
 
-  purrr::walk2(drv_files$id, drv_files$name,
-               ~googledrive::drive_download(googledrive::as_id(.x),
-                                            path = file.path(dest_dir, .y),
-                                            overwrite = overwrite))
+  walk2(
+    drv_files$id, drv_files$name,
+    ~ drive_download(as_id(.x),
+      path = file.path(dest_dir, .y),
+      overwrite = overwrite
+    )
+  )
 
   invisible(file.path(dest_dir, drv_files$name))
 }
