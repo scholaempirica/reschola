@@ -11,6 +11,6 @@ An object of class \code{list} of length 3.
 .czech_months
 }
 \description{
-As used by \code{czech_date_internal()}.
+As used by \code{czech_date_main()}.
 }
 \keyword{internal}

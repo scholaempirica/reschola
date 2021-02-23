@@ -2,7 +2,7 @@
 
 ## Breaking changes
 
-- automatically generated build script `build.R` is renamed to `build_all.R`, to allow multiple build scripts (pro tip: use [{buildr}](https://cran.r-project.org/web/packages/buildr/) package)
+- automatically generated build script `build.R` is renamed to `build_all.R`, to allow multiple build scripts (pro tip: use [{buildr}](https://CRAN.r-project.org/web/packages/buildr/) package)
 
 ## New features
 
@@ -11,9 +11,12 @@
     -   `ls_call()` implements general and fully customisable call to the API (you must adhere to [the documentation](https://api.limesurvey.org/classes/remotecontrol_handle.html))
 
     -   `ls_export()` is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from  `ls_participants()`, and `ls_responses()`
+    
     -   `ls_login()` is used for manual session key request; it may be never used, as every `ls_` call ensures the key is cached and not expired (key is stale after 2 hrs)
     
-- new class `czech_date` with S3 method that prints the date in long format and grammatically correct case, more in `as_czech_date()`
+- new class `czech_date` with S3 method that prints the date in long format and with grammatically correct case, more in `as_czech_date()`
+
+- new function `czech_date_interval()` that takes two dates and returns nicely formatted Czech date interval
     
 - new function `compile_and_open()` provides safe and comfortable way to render/compile `.Rmd` documents
 

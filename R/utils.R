@@ -61,9 +61,15 @@ reschola_file <- function(...) {
 #' Note that as opposed to other date formating functions in `R`,
 #' `as_date_czech` trims leading zeros.
 #'
-#' @inheritSection czech_date_internal Grammatical cases
+#' @inheritSection czech_date_main Grammatical cases
 #'
-#' @inheritParams czech_date_internal
+#' @inheritParams czech_date_main
+#'
+#' @examples
+#' Sys.time() %>% as_czech_date
+#'
+#' # in "nominative" grammatical case (note the abbreviation)
+#' Sys.time() %>% as_czech_date("nom")
 #'
 #' @return Same as input, but with class `czech_date` and attribute
 #'   `gramm_case`.
@@ -80,12 +86,12 @@ as_czech_date <- function(date, case = "genitive") {
 #'
 #' S3 method for class `czech_date`.
 #'
-#' @inheritParams czech_date_internal
+#' @inheritParams czech_date_main
 #' @keywords internal
 #' @export
 print.czech_date <- function(date, case = NULL, ...) {
   if (is.null(case)) case <- attr(date, "gramm_case")
-  print(czech_date_internal(date, case))
+  print(czech_date_main(date, case))
   invisible(date)
 }
 
@@ -94,7 +100,7 @@ print.czech_date <- function(date, case = NULL, ...) {
 #' @export
 as.character.czech_date <- function(date, case = NULL, ...) {
   if (is.null(case)) case <- attr(date, "gramm_case")
-  czech_date_internal(date, case)
+  czech_date_main(date, case)
 }
 
 #' knit_print S3 method for class czech_date
@@ -103,7 +109,7 @@ as.character.czech_date <- function(date, case = NULL, ...) {
 #' @export
 knit_print.czech_date <- function(date, case = NULL, ...) {
   if (is.null(case)) case <- attr(date, "gramm_case")
-  asis_output(czech_date_internal(date, case))
+  asis_output(czech_date_main(date, case))
 }
 
 
@@ -111,7 +117,7 @@ knit_print.czech_date <- function(date, case = NULL, ...) {
 #'
 #' Function used by S3 methods for class `czech_date`.
 #'
-#' @usage czech_date_internal(date, case = "genitive")
+#' @usage czech_date_main(date, case = "genitive")
 #'
 #' @section Grammatical cases:
 #' Three grammatical cases are supported:
@@ -127,7 +133,7 @@ knit_print.czech_date <- function(date, case = NULL, ...) {
 #'
 #' @keywords internal
 #' @export
-czech_date_internal <- function(date, case) {
+czech_date_main <- function(date, case) {
   dt <- as.POSIXlt(date) # hmmm POSIXlt is built on top of a list! exploit!
   day <- dt$mday
   month <- dt$mon + 1
@@ -140,7 +146,7 @@ czech_date_internal <- function(date, case) {
 
 #' List of Czech Months in Three Grammatical Cases
 #'
-#' As used by `czech_date_internal()`.
+#' As used by `czech_date_main()`.
 #'
 #' @keywords internal
 #' @export
@@ -157,20 +163,56 @@ czech_date_internal <- function(date, case) {
 )
 
 
-# interval_print <- function(x, y) {
-#   days <- unique(day(c(x, y)))
-#   months <- unique(month(c(x, y)))
-#   years <- unique(year(c(x, y)))
-#
-#   if (length(days) != 1 & length(months) == 1 & length(years) == 1) {
-#     paste0(days[1], ".–", days[2], ". ", month_czech(months[1], "gen"), " ", years[1])
-#   } else if (length(days) != 1 & length(months) != 1 & length(years) == 1) {
-#     paste0(days[1], ". ", month_czech(months[1], "gen"), " – ", days[2], ". ", month_czech(months[2], "gen"), " ", years[1])
-#   } else if (length(days) != 1 & length(months) != 1 & length(years) != 1) {
-#     paste0(days[1], ". ", month_czech(months[1], "gen"), " ", years[1], " – ", days[2], ". ", month_czech(months[2], "gen"), " ", years[2])
-#   } else if (length(days) == 1 & length(months) != 1 & length(years) == 1) {
-#     paste0(days[1], ". ", month_czech(months[1], "gen"), " – ", days[1], ". ", month_czech(months[2], "gen"), " ", years[1])
-#   } else {
-#     stop("Maturing lifecycle, case not yet defined...")
-#   }
-# }
+#' Czech Date Interval
+#'
+#' Returns the most space-efficient and at the same time grammatically correct
+#' interval of two Czech dates. When both dates are the same, only one is
+#' outputted. The function ensures that the interval is not negative (i.e.,
+#' `start` <= `end`), otherwise, it is reversed.
+#'
+#' @param start *Date of date-like object*, start date or left boundary of an
+#'   interval.
+#' @param end *Date of date-like object*, end date or right boundary of an
+#'   interval.
+#'
+#' @examples
+#' czech_date_interval("2020-01-24", "2020-01-03") # note the argument order
+#'
+#' @return Character
+#'
+#' @export
+czech_date_interval <- function(start, end) {
+  dt <- as.POSIXlt(c(start, end))
+
+  if (start > end) {
+    dt <- rev(dt)
+  }
+
+  day <- dt$mday
+  month <- dt$mon + 1
+  year <- dt$year + 1900
+
+  czech_date <- as_czech_date(dt)
+  czech_months <- .czech_months[["genitive"]][month]
+
+  if (year[1] == year[2]) {
+    if (month[1] == month[2]) {
+      if (day[1] == day[2]) {
+        return(czech_date[1])
+      }
+      return(paste0(
+        day[1],
+        ".–",
+        day[2], ". ", czech_months[1], " ", year[1]
+      ))
+    }
+    return(paste0(
+      day[1], ". ", czech_months[1],
+      " – ",
+      day[2], ". ", czech_months[2], " ",
+      year[1]
+    ))
+  } else {
+    return(paste0(czech_date[1], " – ", czech_date[2]))
+  }
+}
