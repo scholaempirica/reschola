@@ -13,10 +13,11 @@ ls_participants(
 )
 }
 \arguments{
-\item{survey_id}{\emph{integer}, ID of the survey (as found, e.g., with \code{ls_surveys()}).}
+\item{survey_id}{\emph{integer}, ID of the survey (as found, e.g., with
+\code{ls_surveys()}).}
 
-\item{attributes}{\emph{character vector or list} not used at the moment,
-LimeSurvey API error}
+\item{attributes}{\emph{logical} try to recover all attributes (default to TRUE),
+or \emph{character vector} specifying requested attributes.}
 
 \item{n_participants}{\emph{integer}, the number of participants to list, defualt
 to 999.}
@@ -32,8 +33,10 @@ A tibble or raw object that cannot be reasonably coerced to a tibble.
 }
 \description{
 Fetches participant list of the solicited survey. The function tries to
-retrieve as many attributes as possible and those are translated to their
-"semantic" version by default.
+retrieve as many attributes as possible and translate them to their
+"semantic" version by default. You can also provide character vector of
+requested attributes, but not in the "semantic" form (use, e.g.,
+\code{attribute_1} or \code{usesleft}).
 }
 \examples{
 \dontrun{

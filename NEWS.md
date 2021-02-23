@@ -1,6 +1,10 @@
-# reschola 0.2.14.9000 "Limy Schola"
+# reschola 0.3.0.9000 (Limy Schola)
 
-## Changes
+## Breaking changes
+
+- automatically generated build script `build.R` is renamed to `build_all.R`, to allow multiple build scripts (pro tip: use [{buildr}](https://cran.r-project.org/web/packages/buildr/) package)
+
+## New features
 
 -   `reschola` is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:
 
@@ -9,11 +13,15 @@
     -   `ls_export()` is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from  `ls_participants()`, and `ls_responses()`
     -   `ls_login()` is used for manual session key request; it may be never used, as every `ls_` call ensures the key is cached and not expired (key is stale after 2 hrs)
     
+- new class `czech_date` with S3 method that prints the date in long format and grammatically correct case, more in `as_czech_date()`
+    
 - new function `compile_and_open()` provides safe and comfortable way to render/compile `.Rmd` documents
 
-- `99_reproducibility.Rmd` now uses base R `sessionInfo()`, not `sessioninfo` package, which seems like an unnecessary dependency
+- development feature: *spellcheck on package introduced via `usethis`*
 
-- spellcheck on package introduced via `usethis`
+## Changes
+
+- `99_reproducibility.Rmd` now uses base R `sessionInfo()`, not `sessioninfo` package, which seems like an unnecessary dependency
 
 ## Bug fixes
 

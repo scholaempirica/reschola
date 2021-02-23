@@ -1,6 +1,6 @@
 Package: reschola
 Title: The Schola Empirica Package
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: 
     c(person(given = "Petr",
              family = "Bouchal",
@@ -54,9 +54,9 @@ Imports:
     httr,
     jsonlite,
     rlang,
-    tidyselect
+    tidyselect,
+    knitr
 Suggests: 
-    knitr,
     spelling
 VignetteBuilder: 
     knitr

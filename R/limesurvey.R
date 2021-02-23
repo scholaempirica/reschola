@@ -27,7 +27,7 @@ ls_surveys <- function() {
 #' @inheritParams ls_responses
 #' @inheritParams ls_participants
 #' @param join_by *character*, the joining variable present in both responses
-#'   and participans tibbles. Default to `token`. Pass `NULL` to join by common
+#'   and participants tibbles. Default to `token`. Pass `NULL` to join by common
 #'   variables.
 #' @inheritDotParams dplyr::left_join -x -y -by
 #'
