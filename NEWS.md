@@ -1,4 +1,4 @@
-# reschola 0.3.0 "Limy Schola"
+# reschola 0.3.0.9000 (Limy Schola)
 
 ## Breaking changes
 
@@ -17,7 +17,7 @@
     
 - new function `compile_and_open()` provides safe and comfortable way to render/compile `.Rmd` documents
 
-- spellcheck on package introduced via `usethis`
+- development feature: *spellcheck on package introduced via `usethis`*
 
 ## Changes
 
