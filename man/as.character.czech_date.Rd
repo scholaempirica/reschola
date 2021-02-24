@@ -4,7 +4,7 @@
 \alias{as.character.czech_date}
 \title{as.character S3 method for class czech_date}
 \usage{
-\method{as.character}{czech_date}(date, ..., case = NULL)
+\method{as.character}{czech_date}(date, ...)
 }
 \description{
 as.character S3 method for class czech_date

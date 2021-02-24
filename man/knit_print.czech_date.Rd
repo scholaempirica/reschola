@@ -4,7 +4,7 @@
 \alias{knit_print.czech_date}
 \title{knit_print S3 method for class czech_date}
 \usage{
-\method{knit_print}{czech_date}(date, case = NULL, ...)
+\method{knit_print}{czech_date}(date, ...)
 }
 \description{
 knit_print S3 method for class czech_date
