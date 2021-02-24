@@ -4,10 +4,10 @@
 \alias{print.czech_date}
 \title{Print Czech Date}
 \usage{
-\method{print}{czech_date}(date, ...)
+\method{print}{czech_date}(x, ...)
 }
 \arguments{
-\item{date}{\emph{date or date-like object} to parse.}
+\item{x}{\emph{date or date-like object} to parse.}
 }
 \description{
 S3 method for class \code{czech_date}.
