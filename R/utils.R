@@ -89,30 +89,30 @@ as_czech_date <- function(date, case = "genitive") {
 #' @inheritParams czech_date_main
 #' @keywords internal
 #' @export
-print.czech_date <- function(date, ...) {
+print.czech_date <- function(x, ...) {
   case <- list(...)[["case"]]
-  if (is.null(case)) case <- attr(date, "gramm_case")
-  print(czech_date_main(date, case))
-  invisible(date)
+  if (is.null(case)) case <- attr(x, "gramm_case")
+  print(czech_date_main(x, case))
+  invisible(x)
 }
 
 #' as.character S3 method for class czech_date
 #' @keywords internal
 #' @export
-as.character.czech_date <- function(date, ...) {
+as.character.czech_date <- function(x, ...) {
   case <- list(...)[["case"]]
-  if (is.null(case)) case <- attr(date, "gramm_case")
-  czech_date_main(date, case)
+  if (is.null(case)) case <- attr(x, "gramm_case")
+  czech_date_main(x, case)
 }
 
 #' knit_print S3 method for class czech_date
 #' @importFrom knitr knit_print asis_output
 #' @keywords internal
 #' @export
-knit_print.czech_date <- function(date, ...) {
+knit_print.czech_date <- function(x, ...) {
   case <- list(...)[["case"]]
-  if (is.null(case)) case <- attr(date, "gramm_case")
-  asis_output(czech_date_main(date, case))
+  if (is.null(case)) case <- attr(x, "gramm_case")
+  asis_output(czech_date_main(x, case))
 }
 
 
