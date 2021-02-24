@@ -4,7 +4,7 @@
 \alias{print.czech_date}
 \title{Print Czech Date}
 \usage{
-\method{print}{czech_date}(date, case = NULL, ...)
+\method{print}{czech_date}(date, ..., case = NULL)
 }
 \arguments{
 \item{date}{\emph{date or date-like object} to parse.}

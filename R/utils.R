@@ -89,7 +89,7 @@ as_czech_date <- function(date, case = "genitive") {
 #' @inheritParams czech_date_main
 #' @keywords internal
 #' @export
-print.czech_date <- function(date, case = NULL, ...) {
+print.czech_date <- function(date, ..., case = NULL) {
   if (is.null(case)) case <- attr(date, "gramm_case")
   print(czech_date_main(date, case))
   invisible(date)
@@ -98,7 +98,7 @@ print.czech_date <- function(date, case = NULL, ...) {
 #' as.character S3 method for class czech_date
 #' @keywords internal
 #' @export
-as.character.czech_date <- function(date, case = NULL, ...) {
+as.character.czech_date <- function(date, ..., case = NULL) {
   if (is.null(case)) case <- attr(date, "gramm_case")
   czech_date_main(date, case)
 }
@@ -116,8 +116,6 @@ knit_print.czech_date <- function(date, case = NULL, ...) {
 #' Czech Date Internals
 #'
 #' Function used by S3 methods for class `czech_date`.
-#'
-#' @usage czech_date_main(date, case = "genitive")
 #'
 #' @section Grammatical cases:
 #' Three grammatical cases are supported:
@@ -152,13 +150,13 @@ czech_date_main <- function(date, case) {
 #' @export
 .czech_months <- list(
   nominative = c(
-    "leden", "únor", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"
+    "leden", "\u00fanor", "b\u0159ezen", "duben", "kv\u011bten", "\u010derven", "\u010dervenec", "srpen", "z\u00e1\u0159\u00ed", "\u0159\u00edjen", "listopad", "prosinec"
   ),
   locative = c(
-    "lednu", "únoru", "březnu", "dubnu", "květnu", "červnu", "červenci", "srpnu", "září", "říjnu", "listopadu", "prosinci"
+    "lednu", "\u00fanoru", "b\u0159eznu", "dubnu", "kv\u011btnu", "\u010dervnu", "\u010dervenci", "srpnu", "z\u00e1\u0159\u00ed", "\u0159\u00edjnu", "listopadu", "prosinci"
   ),
   genitive = c(
-    "ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince"
+    "ledna", "\u00fanora", "b\u0159ezna", "dubna", "kv\u011btna", "\u010dervna", "\u010dervence", "srpna", "z\u00e1\u0159\u00ed", "\u0159\u00edjna", "listopadu", "prosince"
   )
 )
 
@@ -202,17 +200,17 @@ czech_date_interval <- function(start, end) {
       }
       return(paste0(
         day[1],
-        ".–",
+        ".\u2013",
         day[2], ". ", czech_months[1], " ", year[1]
       ))
     }
     return(paste0(
       day[1], ". ", czech_months[1],
-      " – ",
+      " \u2013 ",
       day[2], ". ", czech_months[2], " ",
       year[1]
     ))
   } else {
-    return(paste0(czech_date[1], " – ", czech_date[2]))
+    return(paste0(czech_date[1], " \u2013 ", czech_date[2]))
   }
 }

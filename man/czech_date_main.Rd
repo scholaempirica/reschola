@@ -4,7 +4,7 @@
 \alias{czech_date_main}
 \title{Czech Date Internals}
 \usage{
-czech_date_main(date, case = "genitive")
+czech_date_main(date, case)
 }
 \arguments{
 \item{date}{\emph{date or date-like object} to parse.}

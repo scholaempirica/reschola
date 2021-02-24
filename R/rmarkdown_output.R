@@ -4,6 +4,7 @@
 #' This is a function called in the output of the YAML of the Rmd file to
 #' specify using the standard Schola PDF document formatting.
 #'
+#' @param num_format lorem ipsum
 #' @inheritDotParams bookdown::pdf_document2
 #'
 #' @return A modified `pdf_document2` with the standard Schola formatting.
