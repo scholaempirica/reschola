@@ -16,16 +16,16 @@ find_resource <- function(template, file) {
   find_file(template, file.path("resources", file))
 }
 
-#' Locate and open default Word template
+#' Locate and open default Schola templates
 #'
-#' Open the default Word template used by `schola_word`.
-#' The template comes with the package and is somewhat hidden in R library,
-#' so this auxiliary function can help you dig it up.
+#' Open the default Schola templates used by [`schola_word()`], or
+#' [`schola_pdf()`] (specify with `format` argument). The templates are shipped
+#' with the package and are somewhat hidden in `R` library, so this auxiliary
+#' function can help you dig them up.
 #'
-#' You can either edit the template directly (see [schola_word2] for more detail) and save it, or better -
-#' use "Save as" option and keep it within the project directory, as described in [schola_word2].
-#'
-#' @usage open_schola_word_template()
+#' You can either edit the chosen template directly in its natural habitat
+#' (questionable short-term solution), or better -- use "Save as" option and
+#' keep it and use it within the project directory.
 #'
 #' @return No return value, called for side effect.
 #' @family Report templates and formats
@@ -34,10 +34,13 @@ find_resource <- function(template, file) {
 #'
 #' @examples
 #' \dontrun{
-#' open_schola_word_template()
+#' open_schola_template()
 #' }
-open_schola_word_template <- function() {
-  system2("open", find_resource("schola_word", "template.docx"))
+open_schola_template <- function(format = "pdf") {
+  switch(format,
+    word = system2("open", find_resource("schola_word", "template.docx")),
+    pdf = system2("open", find_resource("schola_pdf", "schola_template.tex"))
+  )
 }
 
 reschola_file <- function(...) {

@@ -30,7 +30,7 @@ output:reschola::schola_redoc
 }
 \seealso{
 Other Report templates and formats: 
-\code{\link{open_schola_word_template}()},
+\code{\link{open_schola_template}()},
 \code{\link{schola_pdf}()},
 \code{\link{schola_word2}()},
 \code{\link{schola_word}()}
