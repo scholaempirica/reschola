@@ -1,10 +1,16 @@
-# reschola 0.3.0.9000 (Limy Schola)
+# reschola 0.2.13.9000 (Limy Schola)
 
 ## Breaking changes
 
 - automatically generated build script `build.R` is renamed to `build_all.R`, to allow multiple build scripts (pro tip: use [{buildr}](https://CRAN.r-project.org/web/packages/buildr/) package)
 
 ## New features
+
+- new RMarkdown document format `schola_pdf()`:
+    - powered by custom LaTeX template and `report` class
+    - uses Roboto font
+    - reasonable defaults are used so the YAML header is not cluttered with stuff
+    - figures are in PDF (via `cairo` device so non-ASCII characters are well supported) and are cropped automatically (new function `ensure_cropping()` that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)
 
 -   `reschola` is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:
 

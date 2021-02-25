@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[12pt,a4paper,$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
 % ams
 \usepackage{amssymb,amsmath}
@@ -26,23 +26,47 @@ $if(euro)$
   \newcommand{\euro}{€}
 $endif$
 
-$if(mainfont)$
-    \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
-$endif$
+% hard-coded fonts
+\setmainfont[]{Roboto}
+\setmonofont[]{Roboto}
+
 $if(sansfont)$
     \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
-$endif$
-$if(monofont)$
-    \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
 $endif$
 $if(mathfont)$
     \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
 $endif$
-$if(CJKmainfont)$
-    \usepackage{xeCJK}
-    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-$endif$
 \fi
+
+
+
+% geometry
+\usepackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+
+% figures placement
+\usepackage{floatrow}
+\floatsetup[figure]{capposition=top}
+\floatplacement{figure}{!ht}
+
+% headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+$if(logo)$
+\fancyhead[R]{\includegraphics[width=2cm]{$logo$}}
+$else$
+\fancyhead[R]{}
+$endif$
+
+$if(logo_partner)$
+\fancyhead[L]{\includegraphics[width=2cm]{$logo_partner$}} % title from YAML header
+$else$
+\fancyhead[L]{$title$} % title from YAML header
+$endif$
+
+
+% atypical captions above figures
+\usepackage{caption}
+\captionsetup{justification=raggedright,singlelinecheck=false, belowskip=0pt, aboveskip=0pt}
 
 % graphix
 \usepackage{graphicx}
@@ -60,20 +84,31 @@ $endif$
 % units.
 \usepackage{units}
 
+% use babel whatever engine is used
 $if(lang)$
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+% \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
 $if(babel-newcommands)$
   $babel-newcommands$
 $endif$
-\else
-  \usepackage{polyglossia}
-  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
-$for(polyglossia-otherlangs)$
-  \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
-$endfor$
-\fi
+% \else
+%   \usepackage{polyglossia}
+%   \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
+% $for(polyglossia-otherlangs)$
+%   \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
+% $endfor$
+% \fi
 $endif$
+
+\addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
+\addto\captionsczech{\renewcommand{\figurename}{Graf}}
+
+
+% microtype for better kernign etc.
+\RequirePackage[final,babel=true]{microtype}
+\DeclareMicrotypeBabelHook
+  {$babel-lang$}
+  {kerning=, spacing=}
 
 $if(numbersections)$
 \setcounter{secnumdepth}{2}
@@ -140,10 +175,6 @@ $endif$
 
 % morefloats
 \usepackage{morefloats}
-
-$if(ctex)$
-\usepackage{ctexcap}
-$endif$
 
 % tightlist macro required by pandoc >= 1.14
 \providecommand{\tightlist}{%
