@@ -52,13 +52,13 @@ $endif$
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 $if(logo)$
-\fancyhead[R]{\includegraphics[height=$logo_client_height$]{$logo$}}
+\fancyhead[R]{\includegraphics[height=$logo_height$]{$logo$}}
 $else$
 \fancyhead[R]{}
 $endif$
 
-$if(logo_partner)$
-\fancyhead[L]{\includegraphics[height=$logo_height$]{$logo_partner$}} % title from YAML header
+$if(logo_client)$
+\fancyhead[L]{\includegraphics[height=$logo_client_height$]{$logo_client$}} % title from YAML header
 $else$
 \fancyhead[L]{$title$} % title from YAML header
 $endif$
