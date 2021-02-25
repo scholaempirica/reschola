@@ -1,25 +1,20 @@
-<!-- WIP! -->
-
 ---
-title: "Schola-styled Word document"
+title: "Schola-styled PDF document"
 subtitle: "A great one, too"
 author:
-- výzkumný tým SCHOLA EMPIRICA
-- "Magdaléna Klimešová^[Korespondenční autor. Kontakt: klimesova@scholaempirica.org], Jaromír Mazák, Jan Netík, Aleš Vomáčka, Martina Koutná"
-- a Marek Havrda
-date: '`r gsub("^0", "", format(Sys.time(), "%d. %B %Y"))`'
-output: 
-  reschola::schola_word:
-    fig_caption: yes
-    toc: no
-    number_sections: false
-abstract: Lorem ipsum abstract
-toc-title: "Obsah zprávy"
-lang: cs # used for quotation marks
+- SCHOLA EMPIRICA research team
+- "First Author^[Contact author. E-mail: first.author@scholaempirica.org], Second Author and Third Author"
+date: "`r as.Date(Sys.time())`" # if Czech, use reschola::as_czech_date(Sys.time())
+output: reschola::schola_pdf
+toc-title: "Table of contents"
+lang: en
+logo: logos/schola # chars which are escaped by pandoc (i.e. "_") are prohibited
+logo_height: 20pt
+logo_client: false
+logo_client_height: 30pt
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(include = F) # by default, chunk code and output is hidden
 options(scipen = 10) # force R to show full numbers, not scientific notation
 
 library(reschola)
@@ -27,15 +22,21 @@ library(tidyverse)
 library(scales)
 set_reschola_ggplot_fonts() # make ggplot2 use Roboto fonts without you having to set it
 theme_set(theme_schola()) # default ggplot theme
-source("shared.R", local = TRUE) # helper functions and shared code
+source("shared.R", local = TRUE, encoding = "UTF-8") # helper functions and shared code
 ```
 
-```{r}
+# First chapter
 
+```{r plotExample}
+library(ggplot2)
+
+ggplot(mpg) +
+ geom_point(aes(cty, hwy), alpha = .2) +
+ labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
 \newpage
-<!-- "\newpage" is how you insert a page break which will be reflected in the Word doc -->
+<!-- "\newpage" is how you insert a page break which will be reflected in the output -->
 
 
 

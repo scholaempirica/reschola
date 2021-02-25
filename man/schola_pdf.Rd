@@ -5,7 +5,7 @@
 \title{Schola Empirica PDF Format}
 \usage{
 schola_pdf(
-  num_format = "cs",
+  num_format = NULL,
   fig_crop = TRUE,
   number_sections = FALSE,
   toc = TRUE,

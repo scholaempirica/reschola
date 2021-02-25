@@ -41,7 +41,7 @@
 #' @importFrom usethis ui_stop ui_code
 #' @export
 #'
-schola_pdf <- function(num_format = "cs", fig_crop = TRUE,
+schola_pdf <- function(num_format = NULL, fig_crop = TRUE,
                        number_sections = FALSE, toc = TRUE,
                        template = find_resource("schola_pdf", "schola_template.tex"),
                        latex_engine = "xelatex", document_class = "report", ...) {
@@ -74,7 +74,7 @@ schola_pdf <- function(num_format = "cs", fig_crop = TRUE,
   )
 
   # czech numbers
-  if (num_format == "cs") {
+  if (!is.null(num_format) && num_format == "cs") {
     base$knitr$knit_hooks$inline <- function(x) {
       if (!is.character(x)) {
         prettyNum(x, big.mark = " ", decimal.mark = ",")

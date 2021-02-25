@@ -41,24 +41,24 @@ $endif$
 
 
 % geometry
-\usepackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\usepackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={2.5cm,2.5cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 
 % figures placement
 \usepackage{floatrow}
 \floatsetup[figure]{capposition=top}
-\floatplacement{figure}{!ht}
+\floatplacement{figure}{H}
 
 % headers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 $if(logo)$
-\fancyhead[R]{\includegraphics[width=2cm]{$logo$}}
+\fancyhead[R]{\includegraphics[height=$logo_client_height$]{$logo$}}
 $else$
 \fancyhead[R]{}
 $endif$
 
 $if(logo_partner)$
-\fancyhead[L]{\includegraphics[width=2cm]{$logo_partner$}} % title from YAML header
+\fancyhead[L]{\includegraphics[height=$logo_height$]{$logo_partner$}} % title from YAML header
 $else$
 \fancyhead[L]{$title$} % title from YAML header
 $endif$
@@ -215,6 +215,9 @@ $endfor$
 
 $if(toc)$
 {
+$if(toc-title)$
+\renewcommand*\contentsname{$toc-title$}
+$endif$
 $if(colorlinks)$
 \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
 $endif$
