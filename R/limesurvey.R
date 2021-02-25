@@ -21,7 +21,6 @@ ls_surveys <- function() {
 }
 
 
-
 #' Export Responses with Participants Attached
 #'
 #' @inheritParams ls_responses
@@ -44,7 +43,9 @@ ls_surveys <- function() {
 #'
 #' @family LimeSurvey functions
 #' @export
-ls_export <- function(survey_id, attributes = TRUE, n_participants = 999, lang = "cs", part = "all", only_unused_tokens = FALSE, join_by = "token", ...) {
+ls_export <- function(survey_id, attributes = TRUE, n_participants = 999,
+                      lang = "cs", part = "all", only_unused_tokens = FALSE,
+                      join_by = "token", ...) {
   participants <- ls_participants(survey_id,
     n_participants = n_participants,
     only_unused_tokens = only_unused_tokens, attributes = attributes

@@ -6,9 +6,6 @@
 \usage{
 \method{print}{czech_date}(x, ...)
 }
-\arguments{
-\item{x}{\emph{date or date-like object} to parse.}
-}
 \description{
 S3 method for class \code{czech_date}.
 }
