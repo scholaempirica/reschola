@@ -41,7 +41,7 @@ $endif$
 
 
 % geometry
-\usepackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={2.5cm,2.5cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\usepackage[includehead,hmargin={3.1cm, 2.75cm}, vmargin={2.5cm,2.5cm}, headsep=0.75cm,footskip=1.2cm]{geometry}
 
 % figures placement
 \usepackage{floatrow}
@@ -58,7 +58,8 @@ $else$
 $endif$
 
 $if(logo_client)$
-\fancyhead[L]{\includegraphics[height=$logo_client_height$]{$logo_client$}} % title from YAML header
+\fancyhead[L]{\includegraphics[height=$logo_client_height$]{$logo_client$}}
+\setlength{\headheight}{$logo_client_height$}
 $else$
 \fancyhead[L]{$title$} % title from YAML header
 $endif$
@@ -66,7 +67,7 @@ $endif$
 
 % atypical captions above figures
 \usepackage{caption}
-\captionsetup{justification=raggedright,singlelinecheck=false, belowskip=0pt, aboveskip=0pt}
+\captionsetup{justification=raggedright,singlelinecheck=false,belowskip=0pt}
 
 % graphix
 \usepackage{graphicx}
@@ -86,23 +87,14 @@ $endif$
 
 % use babel whatever engine is used
 $if(lang)$
-% \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
 $if(babel-newcommands)$
   $babel-newcommands$
 $endif$
-% \else
-%   \usepackage{polyglossia}
-%   \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
-% $for(polyglossia-otherlangs)$
-%   \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
-% $endfor$
-% \fi
 $endif$
 
 \addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
 \addto\captionsczech{\renewcommand{\figurename}{Graf}}
-
 
 % microtype for better kernign etc.
 \RequirePackage[final,babel=true]{microtype}
@@ -113,7 +105,7 @@ $endif$
 $if(numbersections)$
 \setcounter{secnumdepth}{2}
 $else$
-\setcounter{secnumdepth}{-1}
+\setcounter{secnumdepth}{-1} %??
 $endif$
 
 % citations
@@ -176,22 +168,14 @@ $endif$
 % morefloats
 \usepackage{morefloats}
 
+% spacing
+\usepackage{setspace}
+
+\newcommand{\tr}[2]{\ifnum\pdfstrcmp{\languagename}{czech}=0 #1\else #2\fi}
+
 % tightlist macro required by pandoc >= 1.14
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-% title / author / date
-$if(title)$
-\title$if(runningheader)$[$runningheader$]$endif${$title$}
-$endif$
-$if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-$endif$
-$if(date)$
-\date{$date$}
-$else$
-\date{}
-$endif$
 
 $for(header-includes)$
 $header-includes$
@@ -199,9 +183,49 @@ $endfor$
 
 \begin{document}
 
-$if(title)$
-\maketitle
-$endif$
+\begin{titlepage}
+    \begin{center}
+
+      \onehalfspacing
+
+      \vspace*{1cm}
+
+      \begin{figure}
+      \centering
+      \includegraphics[width=4cm]{$if(logo_client)$$logo_client$$endif$}%
+      \hspace{1.5cm}%
+      \includegraphics[width=6.5cm]{$if(logo)$$logo$$endif$}%
+      \end{figure}
+
+      \vspace{1cm}
+
+      \textbf{\huge $if(title)$$title$$endif$}
+
+      \vspace{.25cm}
+
+      \textit{\Large $if(subtitle)$$subtitle$$endif$}
+
+      \vspace{1cm}
+
+      \large
+
+      $if(date)$$date$$endif$
+
+      \vspace{1cm}
+
+      $if(team)$$team$$endif$
+
+      \vspace{.25cm}
+
+      $if(author)$
+      $for(author/allbutlast)$$author$$sep$, $endfor$ \tr{a}{and} $author/last$
+      $endif$
+
+      \vspace{1.5cm}
+
+    \end{center}
+\end{titlepage}
+
 
 $if(abstract)$
 \begin{abstract}
