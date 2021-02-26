@@ -27,6 +27,8 @@ find_resource <- function(template, file) {
 #' (questionable short-term solution), or better -- use "Save as" option and
 #' keep it and use it within the project directory.
 #'
+#' @param format *Character*, format which to look for. Defaults to `pdf`.
+#'
 #' @return No return value, called for side effect.
 #' @family Report templates and formats
 #' @author Jan Netik

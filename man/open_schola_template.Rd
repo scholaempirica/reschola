@@ -6,6 +6,9 @@
 \usage{
 open_schola_template(format = "pdf")
 }
+\arguments{
+\item{format}{\emph{Character}, format which to look for. Defaults to \code{pdf}.}
+}
 \value{
 No return value, called for side effect.
 }
