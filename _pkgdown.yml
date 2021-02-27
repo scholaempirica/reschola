@@ -23,6 +23,10 @@ reference:
   desc:  Tools for installing, setting and using fonts contained in reschola
   contents:
   - has_concept("Font helpers and shortcuts")
+- title: LimeSurvey API functions
+  desc:  reschola's own API to LimeSurvey with useful shortcuts
+  contents:
+  - has_concept("LimeSurvey functions")
 - title: All functions alphabetically
   desc:  All functions, including uncategorised ones
   contents:

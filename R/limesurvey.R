@@ -185,7 +185,8 @@ ls_sess_cache <- new.env(parent = emptyenv())
 #' @param params *list*, arguments of the method. Need to be in order stated in
 #'   documentation.
 #'
-#' @return A tibble or raw object that cannot be reasonably coerced to a tibble.
+#' @return A tibble, or raw object if server response cannot be reasonably
+#'   coerced to a tibble.
 #'
 #' @examples
 #' \dontrun{
@@ -267,7 +268,8 @@ ls_call <- function(method, params = list()) {
 #' @param translate_attrs *logical*, should the custom attributes be
 #'   "translated" to "semantic" version? Default to TRUE.
 #'
-#' @return A tibble or raw object that cannot be reasonably coerced to a tibble.
+#' @return A tibble, or raw object if server response cannot be reasonably
+#'   coerced to a tibble.
 #'
 #' @examples
 #' \dontrun{
@@ -370,8 +372,8 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 #' @param ... *other named arguments* used by "export_responses" method. Use at
 #'   your own risk.
 #'
-#' @return  A tibble or raw object that cannot be reasonably coerced to a
-#'   tibble.
+#' @return  A tibble, or raw object if server response cannot be reasonably
+#'   coerced to a tibble.
 #' @examples
 #' \dontrun{
 #' ls_responses(123456)
