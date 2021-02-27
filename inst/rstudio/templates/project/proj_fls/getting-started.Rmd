@@ -26,7 +26,7 @@ But only alter them if you are sure you know what you are doing.
 
 You should feel free to move code between the analysis and the `00*_*` scripts as you discover data transformations that should be made earlier on in the workflow.
 
-Use `build.R` to tie these together - when run, it should rebuild the whole project from scratch, except perhaps downloading data.
+Use `build_all.R` to tie these together - when run, it should rebuild the whole project from scratch, except perhaps downloading data.
 You may want to build different versions of `build_*.R` as helpers for running different parts of the workflow while you work.
 
 
