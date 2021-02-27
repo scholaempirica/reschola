@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.13.9000</span>
       </span>
     </div>
 
@@ -169,13 +169,29 @@
       <small>Source: <a href='https://github.com/scholaempirica/reschola/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="reschola-02149000-limy-schola" class="section level1">
-<h1 class="page-header" data-toc-text="0.2.14.9000">
-<a href="#reschola-02149000-limy-schola" class="anchor"></a>reschola 0.2.14.9000 “Limy Schola”</h1>
-<div id="changes" class="section level2">
+    <div id="reschola-02139000-limy-schola" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.13.9000">
+<a href="#reschola-02139000-limy-schola" class="anchor"></a>reschola 0.2.13.9000 (Limy Schola)</h1>
+<div id="breaking-changes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes" class="anchor"></a>Changes</h2>
+<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
+<li>automatically generated build script <code>build.R</code> is renamed to <code>build_all.R</code>, to allow multiple build scripts (pro tip: use <a href="https://CRAN.r-project.org/web/packages/buildr/">{buildr}</a> package)</li>
+</ul>
+</div>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>
+<p>new RMarkdown document format <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code>:</p>
+<ul>
+<li>powered by custom LaTeX template and <code>report</code> class</li>
+<li>uses Roboto font</li>
+<li>reasonable defaults are used so the YAML header is not cluttered with stuff</li>
+<li>figures are in PDF (via <code>cairo</code> device so non-ASCII characters are well supported) and are cropped automatically (new function <code><a href="../reference/ensure_cropping.html">ensure_cropping()</a></code> that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)</li>
+</ul>
+</li>
 <li>
 <p><code>reschola</code> is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:</p>
 <ul>
@@ -184,9 +200,18 @@
 <li><p><code><a href="../reference/ls_login.html">ls_login()</a></code> is used for manual session key request; it may be never used, as every <code>ls_</code> call ensures the key is cached and not expired (key is stale after 2 hrs)</p></li>
 </ul>
 </li>
+<li><p>new class <code>czech_date</code> with S3 method that prints the date in long format and with grammatically correct case, more in <code><a href="../reference/as_czech_date.html">as_czech_date()</a></code></p></li>
+<li><p>new function <code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> that takes two dates and returns nicely formatted Czech date interval</p></li>
 <li><p>new function <code><a href="../reference/compile_and_open.html">compile_and_open()</a></code> provides safe and comfortable way to render/compile <code>.Rmd</code> documents</p></li>
-<li><p><code>99_reproducibility.Rmd</code> now uses base R <code><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo()</a></code>, not <code>sessioninfo</code> package, which seems like an unnecessary dependency</p></li>
-<li><p>spellcheck on package introduced via <code>usethis</code></p></li>
+<li><p>development feature: <em>spellcheck on package introduced via <code>usethis</code></em></p></li>
+</ul>
+</div>
+<div id="changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes" class="anchor"></a>Changes</h2>
+<ul>
+<li>
+<code>99_reproducibility.Rmd</code> now uses base R <code><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo()</a></code>, not <code>sessioninfo</code> package, which seems like an unnecessary dependency</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -299,9 +324,9 @@
     <div id="reschola-0210" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.10">
 <a href="#reschola-0210" class="anchor"></a>reschola 0.2.10</h1>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li>New Making charts vignette</li>
 <li>minor additions to tips and workflow vignettes</li>
@@ -432,9 +457,9 @@
 <li>added tips on accessing documentation in tips vignette, and on snippets</li>
 </ul>
 </div>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
+<a href="#new-features-2" class="anchor"></a>New features</h2>
 <ul>
 <li>new <code><a href="../reference/gd_download_folder.html">gd_download_folder()</a></code> function for downloading all files in a GDrive folder</li>
 <li>option in project template to download files from the listed GDrive folder</li>

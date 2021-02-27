@@ -56,8 +56,10 @@
 
 <meta property="og:title" content="List Participants — ls_participants" />
 <meta property="og:description" content="Fetches participant list of the solicited survey. The function tries to
-retrieve as many attributes as possible and those are translated to their
-&quot;semantic&quot; version by default." />
+retrieve as many attributes as possible and translate them to their
+&quot;semantic&quot; version by default. You can also provide character vector of
+requested attributes, but not in the &quot;semantic&quot; form (use, e.g.,
+attribute_1 or usesleft)." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -90,7 +92,7 @@ retrieve as many attributes as possible and those are translated to their
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.13.9000</span>
       </span>
     </div>
 
@@ -175,8 +177,10 @@ retrieve as many attributes as possible and those are translated to their
 
     <div class="ref-description">
     <p>Fetches participant list of the solicited survey. The function tries to
-retrieve as many attributes as possible and those are translated to their
-"semantic" version by default.</p>
+retrieve as many attributes as possible and translate them to their
+"semantic" version by default. You can also provide character vector of
+requested attributes, but not in the "semantic" form (use, e.g.,
+<code>attribute_1</code> or <code>usesleft</code>).</p>
     </div>
 
     <pre class="usage"><span class='fu'>ls_participants</span><span class='op'>(</span>
@@ -192,12 +196,13 @@ retrieve as many attributes as possible and those are translated to their
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>survey_id</th>
-      <td><p><em>integer</em>, ID of the survey (as found, e.g., with <code><a href='ls_surveys.html'>ls_surveys()</a></code>).</p></td>
+      <td><p><em>integer</em>, ID of the survey (as found, e.g., with
+<code><a href='ls_surveys.html'>ls_surveys()</a></code>).</p></td>
     </tr>
     <tr>
       <th>attributes</th>
-      <td><p><em>character vector or list</em> not used at the moment,
-LimeSurvey API error</p></td>
+      <td><p><em>logical</em> try to recover all attributes (default to TRUE),
+or <em>character vector</em> specifying requested attributes.</p></td>
     </tr>
     <tr>
       <th>n_participants</th>

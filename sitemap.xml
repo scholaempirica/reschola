@@ -7,13 +7,31 @@
     <loc>https://scholaempirica.github.io/reschola/reference/Roboto.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/as.character.czech_date.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/as_czech_date.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/compile_and_open.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/czech_date_interval.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/czech_date_main.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/dot-czech_months.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/draft_redoc.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/draft_word.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/ensure_cropping.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/flush_axis.html</loc>
@@ -25,10 +43,16 @@
     <loc>https://scholaempirica.github.io/reschola/reference/gd_download_folder.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/gw_auth.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/import_fonts.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/import_roboto.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/knit_print.czech_date.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/ls_call.html</loc>
@@ -52,10 +76,13 @@
     <loc>https://scholaempirica.github.io/reschola/reference/manage_docx_header_logos.html</loc>
   </url>
   <url>
-    <loc>https://scholaempirica.github.io/reschola/reference/open_schola_word_template.html</loc>
+    <loc>https://scholaempirica.github.io/reschola/reference/open_schola_template.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/print.czech_date.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/reexports.html</loc>
@@ -65,6 +92,9 @@
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/scalescz.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/schola_pdf.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/schola_project.html</loc>

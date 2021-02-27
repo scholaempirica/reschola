@@ -90,7 +90,7 @@ Use googledrive::drive_download() for downloading individual files." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.13.9000</span>
       </span>
     </div>
 
@@ -227,9 +227,12 @@ Bear this in mind when naming files in GDrive subfolders so as to avoid naming c
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='va'>gd_url</span> <span class='op'>&lt;-</span> <span class='st'>"https://drive.google.com/drive/folders/1bCyR_VKAP_43NEujqisjN77hANnMKfHZ"</span>
-<span class='fu'>gd_download_folder</span><span class='op'>(</span>folder_url <span class='op'>=</span> <span class='va'>gd_url</span>,
-                   files_from_subfolders <span class='op'>=</span> <span class='cn'>T</span>, overwrite <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+<span class='fu'>gd_download_folder</span><span class='op'>(</span>
+  folder_url <span class='op'>=</span> <span class='va'>gd_url</span>,
+  files_from_subfolders <span class='op'>=</span> <span class='cn'>T</span>, overwrite <span class='op'>=</span> <span class='cn'>T</span>
+<span class='op'>)</span>
 <span class='op'>}</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

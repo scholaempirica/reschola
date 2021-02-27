@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Czech formatted scales for ggplot2 — formatscz • reschola</title>
+<title>Schola Empirica PDF Format — schola_pdf • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,10 +54,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Czech formatted scales for ggplot2 — formatscz" />
-<meta property="og:description" content="label_percent_cz() returns a formatter that outputs percent labels with a &quot; %&quot; suffix and a decimal comma.
-label_number_cz() uses space as thousand separator and decimal comma.
-Use these when you need to format labels on something other than X and Y axes" />
+<meta property="og:title" content="Schola Empirica PDF Format — schola_pdf" />
+<meta property="og:description" content="Function called in the output section of the YAML header (see examples
+below), instructing knitr to use the standard Schola PDF document format." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -168,36 +167,24 @@ Use these when you need to format labels on something other than X and Y axes" /
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Czech formatted scales for ggplot2</h1>
-    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/scales.R'><code>R/scales.R</code></a></small>
-    <div class="hidden name"><code>formatscz.Rd</code></div>
+    <h1>Schola Empirica PDF Format</h1>
+    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/rmarkdown_output.R'><code>R/rmarkdown_output.R</code></a></small>
+    <div class="hidden name"><code>schola_pdf.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>label_percent_cz()</code> returns a formatter that outputs percent labels with a " %" suffix and a decimal comma.
-<code>label_number_cz()</code> uses space as thousand separator and decimal comma.
-Use these when you need to format labels on something other than X and Y axes</p>
+    <p>Function called in the output section of the YAML header (see examples
+below), instructing <code>knitr</code> to use the standard Schola PDF document format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_percent_cz</span><span class='op'>(</span>
-  accuracy <span class='op'>=</span> <span class='cn'>NULL</span>,
-  scale <span class='op'>=</span> <span class='fl'>100</span>,
-  prefix <span class='op'>=</span> <span class='st'>""</span>,
-  suffix <span class='op'>=</span> <span class='st'>" %"</span>,
-  big.mark <span class='op'>=</span> <span class='st'>" "</span>,
-  decimal.mark <span class='op'>=</span> <span class='st'>","</span>,
-  trim <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span>
-
-<span class='fu'>label_number_cz</span><span class='op'>(</span>
-  accuracy <span class='op'>=</span> <span class='cn'>NULL</span>,
-  scale <span class='op'>=</span> <span class='fl'>1</span>,
-  prefix <span class='op'>=</span> <span class='st'>""</span>,
-  suffix <span class='op'>=</span> <span class='st'>""</span>,
-  big.mark <span class='op'>=</span> <span class='st'>" "</span>,
-  decimal.mark <span class='op'>=</span> <span class='st'>","</span>,
-  trim <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    <pre class="usage"><span class='fu'>schola_pdf</span><span class='op'>(</span>
+  num_format <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fig_crop <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  number_sections <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  toc <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  template <span class='op'>=</span> <span class='fu'>find_resource</span><span class='op'>(</span><span class='st'>"schola_pdf"</span>, <span class='st'>"schola_template.tex"</span><span class='op'>)</span>,
+  latex_engine <span class='op'>=</span> <span class='st'>"xelatex"</span>,
+  document_class <span class='op'>=</span> <span class='st'>"report"</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -205,57 +192,113 @@ Use these when you need to format labels on something other than X and Y axes</p
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>accuracy</th>
-      <td><p>A number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
-places of precision. If <code>NULL</code>, the default, uses a heuristic that should
-ensure breaks have the minimum number of digits needed to show the
-difference between adjacent values.</p>
-<p>Applied to rescaled data.</p></td>
+      <th>num_format</th>
+      <td><p><em>Character</em>, if <code>cs</code>, Czech number formatting is used.
+Other values are currently ignored and will result in default options.</p></td>
     </tr>
     <tr>
-      <th>scale</th>
-      <td><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
-formating. This is useful if the underlying data is very small or very
-large.</p></td>
+      <th>fig_crop</th>
+      <td><p><em>Logical</em>, whether to crop transparent or white margins of
+figures. Defaults to <code>TRUE</code>. Note that for cropping to work, two
+dependencies needs to be satisfied, see <code><a href='ensure_cropping.html'>?ensure_cropping</a></code>.</p></td>
     </tr>
     <tr>
-      <th>prefix</th>
-      <td><p>Symbols to display before and after value.</p></td>
+      <th>number_sections</th>
+      <td><p><em>Logical</em>, <code>TRUE</code> to number headings. Defaults to
+<code>FALSE</code>.</p></td>
     </tr>
     <tr>
-      <th>suffix</th>
-      <td><p>Symbols to display before and after value.</p></td>
+      <th>toc</th>
+      <td><p><em>Logical</em>, <code>TRUE</code> (default) to include a table of contents. The
+title is set with <code>pandoc</code> variable <code>toc-title</code> in YAML header.</p></td>
     </tr>
     <tr>
-      <th>big.mark</th>
-      <td><p>Character used between every 3 digits to separate thousands.</p></td>
+      <th>template</th>
+      <td><p><em>Character</em>, path to the <code>.tex</code> template used by the format.
+Defaults to standard Schola template bundled in the package. <strong>Changes
+discouraged.</strong></p></td>
     </tr>
     <tr>
-      <th>decimal.mark</th>
-      <td><p>The character to be used to indicate the numeric
-decimal point.</p></td>
+      <th>latex_engine</th>
+      <td><p><em>Character</em>, engine used for <code>.md</code> to <code>.pdf</code> conversion.
+Only <code>xelatex</code> (the default) and <code>lualatex</code> are supported because of custom
+fonts. <strong>Changes discouraged.</strong></p></td>
     </tr>
     <tr>
-      <th>trim</th>
-      <td><p>Logical, if <code>FALSE</code>, values are right-justified to a common
-width (see <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a></code>).</p></td>
+      <th>document_class</th>
+      <td><p><em>Character</em>, one of standard LaTeX document class.
+Defaults to <code>report</code>. <strong>Changes discouraged.</strong></p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Other arguments passed on to <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a></code>.</p></td>
+      <td><p>Arguments passed on to <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html'>rmarkdown::pdf_document</a></code></p><dl>
+    <dt><code>toc_depth</code></dt><dd><p>Depth of headers to include in table of contents</p></dd>
+    <dt><code>fig_width</code></dt><dd><p>Default width (in inches) for figures</p></dd>
+    <dt><code>fig_caption</code></dt><dd><p><code>TRUE</code> to render figures with captions</p></dd>
+    <dt><code>df_print</code></dt><dd><p>Method to be used for printing data frames. Valid values
+include "default", "kable", "tibble", and "paged". The "default" method
+uses a corresponding S3 method of <code>print</code>, typically
+<code>print.data.frame</code>. The "kable" method uses the
+<code><a href='https://rdrr.io/pkg/knitr/man/kable.html'>knitr::kable</a></code> function. The "tibble" method uses
+the <span class="pkg">tibble</span> package to print a summary of the data frame. The "paged"
+method creates a paginated HTML table (note that this method is only valid
+for formats that produce HTML). In addition to the named methods you can
+also pass an arbitrary function to be used for printing data frames. You
+can disable the <code>df_print</code> behavior entirely by setting the option
+<code>rmarkdown.df_print</code> to <code>FALSE</code>. See
+<a href='https://bookdown.org/yihui/rmarkdown/html-document.html#data-frame-printing'>Data
+frame printing section</a> in bookdown book for examples.</p></dd>
+    <dt><code>highlight</code></dt><dd><p>Syntax highlighting style. Supported styles include
+"default", "tango", "pygments", "kate", "monochrome", "espresso",
+"zenburn", and "haddock". Pass <code>NULL</code> to prevent syntax highlighting.</p></dd>
+    <dt><code>keep_tex</code></dt><dd><p>Keep the intermediate tex file used in the conversion to PDF</p></dd>
+    <dt><code>keep_md</code></dt><dd><p>Keep the markdown file generated by knitting.</p></dd>
+    <dt><code>citation_package</code></dt><dd><p>The LaTeX package to process citations, <code>natbib</code>
+or <code>biblatex</code>. Use <code>default</code> if neither package is to be used,
+which means citations will be processed via the command
+<code class='command'>pandoc-citeproc</code>.</p></dd>
+    <dt><code>includes</code></dt><dd><p>Named list of additional content to include within the
+document (typically created using the <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/includes.html'>includes</a></code> function).</p></dd>
+    <dt><code>md_extensions</code></dt><dd><p>Markdown extensions to be added or removed from the
+default definition or R Markdown. See the <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/rmarkdown_format.html'>rmarkdown_format</a></code> for
+additional details.</p></dd>
+    <dt><code>output_extensions</code></dt><dd><p>Pandoc extensions to be added or removed from the
+output format, e.g., <code>"-smart"</code> means the output format will be
+<code>latex-smart</code>.</p></dd>
+    <dt><code>pandoc_args</code></dt><dd><p>Additional command line options to pass to pandoc</p></dd>
+    <dt><code>extra_dependencies</code></dt><dd><p>A LaTeX dependency <code>latex_dependency()</code>, a
+list of LaTeX dependencies, a character vector of LaTeX package names (e.g.
+<code><a href='https://rdrr.io/r/base/c.html'>c("framed", "hyperref")</a></code>), or a named list of LaTeX package options
+with the names being package names (e.g. <code><a href='https://rdrr.io/r/base/list.html'>list(hyperef =
+c("unicode=true", "breaklinks=true"), lmodern = NULL)</a></code>). It can be used to
+add custom LaTeX packages to the .tex header.</p></dd>
+  
+</dl></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A modified <code>pdf_document2</code> with the standard Schola formatting.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Report templates and formats: 
+<code><a href='open_schola_template.html'>open_schola_template</a>()</code>,
+<code><a href='schola_redoc.html'>schola_redoc</a>()</code>,
+<code><a href='schola_word2.html'>schola_word2</a>()</code>,
+<code><a href='schola_word.html'>schola_word</a>()</code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Jan Netik</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/scholaempirica/reschola'>reschola</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>hwy</span>, <span class='va'>cty</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>colour <span class='op'>=</span> <span class='va'>cty</span><span class='op'>/</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>cty</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='va'>hwy</span><span class='op'>*</span><span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='theme_schola.html'>theme_schola</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span>, gridlines <span class='op'>=</span> <span class='st'>"scatter"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html'>scale_color_binned</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>label_percent_cz</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_size.html'>scale_size_binned</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>label_number_cz</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='formatscz-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>output</span><span class='op'>:</span>
+  <span class='fu'>reschola</span><span class='fu'>::</span><span class='va'>schola_pdf</span><span class='op'>:</span>
+    <span class='va'>toc</span><span class='op'>:</span><span class='va'>false</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
