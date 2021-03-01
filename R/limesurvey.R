@@ -212,7 +212,7 @@ ls_call <- function(method, params = list()) {
       "Either the key wasn't entered at all or it may have expired."
     ))
 
-    ui_info("Remedy by calling {ui_code('ls_login()')}.")
+    ui_info("Automatically calling {ui_code('ls_login()')} for aid.")
     ls_login()
   }
 
@@ -414,10 +414,18 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
     )
   )
 
-  syntax <- readLines(textConnection(rawToChar(base64_dec(syntax))), encoding = "UTF-8")[-1] # exclude first line (data already read)
+  syntax <- readLines(
+    textConnection(
+      rawToChar(base64_dec(syntax)),
+      encoding = "UTF-8"
+    ),
+    encoding = "UTF-8"
+  )[-1] # exclude first line (data already read)
 
   # suppres those "NAs introduced by coercion" warnings of no value but disturbing
-  suppressWarnings(source(textConnection(syntax), local = TRUE))
+  suppressWarnings(
+    source(textConnection(syntax), encoding = "UTF-8", local = TRUE)
+  )
 
   as_tibble(data, .name_repair = ~ make.unique(.x, "_"))
 
