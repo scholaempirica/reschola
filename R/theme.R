@@ -86,7 +86,7 @@
 #'
 #' @export
 theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size = 11,
-                         family = "Roboto Condensed", title_family = "Roboto", margin_side = 6,
+                         family = "Roboto Condensed", title_family = "Roboto", margin_side = 7,
                          margin_bottom = 6, plot.title.position = "plot", axis.title = ggplot2::element_blank(),
                          multiplot = FALSE, ...) {
   tonecol <- "#f6f0e8"
