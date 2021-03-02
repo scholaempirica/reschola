@@ -190,6 +190,7 @@
 <li>uses Roboto font</li>
 <li>reasonable defaults are used so the YAML header is not cluttered with stuff</li>
 <li>figures are in PDF (via <code>cairo</code> device so non-ASCII characters are well supported) and are cropped automatically (new function <code><a href="../reference/ensure_cropping.html">ensure_cropping()</a></code> that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)</li>
+<li>takes care of non-breakable spaces in Czech (especially before singlecharacter prepositions) via pre-release <code>pandoc</code> Lua filter (only repo fork currently, thanks <a href="https://github.com/Delanii/lua-filters">Delanii</a>)</li>
 </ul>
 </li>
 <li>
