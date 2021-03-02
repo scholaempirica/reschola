@@ -68,8 +68,15 @@ schola_pdf <- function(num_format = NULL, fig_crop = TRUE,
 
   # replaces plain quotation marks with typographic ones
   quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")
+
+  # nonbreakable spaces in Czech/English,
+  # a.k.a pandoc Lua reboot of famous "vlna" by Petr Olsak
+  # from https://github.com/Delanii/lua-filters
+  vlna_lua_filter <- system.file("pandoc", "pandocVlna.lua", package = "reschola")
+
   base$pandoc$lua_filters <- c(
     quotes_lua_filter,
+    vlna_lua_filter,
     base$pandoc$lua_filters
   )
 

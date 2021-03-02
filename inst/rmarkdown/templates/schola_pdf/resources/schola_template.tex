@@ -41,7 +41,7 @@ $endif$
 
 
 % geometry
-\usepackage[includehead,hmargin={3.1cm, 2.75cm}, vmargin={2.5cm,2.5cm}, headsep=0.75cm,footskip=1.2cm]{geometry}
+\usepackage[includehead, hmargin={3cm,3cm}, vmargin={2cm,3cm}, headsep=1.2cm, footskip=1.2cm]{geometry}
 
 % figures placement
 \usepackage{floatrow}
@@ -50,20 +50,25 @@ $endif$
 
 % headers
 \usepackage{fancyhdr}
+\renewcommand{\headruleskip}{10pt} %distance between headrule and header content
+\renewcommand{\footnoterule}{\vfill\kern -3pt \hrule width 0.4\columnwidth \kern 2.6pt}
+
 \pagestyle{fancy}
 $if(logo)$
-\fancyhead[R]{\includegraphics[height=$logo_height$]{$logo$}}
+\fancyhead[R]{\includegraphics[height=$if(logo_height)$$logo_height$$else$15pt$endif$]{$logo$}}
 $else$
 \fancyhead[R]{}
 $endif$
 
 $if(logo_client)$
-\fancyhead[L]{\includegraphics[height=$logo_client_height$]{$logo_client$}}
-\setlength{\headheight}{$logo_client_height$}
+\fancyhead[L]{\includegraphics[height=$if(logo_client_height)$$logo_client_height$$else$15pt$endif$]{$logo_client$}}
 $else$
 \fancyhead[L]{$title$} % title from YAML header
 $endif$
 
+$if(head_height)$
+\setlength{\headheight}{$head_height$}
+$endif$
 
 % atypical captions above figures
 \usepackage{caption}
@@ -88,13 +93,13 @@ $endif$
 % use babel whatever engine is used
 $if(lang)$
   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+\addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
+\addto\captionsczech{\renewcommand{\figurename}{Graf}}
 $if(babel-newcommands)$
   $babel-newcommands$
 $endif$
 $endif$
 
-\addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
-\addto\captionsczech{\renewcommand{\figurename}{Graf}}
 
 % microtype for better kernign etc.
 \RequirePackage[final,babel=true]{microtype}
@@ -192,8 +197,10 @@ $endfor$
 
       \begin{figure}
       \centering
-      \includegraphics[width=4cm]{$if(logo_client)$$logo_client$$endif$}%
+      $if(logo_client)$
+      \includegraphics[width=4cm]{$logo_client$}%
       \hspace{1.5cm}%
+      $endif$
       \includegraphics[width=6.5cm]{$if(logo)$$logo$$endif$}%
       \end{figure}
 
@@ -217,8 +224,12 @@ $endfor$
 
       \vspace{.25cm}
 
+      $if(authors)$
+      $for(authors)$$authors/allbutlast$$sep$, $endfor$ \tr{a}{and}~$authors/last$
+      $endif$
+
       $if(author)$
-      $for(author/allbutlast)$$author$$sep$, $endfor$ \tr{a}{and} $author/last$
+      $author$
       $endif$
 
       \vspace{1.5cm}
@@ -228,9 +239,9 @@ $endfor$
 
 
 $if(abstract)$
-\begin{abstract}
-\noindent $abstract$
-\end{abstract}
+\thispagestyle{empty}
+\section*{$if(abstract-title)$$abstract-title$$else$Anotace$endif$}
+$abstract$
 $endif$
 
 $for(include-before)$

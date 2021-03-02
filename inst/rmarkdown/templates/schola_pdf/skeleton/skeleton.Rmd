@@ -1,17 +1,23 @@
 ---
 title: "Schola-styled PDF document"
 subtitle: "A great one, too"
-author:
-- SCHOLA EMPIRICA research team
-- "First Author^[Contact author. E-mail: first.author@scholaempirica.org], Second Author and Third Author"
+team: výzkumný tým SCHOLA EMPIRICA
+authors: # use author for single-authored document
+- "First Author^[Contact author. E-mail: first.author@scholaempirica.org]" # complex entry is quoted
+- Second Author
+- Third Author # "and"/"a" is added automatically in selected locale
 date: "`r as.Date(Sys.time())`" # if Czech, use reschola::as_czech_date(Sys.time())
-output: reschola::schola_pdf
+output: 
+  reschola::schola_pdf:
+    num_format: en
 toc-title: "Table of contents"
+abstract-title: Abstract
 lang: en
 logo: logos/schola # chars which are escaped by pandoc (i.e. "_") are prohibited
 logo_height: 20pt
 logo_client: false
 logo_client_height: 30pt
+head_height: false # may be used if fancyhdr complains 
 ---
 
 ```{r setup, include=FALSE}
