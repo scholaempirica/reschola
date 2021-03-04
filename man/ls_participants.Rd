@@ -29,7 +29,8 @@ Default to FALSE.}
 "translated" to "semantic" version? Default to TRUE.}
 }
 \value{
-A tibble or raw object that cannot be reasonably coerced to a tibble.
+A tibble, or raw object if server response cannot be reasonably
+coerced to a tibble.
 }
 \description{
 Fetches participant list of the solicited survey. The function tries to

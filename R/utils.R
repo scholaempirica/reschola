@@ -219,6 +219,6 @@ czech_date_interval <- function(start, end) {
       year[1]
     ))
   } else {
-    return(paste0(czech_date[1], " \u2013 ", czech_date[2]))
+    return(paste0(czech_date[1], "\u00A0\u2013\u00A0", czech_date[2]))
   }
 }

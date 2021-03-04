@@ -19,8 +19,8 @@ or \code{all} (the default).}
 your own risk.}
 }
 \value{
-A tibble or raw object that cannot be reasonably coerced to a
-tibble.
+A tibble, or raw object if server response cannot be reasonably
+coerced to a tibble.
 }
 \description{
 Fetches responses and applies so-called "R-syntax" transformation script from

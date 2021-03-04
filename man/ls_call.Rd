@@ -13,7 +13,8 @@ ls_call(method, params = list())
 documentation.}
 }
 \value{
-A tibble or raw object that cannot be reasonably coerced to a tibble.
+A tibble, or raw object if server response cannot be reasonably
+coerced to a tibble.
 }
 \description{
 General function used internally by every other \code{ls_} fellow. Useful when you
