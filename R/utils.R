@@ -201,24 +201,39 @@ czech_date_interval <- function(start, end) {
   czech_date <- as_czech_date(dt)
   czech_months <- .czech_months[["genitive"]][month]
 
-  if (year[1] == year[2]) {
+ res <-  if (year[1] == year[2]) {
     if (month[1] == month[2]) {
       if (day[1] == day[2]) {
-        return(czech_date[1])
+        czech_date[1]
       }
-      return(paste0(
+      paste0(
         day[1],
         ".\u2013",
         day[2], ". ", czech_months[1], " ", year[1]
-      ))
+      )
     }
-    return(paste0(
+    paste0(
       day[1], ". ", czech_months[1],
-      " \u2013 ",
+      "\u00A0\u2013\u00A0",
       day[2], ". ", czech_months[2], " ",
       year[1]
-    ))
+    )
   } else {
-    return(paste0(czech_date[1], "\u00A0\u2013\u00A0", czech_date[2]))
+    paste0(czech_date[1], "\u00A0\u2013\u00A0", czech_date[2])
   }
+
+ class(res) <- "czech_date_interval"
+ res
+}
+
+
+#' knit_print S3 method for class czech_date_interval
+#' @importFrom knitr knit_print asis_output is_latex_output
+#' @keywords internal
+#' @export
+knit_print.czech_date_interval <- function(x, ...) {
+  if (is_latex_output()) {
+    x <- gsub("\u2013", "\\\\nobreakdash\u2013", x)
+  }
+  asis_output(x)
 }
