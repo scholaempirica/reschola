@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Czech Date Interval — czech_date_interval • reschola</title>
+<title>knit_print S3 method for class czech_date_interval — knit_print.czech_date_interval • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,11 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Czech Date Interval — czech_date_interval" />
-<meta property="og:description" content="Returns the most space-efficient and at the same time grammatically correct
-interval of two Czech dates. When both dates are the same, only one is
-outputted. The function ensures that the interval is not negative (i.e.,
-start &amp;lt;= end), otherwise, it is reversed." />
+<meta property="og:title" content="knit_print S3 method for class czech_date_interval — knit_print.czech_date_interval" />
+<meta property="og:description" content="knit_print S3 method for class czech_date_interval" />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -169,45 +166,20 @@ start &amp;lt;= end), otherwise, it is reversed." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Czech Date Interval</h1>
+    <h1>knit_print S3 method for class czech_date_interval</h1>
     <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>czech_date_interval.Rd</code></div>
+    <div class="hidden name"><code>knit_print.czech_date_interval.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns the most space-efficient and at the same time grammatically correct
-interval of two Czech dates. When both dates are the same, only one is
-outputted. The function ensures that the interval is not negative (i.e.,
-<code>start</code> &lt;= <code>end</code>), otherwise, it is reversed.</p>
+    <p>knit_print S3 method for class czech_date_interval</p>
     </div>
 
-    <pre class="usage"><span class='fu'>czech_date_interval</span><span class='op'>(</span><span class='va'>start</span>, <span class='va'>end</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='co'># S3 method for czech_date_interval</span>
+<span class='fu'>knit_print</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>start</th>
-      <td><p><em>Date of date-like object</em>, start date or left boundary of an
-interval.</p></td>
-    </tr>
-    <tr>
-      <th>end</th>
-      <td><p><em>Date of date-like object</em>, end date or right boundary of an
-interval.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Character</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>czech_date_interval</span><span class='op'>(</span><span class='st'>"2020-01-24"</span>, <span class='st'>"2020-01-03"</span><span class='op'>)</span> <span class='co'># note the argument order</span>
-</div><div class='output co'>#&gt; [1] "3. ledna – 24. ledna 2020"
-#&gt; attr(,"class")
-#&gt; [1] "czech_date_interval"</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
