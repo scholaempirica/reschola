@@ -183,8 +183,7 @@
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li>
-<p>new RMarkdown document format <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code>:</p>
+<li>new R Markdown document format <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code>:
 <ul>
 <li>powered by custom LaTeX template and <code>report</code> class</li>
 <li>uses Roboto font</li>
@@ -194,17 +193,27 @@
 </ul>
 </li>
 <li>
-<p><code>reschola</code> is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:</p>
+<code>reschola</code> is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:
 <ul>
-<li><p><code><a href="../reference/ls_call.html">ls_call()</a></code> implements general and fully customisable call to the API (you must adhere to <a href="https://api.limesurvey.org/classes/remotecontrol_handle.html">the documentation</a>)</p></li>
-<li><p><code><a href="../reference/ls_export.html">ls_export()</a></code> is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from <code><a href="../reference/ls_participants.html">ls_participants()</a></code>, and <code><a href="../reference/ls_responses.html">ls_responses()</a></code></p></li>
-<li><p><code><a href="../reference/ls_login.html">ls_login()</a></code> is used for manual session key request; it may be never used, as every <code>ls_</code> call ensures the key is cached and not expired (key is stale after 2 hrs)</p></li>
+<li>
+<code><a href="../reference/ls_call.html">ls_call()</a></code> implements general and fully customisable call to the API (you must adhere to <a href="https://api.limesurvey.org/classes/remotecontrol_handle.html">the documentation</a>)</li>
+<li>
+<code><a href="../reference/ls_export.html">ls_export()</a></code> is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from <code><a href="../reference/ls_participants.html">ls_participants()</a></code>, and <code><a href="../reference/ls_responses.html">ls_responses()</a></code>
+</li>
+<li>
+<code><a href="../reference/ls_login.html">ls_login()</a></code> is used for manual session key request; it may be never used, as every <code>ls_</code> call ensures the key is cached and not expired (key is stale after 2 hrs)</li>
 </ul>
 </li>
-<li><p>new class <code>czech_date</code> with S3 method that prints the date in long format and with grammatically correct case, more in <code><a href="../reference/as_czech_date.html">as_czech_date()</a></code></p></li>
-<li><p>new function <code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> that takes two dates and returns nicely formatted Czech date interval</p></li>
-<li><p>new function <code><a href="../reference/compile_and_open.html">compile_and_open()</a></code> provides safe and comfortable way to render/compile <code>.Rmd</code> documents</p></li>
-<li><p>development feature: <em>spellcheck on package introduced via <code>usethis</code></em></p></li>
+<li>new class <code>czech_date</code> with S3 method that prints the date in long format and with grammatically correct case, more in <code><a href="../reference/as_czech_date.html">as_czech_date()</a></code>
+</li>
+<li>new function <code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> that takes two dates and returns nicely formatted Czech date interval
+<ul>
+<li>czech date interval tries to print using non-breakable <em>en dash</em> when <code>pandoc</code> outputs to <code>LaTeX</code> (i.e., <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code> format is used)</li>
+</ul>
+</li>
+<li>new function <code><a href="../reference/compile_and_open.html">compile_and_open()</a></code> provides safe and comfortable way to render/compile <code>.Rmd</code> documents</li>
+<li>development feature: <em>spellcheck on package introduced via <code>usethis</code></em>
+</li>
 </ul>
 </div>
 <div id="changes" class="section level2">

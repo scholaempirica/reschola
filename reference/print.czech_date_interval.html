@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make Date of Class czech_date — as_czech_date • reschola</title>
+<title>print S3 method for class czech_date_interval — print.czech_date_interval • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,10 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Make Date of Class czech_date — as_czech_date" />
-<meta property="og:description" content="Appends the czech_date class attribute to the input object. Date of class
-czech_date is printed as a date in long format with correct Czech
-grammatical case (see Details and Grammatical cases section below)." />
+<meta property="og:title" content="print S3 method for class czech_date_interval — print.czech_date_interval" />
+<meta property="og:description" content="print S3 method for class czech_date_interval" />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -168,64 +166,20 @@ grammatical case (see Details and Grammatical cases section below)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make Date of Class <code>czech_date</code></h1>
+    <h1>print S3 method for class czech_date_interval</h1>
     <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>as_czech_date.Rd</code></div>
+    <div class="hidden name"><code>print.czech_date_interval.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Appends the <code>czech_date</code> class attribute to the input object. Date of class
-<code>czech_date</code> is printed as a date in long format with correct Czech
-grammatical case (see Details and Grammatical cases section below).</p>
+    <p>print S3 method for class czech_date_interval</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as_czech_date</span><span class='op'>(</span><span class='va'>date</span>, case <span class='op'>=</span> <span class='st'>"genitive"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='co'># S3 method for czech_date_interval</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>date</th>
-      <td><p><em>date or date-like object</em> to parse.</p></td>
-    </tr>
-    <tr>
-      <th>case</th>
-      <td><p><em>character</em>, either "nominative", "locative" or "genitive"
-(default) or any unambiguous abbreviation of these.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Same as input, but with class <code>czech_date</code> and attribute
-<code>gramm_case</code>.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The grammatical case <em>should</em> be specified as and argument to <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code>
-method, but for convenience, you can predefine it in <code>as_czech_date</code> call
-directly. It is then stored as an attribute, later grabbed by the <code>print</code>
-method.</p>
-<p>Note that as opposed to other date formating functions in <code>R</code>,
-<code>as_date_czech</code> trims leading zeros.</p>
-    <h2 class="hasAnchor" id="grammatical-cases"><a class="anchor" href="#grammatical-cases"></a>Grammatical cases</h2>
-
-    
-
-<p>Three grammatical cases are supported:</p><ul>
-<li><p><em>nominative</em> -- native form, i.e. "leden" in Czech</p></li>
-<li><p><em>locative</em> -- "in ...", i.e. "v lednu" in Czech</p></li>
-<li><p><em>genitive</em> -- "the 'nth' of ...", i.e. "5. ledna" in Czech</p></li>
-</ul>
-
-<p>Czech months listed by case are available in <code>.czech_months</code>.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='va'>as_czech_date</span>
-</div><div class='output co'>#&gt; [1] "8. března 2021"</div><div class='input'>
-<span class='co'># in "nominative" grammatical case (note the abbreviation)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>as_czech_date</span><span class='op'>(</span><span class='st'>"nom"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "8. březen 2021"</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
