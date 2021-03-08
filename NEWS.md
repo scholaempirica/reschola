@@ -6,27 +6,24 @@
 
 ## New features
 
-- new RMarkdown document format `schola_pdf()`:
+- new R Markdown document format `schola_pdf()`:
     - powered by custom LaTeX template and `report` class
     - uses Roboto font
     - reasonable defaults are used so the YAML header is not cluttered with stuff
     - figures are in PDF (via `cairo` device so non-ASCII characters are well supported) and are cropped automatically (new function `ensure_cropping()` that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)
     - takes care of non-breakable spaces in Czech (especially before singlecharacter prepositions) via pre-release `pandoc` Lua filter (only repo fork currently, thanks [Delanii](https://github.com/Delanii/lua-filters))
 
--   `reschola` is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:
 
-    -   `ls_call()` implements general and fully customisable call to the API (you must adhere to [the documentation](https://api.limesurvey.org/classes/remotecontrol_handle.html))
-
-    -   `ls_export()` is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from  `ls_participants()`, and `ls_responses()`
+- `reschola` is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:
+    - `ls_call()` implements general and fully customisable call to the API (you must adhere to [the documentation](https://api.limesurvey.org/classes/remotecontrol_handle.html))
+    - `ls_export()` is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from  `ls_participants()`, and `ls_responses()`
+    - `ls_login()` is used for manual session key request; it may be never used, as every `ls_` call ensures the key is cached and not expired (key is stale after 2 hrs)
     
-    -   `ls_login()` is used for manual session key request; it may be never used, as every `ls_` call ensures the key is cached and not expired (key is stale after 2 hrs)
     
 - new class `czech_date` with S3 method that prints the date in long format and with grammatically correct case, more in `as_czech_date()`
-
 - new function `czech_date_interval()` that takes two dates and returns nicely formatted Czech date interval
-    
+    - czech date interval tries to print using non-breakable *en dash* when `pandoc` outputs to `LaTeX` (i.e., `schola_pdf()` format is used)
 - new function `compile_and_open()` provides safe and comfortable way to render/compile `.Rmd` documents
-
 - development feature: *spellcheck on package introduced via `usethis`*
 
 ## Changes

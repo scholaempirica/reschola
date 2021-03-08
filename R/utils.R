@@ -237,3 +237,11 @@ knit_print.czech_date_interval <- function(x, ...) {
   }
   asis_output(x)
 }
+
+#' print S3 method for class czech_date_interval
+#' @keywords internal
+#' @export
+print.czech_date_interval <- function(x, ...) {
+  print(as.character(x))
+  invisible(x)
+}
