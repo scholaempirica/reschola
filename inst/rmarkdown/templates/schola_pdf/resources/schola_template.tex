@@ -85,7 +85,7 @@ $endif$
 \usepackage{url}
 
 % hyperref
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 % units.
 \usepackage{units}
@@ -252,9 +252,6 @@ $if(toc)$
 {
 $if(toc-title)$
 \renewcommand*\contentsname{$toc-title$}
-$endif$
-$if(colorlinks)$
-\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents

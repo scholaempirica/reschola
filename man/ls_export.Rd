@@ -48,8 +48,7 @@ it is a potentially expensive operation so you must opt into it.}
 \code{y}, these suffixes will be added to the output to disambiguate them.
 Should be a character vector of length 2.}
     \item{\code{keep}}{Should the join keys from both \code{x} and \code{y} be preserved in the
-output? Only applies to \code{nest_join()}, \code{left_join()}, \code{right_join()}, and
-\code{full_join()}.}
+output?}
   }}
 }
 \value{
