@@ -19,6 +19,7 @@
     - `ls_export()` is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from  `ls_participants()`, and `ls_responses()`
     - `ls_login()` is used for manual session key request; **it may be never used directly**, as every `ls_` call ensures the key is cached and not expired (key is stale after 2 hrs)
     - `ls_add_participants` inserts one or more participants to the LimeSurvey database
+    - `ls_invite()` sends an email invitation prepared in LimeSurvey web interface to the selected participants
     - `ls_get_attrs()` for retrieval of the custom survey attributes and their "semantic" form (i.e. human-readable description)
     
     

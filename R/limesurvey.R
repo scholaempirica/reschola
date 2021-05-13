@@ -219,7 +219,7 @@ ls_call <- function(method, params = list()) {
   params <- c(sSessionKey = ls_sess_cache$sess_key, params)
   body <- list(method = method, id = " ", params = params)
   r <- RETRY("POST", Sys.getenv("LS_URL"), content_type_json(),
-    body = toJSON(body, auto_unbox = TRUE, null = "null")
+    body = toJSON(body, auto_unbox = TRUE, null = "null") # when something does not work, look carefully whether param is passed as single value or an array of lenght 1
   )
 
   parsed <- fromJSON(content(r,
@@ -518,30 +518,43 @@ ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
 }
 
 
-#
-# #' Invite Participants
-# #'
-# #' @param survey_id *integer*, ID of the survey (as found with `ls_surveys`,
-# #'   e.g.).
-# #' @param token  one or multiple
-# #' @param b send only pending invites (TRUE) or resend invites only (FALSE)
-# #'
-# #' @return
-# #' @export
-# #'
-# #' @examples
-# ls_invite <- function(survey_id, token, b = TRUE) {
-#   ls_call("invite_participants",
-#           params = list(
-#             iSurveyID = survey_id,
-#             aTokenIds = token,
-#             bEmail = b
-#           )
-#   )
-# }
 
+#' Invite Participant(s)
+#'
+#' Send an email with a link to a survey to the particular participant(s). Uses
+#' email template specified in the LimeSurvey web interface.
+#'
+#' LimeSurvey allows you to send so-called invitation to a participant, meaning
+#' he or she will get an email containing a link with his or her unique access
+#' token.
+#'
+#' @param survey_id *integer*, ID of the survey (as found with `ls_surveys`,
+#'   e.g.).
+#' @param tid *integer(s)*, one ore more token IDs (**not tokens!**) from database
+#'   to invite.
+#' @param b *logical*, send invitation for participants that have not been
+#'   invited yet (default). If `FALSE`, send an invite even if already sent.
+#'
+#' @return Called for side-efect. Returns a message from the server.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' ls_invite(123456, 18)
+#' }
+ls_invite <- function(survey_id, tid, uninvited_only = TRUE) {
 
+  # assert integer
+  if (!is.numeric(tid)) ui_stop("Token ID must be an integer!")
 
+  ls_call("invite_participants",
+    params = list(
+      iSurveyID = survey_id,
+      aTokenIds = I(tid), # prevent jsonlite from unboxing, as LS expects an array, not a value!!
+      bEmail = uninvited_only
+    )
+  )
+}
 
 
 
