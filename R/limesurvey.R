@@ -216,7 +216,7 @@ ls_call <- function(method, params = list()) {
     ls_login()
   }
 
-  params <- c(sSessionKey = ls_sess_cache$sess_key, params = params)
+  params <- c(sSessionKey = ls_sess_cache$sess_key, params)
   body <- list(method = method, id = " ", params = params)
   r <- RETRY("POST", Sys.getenv("LS_URL"), content_type_json(),
     body = toJSON(body, auto_unbox = TRUE, null = "null")
