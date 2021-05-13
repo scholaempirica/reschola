@@ -17,7 +17,7 @@ data, i.e., \code{firstname}, \code{lastname}, \code{email} etc.}
 \code{TRUE}).}
 }
 \value{
-Called for a side-effect, but returns the inserted data including
+Called for a side effect, but returns the inserted data including
 additional new information like the token string.
 }
 \description{
@@ -51,4 +51,16 @@ ls_add_participants(123456, part_data)
 # check if OK
 ls_participants(123456)
 }
+
 }
+\seealso{
+Other LimeSurvey functions: 
+\code{\link{ls_call}()},
+\code{\link{ls_export}()},
+\code{\link{ls_invite}()},
+\code{\link{ls_login}()},
+\code{\link{ls_participants}()},
+\code{\link{ls_responses}()},
+\code{\link{ls_surveys}()}
+}
+\concept{LimeSurvey functions}

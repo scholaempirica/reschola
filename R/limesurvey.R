@@ -524,20 +524,35 @@ ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
 #' Invite Participant(s)
 #'
 #' Send an email with a link to a survey to the particular participant(s). Uses
-#' email template specified in the LimeSurvey web interface.
+#' email template specified in the LimeSurvey web interface. Please read the
+#' setion *"On errors and messages from the API server"* of this documentation
+#' page before use.
 #'
 #' LimeSurvey allows you to send so-called invitation to a participant, meaning
 #' he or she will get an email containing a link with his or her unique access
-#' token.
+#' token. If you wish to send the invitation even if it has been already sent,
+#' use `uninvited_only = FALSE`.
 #'
-#' @param survey_id *integer*, ID of the survey (as found with `ls_surveys`,
+#' @section On errors and messages from the API server: Note that the function
+#'   passes on any messages from the LimeSurvey API server. As usual with
+#'   LimeSurvey, many things are erroneous, buggy or does not make sense. In
+#'   this case, a sign of a successful invitation is something like *"-1 left to
+#'   send"* (where *"-1"* denotes the number of invitations sent).
+#'
+#'   Another message you may see is *"Error: No candidate tokens"*, which
+#'   possibly means that the `tid`s you use are not present in the survey of
+#'   concern. However, it can also indicate that the invitation has been already
+#'   sent to the `tid`s and you have to use `uninvited_only = FALSE` to proceed.
+#'
+#' @param survey_id *integer*, ID of the survey (as found with `ls_surveys()`,
 #'   e.g.).
-#' @param tid *integer(s)*, one ore more token IDs (**not tokens!**) from database
-#'   to invite.
-#' @param b *logical*, send invitation for participants that have not been
-#'   invited yet (default). If `FALSE`, send an invite even if already sent.
+#' @param tid *integer(s)*, one ore more token IDs (**not tokens!**) from
+#'   participant database to invite. Use `ls_participants()` to get the `tid`s.
+#' @param uninvited_only *logical*, if `TRUE`, send invitation for participants
+#'   that have not been invited yet (default). If `FALSE`, send an invite even
+#'   if already sent.
 #'
-#' @return Called for side-efect. Returns a message from the server.
+#' @return Called for a side effect. Returns a message from the server.
 #'
 #' @family LimeSurvey functions
 #'

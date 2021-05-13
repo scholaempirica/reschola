@@ -47,8 +47,10 @@ ls_participants(123456, attributes = c("usesleft"))
 }
 \seealso{
 Other LimeSurvey functions: 
+\code{\link{ls_add_participants}()},
 \code{\link{ls_call}()},
 \code{\link{ls_export}()},
+\code{\link{ls_invite}()},
 \code{\link{ls_login}()},
 \code{\link{ls_responses}()},
 \code{\link{ls_surveys}()}

@@ -36,8 +36,10 @@ ls_responses(123456)
 }
 \seealso{
 Other LimeSurvey functions: 
+\code{\link{ls_add_participants}()},
 \code{\link{ls_call}()},
 \code{\link{ls_export}()},
+\code{\link{ls_invite}()},
 \code{\link{ls_login}()},
 \code{\link{ls_participants}()},
 \code{\link{ls_surveys}()}

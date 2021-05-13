@@ -7,29 +7,58 @@
 ls_invite(survey_id, tid, uninvited_only = TRUE)
 }
 \arguments{
-\item{survey_id}{\emph{integer}, ID of the survey (as found with \code{ls_surveys},
+\item{survey_id}{\emph{integer}, ID of the survey (as found with \code{ls_surveys()},
 e.g.).}
 
-\item{tid}{\emph{integer(s)}, one ore more token IDs (\strong{not tokens!}) from database
-to invite.}
+\item{tid}{\emph{integer(s)}, one ore more token IDs (\strong{not tokens!}) from
+participant database to invite. Use \code{ls_participants()} to get the \code{tid}s.}
 
-\item{b}{\emph{logical}, send invitation for participants that have not been
-invited yet (default). If \code{FALSE}, send an invite even if already sent.}
+\item{uninvited_only}{\emph{logical}, if \code{TRUE}, send invitation for participants
+that have not been invited yet (default). If \code{FALSE}, send an invite even
+if already sent.}
 }
 \value{
-Called for side-efect. Returns a message from the server.
+Called for a side effect. Returns a message from the server.
 }
 \description{
 Send an email with a link to a survey to the particular participant(s). Uses
-email template specified in the LimeSurvey web interface.
+email template specified in the LimeSurvey web interface. Please read the
+setion \emph{"On errors and messages from the API server"} of this documentation
+page.
 }
 \details{
 LimeSurvey allows you to send so-called invitation to a participant, meaning
 he or she will get an email containing a link with his or her unique access
-token.
+token. If you wish to send the invitation even if it has been already sent,
+use \code{uninvited_only = FALSE}.
 }
+\section{On errors and messages from the API server}{
+ Note that the function
+passes on any messages from the LimeSurvey API server. As usual with
+LimeSurvey, many things are erroneous, buggy or does not make sense. In
+this case, a sign of a successful invitation is something like \emph{"-1 left to
+send"} (where \emph{"-1"} denotes the number of invitations sent).
+
+Another message you may see is \emph{"Error: No candidate tokens"}, which
+possibly means that the \code{tid}s you use are not present in the survey of
+concern. However, it can also indicate that the invitation has been already
+sent to the \code{tid}s and you have to use \code{uninvited_only = FALSE} to proceed.
+}
+
 \examples{
 \dontrun{
 ls_invite(123456, 18)
 }
+
 }
+\seealso{
+Other LimeSurvey functions: 
+\code{\link{ls_add_participants}()},
+\code{\link{ls_call}()},
+\code{\link{ls_export}()},
+\code{\link{ls_login}()},
+\code{\link{ls_participants}()},
+\code{\link{ls_responses}()},
+\code{\link{ls_surveys}()}
+}
+\concept{LimeSurvey functions}
