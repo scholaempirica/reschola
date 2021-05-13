@@ -203,7 +203,7 @@ data, i.e., <code>firstname</code>, <code>lastname</code>, <code>email</code> et
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Called for a side-effect, but returns the inserted data including
+    <p>Called for a side effect, but returns the inserted data including
 additional new information like the token string.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -214,6 +214,16 @@ attributes like <code>attribute_1</code> or so. For the human-readable list of c
 attributes being held in the LimeSurvey participant database of the selected
 survey, use <code><a href='ls_get_attrs.html'>ls_get_attrs()</a></code>. However, do not use the "semantic" form, as
 <code>ls_add_participants()</code> recognizes only raw, i.e. <code>attribute_1</code> notation.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other LimeSurvey functions: 
+<code><a href='ls_call.html'>ls_call</a>()</code>,
+<code><a href='ls_export.html'>ls_export</a>()</code>,
+<code><a href='ls_invite.html'>ls_invite</a>()</code>,
+<code><a href='ls_login.html'>ls_login</a>()</code>,
+<code><a href='ls_participants.html'>ls_participants</a>()</code>,
+<code><a href='ls_responses.html'>ls_responses</a>()</code>,
+<code><a href='ls_surveys.html'>ls_surveys</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
@@ -232,6 +242,7 @@ survey, use <code><a href='ls_get_attrs.html'>ls_get_attrs()</a></code>. However
 <span class='co'># check if OK</span>
 <span class='fu'><a href='ls_participants.html'>ls_participants</a></span><span class='op'>(</span><span class='fl'>123456</span><span class='op'>)</span>
 <span class='op'>}</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
