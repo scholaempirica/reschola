@@ -485,10 +485,10 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
 #' @param create_token *logical*, whether to create token outright. Defaults to
 #'   `TRUE`).
 #'
-#' @return Called for a side-effect, but returns the inserted data including
+#' @return Called for a side effect, but returns the inserted data including
 #'   additional new information like the token string.
 #'
-#' @export
+#' @family LimeSurvey functions
 #'
 #' @examples
 #' \dontrun{
@@ -507,6 +507,8 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
 #' # check if OK
 #' ls_participants(123456)
 #' }
+#'
+#' @export
 ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
   ls_call("add_participants",
     params = list(
@@ -536,12 +538,15 @@ ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
 #'   invited yet (default). If `FALSE`, send an invite even if already sent.
 #'
 #' @return Called for side-efect. Returns a message from the server.
-#' @export
+#'
+#' @family LimeSurvey functions
 #'
 #' @examples
 #' \dontrun{
 #' ls_invite(123456, 18)
 #' }
+#'
+#' @export
 ls_invite <- function(survey_id, tid, uninvited_only = TRUE) {
 
   # assert integer
