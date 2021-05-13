@@ -286,7 +286,6 @@ ls_call <- function(method, params = list()) {
 #' @export
 ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
                             only_unused_tokens = FALSE, translate_attrs = TRUE) {
-  attrs_call <- attributes
   if (is.logical(attributes)) {
     if (attributes) {
       attributes <- .ls_all_attributes
@@ -312,34 +311,27 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 
   res <- unpack(res, "participant_info")
 
-  if (translate_attrs && isTRUE(attrs_call)) {
-    attrs <- ls_call("get_survey_properties", params = list(iSurveyID = survey_id)) %>%
-      pluck("attributedescriptions")
-
-    if (is.null(attrs)) {
-      ui_info("No attributes we found.")
-      return(res)
-    } else {
-      attrs <- attrs %>%
-        fromJSON() %>%
-        map_chr("description")
-
+  if (translate_attrs && length(attributes) != 0) {
+    attrs <- ls_get_attrs(survey_id = survey_id)
+    if (!is.null(attrs)) {
       attrs <- set_names(names(attrs), attrs) # swap names-values
-
-      res %>% rename(!!!attrs)
+      attrs <- attrs[attrs %in% names(res)] # keep only those present in res
+      res <- res %>% rename(!!!attrs)
     }
-  } else {
-    res
   }
+
+  res
 }
 
 
 # define possible LS attributes --- may need updates
 .ls_all_attributes <- c(
-  "id", "tid",
+  "id",
+  "tid",
+  "token",
   "completed",
   "participant_id",
-  "language string",
+  "language",
   "usesleft",
   "firstname",
   "lastname",
@@ -349,12 +341,51 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
   "sent",
   "validuntil",
   "remindersent",
-  "mpid",
   "emailstatus",
   "remindercount",
   paste0("attribute_", 1:100)
 )
 
+#' Get Survey Attributes in Semantic Form
+#'
+#' A survey can comprise one or more custom attributes useful for encoding
+#' participant characteristics directly within participants table. However,
+#' LimeSurvey refers to them as `attribute_x` (where `x` is the attribute
+#' position) which is not useful at all. The function aims to resolve this issue
+#' by returning so-called "semantic" form of attributes with human-readable
+#' description.
+#'
+#' @param survey_id *integer*, ID of the survey (as found, e.g., with
+#'   `ls_surveys()`).
+#'
+#' @return A character vector of "semantic" attributes with names denoting "raw"
+#'   attributes used internally by LimeSurvey.
+#'
+#' @examples
+#' \dontrun{
+#' ls_get_attrs(123456)
+#' }
+#'
+#' @importFrom jsonlite fromJSON
+#' @importFrom rlang set_names
+#' @importFrom dplyr rename
+#' @importFrom usethis ui_info
+#' @importFrom purrr pluck map_chr
+#'
+#' @export
+ls_get_attrs <- function(survey_id) {
+  attrs <- ls_call("get_survey_properties", params = list(iSurveyID = survey_id)) %>%
+    pluck("attributedescriptions")
+
+  if (is.null(attrs)) {
+    ui_info("No attributes were found.")
+    return(NULL)
+  }
+
+  attrs %>%
+    fromJSON() %>%
+    map_chr("description")
+}
 
 
 #' Export Responses
@@ -441,3 +472,9 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
 # mail_registered_participants
 
 # add_participants
+
+
+# add participants to central database
+#
+# particips <- tibble(firstname = "Jan", lastname = "Nalallalaalalaetlkkík", email = "neasdftikja@sdgmail.com")
+# ls_call("cpd_importParticipants", params = list(participants = particips, update = T))
