@@ -201,7 +201,11 @@
 <code><a href="../reference/ls_export.html">ls_export()</a></code> is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from <code><a href="../reference/ls_participants.html">ls_participants()</a></code>, and <code><a href="../reference/ls_responses.html">ls_responses()</a></code>
 </li>
 <li>
-<code><a href="../reference/ls_login.html">ls_login()</a></code> is used for manual session key request; it may be never used, as every <code>ls_</code> call ensures the key is cached and not expired (key is stale after 2 hrs)</li>
+<code><a href="../reference/ls_login.html">ls_login()</a></code> is used for manual session key request; <strong>it may be never used directly</strong>, as every <code>ls_</code> call ensures the key is cached and not expired (key is stale after 2 hrs)</li>
+<li>
+<code>ls_add_participants</code> inserts one or more participants to the LimeSurvey database</li>
+<li>
+<code><a href="../reference/ls_get_attrs.html">ls_get_attrs()</a></code> for retrieval of the custom survey attributes and their “semantic” form (i.e. human-readable description)</li>
 </ul>
 </li>
 <li>new class <code>czech_date</code> with S3 method that prints the date in long format and with grammatically correct case, more in <code><a href="../reference/as_czech_date.html">as_czech_date()</a></code>
@@ -231,6 +235,8 @@
 <li>organization name change to correct form</li>
 <li>
 <code><a href="https://ggplot2.tidyverse.org/reference/ggplot2-ggproto.html">ggplot2::ScaleContinuousPosition</a></code> correctly imported, but still WIP</li>
+<li>
+<code><a href="../reference/ls_participants.html">ls_participants()</a></code> handles attributes correctly when used as a character vector</li>
 </ul>
 </div>
 </div>

@@ -58,10 +58,16 @@
     <loc>https://scholaempirica.github.io/reschola/reference/knit_print.czech_date_interval.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/ls_add_participants.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/ls_call.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/ls_export.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/ls_get_attrs.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/ls_login.html</loc>

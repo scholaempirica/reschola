@@ -260,7 +260,10 @@ during knitting (can use <code><a href='https://rdrr.io/r/base/environment.html'
 environment).</p></dd>
     <dt><code>run_pandoc</code></dt><dd><p>An option for whether to run pandoc to convert Markdown
 output.</p></dd>
-    <dt><code>quiet</code></dt><dd><p>An option to suppress printing of the pandoc command line.</p></dd>
+    <dt><code>quiet</code></dt><dd><p>An option to suppress printing during rendering from knitr,
+pandoc command line and others. To only suppress printing of the last
+"Output created: " message, you can set <code>rmarkdown.render.message</code> to
+<code>FALSE</code></p></dd>
     <dt><code>encoding</code></dt><dd><p>Ignored. The encoding is always assumed to be UTF-8.</p></dd>
   
 </dl></td>

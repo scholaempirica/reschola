@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make Date of Class czech_date — as_czech_date • reschola</title>
+<title>Get Survey Attributes in Semantic Form — ls_get_attrs • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,10 +54,13 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Make Date of Class czech_date — as_czech_date" />
-<meta property="og:description" content="Appends the czech_date class attribute to the input object. Date of class
-czech_date is printed as a date in long format with correct Czech
-grammatical case (see Details and Grammatical cases section below)." />
+<meta property="og:title" content="Get Survey Attributes in Semantic Form — ls_get_attrs" />
+<meta property="og:description" content="A survey can comprise one or more custom attributes useful for encoding
+participant characteristics directly within participants table. However,
+LimeSurvey refers to them as attribute_x (where x is the attribute
+position) which is not useful at all. The function aims to resolve this issue
+by returning so-called &quot;semantic&quot; form of attributes with human-readable
+description." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -168,63 +171,42 @@ grammatical case (see Details and Grammatical cases section below)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make Date of Class <code>czech_date</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>as_czech_date.Rd</code></div>
+    <h1>Get Survey Attributes in Semantic Form</h1>
+    <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/limesurvey.R'><code>R/limesurvey.R</code></a></small>
+    <div class="hidden name"><code>ls_get_attrs.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Appends the <code>czech_date</code> class attribute to the input object. Date of class
-<code>czech_date</code> is printed as a date in long format with correct Czech
-grammatical case (see Details and Grammatical cases section below).</p>
+    <p>A survey can comprise one or more custom attributes useful for encoding
+participant characteristics directly within participants table. However,
+LimeSurvey refers to them as <code>attribute_x</code> (where <code>x</code> is the attribute
+position) which is not useful at all. The function aims to resolve this issue
+by returning so-called "semantic" form of attributes with human-readable
+description.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as_czech_date</span><span class='op'>(</span><span class='va'>date</span>, case <span class='op'>=</span> <span class='st'>"genitive"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ls_get_attrs</span><span class='op'>(</span><span class='va'>survey_id</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>date</th>
-      <td><p><em>date or date-like object</em> to parse.</p></td>
-    </tr>
-    <tr>
-      <th>case</th>
-      <td><p><em>character</em>, either "nominative", "locative" or "genitive"
-(default) or any unambiguous abbreviation of these.</p></td>
+      <th>survey_id</th>
+      <td><p><em>integer</em>, ID of the survey (as found, e.g., with
+<code><a href='ls_surveys.html'>ls_surveys()</a></code>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Same as input, but with class <code>czech_date</code> and attribute
-<code>gramm_case</code>.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The grammatical case <em>should</em> be specified as and argument to <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code>
-method, but for convenience, you can predefine it in <code>as_czech_date</code> call
-directly. It is then stored as an attribute, later grabbed by the <code>print</code>
-method.</p>
-<p>Note that as opposed to other date formating functions in <code>R</code>,
-<code>as_date_czech</code> trims leading zeros.</p>
-    <h2 class="hasAnchor" id="grammatical-cases"><a class="anchor" href="#grammatical-cases"></a>Grammatical cases</h2>
-
-    
-
-<p>Three grammatical cases are supported:</p><ul>
-<li><p><em>nominative</em> -- native form, i.e. "leden" in Czech</p></li>
-<li><p><em>locative</em> -- "in ...", i.e. "v lednu" in Czech</p></li>
-<li><p><em>genitive</em> -- "the 'nth' of ...", i.e. "5. ledna" in Czech</p></li>
-</ul>
-
-<p>Czech months listed by case are available in <code>.czech_months</code>.</p>
+    <p>A character vector of "semantic" attributes with names denoting "raw"
+attributes used internally by LimeSurvey.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='va'>as_czech_date</span>
-</div><div class='output co'>#&gt; [1] "13. května 2021"</div><div class='input'>
-<span class='co'># in "nominative" grammatical case (note the abbreviation)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>as_czech_date</span><span class='op'>(</span><span class='st'>"nom"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "13. květen 2021"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>ls_get_attrs</span><span class='op'>(</span><span class='fl'>123456</span><span class='op'>)</span>
+<span class='op'>}</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
