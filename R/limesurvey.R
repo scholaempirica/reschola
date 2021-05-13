@@ -464,6 +464,86 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
 }
 
 
+#' Add Participant(s) to the Survey
+#'
+#' The function takes a `tibble` (or any object that is internally represented
+#' as a (named) `list` by `R`) of participant(s) data and adds them to the
+#' LimeSurvey participant database of the selected survey.
+#'
+#' Generally, your `part_data` object have to contain three variables:
+#' `firstname`, `lastname`, and `email`. That is something like a bare minimum,
+#' but you may add any attribute recognized by LimeSurvey -- even custom
+#' attributes like `attribute_1` or so. For the human-readable list of custom
+#' attributes being held in the LimeSurvey participant database of the selected
+#' survey, use `ls_get_attrs()`. However, do not use the "semantic" form, as
+#' `ls_add_participants()` recognizes only raw, i.e. `attribute_1` notation.
+#'
+#' @param survey_id *integer*, ID of the survey (as found with `ls_surveys`,
+#'   e.g.).
+#' @param part_data *tibble / data.frame / list*, object with participant(s)
+#'   data, i.e., `firstname`, `lastname`, `email` etc.
+#' @param create_token *logical*, whether to create token outright. Defaults to
+#'   `TRUE`).
+#'
+#' @return Called for a side-effect, but returns the inserted data including
+#'   additional new information like the token string.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # create participant table
+#' part_data <- tibble(
+#'   firstname = "John",
+#'   lastname = "Doe",
+#'   email = "john@example.com",
+#'   language = "cs",
+#'   attribute_1 = "Example School"
+#' )
+#'
+#' # insert participant into the LimeSurvey database
+#' ls_add_participants(123456, part_data)
+#'
+#' # check if OK
+#' ls_participants(123456)
+#' }
+ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
+  ls_call("add_participants",
+    params = list(
+      iSurveyID = survey_id,
+      aParticipantData = part_data,
+      bCreateToken = create_token
+    )
+  )
+}
+
+
+#
+# #' Invite Participants
+# #'
+# #' @param survey_id *integer*, ID of the survey (as found with `ls_surveys`,
+# #'   e.g.).
+# #' @param token  one or multiple
+# #' @param b send only pending invites (TRUE) or resend invites only (FALSE)
+# #'
+# #' @return
+# #' @export
+# #'
+# #' @examples
+# ls_invite <- function(survey_id, token, b = TRUE) {
+#   ls_call("invite_participants",
+#           params = list(
+#             iSurveyID = survey_id,
+#             aTokenIds = token,
+#             bEmail = b
+#           )
+#   )
+# }
+
+
+
+
+
 
 # proposals
 
