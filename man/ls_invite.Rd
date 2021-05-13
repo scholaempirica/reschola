@@ -24,7 +24,7 @@ Called for a side effect. Returns a message from the server.
 Send an email with a link to a survey to the particular participant(s). Uses
 email template specified in the LimeSurvey web interface. Please read the
 setion \emph{"On errors and messages from the API server"} of this documentation
-page.
+page before use.
 }
 \details{
 LimeSurvey allows you to send so-called invitation to a participant, meaning
@@ -56,6 +56,7 @@ Other LimeSurvey functions:
 \code{\link{ls_add_participants}()},
 \code{\link{ls_call}()},
 \code{\link{ls_export}()},
+\code{\link{ls_get_attrs}()},
 \code{\link{ls_login}()},
 \code{\link{ls_participants}()},
 \code{\link{ls_responses}()},

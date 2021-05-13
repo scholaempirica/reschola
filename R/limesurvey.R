@@ -361,6 +361,8 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 #' @return A character vector of "semantic" attributes with names denoting "raw"
 #'   attributes used internally by LimeSurvey.
 #'
+#' @family LimeSurvey functions
+#'
 #' @examples
 #' \dontrun{
 #' ls_get_attrs(123456)
