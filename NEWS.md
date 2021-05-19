@@ -1,4 +1,4 @@
-# reschola 0.2.13.9000 (Limy Schola)
+# reschola 0.3.0 (Limy Schola)
 
 ## Breaking changes
 
@@ -28,6 +28,7 @@
 - new function `czech_date_interval()` that takes two dates and returns nicely formatted Czech date interval
     - czech date interval tries to print using non-breakable *en dash* when `pandoc` outputs to `LaTeX` (i.e., `schola_pdf()` format is used)
 - new function `compile_and_open()` provides safe and comfortable way to render/compile `.Rmd` documents
+- vector graphics logo of SCHOLA EMPIRICA in `.pdf` added
 - development feature: *spellcheck on package introduced via `usethis`*
 
 ## Changes
