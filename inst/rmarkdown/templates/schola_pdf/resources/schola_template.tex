@@ -233,7 +233,18 @@ $endfor$
 	  $else$
       ${author/last}
       $endif$
-	  
+
+      $if(authors)$
+      $if(authors/allbutlast)$
+      $for(authors/allbutlast)$
+      ${it}$sep$,
+      $endfor$
+      \tr{a}{and}~${authors/last}
+	  $else$
+      ${authors/last}
+      $endif$
+      $endif$
+
       \vspace{1.5cm}
 
     \end{center}
