@@ -220,18 +220,20 @@ $endfor$
 
       \vspace{1cm}
 
-      $if(team)$$team$$endif$
+      $if(team)$
+	  $team$
+	  \vspace{.25cm}
+	  $endif$
 
-      \vspace{.25cm}
-
-      $if(authors)$
-      $for(authors)$$authors/allbutlast$$sep$, $endfor$ \tr{a}{and}~$authors/last$
+      $if(author/allbutlast)$
+      $for(author/allbutlast)$
+      ${it}$sep$,
+      $endfor$
+      \tr{a}{and}~${author/last}
+	  $else$
+      ${author/last}
       $endif$
-
-      $if(author)$
-      $author$
-      $endif$
-
+	  
       \vspace{1.5cm}
 
     \end{center}
