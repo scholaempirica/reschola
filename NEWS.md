@@ -12,6 +12,7 @@
     - reasonable defaults are used so the YAML header is not cluttered with stuff
     - figures are in PDF (via `cairo` device so non-ASCII characters are well supported) and are cropped automatically (new function `ensure_cropping()` that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)
     - takes care of non-breakable spaces in Czech (especially before singlecharacter prepositions) via pre-release `pandoc` Lua filter (only repo fork currently, thanks [Delanii](https://github.com/Delanii/lua-filters))
+    - handy `author` Pandoc variable (used in YAML header), which takes the language `lang` and automatically typesets the "and" or "a" separator before the last author (when there is only one, no separators are indroduced whatsoever)
 
 
 - `reschola` is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:

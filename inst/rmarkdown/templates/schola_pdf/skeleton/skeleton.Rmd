@@ -1,18 +1,18 @@
 ---
 title: "Schola-styled PDF document"
 subtitle: "A great one, too"
-team: výzkumný tým SCHOLA EMPIRICA
-authors: # use author for single-authored document
-- "First Author^[Contact author. E-mail: first.author@scholaempirica.org]" # complex entry is quoted
+team: výzkumný tým SCHOLA EMPIRICA # delete whole entry if undesirable
+author:
+- "First Author^[Contact author. E-mail: first.author@scholaempirica.org]" # complex entry must be quoted
 - Second Author
 - Third Author # "and"/"a" is added automatically in selected locale
 date: "`r as.Date(Sys.time())`" # if Czech, use reschola::as_czech_date(Sys.time())
 output: 
   reschola::schola_pdf:
-    num_format: en
+    num_format: en # inline formatting for numbers (1 000,00 with "cs")
 toc-title: "Table of contents"
 abstract-title: Abstract
-lang: en
+lang: en # smart-quotes and author variable depends on the lang variable
 logo: logos/schola # chars which are escaped by pandoc (i.e. "_") are prohibited
 logo_height: 20pt
 logo_client: false
