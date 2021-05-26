@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import fonts needed for theme_schola defaults — import_fonts • reschola</title>
+<title>Import Roboto fonts for use in charts and in the PDF reports — import_fonts • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Import fonts needed for theme_schola defaults — import_fonts" />
-<meta property="og:description" content="Imports Roboto and Roboto Condensed. Draws on the hrbrthemes package." />
+<meta property="og:title" content="Import Roboto fonts for use in charts and in the PDF reports — import_fonts" />
+<meta property="og:description" content="Roboto is a trademark of Google." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -166,23 +166,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import fonts needed for theme_schola defaults</h1>
+    <h1>Import Roboto fonts for use in charts and in the PDF reports</h1>
     <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/fonts.R'><code>R/fonts.R</code></a></small>
     <div class="hidden name"><code>import_fonts.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Imports Roboto and Roboto Condensed. Draws on the hrbrthemes package.</p>
+    <p>Roboto is a trademark of Google.</p>
     </div>
 
     <pre class="usage"><span class='fu'>import_fonts</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is an analogue of <code><a href='https://rdrr.io/pkg/hrbrthemes/man/import_roboto_condensed.html'>hrbrthemes::import_roboto_condensed()</a></code>.</p>
+<p>There is an option <code>reschola.loadfonts</code> which -- if set to <code>TRUE</code> -- will
+call <code><a href='https://rdrr.io/pkg/extrafont/man/loadfonts.html'>extrafont::loadfonts()</a></code> to register non-core fonts with R PDF &amp;
+PostScript devices. If you are running under Windows, the package calls the
+same function to register non-core fonts with the Windows graphics device.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>If you install the fonts just for the current user (via right-click and
+Install), they will probably <strong>not be discoverable</strong> by the <code>fontspec</code>
+LaTeX package that is used for PDF report typesetting!</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Font helpers and shortcuts: 
 <code><a href='font_rc.html'>font_rc</a></code>,
-<code><a href='import_roboto.html'>import_roboto</a>()</code>,
 <code><a href='set_reschola_ggplot_fonts.html'>set_reschola_ggplot_fonts</a>()</code></p></div>
 
   </div>

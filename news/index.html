@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -169,6 +169,32 @@
       <small>Source: <a href='https://github.com/scholaempirica/reschola/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="reschola-031-limy-schola" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.1">
+<a href="#reschola-031-limy-schola" class="anchor"></a>reschola 0.3.1 (Limy Schola)</h1>
+<p>A tiny patch release resolving the issues with and simplifying the font installation process.</p>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<ul>
+<li>fonts installation described in more detail, warning NOTE added</li>
+</ul>
+</div>
+<div id="changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes" class="anchor"></a>Changes</h2>
+<ul>
+<li>font installation is now carried out by a single function <code><a href="../reference/import_fonts.html">import_fonts()</a></code>
+</li>
+<li>all fonts needed for the package functionality now comes in <code>reschola</code> and are not resourced from <code>hrbrthemes</code> anymore</li>
+<li>
+<code><a href="../reference/import_fonts.html">import_fonts()</a></code> is now more verbose on the instruction</li>
+<li>
+<code>reschola</code> font directory is now opened automatically</li>
+<li>some namespace-prepended function calls replaced with proper <code>importFrom</code> declarations</li>
+</ul>
+</div>
+</div>
     <div id="reschola-030-limy-schola" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.0">
 <a href="#reschola-030-limy-schola" class="anchor"></a>reschola 0.3.0 (Limy Schola)</h1>
@@ -224,9 +250,9 @@
 </li>
 </ul>
 </div>
-<div id="changes" class="section level2">
+<div id="changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes" class="anchor"></a>Changes</h2>
+<a href="#changes-1" class="anchor"></a>Changes</h2>
 <ul>
 <li>
 <code>99_reproducibility.Rmd</code> now uses base R <code><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo()</a></code>, not <code>sessioninfo</code> package, which seems like an unnecessary dependency</li>
@@ -258,9 +284,9 @@
 <code><a href="../reference/schola_word2.html">schola_word2()</a></code> deprecated</li>
 </ul>
 </div>
-<div id="changes-1" class="section level2">
+<div id="changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-1" class="anchor"></a>Changes</h2>
+<a href="#changes-2" class="anchor"></a>Changes</h2>
 <ul>
 <li>main Word output format is <code><a href="../reference/schola_word.html">schola_word()</a></code>, which now uses default template if no reference document is provided in YAML</li>
 <li>
@@ -298,9 +324,9 @@
 <li>“templating” explained in <code><a href="../reference/schola_word2.html">schola_word2()</a></code>, with a link to <code>bookdown</code> manual</li>
 </ul>
 </div>
-<div id="changes-2" class="section level2">
+<div id="changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-2" class="anchor"></a>Changes</h2>
+<a href="#changes-3" class="anchor"></a>Changes</h2>
 <ul>
 <li>the main Word template now uses Roboto font everywhere, pages are auto-numbered, ToC is properly formatted, text is justified</li>
 <li>two new functions: <code><a href="../reference/schola_word2.html">schola_word2()</a></code> gives the user control over the reference Word document (a.k.a. template), <code>open_schola_word_template</code> automatically locates and opens up the aforementioned template that comes with the package to simplify and speed up the workd with the template</li>
@@ -326,9 +352,9 @@
 <li>new tips on EDA and CRAN views</li>
 </ul>
 </div>
-<div id="changes-3" class="section level2">
+<div id="changes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-3" class="anchor"></a>Changes</h2>
+<a href="#changes-4" class="anchor"></a>Changes</h2>
 <ul>
 <li>template-based project setup no longer runs redoc so things work on Windows with broken encoding settings</li>
 </ul>
@@ -357,9 +383,9 @@
 <li>new label formatters: <code><a href="../reference/formatscz.html">label_number_cz()</a></code> and <code><a href="../reference/formatscz.html">label_percent_cz()</a></code> (the English-language analogs without <code>_cz</code> are in the package <code>scales</code>)</li>
 </ul>
 </div>
-<div id="changes-4" class="section level2">
+<div id="changes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-4" class="anchor"></a>Changes</h2>
+<a href="#changes-5" class="anchor"></a>Changes</h2>
 <ul>
 <li>minor changes to Word template files around image captions</li>
 <li>added <code>margin_bottom</code> param to <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
