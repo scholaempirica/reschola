@@ -1,3 +1,17 @@
+# reschola 0.3.1 (Limy Schola)
+
+A tiny patch release resolving the issues with and simplifying the font installation process.
+
+## Documentation
+- fonts installation described in more detail, warning NOTE added
+
+## Changes
+- font installation is now carried out by a single function `import_fonts()`
+- all fonts needed for the package functionality now comes in `reschola` and are not resourced from `hrbrthemes` anymore
+- `import_fonts()` is now more verbose on the instruction
+- `reschola` font directory is now opened automatically
+- some namespace-prepended function calls replaced with proper `importFrom` declarations 
+
 # reschola 0.3.0 (Limy Schola)
 
 ## Breaking changes

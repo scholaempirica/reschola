@@ -15,7 +15,6 @@ Wrapper around update_geom_font_defaults(), different default
 \seealso{
 Other Font helpers and shortcuts: 
 \code{\link{font_rc}},
-\code{\link{import_fonts}()},
-\code{\link{import_roboto}()}
+\code{\link{import_fonts}()}
 }
 \concept{Font helpers and shortcuts}

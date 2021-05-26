@@ -2,17 +2,29 @@
 % Please edit documentation in R/fonts.R
 \name{import_fonts}
 \alias{import_fonts}
-\title{Import fonts needed for theme_schola defaults}
+\title{Import Roboto fonts for use in charts and in the PDF reports}
 \usage{
 import_fonts()
 }
 \description{
-Imports Roboto and Roboto Condensed. Draws on the hrbrthemes package.
+Roboto is a trademark of Google.
+}
+\details{
+This is an analogue of \code{hrbrthemes::import_roboto_condensed()}.
+
+There is an option \code{reschola.loadfonts} which -- if set to \code{TRUE} -- will
+call \code{extrafont::loadfonts()} to register non-core fonts with R PDF &
+PostScript devices. If you are running under Windows, the package calls the
+same function to register non-core fonts with the Windows graphics device.
+}
+\note{
+If you install the fonts just for the current user (via right-click and
+Install), they will probably \strong{not be discoverable} by the \code{fontspec}
+LaTeX package that is used for PDF report typesetting!
 }
 \seealso{
 Other Font helpers and shortcuts: 
 \code{\link{font_rc}},
-\code{\link{import_roboto}()},
 \code{\link{set_reschola_ggplot_fonts}()}
 }
 \concept{Font helpers and shortcuts}

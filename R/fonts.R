@@ -24,7 +24,7 @@ font_rc_thin <- "Roboto Condensed Thin"
 #' @rdname Roboto
 #' @md
 #' @note `font_rc_light` (a.k.a. "`Roboto Condensed Light`") is not available on
-#'     Windows and will throw a warning if used in plots.
+#'   Windows and will throw a warning if used in plots.
 #' @family Font helpers and shortcuts
 #' @description `font_rc_light` == "`Roboto Condensed Light`"
 font_rc_light <- "Roboto Condensed Light"
@@ -60,50 +60,42 @@ font_r <- "Roboto"
 #' @export
 font_r_light <- "Roboto Light"
 
-#' Import Roboto font for use in charts
+
+
+#' Import Roboto fonts for use in charts and in the PDF reports
 #'
 #' Roboto is a trademark of Google.
 #'
 #' This is an analogue of `hrbrthemes::import_roboto_condensed()`.
 #'
 #' There is an option `reschola.loadfonts` which -- if set to `TRUE` -- will
-#' call `extrafont::loadfonts()` to register non-core fonts with R PDF & PostScript
-#' devices. If you are running under Windows, the package calls the same function
-#' to register non-core fonts with the Windows graphics device.
+#' call `extrafont::loadfonts()` to register non-core fonts with R PDF &
+#' PostScript devices. If you are running under Windows, the package calls the
+#' same function to register non-core fonts with the Windows graphics device.
 #'
 #' @md
-#' @note This will take care of ensuring PDF/PostScript usage. The location of the
-#'   font directory is displayed after the base import is complete. It is highly
-#'   recommended that you install them on your system the same way you would any
-#'   other font you wish to use in other programs.
-#' @family Font helpers and shortcuts
-#' @export
-import_roboto <- function() {
-
-  r_font_dir <- system.file("fonts", "roboto", package="reschola")
-
-  suppressWarnings(suppressMessages(extrafont::font_import(r_font_dir, prompt=FALSE)))
-
-  usethis::ui_done("Done registering Roboto with R.")
-  usethis::ui_todo("Now go to {usethis::ui_path(r_font_dir)} and install the fonts onto your system.")
-}
-
-
-#' Import fonts needed for theme_schola defaults
-#'
-#' Imports Roboto and Roboto Condensed. Draws on the hrbrthemes package.
+#' @note If you install the fonts just for the current user (via right-click and
+#'   Install), they will probably **not be discoverable** by the `fontspec`
+#'   LaTeX package that is used for PDF report typesetting!
 #'
 #' @family Font helpers and shortcuts
-#' @export
 #'
+#' @importFrom usethis ui_done ui_todo ui_info ui_field ui_path
+#' @importFrom extrafont font_import
+#' @export
 import_fonts <- function() {
-  import_roboto()
-  suppressMessages(hrbrthemes::import_roboto_condensed())
-  r_font_dir <- system.file("fonts", "roboto", package="reschola")
-  rc_font_dir <- system.file("fonts", "roboto-condensed", package="hrbrthemes")
-  usethis::ui_done("Done registering Roboto Condensed with R.")
-  usethis::ui_todo("Now go to {usethis::ui_path(rc_font_dir)} and install the fonts onto your system.")
-  usethis::ui_info("On Windows 7 and 10, you can install fonts by right-clicking the font file and clicking Install.")
+  r_font_dir <- system.file("fonts", "roboto", package = "reschola")
+
+  suppressWarnings(suppressMessages(font_import(r_font_dir, prompt = FALSE)))
+
+  ui_done("Done registering Roboto with R.")
+  ui_info("Opening {ui_path(r_font_dir)} with fonts...")
+  system2("open", r_font_dir)
+
+  ui_info("To install the fonts on Windows:")
+  ui_todo("select all files in the directory which has been opened")
+  ui_todo("right-click on them")
+  ui_todo("chose {ui_field('Install for all users')} (requires admin rights)")
 }
 
 
@@ -112,9 +104,11 @@ import_fonts <- function() {
 #' Wrapper around update_geom_font_defaults(), different default
 #'
 #' @param font font, defaults to `"Roboto Condensed"`
+#'
+#' @importFrom hrbrthemes update_geom_font_defaults
 #' @family Font helpers and shortcuts
 #' @export
 #'
 set_reschola_ggplot_fonts <- function(font = "Roboto Condensed") {
-  hrbrthemes::update_geom_font_defaults(font)
+  update_geom_font_defaults(font)
 }
