@@ -6,7 +6,7 @@
 \usage{
 ls_login(
  
-    api_url = "http://dotazniky.scholaempirica.org/limesurvey/index.php/admin/remotecontrol"
+    api_url = "https://dotazniky.scholaempirica.org/limesurvey/index.php/admin/remotecontrol"
 )
 }
 \arguments{
@@ -23,7 +23,7 @@ for further use by fellow \code{ls_} functions.
 }
 \details{
 By default,
-\url{http://dotazniky.scholaempirica.org/}
+\url{https://dotazniky.scholaempirica.org/}
 is used as the LimeSurvey server prividing the API. The credentials used for
 user authentication are obtained through interactive prompts, mainly for
 security reasons. The function tries to obtain the credentials from the

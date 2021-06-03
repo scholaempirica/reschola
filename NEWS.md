@@ -1,3 +1,9 @@
+# reschola 0.3.2 (Limy Schola)
+
+## Changes
+
+- default LimeSurvey API endpoint protocol changed to HTTPS
+
 # reschola 0.3.1 (Limy Schola)
 
 A tiny patch release resolving the issues with and simplifying the font installation process.

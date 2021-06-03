@@ -39,6 +39,7 @@
 #'
 #' @importFrom bookdown pdf_document2
 #' @importFrom usethis ui_stop ui_code
+#' @importFrom tools find_gs_cmd
 #' @export
 #'
 schola_pdf <- function(num_format = NULL, fig_crop = TRUE,

@@ -82,7 +82,7 @@ ls_export <- function(survey_id, attributes = TRUE, n_participants = 999,
 #' for further use by fellow `ls_` functions.
 #'
 #' By default,
-#' [http://dotazniky.scholaempirica.org/](http://dotazniky.scholaempirica.org/)
+#' [https://dotazniky.scholaempirica.org/](https://dotazniky.scholaempirica.org/)
 #' is used as the LimeSurvey server prividing the API. The credentials used for
 #' user authentication are obtained through interactive prompts, mainly for
 #' security reasons. The function tries to obtain the credentials from the
@@ -109,7 +109,7 @@ ls_export <- function(survey_id, attributes = TRUE, n_participants = 999,
 #' @importFrom rstudioapi showPrompt askForPassword
 #'
 #' @export
-ls_login <- function(api_url = "http://dotazniky.scholaempirica.org/limesurvey/index.php/admin/remotecontrol") {
+ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/index.php/admin/remotecontrol") {
   if (!nzchar(Sys.getenv("LS_USER")) || !nzchar(Sys.getenv("LS_PASS"))) {
     user <- showPrompt(
       "LimeSurvey username",
@@ -232,7 +232,7 @@ ls_call <- function(method, params = list()) {
   status_msg <- pluck(res, "status")
 
   if (!is.null(status_msg)) {
-    ui_stop("API returned message:\n{ui_value(as.character(status_msg))}.")
+    ui_info("API returned message:\n{ui_value(as.character(status_msg))}.")
   }
 
   # try to make tibble from everything, return raw object when conversion fails
