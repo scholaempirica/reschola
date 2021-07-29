@@ -176,6 +176,21 @@ $endif$
 % spacing
 \usepackage{setspace}
 
+
+% footnote
+\usepackage[perpage, hang, bottom]{footmisc} %Range of footnote options
+%\renewcommand{\footnotelayout}{\raggedright20pt}
+\setlength{\footnotemargin}{9pt}
+\setlength{\footnotesep}{15pt}
+\renewcommand{\footnoterule}{%
+  \moveright1.25cm\vbox{
+  \kern-1.4pt
+  \hrule width 6cm height 0.4pt
+  \kern1pt
+}\nointerlineskip
+}
+
+
 \newcommand{\tr}[2]{\ifnum\pdfstrcmp{\languagename}{czech}=0 #1\else #2\fi}
 
 % tightlist macro required by pandoc >= 1.14

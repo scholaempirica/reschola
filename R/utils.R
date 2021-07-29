@@ -49,7 +49,35 @@ reschola_file <- function(...) {
   system.file(..., package = "reschola", mustWork = TRUE)
 }
 
+#' Copy default Schola template into project directory
+#'
+#' @param format *Character*, format which to look for. Defaults to `pdf`.
+#' @param path *Character*, path to copy to. Defaults to the current project
+#'   root.
+#' @inheritDotParams base::file.copy -from -to
+#'
+#' @return No return value, called for side effect.
+#' @family Report templates and formats
+#' @author Jan Netik
+#'
+#' @importFrom usethis proj_get
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' copy_schola_template()
+#' }
+copy_schola_template <- function(format = "pdf", path = proj_get(), ...) {
+  switch(format,
+    word = invisible(file.copy(find_resource("schola_word", "template.docx"), path, ...)),
+    docx = invisible(file.copy(find_resource("schola_word", "template.docx"), path, ...)),
+    pdf = invisible(file.copy(find_resource("schola_pdf", "schola_template.tex"), path, ...))
+  )
+}
 
+reschola_file <- function(...) {
+  system.file(..., package = "reschola", mustWork = TRUE)
+}
 
 
 #' Make Date of Class `czech_date`
@@ -71,11 +99,10 @@ reschola_file <- function(...) {
 #' @inheritParams czech_date_main
 #'
 #' @examples
-#' Sys.time() %>% as_czech_date
+#' Sys.time() %>% as_czech_date()
 #'
 #' # in "nominative" grammatical case (note the abbreviation)
 #' Sys.time() %>% as_czech_date("nom")
-#'
 #' @return Same as input, but with class `czech_date` and attribute
 #'   `gramm_case`.
 #' @family format related functions
@@ -183,7 +210,6 @@ czech_date_main <- function(date, case) {
 #'
 #' @examples
 #' czech_date_interval("2020-01-24", "2020-01-03") # note the argument order
-#'
 #' @return Character
 #'
 #' @export
@@ -201,29 +227,29 @@ czech_date_interval <- function(start, end) {
   czech_date <- as_czech_date(dt)
   czech_months <- .czech_months[["genitive"]][month]
 
- res <-  if (year[1] == year[2]) {
+  res <- if (year[1] == year[2]) {
     if (month[1] == month[2]) {
       if (day[1] == day[2]) {
-        czech_date[1]
+        return(czech_date[1])
       }
-      paste0(
+      return(paste0(
         day[1],
         ".\u2013",
         day[2], ". ", czech_months[1], " ", year[1]
-      )
+      ))
     }
-    paste0(
+    return(paste0(
       day[1], ". ", czech_months[1],
-      "\u00A0\u2013\u00A0",
+      " \u2013\ ",
       day[2], ". ", czech_months[2], " ",
       year[1]
-    )
+    ))
   } else {
-    paste0(czech_date[1], "\u00A0\u2013\u00A0", czech_date[2])
+    return(paste0(czech_date[1], " \u2013 ", czech_date[2]))
   }
 
- class(res) <- "czech_date_interval"
- res
+  class(res) <- "czech_date_interval"
+  res
 }
 
 

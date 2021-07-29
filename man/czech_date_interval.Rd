@@ -24,5 +24,4 @@ outputted. The function ensures that the interval is not negative (i.e.,
 }
 \examples{
 czech_date_interval("2020-01-24", "2020-01-03") # note the argument order
-
 }

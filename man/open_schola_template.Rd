@@ -30,6 +30,7 @@ open_schola_template()
 }
 \seealso{
 Other Report templates and formats: 
+\code{\link{copy_schola_template}()},
 \code{\link{schola_pdf}()},
 \code{\link{schola_redoc}()},
 \code{\link{schola_word2}()},

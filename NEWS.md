@@ -1,3 +1,18 @@
+# reschola (development version)
+
+## Changes
+
+- PDF template now handles footnotes better
+    - TODO - incorporate changes from IvP and EZ, especially citations and so
+
+## New features
+
+- new function `copy_schola_template()` which copies the template (`pdf` by default) into the active project directory
+
+## Bug fixes
+
+- `czech_date_interval()` now correctly supresses redundant information 
+
 # reschola 0.3.2 (Limy Schola)
 
 ## Changes

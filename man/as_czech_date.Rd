@@ -43,10 +43,9 @@ Czech months listed by case are available in \code{.czech_months}.
 }
 
 \examples{
-Sys.time() \%>\% as_czech_date
+Sys.time() \%>\% as_czech_date()
 
 # in "nominative" grammatical case (note the abbreviation)
 Sys.time() \%>\% as_czech_date("nom")
-
 }
 \concept{format related functions}
