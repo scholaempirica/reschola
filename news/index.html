@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
       </span>
     </div>
 
@@ -142,7 +142,7 @@
 </li>
 <li>
   <a href="https://github.com/scholaempirica/reschola/issues">
-    <span class="fas fa-exclamation-circle fa-lg"></span>
+    <span class="fa fa-exclamation-circle fa-lg"></span>
      
   </a>
 </li>
@@ -169,12 +169,42 @@
       <small>Source: <a href='https://github.com/scholaempirica/reschola/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="reschola-032-limy-schola" class="section level1">
-<h1 class="page-header" data-toc-text="0.3.2">
-<a href="#reschola-032-limy-schola" class="anchor"></a>reschola 0.3.2 (Limy Schola)</h1>
+    <div id="reschola-development-version" class="section level1">
+<h1 class="page-header" data-toc-text="development version">
+<a href="#reschola-development-version" class="anchor"></a>reschola (development version)</h1>
 <div id="changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#changes" class="anchor"></a>Changes</h2>
+<ul>
+<li>PDF template now handles footnotes better
+<ul>
+<li>TODO - incorporate changes from IvP and EZ, especially citations and so</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>new function <code><a href="../reference/copy_schola_template.html">copy_schola_template()</a></code> which copies the template (<code>pdf</code> by default) into the active project directory</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>
+<code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> now correctly supresses redundant information</li>
+</ul>
+</div>
+</div>
+    <div id="reschola-032-limy-schola" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.2">
+<a href="#reschola-032-limy-schola" class="anchor"></a>reschola 0.3.2 (Limy Schola)</h1>
+<div id="changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes-1" class="anchor"></a>Changes</h2>
 <ul>
 <li>default LimeSurvey API endpoint protocol changed to HTTPS</li>
 </ul>
@@ -191,9 +221,9 @@
 <li>fonts installation described in more detail, warning NOTE added</li>
 </ul>
 </div>
-<div id="changes-1" class="section level2">
+<div id="changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-1" class="anchor"></a>Changes</h2>
+<a href="#changes-2" class="anchor"></a>Changes</h2>
 <ul>
 <li>font installation is now carried out by a single function <code><a href="../reference/import_fonts.html">import_fonts()</a></code>
 </li>
@@ -216,9 +246,9 @@
 <li>automatically generated build script <code>build.R</code> is renamed to <code>build_all.R</code>, to allow multiple build scripts (pro tip: use <a href="https://CRAN.r-project.org/web/packages/buildr/">{buildr}</a> package)</li>
 </ul>
 </div>
-<div id="new-features" class="section level2">
+<div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li>new R Markdown document format <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code>:
 <ul>
@@ -261,17 +291,17 @@
 </li>
 </ul>
 </div>
-<div id="changes-2" class="section level2">
+<div id="changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-2" class="anchor"></a>Changes</h2>
+<a href="#changes-3" class="anchor"></a>Changes</h2>
 <ul>
 <li>
 <code>99_reproducibility.Rmd</code> now uses base R <code><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo()</a></code>, not <code>sessioninfo</code> package, which seems like an unnecessary dependency</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>organization name change to correct form</li>
 <li>
@@ -295,9 +325,9 @@
 <code><a href="../reference/schola_word2.html">schola_word2()</a></code> deprecated</li>
 </ul>
 </div>
-<div id="changes-3" class="section level2">
+<div id="changes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-3" class="anchor"></a>Changes</h2>
+<a href="#changes-4" class="anchor"></a>Changes</h2>
 <ul>
 <li>main Word output format is <code><a href="../reference/schola_word.html">schola_word()</a></code>, which now uses default template if no reference document is provided in YAML</li>
 <li>
@@ -316,9 +346,9 @@
 <li>GitHub issue templates</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/theme_schola.html">theme_schola()</a></code> works again with <code><a href="../reference/manage_docx_header_logos.html">manage_docx_header_logos()</a></code> and comes with SCHOLA EMPIRICA logo preloaded</li>
@@ -335,17 +365,17 @@
 <li>“templating” explained in <code><a href="../reference/schola_word2.html">schola_word2()</a></code>, with a link to <code>bookdown</code> manual</li>
 </ul>
 </div>
-<div id="changes-4" class="section level2">
+<div id="changes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-4" class="anchor"></a>Changes</h2>
+<a href="#changes-5" class="anchor"></a>Changes</h2>
 <ul>
 <li>the main Word template now uses Roboto font everywhere, pages are auto-numbered, ToC is properly formatted, text is justified</li>
 <li>two new functions: <code><a href="../reference/schola_word2.html">schola_word2()</a></code> gives the user control over the reference Word document (a.k.a. template), <code>open_schola_word_template</code> automatically locates and opens up the aforementioned template that comes with the package to simplify and speed up the workd with the template</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>default <code>theme_schola</code> now uses the same colour everywhere (caption colour was in solid black)</li>
 <li>extra parenthesis in README removed</li>
@@ -363,16 +393,16 @@
 <li>new tips on EDA and CRAN views</li>
 </ul>
 </div>
-<div id="changes-5" class="section level2">
+<div id="changes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-5" class="anchor"></a>Changes</h2>
+<a href="#changes-6" class="anchor"></a>Changes</h2>
 <ul>
 <li>template-based project setup no longer runs redoc so things work on Windows with broken encoding settings</li>
 </ul>
 </div>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>updated repo URLs in install instructions in README.[R]md</li>
 </ul>
@@ -381,9 +411,9 @@
     <div id="reschola-0210" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.10">
 <a href="#reschola-0210" class="anchor"></a>reschola 0.2.10</h1>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
+<a href="#new-features-2" class="anchor"></a>New features</h2>
 <ul>
 <li>New Making charts vignette</li>
 <li>minor additions to tips and workflow vignettes</li>
@@ -394,9 +424,9 @@
 <li>new label formatters: <code><a href="../reference/formatscz.html">label_number_cz()</a></code> and <code><a href="../reference/formatscz.html">label_percent_cz()</a></code> (the English-language analogs without <code>_cz</code> are in the package <code>scales</code>)</li>
 </ul>
 </div>
-<div id="changes-6" class="section level2">
+<div id="changes-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-6" class="anchor"></a>Changes</h2>
+<a href="#changes-7" class="anchor"></a>Changes</h2>
 <ul>
 <li>minor changes to Word template files around image captions</li>
 <li>added <code>margin_bottom</code> param to <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
@@ -419,9 +449,9 @@
 <li>updated RMarkdown outputs to get figures nice and right size</li>
 </ul>
 </div>
-<div id="bug-fixes-4" class="section level2">
+<div id="bug-fixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>project setup now creates <code>data-raw</code> and <code>data-processed</code> such that the directories can go into git but not its contents; documentation explains this in multiple places.</li>
 <li>
@@ -432,9 +462,9 @@
     <div id="reschola-028" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.8">
 <a href="#reschola-028" class="anchor"></a>reschola 0.2.8</h1>
-<div id="bug-fixes-5" class="section level2">
+<div id="bug-fixes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> now works outside of a reschola-created project</li>
@@ -463,9 +493,9 @@
     <div id="reschola-027" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.7">
 <a href="#reschola-027" class="anchor"></a>reschola 0.2.7</h1>
-<div id="bug-fixes-6" class="section level2">
+<div id="bug-fixes-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>fixed bug in project template where a newly created RMd file did not open</li>
 <li>refactored <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> to fix roundtripping issue and improve UI</li>
@@ -495,9 +525,9 @@
     <div id="reschola-025" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.5">
 <a href="#reschola-025" class="anchor"></a>reschola 0.2.5</h1>
-<div id="bug-fixes-7" class="section level2">
+<div id="bug-fixes-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-8" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>updated <code>drat</code> repo link in README so <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> no longer fails</li>
 <li>fixed bug where project template failed when copying standard logos</li>
@@ -514,9 +544,9 @@
 <li>added tips on accessing documentation in tips vignette, and on snippets</li>
 </ul>
 </div>
-<div id="new-features-2" class="section level2">
+<div id="new-features-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>New features</h2>
+<a href="#new-features-3" class="anchor"></a>New features</h2>
 <ul>
 <li>new <code><a href="../reference/gd_download_folder.html">gd_download_folder()</a></code> function for downloading all files in a GDrive folder</li>
 <li>option in project template to download files from the listed GDrive folder</li>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>as.character S3 method for class czech_date — as.character.czech_date • reschola</title>
+<title>Copy default Schola template into project directory — copy_schola_template • reschola</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="as.character S3 method for class czech_date — as.character.czech_date" />
-<meta property="og:description" content="as.character S3 method for class czech_date" />
+<meta property="og:title" content="Copy default Schola template into project directory — copy_schola_template" />
+<meta property="og:description" content="Copy default Schola template into project directory" />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -166,20 +166,65 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>as.character S3 method for class czech_date</h1>
+    <h1>Copy default Schola template into project directory</h1>
     <small class="dont-index">Source: <a href='https://github.com/scholaempirica/reschola/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>as.character.czech_date.Rd</code></div>
+    <div class="hidden name"><code>copy_schola_template.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>as.character S3 method for class czech_date</p>
+    <p>Copy default Schola template into project directory</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for czech_date</span>
-<span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>copy_schola_template</span><span class='op'>(</span>format <span class='op'>=</span> <span class='st'>"pdf"</span>, path <span class='op'>=</span> <span class='fu'>proj_get</span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>format</th>
+      <td><p><em>Character</em>, format which to look for. Defaults to <code>pdf</code>.</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p><em>Character</em>, path to copy to. Defaults to the current project
+root.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/r/base/files.html'>base::file.copy</a></code></p><dl>
+    <dt><code>overwrite</code></dt><dd><p>logical; should existing destination files be overwritten?</p></dd>
+    <dt><code>recursive</code></dt><dd><p>logical.  If <code>to</code> is a directory, should
+    directories in <code>from</code> be copied (and their contents)?  (Like
+    <code class='command'>cp -R</code> on POSIX OSes.)</p></dd>
+    <dt><code>copy.mode</code></dt><dd><p>logical:  should file permission bits be copied where
+    possible?</p></dd>
+    <dt><code>copy.date</code></dt><dd><p>logical:  should file dates be preserved where
+    possible? See <code><a href='https://rdrr.io/r/base/Sys.setFileTime.html'>Sys.setFileTime</a></code>.</p></dd>
+  
+</dl></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>No return value, called for side effect.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Report templates and formats: 
+<code><a href='open_schola_template.html'>open_schola_template</a>()</code>,
+<code><a href='schola_pdf.html'>schola_pdf</a>()</code>,
+<code><a href='schola_redoc.html'>schola_redoc</a>()</code>,
+<code><a href='schola_word2.html'>schola_word2</a>()</code>,
+<code><a href='schola_word.html'>schola_word</a>()</code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Jan Netik</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>copy_schola_template</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
