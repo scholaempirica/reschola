@@ -212,8 +212,13 @@ czech_date_main <- function(date, case) {
 #' czech_date_interval("2020-01-24", "2020-01-03") # note the argument order
 #' @return Character
 #'
+#' @importFrom rlang abort
 #' @export
 czech_date_interval <- function(start, end) {
+  if (length(start) != 1 || length(end) != 1) {
+    abort("You cannot provide more than one start or end date.")
+  }
+
   dt <- as.POSIXlt(c(start, end))
 
   if (start > end) {

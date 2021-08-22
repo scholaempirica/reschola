@@ -4,6 +4,7 @@
 
 - PDF template now handles footnotes better
     - TODO - incorporate changes from IvP and EZ, especially citations and so
+- czech_date_interval() now raises an error when you try to supply more than one entry
 
 ## New features
 
