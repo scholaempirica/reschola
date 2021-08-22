@@ -5,6 +5,8 @@
 - PDF template now handles footnotes better
     - TODO - incorporate changes from IvP and EZ, especially citations and so
 - czech_date_interval() now raises an error when you try to supply more than one entry
+- ls_responses() strips out the `tibble`-wide `variable.labels` attribute and spreads it among the individual variables, which enables you to modify the `tibble` without messing the labels positions and/or producing length incompatibilities
+
 
 ## New features
 

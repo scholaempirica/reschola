@@ -53,26 +53,7 @@ ls_export <- function(survey_id, attributes = TRUE, n_participants = 999,
 
   responses <- ls_responses(survey_id, lang = lang, part = part)
 
-  res <- left_join(participants, responses, by = join_by, ...)
-
-  # put back variable labels stripped during the merge, using safe tidyselect approach
-  resp_names <- responses %>% names()
-  resp_vals <- responses %@% "variable.labels"
-  names(resp_names) <- resp_vals
-  loc <- tryCatch(eval_rename(resp_names, res), error = function(e) {
-    ui_stop(c(
-      "Column names of joined participant and response tables are likely duplicated.",
-      ifelse(attributes,
-        "Passing {ui_code('attributes = FALSE')} to function call may help.",
-        "Please treat participant and response data separately."
-      )
-    ))
-  })
-  attrs <- names(res)
-  attrs[loc] <- names(loc)
-  res %@% "variable.labels" <- attrs
-
-  res
+  left_join(participants, responses, by = join_by, ...)
 }
 
 
@@ -415,6 +396,7 @@ ls_get_attrs <- function(survey_id) {
 #' @importFrom jsonlite base64_dec
 #' @importFrom utils read.csv2
 #' @importFrom tibble as_tibble
+#' @importFrom purrr modify2
 #' @family LimeSurvey functions
 #'
 #' @export
@@ -455,14 +437,26 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
     encoding = "UTF-8"
   )[-1] # exclude first line (data already read)
 
-  # suppres those "NAs introduced by coercion" warnings of no value but disturbing
+  # suppres those "NAs introduced by coercion"
+  # warnings of no value (but disturbing)
   suppressWarnings(
     source(textConnection(syntax), encoding = "UTF-8", local = TRUE)
   )
 
-  as_tibble(data, .name_repair = ~ make.unique(.x, "_"))
+  # repair names for left_join in ls_export
+  # TODO: move to ls_export
+  out <- as_tibble(data, .name_repair = ~ make.unique(.x, "_"))
 
-  # TODO: think how to handle attributes
+  # get the tibble variable.labels attribute and break it to individual items
+  out <- modify2(
+    out, attr(out, "variable.labels", exact = TRUE),
+    ~ `attr<-`(.x, "label", .y)
+  )
+
+  # remove the tibble attribute, which is not needed anymore
+  attr(out, "variable.labels") <- NULL
+
+  out
 }
 
 
@@ -584,12 +578,16 @@ ls_invite <- function(survey_id, tid, uninvited_only = TRUE) {
 
 # ls_call("get_survey_properties", params = list(iSurveyID = 123456)) # set_ vesrsion avaiable, way to set attributes??
 
-# mail_registered_participants
-
-# add_participants
-
-
 # add participants to central database
 #
 # particips <- tibble(firstname = "Jan", lastname = "Nalallalaalalaetlkkík", email = "neasdftikja@sdgmail.com")
 # ls_call("cpd_importParticipants", params = list(participants = particips, update = T))
+
+
+
+# set participand properties
+#
+# map2(particip_data$tid, particip_data$attribute_1,
+#      ~ ls_call("set_participant_properties", list(258724, .x, list(attribute_1 = .y)))
+# )
+# # .x is token ID (tid)
