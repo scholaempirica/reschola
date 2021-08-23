@@ -57,7 +57,7 @@
 <meta property="og:title" content="Invite Participant(s) — ls_invite" />
 <meta property="og:description" content="Send an email with a link to a survey to the particular participant(s). Uses
 email template specified in the LimeSurvey web interface. Please read the
-setion &quot;On errors and messages from the API server&quot; of this documentation
+section &quot;On errors and messages from the API server&quot; of this documentation
 page before use." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
@@ -177,7 +177,7 @@ page before use." />
     <div class="ref-description">
     <p>Send an email with a link to a survey to the particular participant(s). Uses
 email template specified in the LimeSurvey web interface. Please read the
-setion <em>"On errors and messages from the API server"</em> of this documentation
+section <em>"On errors and messages from the API server"</em> of this documentation
 page before use.</p>
     </div>
 
@@ -224,6 +224,9 @@ send"</em> (where <em>"-1"</em> denotes the number of invitations sent).</p>
 possibly means that the <code>tid</code>s you use are not present in the survey of
 concern. However, it can also indicate that the invitation has been already
 sent to the <code>tid</code>s and you have to use <code>uninvited_only = FALSE</code> to proceed.</p>
+<p><strong>Note that when you add an email entry that has not a proper email format,
+no participants are added and tibble with <code>errors$email</code> list-column is
+returned.</strong></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other LimeSurvey functions: 
@@ -234,6 +237,7 @@ sent to the <code>tid</code>s and you have to use <code>uninvited_only = FALSE</
 <code><a href='ls_login.html'>ls_login</a>()</code>,
 <code><a href='ls_participants.html'>ls_participants</a>()</code>,
 <code><a href='ls_responses.html'>ls_responses</a>()</code>,
+<code><a href='ls_set_participant_properties.html'>ls_set_participant_properties</a>()</code>,
 <code><a href='ls_surveys.html'>ls_surveys</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

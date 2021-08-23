@@ -64,6 +64,9 @@
     <loc>https://scholaempirica.github.io/reschola/reference/ls_call.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/ls_check_attributes.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/ls_export.html</loc>
   </url>
   <url>
@@ -80,6 +83,9 @@
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/ls_responses.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/ls_set_participant_properties.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/ls_surveys.html</loc>
