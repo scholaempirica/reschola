@@ -1,7 +1,7 @@
 #' List All Surveys at the Server
 #'
 #' Lists every single survey found at the server you are logged in. Useful to
-#' gain information about surveys IDs etc.
+#' gain information about the surveys IDs etc.
 #'
 #' @return A tibble.
 #' @family LimeSurvey functions
@@ -39,7 +39,6 @@ ls_surveys <- function() {
 #' @importFrom dplyr left_join
 #' @importFrom usethis ui_stop ui_code
 #' @importFrom tidyselect eval_rename
-#' @importFrom rlang %@% %@%<-
 #'
 #' @family LimeSurvey functions
 #' @export
@@ -164,7 +163,8 @@ ls_sess_cache <- new.env(parent = emptyenv())
 #'
 #' @param method *character*, a method supported by LimeSurvey API.
 #' @param params *list*, arguments of the method. Need to be in order stated in
-#'   documentation.
+#'   documentation. **Note that `sSessionKey` auth credentials are already
+#'   provided as the first entry of `params` list.**
 #'
 #' @return A tibble, or raw object if server response cannot be reasonably
 #'   coerced to a tibble.
@@ -177,7 +177,7 @@ ls_sess_cache <- new.env(parent = emptyenv())
 #' @importFrom usethis ui_stop ui_field ui_code ui_info ui_value ui_oops
 #' @importFrom jsonlite toJSON fromJSON
 #' @importFrom tibble as_tibble
-#' @importFrom purrr pluck
+#' @importFrom purrr pluck modify_if
 #' @importFrom httr RETRY content_type_json status_code http_status
 #'
 #' @family LimeSurvey functions
@@ -187,6 +187,11 @@ ls_call <- function(method, params = list()) {
   if (!is.list(params)) {
     ui_stop("{ui_field('params')} must be a list.")
   }
+
+  if ("sSessionKey" %in% names(params)) {
+    ui_stop("{ui_field('sSessionKey')} entry is already provided!")
+  }
+
   if (!exists("sess_key_expiration", envir = ls_sess_cache) || ls_sess_cache$sess_key_expiration < Sys.time()) {
     ui_oops(c(
       "Cannot find valid session key in the cache.",
@@ -210,16 +215,22 @@ ls_call <- function(method, params = list()) {
 
   res <- parsed$result
 
+  error_msg <- pluck(parsed, "error")
   status_msg <- pluck(res, "status")
 
+  if (!is.null(error_msg)) {
+    ui_info("API returned an error:\n{ui_value(as.character(error_msg))}.")
+  }
   if (!is.null(status_msg)) {
     ui_info("API returned message:\n{ui_value(as.character(status_msg))}.")
   }
 
-  # try to make tibble from everything, return raw object when conversion fails
-  if (!inherits(res, c("tbl_df", "character", "list"))) {
+  # try to make tibble from everything except character and tibble
+  # return raw object when conversion fails
+  if (!inherits(res, c("tbl_df", "character"))) { # add "list" back if something fails
     tryCatch(
-      as_tibble(res),
+      # replace NULLs with NAs (to be able to turn it into a tibble)
+      as_tibble(modify_if(res, is.null, ~ NA)),
       error = function(e) {
         return(res)
       }
@@ -272,14 +283,7 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
       attributes <- .ls_all_attributes
     }
   } else {
-    illegal_attr <- !attributes %in% .ls_all_attributes
-    if (any(illegal_attr)) {
-      ui_stop(c(
-        "Following attributes are not supported: {ui_value(attributes[illegal_attr])}.",
-        "For custom attributes, use {ui_value('attribute_1 ... attribute_n')}.",
-        "\"Semantic\" names are not supported at the input side."
-      ))
-    }
+    ls_check_attributes(attributes)
   }
 
   res <- ls_call("list_participants", params = list(
@@ -326,6 +330,27 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
   "remindercount",
   paste0("attribute_", 1:100)
 )
+
+#' Check for Illegal Attributes
+#'
+#' Checks for illegal LS attributes and raises an error when any found.
+#'
+#' @param attributes vector of attributes
+#'
+ls_check_attributes <- function(attributes) {
+  illegal_attr <- !attributes %in% .ls_all_attributes
+  if (any(illegal_attr)) {
+    ui_stop(c(
+      "Following attributes are not supported: {ui_value(attributes[illegal_attr])}.",
+      "For custom attributes, use {ui_value('attribute_1 ... attribute_n')}.",
+      "\"Semantic\" names are not supported at the input side."
+    ))
+  }
+}
+
+
+
+
 
 #' Get Survey Attributes in Semantic Form
 #'
@@ -521,7 +546,7 @@ ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
 #'
 #' Send an email with a link to a survey to the particular participant(s). Uses
 #' email template specified in the LimeSurvey web interface. Please read the
-#' setion *"On errors and messages from the API server"* of this documentation
+#' section *"On errors and messages from the API server"* of this documentation
 #' page before use.
 #'
 #' LimeSurvey allows you to send so-called invitation to a participant, meaning
@@ -539,6 +564,10 @@ ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
 #'   possibly means that the `tid`s you use are not present in the survey of
 #'   concern. However, it can also indicate that the invitation has been already
 #'   sent to the `tid`s and you have to use `uninvited_only = FALSE` to proceed.
+#'
+#'   **Note that when you add an email entry that has not a proper email format,
+#'   no participants are added and tibble with `errors$email` list-column is
+#'   returned.**
 #'
 #' @param survey_id *integer*, ID of the survey (as found with `ls_surveys()`,
 #'   e.g.).
@@ -573,13 +602,61 @@ ls_invite <- function(survey_id, tid, uninvited_only = TRUE) {
 }
 
 
+#' Set or Edit Attribute(s) of an Participant
+#'
+#' @param survey_id  *integer*, ID of the survey (as found with `ls_surveys()`,
+#'   e.g.).
+#' @param participant *integer* or *list*, **one** token ID (**not token!**) from
+#'   participant database. Use `ls_participants()` to get the `tid`. Another
+#'   option is to pass a list of one ore more participant properties, i.e.
+#'   `list(lastname = "Doe")`
+#' @param ... attributes in the form `attribute_name = attribute_value`.
+#'
+#' @return A tibble with the participant row just edited.
+#'
+#' @family LimeSurvey functions
+#'
+#' @examples
+#' \dontrun{
+#' ls_set_participant_properties(123456,
+#'   participant = 18, email = "new@email.cz",
+#'   attribute_1 = 600123456
+#' )
+#' }
+#'
+#' @export
+ls_set_participant_properties <- function(survey_id, tid, ...) {
+  attributes <- list(...)
+  if (!is.list(tid) && length(tid) > 1) {
+    ui_stop("You can edit only one participand at the time.")
+  }
+
+  # aTokenQueryProperties can be an array of participant properties,
+  # i.e. lastname = "NAME", or TID, as an integer
+  # make tid an unboxed list for the API to recognize it as an array
+  if (is.list(tid)) {
+    tid <- I(tid)
+  }
+
+  ls_check_attributes(names(attributes))
+
+  ls_call("set_participant_properties",
+    params = list(
+      iSurveyID = survey_id,
+      aTokenQueryProperties = tid,
+      aTokenData = attributes
+    )
+  )
+}
+#
+# ls_get_participant_properties <- function(survey_id, tid) {
+#
+# }
+
 
 # proposals
 
-# ls_call("get_survey_properties", params = list(iSurveyID = 123456)) # set_ vesrsion avaiable, way to set attributes??
-
 # add participants to central database
-#
 # particips <- tibble(firstname = "Jan", lastname = "Nalallalaalalaetlkkík", email = "neasdftikja@sdgmail.com")
 # ls_call("cpd_importParticipants", params = list(participants = particips, update = T))
 

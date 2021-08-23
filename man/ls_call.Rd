@@ -10,7 +10,8 @@ ls_call(method, params = list())
 \item{method}{\emph{character}, a method supported by LimeSurvey API.}
 
 \item{params}{\emph{list}, arguments of the method. Need to be in order stated in
-documentation.}
+documentation. \strong{Note that \code{sSessionKey} auth credentials are already
+provided as the first entry of \code{params} list.}}
 }
 \value{
 A tibble, or raw object if server response cannot be reasonably
@@ -40,6 +41,7 @@ Other LimeSurvey functions:
 \code{\link{ls_login}()},
 \code{\link{ls_participants}()},
 \code{\link{ls_responses}()},
+\code{\link{ls_set_participant_properties}()},
 \code{\link{ls_surveys}()}
 }
 \concept{LimeSurvey functions}

@@ -54,6 +54,7 @@ Other LimeSurvey functions:
 \code{\link{ls_invite}()},
 \code{\link{ls_login}()},
 \code{\link{ls_responses}()},
+\code{\link{ls_set_participant_properties}()},
 \code{\link{ls_surveys}()}
 }
 \concept{LimeSurvey functions}

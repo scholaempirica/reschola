@@ -11,7 +11,7 @@ A tibble.
 }
 \description{
 Lists every single survey found at the server you are logged in. Useful to
-gain information about surveys IDs etc.
+gain information about the surveys IDs etc.
 }
 \examples{
 \dontrun{
@@ -28,6 +28,7 @@ Other LimeSurvey functions:
 \code{\link{ls_invite}()},
 \code{\link{ls_login}()},
 \code{\link{ls_participants}()},
-\code{\link{ls_responses}()}
+\code{\link{ls_responses}()},
+\code{\link{ls_set_participant_properties}()}
 }
 \concept{LimeSurvey functions}

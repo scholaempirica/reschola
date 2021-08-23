@@ -4,17 +4,21 @@
 
 - PDF template now handles footnotes better
     - TODO - incorporate changes from IvP and EZ, especially citations and so
-- czech_date_interval() now raises an error when you try to supply more than one entry
-- ls_responses() strips out the `tibble`-wide `variable.labels` attribute and spreads it among the individual variables, which enables you to modify the `tibble` without messing the labels positions and/or producing length incompatibilities
-
+- `czech_date_interval()` now raises an error when you try to supply more than one entry
+- `ls_responses()` strips out the `tibble`-wide `variable.labels` attribute and spreads it among the individual variables, which enables you to modify the `tibble` without messing the labels positions and/or producing length incompatibilities
+- `ls_call()` gives an error when you try to provide another `sSessionKey` in `params`
+- `ls_call()` passes `error` message to the user when there is one
+- `ls_call()` replaces `NULL`s with `NA`s (thus more API responses can be turned into a tibble)
+- the documentation is more verbose on some topics
 
 ## New features
 
 - new function `copy_schola_template()` which copies the template (`pdf` by default) into the active project directory
+- new function `ls_set_participant_properties()` enabling you to set or edit participant table
 
 ## Bug fixes
 
-- `czech_date_interval()` now correctly supresses redundant information 
+- `czech_date_interval()` now correctly suppresses redundant information 
 
 # reschola 0.3.2 (Limy Schola)
 
@@ -50,7 +54,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
     - reasonable defaults are used so the YAML header is not cluttered with stuff
     - figures are in PDF (via `cairo` device so non-ASCII characters are well supported) and are cropped automatically (new function `ensure_cropping()` that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)
     - takes care of non-breakable spaces in Czech (especially before singlecharacter prepositions) via pre-release `pandoc` Lua filter (only repo fork currently, thanks [Delanii](https://github.com/Delanii/lua-filters))
-    - handy `author` Pandoc variable (used in YAML header), which takes the language `lang` and automatically typesets the "and" or "a" separator before the last author (when there is only one, no separators are indroduced whatsoever)
+    - handy `author` Pandoc variable (used in YAML header), which takes the language `lang` and automatically typesets the "and" or "a" separator before the last author (when there is only one, no separators are introduced whatsoever)
 
 
 - `reschola` is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:

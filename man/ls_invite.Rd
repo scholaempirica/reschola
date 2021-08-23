@@ -23,7 +23,7 @@ Called for a side effect. Returns a message from the server.
 \description{
 Send an email with a link to a survey to the particular participant(s). Uses
 email template specified in the LimeSurvey web interface. Please read the
-setion \emph{"On errors and messages from the API server"} of this documentation
+section \emph{"On errors and messages from the API server"} of this documentation
 page before use.
 }
 \details{
@@ -43,6 +43,10 @@ Another message you may see is \emph{"Error: No candidate tokens"}, which
 possibly means that the \code{tid}s you use are not present in the survey of
 concern. However, it can also indicate that the invitation has been already
 sent to the \code{tid}s and you have to use \code{uninvited_only = FALSE} to proceed.
+
+\strong{Note that when you add an email entry that has not a proper email format,
+no participants are added and tibble with \code{errors$email} list-column is
+returned.}
 }
 
 \examples{
@@ -60,6 +64,7 @@ Other LimeSurvey functions:
 \code{\link{ls_login}()},
 \code{\link{ls_participants}()},
 \code{\link{ls_responses}()},
+\code{\link{ls_set_participant_properties}()},
 \code{\link{ls_surveys}()}
 }
 \concept{LimeSurvey functions}
