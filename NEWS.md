@@ -1,9 +1,14 @@
 # reschola (development version)
 
+## TODO
+
+- PDF template: incorporate changes from IvP and EZ, especially citations and so on
+- remove `redoc`
+- amend R CMD warnings
+
 ## Changes
 
 - PDF template now handles footnotes better
-    - TODO - incorporate changes from IvP and EZ, especially citations and so
 - `czech_date_interval()` now raises an error when you try to supply more than one entry
 - `ls_responses()` strips out the `tibble`-wide `variable.labels` attribute and spreads it among the individual variables, which enables you to modify the `tibble` without messing the labels positions and/or producing length incompatibilities
 - `ls_call()` gives an error when you try to provide another `sSessionKey` in `params`
