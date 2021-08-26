@@ -625,17 +625,17 @@ ls_invite <- function(survey_id, tid, uninvited_only = TRUE) {
 #' }
 #'
 #' @export
-ls_set_participant_properties <- function(survey_id, tid, ...) {
+ls_set_participant_properties <- function(survey_id, participant, ...) {
   attributes <- list(...)
-  if (!is.list(tid) && length(tid) > 1) {
+  if (!is.list(participant) && length(participant) > 1) {
     ui_stop("You can edit only one participand at the time.")
   }
 
   # aTokenQueryProperties can be an array of participant properties,
   # i.e. lastname = "NAME", or TID, as an integer
   # make tid an unboxed list for the API to recognize it as an array
-  if (is.list(tid)) {
-    tid <- I(tid)
+  if (is.list(participant)) {
+    tid <- I(participant)
   }
 
   ls_check_attributes(names(attributes))
@@ -643,12 +643,13 @@ ls_set_participant_properties <- function(survey_id, tid, ...) {
   ls_call("set_participant_properties",
     params = list(
       iSurveyID = survey_id,
-      aTokenQueryProperties = tid,
+      aTokenQueryProperties = participant,
       aTokenData = attributes
     )
   )
 }
-#
+
+
 # ls_get_participant_properties <- function(survey_id, tid) {
 #
 # }
