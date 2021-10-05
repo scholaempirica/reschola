@@ -247,7 +247,7 @@ ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
 
 ## Sizing images
 
-The `schola_[word|redoc]` formats have opinionated sizing defaults to ensure that resolution, size and font size in the bitmap (PNG) image are in line with the rest of the document.
+The `schola_[word|pdf]` formats have opinionated sizing defaults to ensure that resolution, size and font size in the bitmap (PNG) image are in line with the rest of the document.
 This is particularly tricky in the context of Word documents, hence the baked in defaults. For this reason, the steps to change images sizes are a bit special - see below.
 
 Here is what the defaults are:
@@ -278,7 +278,7 @@ These may not be present on your system.
 You can install them by running `reschola::import_fonts()`. (once per machine, and do follow the instructions in the message output when you call this function.)
 On package load, these will be registered with R.
 If the fonts do not show up in your charts, run `extrafont::loadfonts()` (once per session).
-You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system - if not, first try using the `cairo_pdf` device and/or running `extrafont::embed_fonts()` on the whole resulting PDF document.)
+You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system -- if not, first try using the `cairo_pdf` device and/or running `extrafont::embed_fonts()` on the whole resulting PDF document.)
 
 ## Using fonts
 

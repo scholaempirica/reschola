@@ -4,18 +4,18 @@
 \alias{ls_set_participant_properties}
 \title{Set or Edit Attribute(s) of an Participant}
 \usage{
-ls_set_participant_properties(survey_id, tid, ...)
+ls_set_participant_properties(survey_id, participant, ...)
 }
 \arguments{
 \item{survey_id}{\emph{integer}, ID of the survey (as found with \code{ls_surveys()},
 e.g.).}
 
-\item{...}{attributes in the form \code{attribute_name = attribute_value}.}
-
 \item{participant}{\emph{integer} or \emph{list}, \strong{one} token ID (\strong{not token!}) from
 participant database. Use \code{ls_participants()} to get the \code{tid}. Another
 option is to pass a list of one ore more participant properties, i.e.
 \code{list(lastname = "Doe")}}
+
+\item{...}{attributes in the form \code{attribute_name = attribute_value}.}
 }
 \value{
 A tibble with the participant row just edited.

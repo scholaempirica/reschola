@@ -188,24 +188,21 @@ ls_call <- function(method, params = list()) {
     ui_stop("{ui_field('params')} must be a list.")
   }
 
+  # in case someone tries to provide this parameter directly
   if ("sSessionKey" %in% names(params)) {
     ui_stop("{ui_field('sSessionKey')} entry is already provided!")
   }
 
   if (!exists("sess_key_expiration", envir = ls_sess_cache) || ls_sess_cache$sess_key_expiration < Sys.time()) {
-    ui_oops(c(
-      "Cannot find valid session key in the cache.",
-      "Either the key wasn't entered at all or it may have expired."
-    ))
-
-    ui_info("Automatically calling {ui_code('ls_login()')} for aid.")
+    ui_info("Retrieving valid session key...")
     ls_login()
   }
 
   params <- c(sSessionKey = ls_sess_cache$sess_key, params)
   body <- list(method = method, id = " ", params = params)
   r <- RETRY("POST", Sys.getenv("LS_URL"), content_type_json(),
-    body = toJSON(body, auto_unbox = TRUE, null = "null") # when something does not work, look carefully whether param is passed as single value or an array of lenght 1
+    body = toJSON(body, auto_unbox = TRUE, null = "null")
+    # when something does not work, look carefully whether param is passed as single value or an array of length 1
   )
 
   parsed <- fromJSON(content(r,
@@ -405,6 +402,8 @@ ls_get_attrs <- function(survey_id) {
 #'
 #' @param survey_id *integer*, ID of the survey (as found with `ls_surveys`,
 #'   e.g.).
+#' @param clean_labels *logical*, whether to clean labels of subquestions from
+#'   repeating parts. Defaults to `TRUE`.
 #' @param lang *character*, ISO 639 language code, default to `cs`.
 #' @param part *character*, completion status, either `complete`, `incomplete`
 #'   or `all` (the default).
@@ -425,7 +424,7 @@ ls_get_attrs <- function(survey_id) {
 #' @family LimeSurvey functions
 #'
 #' @export
-ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
+ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "all", ...) {
   part <- match.arg(part, c("complete", "incomplete", "all"))
 
   data <- ls_call("export_responses",
@@ -468,15 +467,16 @@ ls_responses <- function(survey_id, lang = "cs", part = "all", ...) {
     source(textConnection(syntax), encoding = "UTF-8", local = TRUE)
   )
 
-  # repair names for left_join in ls_export
-  # TODO: move to ls_export
+  # repair names (possibly duplicated)
   out <- as_tibble(data, .name_repair = ~ make.unique(.x, "_"))
 
   # get the tibble variable.labels attribute and break it to individual items
-  out <- modify2(
+  out <- if (clean_labels) {modify2(
     out, attr(out, "variable.labels", exact = TRUE),
     ~ `attr<-`(.x, "label", .y)
-  )
+  )} else {
+
+  }
 
   # remove the tibble attribute, which is not needed anymore
   attr(out, "variable.labels") <- NULL

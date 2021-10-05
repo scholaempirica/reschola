@@ -36,7 +36,6 @@ See the [Workflow](workflow.html) vignette for how to make the best use of the t
 
 Accessed through the RStudio menu: `File > New File > R Markdown > From Template` > [scroll down to reschola package], or through `draft_*` functions in the reschola package.
 
-Notably, there is a template based on `redoc`, a package enabling collaboration between Rmarkdown and MS Word. 
 See the [Workflow](workflow.html) vignette (`vignette('workflow', package = 'reschola')`) for details.
 
 There are tips for working efficiently and for packages for specific tasks in the [tips](tips.html) vignette.

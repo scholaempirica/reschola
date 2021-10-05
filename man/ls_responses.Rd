@@ -4,11 +4,14 @@
 \alias{ls_responses}
 \title{Export Responses}
 \usage{
-ls_responses(survey_id, lang = "cs", part = "all", ...)
+ls_responses(survey_id, clean_labels = TRUE, lang = "cs", part = "all", ...)
 }
 \arguments{
 \item{survey_id}{\emph{integer}, ID of the survey (as found with \code{ls_surveys},
 e.g.).}
+
+\item{clean_labels}{\emph{logical}, whether to clean labels of subquestions from
+repeating parts. Defaults to \code{TRUE}.}
 
 \item{lang}{\emph{character}, ISO 639 language code, default to \code{cs}.}
 

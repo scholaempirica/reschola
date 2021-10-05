@@ -24,7 +24,6 @@ draft_word("new_file")
 }
 \seealso{
 Other Workflow helpers: 
-\code{\link{draft_redoc}()},
 \code{\link{gd_download_folder}()},
 \code{\link{manage_docx_header_logos}()}
 }

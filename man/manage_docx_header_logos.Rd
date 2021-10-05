@@ -48,7 +48,6 @@ manage_docx_header_logos("draft.docx", png_logo_path = "logos/newlogo.png",
 }
 \seealso{
 Other Workflow helpers: 
-\code{\link{draft_redoc}()},
 \code{\link{draft_word}()},
 \code{\link{gd_download_folder}()}
 }

@@ -32,8 +32,6 @@ Try to use as few as is reasonable; avoid obscure ones. Prefer CRAN releases.
 
 Prefer versions where CRAN binaries are available for all platforms.
 
-An exception currently is `redoc`, which is early stages and we even use a custom patch, but that is because it provides key functionality we cannot get otherwise.
-
 ### Quality assurance
 
 [Pre-commit checks](https://github.com/lorenzwalthert/precommit) are used to ensure that broken code is not committed.
@@ -60,14 +58,6 @@ See installation instructions in README.md for how to install these binaries.
 
 The continuous integration pipeline (Travis CI and Github Pages) means that whenever code is pushed to Github, the documentation of the package is converted to a website by the `pkgdown` package and published on [scholaempirica.github.io/reschola](https://scholaempirica.github.io/reschola) via the `gh-pages` branch of the repository. 
 
-## Future-proofing the package
-
-There are three areas where I think future developments might make the package fragile:
-
-1. R 4.0: let's test when it is released and update if needed
-2. redoc: we currently use a "frozen" fork with some quick fixes; if the author accepts those fixes or develops the package further, we should switch how that dependency is recorded and update other code in the package and its documentation as needed
-3. The website: the Travis CI service sometimes acts funny, particularly when authenticating to Github. The recommended practice of running the checks and website build process on Github Actions is not available as GH Actions throws an error, possibly related to the non-standard redoc dependency. If a workflow becomes available for GH Actions that handles this, we can move it over.
-
 ## Reusing/reshaping the documentation
 
 ### Making changes
@@ -86,7 +76,7 @@ The vignettes are in principle Rmd files with a special YAML header so can be re
 
 ## How to change key parts
 
-- word template styles: use Word to open and edit styles in `template.docx` in `inst/rmarkdown/templates/schola_*/resources/`; edit each one separately (do not copy one file to another folder as `redoc` has special parts in the `docx` file).
+- word template styles: use Word to open and edit styles in `template.docx` in `inst/rmarkdown/templates/schola_*/resources/`
 - text in articles/vignettes: `vignettes/*.Rmd`
 - default content of Rmarkdown files created from `reschola` templates: `inst/rmarkdown/templates/schola_*/skeleton/skeleton.Rmd`
 - Rmarkdown templates knitr param defaults: look at the `base$knitr$opts_chunk` bits in `R/rmarkdown_output.R`

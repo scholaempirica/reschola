@@ -1,10 +1,13 @@
-# reschola (development version)
+# reschola 0.3.3
 
-## TODO
-
+<!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
-- remove `redoc`
 - amend R CMD warnings
+-->
+
+## Breaking changes
+
+- `redoc` reversible Word format is now completely removed from the package; from now on, use `schola_pdf()` (`schola_word()` is still available)
 
 ## Changes
 
@@ -14,10 +17,12 @@
 - `ls_call()` gives an error when you try to provide another `sSessionKey` in `params`
 - `ls_call()` passes `error` message to the user when there is one
 - `ls_call()` replaces `NULL`s with `NA`s (thus more API responses can be turned into a tibble)
+- `ls_call()` messaging is less disruptive
 - the documentation is more verbose on some topics
 
 ## New features
 
+<!-- - `ls_export()` now gains argument `clean_labels` which by default cleans up repeating parts of labels of subquestions (i.e., those outside square brackets) from LimeSurvey -->
 - new function `copy_schola_template()` which copies the template (`pdf` by default) into the active project directory
 - new function `ls_set_participant_properties()` enabling you to set or edit participant table
 

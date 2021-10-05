@@ -38,7 +38,6 @@ Other Report templates and formats:
 \code{\link{copy_schola_template}()},
 \code{\link{open_schola_template}()},
 \code{\link{schola_pdf}()},
-\code{\link{schola_redoc}()},
 \code{\link{schola_word}()}
 }
 \author{

@@ -40,7 +40,6 @@ Imports:
     png (>= 0.1.7),
     purrr (>= 0.3.3),
     readxl (>= 1.3.1),
-    redoc (>= 0.1.0.9000),
     rmarkdown (>= 2.1),
     rstudioapi,
     scales (>= 1.1.0),
@@ -60,11 +59,9 @@ Suggests:
     spelling
 VignetteBuilder: 
     knitr
-Remotes: 
-    petrbouchal/redoc
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 RdMacros: lifecycle

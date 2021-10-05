@@ -80,7 +80,6 @@ schola_project <- function(path, ...) {
   "source('002_read-data.R')",
   "source('003_check-and-process-data.R')",
   "rmarkdown::render('01_schola-styled-word.Rmd', output_dir = 'reports-output')",
-  "rmarkdown::render('02_schola-styled-redoc.Rmd', output_dir = 'reports-output')",
   "rmarkdown::render('99_reproducibility.Rmd', output_dir = 'reports-output')",
   sep = "\n\n")
 
@@ -148,7 +147,6 @@ schola_project <- function(path, ...) {
 
   # print(usethis::proj_sitrep())
   draft_word(name  = "01_schola-styled-word.Rmd", open = F)
-  # draft_redoc(name = "02_schola-styled-redoc.Rmd", open = F)
 
   # delete R directory which was created automatically
 
