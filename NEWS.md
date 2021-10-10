@@ -1,4 +1,4 @@
-# reschola 0.3.3 ()
+# reschola 0.3.3 (Save the Fonts)
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
