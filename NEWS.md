@@ -13,7 +13,6 @@
 
 - PDF template now handles footnotes better
 - `czech_date_interval()` now raises an error when you try to supply more than one entry
-- `ls_responses()` strips out the `tibble`-wide `variable.labels` attribute and spreads it among the individual variables, which enables you to modify the `tibble` without messing the labels positions and/or producing length incompatibilities
 - `ls_call()` gives an error when you try to provide another `sSessionKey` in `params`
 - `ls_call()` passes `error` message to the user when there is one
 - `ls_call()` replaces `NULL`s with `NA`s (thus more API responses can be turned into a tibble)
@@ -22,8 +21,8 @@
 
 ## New features
 
-<!-- - `ls_export()` now gains argument `clean_labels` which by default cleans up repeating parts of labels of subquestions (i.e., those outside square brackets) from LimeSurvey -->
-- new function `copy_schola_template()` which copies the template (`pdf` by default) into the active project directory
+- `ls_responses()` (and thus `ls_export()`) strips out the `tibble`-wide `variable.labels` attribute and spreads it among the individual variables, which enables you to modify the `tibble` without messing the labels positions and/or producing length incompatibilities
+- `ls_export()` gains new argument `clean_labels` which by default cleans up repeating parts of labels of subquestions (i.e., those outside square brackets)
 - new function `ls_set_participant_properties()` enabling you to set or edit participant table
 
 ## Bug fixes

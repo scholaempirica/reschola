@@ -1,61 +1,3 @@
-#' List All Surveys at the Server
-#'
-#' Lists every single survey found at the server you are logged in. Useful to
-#' gain information about the surveys IDs etc.
-#'
-#' @return A tibble.
-#' @family LimeSurvey functions
-#'
-#' @examples
-#' \dontrun{
-#' ls_surveys()
-#' }
-#'
-#' @importFrom dplyr rename
-#' @importFrom magrittr %>%
-#' @importFrom rlang .data
-#'
-#' @export
-ls_surveys <- function() {
-  ls_call("list_surveys") %>% rename(survey_id = .data$sid, title = .data$surveyls_title)
-}
-
-
-#' Export Responses with Participants Attached
-#'
-#' @inheritParams ls_responses
-#' @inheritParams ls_participants
-#' @param join_by *character*, the joining variable present in both responses
-#'   and participants tibbles. Default to `token`. Pass `NULL` to join by common
-#'   variables.
-#' @inheritDotParams dplyr::left_join -x -y -by
-#'
-#' @return A tibble.
-#' @examples
-#' \dontrun{
-#' ls_export(123456)
-#' }
-#'
-#' @importFrom dplyr left_join
-#' @importFrom usethis ui_stop ui_code
-#' @importFrom tidyselect eval_rename
-#'
-#' @family LimeSurvey functions
-#' @export
-ls_export <- function(survey_id, attributes = TRUE, n_participants = 999,
-                      lang = "cs", part = "all", only_unused_tokens = FALSE,
-                      join_by = "token", ...) {
-  participants <- ls_participants(survey_id,
-    n_participants = n_participants,
-    only_unused_tokens = only_unused_tokens, attributes = attributes
-  )
-
-  responses <- ls_responses(survey_id, lang = lang, part = part)
-
-  left_join(participants, responses, by = join_by, ...)
-}
-
-
 #' Login to LimeSurvey API
 #'
 #' Obtains XML-RPC/JSON-RPC session key and stores it in dedicated environment
@@ -227,7 +169,7 @@ ls_call <- function(method, params = list()) {
   if (!inherits(res, c("tbl_df", "character"))) { # add "list" back if something fails
     tryCatch(
       # replace NULLs with NAs (to be able to turn it into a tibble)
-      as_tibble(modify_if(res, is.null, ~ NA)),
+      as_tibble(modify_if(res, is.null, ~NA)),
       error = function(e) {
         return(res)
       }
@@ -235,6 +177,30 @@ ls_call <- function(method, params = list()) {
   } else {
     res
   }
+}
+
+
+#' List All Surveys at the Server
+#'
+#' Lists every single survey found at the server you are logged in. Useful to
+#' gain information about the surveys IDs etc.
+#'
+#' @return A tibble.
+#' @family LimeSurvey functions
+#'
+#' @examples
+#' \dontrun{
+#' ls_surveys()
+#' }
+#'
+#' @importFrom dplyr rename
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#'
+#' @export
+ls_surveys <- function() {
+  ls_call("list_surveys") %>%
+    rename(survey_id = .data$sid, title = .data$surveyls_title)
 }
 
 
@@ -306,99 +272,14 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 }
 
 
-# define possible LS attributes --- may need updates
-.ls_all_attributes <- c(
-  "id",
-  "tid",
-  "token",
-  "completed",
-  "participant_id",
-  "language",
-  "usesleft",
-  "firstname",
-  "lastname",
-  "email",
-  "blacklisted",
-  "validfrom",
-  "sent",
-  "validuntil",
-  "remindersent",
-  "emailstatus",
-  "remindercount",
-  paste0("attribute_", 1:100)
-)
-
-#' Check for Illegal Attributes
-#'
-#' Checks for illegal LS attributes and raises an error when any found.
-#'
-#' @param attributes vector of attributes
-#'
-ls_check_attributes <- function(attributes) {
-  illegal_attr <- !attributes %in% .ls_all_attributes
-  if (any(illegal_attr)) {
-    ui_stop(c(
-      "Following attributes are not supported: {ui_value(attributes[illegal_attr])}.",
-      "For custom attributes, use {ui_value('attribute_1 ... attribute_n')}.",
-      "\"Semantic\" names are not supported at the input side."
-    ))
-  }
-}
-
-
-
-
-
-#' Get Survey Attributes in Semantic Form
-#'
-#' A survey can comprise one or more custom attributes useful for encoding
-#' participant characteristics directly within participants table. However,
-#' LimeSurvey refers to them as `attribute_x` (where `x` is the attribute
-#' position) which is not useful at all. The function aims to resolve this issue
-#' by returning so-called "semantic" form of attributes with human-readable
-#' description.
-#'
-#' @param survey_id *integer*, ID of the survey (as found, e.g., with
-#'   `ls_surveys()`).
-#'
-#' @return A character vector of "semantic" attributes with names denoting "raw"
-#'   attributes used internally by LimeSurvey.
-#'
-#' @family LimeSurvey functions
-#'
-#' @examples
-#' \dontrun{
-#' ls_get_attrs(123456)
-#' }
-#'
-#' @importFrom jsonlite fromJSON
-#' @importFrom rlang set_names
-#' @importFrom dplyr rename
-#' @importFrom usethis ui_info
-#' @importFrom purrr pluck map_chr
-#'
-#' @export
-ls_get_attrs <- function(survey_id) {
-  attrs <- ls_call("get_survey_properties", params = list(iSurveyID = survey_id)) %>%
-    pluck("attributedescriptions")
-
-  if (is.null(attrs)) {
-    ui_info("No attributes were found.")
-    return(NULL)
-  }
-
-  attrs %>%
-    fromJSON() %>%
-    map_chr("description")
-}
-
-
 #' Export Responses
 #'
 #' Fetches responses and applies so-called "R-syntax" transformation script from
-#' LimeSurvey pertaining factor levels and items attributes (those are readily
-#' available in RStudio dataframe preview and can be extracted using
-#' `attributes()`).
+#' LimeSurvey pertaining factor levels and items labels (those are readily
+#' available in RStudio data frame preview and can be extracted using
+#' `attr(.data, "label")`). By default, the function attempts to "clean" the
+#' labels (`clean_labels` argument), keeping only the content inside `[...]`, if
+#' there are any.
 #'
 #' @param survey_id *integer*, ID of the survey (as found with `ls_surveys`,
 #'   e.g.).
@@ -470,18 +351,144 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
   # repair names (possibly duplicated)
   out <- as_tibble(data, .name_repair = ~ make.unique(.x, "_"))
 
-  # get the tibble variable.labels attribute and break it to individual items
-  out <- if (clean_labels) {modify2(
-    out, attr(out, "variable.labels", exact = TRUE),
-    ~ `attr<-`(.x, "label", .y)
-  )} else {
+  # extract variable labels
+  labels <- attr(out, "variable.labels", exact = TRUE)
 
+  # clean the labels, keeping only the content inside [ ], if there is one
+  labels <- if (clean_labels) {
+    str_replace(labels, ".*?\\[(.*?)\\].*", "\\1")
   }
+
+  # get the tibble variable.labels attribute and break it to individual items
+  out <- modify2(
+    out, labels,
+    ~ `attr<-`(.x, "label", .y)
+  )
 
   # remove the tibble attribute, which is not needed anymore
   attr(out, "variable.labels") <- NULL
 
   out
+}
+
+
+#' Export Responses with Participants Attached
+#'
+#' @inheritParams ls_responses
+#' @inheritParams ls_participants
+#' @param join_by *character*, the joining variable present in both responses
+#'   and participants tibbles. Default to `token`. Pass `NULL` to join by common
+#'   variables.
+#' @inheritDotParams dplyr::left_join -x -y -by
+#'
+#' @return A tibble.
+#' @examples
+#' \dontrun{
+#' ls_export(123456)
+#' }
+#'
+#' @importFrom dplyr left_join
+#' @importFrom usethis ui_stop ui_code
+#' @importFrom tidyselect eval_rename
+#'
+#' @family LimeSurvey functions
+#' @export
+ls_export <- function(survey_id, attributes = TRUE, clean_labels = TRUE, n_participants = 999,
+                      lang = "cs", part = "all", only_unused_tokens = FALSE,
+                      join_by = "token", ...) {
+  participants <- ls_participants(survey_id,
+    n_participants = n_participants,
+    only_unused_tokens = only_unused_tokens, attributes = attributes
+  )
+
+  responses <- ls_responses(survey_id, clean_labels = clean_labels, lang = lang, part = part)
+
+  left_join(participants, responses, by = join_by, ...)
+}
+
+
+# define possible LS attributes --- may need updates
+.ls_all_attributes <- c(
+  "id",
+  "tid",
+  "token",
+  "completed",
+  "participant_id",
+  "language",
+  "usesleft",
+  "firstname",
+  "lastname",
+  "email",
+  "blacklisted",
+  "validfrom",
+  "sent",
+  "validuntil",
+  "remindersent",
+  "emailstatus",
+  "remindercount",
+  paste0("attribute_", 1:100)
+)
+
+
+#' Check for Illegal Attributes
+#'
+#' Checks for illegal LS attributes and raises an error when any found.
+#'
+#' @param attributes vector of attributes
+#'
+ls_check_attributes <- function(attributes) {
+  illegal_attr <- !attributes %in% .ls_all_attributes
+  if (any(illegal_attr)) {
+    ui_stop(c(
+      "Following attributes are not supported: {ui_value(attributes[illegal_attr])}.",
+      "For custom attributes, use {ui_value('attribute_1 ... attribute_n')}.",
+      "\"Semantic\" names are not supported at the input side."
+    ))
+  }
+}
+
+
+#' Get Survey Attributes in Semantic Form
+#'
+#' A survey can comprise one or more custom attributes useful for encoding
+#' participant characteristics directly within participants table. However,
+#' LimeSurvey refers to them as `attribute_x` (where `x` is the attribute
+#' position) which is not useful at all. The function aims to resolve this issue
+#' by returning so-called "semantic" form of attributes with human-readable
+#' description.
+#'
+#' @param survey_id *integer*, ID of the survey (as found, e.g., with
+#'   `ls_surveys()`).
+#'
+#' @return A character vector of "semantic" attributes with names denoting "raw"
+#'   attributes used internally by LimeSurvey.
+#'
+#' @family LimeSurvey functions
+#'
+#' @examples
+#' \dontrun{
+#' ls_get_attrs(123456)
+#' }
+#'
+#' @importFrom jsonlite fromJSON
+#' @importFrom rlang set_names
+#' @importFrom dplyr rename
+#' @importFrom usethis ui_info
+#' @importFrom purrr pluck map_chr
+#'
+#' @export
+ls_get_attrs <- function(survey_id) {
+  attrs <- ls_call("get_survey_properties", params = list(iSurveyID = survey_id)) %>%
+    pluck("attributedescriptions")
+
+  if (is.null(attrs)) {
+    ui_info("No attributes were found.")
+    return(NULL)
+  }
+
+  attrs %>%
+    fromJSON() %>%
+    map_chr("description")
 }
 
 
@@ -539,7 +546,6 @@ ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
     )
   )
 }
-
 
 
 #' Invite Participant(s)
@@ -662,8 +668,7 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 # ls_call("cpd_importParticipants", params = list(participants = particips, update = T))
 
 
-
-# set participand properties
+# set participant properties
 #
 # map2(particip_data$tid, particip_data$attribute_1,
 #      ~ ls_call("set_participant_properties", list(258724, .x, list(attribute_1 = .y)))

@@ -27,9 +27,11 @@ coerced to a tibble.
 }
 \description{
 Fetches responses and applies so-called "R-syntax" transformation script from
-LimeSurvey pertaining factor levels and items attributes (those are readily
-available in RStudio dataframe preview and can be extracted using
-\code{attributes()}).
+LimeSurvey pertaining factor levels and items labels (those are readily
+available in RStudio data frame preview and can be extracted using
+\code{attr(.data, "label")}). By default, the function attempts to "clean" the
+labels (\code{clean_labels} argument), keeping only the content inside \verb{[...]}, if
+there are any.
 }
 \examples{
 \dontrun{

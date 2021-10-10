@@ -7,6 +7,7 @@
 ls_export(
   survey_id,
   attributes = TRUE,
+  clean_labels = TRUE,
   n_participants = 999,
   lang = "cs",
   part = "all",
@@ -21,6 +22,9 @@ e.g.).}
 
 \item{attributes}{\emph{logical} try to recover all attributes (default to TRUE),
 or \emph{character vector} specifying requested attributes.}
+
+\item{clean_labels}{\emph{logical}, whether to clean labels of subquestions from
+repeating parts. Defaults to \code{TRUE}.}
 
 \item{n_participants}{\emph{integer}, the number of participants to list, defualt
 to 999.}
