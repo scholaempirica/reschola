@@ -1,11 +1,9 @@
 JN:
 - implement functions from shared.R
 - emailer with reasonable defaults, prompts
-- LimeSurvey API implementation
 - check ggplot template for possible issues, use %+replace% operator,
   think about theme_set() approach with any additional theming via theme(),
-  maybe move `gridlines` arg to dedicated theme() fucntions
-- hex logo redesign after the new visual style!!!
+  maybe move `gridlines` arg to dedicated theme() functions
 
 PB:
 - scale_x_percent_cz
