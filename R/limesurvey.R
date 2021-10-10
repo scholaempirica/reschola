@@ -389,7 +389,6 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
 #'
 #' @importFrom dplyr left_join
 #' @importFrom usethis ui_stop ui_code
-#' @importFrom tidyselect eval_rename
 #'
 #' @family LimeSurvey functions
 #' @export

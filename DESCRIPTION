@@ -1,67 +1,52 @@
 Package: reschola
 Title: The Schola Empirica Package
-Version: 0.3.2.9000
-Authors@R: 
-    c(person(given = "Petr",
-             family = "Bouchal",
-             role = c("aut", "cre"),
-             email = "pbouchal@gmail.com",
-             comment = c(ORCID = "0000-0002-0471-716X")),
-      person(given = "Jan",
-             family = "Netík",
-             role = "aut",
-             email = "netikja@gmail.com",
-             comment = c(ORCID = "0000-0002-3888-3203")),
-      person(given = "Jaromír",
-             family = "Mazák",
-             role = "ctb"),
-      person(given = "Aleš",
-             family = "Vomáčka",
-             role = "ctb"),
-      person(given = "SCHOLA EMPIRICA, z. s.",
-             role = c("cph", "fnd")))
+Version: 0.3.3
+Authors@R: c(
+    person("Petr", "Bouchal", , "pbouchal@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0471-716X")),
+    person("Jan", "Netík", , "netikja@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0002-3888-3203")),
+    person("Jaromír", "Mazák", role = "ctb"),
+    person("Aleš", "Vomáčka", role = "ctb"),
+    person("SCHOLA EMPIRICA, z. s.", role = c("cph", "fnd"))
+  )
 Description: A collection of utilies, themes and templates for data
     analysis at Schola Empirica.
 License: MIT + file LICENSE
 URL: https://github.com/scholaempirica/reschola
 BugReports: https://github.com/scholaempirica/reschola/issues
 Imports: 
-    bookdown (>= 0.15),
-    dplyr (>= 0.8.4),
-    extrafont (>= 0.17),
-    forcats (>= 0.4.0),
-    fs (>= 1.3.2),
-    ggplot2 (>= 3.3.0),
-    googledrive (>= 1.0.0),
-    haven (>= 2.2.0),
-    hrbrthemes (>= 0.6.0),
-    magrittr,
-    officer (>= 0.3.8),
-    png (>= 0.1.7),
-    purrr (>= 0.3.3),
-    readxl (>= 1.3.1),
-    rmarkdown (>= 2.1),
-    rstudioapi,
-    scales (>= 1.1.0),
-    sessioninfo (>= 1.1.1),
-    stringr (>= 1.4.0),
-    tibble (>= 2.1.3),
-    tidyr (>= 1.0.0),
-    usethis (>= 1.5.1),
-    writexl (>= 1.1),
-    lifecycle,
+    bookdown,
+    dplyr,
+    extrafont,
+    fs,
+    ggplot2,
+    googledrive,
+    hrbrthemes,
     httr,
     jsonlite,
+    knitr,
+    lifecycle,
+    magrittr,
+    officer,
+    png,
+    purrr,
     rlang,
-    tidyselect,
-    knitr
+    rmarkdown,
+    rstudioapi,
+    scales,
+    stringr,
+    tibble,
+    tidyr,
+    usethis
 Suggests: 
     spelling
 VignetteBuilder: 
     knitr
+RdMacros: 
+    lifecycle
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-RdMacros: lifecycle

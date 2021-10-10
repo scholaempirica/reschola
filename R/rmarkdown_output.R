@@ -244,6 +244,8 @@ schola_word <- function(reference_docx = find_resource("schola_word", "template.
 #' @author Jan Netik
 #' @export
 #'
+#' @importFrom lifecycle deprecate_warn
+#'
 #' @examples
 #' \dontrun{
 #' output:
@@ -251,7 +253,7 @@ schola_word <- function(reference_docx = find_resource("schola_word", "template.
 #' reference_docx:template.docx
 #' }
 schola_word2 <- function(...) {
-  lifecycle::deprecate_warn("0.2.13", "reschola::schola_word2()", "reschola::schola_word()")
+  deprecate_warn("0.2.13", "reschola::schola_word2()", "reschola::schola_word()")
 
   base <- bookdown::word_document2(...)
 
