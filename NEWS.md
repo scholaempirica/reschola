@@ -1,4 +1,4 @@
-# reschola 0.3.3
+# reschola 0.3.3 ()
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
@@ -7,7 +7,7 @@
 
 ## Breaking changes
 
-- `redoc` reversible Word format is now completely removed from the package; from now on, use `schola_pdf()` (`schola_word()` is still available)
+- `redoc` reversible Word format is now completely removed from the package; from now on, use `schola_pdf()` primarily (`schola_word()` is still available)
 
 ## Changes
 
@@ -18,16 +18,19 @@
 - `ls_call()` replaces `NULL`s with `NA`s (thus more API responses can be turned into a tibble)
 - `ls_call()` messaging is less disruptive
 - the documentation is more verbose on some topics
+- fonts registration is now more verbose and `import_fonts()` checks that everything went well; solutions are provided otherwise
 
 ## New features
 
 - `ls_responses()` (and thus `ls_export()`) strips out the `tibble`-wide `variable.labels` attribute and spreads it among the individual variables, which enables you to modify the `tibble` without messing the labels positions and/or producing length incompatibilities
 - `ls_export()` gains new argument `clean_labels` which by default cleans up repeating parts of labels of subquestions (i.e., those outside square brackets)
 - new function `ls_set_participant_properties()` enabling you to set or edit participant table
+- new function `copy_schola_template()` which copies the template (`pdf` by default) into the active project directory
 
 ## Bug fixes
 
-- `czech_date_interval()` now correctly suppresses redundant information 
+- `czech_date_interval()` now correctly suppresses redundant information
+- you are now informed about a solution when font registration fails, this concerns a bug in recent version of `Rttf2pt1` utility that the process rely on
 
 # reschola 0.3.2 (Limy Schola)
 

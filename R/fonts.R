@@ -73,22 +73,35 @@ font_r_light <- "Roboto Light"
 #' PostScript devices. If you are running under Windows, the package calls the
 #' same function to register non-core fonts with the Windows graphics device.
 #'
-#' @md
 #' @note If you install the fonts just for the current user (via right-click and
 #'   Install), they will probably **not be discoverable** by the `fontspec`
 #'   LaTeX package that is used for PDF report typesetting!
 #'
 #' @family Font helpers and shortcuts
 #'
-#' @importFrom usethis ui_done ui_todo ui_info ui_field ui_path
-#' @importFrom extrafont font_import
+#' @importFrom usethis ui_done ui_todo ui_info ui_field ui_path ui_oops
+#'   ui_code_block ui_value ui_code
+#' @importFrom extrafont font_import fonts
+#' @importFrom rlang abort
+#'
 #' @export
 import_fonts <- function() {
   r_font_dir <- system.file("fonts", "roboto", package = "reschola")
 
+  ui_info("You are about to register Roboto fonts with R. This may take some time. Please, be patient.")
+
   suppressWarnings(suppressMessages(font_import(r_font_dir, prompt = FALSE)))
 
-  ui_done("Done registering Roboto with R.")
+  if (!any(grepl("Roboto|Roboto[ ]Condensed", fonts()))) {
+    on.exit({
+      ui_todo("You can inspect the fonts that are properly registered by calling {ui_code(\"extrafont::fonts()\")}.")
+      ui_info("If the registration fails repeatedly, please try to downgrade {ui_value(\"Rttf2pt1\")} package to version {ui_value(\"1.3.8\")}:")
+      suppressWarnings(ui_code_block("remotes::install_version(\"Rttf2pt1\", version = \"1.3.8\")"))
+    })
+    abort("At least one of the fonts needed by the package was not registered succesfully.")
+  }
+
+  ui_done("Fonts successfully registered in R.")
   ui_info("Opening {ui_path(r_font_dir)} with fonts...")
   system2("open", r_font_dir)
 
