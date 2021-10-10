@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -175,7 +175,7 @@
     <p>Set or Edit Attribute(s) of an Participant</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ls_set_participant_properties</span><span class='op'>(</span><span class='va'>survey_id</span>, <span class='va'>tid</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ls_set_participant_properties</span><span class='op'>(</span><span class='va'>survey_id</span>, <span class='va'>participant</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,15 +186,15 @@
 e.g.).</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>attributes in the form <code>attribute_name = attribute_value</code>.</p></td>
-    </tr>
-    <tr>
       <th>participant</th>
       <td><p><em>integer</em> or <em>list</em>, <strong>one</strong> token ID (<strong>not token!</strong>) from
 participant database. Use <code><a href='ls_participants.html'>ls_participants()</a></code> to get the <code>tid</code>. Another
 option is to pass a list of one ore more participant properties, i.e.
 <code><a href='https://rdrr.io/r/base/list.html'>list(lastname = "Doe")</a></code></p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>attributes in the form <code>attribute_name = attribute_value</code>.</p></td>
     </tr>
     </table>
 

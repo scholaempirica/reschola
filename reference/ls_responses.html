@@ -56,9 +56,11 @@
 
 <meta property="og:title" content="Export Responses — ls_responses" />
 <meta property="og:description" content="Fetches responses and applies so-called &quot;R-syntax&quot; transformation script from
-LimeSurvey pertaining factor levels and items attributes (those are readily
-available in RStudio dataframe preview and can be extracted using
-attributes())." />
+LimeSurvey pertaining factor levels and items labels (those are readily
+available in RStudio data frame preview and can be extracted using
+attr(.data, &quot;label&quot;)). By default, the function attempts to &quot;clean&quot; the
+labels (clean_labels argument), keeping only the content inside [...], if
+there are any." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -91,7 +93,7 @@ attributes())." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -176,12 +178,14 @@ attributes())." />
 
     <div class="ref-description">
     <p>Fetches responses and applies so-called "R-syntax" transformation script from
-LimeSurvey pertaining factor levels and items attributes (those are readily
-available in RStudio dataframe preview and can be extracted using
-<code><a href='https://rdrr.io/r/base/attributes.html'>attributes()</a></code>).</p>
+LimeSurvey pertaining factor levels and items labels (those are readily
+available in RStudio data frame preview and can be extracted using
+<code><a href='https://rdrr.io/r/base/attr.html'>attr(.data, "label")</a></code>). By default, the function attempts to "clean" the
+labels (<code>clean_labels</code> argument), keeping only the content inside <code>[...]</code>, if
+there are any.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ls_responses</span><span class='op'>(</span><span class='va'>survey_id</span>, lang <span class='op'>=</span> <span class='st'>"cs"</span>, part <span class='op'>=</span> <span class='st'>"all"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ls_responses</span><span class='op'>(</span><span class='va'>survey_id</span>, clean_labels <span class='op'>=</span> <span class='cn'>TRUE</span>, lang <span class='op'>=</span> <span class='st'>"cs"</span>, part <span class='op'>=</span> <span class='st'>"all"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,6 +194,11 @@ available in RStudio dataframe preview and can be extracted using
       <th>survey_id</th>
       <td><p><em>integer</em>, ID of the survey (as found with <code>ls_surveys</code>,
 e.g.).</p></td>
+    </tr>
+    <tr>
+      <th>clean_labels</th>
+      <td><p><em>logical</em>, whether to clean labels of subquestions from
+repeating parts. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>lang</th>

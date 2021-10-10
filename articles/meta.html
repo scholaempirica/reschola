@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -142,7 +142,6 @@
 <a href="#dependencies" class="anchor"></a>Dependencies</h3>
 <p>Try to use as few as is reasonable; avoid obscure ones. Prefer CRAN releases.</p>
 <p>Prefer versions where CRAN binaries are available for all platforms.</p>
-<p>An exception currently is <code>redoc</code>, which is early stages and we even use a custom patch, but that is because it provides key functionality we cannot get otherwise.</p>
 </div>
 <div id="quality-assurance" class="section level3">
 <h3 class="hasAnchor">
@@ -172,16 +171,6 @@
 <a href="#online-documentation" class="anchor"></a>Online documentation</h2>
 <p>The continuous integration pipeline (Travis CI and Github Pages) means that whenever code is pushed to Github, the documentation of the package is converted to a website by the <code>pkgdown</code> package and published on <a href="https://scholaempirica.github.io/reschola">scholaempirica.github.io/reschola</a> via the <code>gh-pages</code> branch of the repository.</p>
 </div>
-<div id="future-proofing-the-package" class="section level2">
-<h2 class="hasAnchor">
-<a href="#future-proofing-the-package" class="anchor"></a>Future-proofing the package</h2>
-<p>There are three areas where I think future developments might make the package fragile:</p>
-<ol style="list-style-type: decimal">
-<li>R 4.0: let’s test when it is released and update if needed</li>
-<li>redoc: we currently use a “frozen” fork with some quick fixes; if the author accepts those fixes or develops the package further, we should switch how that dependency is recorded and update other code in the package and its documentation as needed</li>
-<li>The website: the Travis CI service sometimes acts funny, particularly when authenticating to Github. The recommended practice of running the checks and website build process on Github Actions is not available as GH Actions throws an error, possibly related to the non-standard redoc dependency. If a workflow becomes available for GH Actions that handles this, we can move it over.</li>
-</ol>
-</div>
 <div id="reusingreshaping-the-documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#reusingreshaping-the-documentation" class="anchor"></a>Reusing/reshaping the documentation</h2>
@@ -202,7 +191,8 @@
 <h2 class="hasAnchor">
 <a href="#how-to-change-key-parts" class="anchor"></a>How to change key parts</h2>
 <ul>
-<li>word template styles: use Word to open and edit styles in <code>template.docx</code> in <code>inst/rmarkdown/templates/schola_*/resources/</code>; edit each one separately (do not copy one file to another folder as <code>redoc</code> has special parts in the <code>docx</code> file).</li>
+<li>word template styles: use Word to open and edit styles in <code>template.docx</code> in <code>inst/rmarkdown/templates/schola_*/resources/</code>
+</li>
 <li>text in articles/vignettes: <code>vignettes/*.Rmd</code>
 </li>
 <li>default content of Rmarkdown files created from <code>reschola</code> templates: <code>inst/rmarkdown/templates/schola_*/skeleton/skeleton.Rmd</code>

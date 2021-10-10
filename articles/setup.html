@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -202,7 +202,7 @@
 <p>The Czech locale you should probably have in Windows 7 is <code>"LC_COLLATE=Czech_Czechia.1250;LC_CTYPE=Czech_Czechia.1250;LC_MONETARY=Czech_Czechia.1250;LC_NUMERIC=C;LC_TIME=Czech_Czechia.1250"</code> so run <code><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale(locale = "Czech_Czechia.1250")</a></code>. On newer Windows, you should attempt to run under a UTF-8 locale it at all possible.</p>
 <p>On a Mac, this is <code><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale(locale = "cs_CZ.UTF-8")</a></code>.</p>
 <p>Note that the ability to display non-ASCII characters e.g. in images from <code>ggplot2</code> also depends on the font. The default fonts contained in this package and <code><a href="../reference/theme_schola.html">theme_schola()</a></code> handle Czech characters well.</p>
-<p>Also, you have to tell <code>readr</code> separately how it should (a) read dates and (b) parse CSVs, which in CZ tend to be semicolon-separated with decimal comma. See <code><a href="https://readr.tidyverse.org/reference/locale.html">readr::locale()</a></code>.</p>
+<p>Also, you have to tell <code>readr</code> separately how it should (a) read dates and (b) parse CSVs, which in CZ tend to be semicolon-separated with decimal comma. See <code>readr::locale()</code>.</p>
 <p>In LaTex this might be a whole different issue…</p>
 </div>
 <div id="r-configuration" class="section level3">

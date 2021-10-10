@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -169,17 +169,19 @@
       <small>Source: <a href='https://github.com/scholaempirica/reschola/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="reschola-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#reschola-development-version" class="anchor"></a>reschola (development version)</h1>
-<div id="todo" class="section level2">
+    <div id="reschola-033-safe-the-fonts" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.3">
+<a href="#reschola-033-safe-the-fonts" class="anchor"></a>reschola 0.3.3 (Safe the Fonts)</h1>
+<!-- TODO -----------------------------------------------------
+- PDF template: incorporate changes from IvP and EZ, especially citations and so on
+- amend R CMD warnings
+-->
+<div id="breaking-changes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#todo" class="anchor"></a>TODO</h2>
+<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
-<li>PDF template: incorporate changes from IvP and EZ, especially citations and so on</li>
-<li>remove <code>redoc</code>
-</li>
-<li>amend R CMD warnings</li>
+<li>
+<code>redoc</code> reversible Word format is now completely removed from the package; from now on, use <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code> primarily (<code><a href="../reference/schola_word.html">schola_word()</a></code> is still available)</li>
 </ul>
 </div>
 <div id="changes" class="section level2">
@@ -190,23 +192,28 @@
 <li>
 <code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> now raises an error when you try to supply more than one entry</li>
 <li>
-<code><a href="../reference/ls_responses.html">ls_responses()</a></code> strips out the <code>tibble</code>-wide <code>variable.labels</code> attribute and spreads it among the individual variables, which enables you to modify the <code>tibble</code> without messing the labels positions and/or producing length incompatibilities</li>
-<li>
 <code><a href="../reference/ls_call.html">ls_call()</a></code> gives an error when you try to provide another <code>sSessionKey</code> in <code>params</code>
 </li>
 <li>
 <code><a href="../reference/ls_call.html">ls_call()</a></code> passes <code>error</code> message to the user when there is one</li>
 <li>
 <code><a href="../reference/ls_call.html">ls_call()</a></code> replaces <code>NULL</code>s with <code>NA</code>s (thus more API responses can be turned into a tibble)</li>
+<li>
+<code><a href="../reference/ls_call.html">ls_call()</a></code> messaging is less disruptive</li>
 <li>the documentation is more verbose on some topics</li>
+<li>fonts registration is now more verbose and <code><a href="../reference/import_fonts.html">import_fonts()</a></code> checks that everything went well; solutions are provided otherwise</li>
 </ul>
 </div>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li>new function <code><a href="../reference/copy_schola_template.html">copy_schola_template()</a></code> which copies the template (<code>pdf</code> by default) into the active project directory</li>
+<li>
+<code><a href="../reference/ls_responses.html">ls_responses()</a></code> (and thus <code><a href="../reference/ls_export.html">ls_export()</a></code>) strips out the <code>tibble</code>-wide <code>variable.labels</code> attribute and spreads it among the individual variables, which enables you to modify the <code>tibble</code> without messing the labels positions and/or producing length incompatibilities</li>
+<li>
+<code><a href="../reference/ls_export.html">ls_export()</a></code> gains new argument <code>clean_labels</code> which by default cleans up repeating parts of labels of subquestions (i.e., those outside square brackets)</li>
 <li>new function <code><a href="../reference/ls_set_participant_properties.html">ls_set_participant_properties()</a></code> enabling you to set or edit participant table</li>
+<li>new function <code><a href="../reference/copy_schola_template.html">copy_schola_template()</a></code> which copies the template (<code>pdf</code> by default) into the active project directory</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -215,6 +222,7 @@
 <ul>
 <li>
 <code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> now correctly suppresses redundant information</li>
+<li>you are now informed about a solution when font registration fails, this concerns a bug in recent version of <code>Rttf2pt1</code> utility that the process rely on</li>
 </ul>
 </div>
 </div>
@@ -258,9 +266,9 @@
     <div id="reschola-030-limy-schola" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.0">
 <a href="#reschola-030-limy-schola" class="anchor"></a>reschola 0.3.0 (Limy Schola)</h1>
-<div id="breaking-changes" class="section level2">
+<div id="breaking-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
+<a href="#breaking-changes-1" class="anchor"></a>Breaking changes</h2>
 <ul>
 <li>automatically generated build script <code>build.R</code> is renamed to <code>build_all.R</code>, to allow multiple build scripts (pro tip: use <a href="https://CRAN.r-project.org/web/packages/buildr/">{buildr}</a> package)</li>
 </ul>
@@ -474,7 +482,7 @@
 <ul>
 <li>project setup now creates <code>data-raw</code> and <code>data-processed</code> such that the directories can go into git but not its contents; documentation explains this in multiple places.</li>
 <li>
-<code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> no longer leaves behind a stray docx file</li>
+<code>draft_redoc()</code> no longer leaves behind a stray docx file</li>
 </ul>
 </div>
 </div>
@@ -486,7 +494,7 @@
 <a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
-<code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> now works outside of a reschola-created project</li>
+<code>draft_redoc()</code> now works outside of a reschola-created project</li>
 <li>project template should no longer fail on Google Drive authentication; guidance added to vignettes to prevent/handle this</li>
 <li>workflow vignette and getting started guide in new project now correctly refer to <code>data-processed</code> directory</li>
 <li>data reading script created by project template now correctly named <code>001_read-data.R</code>.</li>
@@ -517,7 +525,7 @@
 <a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>fixed bug in project template where a newly created RMd file did not open</li>
-<li>refactored <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> to fix roundtripping issue and improve UI</li>
+<li>refactored <code>draft_redoc()</code> to fix roundtripping issue and improve UI</li>
 </ul>
 </div>
 <div id="improvements-2" class="section level2">

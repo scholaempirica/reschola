@@ -88,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -178,6 +178,7 @@
     <pre class="usage"><span class='fu'>ls_export</span><span class='op'>(</span>
   <span class='va'>survey_id</span>,
   attributes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  clean_labels <span class='op'>=</span> <span class='cn'>TRUE</span>,
   n_participants <span class='op'>=</span> <span class='fl'>999</span>,
   lang <span class='op'>=</span> <span class='st'>"cs"</span>,
   part <span class='op'>=</span> <span class='st'>"all"</span>,
@@ -198,6 +199,11 @@ e.g.).</p></td>
       <th>attributes</th>
       <td><p><em>logical</em> try to recover all attributes (default to TRUE),
 or <em>character vector</em> specifying requested attributes.</p></td>
+    </tr>
+    <tr>
+      <th>clean_labels</th>
+      <td><p><em>logical</em>, whether to clean labels of subquestions from
+repeating parts. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>n_participants</th>

@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -222,10 +222,9 @@
 <div id="document-templates" class="section level3">
 <h3 class="hasAnchor">
 <a href="#document-templates" class="anchor"></a>3. Document templates</h3>
-<p>There are three templates in the package: Schola PDF report (prefered), Schola Word report, and Schola redoc report (soft-deprecated due to unstability).</p>
-<p>The PDF report use LaTeX to create typographically correct, completely vector-graphics document. Also, it incorporates some advanced tools, e.g. cropping the figures and plots, and offers captions that renders above the plot, reference-ready. Note that <code>pdfcrop</code> LaTeX package (use <code><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tinytex::tlmgr_install("pdfcrop")</a></code>) and <code>Ghostscript</code> are needed for figure cropping. Note further that <code>Ghostscript</code> may not automatically added to PATH on Windows, so you have to do it manually.</p>
+<p>There are two templates in the package: Schola PDF report (prefered) and Schola Word report.</p>
+<p>The PDF report use LaTeX to create typographically correct, completely vector-graphics document. Also, it incorporates some advanced tools, e.g. cropping the figures and plots, and offers captions that renders above the plot, reference-ready. Note that <code>pdfcrop</code> LaTeX package (use <code><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tinytex::tlmgr_install("pdfcrop")</a></code>) and <code>Ghostscript</code> are needed for figure cropping. Note further that <code>Ghostscript</code> may not be automatically added to PATH on Windows, so you have to do it manually.</p>
 <p>The Word report is simple: it creates a Word document with some nice custom defaults and styles.</p>
-<p>The redoc-based template looks similar - and so does its output - but it has some superpowers. It allows you to pull into Rmarkdown any edits, tracked changes and comments that people make <em>in the resulting Word document</em>. See <a href="#7-iterate-the-report-collaboratively">below</a> for how to work with it.</p>
 </div>
 <div id="ggplot2-theme" class="section level3">
 <h3 class="hasAnchor">
@@ -300,8 +299,8 @@
 <h3 class="hasAnchor">
 <a href="#read-in-check-and-process-the-data" class="anchor"></a>3. Read in, check and process the data</h3>
 <p>Use <code>002_read-data.R</code>. Add any other data reading that is needed.</p>
-<p>See <code><a href="https://readr.tidyverse.org/reference/locale.html">readr::locale()</a></code> for handling encoding, decimal marks and separators in CSVs. You might also need <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv2()</a></code>.</p>
-<p>Use <code><a href="https://readr.tidyverse.org/reference/encoding.html">readr::guess_encoding()</a></code> if the text comes in garbled.</p>
+<p>See <code>readr::locale()</code> for handling encoding, decimal marks and separators in CSVs. You might also need <code>readr::read_csv2()</code>.</p>
+<p>Use <code>readr::guess_encoding()</code> if the text comes in garbled.</p>
 <p>Use <code>003_check-and-process-data.R</code>. You may need to move this into an RMarkdown document.</p>
 <p>See <a href="tips.html">tips</a> for packages that can help you set up a structured data checking pipeline.</p>
 <div id="data-and-git" class="section level4 bs-callout bs-callout-yellow">
@@ -335,13 +334,6 @@
 <p>Use <code>draft_*</code> to quickly create a draft using the required template.</p>
 <p>The Word output of the two templates is aesthetically equivalent, but the <code>_word</code> template (and output format as set in the YAML header) can do more sophisticated handling of e.g. <a href="#footnotes-and-cross-references">cross-references</a>.</p>
 <p>Note the <code>schola_word</code> format is based on the <code><a href="https://pkgs.rstudio.com/bookdown/reference/html_document2.html">bookdown::word_document2</a></code> format. This means it can be customised like <a href="https://bookdown.org/yihui/bookdown/">other bookdown documents</a> and even strung into a whole book.</p>
-<div id="collaborating-with-ms-word-users" class="section level5 bs-callout bs-callout-blue">
-<h5 class="hasAnchor">
-<a href="#collaborating-with-ms-word-users" class="anchor"></a>Collaborating with MS Word users</h5>
-<p>If you would like to collaborate with stakeholders using MS Word for providing revisions and comments on your report, choose the <code><a href="../reference/draft_redoc.html">draft_redoc()</a></code> template, or switch your existing file’s <code>output</code> YAML field to <code>schola_redoc</code>.</p>
-<p>For now, you can work it with it the same way as with any RMarkdown file.</p>
-<p>See below on <a href="#iterate-the-report-collaboratively">collaborating with MS Word</a> on the steps to make collaboration work.</p>
-</div>
 <div id="footnotes-and-cross-references" class="section level4">
 <h4 class="hasAnchor">
 <a href="#footnotes-and-cross-references" class="anchor"></a>Footnotes and cross-references</h4>
@@ -363,7 +355,6 @@
 </blockquote>
 <p>Edit <code>_bookdown.yml</code> to change the words used for “Figure” and “Table” in captions (doesn’t apply for PDF).</p>
 <p>See more on cross-references <a href="https://bookdown.org/yihui/bookdown/cross-references.html">in the bookdown guide</a>.</p>
-<p>If you would like to use the <code>redoc</code> features, you can leave these references in while you collaborate with MS Word users (it will leave behind a little messy text, but that should be OK) and then switch the <code>output</code> field in the YAML header to <code>schola_word</code>. The <code>schola_word</code> template also has other features, like generating a table of contents and nnumbering sections.</p>
 </div>
 <div id="citations" class="section level4 bs-callout bs-callout-blue">
 <h4 class="hasAnchor">
@@ -408,47 +399,14 @@
 <p>You can also designate certain snapshots as special with a tag, which is a name of your choosing. In a software project, it is typical to tag a release with its version, e.g., “v1.0.3”. For a manuscript or analytical project, you might tag the version submitted to a journal or transmitted to external collaborators. Figure 20.1 shows a tag, “draft-01”, associated with the last commit.</p>
 </blockquote>
 </div>
-<div id="iterate-the-report-collaboratively" class="section level3">
-<h3 class="hasAnchor">
-<a href="#iterate-the-report-collaboratively" class="anchor"></a>7. Iterate the report collaboratively</h3>
-<p>If you used the schola_redoc output format, you can now send it to collaborators for feedback.</p>
-<p>Here is the workflow:</p>
-<div id="edit-the-document---you-have-already-done-this-" class="section level4">
-<h4 class="hasAnchor">
-<a href="#edit-the-document---you-have-already-done-this-" class="anchor"></a>1. Edit the document - you have already done this.</h4>
-</div>
-<div id="generate-word-file" class="section level4">
-<h4 class="hasAnchor">
-<a href="#generate-word-file" class="anchor"></a>2. Generate word file</h4>
-<p>Knit using RStudio button or run <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">rmarkdown::render()</a></code>.</p>
-</div>
-<div id="send-the-word-file-to-collaborators-for-review" class="section level4">
-<h4 class="hasAnchor">
-<a href="#send-the-word-file-to-collaborators-for-review" class="anchor"></a>3. Send the Word file to collaborators for review</h4>
-<p>They can edit it in MS Word, either in tracked changes or not. The bits they cannot edit or comment on are by default highlighted in red - these are the bits your code generates, as opposed to text you write in RMarkdown; if they want to comment or change these, they should comment on an adjacent piece of text.</p>
-<div id="repeated-use-of-the-redoc--bs-callout--bs-callout-yellow" class="section level5">
-<h5 class="hasAnchor">
-<a href="#repeated-use-of-the-redoc--bs-callout--bs-callout-yellow" class="anchor"></a>Repeated use of the redoc {.bs-callout, -bs-callout-yellow}</h5>
-<p>If you run through multiple iterations of knitting and “<code>dedoc</code>”-ing, don’t use <code><a href="../reference/manage_docx_header_logos.html">manage_docx_header_logos()</a></code> beforehand - the changes would be lost.</p>
-</div>
-</div>
-<div id="collect-changes-back-into-rmarkdown" class="section level4">
-<h4 class="hasAnchor">
-<a href="#collect-changes-back-into-rmarkdown" class="anchor"></a>4. Collect changes back into RMarkdown</h4>
-<p>When you get the document back, put it in your project directory and run <code><a href="https://rdrr.io/pkg/redoc/man/dedoc.html">redoc::dedoc("[edited_document.docx]")</a></code>. This will create a new Rmd file with (a) the comments inserted in CriticMarkup, (b) tracked and untracked changes reflected in the Rmd with no markup. You can add <code>track_changes = 'criticmarkup'</code> to have all tracked changes inserted with CriticMarkup.</p>
-<p>You can also run <code><a href="https://rdrr.io/pkg/redoc/man/dedoc.html">redoc::dedoc("[edited_document.docx]", to = "[your_original_rmarkdown_file.Rmd", overwrite = TRUE)</a></code> to have all the changes written into your original file. ONLY DO THIS IF YOUR ORIGINAL FILE WAS COMMITTED IN GIT WITH THE VERSION YOU RENDERED AND SENT FOR FEEDBACK!! You can then use git to view and accept/reject the changes from the reviewers.</p>
-<p>You can also run <code><a href="https://rdrr.io/r/base/print.html">print(redoc:::redoc_diff("[new_document.docx]"))</a></code> (note the <code><a href="https://rdrr.io/r/base/ns-dblcolon.html">:::</a></code>) to see the comparison in the RStudio viewer pane (no Rmd files are updated.)</p>
-<p>You can also use the RStudio addins ‘Dedoc to new file’ or ‘Dedoc to active file’. This will automatically show the graphical view of the changes in RStudio viewer, but you have less control over how changes/revisions are picked up.</p>
-</div>
-</div>
 <div id="finalise-report" class="section level3">
 <h3 class="hasAnchor">
-<a href="#finalise-report" class="anchor"></a>8. Finalise report</h3>
+<a href="#finalise-report" class="anchor"></a>7. Finalise report</h3>
 <p>Run <code><a href="../reference/manage_docx_header_logos.html">reschola::manage_docx_header_logos()</a></code> to replace default Schola logo or add a client/funder logo.</p>
 </div>
 <div id="prepare-project-for-reuse" class="section level3">
 <h3 class="hasAnchor">
-<a href="#prepare-project-for-reuse" class="anchor"></a>9. Prepare project for reuse</h3>
+<a href="#prepare-project-for-reuse" class="anchor"></a>8. Prepare project for reuse</h3>
 <p>Really just make sure that you have followed the steps. If you have, then:</p>
 <ul>
 <li>files should be named properly and with the correct order</li>

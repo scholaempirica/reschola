@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -304,7 +304,7 @@
 <div id="sizing-images" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sizing-images" class="anchor"></a>Sizing images</h2>
-<p>The <code>schola_[word|redoc]</code> formats have opinionated sizing defaults to ensure that resolution, size and font size in the bitmap (PNG) image are in line with the rest of the document. This is particularly tricky in the context of Word documents, hence the baked in defaults. For this reason, the steps to change images sizes are a bit special - see below.</p>
+<p>The <code>schola_[word|pdf]</code> formats have opinionated sizing defaults to ensure that resolution, size and font size in the bitmap (PNG) image are in line with the rest of the document. This is particularly tricky in the context of Word documents, hence the baked in defaults. For this reason, the steps to change images sizes are a bit special - see below.</p>
 <p>Here is what the defaults are:</p>
 <ul>
 <li>width is full-page, i.e. 15.98 cm (so the image is sized exactly to fit inside margings without any resizing which would degrade quality)</li>
@@ -324,7 +324,7 @@
 <div id="making-fonts-work" class="section level2">
 <h2 class="hasAnchor">
 <a href="#making-fonts-work" class="anchor"></a>Making fonts work</h2>
-<p>The <code>schola_theme()</code> is set to use the Roboto and Roboto Condensed font families by default. These may not be present on your system. You can install them by running <code><a href="../reference/import_fonts.html">reschola::import_fonts()</a></code>. (once per machine, and do follow the instructions in the message output when you call this function.) On package load, these will be registered with R. If the fonts do not show up in your charts, run <code><a href="https://rdrr.io/pkg/extrafont/man/loadfonts.html">extrafont::loadfonts()</a></code> (once per session). You can also set the option <code>reschola.loadfonts</code> to have <code>reschola</code> register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system - if not, first try using the <code>cairo_pdf</code> device and/or running <code><a href="https://rdrr.io/pkg/extrafont/man/embed_fonts.html">extrafont::embed_fonts()</a></code> on the whole resulting PDF document.)</p>
+<p>The <code>schola_theme()</code> is set to use the Roboto and Roboto Condensed font families by default. These may not be present on your system. You can install them by running <code><a href="../reference/import_fonts.html">reschola::import_fonts()</a></code>. (once per machine, and do follow the instructions in the message output when you call this function.) On package load, these will be registered with R. If the fonts do not show up in your charts, run <code><a href="https://rdrr.io/pkg/extrafont/man/loadfonts.html">extrafont::loadfonts()</a></code> (once per session). You can also set the option <code>reschola.loadfonts</code> to have <code>reschola</code> register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system – if not, first try using the <code>cairo_pdf</code> device and/or running <code><a href="https://rdrr.io/pkg/extrafont/man/embed_fonts.html">extrafont::embed_fonts()</a></code> on the whole resulting PDF document.)</p>
 </div>
 <div id="using-fonts" class="section level2">
 <h2 class="hasAnchor">
