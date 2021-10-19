@@ -13,7 +13,7 @@ output:
 toc-title: "Table of contents"
 abstract-title: Abstract
 lang: en # smart-quotes and author variable depends on the lang variable
-logo: logos/schola # chars which are escaped by pandoc (i.e. "_") are prohibited
+logo: logos/pdf/seBlkOrange # chars which are escaped by pandoc (i.e. "_") are prohibited
 logo_height: 20pt
 logo_client: false
 logo_client_height: 30pt
@@ -21,14 +21,16 @@ head_height: false # may be used if fancyhdr complains
 ---
 
 ```{r setup, include=FALSE}
-options(scipen = 10) # force R to show full numbers, not scientific notation
-
 library(reschola)
 library(tidyverse)
+library(here)
 library(scales)
+
+source("shared.R", local = TRUE, encoding = "UTF-8") # helper functions and shared code
+
 set_reschola_ggplot_fonts() # make ggplot2 use Roboto fonts without you having to set it
 theme_set(theme_schola()) # default ggplot theme
-source("shared.R", local = TRUE, encoding = "UTF-8") # helper functions and shared code
+options(scipen = 10) # force R to show full numbers, not scientific notation
 ```
 
 # First chapter
@@ -37,12 +39,9 @@ source("shared.R", local = TRUE, encoding = "UTF-8") # helper functions and shar
 library(ggplot2)
 
 ggplot(mpg) +
- geom_point(aes(cty, hwy), alpha = .2) +
- labs(title = "Lots of cars", subtitle = "Point by point")
+  geom_point(aes(cty, hwy), alpha = .2) +
+  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
 \newpage
 <!-- "\newpage" is how you insert a page break which will be reflected in the output -->
-
-
-

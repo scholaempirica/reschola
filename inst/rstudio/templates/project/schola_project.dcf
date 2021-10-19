@@ -1,9 +1,9 @@
-Title: Standard Schola Empirica project
+Title: SCHOLA EMPIRICA project
 Binding: schola_project
-Subtitle: Create a new schola project
-Caption: Create a new schola project
+Subtitle: Create a new Schola project
+Caption: Create a new Schola project
 Icon: schola.png
-OpenFiles: "getting-started.Rmd", README.md, "01_schola-styled-word.Rmd"
+OpenFiles: "getting-started.Rmd", README.md, "01_schola-report.Rmd"
 
 Parameter: title
 Widget: TextInput
@@ -13,8 +13,8 @@ Position: left
 Parameter: vcs
 Widget: SelectInput
 Label: Version control
-Fields: none, local git, Github: private owned by me, Github: public owned by me, Github: public owned by scholaempirica
-Default: local git
+Fields: Schola's private GitHub repo, local git, none
+Default: Schola's private GitHub repo
 Position: left
 
 Parameter: copy_logos
@@ -25,17 +25,17 @@ Position: right
 
 Parameter: drive_folder
 Widget: TextInput
-Label: URL of project's GDrive folder (copy from address line in web browser)
+Label: URL of project's Google Drive folder
 Position: left
 
 Parameter: drive_download
 Widget: CheckboxInput
-Label: Download GDrive folder now
+Label: Download Google Drive folder now
 Default: off
 Position: left
 
 Parameter: getting_started
 Widget: CheckboxInput
 Label: Show a "Getting started" guide
-Default: on
+Default: off
 Position: right

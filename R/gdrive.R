@@ -34,7 +34,7 @@
 #'
 #' @export
 #'
-gd_download_folder <- function(folder_url, dest_dir = "data-input",
+gd_download_folder <- function(folder_url, dest_dir = "data/input",
                                files_from_subfolders = F,
                                overwrite = F) {
   url_id <- as_id(folder_url)

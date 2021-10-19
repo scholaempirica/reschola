@@ -1,9 +1,24 @@
-# reschola 0.3.3 (Save the Fonts)
+# reschola 0.3.3.9000 (development version)
+
+## Breaking changes
+
+- default project structure changes and cleanup
+- schola project options cleanup
+
+## Changes
+
+- current logos added
+- new draft_pdf
+- startup message
+- project setup exceptions better handled
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 - amend R CMD warnings
 -->
+
+
+# reschola 0.3.3 (Save the Fonts)
 
 ## Breaking changes
 

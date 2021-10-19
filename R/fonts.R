@@ -86,7 +86,7 @@ font_r_light <- "Roboto Light"
 #'
 #' @export
 import_fonts <- function() {
-  r_font_dir <- system.file("fonts", "roboto", package = "reschola")
+  r_font_dir <- system.file("fonts", package = "reschola")
 
   ui_info("You are about to register Roboto fonts with R. This may take some time. Please, be patient.")
 

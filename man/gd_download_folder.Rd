@@ -6,7 +6,7 @@
 \usage{
 gd_download_folder(
   folder_url,
-  dest_dir = "data-input",
+  dest_dir = "data/input",
   files_from_subfolders = F,
   overwrite = F
 )
@@ -47,7 +47,7 @@ gd_download_folder(
 }
 \seealso{
 Other Workflow helpers: 
-\code{\link{draft_word}()},
+\code{\link{draft_pdf}()},
 \code{\link{manage_docx_header_logos}()}
 }
 \concept{Workflow helpers}

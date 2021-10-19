@@ -5,29 +5,29 @@ output: html_document
 
 *This document is just for you, to help you find out how to work with such a project. You can delete it afterwards.*
 
-You have just created a reschola project.
+You have just created a `{reschola}` project.
 
 It comes with some files and directories as suggested ways of organising your work:
 
-- `shared.R` for variables and perhaps functions shared by more scripts. By default contains GDrive URL and project title, if provided during setup
-- `001_retrieve-data.R` helps you download files from your GDrive folder, if set. You can also use it to store code for retrieving other data. This should only hold things which you expect to only run once, or refresh rarely - particularly things that take time or put a load on other servers.
-- `002_read-data.R` should hold code that reads the data and does any transformations immediately tied to data reading, e.g. setting data types or basic filtering. Again, this is code that you don't expect to change as you work on the actual analysis. You may want to save the result into `rds` files in `data-intermediate` (or `data-input` if it is simply an `rds` mirror of the input data saved for quick access.)
-- `003_check-and-process-data.R` (if you plan to run it often, you may wish signal this by numbering it `01_*` to rerun it often with the rest of the analysis, and you may also turn it into an Rmd file if that is more convenient.) This should process data in `data-input` and save its outputs in `data-processed`.
+- `shared.R` for variables and perhaps functions shared by more scripts. By default contains GDrive URL and project title, if provided during setup.
+- `data/01_retrieve.R` helps you download files from your GDrive folder, if set. You can also use it to store code for retrieving other data. This should only hold things which you expect to only run once, or refresh rarely -- particularly things that take time or put a load on other servers.
+- `data/02_read.R` should hold the code that reads the data and does any transformations *immediately* tied to data reading, e.g. setting data types or basic filtering. Again, this is code that you don't expect to change as you work on the actual analysis. You may want to save the result into `.rds` files in `data/intermediate` (or `data/input` if it is simply an `.rds` mirror of the input data saved for quick access).
+- `data/03_check-and-process.R` should process data in `data/input` and save its outputs in `data/processed`. You may turn it into an `.Rmd` file if that is more convenient for you or split it into smaller pieces.
 - `[NN]_*.Rmd` where NN is 01-98 is the actual analysis - may be an exploratory script, a partial analysis, or a report. Expected to be run in the order of their numbering, but ideally key components should work off data saved in `data-input` or `data-intermediate`.
-- `data-input` should contain only unaltered input data as downloaded.
-- `data-processed` should contain processed data files
-- `data-output` should contain data that you expect to share externally that are the output of your project
+- `data/input` should contain only unaltered input data as downloaded.
+- `data/processed` should contain processed data files
+- `data/output` should contain data that you expect to share externally that are the output of your project
 - `charts-output` and `reports-output` for the obvious
 - `99_reproducibility.R` by default contains a description of the system and environment used to run the analysis. Use it to store any other information useful for reproducing the analysis (but not passwords etc.)
 
-The `data-input` and `data-processed` have `.gitignore` files in to stop you form committing sensitive data to git. 
+The `data/input` and `data/processed` have `.gitignore` files in to stop you form committing sensitive data to GitHub. 
 Commit these `.gitignore` files to git.
 But only alter them if you are sure you know what you are doing.
 
 You should feel free to move code between the analysis and the `00*_*` scripts as you discover data transformations that should be made earlier on in the workflow.
 
 Use `build_all.R` to tie these together - when run, it should rebuild the whole project from scratch, except perhaps downloading data.
-You may want to build different versions of `build_*.R` as helpers for running different parts of the workflow while you work.
+You may want to build different `build_*.R` as helpers for running different parts of the workflow while you work.
 
 
 You can find guidelines for building Schola Empirica projects by running the following chunk:

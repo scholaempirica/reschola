@@ -27,49 +27,14 @@ You can install the released version of reschola from
 [Github](https://github.com) with:
 
 ``` r
-remotes::install_github("scholaempirica/reschola", 
-                         ref = remotes::github_release(),
-                         build_vignettes = TRUE)
+remotes::install_github("scholaempirica/reschola", ref = remotes::github_release(), build_vignettes = TRUE)
 ```
 
-The current development version on [Github](https://github.com) can be
-installed with:
+The current development version can be installed with:
 
 ``` r
-remotes::install_github("scholaempirica/reschola",
-                         build_vignettes = TRUE)
+remotes::install_github("scholaempirica/reschola", build_vignettes = TRUE)
 ```
-
-If you are having trouble installing packages from sources, the binaries
-of `reschola` are available in [the Schola `drat`
-repository](https://scholaempirica.github.io/drat). This is a package
-repository that can be used in the same way as CRAN, meaning you can use
-`install.packages()` and if binaries are available, you don’t need
-development tools to compile source packages.
-
-You can install binaries from Schola `drat` like so:
-
-``` r
-options(repos = c(getOption("repos"), "scholaempirica" = "https://scholaempirica.github.io/drat"))
-install.packages("reschola")
-```
-
-If you want to always have direct access to this `drat` repository like
-you have to CRAN, you can put this into your .Rprofile (after lines that
-set your CRAN mirror):
-
-``` r
-local({r <- getOption("repos")
-# add drat repo
-r["scholaempirica"] <- "https://scholaempirica.github.io/drat"
-options(repos=r)})
-```
-
-(use `usethis::edit_r_profile()` to open .Rprofile for editing.)
-
-Then, you can simply run `install.packages("reschola")` and the latest
-binary release of `reschola` will be installed even though it is not on
-CRAN.
 
 ## What is inside the box and how to use it
 
