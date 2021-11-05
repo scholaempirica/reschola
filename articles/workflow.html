@@ -223,7 +223,7 @@
 <h3 class="hasAnchor">
 <a href="#document-templates" class="anchor"></a>3. Document templates</h3>
 <p>There are two templates in the package: Schola PDF report (prefered) and Schola Word report.</p>
-<p>The PDF report use LaTeX to create typographically correct, completely vector-graphics document. Also, it incorporates some advanced tools, e.g. cropping the figures and plots, and offers captions that renders above the plot, reference-ready. Note that <code>pdfcrop</code> LaTeX package (use <code><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tinytex::tlmgr_install("pdfcrop")</a></code>) and <code>Ghostscript</code> are needed for figure cropping. Note further that <code>Ghostscript</code> may not be automatically added to PATH on Windows, so you have to do it manually.</p>
+<p>The PDF report use LaTeX to create typographically correct, completely vector-graphics document. Also, it incorporates some advanced tools, e.g. cropping the figures and plots, and offers captions that renders above the plot, reference-ready. Note that <code>pdfcrop</code> LaTeX package (use <code>tinytex::tlmgr_install("pdfcrop")</code>) and <code>Ghostscript</code> are needed for figure cropping. Note further that <code>Ghostscript</code> may not be automatically added to PATH on Windows, so you have to do it manually.</p>
 <p>The Word report is simple: it creates a Word document with some nice custom defaults and styles.</p>
 </div>
 <div id="ggplot2-theme" class="section level3">
@@ -340,7 +340,7 @@
 <p>You can create a cross-reference to any section, e.g. link to section Methods using <code>[Methods]</code> or <code>[the methods section][Methods]</code>. This will show up as a link in Word and HTML.</p>
 <p>Create a footnote by using <code>Text^[This is a footnote]</code>.</p>
 <p>You can also refer to tables, figures and equations. This only works in the <code>schola_word</code> output format (template).</p>
-<p>Do it like this (note that <code><a href="https://rdrr.io/r/base/slotOp.html">@</a></code> is escaped with <code>\</code>):</p>
+<p>Do it like this (note that <code>@</code> is escaped with <code>\</code>):</p>
 <ul>
 <li>
 <code>See table \@ref(fig:graf6).</code> to ref to a table in a chunk named <code>graf6</code>
@@ -442,7 +442,7 @@
 <a href="#file-naming-conventions" class="anchor"></a>File naming conventions</h3>
 <p>See <a href="https://speakerdeck.com/jennybc/how-to-name-files">Naming things</a> by Jenny Bryan.</p>
 <ul>
-<li>machine readable: ASCII, no spaces, sensible separators (<code>_</code> between parts, <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> between words)</li>
+<li>machine readable: ASCII, no spaces, sensible separators (<code>_</code> between parts, <code>-</code> between words)</li>
 <li>human readable: descriptive words in title, consistent logic across files</li>
 <li>plays well with default ordering: 01 x 11, sensible separators, all lowercase, YYYY-MM-DD dates</li>
 </ul>
@@ -458,7 +458,7 @@
 <h4 class="hasAnchor">
 <a href="#ignore-files-in-git" class="anchor"></a>Ignore files in git</h4>
 <p>You can add files you do not wish to commit to git’s ‘.gitignore’ file. That way, git will not even show those as new/changed. This works separately for each repo.</p>
-<p>The easiest way to do this is to run e.g. <code><a href="https://usethis.r-lib.org/reference/use_git_ignore.html">usethis::use_git_ignore("secret_file.R")</a></code>.</p>
+<p>The easiest way to do this is to run e.g. <code>usethis::use_git_ignore("secret_file.R")</code>.</p>
 <p>You need to commit the <code>.gitignore</code> file.</p>
 </div>
 </div>
@@ -496,7 +496,7 @@
 <li>sensible indents</li>
 <li>lower_case_var_names</li>
 <li>functions are verbs, like do_something()</li>
-<li>spaces around operators like <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> and <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>
+<li>spaces around operators like <code>=</code> and <code>+</code>
 </li>
 <li>break lines at around 80 characters</li>
 </ul>

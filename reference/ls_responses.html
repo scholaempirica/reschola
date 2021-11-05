@@ -180,7 +180,7 @@ there are any." />
     <p>Fetches responses and applies so-called "R-syntax" transformation script from
 LimeSurvey pertaining factor levels and items labels (those are readily
 available in RStudio data frame preview and can be extracted using
-<code><a href='https://rdrr.io/r/base/attr.html'>attr(.data, "label")</a></code>). By default, the function attempts to "clean" the
+<code>attr(.data, "label")</code>). By default, the function attempts to "clean" the
 labels (<code>clean_labels</code> argument), keeping only the content inside <code>[...]</code>, if
 there are any.</p>
     </div>
@@ -234,11 +234,11 @@ coerced to a tibble.</p>
 <code><a href='ls_surveys.html'>ls_surveys</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>ls_responses</span><span class='op'>(</span><span class='fl'>123456</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'>ls_responses</span><span class='op'>(</span><span class='fl'>123456</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

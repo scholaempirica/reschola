@@ -258,55 +258,60 @@ to be registered at package load.</p>
 <code><a href='flush_axis.html'>flush_axis</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-
-<span class='co'># NB when `theme_schola()` is used in these examples, fonts</span>
-<span class='co'># are set to 'sans' to pass checks on computers without the</span>
-<span class='co'># sans included. If you have these fonts (see Note) you can</span>
-<span class='co'># leave these parameters at their default values.</span>
-
-<span class='co'># the basic plot for illustration, theme not used</span>
-
-<span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Lots of cars"</span>, subtitle <span class='op'>=</span> <span class='st'>"Count of numbers"</span><span class='op'>)</span>
-
-<span class='co'># using `theme_schola()` defaults</span>
-
-<span class='va'>p</span> <span class='op'>+</span>
-  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"x"</span>, family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span>
-</div><div class='img'><img src='theme_schola-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># in combination with `flush_axis`:</span>
-
-<span class='va'>p</span> <span class='op'>+</span>
-  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"x"</span>, family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>expand <span class='op'>=</span> <span class='va'>flush_axis</span><span class='op'>)</span>
-</div><div class='img'><img src='theme_schola-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># scatter</span>
-
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>cty</span>, <span class='va'>hwy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"scatter"</span>, family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Lots of cars"</span>, subtitle <span class='op'>=</span> <span class='st'>"Point by point"</span><span class='op'>)</span>
-</div><div class='img'><img src='theme_schola-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Smaller text, flush alignment</span>
-
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>cty</span>, <span class='va'>hwy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"scatter"</span>, base_size <span class='op'>=</span> <span class='fl'>9</span>, margin_side <span class='op'>=</span> <span class='fl'>0</span>,
-                family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Lots of cars"</span>, subtitle <span class='op'>=</span> <span class='st'>"Point by point"</span><span class='op'>)</span>
-</div><div class='img'><img src='theme_schola-4.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Override defaults changed inside `theme_schola()`</span>
-
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>cty</span>, <span class='va'>hwy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"scatter"</span>, base_size <span class='op'>=</span> <span class='fl'>9</span>, margin_side <span class='op'>=</span> <span class='fl'>0</span>,
-               family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Lots of cars"</span>, subtitle <span class='op'>=</span> <span class='st'>"Point by point"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>panel.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"lightpink"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='theme_schola-5.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># NB when `theme_schola()` is used in these examples, fonts</span></span>
+<span class='r-in'><span class='co'># are set to 'sans' to pass checks on computers without the</span></span>
+<span class='r-in'><span class='co'># sans included. If you have these fonts (see Note) you can</span></span>
+<span class='r-in'><span class='co'># leave these parameters at their default values.</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># the basic plot for illustration, theme not used</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Lots of cars"</span>, subtitle <span class='op'>=</span> <span class='st'>"Count of numbers"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># using `theme_schola()` defaults</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>p</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"x"</span>, family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='theme_schola-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># in combination with `flush_axis`:</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>p</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"x"</span>, family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>expand <span class='op'>=</span> <span class='va'>flush_axis</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='theme_schola-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># scatter</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>cty</span>, <span class='va'>hwy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"scatter"</span>, family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Lots of cars"</span>, subtitle <span class='op'>=</span> <span class='st'>"Point by point"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='theme_schola-3.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Smaller text, flush alignment</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>cty</span>, <span class='va'>hwy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"scatter"</span>, base_size <span class='op'>=</span> <span class='fl'>9</span>, margin_side <span class='op'>=</span> <span class='fl'>0</span>,</span>
+<span class='r-in'>                family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Lots of cars"</span>, subtitle <span class='op'>=</span> <span class='st'>"Point by point"</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='theme_schola-4.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Override defaults changed inside `theme_schola()`</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>cty</span>, <span class='va'>hwy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'>theme_schola</span><span class='op'>(</span><span class='st'>"scatter"</span>, base_size <span class='op'>=</span> <span class='fl'>9</span>, margin_side <span class='op'>=</span> <span class='fl'>0</span>,</span>
+<span class='r-in'>               family <span class='op'>=</span> <span class='st'>"sans"</span>, title_family <span class='op'>=</span> <span class='st'>"sans"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Lots of cars"</span>, subtitle <span class='op'>=</span> <span class='st'>"Point by point"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>panel.background <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_rect</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"lightpink"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='theme_schola-5.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -224,7 +224,7 @@ however, if also specifying the path, the directory must exist. If
 <code>output_file</code> is specified but does not have a file extension, an
 extension will be automatically added according to the output format. To
 avoid the automatic file extension, put the <code>output_file</code> value in
-<code><a href='https://rdrr.io/r/base/AsIs.html'>I</a>()</code>, e.g., <code><a href='https://rdrr.io/r/base/AsIs.html'>I('my-output')</a></code>.</p></dd>
+<code><a href='https://rdrr.io/r/base/AsIs.html'>I</a>()</code>, e.g., <code>I('my-output')</code>.</p></dd>
     <dt><code>output_options</code></dt><dd><p>List of output options that can override the options
 specified in metadata (e.g. could be used to force <code>self_contained</code> or
 <code>mathjax = "local"</code>). Note that this is only valid when the output
@@ -275,22 +275,22 @@ pandoc command line and others. To only suppress printing of the last
     <p>No return value. Called for side effects.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># for which REDIZOs should the reports be compiled?</span>
-<span class='va'>red_izos</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"600000001"</span>, <span class='st'>"600000002"</span>, <span class='st'>"600000003"</span><span class='op'>)</span>
-
-<span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span>
-  <span class='va'>red_izos</span>,
-  <span class='op'>~</span> <span class='fu'>compile_and_open</span><span class='op'>(</span><span class='st'>"05_ucitele-reditele_ms.Rmd"</span>,
-                     open_on_success <span class='op'>=</span> <span class='cn'>FALSE</span>,
-                     output_dir <span class='op'>=</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"reports-output"</span>, <span class='st'>"ucitele-reditele-ms"</span><span class='op'>)</span>,
-                     output_file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"02_ucitele-reditele-ms_"</span>, <span class='va'>.x</span>, <span class='st'>".docx"</span><span class='op'>)</span>,
-                     params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>redizo <span class='op'>=</span> <span class='va'>.x</span><span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># for which REDIZOs should the reports be compiled?</span></span>
+<span class='r-in'><span class='va'>red_izos</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"600000001"</span>, <span class='st'>"600000002"</span>, <span class='st'>"600000003"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='va'>red_izos</span>,</span>
+<span class='r-in'>  <span class='op'>~</span> <span class='fu'>compile_and_open</span><span class='op'>(</span><span class='st'>"05_ucitele-reditele_ms.Rmd"</span>,</span>
+<span class='r-in'>                     open_on_success <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span class='r-in'>                     output_dir <span class='op'>=</span> <span class='fu'>here</span><span class='op'>(</span><span class='st'>"reports-output"</span>, <span class='st'>"ucitele-reditele-ms"</span><span class='op'>)</span>,</span>
+<span class='r-in'>                     output_file <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"02_ucitele-reditele-ms_"</span>, <span class='va'>.x</span>, <span class='st'>".docx"</span><span class='op'>)</span>,</span>
+<span class='r-in'>                     params <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>redizo <span class='op'>=</span> <span class='va'>.x</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

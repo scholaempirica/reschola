@@ -149,7 +149,7 @@
 <h3 class="hasAnchor">
 <a href="#snippets" class="anchor"></a>Snippets</h3>
 <p>When you start typing, some of the suggestions are snippets: they are marked ‘snippet’ and have a paper snippet icon.</p>
-<p>If you press tab, they insert bits (e.g. the snippet for <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code> which appears when you type <code>in</code>) of code or mini-templates (e.g. the <code>fun</code> snippet). For the mini-templates, you can then <code>Tab</code> through the different bits to fill in.</p>
+<p>If you press tab, they insert bits (e.g. the snippet for <code>%in%</code> which appears when you type <code>in</code>) of code or mini-templates (e.g. the <code>fun</code> snippet). For the mini-templates, you can then <code>Tab</code> through the different bits to fill in.</p>
 <p>You can also <a href="https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets">define your own</a>.</p>
 </div>
 <div id="handy-keyboard-shortcuts" class="section level3">
@@ -157,14 +157,14 @@
 <a href="#handy-keyboard-shortcuts" class="anchor"></a>Handy keyboard shortcuts</h3>
 <ul>
 <li>
-<code>ctrl</code>+<code>enter</code> runs current line or expression (lines bound by <code><a href="../reference/%&gt;%.html">%&gt;%</a></code>)</li>
+<code>ctrl</code>+<code>enter</code> runs current line or expression (lines bound by <code>%&gt;%</code>)</li>
 <li>
-<code>alt</code>+<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> inserts <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>
+<code>alt</code>+<code>-</code> inserts <code>&lt;-</code>
 </li>
 <li>
 <code>ctrl</code>+<code>D</code> deletes the current line</li>
 <li>
-<code>alt</code>+<code>M</code> inserts <code><a href="../reference/%&gt;%.html">%&gt;%</a></code>
+<code>alt</code>+<code>M</code> inserts <code>%&gt;%</code>
 </li>
 <li>
 <code>alt</code>+<code>up</code>/<code>down</code> moves the current line/statement up or down</li>
@@ -196,7 +196,7 @@
 <h2 class="hasAnchor">
 <a href="#retrieving-documentation" class="anchor"></a>Retrieving documentation</h2>
 <p>Besides the F1 key, you can use <code>?function</code> to get help for <code>function</code> and <code>??term</code> to search for <code>term</code> in all documentation of all installed packages.</p>
-<p>Longer-form documentation for packages is often found in vignettes. Run <code>vignette('vignette-name', 'package-name')</code> to get a particular one. (Intro vignettes often have the name of the package, e.g. <code><a href="../articles/reschola.html">vignette('reschola', 'reschola')</a></code>). Get list of vignettes for any package <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes('package-name')</a></code>.</p>
+<p>Longer-form documentation for packages is often found in vignettes. Run <code>vignette('vignette-name', 'package-name')</code> to get a particular one. (Intro vignettes often have the name of the package, e.g. <code><a href="../articles/reschola.html">vignette('reschola', 'reschola')</a></code>). Get list of vignettes for any package <code>browseVignettes('package-name')</code>.</p>
 </div>
 <div id="getting-help-beyond-the-documentation" class="section level2">
 <h2 class="hasAnchor">
@@ -231,7 +231,7 @@
 <a href="#data-exploration" class="anchor"></a>Data exploration</h2>
 <ul>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::tally(weight = )</a></code> / <code><a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::add_tally(weight = )</a></code>
+<code>dplyr::tally(weight = )</code> / <code>dplyr::add_tally(weight = )</code>
 </li>
 <li>
 <code>skimr::skim(df)</code> / <code>df %&gt;% group_by(var) %&gt;% skim()</code>

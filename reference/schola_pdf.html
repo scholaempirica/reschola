@@ -56,7 +56,9 @@
 
 <meta property="og:title" content="Schola Empirica PDF Format — schola_pdf" />
 <meta property="og:description" content="Function called in the output section of the YAML header (see examples
-below), instructing knitr to use the standard Schola PDF document format." />
+below), instructing knitr to use the standard Schola PDF document format.
+If you run into any problem using the Czech language, consult this function
+details first." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -174,7 +176,9 @@ below), instructing knitr to use the standard Schola PDF document format." />
 
     <div class="ref-description">
     <p>Function called in the output section of the YAML header (see examples
-below), instructing <code>knitr</code> to use the standard Schola PDF document format.</p>
+below), instructing <code>knitr</code> to use the standard Schola PDF document format.
+If you run into any problem using the Czech language, consult this function
+details first.</p>
     </div>
 
     <pre class="usage"><span class='fu'>schola_pdf</span><span class='op'>(</span>
@@ -268,9 +272,9 @@ output format, e.g., <code>"-smart"</code> means the output format will be
     <dt><code>pandoc_args</code></dt><dd><p>Additional command line options to pass to pandoc</p></dd>
     <dt><code>extra_dependencies</code></dt><dd><p>A LaTeX dependency <code>latex_dependency()</code>, a
 list of LaTeX dependencies, a character vector of LaTeX package names (e.g.
-<code><a href='https://rdrr.io/r/base/c.html'>c("framed", "hyperref")</a></code>), or a named list of LaTeX package options
-with the names being package names (e.g. <code><a href='https://rdrr.io/r/base/list.html'>list(hyperef =
-c("unicode=true", "breaklinks=true"), lmodern = NULL)</a></code>). It can be used to
+<code>c("framed", "hyperref")</code>), or a named list of LaTeX package options
+with the names being package names (e.g. <code>list(hyperef =
+c("unicode=true", "breaklinks=true"), lmodern = NULL)</code>). It can be used to
 add custom LaTeX packages to the .tex header.</p></dd>
   
 </dl></td>
@@ -280,6 +284,20 @@ add custom LaTeX packages to the .tex header.</p></dd>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A modified <code>pdf_document2</code> with the standard Schola formatting.</p>
+    <h2 class="hasAnchor" id="hyphenation-error"><a class="anchor" href="#hyphenation-error"></a>Hyphenation error</h2>
+
+    
+
+<p>You may encounter a following warning when your document is being "compiled"
+to <code>.pdf</code> format:</p><pre>Warning: Package babel Warning: No hyphenation patterns were preloaded for
+Warning: (babel)                the language 'Czech' into the format.
+Warning: (babel)                Please, configure your TeX system to add them and
+Warning: (babel)                rebuild the format. Now I will use the patterns
+Warning: (babel)                preloaded for \language=0 instead on input line 53.
+</pre>
+
+<p>This usually solves by calling <code>tinytex::tlmgr_install("hyphen-czech")</code> (if
+you are a <code>{tinytex}</code> user).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Report templates and formats: 
@@ -292,13 +310,14 @@ add custom LaTeX packages to the .tex header.</p></dd>
     <p>Jan Netik</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>output</span><span class='op'>:</span>
-  <span class='fu'>reschola</span><span class='fu'>::</span><span class='va'>schola_pdf</span><span class='op'>:</span>
-    <span class='va'>toc</span><span class='op'>:</span><span class='va'>false</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># in YAML header ------</span></span>
+<span class='r-in'><span class='va'>output</span><span class='op'>:</span></span>
+<span class='r-in'>  <span class='fu'>reschola</span><span class='fu'>::</span><span class='va'>schola_pdf</span><span class='op'>:</span></span>
+<span class='r-in'>    <span class='va'>toc</span><span class='op'>:</span> <span class='va'>false</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
