@@ -91,12 +91,29 @@ A modified \code{pdf_document2} with the standard Schola formatting.
 \description{
 Function called in the output section of the YAML header (see examples
 below), instructing \code{knitr} to use the standard Schola PDF document format.
+If you run into any problem using the Czech language, consult this function
+details first.
 }
+\section{Hyphenation error}{
+
+You may encounter a following warning when your document is being "compiled"
+to \code{.pdf} format:\preformatted{Warning: Package babel Warning: No hyphenation patterns were preloaded for
+Warning: (babel)                the language 'Czech' into the format.
+Warning: (babel)                Please, configure your TeX system to add them and
+Warning: (babel)                rebuild the format. Now I will use the patterns
+Warning: (babel)                preloaded for \\language=0 instead on input line 53.
+}
+
+This usually solves by calling \code{tinytex::tlmgr_install("hyphen-czech")} (if
+you are a \code{{tinytex}} user).
+}
+
 \examples{
 \dontrun{
+# in YAML header ------
 output:
   reschola::schola_pdf:
-    toc:false
+    toc: false
 }
 
 }

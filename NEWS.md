@@ -15,6 +15,11 @@
 ## Bugfixes
 
 - `ls_participants()` runs properly when there are no attributes to translate and `translate_attrs = TRUE`
+
+# Documentation
+
+- info about `babel` TeX package hyphenation warning mitigation in `schola_pdf()` (using `tinytex::tlmgr_install("hyphen-czech")`)
+
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 - amend R CMD warnings
