@@ -261,7 +261,7 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 
   if (translate_attrs && length(attributes) != 0) {
     attrs <- ls_get_attrs(survey_id = survey_id)
-    if (!is.null(attrs)) {
+    if (!is.null(attrs) && length(attrs) != 0) {
       attrs <- set_names(names(attrs), attrs) # swap names-values
       attrs <- attrs[attrs %in% names(res)] # keep only those present in res
       res <- res %>% rename(!!!attrs)

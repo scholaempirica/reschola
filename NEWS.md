@@ -12,6 +12,9 @@
 - startup message
 - project setup exceptions better handled
 
+## Bugfixes
+
+- `ls_participants()` runs properly when there are no attributes to translate and `translate_attrs = TRUE`
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 - amend R CMD warnings
