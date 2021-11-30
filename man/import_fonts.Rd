@@ -7,7 +7,11 @@
 import_fonts()
 }
 \description{
-Roboto is a trademark of Google.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}}
+
+The function relies on \code{{extrafont}}
+package that comes with briken dependencies at the moment. An experimental
+\code{register_reschola_fonts()} is proposed.
 }
 \details{
 This is an analogue of \code{hrbrthemes::import_roboto_condensed()}.
@@ -22,9 +26,14 @@ If you install the fonts just for the current user (via right-click and
 Install), they will probably \strong{not be discoverable} by the \code{fontspec}
 LaTeX package that is used for PDF report typesetting!
 }
+\section{Credits}{
+ Roboto is a trademark of Google.
+}
+
 \seealso{
 Other Font helpers and shortcuts: 
 \code{\link{font_rc}},
+\code{\link{register_reschola_fonts}()},
 \code{\link{set_reschola_ggplot_fonts}()}
 }
 \concept{Font helpers and shortcuts}

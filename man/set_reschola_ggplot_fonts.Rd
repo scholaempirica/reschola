@@ -2,19 +2,31 @@
 % Please edit documentation in R/fonts.R
 \name{set_reschola_ggplot_fonts}
 \alias{set_reschola_ggplot_fonts}
-\title{Mqke ggplot2 use chosen font in geom_text/label}
+\title{Mqke {ggplot2} use chosen font in geom_text/label}
 \usage{
-set_reschola_ggplot_fonts(font = "Roboto Condensed")
+set_reschola_ggplot_fonts(
+  family = "Roboto Condensed",
+  face = "plain",
+  size = 3.5,
+  color = "#2b2b2b"
+)
 }
 \arguments{
-\item{font}{font, defaults to \code{"Roboto Condensed"}}
+\item{family}{font family}
+
+\item{face}{font face}
+
+\item{size}{font size}
+
+\item{color}{font color}
 }
 \description{
-Wrapper around update_geom_font_defaults(), different default
+The defaults are from {hrbrthemes}.
 }
 \seealso{
 Other Font helpers and shortcuts: 
 \code{\link{font_rc}},
-\code{\link{import_fonts}()}
+\code{\link{import_fonts}()},
+\code{\link{register_reschola_fonts}()}
 }
 \concept{Font helpers and shortcuts}

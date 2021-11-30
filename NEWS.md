@@ -8,9 +8,11 @@
 ## Changes
 
 - current logos added
-- new draft_pdf
+- new `draft_pdf()`
 - startup message
 - project setup exceptions better handled
+- `set_reschola_ggplot_fonts()` without dependencies and more customisable (although changes are not recommended)
+- font registration process on Windows is in change, see `register_reschola_fonts()`
 
 ## Bugfixes
 

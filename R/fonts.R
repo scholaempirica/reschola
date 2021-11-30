@@ -64,14 +64,22 @@ font_r_light <- "Roboto Light"
 
 #' Import Roboto fonts for use in charts and in the PDF reports
 #'
-#' Roboto is a trademark of Google.
+#' @description
+#' `r lifecycle::badge("questioning")`
 #'
+#' The function relies on `{extrafont}`
+#' package that comes with briken dependencies at the moment. An experimental
+#' `register_reschola_fonts()` is proposed.
+#'
+#' @details
 #' This is an analogue of `hrbrthemes::import_roboto_condensed()`.
 #'
 #' There is an option `reschola.loadfonts` which -- if set to `TRUE` -- will
 #' call `extrafont::loadfonts()` to register non-core fonts with R PDF &
 #' PostScript devices. If you are running under Windows, the package calls the
 #' same function to register non-core fonts with the Windows graphics device.
+#'
+#' @section Credits: Roboto is a trademark of Google.
 #'
 #' @note If you install the fonts just for the current user (via right-click and
 #'   Install), they will probably **not be discoverable** by the `fontspec`
@@ -112,16 +120,82 @@ import_fonts <- function() {
 }
 
 
-#' Mqke ggplot2 use chosen font in geom_text/label
+#' Install reschola fonts on your computer
 #'
-#' Wrapper around update_geom_font_defaults(), different default
+#' @return Side effects.
+#' @export
 #'
-#' @param font font, defaults to `"Roboto Condensed"`
+#' @importFrom usethis ui_todo ui_info ui_field ui_path
 #'
-#' @importFrom hrbrthemes update_geom_font_defaults
+install_reschola_fonts <- function() {
+  r_font_dir <- system.file("fonts", package = "reschola")
+
+  ui_info("Opening {ui_path(r_font_dir)} with fonts...")
+  system2("open", r_font_dir)
+
+  ui_info("To install the fonts on Windows:")
+  ui_todo("select all files in the directory which has been opened")
+  ui_todo("right-click on them")
+  ui_todo("chose {ui_field('Install for all users')} (requires admin rights)")
+}
+
+#' Register `{reschola}` fonts on Windows
+#'
+#' @description `r lifecycle::badge("experimental")`
+#'
+#'   This function is supposed to substitute `import_fonts()` as its
+#'   dependencies are a bit buggy today and not updated often. **Not tested
+#'   properly yet.**
+#'
+#' @details The function is only useful on Windows. On other platforms, fonts
+#'   should be available out of the box for `Cairo` and/or `AGG` devices (which
+#'   is recommended for PNG and other bitmap formats, see `{ragg}` package).
+#'
+#' @param family font family to register, default is reschola recommended
+#'
+#' @return Called for side effects.
+#' @export
+#'
+#' @family Font helpers and shortcuts
+#'
+register_reschola_fonts <- function(family = "Roboto Condensed") {
+
+  # only for Windows bitmap devices, cairo and AGG can pick the font on its own
+  args <- list()
+  args[[family]] <- windowsFont(family)
+
+  if (.Platform$OS.type != "windows") {
+    stop("Only Windows is supported. On other systems, you should be fine out of the box.")
+  }
+  do.call(windowsFonts, args)
+
+
+}
+
+
+#' Mqke {ggplot2} use chosen font in geom_text/label
+#'
+#' The defaults are from {hrbrthemes}.
+#'
+#' @param family font family
+#' @param face font face
+#' @param size font size
+#' @param color font color
+#'
+#' @importFrom purrr walk
+#' @importFrom ggplot2 update_geom_defaults
 #' @family Font helpers and shortcuts
 #' @export
 #'
-set_reschola_ggplot_fonts <- function(font = "Roboto Condensed") {
-  update_geom_font_defaults(font)
+set_reschola_ggplot_fonts <- function(family = "Roboto Condensed", face = "plain",
+                                      size = 3.5, color = "#2b2b2b") {
+  walk(
+    c("text", "label"),
+    ~ update_geom_defaults(
+      .x,
+      list(family = family, face = face, size = size, color = color)
+    )
+  )
 }
+
+

@@ -94,7 +94,7 @@ below), instructing \code{knitr} to use the standard Schola PDF document format.
 If you run into any problem using the Czech language, consult this function
 details first.
 }
-\section{Hyphenation error}{
+\section{Package \code{babel} hyphenation warning}{
 
 You may encounter a following warning when your document is being "compiled"
 to \code{.pdf} format:\preformatted{Warning: Package babel Warning: No hyphenation patterns were preloaded for
