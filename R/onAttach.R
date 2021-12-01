@@ -1,10 +1,11 @@
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(paste0("This is {reschola} version ", packageVersion("reschola")))
+  packageStartupMessage("Registering fonts with Windows bitmap devices...")
+  register_reschola_fonts()
 
   # adapted from hrbrthemes
   # Suggestion by @alexwhan
 
-  register_reschola_fonts()
 #
 #   if (.Platform$OS.type == "windows") { # nocov start
 #     # fix as per https://github.com/wch/extrafont/issues/44#issue-comment-box

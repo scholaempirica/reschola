@@ -73,42 +73,42 @@ Windows and will throw a warning if used in plots.
 Other Font helpers and shortcuts: 
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 
 Other Font helpers and shortcuts: 
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 
 Other Font helpers and shortcuts: 
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 
 Other Font helpers and shortcuts: 
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 
 Other Font helpers and shortcuts: 
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 
 Other Font helpers and shortcuts: 
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 
 Other Font helpers and shortcuts: 
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 
 Other Font helpers and shortcuts: 
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 }
 \concept{Font helpers and shortcuts}
 \keyword{datasets}

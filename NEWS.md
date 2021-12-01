@@ -11,8 +11,9 @@
 - new `draft_pdf()`
 - startup message
 - project setup exceptions better handled
-- `set_reschola_ggplot_fonts()` without dependencies and more customisable (although changes are not recommended)
+- `set_reschola_ggplot_fonts()` without dependencies and more customisable (although changes are not recommended); new geoms covered
 - font registration process on Windows is in change, see `register_reschola_fonts()`
+- new `fct_nanify()` for recoding a factor level to `NA`
 
 ## Bugfixes
 

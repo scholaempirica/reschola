@@ -34,6 +34,6 @@ LaTeX package that is used for PDF report typesetting!
 Other Font helpers and shortcuts: 
 \code{\link{font_rc}},
 \code{\link{register_reschola_fonts}()},
-\code{\link{set_reschola_ggplot_fonts}()}
+\code{\link{use_reschola_fonts}()}
 }
 \concept{Font helpers and shortcuts}

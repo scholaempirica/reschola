@@ -155,6 +155,7 @@ install_reschola_fonts <- function() {
 #'
 #' @return Called for side effects.
 #' @export
+#' @importFrom grDevices windowsFont windowsFonts
 #'
 #' @family Font helpers and shortcuts
 #'
@@ -168,14 +169,14 @@ register_reschola_fonts <- function(family = "Roboto Condensed") {
     stop("Only Windows is supported. On other systems, you should be fine out of the box.")
   }
   do.call(windowsFonts, args)
-
-
 }
 
 
-#' Mqke {ggplot2} use chosen font in geom_text/label
+#' Make {ggplot2} use chosen font in geom_text/label
 #'
-#' The defaults are from {hrbrthemes}.
+#' Sets ggplot2 defaults for most text geoms from ggplot2, ggtext, and ggrepel.
+#'
+#' Geoms covered: "text", "label", "richtext", "text_box", "text_repel", "label_repel".
 #'
 #' @param family font family
 #' @param face font face
@@ -185,12 +186,13 @@ register_reschola_fonts <- function(family = "Roboto Condensed") {
 #' @importFrom purrr walk
 #' @importFrom ggplot2 update_geom_defaults
 #' @family Font helpers and shortcuts
+#' @aliases set_reschola_ggplot_fonts
 #' @export
 #'
-set_reschola_ggplot_fonts <- function(family = "Roboto Condensed", face = "plain",
-                                      size = 3.5, color = "#2b2b2b") {
+use_reschola_fonts <- function(family = "Roboto Condensed", face = "plain",
+                               size = 3.5, color = "#2b2b2b") {
   walk(
-    c("text", "label"),
+    c("text", "label", "richtext", "text_box", "text_repel", "label_repel"),
     ~ update_geom_defaults(
       .x,
       list(family = family, face = face, size = size, color = color)
@@ -199,3 +201,9 @@ set_reschola_ggplot_fonts <- function(family = "Roboto Condensed", face = "plain
 }
 
 
+#' @rdname use_reschola_fonts
+#' @export
+set_reschola_ggplot_fonts <- function(family = "Roboto Condensed", face = "plain",
+                                      size = 3.5, color = "#2b2b2b") {
+  use_reschola_fonts(family = family, face = face, size = size, color = color)
+}

@@ -16,7 +16,7 @@
 #' f <- factor(c("a", "b", "c", "nanify"))
 #' fct_nanify(f, "nanify")
 fct_nanify <- function(f, level) {
-  # ensure f is a factor
+  # ensure f is a factor to ensure correct subset method is dispatched
   if (!inherits(f, "factor")) {
     f <- as.factor(f)
   }
