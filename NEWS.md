@@ -4,6 +4,9 @@
 
 - default project structure changes and cleanup
 - schola project options cleanup
+- updated `theme_schola()`
+  - no margins by default (argument `margin` supersedes `margin_side` and `margin_bottom`)
+  - axis titles on by default (+ `axis.title` renamed to `axis_title`)
 
 ## Changes
 
@@ -22,6 +25,7 @@
 # Documentation
 
 - info about `babel` TeX package hyphenation warning mitigation in `schola_pdf()` (using `tinytex::tlmgr_install("hyphen-czech")`)
+- `?theme_schola` enumerates `...` arguments that `theme()` understands
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
