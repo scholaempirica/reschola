@@ -1,3 +1,8 @@
+<!-- TODO -----------------------------------------------------
+- PDF template: incorporate changes from IvP and EZ, especially citations and so on
+- amend R CMD warnings
+-->
+
 # reschola 0.3.3.9000 (development version)
 
 ## Breaking changes
@@ -17,6 +22,13 @@
 - `set_reschola_ggplot_fonts()` without dependencies and more customisable (although changes are not recommended); new geoms covered
 - font registration process on Windows is in change, see `register_reschola_fonts()`
 - new `fct_nanify()` for recoding a factor level to `NA`
+- new functions for quick RDS data manipulation:
+  - `get_input_data()`
+  - `get_intermediate_data()`
+  - `get_processed_data()`
+  - `write_input_data()`
+  - `write_intermediate_data()`
+  - `write_processed_data()`
 
 ## Bugfixes
 
@@ -26,11 +38,6 @@
 
 - info about `babel` TeX package hyphenation warning mitigation in `schola_pdf()` (using `tinytex::tlmgr_install("hyphen-czech")`)
 - `?theme_schola` enumerates `...` arguments that `theme()` understands
-
-<!-- TODO -----------------------------------------------------
-- PDF template: incorporate changes from IvP and EZ, especially citations and so on
-- amend R CMD warnings
--->
 
 
 # reschola 0.3.3 (Save the Fonts)

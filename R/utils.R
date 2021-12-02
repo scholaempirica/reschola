@@ -78,3 +78,108 @@ copy_schola_template <- function(format = "pdf", path = proj_get(), ...) {
 reschola_file <- function(...) {
   system.file(..., package = "reschola", mustWork = TRUE)
 }
+
+
+
+#' Get RDS
+#'
+#' @param file  file to make, rds fileext is appended automatically or forced if
+#'   other ext is provided
+#' @param type type of data, dir inside data_dir
+#'
+#' @keywords internal
+#' @importFrom fs path_ext_set
+#' @importFrom here here
+#' @importFrom readr read_rds
+get_rds <- function(file, type, data_dir = "data") {
+  path <- here(data_dir, type, file)
+  read_rds(path_ext_set(path, "rds"))
+}
+
+#' Make RDS
+#'
+#' @param .x an object to save as RDS
+#' @param file file to make, rds fileext is appended automatically or forced if
+#'   other ext is provided
+#' @param type type of data, dir inside data_dir
+#' @param data_dir dir with data dirs
+#'
+#' @keywords internal
+#' @importFrom fs path_ext_set
+#' @importFrom here here
+#' @importFrom readr write_rds
+#'
+make_rds <- function(.x, file, type, data_dir = "data") {
+  path <- here(data_dir, type, file)
+  write_rds(.x, path_ext_set(path, "rds"))
+}
+
+
+#' Quick access to data instandard `{reschola}` project
+#'
+#' Note that file paths are handled with `here()` already.
+#'
+#' @param file *character*, file name to get or write to, `.rds` is appended
+#'   automatically if not already provided.
+#' @param .data *data object* to save as RDS.
+#'
+#' @export
+#' @rdname schola_rds
+get_input_data <- function(file) {
+  get_rds(file, type = "processed")
+}
+
+#' @export
+#' @rdname schola_rds
+get_intermediate_data <- function(file) {
+  get_rds(file, type = "intermediate")
+}
+
+#' @export
+#' @rdname schola_rds
+get_processed_data <- function(file) {
+  get_rds(file, type = "processed")
+}
+
+#' @export
+#' @rdname schola_rds
+write_input_data <- function(.data, file) {
+  make_rds(.data, file, type = "processed")
+}
+
+#' @export
+#' @rdname schola_rds
+write_intermediate_data <- function(.data, file) {
+  make_rds(.data, file, type = "intermediate")
+}
+
+#' @export
+#' @rdname schola_rds
+write_processed_data <- function(.data, file) {
+  make_rds(.data, file, type = "processed")
+}
+
+
+
+#' Get current reschola project Google Drive URL ID
+#'
+#' Gets a hidden object `.gd_proj_url` (by default) created at project
+#' "startup". Use `usethis::edit_r_profile()` to change the URL.
+#'
+#' @param url_object *character*, name of the object URL is stored in. `.gd_proj_url` by default.
+#' @return A character vector of class `drive_id`.
+#'
+#' @export
+#' @importFrom googledrive as_id
+#' @importFrom rlang abort
+#' @importFrom usethis ui_todo ui_field ui_code
+#'
+gd_get_proj <- function(url_object = ".gd_proj_url") {
+  if (!is.null(res <- get0(url_object, envir = .GlobalEnv))) {
+    return(as_id(res))
+  }
+  on.exit(ui_todo(
+    "Call {ui_code('usethis::edit_r_profile()')} and set the URL to {ui_field({url_object})}."
+  ))
+  abort("Google Drive URL not set!")
+}
