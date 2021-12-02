@@ -192,25 +192,12 @@ register_reschola_fonts <- function(family = "Roboto Condensed") {
 #'
 use_reschola_fonts <- function(family = "Roboto Condensed", face = "plain",
                                size = 3.5, color = "#2b2b2b") {
-  available_namespaces <- sapply(
-    c("ggplot2", "ggtext", "ggrepel"),
-    function(.x) requireNamespace(.x, quietly = TRUE)
-  )
-
-  geoms <- list(
-    ggplot2 = c("text", "label"),
-    ggtext = c("richtext", "text_box"),
-    ggrepel = c("text_repel", "label_repel")
-  )
-
-  geoms <- unlist(geoms[names(which(available_namespaces))])
-
   walk(
-    geoms,
-    ~ update_geom_defaults(
+    c("text", "label", "richtext", "text_box", "text_repel", "label_repel"),
+    ~ try(update_geom_defaults(
       .x,
       list(family = family, face = face, size = size, color = color)
-    )
+    ), silent = TRUE)
   )
 }
 
