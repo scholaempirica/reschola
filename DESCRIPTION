@@ -43,6 +43,7 @@ Imports:
     utils,
     vctrs
 Suggests: 
+    testthat (>= 3.0.0),
     spelling
 VignetteBuilder: 
     knitr
@@ -53,3 +54,4 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Config/testthat/edition: 3

@@ -10,7 +10,7 @@ register_reschola_fonts(family = "Roboto Condensed")
 \item{family}{font family to register, default is reschola recommended}
 }
 \value{
-Called for side effects.
+Called for side effects, but returns logical invisibly.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}

@@ -1,6 +1,5 @@
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(paste0("This is {reschola} version ", packageVersion("reschola")))
-  packageStartupMessage("Registering fonts with Windows bitmap devices...")
   register_reschola_fonts()
 
   # adapted from hrbrthemes

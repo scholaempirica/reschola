@@ -153,7 +153,7 @@ install_reschola_fonts <- function() {
 #'
 #' @param family font family to register, default is reschola recommended
 #'
-#' @return Called for side effects.
+#' @return Called for side effects, but returns logical invisibly.
 #' @export
 #'
 #' @family Font helpers and shortcuts
@@ -161,14 +161,14 @@ install_reschola_fonts <- function() {
 register_reschola_fonts <- function(family = "Roboto Condensed") {
 
   # only for Windows bitmap devices, cairo and AGG can pick the font on its own
-
   if (.Platform$OS.type == "windows") {
     args <- list()
     args[[family]] <- grDevices::windowsFont(family)
-
     do.call(grDevices::windowsFonts, args)
+    message("Registering fonts with Windows bitmap devices...")
+    invisible(TRUE)
   } else {
-    stop("Only Windows is supported. On other systems, you should be fine out of the box.")
+    invisible(TRUE)
   }
 }
 
