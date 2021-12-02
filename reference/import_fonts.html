@@ -55,7 +55,10 @@
   
 
 <meta property="og:title" content="Import Roboto fonts for use in charts and in the PDF reports — import_fonts" />
-<meta property="og:description" content="Roboto is a trademark of Google." />
+<meta property="og:description" content="
+The function relies on {extrafont}
+package that comes with briken dependencies at the moment. An experimental
+register_reschola_fonts() is proposed." />
 <meta property="og:image" content="https://scholaempirica.github.io/reschola/logo.png" />
 
 
@@ -172,7 +175,10 @@
     </div>
 
     <div class="ref-description">
-    <p>Roboto is a trademark of Google.</p>
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#questioning'><img src='figures/lifecycle-questioning.svg' alt='[Questioning]' /></a></p>
+<p>The function relies on <code>{extrafont}</code>
+package that comes with briken dependencies at the moment. An experimental
+<code><a href='register_reschola_fonts.html'>register_reschola_fonts()</a></code> is proposed.</p>
     </div>
 
     <pre class="usage"><span class='fu'>import_fonts</span><span class='op'>(</span><span class='op'>)</span></pre>
@@ -190,11 +196,15 @@ same function to register non-core fonts with the Windows graphics device.</p>
     <p>If you install the fonts just for the current user (via right-click and
 Install), they will probably <strong>not be discoverable</strong> by the <code>fontspec</code>
 LaTeX package that is used for PDF report typesetting!</p>
+    <h2 class="hasAnchor" id="credits"><a class="anchor" href="#credits"></a>Credits</h2>
+
+    <p>Roboto is a trademark of Google.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Font helpers and shortcuts: 
 <code><a href='font_rc.html'>font_rc</a></code>,
-<code><a href='set_reschola_ggplot_fonts.html'>set_reschola_ggplot_fonts</a>()</code></p></div>
+<code><a href='register_reschola_fonts.html'>register_reschola_fonts</a>()</code>,
+<code><a href='use_reschola_fonts.html'>use_reschola_fonts</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
