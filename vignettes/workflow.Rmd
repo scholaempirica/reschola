@@ -97,7 +97,7 @@ You may want to build different versions of `build_*.R` as helpers for running d
 
 There are two templates in the package: Schola PDF report (prefered) and Schola Word report.
 
-The PDF report use LaTeX to create typographically correct, completely vector-graphics document. Also, it incorporates some advanced tools, e.g. cropping the figures and plots, and offers captions that renders above the plot, reference-ready. Note that `pdfcrop` LaTeX package (use `tinytex::tlmgr_install("pdfcrop")`) and `Ghostscript` are needed for figure cropping. Note further that `Ghostscript` may not be automatically added to PATH on Windows, so you have to do it manually. 
+The PDF report use LaTeX to create typographically correct, completely vector-graphics document.
 
 The Word report is simple: it creates a Word document with some nice custom defaults and styles.
 

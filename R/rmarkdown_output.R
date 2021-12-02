@@ -21,9 +21,6 @@
 #'
 #' @param toc *Logical*, `TRUE` (default) to include a table of contents. The
 #'   title is set with `pandoc` variable `toc-title` in YAML header.
-#' @param fig_crop *Logical*, whether to crop transparent or white margins of
-#'   figures. Defaults to `TRUE`. Note that for cropping to work, two
-#'   dependencies needs to be satisfied, see `?ensure_cropping`.
 #' @param template *Character*, path to the `.tex` template used by the format.
 #'   Defaults to standard Schola template bundled in the package. **Changes
 #'   discouraged.**
@@ -37,7 +34,7 @@
 #' @param number_sections *Logical*, `TRUE` to number headings. Defaults to
 #'   `FALSE`.
 #' @inheritDotParams rmarkdown::pdf_document -toc -latex_engine -template
-#'   -fig_width -fig_height -dev -number_sections -fig_crop
+#'   -fig_width -fig_height -dev -number_sections
 #'
 #' @return A modified `pdf_document2` with the standard Schola formatting.
 #'
@@ -58,30 +55,17 @@
 #' @importFrom tools find_gs_cmd
 #' @export
 #'
-schola_pdf <- function(num_format = NULL, fig_crop = TRUE,
-                       number_sections = FALSE, toc = TRUE,
+schola_pdf <- function(num_format = NULL, number_sections = FALSE, toc = TRUE,
                        template = find_resource("schola_pdf", "schola_template.tex"),
                        latex_engine = "xelatex", document_class = "report", ...) {
   base <- pdf_document2(
-    toc = toc, fig_crop = fig_crop, template = template,
-    number_sections = number_sections, latex_engine = latex_engine, ...
+    toc = toc, template = template, number_sections = number_sections,
+    latex_engine = latex_engine, ...
   )
 
   base$pandoc$args <- c(
     base$pandoc$args, "--variable", paste0("documentclass=", document_class)
   )
-
-  # enforce plot cropping (see https://github.com/rstudio/rmarkdown/issues/2016)
-  # rmarkdown 2.7+ now throws a warning, but I think error is more suitable
-  if (fig_crop) {
-    tools_absent <- c(!nzchar(Sys.which("pdfcrop")), !nzchar(find_gs_cmd()))
-    if (any(tools_absent)) {
-      ui_stop("Figure cropping dependencies are not satisfied.\nRun {ui_code('ensure_cropping()')} or set {ui_value('fig_crop')} argument to FALSE.")
-    }
-
-    base$knitr$knit_hooks$crop <- knitr::hook_pdfcrop
-    base$knitr$opts_chunk$crop <- TRUE
-  }
 
   # replaces plain quotation marks with typographic ones
   quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")
@@ -119,51 +103,11 @@ schola_pdf <- function(num_format = NULL, fig_crop = TRUE,
   base$knitr$opts_chunk$out.width <- "\\textwidth"
   base$knitr$opts_chunk$dev <- "cairo_pdf" # for support of non-ASCII chars, namely
   base$knitr$opts_chunk$fig.asp <- .618 # golden ratio
-  base$knitr$opts_chunk$fig.path <- "figures/" # if Ghostscript and pdfcrop are avaiable, they are cropped
+  base$knitr$opts_chunk$fig.path <- "figures/"
   base$knitr$opts_chunk$fig.align <- "center"
   # nolint end
 
   base
-}
-
-#' Ensure That Figure Cropping Dependencies Are Satisfied
-#'
-#' Checks if the dependencies needed for the `schola_pdf` format to work
-#' properly and as intended are satisfied. If not, solution is offered.
-#'
-#' In order to use automated cropping of PDF figures, the `PDFCrop` utility
-#' (shipped with TinyTeX, MiKTeX, or TeX Live distributions) is required. The
-#' program further depends on `GhostScript`, which is usually not set on PATH
-#' upon installation and you have to do it manually. The good news is that it
-#' can be done straight from the R.
-#'
-#' @return No return value. Called for side effects.
-#'
-#' @importFrom tools find_gs_cmd
-#' @importFrom usethis ui_todo ui_oops ui_field ui_code_block edit_r_environ
-#'   ui_path
-#' @export
-#'
-ensure_cropping <- function() {
-  pdfcrop_absent <- !nzchar(Sys.which("pdfcrop"))
-  gs_absent <- !nzchar(find_gs_cmd())
-
-  if (pdfcrop_absent) {
-    ui_oops("{ui_field('PDFCrop')} cannot be found. The easiest remedy is to install or reinstall {ui_field('tinytex')} package.")
-  }
-
-  if (gs_absent) {
-    ui_oops("{ui_field('GhostScript')} cannot be found. Try following:")
-    ui_todo(c(
-      "Append following line to your {ui_field('.Renviron')} file.",
-      "Replace the path {ui_path('C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe')}",
-      "with the path to the {ui_field('GhostScript')} on your system.",
-      "Make sure to leave an empty line at the end."
-    ))
-    ui_code_block("R_GSCMD=\"C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe\"")
-
-    edit_r_environ()
-  }
 }
 
 

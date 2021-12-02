@@ -6,7 +6,6 @@
 \usage{
 schola_pdf(
   num_format = NULL,
-  fig_crop = TRUE,
   number_sections = FALSE,
   toc = TRUE,
   template = find_resource("schola_pdf", "schola_template.tex"),
@@ -18,10 +17,6 @@ schola_pdf(
 \arguments{
 \item{num_format}{\emph{Character}, if \code{cs}, Czech number formatting is used.
 Other values are currently ignored and will result in default options.}
-
-\item{fig_crop}{\emph{Logical}, whether to crop transparent or white margins of
-figures. Defaults to \code{TRUE}. Note that for cropping to work, two
-dependencies needs to be satisfied, see \code{?ensure_cropping}.}
 
 \item{number_sections}{\emph{Logical}, \code{TRUE} to number headings. Defaults to
 \code{FALSE}.}
@@ -45,6 +40,10 @@ Defaults to \code{report}. \strong{Changes discouraged.}}
   \describe{
     \item{\code{toc_depth}}{Depth of headers to include in table of contents}
     \item{\code{fig_width}}{Default width (in inches) for figures}
+    \item{\code{fig_crop}}{Whether to crop PDF figures with the command
+\command{pdfcrop}. This requires the tools \command{pdfcrop} and
+\command{ghostscript} to be installed. By default, \code{fig_crop = TRUE}
+if these two tools are available.}
     \item{\code{fig_caption}}{\code{TRUE} to render figures with captions}
     \item{\code{df_print}}{Method to be used for printing data frames. Valid values
 include "default", "kable", "tibble", and "paged". The "default" method
