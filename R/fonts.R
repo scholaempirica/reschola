@@ -168,7 +168,7 @@ register_reschola_fonts <- function(family = "Roboto Condensed") {
     message("Registering fonts with Windows bitmap devices...")
     invisible(TRUE)
   } else {
-    invisible(TRUE)
+    invisible(FALSE)
   }
 }
 
