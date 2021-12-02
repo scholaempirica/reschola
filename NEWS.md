@@ -12,6 +12,7 @@
 - updated `theme_schola()`
   - no margins by default (argument `margin` supersedes `margin_side` and `margin_bottom`)
   - axis titles on by default (+ `axis.title` renamed to `axis_title`)
+- new Google Drive handling -- URL is set in `.Rprofile` as a hidden object that can be accessed by `gd_get_proj()`
 
 ## Changes
 
@@ -29,6 +30,7 @@
   - `write_input_data()`
   - `write_intermediate_data()`
   - `write_processed_data()`
+- new function `gd_backup()` for quick files backups
 
 ## Bugfixes
 

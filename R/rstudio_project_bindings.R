@@ -149,6 +149,9 @@ schola_project <- function(path, ...) {
 
   # Gdrive ------------------------------------------------------------------
 
+
+  writeLines(readme_text, con = "README.md")
+
   if (is.null(dots$drive_folder)) dots$drive_folder <- ""
 
   # if drive folder given, check that it is a folder (not a file etc.)
@@ -164,7 +167,7 @@ schola_project <- function(path, ...) {
     )
 
     if (!is_folder(gdrive_dribble)) {
-      ui_stop("It seems the GDrive folder URL you have given does not point to a folder.")
+      ui_stop("It seems the Google Drive folder URL you have given does not point to a folder.")
     }
   }
 
@@ -175,6 +178,13 @@ schola_project <- function(path, ...) {
   if (dots[["drive_download"]] & (dots[["drive_folder"]] != "")) {
     ui_todo("Downloading contents of GDrive to {ui_path('data/input')}")
     gd_download_folder(dots$drive_folder, overwrite = F, files_from_subfolders = T)
+
+    # set URL into .Rprofile
+    writeLines(str_glue(
+      "# project's Google Drive URL\n.gd_proj_url <- \"{dots$drive_folder}\""
+    ),
+    con = ".Rprofile"
+    )
   }
 
   # usethis::ui_todo("You should run {usethis::ui_code('usethis::proj_set(getwd())')} in your original session to get your working directory sorted.")

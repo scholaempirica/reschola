@@ -5,7 +5,7 @@
 \title{Download files from Google Drive folder}
 \usage{
 gd_download_folder(
-  folder_url,
+  folder_url = gd_get_proj(),
   dest_dir = "data/input",
   files_from_subfolders = F,
   overwrite = F

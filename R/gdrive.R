@@ -30,15 +30,16 @@
 #' @importFrom purrr walk2 map_chr
 #' @importFrom usethis ui_path ui_info
 #' @importFrom dplyr mutate filter
+#' @importFrom rlang .data
 #' @importFrom googledrive as_id as_dribble is_folder drive_ls drive_download
 #'
 #' @export
 #'
-gd_download_folder <- function(folder_url, dest_dir = "data/input",
+gd_download_folder <- function(folder_url = gd_get_proj(), dest_dir = "data/input",
                                files_from_subfolders = F,
                                overwrite = F) {
   url_id <- as_id(folder_url)
-  url_dribble <- as_dribble(folder_url)
+  url_dribble <- as_dribble(url_id)
 
 
   stopifnot(is_folder(url_dribble))
@@ -48,7 +49,7 @@ gd_download_folder <- function(folder_url, dest_dir = "data/input",
   drv_items <- drive_ls(url_id, recursive = files_from_subfolders)
 
   drv_files <- drv_items %>%
-    mutate(mimetype = map_chr(drive_resource, "mimeType")) %>%
+    mutate(mimetype = map_chr(.data$drive_resource, "mimeType")) %>%
     filter(mimetype != "application/vnd.google-apps.folder")
 
   # print(drv_files)
@@ -63,6 +64,21 @@ gd_download_folder <- function(folder_url, dest_dir = "data/input",
 
   invisible(file.path(dest_dir, drv_files$name))
 }
+
+
+#' Backup a file to project's Google Drive
+#'
+#' @param file asdf
+#' @param dir asdf
+#'
+#' @return
+#' @export
+#'
+gd_backup <- function(file, dir = gd_get_proj()) {
+  drive_put(here(file), as_dribble(dir))
+}
+
+
 
 
 #' Upload a file to a Google Drive folder
