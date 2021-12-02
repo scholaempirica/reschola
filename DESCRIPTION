@@ -33,6 +33,7 @@ Imports:
     officer,
     png,
     purrr,
+    readr,
     rlang,
     rmarkdown,
     rstudioapi,
