@@ -31,6 +31,7 @@
   - `write_intermediate_data()`
   - `write_processed_data()`
 - new function `gd_backup()` for quick files backups
+- `gd_download_folder()` now uses project's Google Drive URL stored in `.Rprofile` as `folder_url` by default
 
 ## Bugfixes
 
