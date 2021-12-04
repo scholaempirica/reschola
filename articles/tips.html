@@ -29,6 +29,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -41,18 +43,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/reschola.html">Get started</a>
 </li>
@@ -89,13 +85,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/scholaempirica/reschola/">
+  <a href="https://github.com/scholaempirica/reschola/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/scholaempirica/reschola/issues">
+  <a href="https://github.com/scholaempirica/reschola/issues" class="external-link">
     <span class="fa fa-exclamation-circle fa-lg"></span>
      
   </a>
@@ -122,7 +118,7 @@
       <h1 data-toc-skip>Tips and Tricks for R and Rstudio</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/master/vignettes/tips.Rmd"><code>vignettes/tips.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/HEAD/vignettes/tips.Rmd" class="external-link"><code>vignettes/tips.Rmd</code></a></small>
       <div class="hidden name"><code>tips.Rmd</code></div>
 
     </div>
@@ -130,31 +126,31 @@
     
     
 <p>This vignette provides some handy tips and tricks for working with R in RStudio. For more fundamental principles and guidance on getting R and RStudio setup for the Schola workflow, see the <a href="setup.html">Setup</a> vignette. For guidance on the workflow itself, see the <a href="workflow.html">Workflow</a> vignette.</p>
-<div id="rstudio-tips" class="section level2">
-<h2 class="hasAnchor">
-<a href="#rstudio-tips" class="anchor"></a>RStudio tips</h2>
-<p>All keyboard shortcuts below are for Windows. See <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts" class="uri">https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts</a> for all shortcuts on all platforms.</p>
-<div id="general-helpers" class="section level3">
-<h3 class="hasAnchor">
-<a href="#general-helpers" class="anchor"></a>General helpers</h3>
+<div class="section level2">
+<h2 id="rstudio-tips">RStudio tips<a class="anchor" aria-label="anchor" href="#rstudio-tips"></a>
+</h2>
+<p>All keyboard shortcuts below are for Windows. See <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts" class="external-link uri">https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts</a> for all shortcuts on all platforms.</p>
+<div class="section level3">
+<h3 id="general-helpers">General helpers<a class="anchor" aria-label="anchor" href="#general-helpers"></a>
+</h3>
 <p>**Code completion*: when typing a function name, press <code>Tab</code> and RStudio will show functions/objects which match that name. Use the arrows to navigate the entry you need and press <code>Tab</code> again. Likewise with parameters once you are inside parentheses. Note that you can type e.g. <code>usegitrel</code> to get a suggestion for <code>use_github_release()</code> as RStudio looks intelligently through functions names some_function_name(). (This is also a good reason to use underscores in your own object/function names).</p>
 <p><strong>Paths completion</strong>: when inside quotes, type or press tab and RStudio will suggest files inside the current project.</p>
 <p><strong>Go to anything</strong>: in RStudio, press <code>ctrl</code>+ <code>.</code>, and start typing. RStudio will suggest files and functions in this project and if you click/arrow+enter into one, will take you to the code.</p>
-<p><strong>Cheatsheets</strong>: in help &gt; Cheatsheets, you can get to two-page cheatsheets on some of the most used packages. They are also <a href="https://rstudio.com/resources/cheatsheets/">online</a>.</p>
+<p><strong>Cheatsheets</strong>: in help &gt; Cheatsheets, you can get to two-page cheatsheets on some of the most used packages. They are also <a href="https://rstudio.com/resources/cheatsheets/" class="external-link">online</a>.</p>
 <p><strong>Multiple cursors</strong>: when making changes to similar lines, you can use multiple cursors: press <code>alt</code> and drag up or down or press <code>ctrl</code>+<code>alt</code>+<code>up</code>/<code>down</code> to add cursor in the above or below line. Press <code>ctrl</code>+<code>alt</code> and click to add cursors anywhere. Then type, move around, delete etc.; when done, press <code>esc</code>.</p>
 <p><strong>Object view</strong>: holding <code>ctrl</code> while clicking on any object name in the code editor, or pressing <code>F2</code>, lets you view that object: code for functions, dataset viewer for data.</p>
 <p><strong>Accessing help</strong>: pressing <code>F1</code> when your cursor is on a function name will display the documentatin for that function, same for package names</p>
 </div>
-<div id="snippets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#snippets" class="anchor"></a>Snippets</h3>
+<div class="section level3">
+<h3 id="snippets">Snippets<a class="anchor" aria-label="anchor" href="#snippets"></a>
+</h3>
 <p>When you start typing, some of the suggestions are snippets: they are marked ‘snippet’ and have a paper snippet icon.</p>
 <p>If you press tab, they insert bits (e.g. the snippet for <code>%in%</code> which appears when you type <code>in</code>) of code or mini-templates (e.g. the <code>fun</code> snippet). For the mini-templates, you can then <code>Tab</code> through the different bits to fill in.</p>
-<p>You can also <a href="https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets">define your own</a>.</p>
+<p>You can also <a href="https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets" class="external-link">define your own</a>.</p>
 </div>
-<div id="handy-keyboard-shortcuts" class="section level3">
-<h3 class="hasAnchor">
-<a href="#handy-keyboard-shortcuts" class="anchor"></a>Handy keyboard shortcuts</h3>
+<div class="section level3">
+<h3 id="handy-keyboard-shortcuts">Handy keyboard shortcuts<a class="anchor" aria-label="anchor" href="#handy-keyboard-shortcuts"></a>
+</h3>
 <ul>
 <li>
 <code>ctrl</code>+<code>enter</code> runs current line or expression (lines bound by <code>%&gt;%</code>)</li>
@@ -192,29 +188,29 @@
 <p>They can also be customised.</p>
 </div>
 </div>
-<div id="retrieving-documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#retrieving-documentation" class="anchor"></a>Retrieving documentation</h2>
+<div class="section level2">
+<h2 id="retrieving-documentation">Retrieving documentation<a class="anchor" aria-label="anchor" href="#retrieving-documentation"></a>
+</h2>
 <p>Besides the F1 key, you can use <code>?function</code> to get help for <code>function</code> and <code>??term</code> to search for <code>term</code> in all documentation of all installed packages.</p>
 <p>Longer-form documentation for packages is often found in vignettes. Run <code>vignette('vignette-name', 'package-name')</code> to get a particular one. (Intro vignettes often have the name of the package, e.g. <code><a href="../articles/reschola.html">vignette('reschola', 'reschola')</a></code>). Get list of vignettes for any package <code>browseVignettes('package-name')</code>.</p>
 </div>
-<div id="getting-help-beyond-the-documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-help-beyond-the-documentation" class="anchor"></a>Getting help beyond the documentation</h2>
+<div class="section level2">
+<h2 id="getting-help-beyond-the-documentation">Getting help beyond the documentation<a class="anchor" aria-label="anchor" href="#getting-help-beyond-the-documentation"></a>
+</h2>
 <p>Four resources:</p>
 <ol style="list-style-type: decimal">
 <li>Google the error message or its more generic variant if you can figure it out. This may bring you to the other resources.</li>
-<li>StackExchange: filter for the <a href="https://stackoverflow.com/questions/tagged/r"><code>r</code></a> tag; likewise, individual packages have their own tags.</li>
-<li>The <a href="https://community.rstudio.com/">RStudio Community</a>
+<li>StackExchange: filter for the <a href="https://stackoverflow.com/questions/tagged/r" class="external-link"><code>r</code></a> tag; likewise, individual packages have their own tags.</li>
+<li>The <a href="https://community.rstudio.com/" class="external-link">RStudio Community</a>
 </li>
-<li>Twitter <a href="https://twitter.com/hashtag/rstats">#rstats</a>
+<li>Twitter <a href="https://twitter.com/hashtag/rstats" class="external-link">#rstats</a>
 </li>
 </ol>
-<p>When asking for help, provide a minimal <a href="https://reprex.tidyverse.org/articles/articles/magic-reprex.html">reproducible example</a> if at all possible.</p>
+<p>When asking for help, provide a minimal <a href="https://reprex.tidyverse.org/articles/articles/magic-reprex.html" class="external-link">reproducible example</a> if at all possible.</p>
 </div>
-<div id="the-usethis-package-utilities-for-easy-code-development" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-usethis-package-utilities-for-easy-code-development" class="anchor"></a>The <code>usethis</code> package: utilities for easy code development</h2>
+<div class="section level2">
+<h2 id="the-usethis-package-utilities-for-easy-code-development">The <code>usethis</code> package: utilities for easy code development<a class="anchor" aria-label="anchor" href="#the-usethis-package-utilities-for-easy-code-development"></a>
+</h2>
 <p>Mostly useful for package development, but some utilities also make your life easier in any project:</p>
 <ul>
 <li>
@@ -226,9 +222,9 @@
 <code>use_git_*</code> to quickly set up or configure a git repo in your project, link to Github etc.</li>
 </ul>
 </div>
-<div id="data-exploration" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-exploration" class="anchor"></a>Data exploration</h2>
+<div class="section level2">
+<h2 id="data-exploration">Data exploration<a class="anchor" aria-label="anchor" href="#data-exploration"></a>
+</h2>
 <ul>
 <li>
 <code>dplyr::tally(weight = )</code> / <code>dplyr::add_tally(weight = )</code>
@@ -237,184 +233,184 @@
 <code>skimr::skim(df)</code> / <code>df %&gt;% group_by(var) %&gt;% skim()</code>
 </li>
 <li>
-<a href="https://docs.ropensci.org/visdat/">visdat</a> for quick data overview</li>
+<a href="https://docs.ropensci.org/visdat/" class="external-link">visdat</a> for quick data overview</li>
 <li>
-<a href="http://naniar.njtierney.com/">naniar</a> for missing data analysis</li>
+<a href="http://naniar.njtierney.com/" class="external-link">naniar</a> for missing data analysis</li>
 <li>
-<a href="https://cran.r-project.org/package=ggcorrplot">ggcorrplot</a> for correlation matrices in <code>ggplot2</code>
+<a href="https://cran.r-project.org/package=ggcorrplot" class="external-link">ggcorrplot</a> for correlation matrices in <code>ggplot2</code>
 </li>
 <li>
-<a href="https://cran.r-project.org/package=dlookr">dlookr</a> is a fairly complete toolbox for EDA and related tasks.</li>
+<a href="https://cran.r-project.org/package=dlookr" class="external-link">dlookr</a> is a fairly complete toolbox for EDA and related tasks.</li>
 </ul>
-<p>See the recent <a href="https://journal.r-project.org/archive/2019/RJ-2019-033/index.html">R Journal article</a> for an overview of packages for automated EDA.</p>
+<p>See the recent <a href="https://journal.r-project.org/archive/2019/RJ-2019-033/index.html" class="external-link">R Journal article</a> for an overview of packages for automated EDA.</p>
 </div>
-<div id="data-input" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-input" class="anchor"></a>Data input</h2>
+<div class="section level2">
+<h2 id="data-input">Data input<a class="anchor" aria-label="anchor" href="#data-input"></a>
+</h2>
 <ul>
 <li>
 <code>data.table::fread()</code> for faster CSV reading</li>
 <li>
-<a href="https://vroom.r-lib.org/"><code>vroom</code></a> for fast CSV reading of large datasets</li>
+<a href="https://vroom.r-lib.org/" class="external-link"><code>vroom</code></a> for fast CSV reading of large datasets</li>
 <li>
-<code>readr::read_csv2()</code> for reading semicolon-separated CSVs with decimal comma</li>
+<code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">readr::read_csv2()</a></code> for reading semicolon-separated CSVs with decimal comma</li>
 <li>
-<code>readr::guess_encoding()</code> if the text comes in garbled.</li>
+<code><a href="https://readr.tidyverse.org/reference/encoding.html" class="external-link">readr::guess_encoding()</a></code> if the text comes in garbled.</li>
 <li>
 <code>haven</code> for importing SPSS, STATA, SAS files</li>
 </ul>
-<div id="from-limesurvey" class="section level3">
-<h3 class="hasAnchor">
-<a href="#from-limesurvey" class="anchor"></a>From LimeSurvey</h3>
+<div class="section level3">
+<h3 id="from-limesurvey">From LimeSurvey<a class="anchor" aria-label="anchor" href="#from-limesurvey"></a>
+</h3>
 <ul>
 <li>
-<a href="https://github.com/cloudyr/limer">limer</a> worked fine when I last used it, but it has been a while.</li>
+<a href="https://github.com/cloudyr/limer" class="external-link">limer</a> worked fine when I last used it, but it has been a while.</li>
 </ul>
 </div>
-<div id="from-google-sheets-forms" class="section level3">
-<h3 class="hasAnchor">
-<a href="#from-google-sheets-forms" class="anchor"></a>From Google sheets / Forms</h3>
+<div class="section level3">
+<h3 id="from-google-sheets-forms">From Google sheets / Forms<a class="anchor" aria-label="anchor" href="#from-google-sheets-forms"></a>
+</h3>
 <ul>
-<li>see <a href="https://github.com/tidyverse/googlesheets4">googlesheets4</a>
+<li>see <a href="https://github.com/tidyverse/googlesheets4" class="external-link">googlesheets4</a>
 </li>
 </ul>
 </div>
 </div>
-<div id="data-manipulation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-manipulation" class="anchor"></a>Data manipulation</h2>
+<div class="section level2">
+<h2 id="data-manipulation">Data manipulation<a class="anchor" aria-label="anchor" href="#data-manipulation"></a>
+</h2>
 <ul>
 <li>for heavy-duty data manipulation, <code>data.table</code> can be worth the speed improvement, and <code>dtplyr</code> and <code>tidytable</code> provide tidy “front ends” to it.</li>
 </ul>
 </div>
-<div id="data-output" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-output" class="anchor"></a>Data output</h2>
+<div class="section level2">
+<h2 id="data-output">Data output<a class="anchor" aria-label="anchor" href="#data-output"></a>
+</h2>
 <ul>
 <li>
 <code>readr::write_excel_csv[2]()</code> for Excel-friendly CSVs</li>
 </ul>
 </div>
-<div id="data-checking" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-checking" class="anchor"></a>Data checking</h2>
+<div class="section level2">
+<h2 id="data-checking">Data checking<a class="anchor" aria-label="anchor" href="#data-checking"></a>
+</h2>
 <ul>
-<li>packages <a href="https://cran.r-project.org/web/packages/validate/vignettes/introduction.html"><code>validate</code></a>, <a href="https://cran.r-project.org/web/packages/assertr/vignettes/assertr.html"><code>assertr</code></a>, <a href="https://rich-iannone.github.io/pointblank/"><code>pointblank</code></a>, <a href="https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html"><code>dlookr</code></a>
+<li>packages <a href="https://cran.r-project.org/web/packages/validate/vignettes/introduction.html" class="external-link"><code>validate</code></a>, <a href="https://cran.r-project.org/web/packages/assertr/vignettes/assertr.html" class="external-link"><code>assertr</code></a>, <a href="https://rich-iannone.github.io/pointblank/" class="external-link"><code>pointblank</code></a>, <a href="https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html" class="external-link"><code>dlookr</code></a>
 </li>
 </ul>
 </div>
-<div id="data-cleaning" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-cleaning" class="anchor"></a>Data cleaning</h2>
+<div class="section level2">
+<h2 id="data-cleaning">Data cleaning<a class="anchor" aria-label="anchor" href="#data-cleaning"></a>
+</h2>
 <ul>
-<li>package <a href="https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html"><code>janitor</code></a>
+<li>package <a href="https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html" class="external-link"><code>janitor</code></a>
 </li>
 <li>
-<code>readr::type_convert()</code>:</li>
+<code><a href="https://readr.tidyverse.org/reference/type_convert.html" class="external-link">readr::type_convert()</a></code>:</li>
 </ul>
 </div>
-<div id="resources-for-different-data-types-or-analysis-areas" class="section level2">
-<h2 class="hasAnchor">
-<a href="#resources-for-different-data-types-or-analysis-areas" class="anchor"></a>Resources for different data types or analysis areas</h2>
+<div class="section level2">
+<h2 id="resources-for-different-data-types-or-analysis-areas">Resources for different data types or analysis areas<a class="anchor" aria-label="anchor" href="#resources-for-different-data-types-or-analysis-areas"></a>
+</h2>
 <p>This section points to packages and resources you can use in different parts of your analysis or to perform various specialised tasks.</p>
-<p><a href="https://cran.r-project.org/web/views/">CRAN’s task views</a> can also be useful: they contain collections of packages organised by task.</p>
-<div id="web-scraping" class="section level3">
-<h3 class="hasAnchor">
-<a href="#web-scraping" class="anchor"></a>Web scraping</h3>
+<p><a href="https://cran.r-project.org/web/views/" class="external-link">CRAN’s task views</a> can also be useful: they contain collections of packages organised by task.</p>
+<div class="section level3">
+<h3 id="web-scraping">Web scraping<a class="anchor" aria-label="anchor" href="#web-scraping"></a>
+</h3>
 <ul>
 <li>
-<a href="https://rvest.tidyverse.org/">rvest</a> for a scraping tool</li>
+<a href="https://rvest.tidyverse.org/" class="external-link">rvest</a> for a scraping tool</li>
 <li>
-<a href="https://httr.r-lib.org/">httr</a> for a simple HTTP client</li>
+<a href="https://httr.r-lib.org/" class="external-link">httr</a> for a simple HTTP client</li>
 </ul>
 </div>
-<div id="modeling" class="section level3">
-<h3 class="hasAnchor">
-<a href="#modeling" class="anchor"></a>Modeling</h3>
+<div class="section level3">
+<h3 id="modeling">Modeling<a class="anchor" aria-label="anchor" href="#modeling"></a>
+</h3>
 <ul>
 <li>
-<a href="https://broom.tidyverse.org/">broom</a> for extracting model parameters in a consistent way</li>
+<a href="https://broom.tidyverse.org/" class="external-link">broom</a> for extracting model parameters in a consistent way</li>
 <li>
-<a href="https://github.com/tidymodels/tidymodels.org">tidymodels</a> for tidy modeling generally</li>
+<a href="https://github.com/tidymodels/tidymodels.org" class="external-link">tidymodels</a> for tidy modeling generally</li>
 </ul>
 </div>
-<div id="spatial-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#spatial-data" class="anchor"></a>Spatial data</h3>
-<p><a href="https://r-spatial.github.io/sf/articles/sf1.html">sf + guides</a></p>
-<p><a href="https://geocompr.robinlovelace.net" class="uri">https://geocompr.robinlovelace.net</a></p>
-<div id="displaying-geospatial-data-and-making-maps" class="section level4">
-<h4 class="hasAnchor">
-<a href="#displaying-geospatial-data-and-making-maps" class="anchor"></a>Displaying geospatial data and making maps</h4>
+<div class="section level3">
+<h3 id="spatial-data">Spatial data<a class="anchor" aria-label="anchor" href="#spatial-data"></a>
+</h3>
+<p><a href="https://r-spatial.github.io/sf/articles/sf1.html" class="external-link">sf + guides</a></p>
+<p><a href="https://geocompr.robinlovelace.net" class="external-link uri">https://geocompr.robinlovelace.net</a></p>
+<div class="section level4">
+<h4 id="displaying-geospatial-data-and-making-maps">Displaying geospatial data and making maps<a class="anchor" aria-label="anchor" href="#displaying-geospatial-data-and-making-maps"></a>
+</h4>
 <ul>
 <li>see <a href="charts.html">Making charts</a> vignette</li>
 </ul>
 </div>
-<div id="geodata-on-czech-republic" class="section level4">
-<h4 class="hasAnchor">
-<a href="#geodata-on-czech-republic" class="anchor"></a>Geodata on Czech Republic</h4>
-<p><a href="https://github.com/JanCaha/CzechData"><code>CzechData</code></a> - recommended:</p>
+<div class="section level4">
+<h4 id="geodata-on-czech-republic">Geodata on Czech Republic<a class="anchor" aria-label="anchor" href="#geodata-on-czech-republic"></a>
+</h4>
+<p><a href="https://github.com/JanCaha/CzechData" class="external-link"><code>CzechData</code></a> - recommended:</p>
 <ul>
 <li>provides access to all basic geospatial datasets for CZ (boundaries of admin units, topology of things such as rivers, roads, railways etc.)</li>
 <li>has a set of codebooks and code conversion tables for spatial entities (municipalities etc.)</li>
 <li>provides basic demographic data on municipalities</li>
 <li>not on CRAN but stable and well maintained.</li>
 </ul>
-<p>There is also <a href="https://cran.r-project.org/package=RCzechia"><code>RCzechia</code></a>, which is on CRAN.</p>
-<p><a href="https://petrbouchal.github.io/pragr/"><code>pragr</code></a> provides utilities for mapping Prague.</p>
+<p>There is also <a href="https://cran.r-project.org/package=RCzechia" class="external-link"><code>RCzechia</code></a>, which is on CRAN.</p>
+<p><a href="https://petrbouchal.github.io/pragr/" class="external-link"><code>pragr</code></a> provides utilities for mapping Prague.</p>
 </div>
 </div>
-<div id="statistical-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#statistical-data" class="anchor"></a>Statistical data</h3>
+<div class="section level3">
+<h3 id="statistical-data">Statistical data<a class="anchor" aria-label="anchor" href="#statistical-data"></a>
+</h3>
 <ul>
 <li>
-<a href="https://cran.r-project.org/package=eurostat">eurostat</a>: provides intuitive access from R to all Eurostat open data</li>
+<a href="https://cran.r-project.org/package=eurostat" class="external-link">eurostat</a>: provides intuitive access from R to all Eurostat open data</li>
 <li>
-<a href="https://cran.r-project.org/package=OECD">oecd</a>: ditto for OECD</li>
+<a href="https://cran.r-project.org/package=OECD" class="external-link">oecd</a>: ditto for OECD</li>
 <li>
-<a href="https://petrbouchal.github.io/czso/">czso</a>: ditto for Czech Statistical Office</li>
+<a href="https://petrbouchal.github.io/czso/" class="external-link">czso</a>: ditto for Czech Statistical Office</li>
 </ul>
 </div>
-<div id="czech-public-finance-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#czech-public-finance-data" class="anchor"></a>Czech public finance data</h3>
-<p><a href="https://petrbouchal.github.io/statnipokladna"><code>statnipokladna</code></a> provides friction-free access to</p>
-<p>For other related datasets, see Ondřej Kokeš’s <a href="https://github.com/kokes/od"><code>od</code></a> and <a href="https://github.com/kokes/knod"><code>knod</code></a> (not R, more software-agnostic or Python) and the APIs by <a href="https://www.hlidacstatu.cz/">Hlídač státu</a> and <a href="https://cityvizor.cz/">CityVizor</a>.</p>
+<div class="section level3">
+<h3 id="czech-public-finance-data">Czech public finance data<a class="anchor" aria-label="anchor" href="#czech-public-finance-data"></a>
+</h3>
+<p><a href="https://petrbouchal.github.io/statnipokladna" class="external-link"><code>statnipokladna</code></a> provides friction-free access to</p>
+<p>For other related datasets, see Ondřej Kokeš’s <a href="https://github.com/kokes/od" class="external-link"><code>od</code></a> and <a href="https://github.com/kokes/knod" class="external-link"><code>knod</code></a> (not R, more software-agnostic or Python) and the APIs by <a href="https://www.hlidacstatu.cz/" class="external-link">Hlídač státu</a> and <a href="https://cityvizor.cz/" class="external-link">CityVizor</a>.</p>
 </div>
-<div id="time-series" class="section level3">
-<h3 class="hasAnchor">
-<a href="#time-series" class="anchor"></a>Time series</h3>
+<div class="section level3">
+<h3 id="time-series">Time series<a class="anchor" aria-label="anchor" href="#time-series"></a>
+</h3>
 <ul>
-<li>packages <code>tsibble</code>, <code>feasts</code>, <code>fable</code> - see <a href="https://tidyverts.org/">tidyverts.org</a>; <a href="http://brolgar.njtierney.com/"><code>brolgar</code></a>
+<li>packages <code>tsibble</code>, <code>feasts</code>, <code>fable</code> - see <a href="https://tidyverts.org/" class="external-link">tidyverts.org</a>; <a href="http://brolgar.njtierney.com/" class="external-link"><code>brolgar</code></a>
 </li>
 </ul>
 </div>
-<div id="network-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#network-data" class="anchor"></a>Network data </h3>
-<p><a href="https://tidygraph.data-imaginist.com/">tidygraph</a> <a href="https://ggraph.data-imaginist.com/">ggraph</a> for visualisation</p>
+<div class="section level3">
+<h3 id="network-data">Network data <a class="anchor" aria-label="anchor" href="#network-data"></a>
+</h3>
+<p><a href="https://tidygraph.data-imaginist.com/" class="external-link">tidygraph</a> <a href="https://ggraph.data-imaginist.com/" class="external-link">ggraph</a> for visualisation</p>
 </div>
-<div id="text-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#text-data" class="anchor"></a>Text data</h3>
+<div class="section level3">
+<h3 id="text-data">Text data<a class="anchor" aria-label="anchor" href="#text-data"></a>
+</h3>
 <p><a href="Workflow%20helpers">tidytext</a></p>
 </div>
 </div>
-<div id="getting-stuff-on-the-web" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-stuff-on-the-web" class="anchor"></a>Getting stuff on the web</h2>
+<div class="section level2">
+<h2 id="getting-stuff-on-the-web">Getting stuff on the web<a class="anchor" aria-label="anchor" href="#getting-stuff-on-the-web"></a>
+</h2>
 <p>Two things:</p>
 <ol style="list-style-type: decimal">
 <li><p>Any Rmarkdown document, unless you have tons of LaTex-specific stuff in it, should render into html; just switch the <code>output</code> argument in the YAML header to <code>html_document</code>.</p></li>
-<li><p><a href="https://www.netlify.com/">Netlify</a> is an amazing service that lets you quickly get any website to [something].netlify.com.</p></li>
-<li><p>For public repositories on Github, you can use the docs/ folder to publish to scholaempirica.github.io/{reponame}, or you can use the gh-pages branch for that. See <a href="https://pages.github.com/">Github Pages</a>.</p></li>
+<li><p><a href="https://www.netlify.com/" class="external-link">Netlify</a> is an amazing service that lets you quickly get any website to [something].netlify.com.</p></li>
+<li><p>For public repositories on Github, you can use the docs/ folder to publish to scholaempirica.github.io/{reponame}, or you can use the gh-pages branch for that. See <a href="https://pages.github.com/" class="external-link">Github Pages</a>.</p></li>
 </ol>
 </div>
-<div id="long-form-multipart-reports" class="section level2">
-<h2 class="hasAnchor">
-<a href="#long-form-multipart-reports" class="anchor"></a>Long-form, multipart reports</h2>
-<p>Have a look at <a href="https://bookdown.org/"><code>bookdown</code></a></p>
+<div class="section level2">
+<h2 id="long-form-multipart-reports">Long-form, multipart reports<a class="anchor" aria-label="anchor" href="#long-form-multipart-reports"></a>
+</h2>
+<p>Have a look at <a href="https://bookdown.org/" class="external-link"><code>bookdown</code></a></p>
 </div>
   </div>
 
@@ -429,11 +425,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Petr Bouchal, Jan Netík, SCHOLA EMPIRICA, z. s..</p>
+  <p></p>
+<p>Developed by Petr Bouchal, Jan Netík, SCHOLA EMPIRICA, z. s..</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>

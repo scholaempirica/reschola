@@ -29,6 +29,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -41,18 +43,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/reschola.html">Get started</a>
 </li>
@@ -89,13 +85,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/scholaempirica/reschola/">
+  <a href="https://github.com/scholaempirica/reschola/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/scholaempirica/reschola/issues">
+  <a href="https://github.com/scholaempirica/reschola/issues" class="external-link">
     <span class="fa fa-exclamation-circle fa-lg"></span>
      
   </a>
@@ -122,7 +118,7 @@
       <h1 data-toc-skip>Developing this package further</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/master/vignettes/meta.Rmd"><code>vignettes/meta.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/scholaempirica/reschola/blob/HEAD/vignettes/meta.Rmd" class="external-link"><code>vignettes/meta.Rmd</code></a></small>
       <div class="hidden name"><code>meta.Rmd</code></div>
 
     </div>
@@ -130,66 +126,66 @@
     
     
 <p>This package should be a living, evolving tool and a set of living documents. This vignette describes how this package is being developed and thus how it can be extended and updated.</p>
-<div id="development-process" class="section level2">
-<h2 class="hasAnchor">
-<a href="#development-process" class="anchor"></a>Development process</h2>
-<p>This package is being developed on Github using the workflow suggested <a href="https://ropensci.org/technotes/2019/12/08/precompute-vignettes/">Hadley Wickham’s R Packages book</a> and implemented by the <a href="https://github.com/r-lib/usethis"><code>usethis</code></a> package.</p>
-<p>The development roadmap is stored in a primitive form in <a href="https://github.com/scholaempirica/reschola/issues">Github Issues</a>.</p>
+<div class="section level2">
+<h2 id="development-process">Development process<a class="anchor" aria-label="anchor" href="#development-process"></a>
+</h2>
+<p>This package is being developed on Github using the workflow suggested <a href="https://ropensci.org/technotes/2019/12/08/precompute-vignettes/" class="external-link">Hadley Wickham’s R Packages book</a> and implemented by the <a href="https://github.com/r-lib/usethis" class="external-link"><code>usethis</code></a> package.</p>
+<p>The development roadmap is stored in a primitive form in <a href="https://github.com/scholaempirica/reschola/issues" class="external-link">Github Issues</a>.</p>
 <p>Releases (of the source package only) are made available in the Relaeses part of Github, meaning a last stable release can be installed using e.g. <code>remotes::install_github("scholaempirica/reschola", ref = github_release())</code> regardless of how messy the current state of the repository master branch is.</p>
 <p>Big changes or new features should be built in branches.</p>
-<div id="dependencies" class="section level3">
-<h3 class="hasAnchor">
-<a href="#dependencies" class="anchor"></a>Dependencies</h3>
+<div class="section level3">
+<h3 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
+</h3>
 <p>Try to use as few as is reasonable; avoid obscure ones. Prefer CRAN releases.</p>
 <p>Prefer versions where CRAN binaries are available for all platforms.</p>
 </div>
-<div id="quality-assurance" class="section level3">
-<h3 class="hasAnchor">
-<a href="#quality-assurance" class="anchor"></a>Quality assurance</h3>
-<p><a href="https://github.com/lorenzwalthert/precommit">Pre-commit checks</a> are used to ensure that broken code is not committed.</p>
-<div id="checks-continuous-integration" class="section level4">
-<h4 class="hasAnchor">
-<a href="#checks-continuous-integration" class="anchor"></a>Checks / Continuous integration</h4>
-<p>Commits are only pushed when they pass local R CMD checks with no errors or warnings. Checks are then run on Travis on an Ubuntu system as part of building the website. For releases (e.g. v0.1.0) checks are run on <a href="https://builder.r-hub.io/">r-hub</a>.</p>
-<p>An exception to the automatic continuous integration and check pipeline is the <code>chart.Rmd</code> vignette, which is prebuilt locally using <code>vignettes/prebuild.r</code> from <code>charts.Rmd.orig</code> to ensure fonts are used correctly. (The approach is taken from ropensci as described in <a href="https://ropensci.org/technotes/2019/12/08/precompute-vignettes/">this blog post</a> and applied in <a href="https://github.com/ropensci/eia/blob/master/vignettes/">this package</a>)</p>
+<div class="section level3">
+<h3 id="quality-assurance">Quality assurance<a class="anchor" aria-label="anchor" href="#quality-assurance"></a>
+</h3>
+<p><a href="https://github.com/lorenzwalthert/precommit" class="external-link">Pre-commit checks</a> are used to ensure that broken code is not committed.</p>
+<div class="section level4">
+<h4 id="checks-continuous-integration">Checks / Continuous integration<a class="anchor" aria-label="anchor" href="#checks-continuous-integration"></a>
+</h4>
+<p>Commits are only pushed when they pass local R CMD checks with no errors or warnings. Checks are then run on Travis on an Ubuntu system as part of building the website. For releases (e.g. v0.1.0) checks are run on <a href="https://builder.r-hub.io/" class="external-link">r-hub</a>.</p>
+<p>An exception to the automatic continuous integration and check pipeline is the <code>chart.Rmd</code> vignette, which is prebuilt locally using <code>vignettes/prebuild.r</code> from <code>charts.Rmd.orig</code> to ensure fonts are used correctly. (The approach is taken from ropensci as described in <a href="https://ropensci.org/technotes/2019/12/08/precompute-vignettes/" class="external-link">this blog post</a> and applied in <a href="https://github.com/ropensci/eia/blob/master/vignettes/" class="external-link">this package</a>)</p>
 </div>
-<div id="test-coverage" class="section level4">
-<h4 class="hasAnchor">
-<a href="#test-coverage" class="anchor"></a>Test coverage</h4>
+<div class="section level4">
+<h4 id="test-coverage">Test coverage<a class="anchor" aria-label="anchor" href="#test-coverage"></a>
+</h4>
 <p>Currently no tests are included or test coverage tracked, but vignettes are written so as to cover and implicitly test the basic functionality of the package.</p>
 </div>
 </div>
-<div id="making-package-binaries-available" class="section level3">
-<h3 class="hasAnchor">
-<a href="#making-package-binaries-available" class="anchor"></a>Making package binaries available</h3>
-<p>MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and X.Y.Z where Z != 9000) releases are made available on the <a href="https://scholaempirica.github.io/drat">Schola drat</a> package repository. This is done manually, using the <code>ptrr::insert_package_into_drat()</code> utility in the <code>ptrr</code> package but can be without it by downloading built binaries output by r-hub and inserting them into the <code>gh-pages</code> branch of the <code>drat</code> Github repository using the <code>drat</code> package.</p>
+<div class="section level3">
+<h3 id="making-package-binaries-available">Making package binaries available<a class="anchor" aria-label="anchor" href="#making-package-binaries-available"></a>
+</h3>
+<p>MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and X.Y.Z where Z != 9000) releases are made available on the <a href="https://scholaempirica.github.io/drat" class="external-link">Schola drat</a> package repository. This is done manually, using the <code>ptrr::insert_package_into_drat()</code> utility in the <code>ptrr</code> package but can be without it by downloading built binaries output by r-hub and inserting them into the <code>gh-pages</code> branch of the <code>drat</code> Github repository using the <code>drat</code> package.</p>
 <p>See installation instructions in README.md for how to install these binaries.</p>
 </div>
 </div>
-<div id="online-documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#online-documentation" class="anchor"></a>Online documentation</h2>
+<div class="section level2">
+<h2 id="online-documentation">Online documentation<a class="anchor" aria-label="anchor" href="#online-documentation"></a>
+</h2>
 <p>The continuous integration pipeline (Travis CI and Github Pages) means that whenever code is pushed to Github, the documentation of the package is converted to a website by the <code>pkgdown</code> package and published on <a href="https://scholaempirica.github.io/reschola">scholaempirica.github.io/reschola</a> via the <code>gh-pages</code> branch of the repository.</p>
 </div>
-<div id="reusingreshaping-the-documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reusingreshaping-the-documentation" class="anchor"></a>Reusing/reshaping the documentation</h2>
-<div id="making-changes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#making-changes" class="anchor"></a>Making changes</h3>
+<div class="section level2">
+<h2 id="reusingreshaping-the-documentation">Reusing/reshaping the documentation<a class="anchor" aria-label="anchor" href="#reusingreshaping-the-documentation"></a>
+</h2>
+<div class="section level3">
+<h3 id="making-changes">Making changes<a class="anchor" aria-label="anchor" href="#making-changes"></a>
+</h3>
 <p>In principle, small changes (e.g. correcting typos) can be made in the web interface on Github by any member of the scholaempirica Github team. This is done by going to the relevant file on Github, clicking the pencil icon, and editing the text. When saving changes, Github prompts you to make a commit, which triggers a rebuild and republish of the web documentation.</p>
 <p>Function documentation is contained in the functions’ R files in <code>R/</code>, vignettes are in <code>/vignettes</code>. The <code>charts.Rmd</code>/<code>charts.Rmd.orig</code> vignette requires special treatment - see <a href="#checks-continuous-integration">above</a>.</p>
 <p>Big changes should be done after cloning the repo and opening in RStudio, ideally on a separate branch.</p>
 </div>
-<div id="reusing" class="section level3">
-<h3 class="hasAnchor">
-<a href="#reusing" class="anchor"></a>Reusing</h3>
+<div class="section level3">
+<h3 id="reusing">Reusing<a class="anchor" aria-label="anchor" href="#reusing"></a>
+</h3>
 <p>The vignettes are in principle Rmd files with a special YAML header so can be reused and republished anywhere and in any format if needed.</p>
 </div>
 </div>
-<div id="how-to-change-key-parts" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-to-change-key-parts" class="anchor"></a>How to change key parts</h2>
+<div class="section level2">
+<h2 id="how-to-change-key-parts">How to change key parts<a class="anchor" aria-label="anchor" href="#how-to-change-key-parts"></a>
+</h2>
 <ul>
 <li>word template styles: use Word to open and edit styles in <code>template.docx</code> in <code>inst/rmarkdown/templates/schola_*/resources/</code>
 </li>
@@ -199,17 +195,17 @@
 </li>
 <li>Rmarkdown templates knitr param defaults: look at the <code>base$knitr$opts_chunk</code> bits in <code>R/rmarkdown_output.R</code>
 </li>
-<li>behaviour of project template: <code>inst/rstudio/templates/project</code> and <code>R/rstudio_project_bindings.R</code>; consult <a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html" class="uri">https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html</a>. <code>inst/rstudio/templates/project/schola_project.dcf</code> sets up the dialog and lists files which will be opened in the new project</li>
-<li>text of function documentation: always next to each function in <code>R/{function_name/group}.R</code>; consult <a href="https://r-pkgs.org/man.html" class="uri">https://r-pkgs.org/man.html</a> on documenting things.</li>
+<li>behaviour of project template: <code>inst/rstudio/templates/project</code> and <code>R/rstudio_project_bindings.R</code>; consult <a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html" class="external-link uri">https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html</a>. <code>inst/rstudio/templates/project/schola_project.dcf</code> sets up the dialog and lists files which will be opened in the new project</li>
+<li>text of function documentation: always next to each function in <code>R/{function_name/group}.R</code>; consult <a href="https://r-pkgs.org/man.html" class="external-link uri">https://r-pkgs.org/man.html</a> on documenting things.</li>
 <li>font defaults: look through <code>R/fonts.R</code>
 </li>
 </ul>
 </div>
-<div id="resources-and-acknowledgements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#resources-and-acknowledgements" class="anchor"></a>Resources and acknowledgements</h2>
-<p>The package architecture and many components draw heavily on <a href="https://github.com/atlas-aai/ratlas"><code>ratlas</code></a> by <span class="citation">@ratlas-aai</span>/<span class="citation">@wjakethompson</span> (Jake Thompson), and on <a href="https://github.com/hrbrmstr/hrbrthemes"><code>hrbrthemes</code></a> by Bob Rudis (<span class="citation">@hrbrmstr</span>).</p>
-<p>You can see Jake’s Rstudio::conf talk on <code>ratlas</code> at <a href="https://resources.rstudio.com/rstudio-conf-2020/branding-and-packaging-reports-with-r-markdown-jake-thompson" class="uri">https://resources.rstudio.com/rstudio-conf-2020/branding-and-packaging-reports-with-r-markdown-jake-thompson</a>.</p>
+<div class="section level2">
+<h2 id="resources-and-acknowledgements">Resources and acknowledgements<a class="anchor" aria-label="anchor" href="#resources-and-acknowledgements"></a>
+</h2>
+<p>The package architecture and many components draw heavily on <a href="https://github.com/atlas-aai/ratlas" class="external-link"><code>ratlas</code></a> by <span class="citation">@ratlas-aai</span>/<span class="citation">@wjakethompson</span> (Jake Thompson), and on <a href="https://github.com/hrbrmstr/hrbrthemes" class="external-link"><code>hrbrthemes</code></a> by Bob Rudis (<span class="citation">@hrbrmstr</span>).</p>
+<p>You can see Jake’s Rstudio::conf talk on <code>ratlas</code> at <a href="https://resources.rstudio.com/rstudio-conf-2020/branding-and-packaging-reports-with-r-markdown-jake-thompson" class="external-link uri">https://resources.rstudio.com/rstudio-conf-2020/branding-and-packaging-reports-with-r-markdown-jake-thompson</a>.</p>
 </div>
   </div>
 
@@ -224,11 +220,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Petr Bouchal, Jan Netík, SCHOLA EMPIRICA, z. s..</p>
+  <p></p>
+<p>Developed by Petr Bouchal, Jan Netík, SCHOLA EMPIRICA, z. s..</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>

@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://scholaempirica.github.io/reschola/404.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/TODO.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/charts.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/meta.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/reschola.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/setup.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/tips.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/articles/workflow.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/authors.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/index.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/news/index.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/Roboto.html</loc>
@@ -31,9 +70,6 @@
     <loc>https://scholaempirica.github.io/reschola/reference/draft.html</loc>
   </url>
   <url>
-    <loc>https://scholaempirica.github.io/reschola/reference/ensure_cropping.html</loc>
-  </url>
-  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/fct_nanify.html</loc>
   </url>
   <url>
@@ -43,13 +79,25 @@
     <loc>https://scholaempirica.github.io/reschola/reference/formatscz.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/gd_backup.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/gd_download_folder.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/gd_get_proj.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/get_rds.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/gw_auth.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/import_fonts.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/index.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/install_reschola_fonts.html</loc>
@@ -94,6 +142,9 @@
     <loc>https://scholaempirica.github.io/reschola/reference/ls_surveys.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/make_rds.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/manage_docx_header_logos.html</loc>
   </url>
   <url>
@@ -127,6 +178,9 @@
     <loc>https://scholaempirica.github.io/reschola/reference/schola_project.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/schola_rds.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/schola_word.html</loc>
   </url>
   <url>
@@ -137,23 +191,5 @@
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/use_reschola_fonts.html</loc>
-  </url>
-  <url>
-    <loc>https://scholaempirica.github.io/reschola/articles/charts.html</loc>
-  </url>
-  <url>
-    <loc>https://scholaempirica.github.io/reschola/articles/meta.html</loc>
-  </url>
-  <url>
-    <loc>https://scholaempirica.github.io/reschola/articles/reschola.html</loc>
-  </url>
-  <url>
-    <loc>https://scholaempirica.github.io/reschola/articles/setup.html</loc>
-  </url>
-  <url>
-    <loc>https://scholaempirica.github.io/reschola/articles/tips.html</loc>
-  </url>
-  <url>
-    <loc>https://scholaempirica.github.io/reschola/articles/workflow.html</loc>
   </url>
 </urlset>

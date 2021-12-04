@@ -30,6 +30,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -42,18 +44,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">reschola</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.3.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/reschola.html">Get started</a>
 </li>
@@ -90,13 +86,13 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/scholaempirica/reschola/">
+  <a href="https://github.com/scholaempirica/reschola/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/scholaempirica/reschola/issues">
+  <a href="https://github.com/scholaempirica/reschola/issues" class="external-link">
     <span class="fa fa-exclamation-circle fa-lg"></span>
      
   </a>
@@ -119,84 +115,95 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="reschola-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#reschola-" class="anchor"></a>reschola <a href="https://scholaempirica.github.io/reschola"><img src="reference/figures/logo.png" align="right" height="139"></a>
+<div class="section level1">
+<div class="page-header"><h1 id="reschola-">reschola <a href="https://scholaempirica.github.io/reschola"><img src="reference/figures/logo.png" align="right" height="139"></a>
+<a class="anchor" aria-label="anchor" href="#reschola-"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of reschola is to support the workflow for data analysis at <a href="http://scholaempirica.org">Schola Empirica</a> through a set of templates, themes, utilities, and documentation. The vignettes for the package document the Schola Empirica way of doing data analysis and provide guidance and tips on tools and good practice.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of reschola from <a href="https://github.com">Github</a> with:</p>
+<p>The goal of reschola is to support the workflow for data analysis at <a href="http://scholaempirica.org" class="external-link">Schola Empirica</a> through a set of templates, themes, utilities, and documentation. The vignettes for the package document the Schola Empirica way of doing data analysis and provide guidance and tips on tools and good practice.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of reschola from <a href="https://github.com" class="external-link">Github</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"scholaempirica/reschola"</span>, ref <span class="op">=</span> <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/github_refs.html">github_release</a></span><span class="op">(</span><span class="op">)</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"scholaempirica/reschola"</span>, ref <span class="op">=</span> <span class="fu">remotes</span><span class="fu">::</span><span class="fu">github_release</span><span class="op">(</span><span class="op">)</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>The current development version can be installed with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"scholaempirica/reschola"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"scholaempirica/reschola"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="what-is-inside-the-box-and-how-to-use-it" class="section level2">
-<h2 class="hasAnchor">
-<a href="#what-is-inside-the-box-and-how-to-use-it" class="anchor"></a>What is inside the box and how to use it</h2>
+<div class="section level2">
+<h2 id="what-is-inside-the-box-and-how-to-use-it">What is inside the box and how to use it<a class="anchor" aria-label="anchor" href="#what-is-inside-the-box-and-how-to-use-it"></a>
+</h2>
 <p>See the <a href="articles/reschola.html">Getting started</a> vignette (<code><a href="articles/reschola.html">vignette('reschola', package = 'reschola')</a></code>) for an overview of templates, utilities and guidance in this package that together provide the infrastructure and mental models for the Schola Empirica way of working with data and reporting.</p>
 </div>
-<div id="acknowledgments" class="section level2">
-<h2 class="hasAnchor">
-<a href="#acknowledgments" class="anchor"></a>Acknowledgments</h2>
+<div class="section level2">
+<h2 id="acknowledgments">Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"></a>
+</h2>
 <p>All content in this package arose out of conversations with the guys at Schola Empirica and their desire to do data analysis well.</p>
 <p>The tools and concepts contained in it are heavily inspired by many wonderful members of the R community; references to specific contributions are contained in individual vignettes.</p>
-<p>Logo made using <a href="https://connect.thinkr.fr/hexmake/" class="uri">https://connect.thinkr.fr/hexmake/</a>. The approach to project templates and some other components is heavily inspired by <a href="https://github.com/atlas-aai/ratlas/">ratlas</a>, including the reuse of components from <a href="https://hrbrmstr.github.io/hrbrthemes/">hrbrthemes</a>.</p>
+<p>Logo made using <a href="https://connect.thinkr.fr/hexmake/" class="external-link uri">https://connect.thinkr.fr/hexmake/</a>. The approach to project templates and some other components is heavily inspired by <a href="https://github.com/atlas-aai/ratlas/" class="external-link">ratlas</a>, including the reuse of components from <a href="https://hrbrmstr.github.io/hrbrthemes/" class="external-link">hrbrthemes</a>.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/scholaempirica/reschola/">https://​github.com/​scholaempirica/​reschola/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/scholaempirica/reschola/issues">https://​github.com/​scholaempirica/​reschola/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Petr Bouchal <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0471-716X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Jan Netík <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-3888-3203" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>SCHOLA EMPIRICA, z. s. <br><small class="roles"> Copyright holder, funder </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="https://github.com/scholaempirica/reschola/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/scholaempirica/reschola/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check"><img src="https://img.shields.io/github/workflow/status/scholaempirica/reschola/R-CMD-check" alt="GitHub Workflow Status"></a></li>
-<li><a href="https://CRAN.R-project.org/package=reschola"><img src="https://www.r-pkg.org/badges/version/reschola" alt="CRAN status"></a></li>
-<li><a href="https://github.com/scholaempirica/reschola/releases"><img src="https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases" alt="GitHub release (latest by date including pre-releases)"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing reschola</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Petr Bouchal <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0471-716X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Jan Netík <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-3888-3203" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>SCHOLA EMPIRICA, z. s. <br><small class="roles"> Copyright holder, funder </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check" class="external-link"><img src="https://img.shields.io/github/workflow/status/scholaempirica/reschola/R-CMD-check" alt="GitHub Workflow Status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=reschola" class="external-link"><img src="https://www.r-pkg.org/badges/version/reschola" alt="CRAN status"></a></li>
+<li><a href="https://github.com/scholaempirica/reschola/releases" class="external-link"><img src="https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases" alt="GitHub release (latest by date including pre-releases)"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Petr Bouchal, Jan Netík, SCHOLA EMPIRICA, z. s..</p>
+  <p></p>
+<p>Developed by Petr Bouchal, Jan Netík, SCHOLA EMPIRICA, z. s..</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
