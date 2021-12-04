@@ -33,6 +33,7 @@ LaTeX package that is used for PDF report typesetting!
 \seealso{
 Other Font helpers and shortcuts: 
 \code{\link{font_rc}},
+\code{\link{install_reschola_fonts}()},
 \code{\link{register_reschola_fonts}()},
 \code{\link{use_reschola_fonts}()}
 }

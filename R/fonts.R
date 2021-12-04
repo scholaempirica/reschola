@@ -122,50 +122,65 @@ import_fonts <- function() {
 
 #' Install reschola fonts on your computer
 #'
+#' Just a simple wizard.
+#'
 #' @return Side effects.
+#' @family Font helpers and shortcuts
 #' @export
 #'
 #' @importFrom usethis ui_todo ui_info ui_field ui_path
 #'
 install_reschola_fonts <- function() {
   r_font_dir <- system.file("fonts", package = "reschola")
+  if (.Platform$OS.type == "windows") {
+    ui_info("Opening {ui_path(r_font_dir)} with fonts...")
+    system2("open", r_font_dir) # seems to work only on Windows and MacOS
 
-  ui_info("Opening {ui_path(r_font_dir)} with fonts...")
-  system2("open", r_font_dir)
-
-  ui_info("To install the fonts on Windows:")
-  ui_todo("select all files in the directory which has been opened")
-  ui_todo("right-click on them")
-  ui_todo("chose {ui_field('Install for all users')} (requires admin rights)")
+    ui_info("To install the fonts on Windows:")
+    ui_todo("select all files in the directory which has been opened")
+    ui_todo("right-click on them")
+    ui_todo("chose {ui_field('Install for all users')} (requires admin rights)")
+  } else {
+    ui_info(c(
+      "Only Windows is supported at the moment.",
+      "Font files for manual installation are available in",
+      "{ui_path(r_font_dir)}"
+    ))
+  }
 }
 
-#' Register `{reschola}` fonts on Windows
+#' Register reschola fonts on Windows
 #'
 #' @description `r lifecycle::badge("experimental")`
 #'
-#'   This function is supposed to substitute `import_fonts()` as its
-#'   dependencies are a bit buggy today and not updated often. **Not tested
-#'   properly yet.**
+#'  This function is supposed to substitute `import_fonts()` as its dependencies
+#'  are a bit buggy today and not updated often. **Not tested properly yet.**
 #'
-#' @details The function is only useful on Windows. On other platforms, fonts
-#'   should be available out of the box for `Cairo` and/or `AGG` devices (which
-#'   is recommended for PNG and other bitmap formats, see `{ragg}` package).
+#' @details The function is only for Windows, where it tries to register font
+#'  family provided with "Windows bitmap device". On other platforms, fonts
+#'  *should* be readily available after installation. Note that even on Windows,
+#'  you can instruct RStudio to use smarter graphics device, such as "AGG" or
+#'  "Cairo" (*Tools > Global Options > General > Graphics > Backend*).
 #'
-#' @param family font family to register, default is reschola recommended
+#' @param family font family/families to register, default is reschola
+#'  recommended.
 #'
-#' @return Called for side effects, but returns logical invisibly.
+#' @return Called for side effects, but returns logical on process result
+#'  invisibly.
 #' @export
 #'
 #' @family Font helpers and shortcuts
 #'
-register_reschola_fonts <- function(family = "Roboto Condensed") {
+register_reschola_fonts <- function(family = c("Roboto", "Roboto Condensed")) {
 
   # only for Windows bitmap devices, cairo and AGG can pick the font on its own
   if (.Platform$OS.type == "windows") {
     args <- list()
-    args[[family]] <- grDevices::windowsFont(family)
+
+    for (font in family) args[[font]] <- grDevices::windowsFont(font)
     do.call(grDevices::windowsFonts, args)
-    message("Registering fonts with Windows bitmap devices...")
+
+    message("Done registering fonts with Windows bitmap devices...")
     invisible(TRUE)
   } else {
     invisible(FALSE)
@@ -173,13 +188,15 @@ register_reschola_fonts <- function(family = "Roboto Condensed") {
 }
 
 
-#' Make {ggplot2} use chosen font in geom_text/label
+#' Make ggplot2 use font(s) in text-based geoms
 #'
-#' Sets ggplot2 defaults for most text geoms from ggplot2, ggtext, and ggrepel.
+#' Sets `{ggplot2}` defaults for most text-based geoms in `{ggplot2}`,
+#' `{ggtext}`, and `{ggrepel}`.
 #'
-#' Geoms covered: "text", "label", "richtext", "text_box", "text_repel", "label_repel".
+#' Geoms covered: "text", "label", "richtext", "text_box", "text_repel", and
+#' "label_repel".
 #'
-#' @param family font family
+#' @param family font family, defaults to reschola recommended
 #' @param face font face
 #' @param size font size
 #' @param color font color

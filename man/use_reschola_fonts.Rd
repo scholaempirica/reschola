@@ -3,7 +3,7 @@
 \name{use_reschola_fonts}
 \alias{use_reschola_fonts}
 \alias{set_reschola_ggplot_fonts}
-\title{Make {ggplot2} use chosen font in geom_text/label}
+\title{Make ggplot2 use font(s) in text-based geoms}
 \usage{
 use_reschola_fonts(
   family = "Roboto Condensed",
@@ -20,7 +20,7 @@ set_reschola_ggplot_fonts(
 )
 }
 \arguments{
-\item{family}{font family}
+\item{family}{font family, defaults to reschola recommended}
 
 \item{face}{font face}
 
@@ -29,15 +29,18 @@ set_reschola_ggplot_fonts(
 \item{color}{font color}
 }
 \description{
-Sets ggplot2 defaults for most text geoms from ggplot2, ggtext, and ggrepel.
+Sets \code{{ggplot2}} defaults for most text-based geoms in \code{{ggplot2}},
+\code{{ggtext}}, and \code{{ggrepel}}.
 }
 \details{
-Geoms covered: "text", "label", "richtext", "text_box", "text_repel", "label_repel".
+Geoms covered: "text", "label", "richtext", "text_box", "text_repel", and
+"label_repel".
 }
 \seealso{
 Other Font helpers and shortcuts: 
 \code{\link{font_rc}},
 \code{\link{import_fonts}()},
+\code{\link{install_reschola_fonts}()},
 \code{\link{register_reschola_fonts}()}
 }
 \concept{Font helpers and shortcuts}

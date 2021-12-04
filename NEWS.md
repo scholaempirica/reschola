@@ -9,6 +9,7 @@
 
 - default project structure changes and cleanup
 - schola project options cleanup
+- new font installation and registration routines for Windows, see `install_reschola_fonts()` and `register_reschola_fonts()`
 - updated `theme_schola()`
   - no margins by default (argument `margin` supersedes `margin_side` and `margin_bottom`)
   - axis titles on by default (+ `axis.title` renamed to `axis_title`)
@@ -22,7 +23,6 @@
 - startup message
 - project setup exceptions better handled
 - `set_reschola_ggplot_fonts()` without dependencies and more customisable (although changes are not recommended); new geoms covered
-- font registration process on Windows is in change, see `register_reschola_fonts()`
 - new `fct_nanify()` for recoding a factor level to `NA`
 - new functions for quick RDS data manipulation:
   - `get_input_data()`
@@ -31,7 +31,7 @@
   - `write_input_data()`
   - `write_intermediate_data()`
   - `write_processed_data()`
-- new function `gd_backup()` for quick files backups
+- new function `gd_upload_file()` for quick file uploads
 - `gd_download_folder()` now uses project's Google Drive URL stored in `.Rprofile` as `folder_url` by default
 
 ## Bugfixes
@@ -40,6 +40,7 @@
 
 # Documentation
 
+- `{pkgdown}` online documentation leverages `Bootstrap 5`
 - info about `babel` TeX package hyphenation warning mitigation in `schola_pdf()` (using `tinytex::tlmgr_install("hyphen-czech")`)
 - `?theme_schola` enumerates `...` arguments that `theme()` understands
 

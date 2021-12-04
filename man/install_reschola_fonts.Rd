@@ -10,5 +10,13 @@ install_reschola_fonts()
 Side effects.
 }
 \description{
-Install reschola fonts on your computer
+Just a simple wizard.
 }
+\seealso{
+Other Font helpers and shortcuts: 
+\code{\link{font_rc}},
+\code{\link{import_fonts}()},
+\code{\link{register_reschola_fonts}()},
+\code{\link{use_reschola_fonts}()}
+}
+\concept{Font helpers and shortcuts}
