@@ -66,15 +66,16 @@ gd_download_folder <- function(folder_url = gd_get_proj(), dest_dir = "data/inpu
 }
 
 
-#' Backup a file to project's Google Drive
+#' Upload a file to project's Google Drive
 #'
-#' @param file asdf
-#' @param dir asdf
+#' @param file *character*, path to the file.
+#' @param dir Directory at Google Drive, defaults to current reschola project
+#'   directory picked up by `gd_get_proj()`.
 #'
-#' @return
+#' @return An object of class `dribble`, a tibble with one row per file.
 #' @export
 #'
-gd_backup <- function(file, dir = gd_get_proj()) {
+gd_upload_file <- function(file, dir = gd_get_proj()) {
   drive_put(here(file), as_dribble(dir))
 }
 
