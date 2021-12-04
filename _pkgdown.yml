@@ -1,6 +1,7 @@
 destination: docs
 url: https://scholaempirica.github.io/reschola
 template:
+  bootstrap: 5
   params:
     bootswatch: united
     docsearch:
