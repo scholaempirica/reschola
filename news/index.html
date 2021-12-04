@@ -69,6 +69,8 @@
 <h3 id="breaking-changes-0-3-3-9000">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-3-3-9000"></a></h3>
 <ul><li>default project structure changes and cleanup</li>
 <li>schola project options cleanup</li>
+<li>new font installation and registration routines for Windows, see <code><a href="../reference/install_reschola_fonts.html">install_reschola_fonts()</a></code> and <code><a href="../reference/register_reschola_fonts.html">register_reschola_fonts()</a></code>
+</li>
 <li>updated <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
 <ul><li>no margins by default (argument <code>margin</code> supersedes <code>margin_side</code> and <code>margin_bottom</code>)</li>
 <li>axis titles on by default (+ <code>axis.title</code> renamed to <code>axis_title</code>)</li>
@@ -86,8 +88,6 @@
 <li>project setup exceptions better handled</li>
 <li>
 <code><a href="../reference/use_reschola_fonts.html">set_reschola_ggplot_fonts()</a></code> without dependencies and more customisable (although changes are not recommended); new geoms covered</li>
-<li>font registration process on Windows is in change, see <code><a href="../reference/register_reschola_fonts.html">register_reschola_fonts()</a></code>
-</li>
 <li>new <code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> for recoding a factor level to <code>NA</code>
 </li>
 <li>new functions for quick RDS data manipulation:
@@ -98,7 +98,7 @@
 <li><code><a href="../reference/schola_rds.html">write_intermediate_data()</a></code></li>
 <li><code><a href="../reference/schola_rds.html">write_processed_data()</a></code></li>
 </ul></li>
-<li>new function <code><a href="../reference/gd_backup.html">gd_backup()</a></code> for quick files backups</li>
+<li>new function <code><a href="../reference/gd_upload_file.html">gd_upload_file()</a></code> for quick file uploads</li>
 <li>
 <code><a href="../reference/gd_download_folder.html">gd_download_folder()</a></code> now uses project’s Google Drive URL stored in <code>.Rprofile</code> as <code>folder_url</code> by default</li>
 </ul></div>

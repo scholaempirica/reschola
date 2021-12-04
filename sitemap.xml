@@ -79,13 +79,13 @@
     <loc>https://scholaempirica.github.io/reschola/reference/formatscz.html</loc>
   </url>
   <url>
-    <loc>https://scholaempirica.github.io/reschola/reference/gd_backup.html</loc>
-  </url>
-  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/gd_download_folder.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/gd_get_proj.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/gd_upload_file.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/get_rds.html</loc>
