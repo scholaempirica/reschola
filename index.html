@@ -101,11 +101,18 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the released version of reschola from <a href="https://github.com" class="external-link">Github</a> with:</p>
+<p>You can install the <em>released</em> version of reschola from <a href="https://github.com" class="external-link">Github</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"scholaempirica/reschola"</span>, ref <span class="op">=</span> <span class="fu">remotes</span><span class="fu">::</span><span class="fu">github_release</span><span class="op">(</span><span class="op">)</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>The current development version can be installed with:</p>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span>
+  <span class="st">"scholaempirica/reschola"</span>,
+  ref <span class="op">=</span> <span class="fu">remotes</span><span class="fu">::</span><span class="fu">github_release</span><span class="op">(</span><span class="op">)</span>,
+  build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></code></pre></div>
+<p><code>r-universe</code> is kindly building and hosting compiled binaries of <em>development versions</em> for Windows and MacOS, so you can proceed with a standard call with <code>r-universe</code> repository specified:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"reschola"</span>, repos <span class="op">=</span> <span class="st">"https://scholaempirica.r-universe.dev"</span><span class="op">)</span></code></pre></div>
+<p>And last but not least, the current <em>development</em> version can be installed with:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"scholaempirica/reschola"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
@@ -159,8 +166,9 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check" class="external-link"><img src="https://img.shields.io/github/workflow/status/scholaempirica/reschola/R-CMD-check" alt="GitHub Workflow Status"></a></li>
-<li><a href="https://CRAN.R-project.org/package=reschola" class="external-link"><img src="https://www.r-pkg.org/badges/version/reschola" alt="CRAN status"></a></li>
 <li><a href="https://github.com/scholaempirica/reschola/releases" class="external-link"><img src="https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases" alt="GitHub release (latest by date including pre-releases)"></a></li>
+<li><a href="https://scholaempirica.r-universe.dev" class="external-link"><img src="https://scholaempirica.r-universe.dev/badges/reschola" alt="reschola status badge"></a></li>
+<li><a href="https://CRAN.R-project.org/package=reschola" class="external-link"><img src="https://www.r-pkg.org/badges/version/reschola" alt="CRAN status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 </ul>
 </div>
