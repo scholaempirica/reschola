@@ -9,7 +9,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  echo = TRUE,
+  eval = FALSE
 )
 ```
 
@@ -17,8 +19,9 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/scholaempirica/reschola/R-CMD-check)](https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check)
-[![CRAN status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases)](https://github.com/scholaempirica/reschola/releases)
+[![reschola status badge](https://scholaempirica.r-universe.dev/badges/reschola)](https://scholaempirica.r-universe.dev)
+[![CRAN status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
@@ -26,15 +29,25 @@ The goal of reschola is to support the workflow for data analysis at [Schola Emp
 
 ## Installation
 
-You can install the released version of reschola from [Github](https://github.com) with:
+You can install the *released* version of reschola from [Github](https://github.com) with:
 
-``` r
-remotes::install_github("scholaempirica/reschola", ref = remotes::github_release(), build_vignettes = TRUE)
+```{r}
+remotes::install_github(
+  "scholaempirica/reschola",
+  ref = remotes::github_release(),
+  build_vignettes = TRUE
+)
 ```
 
-The current development version can be installed with:
+`r-universe` is kindly building and hosting compiled binaries of the current *development versions* for Windows and MacOS, so you can proceed with a standard call with `r-universe` repository specified:
 
-``` r
+```{r}
+install.packages("reschola", repos = "https://scholaempirica.r-universe.dev")
+```
+
+This could be done with `remotes` as well, by ommiting the `ref` argument:
+
+```{r}
 remotes::install_github("scholaempirica/reschola", build_vignettes = TRUE)
 ```
 

@@ -7,10 +7,12 @@
 
 [![GitHub Workflow
 Status](https://img.shields.io/github/workflow/status/scholaempirica/reschola/R-CMD-check)](https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 [![GitHub release (latest by date including
 pre-releases)](https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases)](https://github.com/scholaempirica/reschola/releases)
+[![reschola status
+badge](https://scholaempirica.r-universe.dev/badges/reschola)](https://scholaempirica.r-universe.dev)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
@@ -23,14 +25,27 @@ guidance and tips on tools and good practice.
 
 ## Installation
 
-You can install the released version of reschola from
+You can install the *released* version of reschola from
 [Github](https://github.com) with:
 
 ``` r
-remotes::install_github("scholaempirica/reschola", ref = remotes::github_release(), build_vignettes = TRUE)
+remotes::install_github(
+  "scholaempirica/reschola",
+  ref = remotes::github_release(),
+  build_vignettes = TRUE
+)
 ```
 
-The current development version can be installed with:
+`r-universe` is kindly building and hosting compiled binaries of
+*development versions* for Windows and MacOS, so you can proceed with a
+standard call with `r-universe` repository specified:
+
+``` r
+install.packages("reschola", repos = "https://scholaempirica.r-universe.dev")
+```
+
+And last but not least, the current *development* version can be
+installed with:
 
 ``` r
 remotes::install_github("scholaempirica/reschola", build_vignettes = TRUE)
