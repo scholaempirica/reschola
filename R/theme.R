@@ -127,7 +127,7 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     axis.title = if (axis_titles) element_text() else element_blank(),
     strip.text.x = element_text(hjust = 0),
     plot.margin = if (margins) margin() else base_theme$plot.margin,
-    strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA),
+    strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA) else element_blank(),
     ...
   )
   base_theme + schola_theme
