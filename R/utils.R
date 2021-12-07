@@ -86,12 +86,11 @@ reschola_file <- function(...) {
 #' @param file  file to make, rds fileext is appended automatically or forced if
 #'   other ext is provided
 #' @param type type of data, dir inside data_dir
-#'
-#' @keywords internal
+#' @rdname schola_rds
 #' @importFrom fs path_ext_set
 #' @importFrom here here
 #' @importFrom readr read_rds
-get_rds <- function(file, type, data_dir = "data") {
+get_data <- function(file, type, data_dir = "data") {
   path <- here(data_dir, type, file)
   read_rds(path_ext_set(path, "rds"))
 }
@@ -103,13 +102,12 @@ get_rds <- function(file, type, data_dir = "data") {
 #'   other ext is provided
 #' @param type type of data, dir inside data_dir
 #' @param data_dir dir with data dirs
-#'
-#' @keywords internal
+#' @rdname schola_rds
 #' @importFrom fs path_ext_set
 #' @importFrom here here
 #' @importFrom readr write_rds
 #'
-make_rds <- function(.x, file, type, data_dir = "data") {
+write_data <- function(.x, file, type, data_dir = "data") {
   path <- here(data_dir, type, file)
   write_rds(.x, path_ext_set(path, "rds"))
 }
@@ -126,37 +124,37 @@ make_rds <- function(.x, file, type, data_dir = "data") {
 #' @export
 #' @rdname schola_rds
 get_input_data <- function(file) {
-  get_rds(file, type = "processed")
+  get_data(file, type = "input")
 }
 
 #' @export
 #' @rdname schola_rds
 get_intermediate_data <- function(file) {
-  get_rds(file, type = "intermediate")
+  get_data(file, type = "intermediate")
 }
 
 #' @export
 #' @rdname schola_rds
 get_processed_data <- function(file) {
-  get_rds(file, type = "processed")
+  get_data(file, type = "processed")
 }
 
 #' @export
 #' @rdname schola_rds
 write_input_data <- function(.data, file) {
-  make_rds(.data, file, type = "processed")
+  write_data(.data, file, type = "input")
 }
 
 #' @export
 #' @rdname schola_rds
 write_intermediate_data <- function(.data, file) {
-  make_rds(.data, file, type = "intermediate")
+  write_data(.data, file, type = "intermediate")
 }
 
 #' @export
 #' @rdname schola_rds
 write_processed_data <- function(.data, file) {
-  make_rds(.data, file, type = "processed")
+  write_data(.data, file, type = "processed")
 }
 
 
@@ -166,7 +164,11 @@ write_processed_data <- function(.data, file) {
 #' Gets a hidden object `.gd_proj_url` (by default) created at project
 #' "startup". Use `usethis::edit_r_profile()` to change the URL.
 #'
-#' @param url_object *character*, name of the object URL is stored in. `.gd_proj_url` by default.
+#' Note that you have to restart your R session to apply any changes. Note also
+#' that the URL cannot contain any query, i.e. "?usp=sharing".
+#'
+#' @param url_object *character*, name of the object URL is stored in.
+#'   `.gd_proj_url` by default.
 #' @return A character vector of class `drive_id`.
 #'
 #' @export

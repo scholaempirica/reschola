@@ -25,14 +25,16 @@
 - `set_reschola_ggplot_fonts()` without dependencies and more customisable (although changes are not recommended); new geoms covered
 - new `fct_nanify()` for recoding a factor level to `NA`
 - new functions for quick RDS data manipulation:
+  - `get_data()` -- a general one
   - `get_input_data()`
   - `get_intermediate_data()`
   - `get_processed_data()`
+  - `write_data()` -- a general one
   - `write_input_data()`
   - `write_intermediate_data()`
   - `write_processed_data()`
 - new function `gd_upload_file()` for quick file uploads
-- `gd_download_folder()` now uses project's Google Drive URL stored in `.Rprofile` as `folder_url` by default
+- `gd_download_folder()` now uses project's Google Drive URL stored in `.Rprofile` as `folder_url` argument by default
 
 ## Bugfixes
 

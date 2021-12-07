@@ -7,7 +7,8 @@
 gd_get_proj(url_object = ".gd_proj_url")
 }
 \arguments{
-\item{url_object}{\emph{character}, name of the object URL is stored in. \code{.gd_proj_url} by default.}
+\item{url_object}{\emph{character}, name of the object URL is stored in.
+\code{.gd_proj_url} by default.}
 }
 \value{
 A character vector of class \code{drive_id}.
@@ -15,4 +16,8 @@ A character vector of class \code{drive_id}.
 \description{
 Gets a hidden object \code{.gd_proj_url} (by default) created at project
 "startup". Use \code{usethis::edit_r_profile()} to change the URL.
+}
+\details{
+Note that you have to restart your R session to apply any changes. Note also
+that the URL cannot contain any query, i.e. "?usp=sharing".
 }
