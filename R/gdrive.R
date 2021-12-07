@@ -74,6 +74,8 @@ gd_download_folder <- function(folder_url = gd_get_proj(), dest_dir = "data/inpu
 #'
 #' @return An object of class `dribble`, a tibble with one row per file.
 #' @export
+#' @importFrom googledrive drive_put as_dribble
+#' @importFrom here here
 #'
 gd_upload_file <- function(file, dir = gd_get_proj()) {
   drive_put(here(file), as_dribble(dir))
