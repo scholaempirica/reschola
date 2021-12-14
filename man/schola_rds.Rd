@@ -30,7 +30,7 @@ automatically if not already provided.}
 \value{
 \itemize{
 \item \verb{get_*} returns object(s) in the \code{.rds} being read
-\item \verb{write_*} returns a path of \code{.rds} file being created invisibly
+\item \verb{write_*} returns a \code{fs_path} path of \code{.rds} file being created invisibly
 }
 }
 \description{
