@@ -114,9 +114,10 @@ get_data <- function(file, type, data_dir = "data") {
 #'
 write_data <- function(.data, file, type, data_dir = "data") {
   path <- here(data_dir, type, file)
-  write_rds(.data, path_ext_set(path, "rds"))
+  path <- path_ext_set(path, "rds")
+  write_rds(.data, path)
 
-  invisible(path_ext_set(path, "rds"))
+  invisible(path)
 }
 
 
@@ -130,7 +131,7 @@ write_data <- function(.data, file, type, data_dir = "data") {
 #'
 #' @returns
 #' - `get_*` returns object(s) in the `.rds` being read
-#' - `write_*` returns a path of `.rds` file being created invisibly
+#' - `write_*` returns a `fs_path` path of `.rds` file being created invisibly
 #'
 #' @export
 #' @rdname schola_rds
