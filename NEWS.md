@@ -41,7 +41,7 @@ In this release, we have changed a standard project structure to be more organis
 
 - `ls_participants()` runs properly when there are no attributes to translate and `translate_attrs = TRUE`
 
-# Documentation
+## Documentation
 
 - `{pkgdown}` online documentation leverages `Bootstrap 5`
 - info about `babel` TeX package hyphenation warning mitigation in `schola_pdf()` (using `tinytex::tlmgr_install("hyphen-czech")`)
