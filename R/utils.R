@@ -81,45 +81,56 @@ reschola_file <- function(...) {
 
 
 
-#' Get RDS
+#' Get RDS from custom dir
 #'
 #' @param file  file to make, rds fileext is appended automatically or forced if
 #'   other ext is provided
 #' @param type type of data, dir inside data_dir
-#' @rdname schola_rds
+#'
+#' @keywords internal
+#'
 #' @importFrom fs path_ext_set
 #' @importFrom here here
 #' @importFrom readr read_rds
+#'
 get_data <- function(file, type, data_dir = "data") {
   path <- here(data_dir, type, file)
   read_rds(path_ext_set(path, "rds"))
 }
 
-#' Make RDS
+#' Write RDS to custom dir
 #'
-#' @param .x an object to save as RDS
+#' @param .data an object to save as RDS
 #' @param file file to make, rds fileext is appended automatically or forced if
 #'   other ext is provided
 #' @param type type of data, dir inside data_dir
 #' @param data_dir dir with data dirs
-#' @rdname schola_rds
+#'
+#' @keywords internal
+#'
 #' @importFrom fs path_ext_set
 #' @importFrom here here
 #' @importFrom readr write_rds
 #'
-write_data <- function(.x, file, type, data_dir = "data") {
+write_data <- function(.data, file, type, data_dir = "data") {
   path <- here(data_dir, type, file)
-  write_rds(.x, path_ext_set(path, "rds"))
+  write_rds(.data, path_ext_set(path, "rds"))
+
+  invisible(path_ext_set(path, "rds"))
 }
 
 
-#' Quick access to data instandard `{reschola}` project
+#' Quick access to data in standard `reschola` project
 #'
 #' Note that file paths are handled with `here()` already.
 #'
 #' @param file *character*, file name to get or write to, `.rds` is appended
 #'   automatically if not already provided.
 #' @param .data *data object* to save as RDS.
+#'
+#' @returns
+#' - `get_*` returns object(s) in the `.rds` being read
+#' - `write_*` returns a path of `.rds` file being created invisibly
 #'
 #' @export
 #' @rdname schola_rds
