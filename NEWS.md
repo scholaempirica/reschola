@@ -1,9 +1,12 @@
+
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 - amend R CMD warnings
 -->
 
-# reschola 0.3.3.9000 (development version)
+# reschola 0.3.4 (New Beginnings)
+
+In this release, we have changed a standard project structure to be more organised keeping in mind not to clutter project's root directory with too much files. Next, font installation and usage backend was completely rewamped and should now work straight out of the box on any machine -- without any dependencies needed. Last, but not least, our default `{ggplot2}` theme has been report-first tailored and cropping utilities are not needed anymore. And as usual, many bugs were fixed.
 
 ## Breaking changes
 
