@@ -88,6 +88,9 @@
     <loc>https://scholaempirica.github.io/reschola/reference/gd_upload_file.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/get_data.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/gw_auth.html</loc>
   </url>
   <url>
@@ -185,5 +188,8 @@
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/use_reschola_fonts.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/write_data.html</loc>
   </url>
 </urlset>
