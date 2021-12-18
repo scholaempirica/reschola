@@ -10,6 +10,7 @@
 #' @importFrom usethis create_project proj_set proj_sitrep use_git use_github ui_info ui_stop ui_oops use_git_ignore ui_todo ui_code ui_path
 #' @importFrom stringr str_glue
 #' @importFrom googledrive as_dribble is_folder
+#' @importFrom stringr str_remove
 #'
 #' @return TRUE
 schola_project <- function(path, ...) {
@@ -152,7 +153,12 @@ schola_project <- function(path, ...) {
 
   writeLines(readme_text, con = "README.md")
 
-  if (is.null(dots$drive_folder)) dots$drive_folder <- ""
+  if (is.null(dots$drive_folder)) {
+    dots$drive_folder <- ""
+  } else {
+    # strip query that messes up {googledrive}
+    dots$drive_folder <- str_remove(dots$drive_folder, "(?=\\?).*")
+  }
 
   # if drive folder given, check that it is a folder (not a file etc.)
   if (nzchar(dots$drive_folder)) {
@@ -176,7 +182,7 @@ schola_project <- function(path, ...) {
   }
 
   if (dots[["drive_download"]] & (dots[["drive_folder"]] != "")) {
-    ui_todo("Downloading contents of GDrive to {ui_path('data/input')}")
+    ui_info("Downloading contents of GDrive to {ui_path('data/input')}")
     gd_download_folder(dots$drive_folder, overwrite = F, files_from_subfolders = T)
 
     # set URL into .Rprofile

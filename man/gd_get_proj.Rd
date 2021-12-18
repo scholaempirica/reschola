@@ -15,9 +15,17 @@ A character vector of class \code{drive_id}.
 }
 \description{
 Gets a hidden object \code{.gd_proj_url} (by default) created at project
-"startup". Use \code{usethis::edit_r_profile()} to change the URL.
+"startup". See the details below for reschola projects created prior reschola
+version 0.4.0.
 }
-\details{
-Note that you have to restart your R session to apply any changes. Note also
-that the URL cannot contain any query, i.e. "?usp=sharing".
+\section{Legacy usage prior to \{reschola\} version 0.4.0}{
+
+Call \code{usethis::edit_r_profile(scope = "project")} and write (note the dot
+prefix):\preformatted{.gd_proj_url <- "your_google_drive_url"
 }
+
+Note that \strong{you have to restart your R session to apply any changes}. Note
+also that \strong{the URL cannot contain any query} (parts with a leading
+question mark), i.e. \code{?usp=sharing}.
+}
+

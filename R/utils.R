@@ -174,10 +174,20 @@ write_processed_data <- function(.data, file) {
 #' Get current reschola project Google Drive URL ID
 #'
 #' Gets a hidden object `.gd_proj_url` (by default) created at project
-#' "startup". Use `usethis::edit_r_profile()` to change the URL.
+#' "startup". See the details below for reschola projects created prior reschola
+#' version 0.4.0.
 #'
-#' Note that you have to restart your R session to apply any changes. Note also
-#' that the URL cannot contain any query, i.e. "?usp=sharing".
+#' @section Legacy usage prior to \{reschola\} version 0.4.0:
+#'    Call `usethis::edit_r_profile(scope = "project")` and write (note the dot
+#'    prefix):
+#'
+#'   ```
+#'   .gd_proj_url <- "your_google_drive_url"
+#'   ```
+#'
+#'   Note that **you have to restart your R session to apply any changes**. Note
+#'   also that **the URL cannot contain any query** (parts with a leading
+#'   question mark), i.e. `?usp=sharing`.
 #'
 #' @param url_object *character*, name of the object URL is stored in.
 #'   `.gd_proj_url` by default.
@@ -193,7 +203,7 @@ gd_get_proj <- function(url_object = ".gd_proj_url") {
     return(as_id(res))
   }
   on.exit(ui_todo(
-    "Call {ui_code('usethis::edit_r_profile()')} and set the URL to {ui_field({url_object})}."
+    "Call {ui_code('usethis::edit_r_profile(scope = \"project\")')} and set the URL to {ui_field({url_object})}."
   ))
   abort("Google Drive URL not set!")
 }
