@@ -10,7 +10,7 @@
 #' @importFrom usethis create_project proj_set proj_sitrep use_git use_github ui_info ui_stop ui_oops use_git_ignore ui_todo ui_code ui_path
 #' @importFrom stringr str_glue
 #' @importFrom googledrive as_dribble is_folder
-#' @importFrom stringr str_remove
+#' @importFrom stringr str_remove str_trim
 #'
 #' @return TRUE
 schola_project <- function(path, ...) {
@@ -123,6 +123,23 @@ schola_project <- function(path, ...) {
   # delete R directory which was created automatically
   dir_delete("R")
 
+  writeLines(readme_text, con = "README.md")
+
+
+  # GDrive preps before commit ----------------------------------------------
+
+  # write GDrive URL to .Rprofile
+  if (!is.null(dots$drive_folder)) {
+    # strip query that messes up {googledrive}
+    dots$drive_folder <- str_trim(str_remove(dots$drive_folder, "(?=\\?).*"))
+
+    # set URL into .Rprofile
+    writeLines(str_glue(
+      "# project's Google Drive URL\n.gd_proj_url <- \"{dots$drive_folder}\""
+    ),
+    con = ".Rprofile"
+    )
+  }
 
   # git ---------------------------------------------------------------------
 
@@ -144,24 +161,13 @@ schola_project <- function(path, ...) {
           ui_oops("Linking GitHub with your project failed. You may have to authenticate yourself. See {ui_code('?gh::gh_token')}.")
         }
       )
-    },
+    }
   )
 
 
-  # Gdrive ------------------------------------------------------------------
+  # Gdrive download now -----------------------------------------------------
 
-
-  writeLines(readme_text, con = "README.md")
-
-  if (is.null(dots$drive_folder)) {
-    dots$drive_folder <- ""
-  } else {
-    # strip query that messes up {googledrive}
-    dots$drive_folder <- str_remove(dots$drive_folder, "(?=\\?).*")
-  }
-
-  # if drive folder given, check that it is a folder (not a file etc.)
-  if (nzchar(dots$drive_folder)) {
+  if (!is.null(dots$drive_folder) && dots$drive_download) {
     gdrive_dribble <- tryCatch(as_dribble(dots$drive_folder),
       error = function(cnd) {
         ui_oops("You need to authenticate your Google account with R first.")
@@ -175,23 +181,15 @@ schola_project <- function(path, ...) {
     if (!is_folder(gdrive_dribble)) {
       ui_stop("It seems the Google Drive folder URL you have given does not point to a folder.")
     }
+
+    ui_info("Downloading contents of GDrive to {ui_path('data/input')}...")
+    gd_download_folder(dots$drive_folder, overwrite = FALSE, files_from_subfolders = TRUE)
   }
 
-  if (dots[["drive_download"]] & (dots[["drive_folder"]] == "")) {
+  if (dots$drive_download & is.null(dots$drive_folder)) {
     ui_oops("You asked for the GDrive files to be downloaded, but provided no URL.\nNothing was downloaded.")
   }
 
-  if (dots[["drive_download"]] & (dots[["drive_folder"]] != "")) {
-    ui_info("Downloading contents of GDrive to {ui_path('data/input')}")
-    gd_download_folder(dots$drive_folder, overwrite = F, files_from_subfolders = T)
-
-    # set URL into .Rprofile
-    writeLines(str_glue(
-      "# project's Google Drive URL\n.gd_proj_url <- \"{dots$drive_folder}\""
-    ),
-    con = ".Rprofile"
-    )
-  }
 
   # usethis::ui_todo("You should run {usethis::ui_code('usethis::proj_set(getwd())')} in your original session to get your working directory sorted.")
   suppressMessages(proj_set(orig_dir))

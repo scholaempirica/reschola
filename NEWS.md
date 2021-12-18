@@ -4,10 +4,15 @@
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 - amend R CMD warnings
 -->
+
+## Changes
+
+- all files created at project startup are now commited in the initial "Repo setup" commit
+- Google Drive URL saved in `.Rprofile` at project setup is now automatically trimmed and all queries that might boggle {googledrive} are removed
+
 ## Bugfixes
 
 - Google Drive URL provided at project creation is now stripped from any non-essential parts of the URL that perplexes {googledrive} package and possibly results into errors  
-
 
 ## Documentation
 
