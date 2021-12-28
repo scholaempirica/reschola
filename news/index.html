@@ -70,6 +70,22 @@
 - amend R CMD warnings
 -->
 <div class="section level3">
+<h3 id="changes-0-4-0-9000">Changes<a class="anchor" aria-label="anchor" href="#changes-0-4-0-9000"></a></h3>
+<ul><li>all files created at project startup are now commited in the initial “Repo setup” commit</li>
+<li>Google Drive URL saved in <code>.Rprofile</code> at project setup is now automatically trimmed and all queries that might boggle {googledrive} are removed</li>
+<li>
+<code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using regular expression, friendly warning displaying only once per session</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-0-4-0-9000">New features<a class="anchor" aria-label="anchor" href="#new-features-0-4-0-9000"></a></h3>
+<ul><li>
+<code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> for likert-type items, displaying grouped data per variable for straightforward comparison</li>
+<li>
+<code><a href="../reference/dict_from_data.html">dict_from_data()</a></code> extracts named character vector of item code-label pairs</li>
+<li>
+<code><a href="../reference/schola_labeller.html">schola_labeller()</a></code> is a labeller for <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> facets that utilizes item labels, with wrapping</li>
+</ul></div>
+<div class="section level3">
 <h3 id="bugfixes-0-4-0-9000">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-0-4-0-9000"></a></h3>
 <ul><li>Google Drive URL provided at project creation is now stripped from any non-essential parts of the URL that perplexes {googledrive} package and possibly results into errors</li>
 </ul></div>

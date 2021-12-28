@@ -64,6 +64,9 @@
     <loc>https://scholaempirica.github.io/reschola/reference/czech_date_main.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/dict_from_data.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/dot-czech_months.html</loc>
   </url>
   <url>
@@ -89,6 +92,9 @@
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/get_data.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/get_lightness.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/gw_auth.html</loc>
@@ -167,6 +173,12 @@
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/scalescz.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/schola_barplot.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/schola_labeller.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/schola_pdf.html</loc>
