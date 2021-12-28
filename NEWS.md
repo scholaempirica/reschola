@@ -9,6 +9,13 @@
 
 - all files created at project startup are now commited in the initial "Repo setup" commit
 - Google Drive URL saved in `.Rprofile` at project setup is now automatically trimmed and all queries that might boggle {googledrive} are removed
+- `fct_nanify()` now matches using regular expression, friendly warning displaying only once per session
+
+## New features
+
+- `schola_barplot()` for likert-type items, displaying grouped data per variable for straightforward comparison
+- `dict_from_data()` extracts named character vector of item code-label pairs
+- `schola_labeller()` is a labeller for `{ggplot2}` facets that utilizes item labels, with wrapping
 
 ## Bugfixes
 

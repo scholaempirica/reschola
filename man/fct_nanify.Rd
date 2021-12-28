@@ -4,12 +4,17 @@
 \alias{fct_nanify}
 \title{NAnify factor level}
 \usage{
-fct_nanify(f, level)
+fct_nanify(f, level, negate = FALSE, ignore_case = TRUE)
 }
 \arguments{
 \item{f}{\emph{factor} to work on}
 
-\item{level}{\emph{character},}
+\item{level}{\emph{character}, regular expression matching the desired level}
+
+\item{negate}{\emph{logical}, whether to return non-matching elements. Defaults to
+\code{FALSE}.}
+
+\item{ignore_case}{\emph{logical}, ignore case when matching? Defaults to \code{TRUE}.}
 }
 \value{
 \emph{factor} with NA-substituted level.

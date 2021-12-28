@@ -103,7 +103,7 @@ schola_pdf <- function(num_format = NULL, number_sections = FALSE, toc = TRUE,
   base$knitr$opts_chunk$out.width <- "\\textwidth"
   base$knitr$opts_chunk$dev <- "cairo_pdf" # for support of non-ASCII chars, namely
   base$knitr$opts_chunk$fig.asp <- .618 # golden ratio
-  base$knitr$opts_chunk$fig.path <- "figures/"
+  # base$knitr$opts_chunk$fig.path <- "figures/"
   base$knitr$opts_chunk$fig.align <- "center"
   # nolint end
 
