@@ -27,6 +27,7 @@ Imports:
     grDevices,
     here,
     hrbrthemes,
+    htmltools,
     httr,
     jsonlite,
     knitr,

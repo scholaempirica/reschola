@@ -7,8 +7,8 @@
 
 ## Changes
 
-- all files created at project startup are now commited in the initial "Repo setup" commit
-- Google Drive URL saved in `.Rprofile` at project setup is now automatically trimmed and all queries that might boggle {googledrive} are removed
+- all files created at project start-up are now commited in the initial "Repo set-up" commit
+- Google Drive URL saved in `.Rprofile` at project set-up is now automatically trimmed and all queries that might boggle {googledrive} are removed
 - `fct_nanify()` now matches using regular expression, friendly warning displaying only once per session
 
 ## New features
@@ -16,6 +16,7 @@
 - `schola_barplot()` for likert-type items, displaying grouped data per variable for straightforward comparison
 - `dict_from_data()` extracts named character vector of item code-label pairs
 - `schola_labeller()` is a labeller for `{ggplot2}` facets that utilizes item labels, with wrapping
+- `with_clr()` creates text with color as a span HTML tag, especially useful shortcut when you use `ggtext::geom_richtext()` or `ggtext::element_markdown()` richtext
 
 ## Bugfixes
 
@@ -28,12 +29,12 @@
 
 # reschola 0.4.0 (New Beginnings)
 
-In this release, we have changed a standard project structure to be more organised keeping in mind not to clutter the project's root directory with too many files. Next, font installation and usage backend was completely revamped and should now work straight out of the box on any machine – without any dependencies needed. Last, but not least, our default `{ggplot2}` theme has been report-first tailored and cropping utilities are not needed anymore. And as usual, many bugs were fixed.
+In this release, we have changed a standard project structure to be more organised keeping in mind not to clutter the project's root directory with too many files. Next, font installation and usage backend was completely revamped and should now work straight out of the box on any machine – without any dependencies needed. Last, but not least, our default `{ggplot2}` theme has been report-first tailored and cropping utilities are not needed any more. And as usual, many bugs were fixed.
 
 ## Breaking changes
 
-- default project structure changes and cleanup
-- schola project options cleanup
+- default project structure changes and clean-up
+- schola project options clean-up
 - new font installation and registration routines for Windows, see `install_reschola_fonts()` and `register_reschola_fonts()`
 - updated `theme_schola()`
   - no margins by default (argument `margin` supersedes `margin_side` and `margin_bottom`)
@@ -45,8 +46,8 @@ In this release, we have changed a standard project structure to be more organis
 
 - current logos added
 - new `draft_pdf()`
-- startup message
-- project setup exceptions better handled
+- start-up message
+- project set-up exceptions better handled
 - `set_reschola_ggplot_fonts()` without dependencies and more customisable (although changes are not recommended); new geoms covered
 - new `fct_nanify()` for recoding a factor level to `NA`
 - new functions for quick RDS data manipulation:
@@ -90,7 +91,7 @@ In this release, we have changed a standard project structure to be more organis
 ## New features
 
 - `ls_responses()` (and thus `ls_export()`) strips out the `tibble`-wide `variable.labels` attribute and spreads it among the individual variables, which enables you to modify the `tibble` without messing the labels positions and/or producing length incompatibilities
-- `ls_export()` gains new argument `clean_labels` which by default cleans up repeating parts of labels of subquestions (i.e., those outside square brackets)
+- `ls_export()` gains new argument `clean_labels` which by default cleans up repeating parts of labels of sub-questions (i.e., those outside square brackets)
 - new function `ls_set_participant_properties()` enabling you to set or edit participant table
 - new function `copy_schola_template()` which copies the template (`pdf` by default) into the active project directory
 
@@ -114,7 +115,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 
 ## Changes
 - font installation is now carried out by a single function `import_fonts()`
-- all fonts needed for the package functionality now comes in `reschola` and are not resourced from `hrbrthemes` anymore
+- all fonts needed for the package functionality now comes in `reschola` and are not resourced from `hrbrthemes` any more
 - `import_fonts()` is now more verbose on the instruction
 - `reschola` font directory is now opened automatically
 - some namespace-prepended function calls replaced with proper `importFrom` declarations 
@@ -132,7 +133,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
     - uses Roboto font
     - reasonable defaults are used so the YAML header is not cluttered with stuff
     - figures are in PDF (via `cairo` device so non-ASCII characters are well supported) and are cropped automatically (new function `ensure_cropping()` that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)
-    - takes care of non-breakable spaces in Czech (especially before singlecharacter prepositions) via pre-release `pandoc` Lua filter (only repo fork currently, thanks [Delanii](https://github.com/Delanii/lua-filters))
+    - takes care of non-breakable spaces in Czech (especially before single-character prepositions) via pre-release `pandoc` Lua filter (only repo fork currently, thanks [Delanii](https://github.com/Delanii/lua-filters))
     - handy `author` Pandoc variable (used in YAML header), which takes the language `lang` and automatically typesets the "and" or "a" separator before the last author (when there is only one, no separators are introduced whatsoever)
 
 
@@ -168,7 +169,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 ## Documentation additions
 
 -   "intelligent" quotation marks introduced ([\#76](https://github.com/scholaempirica/reschola/issues/76))
--   examples and desription of template handling in `schola_word()`
+-   examples and description of template handling in `schola_word()`
 -   `schola_word2()` deprecated
 
 ## Changes
@@ -199,7 +200,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 ## Changes
 
 -   the main Word template now uses Roboto font everywhere, pages are auto-numbered, ToC is properly formatted, text is justified
--   two new functions: `schola_word2()` gives the user control over the reference Word document (a.k.a. template), `open_schola_word_template` automatically locates and opens up the aforementioned template that comes with the package to simplify and speed up the workd with the template
+-   two new functions: `schola_word2()` gives the user control over the reference Word document (a.k.a. template), `open_schola_word_template` automatically locates and opens up the aforementioned template that comes with the package to simplify and speed up the work with the template
 
 ## Bug fixes
 
@@ -215,7 +216,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 
 ## Changes
 
--   template-based project setup no longer runs redoc so things work on Windows with broken encoding settings
+-   template-based project set-up no longer runs redoc so things work on Windows with broken encoding settings
 
 ## Bug fixes
 
@@ -228,8 +229,8 @@ A tiny patch release resolving the issues with and simplifying the font installa
 -   New Making charts vignette
 -   minor additions to tips and workflow vignettes
 -   new scales: `scale_[x|y]_percent_cz()`, `scale_[x|y]_number_cz()`
--   analogous English-locale scales reexported from `hrbrthemes`: `scale_[x|y]_comma()` and `scale_[x|y]_percent()`
--   new label formatters: `label_number_cz()` and `label_percent_cz()` (the English-language analogs without `_cz` are in the package `scales`)
+-   analogous English-locale scales re-exported from `hrbrthemes`: `scale_[x|y]_comma()` and `scale_[x|y]_percent()`
+-   new label formatters: `label_number_cz()` and `label_percent_cz()` (the English-language analogues without `_cz` are in the package `scales`)
 
 ## Changes
 
@@ -248,7 +249,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 
 ## Bug fixes
 
--   project setup now creates `data-raw` and `data-processed` such that the directories can go into git but not its contents; documentation explains this in multiple places.
+-   project set-up now creates `data-raw` and `data-processed` such that the directories can go into git but not its contents; documentation explains this in multiple places.
 -   `draft_redoc()` no longer leaves behind a stray docx file
 
 # reschola 0.2.8
@@ -268,7 +269,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 -   added search capability to website
 -   clarified workflow text on project creation
 -   added note on encoding in Workflow article
--   added guidance in setups and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors
+-   added guidance in set-ups and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors
 -   more guidance in RMarkdown templates
 
 # reschola 0.2.7
@@ -276,11 +277,11 @@ A tiny patch release resolving the issues with and simplifying the font installa
 ## Bug fixes
 
 -   fixed bug in project template where a newly created RMd file did not open
--   refactored `draft_redoc()` to fix roundtripping issue and improve UI
+-   refactored `draft_redoc()` to fix round-tripping issue and improve UI
 
 ## Improvements
 
--   added preliminary setup documentation on locales
+-   added preliminary set-up documentation on locales
 -   added documentation on using schola_redoc template
 -   new bits of workflow documentation on good practice and code style
 
@@ -289,7 +290,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 -   project template now creates a reproducibility script
 -   getting-started doc in project template is more fleshed out
 -   first draft of new Workflow vignette
--   first draft of new Setup vignette
+-   first draft of new Set-up vignette
 -   more detail in Tips & Tricks vignette
 
 # reschola 0.2.5
@@ -303,7 +304,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 
 -   added basic files to default project structure
 -   better file names in default structure
--   clearer wording and layout of project template dialog
+-   clearer wording and layout of project template dialogue
 -   Bootstrap-style callouts can now be used in vignettes (will only show on website)
 -   added tips on accessing documentation in tips vignette, and on snippets
 
@@ -317,7 +318,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 
 -   removed `font_rc_light` as Roboto Condensed Light does not work in Windows with ggplot2
 -   improved guidance in `import_fonts()`
--   added guidance in meta vignette on changing things in the package, plus acknowledgments
+-   added guidance in meta vignette on changing things in the package, plus acknowledgements
 -   improved UI for draft_word()
 -   improved UI for draft_redoc(); it now also roundtrips the new file for cleaner reversion from docx edits
 -   updated docx templates: page size, margins
@@ -332,7 +333,7 @@ A tiny patch release resolving the issues with and simplifying the font installa
 -   added the right logos into RStudio template\*
 -   improved RMarkdown template content
 -   font defaults in `theme_schola()` + functions for font import and setting `geom_*` defaults
--   font setup steps documented in vignettes and `theme_schola()` doc
+-   font set-up steps documented in vignettes and `theme_schola()` doc
 
 # reschola 0.2.1
 

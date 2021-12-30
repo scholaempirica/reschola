@@ -207,3 +207,57 @@ gd_get_proj <- function(url_object = ".gd_proj_url") {
   ))
   abort("Google Drive URL not set!")
 }
+
+
+#' Convert color to hexadecimal format
+#'
+#' @param color *character*, color name (seel `colors()` for recognized values)
+#' @param alpha *numeric*, opacity in interval 0--1, where 1 is no transparency,
+#'   i.e. full opacity
+#'
+#' @return *character*, color in hexadecimal format
+#' @keywords internal
+#'
+#' @examples
+#' clr2hex("red")
+clr2hex <- function(color, alpha = 1) {
+  if (grepl("^#[a-fA-F0-9]{6,8}$", color)) {
+    return(color)
+  }
+  rgb_col <- col2rgb(color) / 255
+  apply(rgb_col, 2, function(x) rgb(x[1L], x[2L], x[3L], alpha))
+}
+
+#' Create HTML span tag with text and color style
+#'
+#' @param text *character*, text that will be colored.
+#' @param color *character*, color applied to the text, defaults to black.
+#' @param alpha *numeric*, opacity in interval 0--1, where 1 is no transparency,
+#'   i.e. full opacity
+#' @inheritDotParams htmltools::span
+#'
+#' @return an object of class `shiny.tag`, coercible to character
+#'
+#' @export
+#' @importFrom htmltools span
+#'
+#' @examples
+#' html <- paste0(
+#'   with_clr("Red", "red"), ", ",
+#'   with_clr("green", "green"),
+#'   " and ",
+#'   with_clr("blue", "blue"),
+#'   " are the basic colors."
+#'   )
+#'
+#' library(ggplot2)
+#'
+#' ggplot() +
+#'   geom_richtext(aes(x = 1, y = 1, label = html), size = 8) +
+#'   theme_void()
+
+with_clr <- function(text, color = "black", alpha = 1, ...) {
+  span(text,
+    style = paste("color:", clr2hex(color, alpha = alpha)), ...
+  )
+}
