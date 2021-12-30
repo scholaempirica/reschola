@@ -71,8 +71,8 @@
 -->
 <div class="section level3">
 <h3 id="changes-0-4-0-9000">Changes<a class="anchor" aria-label="anchor" href="#changes-0-4-0-9000"></a></h3>
-<ul><li>all files created at project startup are now commited in the initial “Repo setup” commit</li>
-<li>Google Drive URL saved in <code>.Rprofile</code> at project setup is now automatically trimmed and all queries that might boggle {googledrive} are removed</li>
+<ul><li>all files created at project start-up are now commited in the initial “Repo set-up” commit</li>
+<li>Google Drive URL saved in <code>.Rprofile</code> at project set-up is now automatically trimmed and all queries that might boggle {googledrive} are removed</li>
 <li>
 <code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using regular expression, friendly warning displaying only once per session</li>
 </ul></div>
@@ -84,6 +84,8 @@
 <code><a href="../reference/dict_from_data.html">dict_from_data()</a></code> extracts named character vector of item code-label pairs</li>
 <li>
 <code><a href="../reference/schola_labeller.html">schola_labeller()</a></code> is a labeller for <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> facets that utilizes item labels, with wrapping</li>
+<li>
+<code><a href="../reference/with_clr.html">with_clr()</a></code> creates text with color as a span HTML tag, especially useful shortcut when you use <code><a href="https://wilkelab.org/ggtext/reference/geom_richtext.html" class="external-link">ggtext::geom_richtext()</a></code> or <code><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">ggtext::element_markdown()</a></code> richtext</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bugfixes-0-4-0-9000">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-0-4-0-9000"></a></h3>
@@ -97,11 +99,11 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="reschola-040-new-beginnings">reschola 0.4.0 (New Beginnings)<a class="anchor" aria-label="anchor" href="#reschola-040-new-beginnings"></a></h2>
-<p>In this release, we have changed a standard project structure to be more organised keeping in mind not to clutter the project’s root directory with too many files. Next, font installation and usage backend was completely revamped and should now work straight out of the box on any machine – without any dependencies needed. Last, but not least, our default <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> theme has been report-first tailored and cropping utilities are not needed anymore. And as usual, many bugs were fixed.</p>
+<p>In this release, we have changed a standard project structure to be more organised keeping in mind not to clutter the project’s root directory with too many files. Next, font installation and usage backend was completely revamped and should now work straight out of the box on any machine – without any dependencies needed. Last, but not least, our default <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> theme has been report-first tailored and cropping utilities are not needed any more. And as usual, many bugs were fixed.</p>
 <div class="section level3">
 <h3 id="breaking-changes-0-4-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-4-0"></a></h3>
-<ul><li>default project structure changes and cleanup</li>
-<li>schola project options cleanup</li>
+<ul><li>default project structure changes and clean-up</li>
+<li>schola project options clean-up</li>
 <li>new font installation and registration routines for Windows, see <code><a href="../reference/install_reschola_fonts.html">install_reschola_fonts()</a></code> and <code><a href="../reference/register_reschola_fonts.html">register_reschola_fonts()</a></code>
 </li>
 <li>updated <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
@@ -117,8 +119,8 @@
 <ul><li>current logos added</li>
 <li>new <code><a href="../reference/draft.html">draft_pdf()</a></code>
 </li>
-<li>startup message</li>
-<li>project setup exceptions better handled</li>
+<li>start-up message</li>
+<li>project set-up exceptions better handled</li>
 <li>
 <code><a href="../reference/use_reschola_fonts.html">set_reschola_ggplot_fonts()</a></code> without dependencies and more customisable (although changes are not recommended); new geoms covered</li>
 <li>new <code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> for recoding a factor level to <code>NA</code>
@@ -180,7 +182,7 @@
 <ul><li>
 <code><a href="../reference/ls_responses.html">ls_responses()</a></code> (and thus <code><a href="../reference/ls_export.html">ls_export()</a></code>) strips out the <code>tibble</code>-wide <code>variable.labels</code> attribute and spreads it among the individual variables, which enables you to modify the <code>tibble</code> without messing the labels positions and/or producing length incompatibilities</li>
 <li>
-<code><a href="../reference/ls_export.html">ls_export()</a></code> gains new argument <code>clean_labels</code> which by default cleans up repeating parts of labels of subquestions (i.e., those outside square brackets)</li>
+<code><a href="../reference/ls_export.html">ls_export()</a></code> gains new argument <code>clean_labels</code> which by default cleans up repeating parts of labels of sub-questions (i.e., those outside square brackets)</li>
 <li>new function <code><a href="../reference/ls_set_participant_properties.html">ls_set_participant_properties()</a></code> enabling you to set or edit participant table</li>
 <li>new function <code><a href="../reference/copy_schola_template.html">copy_schola_template()</a></code> which copies the template (<code>pdf</code> by default) into the active project directory</li>
 </ul></div>
@@ -209,7 +211,7 @@
 <h3 id="changes-0-3-1">Changes<a class="anchor" aria-label="anchor" href="#changes-0-3-1"></a></h3>
 <ul><li>font installation is now carried out by a single function <code><a href="../reference/import_fonts.html">import_fonts()</a></code>
 </li>
-<li>all fonts needed for the package functionality now comes in <code>reschola</code> and are not resourced from <code>hrbrthemes</code> anymore</li>
+<li>all fonts needed for the package functionality now comes in <code>reschola</code> and are not resourced from <code>hrbrthemes</code> any more</li>
 <li>
 <code><a href="../reference/import_fonts.html">import_fonts()</a></code> is now more verbose on the instruction</li>
 <li>
@@ -230,7 +232,7 @@
 <li>uses Roboto font</li>
 <li>reasonable defaults are used so the YAML header is not cluttered with stuff</li>
 <li>figures are in PDF (via <code>cairo</code> device so non-ASCII characters are well supported) and are cropped automatically (new function <code>ensure_cropping()</code> that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)</li>
-<li>takes care of non-breakable spaces in Czech (especially before singlecharacter prepositions) via pre-release <code>pandoc</code> Lua filter (only repo fork currently, thanks <a href="https://github.com/Delanii/lua-filters" class="external-link">Delanii</a>)</li>
+<li>takes care of non-breakable spaces in Czech (especially before single-character prepositions) via pre-release <code>pandoc</code> Lua filter (only repo fork currently, thanks <a href="https://github.com/Delanii/lua-filters" class="external-link">Delanii</a>)</li>
 <li>handy <code>author</code> Pandoc variable (used in YAML header), which takes the language <code>lang</code> and automatically typesets the “and” or “a” separator before the last author (when there is only one, no separators are introduced whatsoever)</li>
 </ul></li>
 <li>
@@ -278,7 +280,7 @@
 <div class="section level3">
 <h3 id="documentation-additions-0-2-13">Documentation additions<a class="anchor" aria-label="anchor" href="#documentation-additions-0-2-13"></a></h3>
 <ul><li>“intelligent” quotation marks introduced (<a href="https://github.com/scholaempirica/reschola/issues/76" class="external-link">#76</a>)</li>
-<li>examples and desription of template handling in <code><a href="../reference/schola_word.html">schola_word()</a></code>
+<li>examples and description of template handling in <code><a href="../reference/schola_word.html">schola_word()</a></code>
 </li>
 <li>
 <code><a href="../reference/schola_word2.html">schola_word2()</a></code> deprecated</li>
@@ -316,7 +318,7 @@
 <div class="section level3">
 <h3 id="changes-0-2-12">Changes<a class="anchor" aria-label="anchor" href="#changes-0-2-12"></a></h3>
 <ul><li>the main Word template now uses Roboto font everywhere, pages are auto-numbered, ToC is properly formatted, text is justified</li>
-<li>two new functions: <code><a href="../reference/schola_word2.html">schola_word2()</a></code> gives the user control over the reference Word document (a.k.a. template), <code>open_schola_word_template</code> automatically locates and opens up the aforementioned template that comes with the package to simplify and speed up the workd with the template</li>
+<li>two new functions: <code><a href="../reference/schola_word2.html">schola_word2()</a></code> gives the user control over the reference Word document (a.k.a. template), <code>open_schola_word_template</code> automatically locates and opens up the aforementioned template that comes with the package to simplify and speed up the work with the template</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-2-12">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-12"></a></h3>
@@ -333,7 +335,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="changes-0-2-11">Changes<a class="anchor" aria-label="anchor" href="#changes-0-2-11"></a></h3>
-<ul><li>template-based project setup no longer runs redoc so things work on Windows with broken encoding settings</li>
+<ul><li>template-based project set-up no longer runs redoc so things work on Windows with broken encoding settings</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-2-11">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-11"></a></h3>
@@ -348,9 +350,9 @@
 <li>minor additions to tips and workflow vignettes</li>
 <li>new scales: <code>scale_[x|y]_percent_cz()</code>, <code>scale_[x|y]_number_cz()</code>
 </li>
-<li>analogous English-locale scales reexported from <code>hrbrthemes</code>: <code>scale_[x|y]_comma()</code> and <code>scale_[x|y]_percent()</code>
+<li>analogous English-locale scales re-exported from <code>hrbrthemes</code>: <code>scale_[x|y]_comma()</code> and <code>scale_[x|y]_percent()</code>
 </li>
-<li>new label formatters: <code><a href="../reference/formatscz.html">label_number_cz()</a></code> and <code><a href="../reference/formatscz.html">label_percent_cz()</a></code> (the English-language analogs without <code>_cz</code> are in the package <code>scales</code>)</li>
+<li>new label formatters: <code><a href="../reference/formatscz.html">label_number_cz()</a></code> and <code><a href="../reference/formatscz.html">label_percent_cz()</a></code> (the English-language analogues without <code>_cz</code> are in the package <code>scales</code>)</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-0-2-10">Changes<a class="anchor" aria-label="anchor" href="#changes-0-2-10"></a></h3>
@@ -372,7 +374,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-2-9">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-9"></a></h3>
-<ul><li>project setup now creates <code>data-raw</code> and <code>data-processed</code> such that the directories can go into git but not its contents; documentation explains this in multiple places.</li>
+<ul><li>project set-up now creates <code>data-raw</code> and <code>data-processed</code> such that the directories can go into git but not its contents; documentation explains this in multiple places.</li>
 <li>
 <code>draft_redoc()</code> no longer leaves behind a stray docx file</li>
 </ul></div>
@@ -397,7 +399,7 @@
 <li>added search capability to website</li>
 <li>clarified workflow text on project creation</li>
 <li>added note on encoding in Workflow article</li>
-<li>added guidance in setups and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors</li>
+<li>added guidance in set-ups and workflow vignettes on RStudio Cloud, R configuration, citations, and setting CRAN mirrors</li>
 <li>more guidance in RMarkdown templates</li>
 </ul></div>
 </div>
@@ -406,11 +408,11 @@
 <div class="section level3">
 <h3 id="bug-fixes-0-2-7">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-7"></a></h3>
 <ul><li>fixed bug in project template where a newly created RMd file did not open</li>
-<li>refactored <code>draft_redoc()</code> to fix roundtripping issue and improve UI</li>
+<li>refactored <code>draft_redoc()</code> to fix round-tripping issue and improve UI</li>
 </ul></div>
 <div class="section level3">
 <h3 id="improvements-0-2-7">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-2-7"></a></h3>
-<ul><li>added preliminary setup documentation on locales</li>
+<ul><li>added preliminary set-up documentation on locales</li>
 <li>added documentation on using schola_redoc template</li>
 <li>new bits of workflow documentation on good practice and code style</li>
 </ul></div>
@@ -420,7 +422,7 @@
 <ul><li>project template now creates a reproducibility script</li>
 <li>getting-started doc in project template is more fleshed out</li>
 <li>first draft of new Workflow vignette</li>
-<li>first draft of new Setup vignette</li>
+<li>first draft of new Set-up vignette</li>
 <li>more detail in Tips &amp; Tricks vignette</li>
 </ul></div>
     <div class="section level2">
@@ -434,7 +436,7 @@
 <h3 id="improvements-0-2-5">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-2-5"></a></h3>
 <ul><li>added basic files to default project structure</li>
 <li>better file names in default structure</li>
-<li>clearer wording and layout of project template dialog</li>
+<li>clearer wording and layout of project template dialogue</li>
 <li>Bootstrap-style callouts can now be used in vignettes (will only show on website)</li>
 <li>added tips on accessing documentation in tips vignette, and on snippets</li>
 </ul></div>
@@ -450,7 +452,7 @@
 <ul><li>removed <code>font_rc_light</code> as Roboto Condensed Light does not work in Windows with ggplot2</li>
 <li>improved guidance in <code><a href="../reference/import_fonts.html">import_fonts()</a></code>
 </li>
-<li>added guidance in meta vignette on changing things in the package, plus acknowledgments</li>
+<li>added guidance in meta vignette on changing things in the package, plus acknowledgements</li>
 <li>improved UI for draft_word()</li>
 <li>improved UI for draft_redoc(); it now also roundtrips the new file for cleaner reversion from docx edits</li>
 <li>updated docx templates: page size, margins</li>
@@ -465,7 +467,7 @@
 <ul><li>added the right logos into RStudio template*</li>
 <li>improved RMarkdown template content</li>
 <li>font defaults in <code><a href="../reference/theme_schola.html">theme_schola()</a></code> + functions for font import and setting <code>geom_*</code> defaults</li>
-<li>font setup steps documented in vignettes and <code><a href="../reference/theme_schola.html">theme_schola()</a></code> doc</li>
+<li>font set-up steps documented in vignettes and <code><a href="../reference/theme_schola.html">theme_schola()</a></code> doc</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="reschola-021">reschola 0.2.1<a class="anchor" aria-label="anchor" href="#reschola-021"></a></h2>
