@@ -367,8 +367,8 @@ label_percent_cz <- function (accuracy = NULL, scale = 100, prefix = "", suffix 
 label_number_cz <- function (accuracy = NULL, scale = 1, prefix = "", suffix = "",
                              big.mark = " ", decimal.mark = ",", trim = TRUE, ...)
 {
-  scales:::force_all(accuracy, scale, prefix, suffix, big.mark, decimal.mark,
-            trim, ...)
+  # scales:::force_all(accuracy, scale, prefix, suffix, big.mark, decimal.mark,
+  #           trim, ...)
   function(x) scales::number(x, accuracy = accuracy, scale = scale,
                      prefix = prefix, suffix = suffix, big.mark = big.mark,
                      decimal.mark = decimal.mark, trim = trim, ...)
@@ -377,8 +377,8 @@ label_number_cz <- function (accuracy = NULL, scale = 1, prefix = "", suffix = "
 label_percent_cz_abs <- function(accuracy = NULL, scale = 100, prefix = "", suffix = " %",
                       big.mark = " ", decimal.mark = ",", trim = TRUE, ...)
 {
-  scales:::force_all(accuracy, scale, prefix, suffix, big.mark, decimal.mark,
-                    trim, ...)
+  # scales:::force_all(accuracy, scale, prefix, suffix, big.mark, decimal.mark,
+  #                   trim, ...)
   function(x) scales::number(abs(x), accuracy = accuracy, scale = scale,
                              prefix = prefix, suffix = suffix, big.mark = big.mark,
                              decimal.mark = decimal.mark, trim = trim, ...)
