@@ -32,6 +32,11 @@
 #' @importFrom ggtext element_markdown
 #' @importFrom rlang abort eval_tidy
 #' @importFrom forcats fct_relevel fct_rev
+#' @importFrom dplyr pull group_by arrange if_else summarise n
+#' @importFrom stringr str_wrap
+#' @importFrom stats median
+#' @importFrom tidyr pivot_longer
+#' @importFrom scales percent
 #'
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\\u00edm", n_breaks = 11, desc = TRUE,
