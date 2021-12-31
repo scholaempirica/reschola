@@ -9,7 +9,7 @@ schola_barplot(
   vars,
   group,
   dict = dict_from_data(.data),
-  escape_level = "nevím",
+  escape_level = "nev\\\\u00edm",
   n_breaks = 11,
   desc = TRUE,
   labels = TRUE,

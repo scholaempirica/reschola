@@ -24,7 +24,6 @@
 #' @param labels draw labels?
 #' @param max_label_width larger values gets labelled, others not
 #' @param absolute_counts draw labels and absolute counts in parentheses?
-#'
 #' @inheritDotParams fct_nanify -f -level
 #'
 #' @return object of class "gg", "ggplot"
@@ -35,7 +34,7 @@
 #' @importFrom forcats fct_relevel fct_rev
 #'
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
-                           escape_level = "nevím", n_breaks = 11, desc = TRUE,
+                           escape_level = "nev\\u00edm", n_breaks = 11, desc = TRUE,
                            labels = TRUE, min_label_width = .08, absolute_counts = TRUE, ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
 

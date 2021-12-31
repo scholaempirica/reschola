@@ -43,6 +43,7 @@ html <- paste0(
   )
 
 library(ggplot2)
+library(ggtext)
 
 ggplot() +
   geom_richtext(aes(x = 1, y = 1, label = html), size = 8) +

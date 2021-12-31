@@ -251,6 +251,7 @@ clr2hex <- function(color, alpha = 1) {
 #'   )
 #'
 #' library(ggplot2)
+#' library(ggtext)
 #'
 #' ggplot() +
 #'   geom_richtext(aes(x = 1, y = 1, label = html), size = 8) +
@@ -260,4 +261,27 @@ with_clr <- function(text, color = "black", alpha = 1, ...) {
   span(text,
     style = paste("color:", clr2hex(color, alpha = alpha)), ...
   )
+}
+
+
+
+#' Transform to STEN score (Standard Ten)
+#'
+#' Get your raw total score transformed to stens, i.e., with the mean of 5.5 and
+#' a standard deviation of 2. See the [Wikipedia
+#' article](https://en.wikipedia.org/wiki/Sten_scores) on the topic for more
+#' details.
+#'
+#' @param score *numeric* vector of scores to transform
+#' @param standardize *logical*, center and scale `score` vector before the
+#'   transformation? Defaults to `FALSE`.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' rnorm(10) %>% sten()
+sten <- function(score, standardize = FALSE) {
+  if (standardize) score <- as.numeric(scale(score))
+  (score * 2) + 5.5
 }
