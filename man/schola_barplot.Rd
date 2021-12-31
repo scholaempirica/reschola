@@ -41,6 +41,8 @@ wide breaks.}
 
 \item{labels}{draw labels?}
 
+\item{min_label_width}{minimal label width that is displayed in the plot}
+
 \item{absolute_counts}{draw labels and absolute counts in parentheses?}
 
 \item{...}{
@@ -50,8 +52,6 @@ wide breaks.}
 \code{FALSE}.}
     \item{\code{ignore_case}}{\emph{logical}, ignore case when matching? Defaults to \code{TRUE}.}
   }}
-
-\item{max_label_width}{larger values gets labelled, others not}
 }
 \value{
 object of class "gg", "ggplot"

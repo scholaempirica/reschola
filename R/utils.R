@@ -218,9 +218,6 @@ gd_get_proj <- function(url_object = ".gd_proj_url") {
 #' @return *character*, color in hexadecimal format
 #' @keywords internal
 #' @importFrom grDevices col2rgb rgb
-#'
-#' @examples
-#' clr2hex("red")
 clr2hex <- function(color, alpha = 1) {
   if (grepl("^#[a-fA-F0-9]{6,8}$", color)) {
     return(color)

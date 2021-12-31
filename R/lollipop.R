@@ -13,23 +13,23 @@ prepare_lollipop_data <- function(.data, vars, group) {
   # assert group - logical
   d <- .data %>%
     pivot_longer({{ vars }}) %>%
-    mutate(value = sten(value))
+    mutate(value = sten(.data$value))
 
   ref_meds <- d %>%
     filter(!{{ group }}) %>%
-    group_by(name) %>%
-    summarise(med = median(value, na.rm = TRUE))
+    group_by(.data$name) %>%
+    summarise(med = median(.data$value, na.rm = TRUE))
 
   n_vars <- nrow(ref_meds)
 
   diff_data <- d %>%
     filter({{ group }}) %>%
     left_join(ref_meds, by = "name") %>%
-    mutate(diff = value - med)
+    mutate(diff = .data$value - .data$med)
 
   main_data <- d %>%
-    group_by({{ group }}, name) %>%
-    summarise(value = median(value, na.rm = TRUE), .groups = "keep") %>%
+    group_by({{ group }}, .data$name) %>%
+    summarise(value = median(.data$value, na.rm = TRUE), .groups = "keep") %>%
     pivot_wider(names_from = {{ group }}) %>%
     mutate(diff = `TRUE` - `FALSE`) # positive = larger foc. group value
 
@@ -59,7 +59,7 @@ plot_lollipop <- function(plot_data, direction = 1,
                           var_labels = waiver(),
                           negative_label = NULL, positive_label = NULL, ref_label = NULL) {
   plot_data$main_data %>%
-    ggplot(aes(diff, name, col = diff > 0)) +
+    ggplot(aes(.data$diff, .data$name, col = .data$diff > 0)) +
     # reference group line
     geom_vline(xintercept = 0, col = "grey", linetype = "dashed", size = .75) +
     # focal group datapoints
@@ -129,7 +129,7 @@ plot_lollipop <- function(plot_data, direction = 1,
       values = c(`TRUE` = "#2C7BB6FF", `FALSE` = "#D7191CFF")
     ) +
     guides(col = guide_none()) + # disable legend
-    xlab("rozdíl mezi Vaší školou a ostatními") +
+    xlab("rozd\\u00edl mezi Va\\u0161\\u00ed \\u0161kolou a ostatn\\u00edmi") +
     ylab(NULL) +
     theme_schola("x") +
     theme(

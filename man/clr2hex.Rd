@@ -18,7 +18,4 @@ i.e. full opacity}
 \description{
 Convert color to hexadecimal format
 }
-\examples{
-clr2hex("red")
-}
 \keyword{internal}

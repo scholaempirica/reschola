@@ -22,7 +22,7 @@
 #' @param escape_level *character*, level of item response considered as NA
 #' @param desc sor items in descending order?
 #' @param labels draw labels?
-#' @param max_label_width larger values gets labelled, others not
+#' @param min_label_width minimal label width that is displayed in the plot
 #' @param absolute_counts draw labels and absolute counts in parentheses?
 #' @inheritDotParams fct_nanify -f -level
 #'
@@ -51,12 +51,12 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
   # get counts for each response category, multiply by its .resp to get "weight" of some sort
   #  -- higher usage of higher categories results in higher weight
   item_order <- long_data %>%
-    mutate(.resp_num = fct_nanify(.resp, "nevím") %>% as.integer()) %>%
-    group_by({{ group }}, .item) %>%
-    summarise(ts = sum(.resp_num, na.rm = TRUE)) %>%
+    mutate(resp_num = fct_nanify(.data$.resp, escape_level, ...) %>% as.integer()) %>%
+    group_by({{ group }}, .data$.item) %>%
+    summarise(ts = sum(.data$resp_num, na.rm = TRUE)) %>%
     filter({{ group }}) %>%
-    arrange(desc(ts)) %>%
-    pull(.item)
+    arrange(desc(.data$ts)) %>%
+    pull(.data$.item)
 
 
   if (!desc) item_order <- rev(item_order)
@@ -64,22 +64,22 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
 
   plt_data <- long_data %>%
     mutate(
-      .item = fct_relevel(.item, item_order), # sort facets according order table
-      .resp = fct_rev(.resp)
+      .item = fct_relevel(.data$.item, item_order), # sort facets according order table
+      .resp = fct_rev(.data$.resp)
     ) %>%
-    group_by({{ group }}, .item, .resp) %>%
+    group_by({{ group }}, .data$.item, .data$.resp) %>%
     summarise(n = n(), .groups = "drop_last") %>%
     mutate(
-      prop = n / sum(n),
-      label = scales::percent(prop, 1, suffix = " %") # category size threshold for label to display
+      prop = .data$n / sum(.data$n),
+      label = percent(.data$prop, 1, suffix = " %") # category size threshold for label to display
     )
 
   if (absolute_counts) {
-    plt_data <- plt_data %>% mutate(label = paste0(label, " (", n, ")"), )
+    plt_data <- plt_data %>% mutate(label = paste0(.data$label, " (", n, ")"))
   }
 
   plt_data <- plt_data %>% mutate(
-    label = if_else(prop > min_label_width, label, NA_character_)
+    label = if_else(.data$prop > min_label_width, .data$label, NA_character_)
   )
 
   # helper values -----------------------------------------------------------
@@ -88,7 +88,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
   axis_x_hjust <- c(0, rep(.5, n_breaks - 2), 1)
 
   cats <- plt_data %>%
-    pull(.resp) %>%
+    pull(.data$.resp) %>%
     levels()
   legend_cols <- c("#dadada", rev(RColorBrewer::brewer.pal(length(cats) - 1, "RdYlBu")))
 
@@ -100,7 +100,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     geom_text(
       aes(
         label = label,
-        col = after_scale(if_else(get_lightness(fill) > .5, "grey30", "white"))
+        col = after_scale(if_else(get_lightness(.data$fill) > .5, "grey30", "white"))
       ),
       position = position_fill(vjust = .5), size = 3, na.rm = TRUE
     )
@@ -108,13 +108,13 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
 
   plt_data %>%
     ggplot(aes(
-      y = {{ group }}, x = prop,
-      fill = .resp, alpha = {{ group }}
+      y = {{ group }}, x = .data$prop,
+      fill = .data$.resp, alpha = {{ group }}
     )) +
     geom_col(width = .75, position = "fill", col = "white", size = .4) +
     labels +
     facet_wrap(
-      ~.item,
+      ~.data$.item,
       ncol = 1, drop = FALSE, labeller = schola_labeller(dict)
     ) +
     scale_x_percent_cz(
