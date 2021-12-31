@@ -37,7 +37,7 @@ Imports:
     png,
     purrr,
     readr,
-    rlang,
+    rlang (>= 0.4.11),
     rmarkdown,
     rstudioapi,
     scales,
@@ -49,14 +49,12 @@ Imports:
     vctrs
 Suggests: 
     testthat (>= 3.0.0),
-    spelling
+    spelling,
+    roxygen2
 VignetteBuilder: 
     knitr
-RdMacros: 
-    lifecycle
 Encoding: UTF-8
 Language: en-US
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Config/testthat/edition: 3

@@ -184,7 +184,7 @@ schola_word <- function(reference_docx = find_resource("schola_word", "template.
 #' Schola Empirica Word document with customisable template
 #'
 #' @description
-#' \lifecycle{deprecated}
+#' `r lifecycle::badge('deprecated')`
 #'
 #' This is a function called in the output part of the YAML section of the Rmd
 #' file while using the Word template provided at the same place (see example

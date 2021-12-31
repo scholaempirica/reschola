@@ -14,7 +14,7 @@ A modified \code{word_document2} with the standard Schola formatting, but
 without hard-coded and unchangeable template.
 }
 \description{
-\lifecycle{deprecated}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 This is a function called in the output part of the YAML section of the Rmd
 file while using the Word template provided at the same place (see example
