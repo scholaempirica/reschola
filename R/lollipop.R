@@ -32,7 +32,7 @@ prepare_lollipop_data <- function(.data, vars, group) {
     group_by({{ group }}, .data$name) %>%
     summarise(value = median(.data$value, na.rm = TRUE), .groups = "keep") %>%
     pivot_wider(names_from = {{ group }}) %>%
-    mutate(diff = `TRUE` - `FALSE`) # positive = larger foc. group value
+    mutate(diff = .data$`TRUE` - .data$`FALSE`) # positive = larger foc. group value
 
   list(
     d = d,

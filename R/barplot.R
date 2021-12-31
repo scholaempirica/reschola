@@ -37,6 +37,7 @@
 #' @importFrom stats median
 #' @importFrom tidyr pivot_longer
 #' @importFrom scales percent
+#' @importFrom RColorBrewer brewer.pal
 #'
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\\u00edm", n_breaks = 11, desc = TRUE,
@@ -90,7 +91,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
   cats <- plt_data %>%
     pull(.data$.resp) %>%
     levels()
-  legend_cols <- c("#dadada", rev(RColorBrewer::brewer.pal(length(cats) - 1, "RdYlBu")))
+  legend_cols <- c("#dadada", rev(brewer.pal(length(cats) - 1, "RdYlBu")))
 
 
   # plot --------------------------------------------------------------------
@@ -114,7 +115,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     geom_col(width = .75, position = "fill", col = "white", size = .4) +
     labels +
     facet_wrap(
-      ~.data$.item,
+      ~ .data$.item,
       ncol = 1, drop = FALSE, labeller = schola_labeller(dict)
     ) +
     scale_x_percent_cz(

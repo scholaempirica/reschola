@@ -13,7 +13,7 @@ sten(score, standardize = FALSE)
 transformation? Defaults to \code{FALSE}.}
 }
 \value{
-
+\emph{numeric} vector of transformed scores
 }
 \description{
 Get your raw total score transformed to stens, i.e., with the mean of 5.5 and

@@ -274,7 +274,7 @@ with_clr <- function(text, color = "black", alpha = 1, ...) {
 #' @param standardize *logical*, center and scale `score` vector before the
 #'   transformation? Defaults to `FALSE`.
 #'
-#' @return
+#' @return *numeric* vector of transformed scores
 #' @export
 #'
 #' @examples

@@ -50,7 +50,7 @@ gd_download_folder <- function(folder_url = gd_get_proj(), dest_dir = "data/inpu
 
   drv_files <- drv_items %>%
     mutate(mimetype = map_chr(.data$drive_resource, "mimeType")) %>%
-    filter(mimetype != "application/vnd.google-apps.folder")
+    filter(.data$mimetype != "application/vnd.google-apps.folder")
 
   # print(drv_files)
 

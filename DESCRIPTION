@@ -36,6 +36,7 @@ Imports:
     officer,
     png,
     purrr,
+    RColorBrewer,
     readr,
     rlang (>= 0.4.11),
     rmarkdown,
