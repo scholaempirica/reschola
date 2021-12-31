@@ -99,7 +99,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
   labels <- if (labels) {
     geom_text(
       aes(
-        label = label,
+        label = .data$label,
         col = after_scale(if_else(get_lightness(.data$fill) > .5, "grey30", "white"))
       ),
       position = position_fill(vjust = .5), size = 3, na.rm = TRUE
