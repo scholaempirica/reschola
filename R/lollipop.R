@@ -7,6 +7,7 @@
 #' @param group a
 #'
 #' @return
+#' @importFrom tidyr pivot_wider
 #' @export
 #'
 prepare_lollipop_data <- function(.data, vars, group) {
@@ -53,6 +54,7 @@ prepare_lollipop_data <- function(.data, vars, group) {
 #' @param ref_label a
 #'
 #' @return
+#' @importFrom ggtext geom_richtext
 #' @export
 #'
 plot_lollipop <- function(plot_data, direction = 1,

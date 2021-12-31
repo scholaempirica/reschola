@@ -302,6 +302,7 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 #' @importFrom utils read.csv2
 #' @importFrom tibble as_tibble
 #' @importFrom purrr modify2
+#' @importFrom stringr str_replace
 #' @family LimeSurvey functions
 #'
 #' @export
