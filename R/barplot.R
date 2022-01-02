@@ -40,7 +40,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #'
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
-                           escape_level = "nev\\u00edm", n_breaks = 11, desc = TRUE,
+                           escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
                            labels = TRUE, min_label_width = .08, absolute_counts = TRUE, ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
 

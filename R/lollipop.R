@@ -57,9 +57,17 @@ prepare_lollipop_data <- function(.data, vars, group) {
 #' @importFrom ggtext geom_richtext
 #' @export
 #'
-plot_lollipop <- function(plot_data, direction = 1,
+plot_lollipop <- function(plot_data, direction = "blue_larger",
                           var_labels = waiver(),
                           negative_label = NULL, positive_label = NULL, ref_label = NULL) {
+  direction <- match.arg(direction, c("blue_larger", "red_larger"))
+
+  diff_scale <- if (direction == "blue_larger") {
+    c(`TRUE` = "#2C7BB6FF", `FALSE` = "#D7191CFF")
+  } else {
+    c(`FALSE` = "#2C7BB6FF", `TRUE` = "#D7191CFF")
+  }
+
   plot_data$main_data %>%
     ggplot(aes(.data$diff, .data$name, col = .data$diff > 0)) +
     # reference group line
@@ -128,10 +136,10 @@ plot_lollipop <- function(plot_data, direction = 1,
     ) +
     # master color depending on diff sign
     scale_color_manual(
-      values = c(`TRUE` = "#2C7BB6FF", `FALSE` = "#D7191CFF")
+      values = diff_scale
     ) +
     guides(col = guide_none()) + # disable legend
-    xlab("rozd\\u00edl mezi Va\\u0161\\u00ed \\u0161kolou a ostatn\\u00edmi") +
+    xlab("rozd\u00edl mezi Va\u0161\u00ed \u0161kolou a ostatn\u00edmi") +
     ylab(NULL) +
     theme_schola("x") +
     theme(
@@ -140,6 +148,3 @@ plot_lollipop <- function(plot_data, direction = 1,
       panel.grid.minor.x = element_line(colour = "grey92", size = .15)
     )
 }
-
-
-

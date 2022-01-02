@@ -6,7 +6,7 @@
 \usage{
 plot_lollipop(
   plot_data,
-  direction = 1,
+  direction = "blue_larger",
   var_labels = waiver(),
   negative_label = NULL,
   positive_label = NULL,
