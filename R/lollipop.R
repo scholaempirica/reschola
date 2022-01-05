@@ -8,6 +8,7 @@
 #'
 #' @return
 #' @importFrom tidyr pivot_wider
+#' @importFrom forcats fct_reorder
 #' @export
 #'
 prepare_lollipop_data <- function(.data, vars, group) {
@@ -32,7 +33,11 @@ prepare_lollipop_data <- function(.data, vars, group) {
     group_by({{ group }}, .data$name) %>%
     summarise(value = median(.data$value, na.rm = TRUE), .groups = "keep") %>%
     pivot_wider(names_from = {{ group }}) %>%
-    mutate(diff = .data$`TRUE` - .data$`FALSE`) # positive = larger foc. group value
+    ungroup() %>%
+    mutate(
+      diff = .data$`TRUE` - .data$`FALSE`, # positive = larger foc. group value
+      name = fct_reorder(.data$name, .data$diff, abs, .desc = FALSE)
+    )
 
   list(
     d = d,
@@ -55,6 +60,7 @@ prepare_lollipop_data <- function(.data, vars, group) {
 #'
 #' @return
 #' @importFrom ggtext geom_richtext
+#' @importFrom forcats fct_relevel
 #' @export
 #'
 plot_lollipop <- function(plot_data, direction = "blue_larger",
@@ -68,8 +74,12 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
     c(`FALSE` = "#2C7BB6FF", `TRUE` = "#D7191CFF")
   }
 
+  names_order <- levels(plot_data$main_data$name)
+
   plot_data$main_data %>%
-    ggplot(aes(.data$diff, .data$name, col = .data$diff > 0)) +
+    ggplot(aes(.data$diff, fct_relevel(.data$name, names_order),
+      col = .data$diff > 0
+    )) +
     # reference group line
     geom_vline(xintercept = 0, col = "grey", linetype = "dashed", size = .75) +
     # focal group datapoints
