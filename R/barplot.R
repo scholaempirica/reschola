@@ -1,5 +1,4 @@
 
-
 #' Plot standard Schola likert-like barplot with groupwise comparison per items
 #'
 #' @description `r lifecycle::badge("maturing")`

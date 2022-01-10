@@ -20,8 +20,11 @@
 #' @rdname draft
 #' @export
 draft_pdf <- function(name = "pdf_draft", open = TRUE) {
+  # note that occasionally, rmarkdown::draft is unable to locate templates
+  # inside package - it happened to me once, but don't know why, should not
+  # affect end users not playing with the package
   file <- suppressMessages(
-    draft(name, template = "schola_pdf", package ="reschola", edit = FALSE)
+    draft(name, template = "schola_pdf", package = "reschola", edit = FALSE)
   )
   if (open) edit_file(file)
   invisible(name)
@@ -36,3 +39,9 @@ draft_word <- function(name = "word_draft", open = TRUE) {
   if (open) edit_file(file)
   invisible(name)
 }
+
+
+# is_installed <- function() {
+#   reschola_namespace <- .getNamespace("reschola")
+#   if (is.null(reschola_namespace$.__DEVTOOLS__)) TRUE else FALSE
+# }
