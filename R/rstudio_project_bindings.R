@@ -102,23 +102,20 @@ schola_project <- function(path, ...) {
   draft_pdf(name = "01_schola-report.Rmd", open = FALSE)
 
 
-  # add data dir
+  # add data dir - note that empty subdirs are ignored, so we have to create them here (.gitkeep is not official)
   data <- reschola_file(
     "rstudio", "templates", "project", "proj_fls", "data"
   )
   dir_copy(data, new_path = "data")
 
-  # gitignores for data
+  # create empty dirs for reports and data and add gitignore to them
   lapply(
-    paste("data", c("input", "intermediate", "processed"), sep = "/"),
+    c("reports", paste("data", c("input", "intermediate", "processed"), sep = "/")),
     function(dir) {
-      use_git_ignore("*", dir) # have git ignore everything in that dir
-      use_git_ignore("!.gitignore", dir) # except the .gitignore, so the dir will be committed
+      dir_create(dir)
+      use_git_ignore(c("*", "!.gitignore"), dir) # have git ignore everything in that dir, except gitignore itself
     }
   )
-
-  # add reports dir
-  dir_create("reports")
 
   # delete R directory which was created automatically
   dir_delete("R")
