@@ -29,14 +29,17 @@
 #' @param latex_engine *Character*, engine used for `.md` to `.pdf` conversion.
 #'   Only `xelatex` (the default) and `lualatex` are supported because of custom
 #'   fonts. **Changes discouraged.**
+#' @param  fig_crop *logical*, whether to crop PDF figures. Defaults to `FALSE`.
+#'   Requires the tools `pdfcrop` and `ghostscript` to be installed, if `TRUE`.
 #' @param document_class *Character*, one of standard LaTeX document class.
 #'   Defaults to `report`. **Changes discouraged.**
 #' @param number_sections *Logical*, `TRUE` to number headings. Defaults to
 #'   `FALSE`.
 #' @inheritDotParams rmarkdown::pdf_document -toc -latex_engine -template
-#'   -fig_width -fig_height -dev -number_sections
+#'   -fig_width -fig_height -dev -number_sections -fig_crop
 #'
-#' @return A modified `pdf_document2` with the standard Schola formatting.
+#' @return A modified `bookdown::pdf_document2` with the standard Schola
+#'   formatting.
 #'
 #' @author Jan Netik
 #'
@@ -52,15 +55,15 @@
 #'
 #' @importFrom bookdown pdf_document2
 #' @importFrom usethis ui_stop ui_code
-#' @importFrom tools find_gs_cmd
 #' @export
 #'
 schola_pdf <- function(num_format = NULL, number_sections = FALSE, toc = TRUE,
                        template = find_resource("schola_pdf", "schola_template.tex"),
-                       latex_engine = "xelatex", document_class = "report", ...) {
+                       latex_engine = "xelatex", fig_crop = FALSE,
+                       document_class = "report", ...) {
   base <- pdf_document2(
     toc = toc, template = template, number_sections = number_sections,
-    latex_engine = latex_engine, ...
+    latex_engine = latex_engine, fig_crop = fig_crop, ...
   )
 
   base$pandoc$args <- c(

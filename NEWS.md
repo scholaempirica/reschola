@@ -20,7 +20,8 @@
 
 ## Bugfixes
 
-- Google Drive URL provided at project creation is now stripped from any non-essential parts of the URL that perplexes {googledrive} package and possibly results into errors  
+- Google Drive URL provided at project creation is now stripped from any non-essential parts of the URL that perplexes {googledrive} package and possibly results into errors
+- cropping of PDF figures was silently in charge for users with working `pdfcrop` and `ghostscript`. It is now off by default.
 
 ## Documentation
 

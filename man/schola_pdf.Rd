@@ -10,6 +10,7 @@ schola_pdf(
   toc = TRUE,
   template = find_resource("schola_pdf", "schola_template.tex"),
   latex_engine = "xelatex",
+  fig_crop = FALSE,
   document_class = "report",
   ...
 )
@@ -32,6 +33,9 @@ discouraged.}}
 Only \code{xelatex} (the default) and \code{lualatex} are supported because of custom
 fonts. \strong{Changes discouraged.}}
 
+\item{fig_crop}{\emph{logical}, whether to crop PDF figures. Defaults to \code{FALSE}.
+Requires the tools \code{pdfcrop} and \code{ghostscript} to be installed, if \code{TRUE}.}
+
 \item{document_class}{\emph{Character}, one of standard LaTeX document class.
 Defaults to \code{report}. \strong{Changes discouraged.}}
 
@@ -40,10 +44,6 @@ Defaults to \code{report}. \strong{Changes discouraged.}}
   \describe{
     \item{\code{toc_depth}}{Depth of headers to include in table of contents}
     \item{\code{fig_width}}{Default width (in inches) for figures}
-    \item{\code{fig_crop}}{Whether to crop PDF figures with the command
-\command{pdfcrop}. This requires the tools \command{pdfcrop} and
-\command{ghostscript} to be installed. By default, \code{fig_crop = TRUE}
-if these two tools are available.}
     \item{\code{fig_caption}}{\code{TRUE} to render figures with captions}
     \item{\code{df_print}}{Method to be used for printing data frames. Valid values
 include "default", "kable", "tibble", and "paged". The "default" method
@@ -85,7 +85,8 @@ add custom LaTeX packages to the .tex header.}
   }}
 }
 \value{
-A modified \code{pdf_document2} with the standard Schola formatting.
+A modified \code{bookdown::pdf_document2} with the standard Schola
+formatting.
 }
 \description{
 Function called in the output section of the YAML header (see examples
