@@ -85,6 +85,7 @@ details first.</p>
   toc <span class="op">=</span> <span class="cn">TRUE</span>,
   template <span class="op">=</span> <span class="fu">find_resource</span><span class="op">(</span><span class="st">"schola_pdf"</span>, <span class="st">"schola_template.tex"</span><span class="op">)</span>,
   latex_engine <span class="op">=</span> <span class="st">"xelatex"</span>,
+  fig_crop <span class="op">=</span> <span class="cn">FALSE</span>,
   document_class <span class="op">=</span> <span class="st">"report"</span>,
   <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
@@ -109,6 +110,9 @@ discouraged.</strong></p></dd>
 <dd><p><em>Character</em>, engine used for <code>.md</code> to <code>.pdf</code> conversion.
 Only <code>xelatex</code> (the default) and <code>lualatex</code> are supported because of custom
 fonts. <strong>Changes discouraged.</strong></p></dd>
+<dt>fig_crop</dt>
+<dd><p><em>logical</em>, whether to crop PDF figures. Defaults to <code>FALSE</code>.
+Requires the tools <code>pdfcrop</code> and <code>ghostscript</code> to be installed, if <code>TRUE</code>.</p></dd>
 <dt>document_class</dt>
 <dd><p><em>Character</em>, one of standard LaTeX document class.
 Defaults to <code>report</code>. <strong>Changes discouraged.</strong></p></dd>
@@ -118,12 +122,6 @@ Defaults to <code>report</code>. <strong>Changes discouraged.</strong></p></dd>
 
     <dt><code>fig_width</code></dt>
 <dd><p>Default width (in inches) for figures</p></dd>
-
-    <dt><code>fig_crop</code></dt>
-<dd><p>Whether to crop PDF figures with the command
-<code class="command">pdfcrop</code>. This requires the tools <code class="command">pdfcrop</code> and
-<code class="command">ghostscript</code> to be installed. By default, <code>fig_crop = TRUE</code>
-if these two tools are available.</p></dd>
 
     <dt><code>fig_caption</code></dt>
 <dd><p><code>TRUE</code> to render figures with captions</p></dd>
@@ -190,7 +188,8 @@ add custom LaTeX packages to the .tex header.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A modified <code>pdf_document2</code> with the standard Schola formatting.</p>
+    <p>A modified <code><a href="https://pkgs.rstudio.com/bookdown/reference/html_document2.html" class="external-link">bookdown::pdf_document2</a></code> with the standard Schola
+formatting.</p>
     </div>
     <div class="section level2">
     <h2 id="package-babel-hyphenation-warning">Package <code>babel</code> hyphenation warning<a class="anchor" aria-label="anchor" href="#package-babel-hyphenation-warning"></a></h2>
