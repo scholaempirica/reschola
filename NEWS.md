@@ -10,6 +10,7 @@
 - all files created at project start-up are now commited in the initial "Repo set-up" commit
 - Google Drive URL saved in `.Rprofile` at project set-up is now automatically trimmed and all queries that might boggle {googledrive} are removed
 - `fct_nanify()` now matches using regular expression, friendly warning displaying only once per session
+- Google Drive URL inside `share.R` is removed for future projects, as it is now govern by feature introduced in `{reschola}` 0.4.0
 
 ## New features
 
@@ -17,6 +18,7 @@
 - `dict_from_data()` extracts named character vector of item code-label pairs
 - `schola_labeller()` is a labeller for `{ggplot2}` facets that utilizes item labels, with wrapping
 - `with_clr()` creates text with color as a span HTML tag, especially useful shortcut when you use `ggtext::geom_richtext()` or `ggtext::element_markdown()` richtext
+- `build_all.R` script now comes with a few lines that'll process all scripts inside `data` directory
 
 ## Bugfixes
 
