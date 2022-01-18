@@ -109,7 +109,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
   plt_data %>%
     ggplot(aes(
       y = {{ group }}, x = .data$prop,
-      fill = .data$.resp, alpha = {{ group }}
+      fill = .data$.resp#, alpha = {{ group }}
     )) +
     geom_col(width = .75, position = "fill", col = "white", size = .4) +
     labels +
@@ -120,10 +120,11 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     scale_x_percent_cz(
       limits = c(0, 1), breaks = axis_x_breaks, expand = expansion()
     ) +
+    scale_y_discrete(limits = c(FALSE, TRUE), labels = c("", "*")) +
     scale_fill_manual(values = legend_cols) +
-    scale_alpha_manual(
-      values = c(`TRUE` = 1, `FALSE` = .7), drop = FALSE, guide = "none"
-    ) +
+    # scale_alpha_manual(
+    #   values = c(`TRUE` = 1, `FALSE` = .7), drop = FALSE, guide = "none"
+    # ) +
     guides(fill = guide_legend(
       title = NULL, nrow = 1, reverse = TRUE,
       override.aes = list(size = .75, col = NULL)
@@ -131,7 +132,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     theme_schola("x") +
     theme(
       axis.text.x = element_markdown(hjust = axis_x_hjust, colour = "grey30"), # element_text does not support vectorised input, see https://github.com/tidyverse/ggplot2/issues/3492
-      axis.text.y = element_blank(), # disruptive and uninformative
+      axis.text.y = element_text(size = 18, face = "bold", vjust =.7), # not much appealing, but asterisk suites the plot best according to our focus group
       axis.title = element_blank(),
       panel.spacing = unit(11, "pt"),
       strip.text = element_text(
@@ -141,6 +142,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
       panel.grid.major.x = element_line(colour = "grey88"),
       legend.position = "top"
     )
+  # FIXME - set xlim to accommodate strlen of labels
 }
 
 
