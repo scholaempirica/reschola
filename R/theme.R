@@ -126,7 +126,7 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     panel.background = element_rect(fill = bg_col, colour = NA),
     axis.title = if (axis_titles) element_text() else element_blank(),
     strip.text.x = element_text(hjust = 0),
-    plot.margin = if (margins) margin() else base_theme$plot.margin,
+    plot.margin = if (margins) margin(t = 1.5) else base_theme$plot.margin, # FIXME generalize to variable base_size
     strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA) else element_blank(),
     ...
   )
