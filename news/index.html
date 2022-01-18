@@ -17,7 +17,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../articles/reschola.html">Get started</a>
 </li>
@@ -75,6 +75,7 @@
 <li>Google Drive URL saved in <code>.Rprofile</code> at project set-up is now automatically trimmed and all queries that might boggle {googledrive} are removed</li>
 <li>
 <code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using regular expression, friendly warning displaying only once per session</li>
+<li>Google Drive URL inside <code>share.R</code> is removed for future projects, as it is now govern by feature introduced in <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> 0.4.0</li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-0-4-0-9000">New features<a class="anchor" aria-label="anchor" href="#new-features-0-4-0-9000"></a></h3>
@@ -86,12 +87,16 @@
 <code><a href="../reference/schola_labeller.html">schola_labeller()</a></code> is a labeller for <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> facets that utilizes item labels, with wrapping</li>
 <li>
 <code><a href="../reference/with_clr.html">with_clr()</a></code> creates text with color as a span HTML tag, especially useful shortcut when you use <code><a href="https://wilkelab.org/ggtext/reference/geom_richtext.html" class="external-link">ggtext::geom_richtext()</a></code> or <code><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">ggtext::element_markdown()</a></code> richtext</li>
+<li>
+<code>build_all.R</code> script now comes with a few lines that’ll process all scripts inside <code>data</code> directory</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bugfixes-0-4-0-9000">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-0-4-0-9000"></a></h3>
 <ul><li>Google Drive URL provided at project creation is now stripped from any non-essential parts of the URL that perplexes {googledrive} package and possibly results into errors</li>
 <li>cropping of PDF figures was silently in charge for users with working <code>pdfcrop</code> and <code>ghostscript</code>. It is now off by default.</li>
 <li>project set-up error claiming directories does not exist fixed</li>
+<li>
+<code><a href="../reference/theme_schola.html">theme_schola()</a></code> now uses 1.5pt top margin, so diacritics of certain letters doesn’t get cut.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-0-4-0-9000">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-4-0-9000"></a></h3>
@@ -507,7 +512,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer></div>
