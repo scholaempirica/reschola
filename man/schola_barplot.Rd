@@ -15,6 +15,7 @@ schola_barplot(
   labels = TRUE,
   min_label_width = 0.08,
   absolute_counts = TRUE,
+  fill_labels = waiver(),
   ...
 )
 }
@@ -44,6 +45,8 @@ wide breaks.}
 \item{min_label_width}{minimal label width that is displayed in the plot}
 
 \item{absolute_counts}{draw labels and absolute counts in parentheses?}
+
+\item{fill_labels}{character vector or function taking breaks and returning labels for fill aesthetic}
 
 \item{...}{
   Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}

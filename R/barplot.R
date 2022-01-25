@@ -23,6 +23,7 @@
 #' @param labels draw labels?
 #' @param min_label_width minimal label width that is displayed in the plot
 #' @param absolute_counts draw labels and absolute counts in parentheses?
+#' @param fill_labels character vector or function taking breaks and returning labels for fill aesthetic
 #' @inheritDotParams fct_nanify -f -level
 #'
 #' @return object of class "gg", "ggplot"
@@ -34,13 +35,15 @@
 #' @importFrom dplyr pull group_by arrange if_else summarise n
 #' @importFrom stringr str_wrap
 #' @importFrom stats median
+#' @importFrom ggplot2 waiver
 #' @importFrom tidyr pivot_longer
 #' @importFrom scales percent
 #' @importFrom RColorBrewer brewer.pal
 #'
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
-                           labels = TRUE, min_label_width = .08, absolute_counts = TRUE, ...) {
+                           labels = TRUE, min_label_width = .08, absolute_counts = TRUE,
+                           fill_labels = waiver(), ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
 
   # data --------------------------------------------------------------------
@@ -109,7 +112,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
   plt_data %>%
     ggplot(aes(
       y = {{ group }}, x = .data$prop,
-      fill = .data$.resp#, alpha = {{ group }}
+      fill = .data$.resp
     )) +
     geom_col(width = .75, position = "fill", col = "white", size = .4) +
     labels +
@@ -121,10 +124,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
       limits = c(0, 1), breaks = axis_x_breaks, expand = expansion()
     ) +
     scale_y_discrete(limits = c(FALSE, TRUE), labels = c("", "*")) +
-    scale_fill_manual(values = legend_cols) +
-    # scale_alpha_manual(
-    #   values = c(`TRUE` = 1, `FALSE` = .7), drop = FALSE, guide = "none"
-    # ) +
+    scale_fill_manual(values = legend_cols, labels = fill_labels) +
     guides(fill = guide_legend(
       title = NULL, nrow = 1, reverse = TRUE,
       override.aes = list(size = .75, col = NULL)

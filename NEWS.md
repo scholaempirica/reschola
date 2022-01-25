@@ -2,7 +2,6 @@
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
-- amend R CMD warnings
 -->
 
 ## Changes
@@ -26,7 +25,7 @@
 - cropping of PDF figures was silently in charge for users with working `pdfcrop` and `ghostscript`. It is now off by default.
 - project set-up error claiming directories does not exist fixed
 - `theme_schola()` now uses 1.5pt top margin, so diacritics of certain letters doesn't get cut.
-- `clean_labels = FALSE` in `ls_responses()` and fellows does not fail anymore
+- `clean_labels = FALSE` in `ls_responses()` (and fellows) does not fail anymore
 
 ## Documentation
 
