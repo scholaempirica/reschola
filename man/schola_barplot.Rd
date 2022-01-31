@@ -16,6 +16,7 @@ schola_barplot(
   min_label_width = 0.08,
   absolute_counts = TRUE,
   fill_labels = waiver(),
+  reverse = FALSE,
   ...
 )
 }
@@ -47,6 +48,8 @@ wide breaks.}
 \item{absolute_counts}{draw labels and absolute counts in parentheses?}
 
 \item{fill_labels}{character vector or function taking breaks and returning labels for fill aesthetic}
+
+\item{reverse}{if TRUE, reverse colors}
 
 \item{...}{
   Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}

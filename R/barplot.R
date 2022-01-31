@@ -24,6 +24,7 @@
 #' @param min_label_width minimal label width that is displayed in the plot
 #' @param absolute_counts draw labels and absolute counts in parentheses?
 #' @param fill_labels character vector or function taking breaks and returning labels for fill aesthetic
+#' @param reverse if TRUE, reverse colors
 #' @inheritDotParams fct_nanify -f -level
 #'
 #' @return object of class "gg", "ggplot"
@@ -43,7 +44,7 @@
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
                            labels = TRUE, min_label_width = .08, absolute_counts = TRUE,
-                           fill_labels = waiver(), ...) {
+                           fill_labels = waiver(), reverse = FALSE, ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
 
   # data --------------------------------------------------------------------
@@ -93,7 +94,14 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
   cats <- plt_data %>%
     pull(.data$.resp) %>%
     levels()
-  legend_cols <- c("#dadada", rev(brewer.pal(length(cats) - 1, "RdYlBu")))
+  legend_cols <- c(
+    "#dadada",
+    if (reverse) {
+      brewer.pal(length(cats) - 1, "RdYlBu")
+    } else {
+      rev(brewer.pal(length(cats) - 1, "RdYlBu"))
+    }
+  )
 
 
   # plot --------------------------------------------------------------------
@@ -132,7 +140,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     theme_schola("x") +
     theme(
       axis.text.x = element_markdown(hjust = axis_x_hjust, colour = "grey30"), # element_text does not support vectorised input, see https://github.com/tidyverse/ggplot2/issues/3492
-      axis.text.y = element_text(size = 18, face = "bold", vjust =.7), # not much appealing, but asterisk suites the plot best according to our focus group
+      axis.text.y = element_text(size = 18, face = "bold", vjust = .7), # not much appealing, but asterisk suites the plot best according to our focus group
       axis.title = element_blank(),
       panel.spacing = unit(11, "pt"),
       strip.text = element_text(
