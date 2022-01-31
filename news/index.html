@@ -71,9 +71,9 @@
 <div class="section level3">
 <h3 id="changes-0-4-0-9000">Changes<a class="anchor" aria-label="anchor" href="#changes-0-4-0-9000"></a></h3>
 <ul><li>all files created at project start-up are now commited in the initial “Repo set-up” commit</li>
-<li>Google Drive URL saved in <code>.Rprofile</code> at project set-up is now automatically trimmed and all queries that might boggle {googledrive} are removed</li>
+<li>Google Drive URL saved in <code>.Rprofile</code> at project set-up is now automatically trimmed and all queries that might boggle <a href="https://googledrive.tidyverse.org" class="external-link">googledrive</a> are removed</li>
 <li>
-<code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using regular expression, friendly warning displaying only once per session</li>
+<code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using regular expression, friendly warning displaying once per session</li>
 <li>Google Drive URL inside <code>share.R</code> is removed for future projects, as it is now govern by feature introduced in <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> 0.4.0</li>
 </ul></div>
 <div class="section level3">
@@ -98,6 +98,8 @@
 <code><a href="../reference/theme_schola.html">theme_schola()</a></code> now uses 1.5pt top margin, so diacritics of certain letters doesn’t get cut.</li>
 <li>
 <code>clean_labels = FALSE</code> in <code><a href="../reference/ls_responses.html">ls_responses()</a></code> (and fellows) does not fail anymore</li>
+<li>
+<code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> now returns correct class (should have always been <code>czech_date_interval</code> not <code>character</code>; furthemore, if start and end dates were identical, it even returned <code>POSIXct</code>/<code>POSIXt</code>, which produced hard-to-debug issues when used inside <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a>’s <code>summarise</code>)</li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-0-4-0-9000">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-4-0-9000"></a></h3>
