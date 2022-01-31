@@ -153,22 +153,22 @@ czech_date_interval <- function(start, end) {
   res <- if (year[1] == year[2]) {
     if (month[1] == month[2]) {
       if (day[1] == day[2]) {
-        return(czech_date[1])
+        czech_date[1]
       }
-      return(paste0(
+      paste0(
         day[1],
         ".\u2013",
         day[2], ". ", czech_months[1], " ", year[1]
-      ))
+      )
     }
-    return(paste0(
+    paste0(
       day[1], ". ", czech_months[1],
       " \u2013\ ",
       day[2], ". ", czech_months[2], " ",
       year[1]
-    ))
+    )
   } else {
-    return(paste0(czech_date[1], " \u2013 ", czech_date[2]))
+    paste0(czech_date[1], " \u2013 ", czech_date[2])
   }
 
   class(res) <- "czech_date_interval"
