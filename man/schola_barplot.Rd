@@ -13,10 +13,11 @@ schola_barplot(
   n_breaks = 11,
   desc = TRUE,
   labels = TRUE,
-  min_label_width = 0.08,
+  min_label_width = 0.09,
   absolute_counts = TRUE,
   fill_labels = waiver(),
   reverse = FALSE,
+  order_by = "chi-square differences",
   ...
 )
 }
@@ -43,13 +44,19 @@ wide breaks.}
 
 \item{labels}{draw labels?}
 
-\item{min_label_width}{minimal label width that is displayed in the plot}
+\item{min_label_width}{smallest percentage (0-1) to display in the plot,
+proportions larger than this value are shown, smaller are not.}
 
 \item{absolute_counts}{draw labels and absolute counts in parentheses?}
 
-\item{fill_labels}{character vector or function taking breaks and returning labels for fill aesthetic}
+\item{fill_labels}{character vector or function taking breaks and returning
+labels for fill aesthetic}
 
 \item{reverse}{if TRUE, reverse colors}
+
+\item{order_by}{how to order the items. chi-square differences (default)
+computes chi-square test for every item and sort them by largest X2
+statistic to smallest (if desc = TRUE)}
 
 \item{...}{
   Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}

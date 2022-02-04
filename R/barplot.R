@@ -21,10 +21,16 @@
 #' @param escape_level *character*, level of item response considered as NA
 #' @param desc sor items in descending order?
 #' @param labels draw labels?
-#' @param min_label_width minimal label width that is displayed in the plot
+#' @param min_label_width smallest percentage (0-1) to display in the plot,
+#'   proportions larger than this value are shown, smaller are not.
 #' @param absolute_counts draw labels and absolute counts in parentheses?
-#' @param fill_labels character vector or function taking breaks and returning labels for fill aesthetic
+#' @param fill_labels character vector or function taking breaks and returning
+#'   labels for fill aesthetic
+#' @param order_by how to order the items. chi-square differences (default)
+#'   computes chi-square test for every item and sort them by largest X2
+#'   statistic to smallest (if desc = TRUE)
 #' @param reverse if TRUE, reverse colors
+#'
 #' @inheritDotParams fct_nanify -f -level
 #'
 #' @return object of class "gg", "ggplot"
@@ -36,50 +42,68 @@
 #' @importFrom dplyr pull group_by arrange if_else summarise n
 #' @importFrom stringr str_wrap
 #' @importFrom stats median
+#' @importFrom purrr pluck map_dbl
 #' @importFrom ggplot2 waiver
 #' @importFrom tidyr pivot_longer
-#' @importFrom scales percent
+#' @importFrom scales percent number
 #' @importFrom RColorBrewer brewer.pal
 #'
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
-                           labels = TRUE, min_label_width = .08, absolute_counts = TRUE,
-                           fill_labels = waiver(), reverse = FALSE, ...) {
+                           labels = TRUE, min_label_width = .09, absolute_counts = TRUE,
+                           fill_labels = waiver(), reverse = FALSE, order_by = "chi-square differences", ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
-
+  order_by <- match.arg(order_by, c("chi-square differences", "weighted total scores"))
   # data --------------------------------------------------------------------
 
   long_data <- .data %>%
     pivot_longer({{ vars }}, names_to = ".item", values_to = ".resp")
 
-  # get counts for each response category, multiply by its .resp to get "weight" of some sort
-  #  -- higher usage of higher categories results in higher weight
-  item_order <- long_data %>%
-    mutate(resp_num = fct_nanify(.data$.resp, escape_level, ...) %>% as.integer()) %>%
-    group_by({{ group }}, .data$.item) %>%
-    summarise(ts = sum(.data$resp_num, na.rm = TRUE)) %>%
-    filter({{ group }}) %>%
-    arrange(desc(.data$ts)) %>%
-    pull(.data$.item)
 
+  if (order_by == "weighted total scores") {
+
+    # get counts for each response category, multiply by its .resp to get "weight" of some sort
+    #  -- higher usage of higher categories results in higher weight
+    item_order <- long_data %>%
+      mutate(resp_num = fct_nanify(.data$.resp, escape_level, ...) %>% as.integer()) %>%
+      group_by({{ group }}, .data$.item) %>%
+      summarise(ts = sum(.data$resp_num, na.rm = TRUE)) %>%
+      filter({{ group }}) %>%
+      arrange(desc(.data$ts)) %>%
+      pull(.data$.item)
+  }
+
+
+  plt_data <- long_data %>%
+    mutate(.resp = fct_rev(.data$.resp)) %>%
+    group_by({{ group }}, .data$.item, .data$.resp) %>%
+    summarise(n = n(), .groups = "drop_last")
+
+  if (order_by == "chi-square differences") {
+    item_order <- plt_data %>%
+      pivot_wider(names_from = .data$.resp, values_from = .data$n, values_fill = 0) %>%
+      group_by(.data$.item) %>%
+      select(-.data$digest) %>%
+      nest() %>%
+      mutate(chsq = map_dbl(.data$data, ~ suppressWarnings(chisq.test(.x)) %>% pluck("statistic"))) %>%
+      arrange(desc(.data$chsq)) %>%
+      pull(.data$.item)
+  }
 
   if (!desc) item_order <- rev(item_order)
 
 
-  plt_data <- long_data %>%
-    mutate(
-      .item = fct_relevel(.data$.item, item_order), # sort facets according order table
-      .resp = fct_rev(.data$.resp)
-    ) %>%
-    group_by({{ group }}, .data$.item, .data$.resp) %>%
-    summarise(n = n(), .groups = "drop_last") %>%
+  plt_data <- plt_data %>%
     mutate(
       prop = .data$n / sum(.data$n),
       label = percent(.data$prop, 1, suffix = " %") # category size threshold for label to display
-    )
+    ) %>%
+    ungroup() %>%
+    mutate(.item = fct_relevel(as.factor(.data$.item), item_order)) # sort facets according order table
+
 
   if (absolute_counts) {
-    plt_data <- plt_data %>% mutate(label = paste0(.data$label, " (", n, ")"))
+    plt_data <- plt_data %>% mutate(label = paste0(.data$label, " (", number(.data$n, 1), ")"))
   }
 
   plt_data <- plt_data %>% mutate(
