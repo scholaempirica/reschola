@@ -30,6 +30,7 @@
 #'   computes chi-square test for every item and sort them by largest X2
 #'   statistic to smallest (if desc = TRUE)
 #' @param reverse if TRUE, reverse colors
+#' @param facet_label_wrap width of facet label to wrap
 #'
 #' @inheritDotParams fct_nanify -f -level
 #'
@@ -51,7 +52,8 @@
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
                            labels = TRUE, min_label_width = .09, absolute_counts = TRUE,
-                           fill_labels = waiver(), reverse = FALSE, order_by = "chi-square differences", ...) {
+                           fill_labels = waiver(), facet_label_wrap = 100,
+                           reverse = FALSE, order_by = "chi-square differences", ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
   order_by <- match.arg(order_by, c("chi-square differences", "weighted total scores"))
   # data --------------------------------------------------------------------
@@ -150,7 +152,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     labels +
     facet_wrap(
       ~ .data$.item,
-      ncol = 1, drop = FALSE, labeller = schola_labeller(dict)
+      ncol = 1, drop = FALSE, labeller = schola_labeller(dict, width = facet_label_wrap)
     ) +
     scale_x_percent_cz(
       limits = c(0, 1), breaks = axis_x_breaks, expand = expansion()

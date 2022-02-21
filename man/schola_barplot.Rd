@@ -16,6 +16,7 @@ schola_barplot(
   min_label_width = 0.09,
   absolute_counts = TRUE,
   fill_labels = waiver(),
+  facet_label_wrap = 100,
   reverse = FALSE,
   order_by = "chi-square differences",
   ...
@@ -51,6 +52,8 @@ proportions larger than this value are shown, smaller are not.}
 
 \item{fill_labels}{character vector or function taking breaks and returning
 labels for fill aesthetic}
+
+\item{facet_label_wrap}{width of facet label to wrap}
 
 \item{reverse}{if TRUE, reverse colors}
 
