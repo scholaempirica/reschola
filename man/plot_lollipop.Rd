@@ -10,7 +10,8 @@ plot_lollipop(
   var_labels = waiver(),
   negative_label = NULL,
   positive_label = NULL,
-  ref_label = NULL
+  ref_label = NULL,
+  observations_alpha = 0.2
 )
 }
 \arguments{

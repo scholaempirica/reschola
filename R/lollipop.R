@@ -65,7 +65,8 @@ prepare_lollipop_data <- function(.data, vars, group) {
 #'
 plot_lollipop <- function(plot_data, direction = "blue_larger",
                           var_labels = waiver(),
-                          negative_label = NULL, positive_label = NULL, ref_label = NULL) {
+                          negative_label = NULL, positive_label = NULL, ref_label = NULL,
+                          observations_alpha = .2) {
   direction <- match.arg(direction, c("blue_larger", "red_larger"))
 
   diff_scale <- if (direction == "blue_larger") {
@@ -84,7 +85,7 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
     geom_vline(xintercept = 0, col = "grey", linetype = "dashed", size = .75) +
     # focal group datapoints
     geom_jitter(
-      height = .25, width = 0, alpha = .2, shape = 16, size = 2,
+      height = .25, width = 0, alpha = observations_alpha, shape = 16, size = 2,
       data = plot_data$diff_data
     ) +
 
