@@ -76,7 +76,7 @@ details.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">sten</span><span class="op">(</span><span class="va">score</span>, standardize <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">sten</span><span class="op">(</span><span class="va">score</span>, standardize <span class="op">=</span> <span class="cn">FALSE</span>, bounds <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -86,6 +86,8 @@ details.</p>
 <dt>standardize</dt>
 <dd><p><em>logical</em>, center and scale <code>score</code> vector before the
 transformation? Defaults to <code>FALSE</code>.</p></dd>
+<dt>bounds</dt>
+<dd><p>limit result to 1-10 scale, TRUE by default</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -95,8 +97,8 @@ transformation? Defaults to <code>FALSE</code>.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">sten</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  7.299484  4.591515  8.095132  8.029474 11.332613  5.928429  7.445735</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8]  5.114577  5.617698  2.495461</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 6.187817 7.917757 2.082585 6.160722 5.482143 5.906835 3.704798 6.608132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 3.276040 5.705087</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
