@@ -4,13 +4,15 @@
 \alias{sten}
 \title{Transform to STEN score (Standard Ten)}
 \usage{
-sten(score, standardize = FALSE)
+sten(score, standardize = FALSE, bounds = TRUE)
 }
 \arguments{
 \item{score}{\emph{numeric} vector of scores to transform}
 
 \item{standardize}{\emph{logical}, center and scale \code{score} vector before the
 transformation? Defaults to \code{FALSE}.}
+
+\item{bounds}{limit result to 1-10 scale, TRUE by default}
 }
 \value{
 \emph{numeric} vector of transformed scores

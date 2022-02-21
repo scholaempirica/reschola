@@ -273,13 +273,20 @@ with_clr <- function(text, color = "black", alpha = 1, ...) {
 #' @param score *numeric* vector of scores to transform
 #' @param standardize *logical*, center and scale `score` vector before the
 #'   transformation? Defaults to `FALSE`.
+#' @param bounds limit result to 1-10 scale, TRUE by default
 #'
 #' @return *numeric* vector of transformed scores
 #' @export
 #'
 #' @examples
 #' rnorm(10) %>% sten()
-sten <- function(score, standardize = FALSE) {
+sten <- function(score, standardize = FALSE, bounds = TRUE) {
   if (standardize) score <- as.numeric(scale(score))
-  (score * 2) + 5.5
+  sten <- (score * 2) + 5.5
+
+  if (bounds) {
+    sten[sten < 1] <- 1
+    sten[sten > 10] <- 10
+  }
+  sten
 }
