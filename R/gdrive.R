@@ -37,7 +37,7 @@
 #'
 gd_download_folder <- function(folder_url = gd_get_proj(), dest_dir = "data/input",
                                files_from_subfolders = F,
-                               overwrite = F) {
+                               overwrite = TRUE) {
   url_id <- as_id(folder_url)
   url_dribble <- as_dribble(url_id)
 
@@ -80,21 +80,3 @@ gd_download_folder <- function(folder_url = gd_get_proj(), dest_dir = "data/inpu
 gd_upload_file <- function(file, dir = gd_get_proj()) {
   drive_put(here(file), as_dribble(dir))
 }
-
-
-
-
-#' Upload a file to a Google Drive folder
-#'
-#' FUNCTION_DESCRIPTION
-#'
-#' @param file path to file
-#' @param target_folder Google Drive Folder URL, defaults to gd_url
-#'
-#' @return RETURN_DESCRIPTION
-#' @examples
-#' # ADD_EXAMPLES_HERE
-# gd_upload_file <- function(file, target_folder = gd_url) {
-#   folder_dribble <- googledrive::as_dribble(target_folder)
-#   googledrive::drive_upload(file, folder_dribble)
-# }
