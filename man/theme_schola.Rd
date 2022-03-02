@@ -7,8 +7,8 @@
 theme_schola(
   gridlines = c("y", "x", "both", "scatter"),
   base_size = 11,
-  family = "Roboto Condensed",
-  title_family = "Roboto",
+  family = "Ubuntu Condensed",
+  title_family = "Ubuntu",
   margins = TRUE,
   plot.title.position = "plot",
   axis_titles = TRUE,
@@ -25,7 +25,7 @@ and inverted colours.}
 to 11.}
 
 \item{family, title_family}{font family to use for the (title of the) plot.
-Defaults to \code{"Roboto"} for title and \code{"Roboto Condensed"} for plot.}
+Defaults to \code{"Ubuntu"} for title and \code{"Ubuntu Condensed"} for plot.}
 
 \item{margins}{\emph{logical}, whether to draw margins around the plot or not (the
 default).}
@@ -385,19 +385,18 @@ All the changed defaults can be overriden by another call to \code{theme()}.
 See "Making charts" vignette for more complex examples: \code{vignette('charts', package = 'reschola')}.
 }
 \note{
-The default fonts - Roboto and Roboto Condensed - are contained in this
-package and can be registered with the system using \code{import_fonts()}. You
-should then install them onto your system like any font, using files in the
-directories described in the \code{import_fonts()} messsage. You can also set
-the  \code{reschola.loadfonts} option to TRUE for the fonts to be registered at
-package load.
+The default fonts - Ubuntu and Ubuntu Condensed - are contained in this
+package and can be registered with the system using
+\code{register_reschola_fonts()}. You should then install them onto your system
+like any font, using files in the directories described in the
+\code{register_reschola_fonts()} messsage.
 }
 \examples{
 library(ggplot2)
 
 # NB when `theme_schola()` is used in these examples, fonts
 # are set to 'sans' to pass checks on computers without the
-# Roboto included. If you have these fonts (see Note) you can
+# Ubuntu included. If you have these fonts (see Note) you can
 # leave these parameters at their default values.
 
 # the basic plot for illustration, theme not used

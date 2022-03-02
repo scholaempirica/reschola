@@ -6,14 +6,14 @@
 \title{Make ggplot2 use font(s) in text-based geoms}
 \usage{
 use_reschola_fonts(
-  family = "Roboto Condensed",
+  family = "Ubuntu Condensed",
   face = "plain",
   size = 3.5,
   color = "#2b2b2b"
 )
 
 set_reschola_ggplot_fonts(
-  family = "Roboto Condensed",
+  family = "Ubuntu Condensed",
   face = "plain",
   size = 3.5,
   color = "#2b2b2b"
@@ -38,7 +38,6 @@ Geoms covered: "text", "label", "richtext", "text_box", "text_repel", and
 }
 \seealso{
 Other Font helpers and shortcuts: 
-\code{\link{font_rc}},
 \code{\link{import_fonts}()},
 \code{\link{install_reschola_fonts}()},
 \code{\link{register_reschola_fonts}()}

@@ -265,10 +265,4 @@ On Windows, TextMate is supposed to be fine, as is SublimeText. For writing a lo
 ## Fonts for reschola charts
 
 To be able to produce charts in the default reschola font - Roboto and Roboto Condensed - you need to have these fonts on your machine and registered with R.
-The easiest way to do is to run `reschola::import_fonts()` and then install the fonts onto your system from the paths in the messages printed by these functions. 
-You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load.
-
-
-
-
-
+The easiest way to do is to run `reschola::install_reschola_fonts()` and then `reschola::register_reschola_fonts()` to install and register the fonts with your system.

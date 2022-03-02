@@ -2,12 +2,15 @@
 % Please edit documentation in R/fonts.R
 \name{import_fonts}
 \alias{import_fonts}
-\title{Import Roboto fonts for use in charts and in the PDF reports}
+\title{Import Ubuntu fonts for use in charts and in the PDF reports}
+\source{
+Fonts are licensed under the \href{https://ubuntu.com/legal/font-licence}{Ubuntu Font License}.
+}
 \usage{
 import_fonts()
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#questioning}{\figure{lifecycle-questioning.svg}{options: alt='[Questioning]'}}}{\strong{[Questioning]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 The function relies on \code{{extrafont}}
 package that comes with briken dependencies at the moment. An experimental
@@ -26,13 +29,8 @@ If you install the fonts just for the current user (via right-click and
 Install), they will probably \strong{not be discoverable} by the \code{fontspec}
 LaTeX package that is used for PDF report typesetting!
 }
-\section{Credits}{
- Roboto is a trademark of Google.
-}
-
 \seealso{
 Other Font helpers and shortcuts: 
-\code{\link{font_rc}},
 \code{\link{install_reschola_fonts}()},
 \code{\link{register_reschola_fonts}()},
 \code{\link{use_reschola_fonts}()}

@@ -273,9 +273,9 @@ For that reason it is probably the one thing that will look odd or break if you 
 
 ## Making fonts work
 
-The `schola_theme()` is set to use the Roboto and Roboto Condensed font families by default.
+The `schola_theme()` is set to use the Ubuntu and Ubuntu Condensed font families by default.
 These may not be present on your system.
-You can install them by running `reschola::import_fonts()`. (once per machine, and do follow the instructions in the message output when you call this function.)
+You can install them with `reschola::install_reschola_fonts()` and by running `reschola::register_reschola_fonts()` (only needed on Windows if you use Windows bitmap devices -- which are default).
 On package load, these will be registered with R.
 If the fonts do not show up in your charts, run `extrafont::loadfonts()` (once per session).
 You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system -- if not, first try using the `cairo_pdf` device and/or running `extrafont::embed_fonts()` on the whole resulting PDF document.)

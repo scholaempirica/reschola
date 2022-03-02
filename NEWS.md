@@ -6,6 +6,8 @@
 
 ## Changes
 
+- `{reschola}` now adheres to SCHOLA EMPIRICA visual style by adopting Ubuntu and Ubuntu Condensed fonts
+- `gd_download_folder()` now overwrites existing content by default
 - all files created at project start-up are now commited in the initial "Repo set-up" commit
 - Google Drive URL saved in `.Rprofile` at project set-up is now automatically trimmed and all queries that might boggle `{googledrive}` are removed
 - `fct_nanify()` now matches using regular expression, friendly warning displaying once per session

@@ -17,12 +17,11 @@
 #' See "Making charts" vignette for more complex examples: `vignette('charts',
 #' package = 'reschola')`.
 #'
-#' @note The default fonts - Roboto and Roboto Condensed - are contained in this
-#'   package and can be registered with the system using `import_fonts()`. You
-#'   should then install them onto your system like any font, using files in the
-#'   directories described in the `import_fonts()` messsage. You can also set
-#'   the  `reschola.loadfonts` option to TRUE for the fonts to be registered at
-#'   package load.
+#' @note The default fonts - Ubuntu and Ubuntu Condensed - are contained in this
+#'   package and can be registered with the system using
+#'   `register_reschola_fonts()`. You should then install them onto your system
+#'   like any font, using files in the directories described in the
+#'   `register_reschola_fonts()` messsage.
 #'
 #' @param base_size Numeric text size in pts, affects all text in plot. Defaults
 #'   to 11.
@@ -30,7 +29,7 @@
 #'   default), `"x"`, `"both"` or draw a `"scatter"`, which has both gridlines
 #'   and inverted colours.
 #' @param family,title_family font family to use for the (title of the) plot.
-#'   Defaults to `"Roboto"` for title and `"Roboto Condensed"` for plot.
+#'   Defaults to `"Ubuntu"` for title and `"Ubuntu Condensed"` for plot.
 #' @param margins *logical*, whether to draw margins around the plot or not (the
 #'   default).
 #' @param plot.title.position where to align the title. Either "plot" (the
@@ -49,7 +48,7 @@
 #'
 #' # NB when `theme_schola()` is used in these examples, fonts
 #' # are set to 'sans' to pass checks on computers without the
-#' # Roboto included. If you have these fonts (see Note) you can
+#' # Ubuntu included. If you have these fonts (see Note) you can
 #' # leave these parameters at their default values.
 #'
 #' # the basic plot for illustration, theme not used
@@ -97,7 +96,7 @@
 #' @import ggplot2
 #' @export
 theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size = 11,
-                         family = "Roboto Condensed", title_family = "Roboto",
+                         family = "Ubuntu Condensed", title_family = "Ubuntu",
                          margins = TRUE, plot.title.position = "plot",
                          axis_titles = TRUE, multiplot = FALSE, ...) {
   grd <- match.arg(gridlines)

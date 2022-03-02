@@ -4,7 +4,7 @@ test_that("fonts register on Windows", {
   expect_true(register_reschola_fonts())
   expect_message(register_reschola_fonts(), "[R|r]egistering fonts")
   expect_invisible(register_reschola_fonts())
-  expect_true(all(c("Roboto", "Roboto Condensed") %in% windowsFonts()))
+  expect_true(all(c("Ubuntu", "Ubuntu Condensed") %in% windowsFonts()))
 })
 
 test_that("font registration skips on Unix", {

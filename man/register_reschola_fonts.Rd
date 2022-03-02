@@ -4,7 +4,7 @@
 \alias{register_reschola_fonts}
 \title{Register reschola fonts on Windows}
 \usage{
-register_reschola_fonts(family = c("Roboto", "Roboto Condensed"))
+register_reschola_fonts(family = c("Ubuntu", "Ubuntu Condensed"))
 }
 \arguments{
 \item{family}{font family/families to register, default is reschola
@@ -15,21 +15,16 @@ Called for side effects, but returns logical on process result
 invisibly.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 
-This function is supposed to substitute \code{import_fonts()} as its dependencies
-are a bit buggy today and not updated often. \strong{Not tested properly yet.}
-}
-\details{
-The function is only for Windows, where it tries to register font
-family provided with "Windows bitmap device". On other platforms, fonts
-\emph{should} be readily available after installation. Note that even on Windows,
-you can instruct RStudio to use smarter graphics device, such as "AGG" or
-"Cairo" (\emph{Tools > Global Options > General > Graphics > Backend}).
+The function is only for Windows, where it tries to register font family
+provided with "Windows bitmap device". On other platforms, fonts \emph{should}
+be readily available after installation. Note that even on Windows, you can
+instruct RStudio to use smarter graphics device, such as "AGG" or "Cairo"
+(\emph{Tools > Global Options > General > Graphics > Backend}).
 }
 \seealso{
 Other Font helpers and shortcuts: 
-\code{\link{font_rc}},
 \code{\link{import_fonts}()},
 \code{\link{install_reschola_fonts}()},
 \code{\link{use_reschola_fonts}()}

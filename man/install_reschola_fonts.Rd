@@ -14,7 +14,6 @@ Just a simple wizard.
 }
 \seealso{
 Other Font helpers and shortcuts: 
-\code{\link{font_rc}},
 \code{\link{import_fonts}()},
 \code{\link{register_reschola_fonts}()},
 \code{\link{use_reschola_fonts}()}
