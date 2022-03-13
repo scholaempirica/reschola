@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">reschola</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,10 +64,15 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="reschola-development-version">reschola (development version)<a class="anchor" aria-label="anchor" href="#reschola-development-version"></a></h2>
+<div class="section level3">
+<h3 id="bugfixes-development-version">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-development-version"></a></h3>
+<ul><li>
+<code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> no longer warns about level order each time it is called</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.0" id="reschola-050-welcome-ubuntu">reschola 0.5.0 (Welcome, Ubuntu)<a class="anchor" aria-label="anchor" href="#reschola-050-welcome-ubuntu"></a></h2>
-<!-- TODO -----------------------------------------------------
-- PDF template: incorporate changes from IvP and EZ, especially citations and so on
--->
 <p>This release is focused on the new SCHOLA EMPIRICA visual style and replaces Roboto with Ubuntu font. It also adds wrappers for creating the Schola-styled lollipop and barplot plots to be used in our reports. These come with a bunch of utils, such as custom labeller which is useful for labeling plots’ facets, tightly tied with <code><a href="../reference/dict_from_data.html">dict_from_data()</a></code> that you’ll use for extracting labeling specifications from the labels that come from LimeSurvey via our API. In case of labels being stripped from the dataframe, the new <code><a href="../reference/recover_labs.html">recover_labs()</a></code> function may be handy. As usual many bugs were fixed and a few utils functions were added. Take a look:</p>
 <div class="section level3">
 <h3 id="changes-0-5-0">Changes<a class="anchor" aria-label="anchor" href="#changes-0-5-0"></a></h3>
