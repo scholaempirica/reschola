@@ -4,18 +4,20 @@
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 -->
 
+This release is focused on the new SCHOLA EMPIRICA visual style and replaces Roboto with Ubuntu font. It also adds wrappers for creating the Schola-styled lollipop and barplot plots to be used in our reports. These come with a bunch of utils, such as custom labeller which is useful for labeling plots' facets, tightly tied with `dict_from_data()` that you'll use for extracting labeling specifications from the labels that come from LimeSurvey via our API. In case of labels being stripped from the dataframe, the new `recover_labs()` function may be handy. As usual many bugs were fixed and a few utils functions were added. Take a look:
+
 ## Changes
 
 - `{reschola}` now adheres to SCHOLA EMPIRICA visual style by adopting Ubuntu and Ubuntu Condensed fonts
 - `gd_download_folder()` now overwrites existing content by default
-- all files created at project start-up are now commited in the initial "Repo set-up" commit
+- all files created at project start-up are now committed in the initial "Repo set-up" commit
 - Google Drive URL saved in `.Rprofile` at project set-up is now automatically trimmed and all queries that might boggle `{googledrive}` are removed
-- `fct_nanify()` now matches using regular expression, friendly *message* displaying only once per session
-- Google Drive URL inside `share.R` is removed for future projects, as it is now govern by feature introduced in `{reschola}` 0.4.0
+- `fct_nanify()` now matches using a regular expression, friendly *message* displaying only once per session
+- Google Drive URL inside `share.R` is removed for future projects, as it is now governed by a feature introduced in `{reschola}` 0.4.0
 
 ## New features
 
-- `schola_barplot()` for likert-type items, displaying grouped data per variable for straightforward comparison
+- `schola_barplot()` for Likert-type items, displaying grouped data per variable for straightforward comparison
 - `prepare_lollipop_data()` and `plot_lollipop()` for creating lollipop plots
 - `dict_from_data()` extracts named character vector of item code-label pairs
 - `schola_labeller()` is a labeller for `{ggplot2}` facets that utilizes item labels, with wrapping
