@@ -8,6 +8,7 @@
 ## Bugfixes
 
 - `fct_nanify()` no longer warns about level order each time it is called
+- `recover_labs()` does not check number of rows of dataframes (too restrictive & not intended originally)
 
 
 # reschola 0.5.0 (Welcome, Ubuntu)

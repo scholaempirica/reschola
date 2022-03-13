@@ -379,8 +379,8 @@ get_labs_df <- function(.data) {
 #'
 recover_labs <- function(new_data, orig_data) {
   # assert strucutre
-  if (!all(dim(new_data) == dim(orig_data))) {
-    abort("Dataframes are not of the same dimensions!")
+  if (!all(ncol(new_data) == ncol(orig_data))) {
+    abort("Number of columns of the dataframes differ!")
   }
 
   if (!all(colnames(new_data) == colnames(orig_data)) ) {

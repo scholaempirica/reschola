@@ -20,6 +20,7 @@
 #' @examples
 #' f <- factor(c("a", "b", "c", "nanify"))
 #' fct_nanify(f, "nanify")
+#'
 fct_nanify <- function(f, level, negate = FALSE, ignore_case = TRUE) {
   # ensure f is a factor to ensure correct subset method is dispatched
   if (!inherits(f, "factor")) {
