@@ -483,8 +483,8 @@ ls_get_attrs <- function(survey_id) {
   attrs <- ls_call("get_survey_properties", params = list(iSurveyID = survey_id)) %>%
     pluck("attributedescriptions")
 
-  if (is.null(attrs)) {
-    ui_info("No attributes were found.")
+  if (is.null(attrs) || is.na(attrs)) {
+    ui_info("No attributes were found. Ignoring {ui_code(\"attributes = TRUE\")}.")
     return(NULL)
   }
 

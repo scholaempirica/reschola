@@ -29,6 +29,7 @@
 - `theme_schola()` now uses 1.5pt top margin, so diacritics of certain letters doesn't get cut.
 - `clean_labels = FALSE` in `ls_responses()` (and fellows) does not fail anymore
 - `czech_date_interval()` now returns correct class (should have always been `czech_date_interval` not `character`; furthemore, if start and end dates were identical, it even returned `POSIXct`/`POSIXt`, which produced hard-to-debug issues when used inside `{dplyr}`'s `summarise`)
+- fixed missing attributes were not recognized in `ls_*()` functions; more verbose info
 
 ## Documentation
 
