@@ -40,12 +40,12 @@
 #' @importFrom ggtext element_markdown
 #' @importFrom rlang abort eval_tidy
 #' @importFrom forcats fct_relevel fct_rev
-#' @importFrom dplyr pull group_by arrange if_else summarise n
+#' @importFrom dplyr pull group_by arrange if_else summarise n ungroup select
 #' @importFrom stringr str_wrap
 #' @importFrom stats median
 #' @importFrom purrr pluck map_dbl
 #' @importFrom ggplot2 waiver
-#' @importFrom tidyr pivot_longer
+#' @importFrom tidyr pivot_longer nest
 #' @importFrom scales percent number
 #' @importFrom RColorBrewer brewer.pal
 #'

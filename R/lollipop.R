@@ -1,14 +1,22 @@
 
 
-#' Title
+#' Prepare data for `plot_lollipop()`
 #'
-#' @param .data a
-#' @param vars a
-#' @param group a
+#' `r lifecycle::badge("maturing")`
 #'
-#' @return
+#' @param .data tibble or data.frame with variables
+#' @param vars variables to reschape from wide to long, uses tidyselect syntax
+#' @param group grouping variable (ahve to be logical!), usually denoting for
+#'   which school the plot should be tailored for
+#'
+#' @return several tibbles inside list, intended for data-mining and for
+#'   plotting
+#'
+#'
 #' @importFrom tidyr pivot_wider
+#' @importFrom dplyr ungroup
 #' @importFrom forcats fct_reorder
+#'
 #' @export
 #'
 prepare_lollipop_data <- function(.data, vars, group) {
@@ -49,7 +57,9 @@ prepare_lollipop_data <- function(.data, vars, group) {
 }
 
 
-#' Title
+#' Plot lollipop
+#'
+#' `r lifecycle::badge("maturing")`
 #'
 #' @param plot_data a
 #' @param direction a
@@ -57,15 +67,20 @@ prepare_lollipop_data <- function(.data, vars, group) {
 #' @param negative_label a
 #' @param positive_label a
 #' @param ref_label a
+#' @param xlab a
+#' @param observations_alpha opacity of individual observations
 #'
-#' @return
+#' @return ggplot2 plot
+#'
 #' @importFrom ggtext geom_richtext
 #' @importFrom forcats fct_relevel
+#'
 #' @export
 #'
 plot_lollipop <- function(plot_data, direction = "blue_larger",
                           var_labels = waiver(),
                           negative_label = NULL, positive_label = NULL, ref_label = NULL,
+                          xlab = "rozd\u00edl mezi Va\u0161\u00ed \u0161kolou a ostatn\u00edmi",
                           observations_alpha = .2) {
   direction <- match.arg(direction, c("blue_larger", "red_larger"))
 
@@ -150,7 +165,7 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
       values = diff_scale
     ) +
     guides(col = guide_none()) + # disable legend
-    xlab("rozd\u00edl mezi Va\u0161\u00ed \u0161kolou a ostatn\u00edmi") +
+    xlab(xlab) +
     ylab(NULL) +
     theme_schola("x") +
     theme(

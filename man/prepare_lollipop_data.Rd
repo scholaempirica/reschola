@@ -2,20 +2,22 @@
 % Please edit documentation in R/lollipop.R
 \name{prepare_lollipop_data}
 \alias{prepare_lollipop_data}
-\title{Title}
+\title{Prepare data for \code{plot_lollipop()}}
 \usage{
 prepare_lollipop_data(.data, vars, group)
 }
 \arguments{
-\item{.data}{a}
+\item{.data}{tibble or data.frame with variables}
 
-\item{vars}{a}
+\item{vars}{variables to reschape from wide to long, uses tidyselect syntax}
 
-\item{group}{a}
+\item{group}{grouping variable (ahve to be logical!), usually denoting for
+which school the plot should be tailored for}
 }
 \value{
-
+several tibbles inside list, intended for data-mining and for
+plotting
 }
 \description{
-Title
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 }

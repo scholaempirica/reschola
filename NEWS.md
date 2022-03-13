@@ -1,6 +1,4 @@
-# reschola 0.5.0
-
-# reschola 0.4.0.9000 (development version)
+# reschola 0.5.0 (Welcome Ubuntu)
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
@@ -18,6 +16,7 @@
 ## New features
 
 - `schola_barplot()` for likert-type items, displaying grouped data per variable for straightforward comparison
+- `prepare_lollipop_data()` and `plot_lollipop()` for creating lollipop plots
 - `dict_from_data()` extracts named character vector of item code-label pairs
 - `schola_labeller()` is a labeller for `{ggplot2}` facets that utilizes item labels, with wrapping
 - `with_clr()` creates text with color as a span HTML tag, especially useful shortcut when you use `ggtext::geom_richtext()` or `ggtext::element_markdown()` richtext
@@ -25,13 +24,12 @@
 
 ## Bugfixes
 
-- Google Drive URL provided at project creation is now stripped from any non-essential parts of the URL that perplexes {googledrive} package and possibly results into errors
 - cropping of PDF figures was silently in charge for users with working `pdfcrop` and `ghostscript`. It is now off by default.
 - project set-up error claiming directories does not exist fixed
 - `theme_schola()` now uses 1.5pt top margin, so diacritics of certain letters doesn't get cut.
 - `clean_labels = FALSE` in `ls_responses()` (and fellows) does not fail anymore
 - `czech_date_interval()` now returns correct class (should have always been `czech_date_interval` not `character`; furthemore, if start and end dates were identical, it even returned `POSIXct`/`POSIXt`, which produced hard-to-debug issues when used inside `{dplyr}`'s `summarise`)
-- fixed missing attributes were not recognized in `ls_*()` functions; more verbose info
+- fixed missing attributes were not recognized in `ls_*()` functions (those are coded `NA` in recent LimeSurvey); more verbose info
 
 ## Documentation
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/lollipop.R
 \name{plot_lollipop}
 \alias{plot_lollipop}
-\title{Title}
+\title{Plot lollipop}
 \usage{
 plot_lollipop(
   plot_data,
@@ -11,6 +11,7 @@ plot_lollipop(
   negative_label = NULL,
   positive_label = NULL,
   ref_label = NULL,
+  xlab = "rozdíl mezi Vaší školou a ostatními",
   observations_alpha = 0.2
 )
 }
@@ -26,10 +27,14 @@ plot_lollipop(
 \item{positive_label}{a}
 
 \item{ref_label}{a}
+
+\item{xlab}{a}
+
+\item{observations_alpha}{opacity of individual observations}
 }
 \value{
-
+ggplot2 plot
 }
 \description{
-Title
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 }
