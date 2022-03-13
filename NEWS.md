@@ -1,4 +1,4 @@
-# reschola 0.5.0 (Welcome Ubuntu)
+# reschola 0.5.0 (Welcome, Ubuntu)
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
@@ -21,6 +21,10 @@
 - `schola_labeller()` is a labeller for `{ggplot2}` facets that utilizes item labels, with wrapping
 - `with_clr()` creates text with color as a span HTML tag, especially useful shortcut when you use `ggtext::geom_richtext()` or `ggtext::element_markdown()` richtext
 - `build_all.R` script now comes with a few lines that'll process all scripts inside `data` directory
+- new utils functions:
+  - `recover_labs()` for recovering lost variable labels (such as those coming from `ls_*()` export functions); with infix operator available: `%labs_from%`
+  - `get_labs_df()` for quick labels check (the most user-friendly is to use `View()` in RStudio, though)
+  - `remove_empty_at()` to drop observations that are completely empty *at specified variables*; note `tidyr::drop_na()` have a similar usage, but it drops rows containing *any* missing values, not those with *all* missings
 
 ## Bugfixes
 

@@ -290,3 +290,122 @@ sten <- function(score, standardize = FALSE, bounds = TRUE) {
   }
   sten
 }
+
+
+#' Remove rows empty only at specified columns
+#'
+#' Drop rows that are completely empty *at specified variables*. Note
+#' [tidyr::drop_na()] have a similar usage, but it drops rows containing *any*
+#' missing values (so only complete observations are retained), not *all*
+#' missings. `remove_empty_at()` drops only those rows that have no non-missing
+#' data at the variables specified in `vars`.
+#'
+#' @param .data tibble or data.frame
+#' @param vars variables to check for empty values, supports tidyselect syntax
+#'
+#' @return tibble or data.frame without observations with all `vars` empty
+#' @export
+#'
+#' @importFrom dplyr select
+#'
+#' @examples
+#' airquality %>% remove_empty_at(c(Ozone, Solar.R))
+#'
+remove_empty_at <- function(.data, vars) {
+  selection <- .data %>% select({{ vars }})
+  keep_mask <- rowSums(is.na(selection)) != ncol(selection)
+  return(.data[keep_mask, , drop = FALSE])
+}
+
+
+#' Get labels of variables
+#'
+#' @param .data tibble or data.frame
+#'
+#' @return tibble with variables and its labels (as list-column)
+#' @export
+#'
+#' @examples
+#' # make labels for iris dataset, labels will be colnames
+#' # with dot replaced for whitespace
+#' iris_with_labs <- as.data.frame(mapply(function(x, y) {
+#' attr(x, "label") <- y
+#' return(x)
+#' }, iris, gsub("\\.", " ", colnames(iris)), SIMPLIFY = FALSE))
+#'
+#' get_labs_df(iris_with_labs)
+#'
+get_labs_df <- function(.data) {
+  .data %>%
+    map(attr, "label") %>%
+    enframe("variable", "label")
+}
+
+#' Recover lost labels from same-structured tibble with labels
+#'
+#' Many operations, such as [rbind], [cbind] or its tidyverse analogues, strips
+#' out the variable labels. Use `recover_labs()` to bring them back from a
+#' `tibble` or `data.frame` where they are last present. The function attempts a
+#' few checks for new and original data compatibility. Note that the infix
+#' operator is available for a quick and self-explanatory usage.
+#'
+#' @param new_data new dataframe that you want to recover the labs for
+#' @param orig_data original dataframe with variable labels present
+#'
+#' @return
+#' @export
+#'
+#' @aliases `%labs_from%`
+#'
+#' @importFrom rlang abort
+#' @importFrom dplyr left_join transmute
+#' @importFrom tibble enframe deframe
+#' @importFrom purrr modify2
+#'
+#' @examples
+#' # make labels for iris dataset, labels will be colnames
+#' # with dot replaced for whitespace
+#' iris_with_labs <- as.data.frame(mapply(function(x, y) {
+#'   attr(x, "label") <- y
+#'   return(x)
+#' }, iris, gsub("\\.", " ", colnames(iris)), SIMPLIFY = FALSE))
+#'
+#' iris_with_recovered_labs <- recover_labs(iris, iris_with_labs)
+#' iris_with_recovered_labs_infix <- iris %labs_from% iris_with_labs
+#'
+#' # check
+#' get_labs_df(iris_with_recovered_labs)
+#' get_labs_df(iris_with_recovered_labs_infix)
+#'
+recover_labs <- function(new_data, orig_data) {
+  # assert strucutre
+  if (!all(dim(new_data) != dim(orig_data))) {
+    abort("Dataframes are not of the same dimensions!")
+  }
+
+  if (!all(colnames(new_data) == colnames(orig_data)) ) {
+    abort("Dataframes do not have the same variables!")
+  }
+
+  old_labs <- orig_data %>% get_labs_df()
+  new_labs <- new_data %>% get_labs_df()
+
+  # take empty new_labs (but with the structure of new data), and merge in old labels by variable name
+  new_labs <- new_labs %>%
+    left_join(old_labs, by = "variable") %>%
+    transmute(variable, value = label.y) %>%
+    deframe()
+
+  # add new labs as a cols attributes
+  modify2(new_data, new_labs, ~ {
+    attr(.x, "label") <- .y
+    .x
+  })
+}
+
+# just an infix alias for recover_labs:
+#' @rdname recover_labs
+#' @export
+`%labs_from%` <- function(new_data, orig_data) {
+  recover_labs(new_data = new_data, orig_data = orig_data)
+}
