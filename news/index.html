@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">reschola</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,12 +64,12 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.4.0.9000" id="reschola-0409000-development-version">reschola 0.4.0.9000 (development version)<a class="anchor" aria-label="anchor" href="#reschola-0409000-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.5.0" id="reschola-050-welcome-ubuntu">reschola 0.5.0 (Welcome Ubuntu)<a class="anchor" aria-label="anchor" href="#reschola-050-welcome-ubuntu"></a></h2>
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 -->
 <div class="section level3">
-<h3 id="changes-0-4-0-9000">Changes<a class="anchor" aria-label="anchor" href="#changes-0-4-0-9000"></a></h3>
+<h3 id="changes-0-5-0">Changes<a class="anchor" aria-label="anchor" href="#changes-0-5-0"></a></h3>
 <ul><li>
 <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> now adheres to SCHOLA EMPIRICA visual style by adopting Ubuntu and Ubuntu Condensed fonts</li>
 <li>
@@ -77,13 +77,15 @@
 <li>all files created at project start-up are now commited in the initial “Repo set-up” commit</li>
 <li>Google Drive URL saved in <code>.Rprofile</code> at project set-up is now automatically trimmed and all queries that might boggle <a href="https://googledrive.tidyverse.org" class="external-link">googledrive</a> are removed</li>
 <li>
-<code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using regular expression, friendly warning displaying once per session</li>
+<code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using regular expression, friendly <em>message</em> displaying only once per session</li>
 <li>Google Drive URL inside <code>share.R</code> is removed for future projects, as it is now govern by feature introduced in <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> 0.4.0</li>
 </ul></div>
 <div class="section level3">
-<h3 id="new-features-0-4-0-9000">New features<a class="anchor" aria-label="anchor" href="#new-features-0-4-0-9000"></a></h3>
+<h3 id="new-features-0-5-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-5-0"></a></h3>
 <ul><li>
 <code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> for likert-type items, displaying grouped data per variable for straightforward comparison</li>
+<li>
+<code><a href="../reference/prepare_lollipop_data.html">prepare_lollipop_data()</a></code> and <code><a href="../reference/plot_lollipop.html">plot_lollipop()</a></code> for creating lollipop plots</li>
 <li>
 <code><a href="../reference/dict_from_data.html">dict_from_data()</a></code> extracts named character vector of item code-label pairs</li>
 <li>
@@ -94,9 +96,8 @@
 <code>build_all.R</code> script now comes with a few lines that’ll process all scripts inside <code>data</code> directory</li>
 </ul></div>
 <div class="section level3">
-<h3 id="bugfixes-0-4-0-9000">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-0-4-0-9000"></a></h3>
-<ul><li>Google Drive URL provided at project creation is now stripped from any non-essential parts of the URL that perplexes {googledrive} package and possibly results into errors</li>
-<li>cropping of PDF figures was silently in charge for users with working <code>pdfcrop</code> and <code>ghostscript</code>. It is now off by default.</li>
+<h3 id="bugfixes-0-5-0">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-0-5-0"></a></h3>
+<ul><li>cropping of PDF figures was silently in charge for users with working <code>pdfcrop</code> and <code>ghostscript</code>. It is now off by default.</li>
 <li>project set-up error claiming directories does not exist fixed</li>
 <li>
 <code><a href="../reference/theme_schola.html">theme_schola()</a></code> now uses 1.5pt top margin, so diacritics of certain letters doesn’t get cut.</li>
@@ -104,9 +105,10 @@
 <code>clean_labels = FALSE</code> in <code><a href="../reference/ls_responses.html">ls_responses()</a></code> (and fellows) does not fail anymore</li>
 <li>
 <code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> now returns correct class (should have always been <code>czech_date_interval</code> not <code>character</code>; furthemore, if start and end dates were identical, it even returned <code>POSIXct</code>/<code>POSIXt</code>, which produced hard-to-debug issues when used inside <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a>’s <code>summarise</code>)</li>
+<li>fixed missing attributes were not recognized in <code>ls_*()</code> functions (those are coded <code>NA</code> in recent LimeSurvey); more verbose info</li>
 </ul></div>
 <div class="section level3">
-<h3 id="documentation-0-4-0-9000">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-4-0-9000"></a></h3>
+<h3 id="documentation-0-5-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-5-0"></a></h3>
 <ul><li>
 <code><a href="../reference/gd_get_proj.html">gd_get_proj()</a></code> now provides instruction for those who want to use the feature but created their <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> project before version 0.4.0</li>
 </ul></div>

@@ -12,7 +12,7 @@ Retains the level."><meta property="og:image" content="https://scholaempirica.gi
     
     <a class="navbar-brand me-2" href="../index.html">reschola</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,8 +97,9 @@ Retains the level."><meta property="og:image" content="https://scholaempirica.gi
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"nanify"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">fct_nanify</span><span class="op">(</span><span class="va">f</span>, <span class="st">"nanify"</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Before coercing to integer, make sure the level you have just NAnified is the last one, so no number is skipped!</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">This warning is displayed once per session.</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">ℹ</span> Before coercing to integer, make sure the level you have just NAnified is the last one, so no number is skipped!</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #555555;">This message is displayed once per session.</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] a    b    c    &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: a b c nanify</span>
 </code></pre></div>
