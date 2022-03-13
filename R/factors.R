@@ -35,10 +35,12 @@ fct_nanify <- function(f, level, negate = FALSE, ignore_case = TRUE) {
   f[match] <- NA
 
   inform(
-    ui_info(paste(
-      "Before coercing to integer, make sure the level",
-      "you have just NAnified is the last one, so no number is skipped!"
-    )),
+    body = c(
+      "i" = paste(
+        "Before coercing to integer, make sure the level",
+        "you have just NAnified is the last one, so no number is skipped!"
+      )
+    ),
     .frequency = "once", .frequency_id = "fct_nanify_coercion_warning"
   )
 

@@ -1,10 +1,16 @@
-# reschola (development version)
-
-# reschola 0.5.0 (Welcome, Ubuntu)
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 -->
+
+# reschola (development version)
+
+## Bugfixes
+
+- `fct_nanify()` no longer warns about level order each time it is called
+
+
+# reschola 0.5.0 (Welcome, Ubuntu)
 
 This release is focused on the new SCHOLA EMPIRICA visual style and replaces Roboto with Ubuntu font. It also adds wrappers for creating the Schola-styled lollipop and barplot plots to be used in our reports. These come with a bunch of utils, such as custom labeller which is useful for labeling plots' facets, tightly tied with `dict_from_data()` that you'll use for extracting labeling specifications from the labels that come from LimeSurvey via our API. In case of labels being stripped from the dataframe, the new `recover_labs()` function may be handy. As usual many bugs were fixed and a few utils functions were added. Take a look:
 
