@@ -13,8 +13,9 @@
 #' @return *factor* with NA-substituted level.
 #' @export
 #'
-#' @importFrom rlang abort warn
+#' @importFrom rlang abort inform
 #' @importFrom stringr regex str_detect
+#' @importFrom usethis ui_info
 #'
 #' @examples
 #' f <- factor(c("a", "b", "c", "nanify"))
@@ -33,11 +34,11 @@ fct_nanify <- function(f, level, negate = FALSE, ignore_case = TRUE) {
 
   f[match] <- NA
 
-  warn(
-    paste(
+  inform(
+    ui_info(paste(
       "Before coercing to integer, make sure the level",
       "you have just NAnified is the last one, so no number is skipped!"
-    ),
+    )),
     .frequency = "once", .frequency_id = "fct_nanify_coercion_warning"
   )
 
