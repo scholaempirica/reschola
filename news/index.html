@@ -64,7 +64,7 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.5.0" id="reschola-050-welcome-ubuntu">reschola 0.5.0 (Welcome Ubuntu)<a class="anchor" aria-label="anchor" href="#reschola-050-welcome-ubuntu"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.5.0" id="reschola-050-welcome-ubuntu">reschola 0.5.0 (Welcome, Ubuntu)<a class="anchor" aria-label="anchor" href="#reschola-050-welcome-ubuntu"></a></h2>
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 -->
@@ -94,6 +94,15 @@
 <code><a href="../reference/with_clr.html">with_clr()</a></code> creates text with color as a span HTML tag, especially useful shortcut when you use <code><a href="https://wilkelab.org/ggtext/reference/geom_richtext.html" class="external-link">ggtext::geom_richtext()</a></code> or <code><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">ggtext::element_markdown()</a></code> richtext</li>
 <li>
 <code>build_all.R</code> script now comes with a few lines that’ll process all scripts inside <code>data</code> directory</li>
+<li>new utils functions:
+<ul><li>
+<code><a href="../reference/recover_labs.html">recover_labs()</a></code> for recovering lost variable labels (such as those coming from <code>ls_*()</code> export functions); with infix operator available: <code>%labs_from%</code>
+</li>
+<li>
+<code><a href="../reference/get_labs_df.html">get_labs_df()</a></code> for quick labels check (the most user-friendly is to use <code><a href="https://rdrr.io/r/utils/View.html" class="external-link">View()</a></code> in RStudio, though)</li>
+<li>
+<code><a href="../reference/remove_empty_at.html">remove_empty_at()</a></code> to drop observations that are completely empty <em>at specified variables</em>; note <code><a href="https://tidyr.tidyverse.org/reference/drop_na.html" class="external-link">tidyr::drop_na()</a></code> have a similar usage, but it drops rows containing <em>any</em> missing values, not those with <em>all</em> missings</li>
+</ul></li>
 </ul></div>
 <div class="section level3">
 <h3 id="bugfixes-0-5-0">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-0-5-0"></a></h3>

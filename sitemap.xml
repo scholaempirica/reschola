@@ -94,6 +94,9 @@
     <loc>https://scholaempirica.github.io/reschola/reference/get_data.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/get_labs_df.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/get_lightness.html</loc>
   </url>
   <url>
@@ -166,10 +169,16 @@
     <loc>https://scholaempirica.github.io/reschola/reference/print.czech_date_interval.html</loc>
   </url>
   <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/recover_labs.html</loc>
+  </url>
+  <url>
     <loc>https://scholaempirica.github.io/reschola/reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/register_reschola_fonts.html</loc>
+  </url>
+  <url>
+    <loc>https://scholaempirica.github.io/reschola/reference/remove_empty_at.html</loc>
   </url>
   <url>
     <loc>https://scholaempirica.github.io/reschola/reference/reschola-package.html</loc>
