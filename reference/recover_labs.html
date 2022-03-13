@@ -96,7 +96,7 @@ operator is available for a quick and self-explanatory usage.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    
+    <p>Tibble or data.frame with variable labels restored.</p>
     </div>
 
     <div class="section level2">
@@ -109,15 +109,27 @@ operator is available for a quick and self-explanatory usage.</p>
 <span class="r-in"><span class="op">}</span>, <span class="va">iris</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"\\."</span>, <span class="st">" "</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span>, SIMPLIFY <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">iris_with_recovered_labs</span> <span class="op">&lt;-</span> <span class="fu">recover_labs</span><span class="op">(</span><span class="va">iris</span>, <span class="va">iris_with_labs</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in recover_labs(iris, iris_with_labs):</span> Dataframes are not of the same dimensions!</span>
 <span class="r-in"><span class="va">iris_with_recovered_labs_infix</span> <span class="op">&lt;-</span> <span class="va">iris</span> <span class="op">%labs_from%</span> <span class="va">iris_with_labs</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in recover_labs(new_data = new_data, orig_data = orig_data):</span> Dataframes are not of the same dimensions!</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># check</span></span>
 <span class="r-in"><span class="fu"><a href="get_labs_df.html">get_labs_df</a></span><span class="op">(</span><span class="va">iris_with_recovered_labs</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in map(., attr, "label"):</span> object 'iris_with_recovered_labs' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   variable     label    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Sepal.Length <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Sepal.Width  <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Petal.Length <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Petal.Width  <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Species      <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
 <span class="r-in"><span class="fu"><a href="get_labs_df.html">get_labs_df</a></span><span class="op">(</span><span class="va">iris_with_recovered_labs_infix</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in map(., attr, "label"):</span> object 'iris_with_recovered_labs_infix' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   variable     label    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Sepal.Length <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Sepal.Width  <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Petal.Length <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Petal.Width  <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Species      <span style="color: #949494;">&lt;chr [1]&gt;</span></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
