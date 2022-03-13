@@ -34,6 +34,8 @@
 #'
 #' @inheritDotParams fct_nanify -f -level
 #'
+#' @family Making charts
+#'
 #' @return object of class "gg", "ggplot"
 #' @export
 #'

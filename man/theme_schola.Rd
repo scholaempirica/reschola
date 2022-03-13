@@ -444,6 +444,9 @@ ggplot(mpg) +
 }
 \seealso{
 Other Making charts: 
-\code{\link{flush_axis}}
+\code{\link{flush_axis}},
+\code{\link{plot_lollipop}()},
+\code{\link{prepare_lollipop_data}()},
+\code{\link{schola_barplot}()}
 }
 \concept{Making charts}

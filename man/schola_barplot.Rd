@@ -80,3 +80,11 @@ TODO description...
 \details{
 TODO details...
 }
+\seealso{
+Other Making charts: 
+\code{\link{flush_axis}},
+\code{\link{plot_lollipop}()},
+\code{\link{prepare_lollipop_data}()},
+\code{\link{theme_schola}()}
+}
+\concept{Making charts}

@@ -38,3 +38,11 @@ ggplot2 plot
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 }
+\seealso{
+Other Making charts: 
+\code{\link{flush_axis}},
+\code{\link{prepare_lollipop_data}()},
+\code{\link{schola_barplot}()},
+\code{\link{theme_schola}()}
+}
+\concept{Making charts}

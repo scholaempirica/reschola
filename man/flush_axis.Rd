@@ -21,6 +21,9 @@ ggplot(mpg) +
 }
 \seealso{
 Other Making charts: 
+\code{\link{plot_lollipop}()},
+\code{\link{prepare_lollipop_data}()},
+\code{\link{schola_barplot}()},
 \code{\link{theme_schola}()}
 }
 \concept{Making charts}

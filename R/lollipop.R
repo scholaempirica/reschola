@@ -12,6 +12,7 @@
 #' @return several tibbles inside list, intended for data-mining and for
 #'   plotting
 #'
+#' @family Making charts
 #'
 #' @importFrom tidyr pivot_wider
 #' @importFrom dplyr ungroup
@@ -69,6 +70,8 @@ prepare_lollipop_data <- function(.data, vars, group) {
 #' @param ref_label a
 #' @param xlab a
 #' @param observations_alpha opacity of individual observations
+#'
+#' @family Making charts
 #'
 #' @return ggplot2 plot
 #'
