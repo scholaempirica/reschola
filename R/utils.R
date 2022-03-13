@@ -352,7 +352,7 @@ get_labs_df <- function(.data) {
 #' @param new_data new dataframe that you want to recover the labs for
 #' @param orig_data original dataframe with variable labels present
 #'
-#' @return
+#' @return Tibble or data.frame with variable labels restored.
 #' @export
 #'
 #' @aliases `%labs_from%`
@@ -379,7 +379,7 @@ get_labs_df <- function(.data) {
 #'
 recover_labs <- function(new_data, orig_data) {
   # assert strucutre
-  if (!all(dim(new_data) != dim(orig_data))) {
+  if (!all(dim(new_data) == dim(orig_data))) {
     abort("Dataframes are not of the same dimensions!")
   }
 
@@ -393,7 +393,7 @@ recover_labs <- function(new_data, orig_data) {
   # take empty new_labs (but with the structure of new data), and merge in old labels by variable name
   new_labs <- new_labs %>%
     left_join(old_labs, by = "variable") %>%
-    transmute(variable, value = label.y) %>%
+    transmute(.data$variable, value = .data$label.y) %>%
     deframe()
 
   # add new labs as a cols attributes

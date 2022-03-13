@@ -16,7 +16,7 @@ new_data \%labs_from\% orig_data
 \item{orig_data}{original dataframe with variable labels present}
 }
 \value{
-
+Tibble or data.frame with variable labels restored.
 }
 \description{
 Many operations, such as \link{rbind}, \link{cbind} or its tidyverse analogues, strips
