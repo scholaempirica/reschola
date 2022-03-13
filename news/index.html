@@ -68,22 +68,23 @@
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 -->
+<p>This release is focused on the new SCHOLA EMPIRICA visual style and replaces Roboto with Ubuntu font. It also adds wrappers for creating the Schola-styled lollipop and barplot plots to be used in our reports. These come with a bunch of utils, such as custom labeller which is useful for labeling plots’ facets, tightly tied with <code><a href="../reference/dict_from_data.html">dict_from_data()</a></code> that you’ll use for extracting labeling specifications from the labels that come from LimeSurvey via our API. In case of labels being stripped from the dataframe, the new <code><a href="../reference/recover_labs.html">recover_labs()</a></code> function may be handy. As usual many bugs were fixed and a few utils functions were added. Take a look:</p>
 <div class="section level3">
 <h3 id="changes-0-5-0">Changes<a class="anchor" aria-label="anchor" href="#changes-0-5-0"></a></h3>
 <ul><li>
 <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> now adheres to SCHOLA EMPIRICA visual style by adopting Ubuntu and Ubuntu Condensed fonts</li>
 <li>
 <code><a href="../reference/gd_download_folder.html">gd_download_folder()</a></code> now overwrites existing content by default</li>
-<li>all files created at project start-up are now commited in the initial “Repo set-up” commit</li>
+<li>all files created at project start-up are now committed in the initial “Repo set-up” commit</li>
 <li>Google Drive URL saved in <code>.Rprofile</code> at project set-up is now automatically trimmed and all queries that might boggle <a href="https://googledrive.tidyverse.org" class="external-link">googledrive</a> are removed</li>
 <li>
-<code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using regular expression, friendly <em>message</em> displaying only once per session</li>
-<li>Google Drive URL inside <code>share.R</code> is removed for future projects, as it is now govern by feature introduced in <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> 0.4.0</li>
+<code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> now matches using a regular expression, friendly <em>message</em> displaying only once per session</li>
+<li>Google Drive URL inside <code>share.R</code> is removed for future projects, as it is now governed by a feature introduced in <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> 0.4.0</li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-0-5-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-5-0"></a></h3>
 <ul><li>
-<code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> for likert-type items, displaying grouped data per variable for straightforward comparison</li>
+<code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> for Likert-type items, displaying grouped data per variable for straightforward comparison</li>
 <li>
 <code><a href="../reference/prepare_lollipop_data.html">prepare_lollipop_data()</a></code> and <code><a href="../reference/plot_lollipop.html">plot_lollipop()</a></code> for creating lollipop plots</li>
 <li>
