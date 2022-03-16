@@ -3,7 +3,9 @@
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 -->
 
-# reschola (development version)
+# reschola 0.5.1
+
+This is a minor patch solving following two issues:
 
 ## Bugfixes
 
