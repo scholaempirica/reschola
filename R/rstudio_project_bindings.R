@@ -144,7 +144,8 @@ schola_project <- function(path, ...) {
 
     # set URL into .Rprofile
     writeLines(str_glue(
-      "# project's Google Drive URL\n.gd_proj_url <- \"{dots$drive_folder}\""
+      "# project's Google Drive URL\n.gd_proj_url <- \"{dots$drive_folder}\"\n\n",
+      "source(path.expand(\"~/.Rprofile\"))"
     ),
     con = ".Rprofile"
     )

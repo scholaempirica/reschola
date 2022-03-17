@@ -1,3 +1,8 @@
+# reschola (development version)
+
+## Changes
+
+- user `.Rprofile` is now sourced in project's `.Rprofile`, so you may still use functions or values defined in the user-scoped version
 
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
