@@ -26,4 +26,5 @@ The inverse of \code{fct_explicit_na()}. Turns the \code{level} into proper \cod
 \examples{
 f <- factor(c("a", "b", "c", "nanify"))
 fct_nanify(f, "nanify")
+
 }

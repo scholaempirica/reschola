@@ -2,6 +2,7 @@
 
 ## Changes
 
+- `fct_nanify()` will not abort when the factor to NAnify is not present in the data and will return the original input with a warning
 - user `.Rprofile` is now sourced in project's `.Rprofile`, so you may still use functions or values defined in the user-scoped version
 
 <!-- TODO -----------------------------------------------------

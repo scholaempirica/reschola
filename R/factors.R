@@ -13,7 +13,7 @@
 #' @return *factor* with NA-substituted level.
 #' @export
 #'
-#' @importFrom rlang abort inform
+#' @importFrom rlang abort inform warn
 #' @importFrom stringr regex str_detect
 #' @importFrom usethis ui_info
 #'
@@ -30,7 +30,8 @@ fct_nanify <- function(f, level, negate = FALSE, ignore_case = TRUE) {
   match <- str_detect(f, regex(level, ignore_case = ignore_case), negate = negate)
 
   if (all(!match)) {
-    abort("No such level in the factor.")
+    warn("No such level in the factor. Nothing will happen.")
+    return(f)
   }
 
   f[match] <- NA
