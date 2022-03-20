@@ -68,6 +68,8 @@
 <div class="section level3">
 <h3 id="changes-development-version">Changes<a class="anchor" aria-label="anchor" href="#changes-development-version"></a></h3>
 <ul><li>
+<code><a href="../reference/recover_labs.html">recover_labs()</a></code> has relaxed assumptions about old and new dataframes column names and number of columns. From now on, only a warning is issued.</li>
+<li>
 <code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> will not abort when the factor to NAnify is not present in the data and will return the original input with a warning</li>
 <li>user <code>.Rprofile</code> is now sourced in project’s <code>.Rprofile</code>, so you may still use functions or values defined in the user-scoped version</li>
 </ul><!-- TODO -----------------------------------------------------
