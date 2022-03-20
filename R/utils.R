@@ -357,7 +357,7 @@ get_labs_df <- function(.data) {
 #'
 #' @aliases `%labs_from%`
 #'
-#' @importFrom rlang abort
+#' @importFrom rlang warn
 #' @importFrom dplyr left_join transmute
 #' @importFrom tibble enframe deframe
 #' @importFrom purrr modify2
@@ -380,11 +380,11 @@ get_labs_df <- function(.data) {
 recover_labs <- function(new_data, orig_data) {
   # assert strucutre
   if (!all(ncol(new_data) == ncol(orig_data))) {
-    abort("Number of columns of the dataframes differ!")
+    warn("Number of columns of the dataframes differ! Check the result carefully!")
   }
 
   if (!all(colnames(new_data) == colnames(orig_data)) ) {
-    abort("Dataframes do not have the same variables!")
+    warn("Dataframes do not have the same variables! Check the result carefully!")
   }
 
   old_labs <- orig_data %>% get_labs_df()
