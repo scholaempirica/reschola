@@ -40,7 +40,7 @@ html <- paste0(
   " and ",
   with_clr("blue", "blue"),
   " are the basic colors."
-  )
+)
 
 library(ggplot2)
 library(ggtext)
@@ -48,4 +48,5 @@ library(ggtext)
 ggplot() +
   geom_richtext(aes(x = 1, y = 1, label = html), size = 8) +
   theme_void()
+
 }

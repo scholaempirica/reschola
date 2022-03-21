@@ -29,7 +29,7 @@ fct_nanify <- function(f, level, negate = FALSE, ignore_case = TRUE) {
 
   match <- str_detect(f, regex(level, ignore_case = ignore_case), negate = negate)
 
-  if (all(!match)) {
+  if (all(!match, na.rm = TRUE)) {
     warn("No such level in the factor. Nothing will happen.")
     return(f)
   }

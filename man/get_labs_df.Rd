@@ -19,8 +19,8 @@ Get labels of variables
 # make labels for iris dataset, labels will be colnames
 # with dot replaced for whitespace
 iris_with_labs <- as.data.frame(mapply(function(x, y) {
-attr(x, "label") <- y
-return(x)
+  attr(x, "label") <- y
+  return(x)
 }, iris, gsub("\\\\.", " ", colnames(iris)), SIMPLIFY = FALSE))
 
 get_labs_df(iris_with_labs)

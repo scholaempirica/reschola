@@ -10,6 +10,10 @@
 
 - `extract_schola_barplot_info()` for easy access to a data underlying `schola_barplot()` output
 
+## Bugfixes
+
+- `fct_nanify()` no longer fails when there are `NA`s in the match vector
+
 <!-- TODO -----------------------------------------------------
 - PDF template: incorporate changes from IvP and EZ, especially citations and so on
 -->
