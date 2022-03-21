@@ -246,7 +246,7 @@ clr2hex <- function(color, alpha = 1) {
 #'   " and ",
 #'   with_clr("blue", "blue"),
 #'   " are the basic colors."
-#'   )
+#' )
 #'
 #' library(ggplot2)
 #' library(ggtext)
@@ -254,7 +254,7 @@ clr2hex <- function(color, alpha = 1) {
 #' ggplot() +
 #'   geom_richtext(aes(x = 1, y = 1, label = html), size = 8) +
 #'   theme_void()
-
+#'
 with_clr <- function(text, color = "black", alpha = 1, ...) {
   span(text,
     style = paste("color:", clr2hex(color, alpha = alpha)), ...
@@ -329,8 +329,8 @@ remove_empty_at <- function(.data, vars) {
 #' # make labels for iris dataset, labels will be colnames
 #' # with dot replaced for whitespace
 #' iris_with_labs <- as.data.frame(mapply(function(x, y) {
-#' attr(x, "label") <- y
-#' return(x)
+#'   attr(x, "label") <- y
+#'   return(x)
 #' }, iris, gsub("\\.", " ", colnames(iris)), SIMPLIFY = FALSE))
 #'
 #' get_labs_df(iris_with_labs)
@@ -383,7 +383,7 @@ recover_labs <- function(new_data, orig_data) {
     warn("Number of columns of the dataframes differ! Check the result carefully!")
   }
 
-  if (!all(colnames(new_data) == colnames(orig_data)) ) {
+  if (!all(colnames(new_data) == colnames(orig_data))) {
     warn("Dataframes do not have the same variables! Check the result carefully!")
   }
 
@@ -408,4 +408,24 @@ recover_labs <- function(new_data, orig_data) {
 #' @export
 `%labs_from%` <- function(new_data, orig_data) {
   recover_labs(new_data = new_data, orig_data = orig_data)
+}
+
+
+
+
+#' Extract detailed info from Schola barplot
+#'
+#' Note that item labels are automatically derived using the labeller from given `schola_barplot` result
+#'
+#' @param plot result of schola_barplot() call
+#'
+#' @return tibble with plot data
+#' @export
+#'
+#' @examples TODO
+extract_schola_barplot_info <- function(plot) {
+  plt_data <- plot$data
+  labeller_fun <- plot$facet$params$labeller
+
+  plt_data %>% mutate(.item_lab = flatten_chr(labeller_fun(.data$.item)), .after = .data$.item)
 }
