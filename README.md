@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# reschola <a href='https://scholaempirica.github.io/reschola'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# reschola <a href="https://scholaempirica.github.io/reschola"><img src="man/figures/logo.svg" align="right" height="139" /></a>
 
 <!-- badges: start -->
 
@@ -36,16 +36,16 @@ remotes::install_github(
 )
 ```
 
-`r-universe` is kindly building and hosting compiled binaries of
-*development versions* for Windows and MacOS, so you can proceed with a
-standard call with `r-universe` repository specified:
+`r-universe` is kindly building and hosting compiled binaries of the
+current *development versions* for Windows and MacOS, so you can proceed
+with a standard call with `r-universe` repository specified:
 
 ``` r
 install.packages("reschola", repos = "https://scholaempirica.r-universe.dev")
 ```
 
-And last but not least, the current *development* version can be
-installed with:
+This could be done with `remotes` as well, by ommiting the `ref`
+argument:
 
 ``` r
 remotes::install_github("scholaempirica/reschola", build_vignettes = TRUE)

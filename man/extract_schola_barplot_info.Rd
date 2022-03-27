@@ -16,5 +16,5 @@ tibble with plot data
 Note that item labels are automatically derived using the labeller from given \code{schola_barplot} result
 }
 \examples{
-TODO
+"TODO"
 }

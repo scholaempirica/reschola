@@ -2,7 +2,7 @@ Title: SCHOLA EMPIRICA project
 Binding: schola_project
 Subtitle: Create a new Schola project
 Caption: Create a new Schola project
-Icon: schola.png
+Icon: logo.png
 OpenFiles: "getting-started.Rmd", README.md, "01_schola-report.Rmd"
 
 Parameter: title

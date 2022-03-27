@@ -421,8 +421,9 @@ recover_labs <- function(new_data, orig_data) {
 #'
 #' @return tibble with plot data
 #' @export
+#' @importFrom purrr flatten_chr
 #'
-#' @examples TODO
+#' @examples "TODO"
 extract_schola_barplot_info <- function(plot) {
   plt_data <- plot$data
   labeller_fun <- plot$facet$params$labeller

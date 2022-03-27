@@ -6,8 +6,6 @@
 \alias{reschola-package}
 \title{reschola: The Schola Empirica Package}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
-
 A collection of utilies, themes and templates for data analysis at Schola Empirica.
 }
 \seealso{
