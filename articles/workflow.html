@@ -88,7 +88,8 @@
 
 
 
-<script src="workflow_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>The Workflow</h1>
             
@@ -104,7 +105,7 @@
 <h2 id="objective">Objective<a class="anchor" aria-label="anchor" href="#objective"></a>
 </h2>
 <div class="section level4 bs-callout bs-callout-green">
-<h4 id="section"></h4>
+<h4 class="bs-callout bs-callout-green" id="section"></h4>
 <p>To do analysis and create great reports reproducibly and efficiently.</p>
 <p>To make our lives easier.</p>
 <p>To make life easier for our future selves.</p>
@@ -147,7 +148,7 @@
 <h2 id="building-blocks">Building blocks<a class="anchor" aria-label="anchor" href="#building-blocks"></a>
 </h2>
 <div class="section level4 bs-callout bs-callout-blue">
-<h4 id="on-reproducibility-frameworks">On reproducibility frameworks<a class="anchor" aria-label="anchor" href="#on-reproducibility-frameworks"></a>
+<h4 class="bs-callout bs-callout-blue" id="on-reproducibility-frameworks">On reproducibility frameworks<a class="anchor" aria-label="anchor" href="#on-reproducibility-frameworks"></a>
 </h4>
 <p>The workflow described here does not rely on a particular framework that would enforce a project structure and a way of orchestrating all the bits together.</p>
 <p>It is more lightweight - it suggests a structure, a way of working, and provides suggested integrators (such as <code>build.R</code> and <code>shared.R</code> and the <code>00_</code> data load scripts). It relies on simple order of execution and on the analyst putting the right bits of code in the right places.</p>
@@ -223,12 +224,12 @@
 <p>Fill in the fields (only directory name is mandatory), switch the Git menu to get a (reschola/your) Github repo of you wish, select other options if needed, check “Open in new session”, and click <code>Create</code>.</p>
 <p>Other ways are possible but this gives you a good starting point and takes care of a lot of the setup hassle for you.</p>
 <div class="section level5 bs-callout bs-callout-red">
-<h5 id="not-committing-sensitive-data-to-git">Not committing sensitive data to git<a class="anchor" aria-label="anchor" href="#not-committing-sensitive-data-to-git"></a>
+<h5 class="bs-callout bs-callout-red" id="not-committing-sensitive-data-to-git">Not committing sensitive data to git<a class="anchor" aria-label="anchor" href="#not-committing-sensitive-data-to-git"></a>
 </h5>
 <p>The <code>data-input</code> and <code>data-processed</code> have <code>.gitignore</code> files in to stop you form committing sensitive data to git. Commit these <code>.gitignore</code> files to git. But only alter them if you are sure you know what you are doing.</p>
 </div>
 <div class="section level4 bs-callout bs-callout-yellow">
-<h4 id="google-authentication">Google Authentication<a class="anchor" aria-label="anchor" href="#google-authentication"></a>
+<h4 class="bs-callout bs-callout-yellow" id="google-authentication">Google Authentication<a class="anchor" aria-label="anchor" href="#google-authentication"></a>
 </h4>
 <p>If you haven’t used the <code>googledrive</code> package before, the package may ask for authorisation to access Google Drive. This is legitimate and you should grant access. This happens in the browser and on some machines may cause project initiatition to freeze or stop. If that happens, run <code><a href="https://googledrive.tidyverse.org/reference/drive_auth.html" class="external-link">googledrive::drive_auth()</a></code>, delete the directory created by the previous project creation attempt, and try creating the project again.</p>
 </div>
@@ -275,7 +276,7 @@
 <p>Use <code>003_check-and-process-data.R</code>. You may need to move this into an RMarkdown document.</p>
 <p>See <a href="tips.html">tips</a> for packages that can help you set up a structured data checking pipeline.</p>
 <div class="section level4 bs-callout bs-callout-yellow">
-<h4 id="data-and-git">Data and git<a class="anchor" aria-label="anchor" href="#data-and-git"></a>
+<h4 class="bs-callout bs-callout-yellow" id="data-and-git">Data and git<a class="anchor" aria-label="anchor" href="#data-and-git"></a>
 </h4>
 <p>You may want to commit some of the summarised/processed data output here once you have done some analysis and are reasonably sure it will not change too often. But generally, data should not be committed, esp. if large or at risk of committing personal information.</p>
 </div>
@@ -287,14 +288,14 @@
 <p>An RMarkdown Notebook might be an appropriate format for this.</p>
 <p>See <a href="tips">tips.html#data-exploration-1</a> for a list of appropriate tools for data exploration.</p>
 <div class="section level4 bs-callout bs-callout-blue">
-<h4 id="approaches">Approaches<a class="anchor" aria-label="anchor" href="#approaches"></a>
+<h4 class="bs-callout bs-callout-blue" id="approaches">Approaches<a class="anchor" aria-label="anchor" href="#approaches"></a>
 </h4>
 <p>There is a real trade off here: one way to do it is to work through the analysis in the report script, perhaps hiding most through chunk options (<code>include =  FALSE</code>) and only outputting into the final format stuff that is relevant.</p>
 <p>That way you get a sense of the thought process but also a bloated and circuitous script. Another is to do the analysis in one or more files and only moving bits into the report which are needed there.</p>
 <p>That way you get a tight report script but at times disconnected from the analytical process.</p>
 <p>One way to lighten the load is to hive off some work into partial Rmarkdown files, typically named <code>_something.Rmd</code>, and then “insert” them into the main document via</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="bn">```{r child=c('_one.Rmd', '_two.Rmd')}</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="bn">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child=c('_one.Rmd', '_two.Rmd')}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>```</p>
 <p>See RMarkdown Cookbook <a href="https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html" class="external-link">on child documents</a>.</p>
 </div>
@@ -328,7 +329,7 @@
 <p>See more on cross-references <a href="https://bookdown.org/yihui/bookdown/cross-references.html" class="external-link">in the bookdown guide</a>.</p>
 </div>
 <div class="section level4 bs-callout bs-callout-blue">
-<h4 id="citations">Citations<a class="anchor" aria-label="anchor" href="#citations"></a>
+<h4 class="bs-callout bs-callout-blue" id="citations">Citations<a class="anchor" aria-label="anchor" href="#citations"></a>
 </h4>
 <p>Knitr and Rmarkdown incorporate a system for managing citations and bibliographies, which can take reference lists from a number of citation managers. For the basics, see the <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html" class="external-link">RMarkdown site</a>, details are in the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html" class="external-link">RMarkdown Cookbook</a>.</p>
 </div>
@@ -426,7 +427,7 @@
 <li>store individual data on team GDrive and only download for analysis; do not commit to git</li>
 </ul>
 <div class="section level4 bs-callout bs-callout-yellow">
-<h4 id="ignore-files-in-git">Ignore files in git<a class="anchor" aria-label="anchor" href="#ignore-files-in-git"></a>
+<h4 class="bs-callout bs-callout-yellow" id="ignore-files-in-git">Ignore files in git<a class="anchor" aria-label="anchor" href="#ignore-files-in-git"></a>
 </h4>
 <p>You can add files you do not wish to commit to git’s ‘.gitignore’ file. That way, git will not even show those as new/changed. This works separately for each repo.</p>
 <p>The easiest way to do this is to run e.g. <code>usethis::use_git_ignore("secret_file.R")</code>.</p>

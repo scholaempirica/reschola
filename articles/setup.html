@@ -88,7 +88,8 @@
 
 
 
-<script src="setup_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Setup guide</h1>
             
@@ -144,14 +145,14 @@
 <p>Once installed, set it up for git if you already have it (see <a href="#rstudio-and-git">below</a> for setting up RStudio for git and for <a href="#installing-git-1">installing git</a>.)</p>
 <p>Also, go to Global Options and under <code>Workspace</code>, uncheck <code>Restore .RData into workspace at startup</code> and set <code>Save workspace to .RData on exit</code> to <code>Never</code>.</p>
 <div class="section level5 bs-callout bs-callout-red">
-<h5 id="workspace-in-rstudio">Workspace in RStudio<a class="anchor" aria-label="anchor" href="#workspace-in-rstudio"></a>
+<h5 class="bs-callout bs-callout-red" id="workspace-in-rstudio">Workspace in RStudio<a class="anchor" aria-label="anchor" href="#workspace-in-rstudio"></a>
 </h5>
 <p><strong>What this does:</strong> it makes sure that whatever objects you have in the workspace were created in this session, presumably from code or interactively. It also makes sure that when you restart R, you get a clean slate so no leftovers interfere with your work.</p>
 <p><strong>Why this is a good thing:</strong> it puts in practice the principle that code is real. It also forces you to work in scripts rather than typing things into the console (though you can retrieve code from history and store it in R files.)</p>
 <p><strong>What to watch out for:</strong> remember that once you close RStudio, whatever data is not saved, or whatever data you do not have code for recreating, will be lost.</p>
 </div>
 <div class="section level5 bs-callout bs-callout-green">
-<h5 id="rstudio-cloud">RStudio Cloud<a class="anchor" aria-label="anchor" href="#rstudio-cloud"></a>
+<h5 class="bs-callout bs-callout-green" id="rstudio-cloud">RStudio Cloud<a class="anchor" aria-label="anchor" href="#rstudio-cloud"></a>
 </h5>
 <p>If you need someone to run something in R but they don’t have anything installed, you can point them to <a href="https://rstudio.cloud/" class="external-link">RStudio Cloud</a>.</p>
 <p>It requires free registration.</p>
@@ -191,7 +192,7 @@
 </h3>
 <p>All the packages you will normally need will be installed when you install <code>reschola</code>.</p>
 <div class="section level5 bs-callout bs-callout-blue">
-<h5 id="cran-mirror">CRAN Mirror<a class="anchor" aria-label="anchor" href="#cran-mirror"></a>
+<h5 class="bs-callout bs-callout-blue" id="cran-mirror">CRAN Mirror<a class="anchor" aria-label="anchor" href="#cran-mirror"></a>
 </h5>
 <p>To streamline downloading packages, R likes to use a geographically close CRAN mirror server. RStudio should set this for you to something sensible - see <code>Tools &gt; Global Options &gt; Packages</code>.</p>
 <p>If this fails or you want to set one yourself, you can put this somewhere close to the beginning of your <code>.Rprofile</code>:</p>
@@ -246,7 +247,7 @@
 </ol>
 <p>In particular, take a look at the <a href="https://happygitwithr.com/connect-intro.html" class="external-link">Connect</a> chapter of Happy Git With R for steps to streamline your connection with Github, including (much recommended) caching credentials and using a personal access token and (optionally) SSH setup.</p>
 <div class="section level4 bs-callout bs-callout-blue">
-<h4 id="some-basic-concepts-for-working-with-git">Some basic concepts for working with Git<a class="anchor" aria-label="anchor" href="#some-basic-concepts-for-working-with-git"></a>
+<h4 class="bs-callout bs-callout-blue" id="some-basic-concepts-for-working-with-git">Some basic concepts for working with Git<a class="anchor" aria-label="anchor" href="#some-basic-concepts-for-working-with-git"></a>
 </h4>
 <p>The terminology of git can be daunting, so here are my attempts at common-sense explanations.</p>
 <div class="section level5">
