@@ -47,8 +47,8 @@
 #' \dontrun{
 #' # in YAML header ------
 #' output:
-#'   reschola::schola_pdf:
-#'     toc: false
+#' reschola::schola_pdf:
+#' toc:false
 #' }
 #'
 #' @family Report templates and formats

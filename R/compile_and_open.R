@@ -22,10 +22,10 @@
 #' purrr::map(
 #'   red_izos,
 #'   ~ compile_and_open("05_ucitele-reditele_ms.Rmd",
-#'                      open_on_success = FALSE,
-#'                      output_dir = here("reports-output", "ucitele-reditele-ms"),
-#'                      output_file = paste0("02_ucitele-reditele-ms_", .x, ".docx"),
-#'                      params = list(redizo = .x)
+#'     open_on_success = FALSE,
+#'     output_dir = here("reports-output", "ucitele-reditele-ms"),
+#'     output_file = paste0("02_ucitele-reditele-ms_", .x, ".docx"),
+#'     params = list(redizo = .x)
 #'   )
 #' )
 #' }
@@ -62,4 +62,3 @@ compile_and_open <-
       ))
     }
   }
-

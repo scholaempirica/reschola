@@ -123,7 +123,7 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
     geom_richtext(
       aes(x = -.1, y = .333), # without aes(), nudge does not work...
       label = positive_label,
-      vjust = 1.2,  hjust = 1, col = "grey", fill = NA, label.color = NA
+      vjust = 1.2, hjust = 1, col = "grey", fill = NA, label.color = NA
     ) +
 
     # positive (right) half-plane annotation arrow
@@ -156,7 +156,7 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
       col = "grey", lineheight = 1
     ) +
     scale_x_continuous(
-      breaks = scales::breaks_width(2),  minor_breaks = scales::breaks_width(1),
+      breaks = scales::breaks_width(2), minor_breaks = scales::breaks_width(1),
       expand = expansion(.025)
     ) +
     scale_y_discrete(

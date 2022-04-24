@@ -1,8 +1,14 @@
 
 # Stolen from ggplot2 via hrbrthemes
-is.waive <- function (x) { inherits(x, "waiver") }
-is.sec_axis <- function (x) { inherits(x, "AxisSecondary") }
-is.formula <- function (x) { inherits(x, "formula") }
+is.waive <- function(x) {
+  inherits(x, "waiver")
+}
+is.sec_axis <- function(x) {
+  inherits(x, "AxisSecondary")
+}
+is.formula <- function(x) {
+  inherits(x, "formula")
+}
 
 ## taken from ratlas
 
@@ -33,26 +39,25 @@ hrbrthemes::gg_check
 #' @export
 #' @name scalescz
 scale_x_percent_cz <- function(name = waiver(),
-                            breaks = waiver(),
-                            minor_breaks = waiver(),
-                            guide = waiver(),
-                            n.breaks = NULL,
-                            labels,
-                            limits = NULL,
-                            expand = c(0.01,0),
-                            oob = scales::censor,
-                            na.value = NA_real_,
-                            trans = "identity",
-                            position = "bottom",
-                            sec.axis = waiver(),
-                            accuracy = 1,
-                            scale = 100,
-                            prefix = "",
-                            suffix = " %",
-                            big.mark = " ",
-                            decimal.mark = ",",
-                            trim = TRUE, ...) {
-
+                               breaks = waiver(),
+                               minor_breaks = waiver(),
+                               guide = waiver(),
+                               n.breaks = NULL,
+                               labels,
+                               limits = NULL,
+                               expand = c(0.01, 0),
+                               oob = scales::censor,
+                               na.value = NA_real_,
+                               trans = "identity",
+                               position = "bottom",
+                               sec.axis = waiver(),
+                               accuracy = 1,
+                               scale = 100,
+                               prefix = "",
+                               suffix = " %",
+                               big.mark = " ",
+                               decimal.mark = ",",
+                               trim = TRUE, ...) {
   if (missing(labels)) {
     scales::percent_format(
       accuracy = accuracy,
@@ -90,16 +95,13 @@ scale_x_percent_cz <- function(name = waiver(),
 
 
   if (!is.waive(sec.axis)) {
-
     if (is.formula(sec.axis)) sec.axis <- sec_axis(sec.axis)
     if (!is.sec_axis(sec.axis)) stop("Secondary axes must be specified using 'sec_axis()'")
 
     sc$secondary.axis <- sec.axis
-
   }
 
   sc
-
 }
 
 
@@ -108,26 +110,25 @@ scale_x_percent_cz <- function(name = waiver(),
 #' @examples
 #' # ADD_EXAMPLES_HERE
 scale_y_percent_cz <- function(name = waiver(),
-                            breaks = waiver(),
-                            minor_breaks = waiver(),
-                            guide = waiver(),
-                            n.breaks = NULL,
-                            labels,
-                            limits = NULL,
-                            expand = c(0.01,0),
-                            oob = scales::censor,
-                            na.value = NA_real_,
-                            trans = "identity",
-                            position = "left",
-                            sec.axis = waiver(),
-                            accuracy = 1,
-                            scale = 100,
-                            prefix = "",
-                            suffix = " %",
-                            big.mark = " ",
-                            decimal.mark = ",",
-                            trim = TRUE, ...) {
-
+                               breaks = waiver(),
+                               minor_breaks = waiver(),
+                               guide = waiver(),
+                               n.breaks = NULL,
+                               labels,
+                               limits = NULL,
+                               expand = c(0.01, 0),
+                               oob = scales::censor,
+                               na.value = NA_real_,
+                               trans = "identity",
+                               position = "left",
+                               sec.axis = waiver(),
+                               accuracy = 1,
+                               scale = 100,
+                               prefix = "",
+                               suffix = " %",
+                               big.mark = " ",
+                               decimal.mark = ",",
+                               trim = TRUE, ...) {
   if (missing(labels)) {
     scales::percent_format(
       accuracy = accuracy,
@@ -164,16 +165,13 @@ scale_y_percent_cz <- function(name = waiver(),
   ) -> sc
 
   if (!is.waive(sec.axis)) {
-
     if (is.formula(sec.axis)) sec.axis <- ggplot2::sec_axis(sec.axis)
     if (!is.sec_axis(sec.axis)) stop("Secondary axes must be specified using 'sec_axis()'")
 
     sc$secondary.axis <- sec.axis
-
   }
 
   sc
-
 }
 
 #' This is exactly the same function as scale_*_continuous, just with different
@@ -185,33 +183,32 @@ scale_y_percent_cz <- function(name = waiver(),
 #' @examples
 #' library(reschola)
 #' library(ggplot2)
-#' ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
+#' ggplot(mpg, aes(hwy * 100, cty / max(cty))) +
 #'   geom_point() +
 #'   theme_schola(family = "sans", title_family = "sans", gridlines = "scatter") +
 #'   scale_y_percent_cz() +
 #'   scale_x_number_cz()
-
+#'
 scale_x_number_cz <- function(name = waiver(),
-                            breaks = waiver(),
-                            minor_breaks = waiver(),
-                            guide = waiver(),
-                            n.breaks = NULL,
-                            labels,
-                            limits = NULL,
-                            expand = c(0.01,0),
-                            oob = scales::censor,
-                            na.value = NA_real_,
-                            trans = "identity",
-                            position = "bottom",
-                            sec.axis = waiver(),
-                            accuracy = 1,
-                            scale = 1,
-                            prefix = "",
-                            suffix = "",
-                            big.mark = " ",
-                            decimal.mark = ",",
-                            trim = TRUE, ...) {
-
+                              breaks = waiver(),
+                              minor_breaks = waiver(),
+                              guide = waiver(),
+                              n.breaks = NULL,
+                              labels,
+                              limits = NULL,
+                              expand = c(0.01, 0),
+                              oob = scales::censor,
+                              na.value = NA_real_,
+                              trans = "identity",
+                              position = "bottom",
+                              sec.axis = waiver(),
+                              accuracy = 1,
+                              scale = 1,
+                              prefix = "",
+                              suffix = "",
+                              big.mark = " ",
+                              decimal.mark = ",",
+                              trim = TRUE, ...) {
   if (missing(labels)) {
     scales::percent_format(
       accuracy = accuracy,
@@ -249,42 +246,38 @@ scale_x_number_cz <- function(name = waiver(),
 
 
   if (!is.waive(sec.axis)) {
-
     if (is.formula(sec.axis)) sec.axis <- sec_axis(sec.axis)
     if (!is.sec_axis(sec.axis)) stop("Secondary axes must be specified using 'sec_axis()'")
 
     sc$secondary.axis <- sec.axis
-
   }
 
   sc
-
 }
 
 
 #' @rdname scalescz
 #' @export
 scale_y_number_cz <- function(name = waiver(),
-                            breaks = waiver(),
-                            minor_breaks = waiver(),
-                            guide = waiver(),
-                            n.breaks = NULL,
-                            labels,
-                            limits = NULL,
-                            expand = c(0.01,0),
-                            oob = scales::censor,
-                            na.value = NA_real_,
-                            trans = "identity",
-                            position = "left",
-                            sec.axis = waiver(),
-                            accuracy = 1,
-                            scale = 1,
-                            prefix = "",
-                            suffix = "",
-                            big.mark = " ",
-                            decimal.mark = ",",
-                            trim = TRUE, ...) {
-
+                              breaks = waiver(),
+                              minor_breaks = waiver(),
+                              guide = waiver(),
+                              n.breaks = NULL,
+                              labels,
+                              limits = NULL,
+                              expand = c(0.01, 0),
+                              oob = scales::censor,
+                              na.value = NA_real_,
+                              trans = "identity",
+                              position = "left",
+                              sec.axis = waiver(),
+                              accuracy = 1,
+                              scale = 1,
+                              prefix = "",
+                              suffix = "",
+                              big.mark = " ",
+                              decimal.mark = ",",
+                              trim = TRUE, ...) {
   if (missing(labels)) {
     scales::percent_format(
       accuracy = accuracy,
@@ -321,16 +314,13 @@ scale_y_number_cz <- function(name = waiver(),
   ) -> sc
 
   if (!is.waive(sec.axis)) {
-
     if (is.formula(sec.axis)) sec.axis <- ggplot2::sec_axis(sec.axis)
     if (!is.sec_axis(sec.axis)) stop("Secondary axes must be specified using 'sec_axis()'")
 
     sc$secondary.axis <- sec.axis
-
   }
 
   sc
-
 }
 
 
@@ -348,39 +338,45 @@ scale_y_number_cz <- function(name = waiver(),
 #' library(reschola)
 #' library(ggplot2)
 #' ggplot(mpg, aes(hwy, cty)) +
-#' geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
+#'   geom_point(aes(colour = cty / max(cty), size = hwy * 100)) +
 #'   theme_schola(family = "sans", title_family = "sans", gridlines = "scatter") +
 #'   scale_color_binned(labels = label_percent_cz()) +
 #'   scale_size_binned(labels = label_number_cz())
-label_percent_cz <- function (accuracy = NULL, scale = 100, prefix = "", suffix = " %",
-                              big.mark = " ", decimal.mark = ",", trim = TRUE, ...)
-{
-  scales::number_format(accuracy = accuracy, scale = scale, prefix = prefix,
-                suffix = suffix, big.mark = big.mark, decimal.mark = decimal.mark,
-                trim = trim, ...)
+label_percent_cz <- function(accuracy = NULL, scale = 100, prefix = "", suffix = " %",
+                             big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
+  scales::number_format(
+    accuracy = accuracy, scale = scale, prefix = prefix,
+    suffix = suffix, big.mark = big.mark, decimal.mark = decimal.mark,
+    trim = trim, ...
+  )
 }
 
 #' @inheritParams scales::number_format
 #'
 #' @name formatscz
 #' @export
-label_number_cz <- function (accuracy = NULL, scale = 1, prefix = "", suffix = "",
-                             big.mark = " ", decimal.mark = ",", trim = TRUE, ...)
-{
+label_number_cz <- function(accuracy = NULL, scale = 1, prefix = "", suffix = "",
+                            big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   # scales:::force_all(accuracy, scale, prefix, suffix, big.mark, decimal.mark,
   #           trim, ...)
-  function(x) scales::number(x, accuracy = accuracy, scale = scale,
-                     prefix = prefix, suffix = suffix, big.mark = big.mark,
-                     decimal.mark = decimal.mark, trim = trim, ...)
+  function(x) {
+    scales::number(x,
+      accuracy = accuracy, scale = scale,
+      prefix = prefix, suffix = suffix, big.mark = big.mark,
+      decimal.mark = decimal.mark, trim = trim, ...
+    )
+  }
 }
 
 label_percent_cz_abs <- function(accuracy = NULL, scale = 100, prefix = "", suffix = " %",
-                      big.mark = " ", decimal.mark = ",", trim = TRUE, ...)
-{
+                                 big.mark = " ", decimal.mark = ",", trim = TRUE, ...) {
   # scales:::force_all(accuracy, scale, prefix, suffix, big.mark, decimal.mark,
   #                   trim, ...)
-  function(x) scales::number(abs(x), accuracy = accuracy, scale = scale,
-                             prefix = prefix, suffix = suffix, big.mark = big.mark,
-                             decimal.mark = decimal.mark, trim = trim, ...)
-
+  function(x) {
+    scales::number(abs(x),
+      accuracy = accuracy, scale = scale,
+      prefix = prefix, suffix = suffix, big.mark = big.mark,
+      decimal.mark = decimal.mark, trim = trim, ...
+    )
+  }
 }
