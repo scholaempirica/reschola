@@ -1,4 +1,9 @@
-# reschola (development version)
+
+<!-- TODO -----------------------------------------------------
+- PDF template: incorporate changes from IvP and EZ, especially citations and so on
+-->
+
+# reschola 0.5.2
 
 ## Changes
 
@@ -14,10 +19,8 @@
 ## Bugfixes
 
 - `fct_nanify()` no longer fails when there are `NA`s in the match vector
+- `czech_date_interval()` is hopefully finally fixed...
 
-<!-- TODO -----------------------------------------------------
-- PDF template: incorporate changes from IvP and EZ, especially citations and so on
--->
 
 # reschola 0.5.1
 
