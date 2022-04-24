@@ -14,7 +14,7 @@ Use these when you need to format labels on something other than X and Y axes'><
     
     <a class="navbar-brand me-2" href="../index.html">reschola</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,12 +109,14 @@ difference between adjacent values.</p>
 <p>Applied to rescaled data.</p></dd>
 <dt>scale</dt>
 <dd><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.</p></dd>
 <dt>prefix</dt>
-<dd><p>Symbols to display before and after value.</p></dd>
+<dd><p>Additional text to display before the number. The suffix is
+applied to absolute value before <code>style_positive</code> and <code>style_negative</code> are
+processed so that <code>prefix = "$"</code> will yield (e.g.) <code>-$1</code> and <code>($1)</code>.</p></dd>
 <dt>suffix</dt>
-<dd><p>Symbols to display before and after value.</p></dd>
+<dd><p>Additional text to display after the number.</p></dd>
 <dt>big.mark</dt>
 <dd><p>Character used between every 3 digits to separate thousands.</p></dd>
 <dt>decimal.mark</dt>
