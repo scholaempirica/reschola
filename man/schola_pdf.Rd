@@ -121,8 +121,8 @@ you are a \code{{tinytex}} user).
 \dontrun{
 # in YAML header ------
 output:
-  reschola::schola_pdf:
-    toc: false
+reschola::schola_pdf:
+toc:false
 }
 
 }

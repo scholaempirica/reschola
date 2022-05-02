@@ -31,6 +31,8 @@
 #'   statistic to smallest (if desc = TRUE)
 #' @param reverse if TRUE, reverse colors
 #' @param facet_label_wrap width of facet label to wrap
+#' @param fill_cols colors to be used for item categories, defaults to NULL, meaning standard RdYlBu palette will be used
+#' @param ...
 #'
 #' @inheritDotParams fct_nanify -f -level
 #'
@@ -54,7 +56,7 @@
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
                            labels = TRUE, min_label_width = .09, absolute_counts = TRUE,
-                           fill_labels = waiver(), facet_label_wrap = 100,
+                           fill_cols = NULL, fill_labels = waiver(), facet_label_wrap = 100,
                            reverse = FALSE, order_by = "chi-square differences", ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
   order_by <- match.arg(order_by, c("chi-square differences", "weighted total scores"))
@@ -119,17 +121,31 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
   axis_x_breaks <- seq(0, 1, length.out = n_breaks)
   axis_x_hjust <- c(0, rep(.5, n_breaks - 2), 1)
 
-  cats <- plt_data %>%
+  n_cats <- plt_data %>%
     pull(.data$.resp) %>%
-    levels()
+    levels() %>%
+    length()
+
+  n_fill_cols <- if (escape_level == FALSE) n_cats else n_cats - 1L
+
   legend_cols <- c(
-    "#dadada",
+    if (escape_level != FALSE) "#dadada" else NULL,
     if (reverse) {
-      brewer.pal(length(cats) - 1, "RdYlBu")
+      brewer.pal(n_fill_cols, "RdYlBu")
     } else {
-      rev(brewer.pal(length(cats) - 1, "RdYlBu"))
+      rev(brewer.pal(n_fill_cols, "RdYlBu"))
     }
   )
+
+  # overwrite the palette if custom cols are provided
+  if (!is.null(fill_cols)) {
+    legend_cols <- if (reverse) {
+      fill_cols
+    } else {
+      rev(fill_cols)
+    }
+  }
+
 
 
   # plot --------------------------------------------------------------------

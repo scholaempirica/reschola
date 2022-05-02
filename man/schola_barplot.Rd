@@ -15,6 +15,7 @@ schola_barplot(
   labels = TRUE,
   min_label_width = 0.09,
   absolute_counts = TRUE,
+  fill_cols = NULL,
   fill_labels = waiver(),
   facet_label_wrap = 100,
   reverse = FALSE,
@@ -49,6 +50,8 @@ wide breaks.}
 proportions larger than this value are shown, smaller are not.}
 
 \item{absolute_counts}{draw labels and absolute counts in parentheses?}
+
+\item{fill_cols}{colors to be used for item categories, defaults to NULL, meaning standard RdYlBu palette will be used}
 
 \item{fill_labels}{character vector or function taking breaks and returning
 labels for fill aesthetic}
