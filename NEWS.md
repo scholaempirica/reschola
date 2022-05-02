@@ -1,13 +1,14 @@
+
+<!-- TODO -----------------------------------------------------
+- PDF template: incorporate changes from IvP and EZ, especially citations and so on
+-->
+
 # reschola (development version)
 
 ## Changes
 
 - `schola_barplot()` gains a new argument `fill_cols`, so you can override the default palette (`RColorBrewer::brewer.pal(5, "RdYlBu") `, which is suitable only for 5point scales)
 - `schola_barplot()` now understands `escape_level = FALSE` in which case the grey color is not used as they are no escape level or category to mark
-
-<!-- TODO -----------------------------------------------------
-- PDF template: incorporate changes from IvP and EZ, especially citations and so on
--->
 
 # reschola 0.5.2
 
