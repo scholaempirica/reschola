@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">reschola</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,6 +64,18 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="reschola-development-version">reschola (development version)<a class="anchor" aria-label="anchor" href="#reschola-development-version"></a></h2>
+<div class="section level3">
+<h3 id="changes-development-version">Changes<a class="anchor" aria-label="anchor" href="#changes-development-version"></a></h3>
+<ul><li>
+<code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> gains a new argument <code>fill_cols</code>, so you can override the default palette (<code>RColorBrewer::brewer.pal(5, "RdYlBu")</code>, which is suitable only for 5point scales)</li>
+<li>
+<code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> now understands <code>escape_level = FALSE</code> in which case the grey color is not used as they are no escape level or category to mark</li>
+</ul><!-- TODO -----------------------------------------------------
+- PDF template: incorporate changes from IvP and EZ, especially citations and so on
+--></div>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.2" id="reschola-052">reschola 0.5.2<a class="anchor" aria-label="anchor" href="#reschola-052"></a></h2>
 <div class="section level3">
 <h3 id="changes-0-5-2">Changes<a class="anchor" aria-label="anchor" href="#changes-0-5-2"></a></h3>
@@ -77,8 +89,7 @@
 <div class="section level3">
 <h3 id="new-features-0-5-2">New features<a class="anchor" aria-label="anchor" href="#new-features-0-5-2"></a></h3>
 <ul><li>
-<code><a href="../reference/extract_schola_barplot_info.html">extract_schola_barplot_info()</a></code> for easy access to a data underlying <code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> output</li>
-</ul></div>
+<code><a href="../reference/extract_schola_barplot_info.html">extract_schola_barplot_info()</a></code> for easy access to a data underlying <code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> output</li></ul></div>
 <div class="section level3">
 <h3 id="bugfixes-0-5-2">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-0-5-2"></a></h3>
 <ul><li>
@@ -127,8 +138,7 @@
 <code><a href="../reference/with_clr.html">with_clr()</a></code> creates text with color as a span HTML tag, especially useful shortcut when you use <code><a href="https://wilkelab.org/ggtext/reference/geom_richtext.html" class="external-link">ggtext::geom_richtext()</a></code> or <code><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">ggtext::element_markdown()</a></code> richtext</li>
 <li>
 <code>build_all.R</code> script now comes with a few lines that’ll process all scripts inside <code>data</code> directory</li>
-<li>new utils functions:
-<ul><li>
+<li>new utils functions:<ul><li>
 <code><a href="../reference/recover_labs.html">recover_labs()</a></code> for recovering lost variable labels (such as those coming from <code>ls_*()</code> export functions); with infix operator available: <code>%labs_from%</code>
 </li>
 <li>
@@ -152,8 +162,7 @@
 <div class="section level3">
 <h3 id="documentation-0-5-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-5-0"></a></h3>
 <ul><li>
-<code><a href="../reference/gd_get_proj.html">gd_get_proj()</a></code> now provides instruction for those who want to use the feature but created their <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> project before version 0.4.0</li>
-</ul></div>
+<code><a href="../reference/gd_get_proj.html">gd_get_proj()</a></code> now provides instruction for those who want to use the feature but created their <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> project before version 0.4.0</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="reschola-040-new-beginnings">reschola 0.4.0 (New Beginnings)<a class="anchor" aria-label="anchor" href="#reschola-040-new-beginnings"></a></h2>
@@ -164,8 +173,7 @@
 <li>schola project options clean-up</li>
 <li>new font installation and registration routines for Windows, see <code><a href="../reference/install_reschola_fonts.html">install_reschola_fonts()</a></code> and <code><a href="../reference/register_reschola_fonts.html">register_reschola_fonts()</a></code>
 </li>
-<li>updated <code><a href="../reference/theme_schola.html">theme_schola()</a></code>
-<ul><li>no margins by default (argument <code>margin</code> supersedes <code>margin_side</code> and <code>margin_bottom</code>)</li>
+<li>updated <code><a href="../reference/theme_schola.html">theme_schola()</a></code><ul><li>no margins by default (argument <code>margin</code> supersedes <code>margin_side</code> and <code>margin_bottom</code>)</li>
 <li>axis titles on by default (+ <code>axis.title</code> renamed to <code>axis_title</code>)</li>
 </ul></li>
 <li>figure cropping with <code>ghostscript</code> and <code>pdfcrop</code> is defunct, so those are no longer needed (see above)</li>
@@ -183,8 +191,7 @@
 <code><a href="../reference/use_reschola_fonts.html">set_reschola_ggplot_fonts()</a></code> without dependencies and more customisable (although changes are not recommended); new geoms covered</li>
 <li>new <code><a href="../reference/fct_nanify.html">fct_nanify()</a></code> for recoding a factor level to <code>NA</code>
 </li>
-<li>new functions for quick RDS data manipulation:
-<ul><li><code><a href="../reference/schola_rds.html">get_input_data()</a></code></li>
+<li>new functions for quick RDS data manipulation:<ul><li><code><a href="../reference/schola_rds.html">get_input_data()</a></code></li>
 <li><code><a href="../reference/schola_rds.html">get_intermediate_data()</a></code></li>
 <li><code><a href="../reference/schola_rds.html">get_processed_data()</a></code></li>
 <li><code><a href="../reference/schola_rds.html">write_input_data()</a></code></li>
@@ -199,8 +206,7 @@
 <h3 id="bugfixes-0-4-0">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-0-4-0"></a></h3>
 <ul><li>
 <code><a href="../reference/ls_participants.html">ls_participants()</a></code> runs properly when there are no attributes to translate and <code>translate_attrs = TRUE</code>
-</li>
-</ul></div>
+</li></ul></div>
 <div class="section level3">
 <h3 id="documentation-0-4-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-4-0"></a></h3>
 <ul><li>
@@ -216,8 +222,7 @@
 <div class="section level3">
 <h3 id="breaking-changes-0-3-3">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-3-3"></a></h3>
 <ul><li>
-<code>redoc</code> reversible Word format is now completely removed from the package; from now on, use <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code> primarily (<code><a href="../reference/schola_word.html">schola_word()</a></code> is still available)</li>
-</ul></div>
+<code>redoc</code> reversible Word format is now completely removed from the package; from now on, use <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code> primarily (<code><a href="../reference/schola_word.html">schola_word()</a></code> is still available)</li></ul></div>
 <div class="section level3">
 <h3 id="changes-0-3-3">Changes<a class="anchor" aria-label="anchor" href="#changes-0-3-3"></a></h3>
 <ul><li>PDF template now handles footnotes better</li>
@@ -255,16 +260,14 @@
 <h2 class="pkg-version" data-toc-text="0.3.2" id="reschola-032-limy-schola">reschola 0.3.2 (Limy Schola)<a class="anchor" aria-label="anchor" href="#reschola-032-limy-schola"></a></h2>
 <div class="section level3">
 <h3 id="changes-0-3-2">Changes<a class="anchor" aria-label="anchor" href="#changes-0-3-2"></a></h3>
-<ul><li>default LimeSurvey API endpoint protocol changed to HTTPS</li>
-</ul></div>
+<ul><li>default LimeSurvey API endpoint protocol changed to HTTPS</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="reschola-031-limy-schola">reschola 0.3.1 (Limy Schola)<a class="anchor" aria-label="anchor" href="#reschola-031-limy-schola"></a></h2>
 <p>A tiny patch release resolving the issues with and simplifying the font installation process.</p>
 <div class="section level3">
 <h3 id="documentation-0-3-1">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-3-1"></a></h3>
-<ul><li>fonts installation described in more detail, warning NOTE added</li>
-</ul></div>
+<ul><li>fonts installation described in more detail, warning NOTE added</li></ul></div>
 <div class="section level3">
 <h3 id="changes-0-3-1">Changes<a class="anchor" aria-label="anchor" href="#changes-0-3-1"></a></h3>
 <ul><li>font installation is now carried out by a single function <code><a href="../reference/import_fonts.html">import_fonts()</a></code>
@@ -281,12 +284,10 @@
 <h2 class="pkg-version" data-toc-text="0.3.0" id="reschola-030-limy-schola">reschola 0.3.0 (Limy Schola)<a class="anchor" aria-label="anchor" href="#reschola-030-limy-schola"></a></h2>
 <div class="section level3">
 <h3 id="breaking-changes-0-3-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-3-0"></a></h3>
-<ul><li>automatically generated build script <code>build.R</code> is renamed to <code>build_all.R</code>, to allow multiple build scripts (pro tip: use <a href="https://CRAN.r-project.org/web/packages/buildr/" class="external-link">{buildr}</a> package)</li>
-</ul></div>
+<ul><li>automatically generated build script <code>build.R</code> is renamed to <code>build_all.R</code>, to allow multiple build scripts (pro tip: use <a href="https://CRAN.r-project.org/web/packages/buildr/" class="external-link">{buildr}</a> package)</li></ul></div>
 <div class="section level3">
 <h3 id="new-features-0-3-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-3-0"></a></h3>
-<ul><li>new R Markdown document format <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code>:
-<ul><li>powered by custom LaTeX template and <code>report</code> class</li>
+<ul><li>new R Markdown document format <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code>:<ul><li>powered by custom LaTeX template and <code>report</code> class</li>
 <li>uses Roboto font</li>
 <li>reasonable defaults are used so the YAML header is not cluttered with stuff</li>
 <li>figures are in PDF (via <code>cairo</code> device so non-ASCII characters are well supported) and are cropped automatically (new function <code>ensure_cropping()</code> that checks for dependencies needed for proper format functioning, providing help when an issue is discovered)</li>
@@ -294,8 +295,7 @@
 <li>handy <code>author</code> Pandoc variable (used in YAML header), which takes the language <code>lang</code> and automatically typesets the “and” or “a” separator before the last author (when there is only one, no separators are introduced whatsoever)</li>
 </ul></li>
 <li>
-<code>reschola</code> is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:
-<ul><li>
+<code>reschola</code> is now armed with its own LimeSurvey API interface, providing several functions tailored to our needs:<ul><li>
 <code><a href="../reference/ls_call.html">ls_call()</a></code> implements general and fully customisable call to the API (you must adhere to <a href="https://api.limesurvey.org/classes/remotecontrol_handle.html" class="external-link">the documentation</a>)</li>
 <li>
 <code><a href="../reference/ls_export.html">ls_export()</a></code> is going to be used most of the time, as it fetches both participants and their responses, it basically merges outputs from <code><a href="../reference/ls_participants.html">ls_participants()</a></code>, and <code><a href="../reference/ls_responses.html">ls_responses()</a></code>
@@ -311,9 +311,7 @@
 </ul></li>
 <li>new class <code>czech_date</code> with S3 method that prints the date in long format and with grammatically correct case, more in <code><a href="../reference/as_czech_date.html">as_czech_date()</a></code>
 </li>
-<li>new function <code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> that takes two dates and returns nicely formatted Czech date interval
-<ul><li>czech date interval tries to print using non-breakable <em>en dash</em> when <code>pandoc</code> outputs to <code>LaTeX</code> (i.e., <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code> format is used)</li>
-</ul></li>
+<li>new function <code><a href="../reference/czech_date_interval.html">czech_date_interval()</a></code> that takes two dates and returns nicely formatted Czech date interval<ul><li>czech date interval tries to print using non-breakable <em>en dash</em> when <code>pandoc</code> outputs to <code>LaTeX</code> (i.e., <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code> format is used)</li></ul></li>
 <li>new function <code><a href="../reference/compile_and_open.html">compile_and_open()</a></code> provides safe and comfortable way to render/compile <code>.Rmd</code> documents</li>
 <li>vector graphics logo of SCHOLA EMPIRICA in <code>.pdf</code> added</li>
 <li>development feature: <em>spellcheck on package introduced via <code>usethis</code></em>
@@ -322,8 +320,7 @@
 <div class="section level3">
 <h3 id="changes-0-3-0">Changes<a class="anchor" aria-label="anchor" href="#changes-0-3-0"></a></h3>
 <ul><li>
-<code>99_reproducibility.Rmd</code> now uses base R <code><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo()</a></code>, not <code>sessioninfo</code> package, which seems like an unnecessary dependency</li>
-</ul></div>
+<code>99_reproducibility.Rmd</code> now uses base R <code><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo()</a></code>, not <code>sessioninfo</code> package, which seems like an unnecessary dependency</li></ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-3-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-3-0"></a></h3>
 <ul><li>organization name change to correct form</li>
@@ -364,15 +361,13 @@
 <div class="section level3">
 <h3 id="bug-fixes-0-2-13">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-13"></a></h3>
 <ul><li>
-<code><a href="../reference/theme_schola.html">theme_schola()</a></code> works again with <code><a href="../reference/manage_docx_header_logos.html">manage_docx_header_logos()</a></code> and comes with SCHOLA EMPIRICA logo preloaded</li>
-</ul></div>
+<code><a href="../reference/theme_schola.html">theme_schola()</a></code> works again with <code><a href="../reference/manage_docx_header_logos.html">manage_docx_header_logos()</a></code> and comes with SCHOLA EMPIRICA logo preloaded</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.12" id="reschola-0212">reschola 0.2.12<a class="anchor" aria-label="anchor" href="#reschola-0212"></a></h2>
 <div class="section level3">
 <h3 id="documentation-additions-0-2-12">Documentation additions<a class="anchor" aria-label="anchor" href="#documentation-additions-0-2-12"></a></h3>
-<ul><li>“templating” explained in <code><a href="../reference/schola_word2.html">schola_word2()</a></code>, with a link to <code>bookdown</code> manual</li>
-</ul></div>
+<ul><li>“templating” explained in <code><a href="../reference/schola_word2.html">schola_word2()</a></code>, with a link to <code>bookdown</code> manual</li></ul></div>
 <div class="section level3">
 <h3 id="changes-0-2-12">Changes<a class="anchor" aria-label="anchor" href="#changes-0-2-12"></a></h3>
 <ul><li>the main Word template now uses Roboto font everywhere, pages are auto-numbered, ToC is properly formatted, text is justified</li>
@@ -393,12 +388,10 @@
 </ul></div>
 <div class="section level3">
 <h3 id="changes-0-2-11">Changes<a class="anchor" aria-label="anchor" href="#changes-0-2-11"></a></h3>
-<ul><li>template-based project set-up no longer runs redoc so things work on Windows with broken encoding settings</li>
-</ul></div>
+<ul><li>template-based project set-up no longer runs redoc so things work on Windows with broken encoding settings</li></ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-2-11">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-11"></a></h3>
-<ul><li>updated repo URLs in install instructions in README.[R]md</li>
-</ul></div>
+<ul><li>updated repo URLs in install instructions in README.[R]md</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.10" id="reschola-0210">reschola 0.2.10<a class="anchor" aria-label="anchor" href="#reschola-0210"></a></h2>
@@ -518,8 +511,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="reschola-023">reschola 0.2.3<a class="anchor" aria-label="anchor" href="#reschola-023"></a></h2>
-<ul><li>fixed issue which prevented package from loading in some cases</li>
-</ul></div>
+<ul><li>fixed issue which prevented package from loading in some cases</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.2" id="reschola-022">reschola 0.2.2<a class="anchor" aria-label="anchor" href="#reschola-022"></a></h2>
 <ul><li>added the right logos into RStudio template*</li>
@@ -563,7 +555,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer></div>
