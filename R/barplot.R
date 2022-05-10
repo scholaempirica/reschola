@@ -31,8 +31,14 @@
 #'   statistic to smallest (if desc = TRUE)
 #' @param reverse if TRUE, reverse colors
 #' @param facet_label_wrap width of facet label to wrap
-#' @param fill_cols colors to be used for item categories, defaults to NULL, meaning standard RdYlBu palette will be used
-#' @param ...
+#' @param fill_cols colors to be used for item categories, defaults to NULL,
+#'   meaning standard RdYlBu palette will be used
+#' @param drop Drop unobserved levels form the legend? Defaults to `FALSE`. See
+#'   [ggplot2::discrete_scale] for more details.
+#' @param drop_na Drop `NA`s from every item (a.k.a. "pairwise")? Defaults to
+#'   `TRUE`. Note that the number of observations per item may differ, because
+#'   `NA` in one item does not mean the respondent row is discarded completely
+#'   (listwise).
 #'
 #' @inheritDotParams fct_nanify -f -level
 #'
@@ -49,7 +55,7 @@
 #' @importFrom stats median
 #' @importFrom purrr pluck map_dbl
 #' @importFrom ggplot2 waiver
-#' @importFrom tidyr pivot_longer nest
+#' @importFrom tidyr pivot_longer nest drop_na
 #' @importFrom scales percent number
 #' @importFrom RColorBrewer brewer.pal
 #'
@@ -57,13 +63,19 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
                            labels = TRUE, min_label_width = .09, absolute_counts = TRUE,
                            fill_cols = NULL, fill_labels = waiver(), facet_label_wrap = 100,
-                           reverse = FALSE, order_by = "chi-square differences", ...) {
+                           reverse = FALSE, order_by = "chi-square differences",
+                           drop = FALSE, drop_na = TRUE, ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
   order_by <- match.arg(order_by, c("chi-square differences", "weighted total scores"))
   # data --------------------------------------------------------------------
 
   long_data <- .data %>%
     pivot_longer({{ vars }}, names_to = ".item", values_to = ".resp")
+
+  # drop NAs column-wise, not excludig rows with just ANY NA present
+  if (drop_na) {
+    long_data <- long_data %>% drop_na(.resp)
+  }
 
 
   if (order_by == "weighted total scores") {
@@ -176,7 +188,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
       limits = c(0, 1), breaks = axis_x_breaks, expand = expansion()
     ) +
     scale_y_discrete(limits = c(FALSE, TRUE), labels = c("", "*")) +
-    scale_fill_manual(values = legend_cols, labels = fill_labels) +
+    scale_fill_manual(values = legend_cols, labels = fill_labels, drop = drop) +
     guides(fill = guide_legend(
       title = NULL, nrow = 1, reverse = TRUE,
       override.aes = list(size = .75, col = NULL)

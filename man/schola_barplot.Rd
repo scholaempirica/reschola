@@ -20,6 +20,8 @@ schola_barplot(
   facet_label_wrap = 100,
   reverse = FALSE,
   order_by = "chi-square differences",
+  drop = FALSE,
+  drop_na = TRUE,
   ...
 )
 }
@@ -51,7 +53,8 @@ proportions larger than this value are shown, smaller are not.}
 
 \item{absolute_counts}{draw labels and absolute counts in parentheses?}
 
-\item{fill_cols}{colors to be used for item categories, defaults to NULL, meaning standard RdYlBu palette will be used}
+\item{fill_cols}{colors to be used for item categories, defaults to NULL,
+meaning standard RdYlBu palette will be used}
 
 \item{fill_labels}{character vector or function taking breaks and returning
 labels for fill aesthetic}
@@ -63,6 +66,14 @@ labels for fill aesthetic}
 \item{order_by}{how to order the items. chi-square differences (default)
 computes chi-square test for every item and sort them by largest X2
 statistic to smallest (if desc = TRUE)}
+
+\item{drop}{Drop unobserved levels form the legend? Defaults to \code{FALSE}. See
+\link[ggplot2:discrete_scale]{ggplot2::discrete_scale} for more details.}
+
+\item{drop_na}{Drop \code{NA}s from every item (a.k.a. "pairwise")? Defaults to
+\code{TRUE}. Note that the number of observations per item may differ, because
+\code{NA}  in one item does not mean the respondent row is discarded completely
+(listwise).}
 
 \item{...}{
   Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}
