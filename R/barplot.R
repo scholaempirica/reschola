@@ -62,7 +62,7 @@
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
                            labels = TRUE, min_label_width = .09, absolute_counts = TRUE,
-                           fill_cols = NULL, fill_labels = waiver(), facet_label_wrap = 100,
+                           fill_cols = NULL, fill_labels = waiver(), facet_label_wrap = 115,
                            reverse = FALSE, order_by = "chi-square differences",
                            drop = FALSE, drop_na = TRUE, ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
@@ -198,9 +198,9 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
       axis.text.x = element_markdown(hjust = axis_x_hjust, colour = "grey30"), # element_text does not support vectorised input, see https://github.com/tidyverse/ggplot2/issues/3492
       axis.text.y = element_text(size = 18, face = "bold", vjust = .7), # not much appealing, but asterisk suites the plot best according to our focus group
       axis.title = element_blank(),
-      panel.spacing = unit(11, "pt"),
+      panel.spacing = unit(10, "pt"),
       strip.text = element_text(
-        colour = "grey30", size = 9, hjust = 0, vjust = 0,
+        colour = "grey30", size = 10, hjust = 0, vjust = 0,
         margin = margin(0, 0, 3, 1.5)
       ),
       panel.grid.major.x = element_line(colour = "grey88"),
