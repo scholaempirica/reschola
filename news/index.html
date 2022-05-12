@@ -78,7 +78,8 @@
 <li>default top margin of the <code><a href="../reference/theme_schola.html">theme_schola()</a></code> plot enlarged from 1.5 pt to 4 pt to “include” Czech accents like in capital <code>Ř</code>
 </li>
 <li>by default, <code><a href="../reference/theme_schola.html">theme_schola()</a></code> now dictates that the title, subtitle, and caption is rendered via <code><a href="https://wilkelab.org/ggtext/reference/element_textbox.html" class="external-link">ggtext::element_textbox_simple()</a></code> - this provides automatic wrapping to the actual with of the viewport (NOTE: under R 4.2.0, you need <code>gridtext</code> of version &gt; 0.1.4, or the text will be ill-rendered; see <a href="https://github.com/wilkelab/gridtext/pull/25" class="external-link">this PR</a>), the caption will be in condensed typeface and in grey</li>
-<li><code><a href="../reference/theme_schola.html">theme_schola()</a></code></li>
+<li>
+<code><a href="../reference/theme_schola.html">theme_schola()</a></code> puts 6 pt bottom-margins on title and subtitle</li>
 <li>in <code><a href="../reference/schola_barplot.html">schola_barplot()</a></code> item (facet) label text is slightly bigger, default wrap-width is wider (this does not support auto-wrapping due to some bugs in <code>ggplot2</code>)</li>
 <li>
 <code><a href="../reference/schola_labeller.html">schola_labeller()</a></code> understands <code>width = NULL</code>
