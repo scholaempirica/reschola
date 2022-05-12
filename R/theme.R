@@ -121,7 +121,7 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     text = element_text(colour = "grey30"),
     plot.title = element_textbox_simple(
       face = "bold", size = base_size * 1.2, family = title_family,
-      lineheight = 1.1
+      lineheight = 1.1, margin = margin(b = 6)
     ),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = if (grd != "y") element_gridline else element_blank(),
@@ -131,7 +131,7 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     strip.text = element_text(hjust = 0),
     plot.margin = if (margins) margin(t = 4) else base_theme$plot.margin, # top margin because of title grob heigh is incorrect
     strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA) else element_blank(),
-    plot.subtitle = element_textbox_simple(family = "Ubuntu", lineheight = 1.1),
+    plot.subtitle = element_textbox_simple(family = "Ubuntu", lineheight = 1.1,margin = margin(b = 6)),
     plot.caption = element_textbox_simple(
       colour = "grey55", lineheight = 1, halign = 1, margin = margin(t = 5)
     ),

@@ -13,7 +13,7 @@
 - `schola_barplot()` gains a new argument `drop`. When `FALSE` (the default), the levels that are actually not in the data are presented in the legend anyway.
 - default top margin of the `theme_schola()` plot enlarged from 1.5 pt to 4 pt to "include" Czech accents like in capital `Ř`
 - by default, `theme_schola()` now dictates that the title, subtitle, and caption is rendered via `ggtext::element_textbox_simple()` - this provides automatic wrapping to the actual with of the viewport (NOTE: under R 4.2.0, you need `gridtext` of version > 0.1.4, or the text will be ill-rendered; see [this PR](https://github.com/wilkelab/gridtext/pull/25)), the caption will be in condensed typeface and in grey
-- `theme_schola()` 
+- `theme_schola()` puts 6 pt bottom-margins on title and subtitle
 - in `schola_barplot()` item (facet) label text is slightly bigger, default wrap-width is wider (this does not support auto-wrapping due to some bugs in `ggplot2`)
 - `schola_labeller()` understands `width = NULL`
 
