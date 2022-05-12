@@ -17,7 +17,7 @@ schola_barplot(
   absolute_counts = TRUE,
   fill_cols = NULL,
   fill_labels = waiver(),
-  facet_label_wrap = 100,
+  facet_label_wrap = 115,
   reverse = FALSE,
   order_by = "chi-square differences",
   drop = FALSE,
@@ -72,7 +72,7 @@ statistic to smallest (if desc = TRUE)}
 
 \item{drop_na}{Drop \code{NA}s from every item (a.k.a. "pairwise")? Defaults to
 \code{TRUE}. Note that the number of observations per item may differ, because
-\code{NA}  in one item does not mean the respondent row is discarded completely
+\code{NA} in one item does not mean the respondent row is discarded completely
 (listwise).}
 
 \item{...}{

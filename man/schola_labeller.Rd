@@ -10,7 +10,7 @@ schola_labeller(dict, width = 80)
 \item{dict}{code-label dictionary as named character vector, see
 \code{dict_from_data()}}
 
-\item{width}{maximal string length per line}
+\item{width}{maximal string length per line, if \code{NULL}, this is off}
 }
 \value{
 object of class \code{labeller}, to be used in \verb{facet_*} {ggplot2}
