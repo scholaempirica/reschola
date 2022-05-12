@@ -128,8 +128,8 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     panel.grid.major.y = if (grd != "x") element_gridline else element_blank(),
     panel.background = element_rect(fill = bg_col, colour = NA),
     axis.title = if (axis_titles) element_text() else element_blank(),
-    strip.text.x = element_text(hjust = 0),
-    plot.margin = if (margins) margin(t = 1.5) else base_theme$plot.margin, # FIXME generalize to variable base_size
+    strip.text = element_text(hjust = 0),
+    plot.margin = if (margins) margin(t = 4) else base_theme$plot.margin, # top margin because of title grob heigh is incorrect
     strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA) else element_blank(),
     plot.subtitle = element_textbox_simple(family = "Ubuntu", lineheight = 1.1),
     plot.caption = element_textbox_simple(colour = "grey55", lineheight = 1, halign = 1),
