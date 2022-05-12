@@ -131,7 +131,7 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     strip.text = element_text(hjust = 0),
     plot.margin = if (margins) margin(t = 4) else base_theme$plot.margin, # top margin because of title grob heigh is incorrect
     strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA) else element_blank(),
-    plot.subtitle = element_textbox_simple(family = "Ubuntu", lineheight = 1.1,margin = margin(b = 6)),
+    plot.subtitle = element_textbox_simple(family = "Ubuntu", lineheight = 1.1, margin = margin(b = 6)),
     plot.caption = element_textbox_simple(
       colour = "grey55", lineheight = 1, halign = 1, margin = margin(t = 5)
     ),
