@@ -196,7 +196,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     theme_schola("x") +
     theme(
       axis.text.x = element_markdown(hjust = axis_x_hjust, colour = "grey30"), # element_text does not support vectorised input, see https://github.com/tidyverse/ggplot2/issues/3492
-      axis.text.y = element_text(size = 18, face = "bold", vjust = .7), # not much appealing, but asterisk suites the plot best according to our focus group
+      axis.text.y = element_text(size = 18, face = "bold", vjust = .73), # not much appealing, but asterisk suites the plot best according to our focus group
       axis.title = element_blank(),
       panel.spacing = unit(10, "pt"),
       strip.text = element_text(
