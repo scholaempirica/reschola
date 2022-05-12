@@ -217,7 +217,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
 #'
 #' @param dict code-label dictionary as named character vector, see
 #'   `dict_from_data()`
-#' @param width maximal string length per line
+#' @param width maximal string length per line, if `NULL`, this is off
 #'
 #' @return object of class `labeller`, to be used in `facet_*` {ggplot2}
 #'   functions.
@@ -243,9 +243,12 @@ schola_labeller <- function(dict, width = 80) {
       out
     })
 
-    lapply(labels, function(label) {
-      str_wrap(label, width = width)
-    })
+    if (!is.null(width)) {
+      labels <- lapply(labels, function(label) {
+        str_wrap(label, width = width)
+      })
+    }
+    labels
   }
   structure(fun, class = "labeller")
 }
