@@ -94,6 +94,7 @@
 #'   labs(title = "Lots of cars", subtitle = "Point by point") +
 #'   theme(panel.background = element_rect(fill = "lightpink"))
 #' @import ggplot2
+#' @importFrom ggtext element_textbox_simple
 #' @export
 theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size = 11,
                          family = "Ubuntu Condensed", title_family = "Ubuntu",
@@ -118,7 +119,10 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
   schola_theme <- theme(
     plot.title.position = plot.title.position,
     text = element_text(colour = "grey30"),
-    plot.title = element_text(face = "bold", size = base_size * 1.2, family = title_family),
+    plot.title = element_textbox_simple(
+      face = "bold", size = base_size * 1.2, family = title_family,
+      lineheight = 1.1
+    ),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = if (grd != "y") element_gridline else element_blank(),
     panel.grid.major.y = if (grd != "x") element_gridline else element_blank(),
@@ -127,6 +131,8 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     strip.text.x = element_text(hjust = 0),
     plot.margin = if (margins) margin(t = 1.5) else base_theme$plot.margin, # FIXME generalize to variable base_size
     strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA) else element_blank(),
+    plot.subtitle = element_textbox_simple(family = "Ubuntu", lineheight = 1.1),
+    plot.caption = element_textbox_simple(colour = "grey55", lineheight = 1, halign = 1),
     ...
   )
   base_theme + schola_theme
