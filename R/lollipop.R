@@ -172,8 +172,6 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
     ylab(NULL) +
     theme_schola("x") +
     theme(
-      plot.subtitle = element_markdown(lineheight = 1.1),
-      # axis.title.x = element_markdown(),
       panel.grid.minor.x = element_line(colour = "grey92", size = .15)
     )
 }
