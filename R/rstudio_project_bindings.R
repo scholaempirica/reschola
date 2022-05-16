@@ -58,6 +58,8 @@ schola_project <- function(path, ...) {
   "  message(\"Processing \", path_file(script))",
   "  source(script, local = TRUE, encoding = \"UTF-8\")",
   "}",
+  "",
+  "message(\"Done! Check the warnings if any!\")",
   sep = "\n\n"
   )
 
@@ -145,7 +147,7 @@ schola_project <- function(path, ...) {
     # set URL into .Rprofile
     writeLines(str_glue(
       "# project's Google Drive URL\n.gd_proj_url <- \"{dots$drive_folder}\"\n\n",
-      "source(path.expand(\"~/.Rprofile\"))"
+      "# source user-scoped .Rprofile, if exists\nif (file.exists(path.expand(\"~/.Rprofile\"))) source(path.expand(\"~/.Rprofile\"))"
     ),
     con = ".Rprofile"
     )
