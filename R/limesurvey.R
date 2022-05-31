@@ -686,17 +686,19 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 #'
 #' @examples
 ls_copy_survey <- function(survey_id, new_name = NULL) {
-    survey_list <- ls_surveys()
+  survey_list <- ls_surveys()
 
 
 
   if (is.null(new_name)) {
-    new_name <- survey_list %>% filter(survey_id == survey_id) %>% pull(title)
+    new_name <- survey_list %>%
+      filter(survey_id == survey_id) %>%
+      pull(title)
   }
 
-    same_title_surveys <- survey_list %>% filter(title == new_name)
+  same_title_surveys <- survey_list %>% filter(title == new_name)
 
-    if (nrow(same_title_surveys) != 0) stop("This survey title is already taken. Pick a new one.", call. = FALSE)
+  if (nrow(same_title_surveys) != 0) stop("This survey title is already taken. Pick a new one.", call. = FALSE)
 
   ls_call("copy_survey", params = list(
     iSurveyID_org = original_survey,
@@ -711,7 +713,9 @@ ls_copy_survey <- function(survey_id, new_name = NULL) {
 #' @param title
 #'
 check_for_duplicate_title <- function(survey_list, title) {
-  survey_list %>% pull(title) %>% n_distinct()
+  survey_list %>%
+    pull(title) %>%
+    n_distinct()
 }
 
 
