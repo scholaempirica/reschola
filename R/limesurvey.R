@@ -480,7 +480,7 @@ ls_check_attributes <- function(attributes) {
 #'
 #' @export
 ls_get_attrs <- function(survey_id) {
-  attrs <- ls_call("get_survey_properties", params = list(iSurveyID = survey_id)) %>%
+  attrs <- ls_get_survey_properties(survey_id = survey_id) %>%
     pluck("attributedescriptions")
 
   if (is.null(attrs) || is.na(attrs)) {
@@ -491,6 +491,20 @@ ls_get_attrs <- function(survey_id) {
   attrs %>%
     fromJSON() %>%
     map_chr("description")
+}
+
+
+#' Get Survey Properties
+#'
+#' @param survey_id *integer*, ID of the survey (as found, e.g., with
+#'   `ls_surveys()`).
+#'
+#' @return A tibble with all available properties of given survey.
+#' @export
+#'
+#' @examples
+ls_get_survey_properties <- function(survey_id) {
+  ls_call("get_survey_properties", params = list(iSurveyID = survey_id))
 }
 
 
@@ -656,6 +670,55 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
     )
   )
 }
+
+
+
+
+#' Make a Copy of Existing Survey
+#'
+#' @param survey_id *integer/character*, ID of the survey (as found with, e.g.,
+#'   `ls_surveys()`, e.g.).
+#' @param new_name *character*, the name of the new survey. If `NULL` (the default),
+#' you will be reminded of the name of the original survey being copied.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+ls_copy_survey <- function(survey_id, new_name = NULL) {
+    survey_list <- ls_surveys()
+
+
+
+  if (is.null(new_name)) {
+    new_name <- survey_list %>% filter(survey_id == survey_id) %>% pull(title)
+  }
+
+    same_title_surveys <- survey_list %>% filter(title == new_name)
+
+    if (nrow(same_title_surveys) != 0) stop("This survey title is already taken. Pick a new one.", call. = FALSE)
+
+  ls_call("copy_survey", params = list(
+    iSurveyID_org = original_survey,
+    sNewname = new_name
+  ))
+}
+
+
+#' Check if new survey name is not taken
+#'
+#' @param survey_list
+#' @param title
+#'
+check_for_duplicate_title <- function(survey_list, title) {
+  survey_list %>% pull(title) %>% n_distinct()
+}
+
+
+
+a <- ls_call("get_survey_properties", list(iSurveyID = 381391)) %>% pluck("gsid")
+ls_call("get_group_properties", list(iGroupID = 6))
+
 
 
 # ls_get_participant_properties <- function(survey_id, tid) {
