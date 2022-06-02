@@ -414,19 +414,19 @@ p <- ggplot(mpg) +
 # using `theme_schola()` defaults
 
 p +
-  theme_schola("x")
+  theme_schola("x", family = "sans", title_family = "sans")
 
 # in combination with `flush_axis`:
 
 p +
-  theme_schola("x") +
+  theme_schola("x", family = "sans", title_family = "sans") +
   scale_x_continuous(expand = flush_axis)
 
 # scatter
 
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
-  theme_schola("scatter") +
+  theme_schola("scatter", family = "sans", title_family = "sans") +
   labs(title = "Lots of cars", subtitle = "Point by point")
 
 # Smaller text, flush alignment
@@ -434,7 +434,7 @@ ggplot(mpg) +
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
   theme_schola("scatter",
-    base_size = 9
+    base_size = 9, family = "sans", title_family = "sans"
   ) +
   labs(title = "Lots of cars", subtitle = "Point by point")
 
@@ -443,7 +443,7 @@ ggplot(mpg) +
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
   theme_schola("scatter",
-    base_size = 9
+    base_size = 9, family = "sans", title_family = "sans"
   ) +
   labs(title = "Lots of cars", subtitle = "Point by point") +
   theme(panel.background = element_rect(fill = "lightpink"))

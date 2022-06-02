@@ -62,19 +62,19 @@
 #' # using `theme_schola()` defaults
 #'
 #' p +
-#'   theme_schola("x")
+#'   theme_schola("x", family = "sans", title_family = "sans")
 #'
 #' # in combination with `flush_axis`:
 #'
 #' p +
-#'   theme_schola("x") +
+#'   theme_schola("x", family = "sans", title_family = "sans") +
 #'   scale_x_continuous(expand = flush_axis)
 #'
 #' # scatter
 #'
 #' ggplot(mpg) +
 #'   geom_point(aes(cty, hwy)) +
-#'   theme_schola("scatter") +
+#'   theme_schola("scatter", family = "sans", title_family = "sans") +
 #'   labs(title = "Lots of cars", subtitle = "Point by point")
 #'
 #' # Smaller text, flush alignment
@@ -82,7 +82,7 @@
 #' ggplot(mpg) +
 #'   geom_point(aes(cty, hwy)) +
 #'   theme_schola("scatter",
-#'     base_size = 9
+#'     base_size = 9, family = "sans", title_family = "sans"
 #'   ) +
 #'   labs(title = "Lots of cars", subtitle = "Point by point")
 #'
@@ -91,7 +91,7 @@
 #' ggplot(mpg) +
 #'   geom_point(aes(cty, hwy)) +
 #'   theme_schola("scatter",
-#'     base_size = 9
+#'     base_size = 9, family = "sans", title_family = "sans"
 #'   ) +
 #'   labs(title = "Lots of cars", subtitle = "Point by point") +
 #'   theme(panel.background = element_rect(fill = "lightpink"))
@@ -133,7 +133,7 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     strip.text = element_text(hjust = 0),
     plot.margin = if (margins) margin(t = 4) else base_theme$plot.margin, # top margin because of title grob heigh is incorrect
     strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA) else element_blank(),
-    plot.subtitle = element_textbox_simple(family = "Ubuntu", lineheight = 1.1, margin = margin(b = 6)),
+    plot.subtitle = element_textbox_simple(family = title_family, lineheight = 1.1, margin = margin(b = 6)),
     plot.caption = element_textbox_simple(
       colour = "grey55", lineheight = 1, halign = 1, margin = margin(t = 5)
     ),
