@@ -357,7 +357,7 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
 
   # clean the labels, keeping only the content inside [ ], if there is one
   labels <- if (clean_labels) {
-    str_replace(labels, ".*?\\[(.*?)\\].*", "\\1")
+    str_replace(labels, ".*?\\[(.*)\\].*", "\\1")
   } else {
     labels
   }

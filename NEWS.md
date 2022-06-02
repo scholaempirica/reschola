@@ -7,6 +7,7 @@
 
 ## Changes
 
+- question label cleaning keeps right inner `]` untouched
 - `schola_barplot()` gains a new argument `fill_cols`, so you can override the default palette (`RColorBrewer::brewer.pal(5, "RdYlBu") `, which is suitable only for 5point scales)
 - `schola_barplot()` now understands `escape_level = FALSE` in which case the grey color is not used as they are no escape level or category to mark
 - `schola_barplot()` now ignores `NA`s in a "pairwise" manner, without completely discarding the compromised row. Turn this behavior off with `drop_na = FALSE`.
