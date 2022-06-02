@@ -398,10 +398,12 @@ like any font, using files in the directories described in the
 \examples{
 library(ggplot2)
 
-# NB when `theme_schola()` is used in these examples, fonts
+# NOTE when `theme_schola()` is used in these examples, fonts
 # are set to 'sans' to pass checks on computers without the
 # Ubuntu included. If you have these fonts (see Note) you can
 # leave these parameters at their default values.
+
+use_reschola_fonts("sans")
 
 # the basic plot for illustration, theme not used
 
@@ -412,19 +414,19 @@ p <- ggplot(mpg) +
 # using `theme_schola()` defaults
 
 p +
-  theme_schola("x", family = "sans", title_family = "sans")
+  theme_schola("x")
 
 # in combination with `flush_axis`:
 
 p +
-  theme_schola("x", family = "sans", title_family = "sans") +
+  theme_schola("x") +
   scale_x_continuous(expand = flush_axis)
 
 # scatter
 
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
-  theme_schola("scatter", family = "sans", title_family = "sans") +
+  theme_schola("scatter") +
   labs(title = "Lots of cars", subtitle = "Point by point")
 
 # Smaller text, flush alignment
@@ -432,7 +434,7 @@ ggplot(mpg) +
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
   theme_schola("scatter",
-    base_size = 9, family = "sans", title_family = "sans"
+    base_size = 9
   ) +
   labs(title = "Lots of cars", subtitle = "Point by point")
 
@@ -441,7 +443,7 @@ ggplot(mpg) +
 ggplot(mpg) +
   geom_point(aes(cty, hwy)) +
   theme_schola("scatter",
-    base_size = 9, family = "sans", title_family = "sans"
+    base_size = 9
   ) +
   labs(title = "Lots of cars", subtitle = "Point by point") +
   theme(panel.background = element_rect(fill = "lightpink"))
