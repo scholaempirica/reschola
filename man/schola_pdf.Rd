@@ -106,12 +106,14 @@ details first.
 \section{Package \code{babel} hyphenation warning}{
 
 You may encounter a following warning when your document is being "compiled"
-to \code{.pdf} format:\preformatted{Warning: Package babel Warning: No hyphenation patterns were preloaded for
+to \code{.pdf} format:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{Warning: Package babel Warning: No hyphenation patterns were preloaded for
 Warning: (babel)                the language 'Czech' into the format.
 Warning: (babel)                Please, configure your TeX system to add them and
 Warning: (babel)                rebuild the format. Now I will use the patterns
 Warning: (babel)                preloaded for \\language=0 instead on input line 53.
-}
+}\if{html}{\out{</div>}}
 
 This usually solves by calling \code{tinytex::tlmgr_install("hyphen-czech")} (if
 you are a \code{{tinytex}} user).

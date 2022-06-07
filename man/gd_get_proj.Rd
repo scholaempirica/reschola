@@ -21,8 +21,10 @@ version 0.4.0.
 \section{Legacy usage prior to \{reschola\} version 0.4.0}{
 
 Call \code{usethis::edit_r_profile(scope = "project")} and write (note the dot
-prefix):\preformatted{.gd_proj_url <- "your_google_drive_url"
-}
+prefix):
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{.gd_proj_url <- "your_google_drive_url"
+}\if{html}{\out{</div>}}
 
 Note that \strong{you have to restart your R session to apply any changes}. Note
 also that \strong{the URL cannot contain any query} (parts with a leading

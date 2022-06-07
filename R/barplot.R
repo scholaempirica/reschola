@@ -204,7 +204,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
         margin = margin(0, 0, 3, 1.5)
       ),
       panel.grid.major.x = element_line(colour = "grey88"),
-      legend.position = "top"
+      legend.position = "bottom"
     )
   # FIXME - set xlim to accommodate strlen of labels
 }

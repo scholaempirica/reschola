@@ -41,202 +41,44 @@ created using \verb{facet_*}.}
 \item{...}{
   Arguments passed on to \code{\link[ggplot2:theme]{ggplot2::theme}}
   \describe{
-    \item{\code{line}}{all line elements (\code{\link[ggplot2:element]{element_line()}})}
-    \item{\code{rect}}{all rectangular elements (\code{\link[ggplot2:element]{element_rect()}})}
-    \item{\code{title}}{all title elements: plot, axes, legends (\code{\link[ggplot2:element]{element_text()}};
+    \item{\code{line}}{all line elements (\code{\link[ggplot2:element_line]{element_line()}})}
+    \item{\code{rect}}{all rectangular elements (\code{\link[ggplot2:element_rect]{element_rect()}})}
+    \item{\code{title}}{all title elements: plot, axes, legends (\code{\link[ggplot2:element_text]{element_text()}};
 inherits from \code{text})}
     \item{\code{aspect.ratio}}{aspect ratio of the panel}
-    \item{\code{axis.title.x}}{labels of axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axes' labels (\code{axis.title}),
-labels by plane (using \code{axis.title.x} or \code{axis.title.y}), or individually
-for each axis (using \code{axis.title.x.bottom}, \code{axis.title.x.top},
-\code{axis.title.y.left}, \code{axis.title.y.right}). \verb{axis.title.*.*} inherits from
-\verb{axis.title.*} which inherits from \code{axis.title}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.title.y}}{labels of axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axes' labels (\code{axis.title}),
-labels by plane (using \code{axis.title.x} or \code{axis.title.y}), or individually
-for each axis (using \code{axis.title.x.bottom}, \code{axis.title.x.top},
-\code{axis.title.y.left}, \code{axis.title.y.right}). \verb{axis.title.*.*} inherits from
-\verb{axis.title.*} which inherits from \code{axis.title}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.title.x.top}}{labels of axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axes' labels (\code{axis.title}),
-labels by plane (using \code{axis.title.x} or \code{axis.title.y}), or individually
-for each axis (using \code{axis.title.x.bottom}, \code{axis.title.x.top},
-\code{axis.title.y.left}, \code{axis.title.y.right}). \verb{axis.title.*.*} inherits from
-\verb{axis.title.*} which inherits from \code{axis.title}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.title.x.bottom}}{labels of axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axes' labels (\code{axis.title}),
-labels by plane (using \code{axis.title.x} or \code{axis.title.y}), or individually
-for each axis (using \code{axis.title.x.bottom}, \code{axis.title.x.top},
-\code{axis.title.y.left}, \code{axis.title.y.right}). \verb{axis.title.*.*} inherits from
-\verb{axis.title.*} which inherits from \code{axis.title}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.title.y.left}}{labels of axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axes' labels (\code{axis.title}),
-labels by plane (using \code{axis.title.x} or \code{axis.title.y}), or individually
-for each axis (using \code{axis.title.x.bottom}, \code{axis.title.x.top},
-\code{axis.title.y.left}, \code{axis.title.y.right}). \verb{axis.title.*.*} inherits from
-\verb{axis.title.*} which inherits from \code{axis.title}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.title.y.right}}{labels of axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axes' labels (\code{axis.title}),
-labels by plane (using \code{axis.title.x} or \code{axis.title.y}), or individually
-for each axis (using \code{axis.title.x.bottom}, \code{axis.title.x.top},
-\code{axis.title.y.left}, \code{axis.title.y.right}). \verb{axis.title.*.*} inherits from
-\verb{axis.title.*} which inherits from \code{axis.title}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.text}}{tick labels along axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
+    \item{\code{axis.text,axis.text.x,axis.text.y,axis.text.x.top,axis.text.x.bottom,axis.text.y.left,axis.text.y.right}}{tick labels along axes (\code{\link[ggplot2:element_text]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
 tick labels by plane (using \code{axis.text.x} or \code{axis.text.y}), or individually
 for each axis (using \code{axis.text.x.bottom}, \code{axis.text.x.top},
 \code{axis.text.y.left}, \code{axis.text.y.right}). \verb{axis.text.*.*} inherits from
 \verb{axis.text.*} which inherits from \code{axis.text}, which in turn inherits
 from \code{text}}
-    \item{\code{axis.text.x}}{tick labels along axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
-tick labels by plane (using \code{axis.text.x} or \code{axis.text.y}), or individually
-for each axis (using \code{axis.text.x.bottom}, \code{axis.text.x.top},
-\code{axis.text.y.left}, \code{axis.text.y.right}). \verb{axis.text.*.*} inherits from
-\verb{axis.text.*} which inherits from \code{axis.text}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.text.y}}{tick labels along axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
-tick labels by plane (using \code{axis.text.x} or \code{axis.text.y}), or individually
-for each axis (using \code{axis.text.x.bottom}, \code{axis.text.x.top},
-\code{axis.text.y.left}, \code{axis.text.y.right}). \verb{axis.text.*.*} inherits from
-\verb{axis.text.*} which inherits from \code{axis.text}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.text.x.top}}{tick labels along axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
-tick labels by plane (using \code{axis.text.x} or \code{axis.text.y}), or individually
-for each axis (using \code{axis.text.x.bottom}, \code{axis.text.x.top},
-\code{axis.text.y.left}, \code{axis.text.y.right}). \verb{axis.text.*.*} inherits from
-\verb{axis.text.*} which inherits from \code{axis.text}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.text.x.bottom}}{tick labels along axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
-tick labels by plane (using \code{axis.text.x} or \code{axis.text.y}), or individually
-for each axis (using \code{axis.text.x.bottom}, \code{axis.text.x.top},
-\code{axis.text.y.left}, \code{axis.text.y.right}). \verb{axis.text.*.*} inherits from
-\verb{axis.text.*} which inherits from \code{axis.text}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.text.y.left}}{tick labels along axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
-tick labels by plane (using \code{axis.text.x} or \code{axis.text.y}), or individually
-for each axis (using \code{axis.text.x.bottom}, \code{axis.text.x.top},
-\code{axis.text.y.left}, \code{axis.text.y.right}). \verb{axis.text.*.*} inherits from
-\verb{axis.text.*} which inherits from \code{axis.text}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.text.y.right}}{tick labels along axes (\code{\link[ggplot2:element]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
-tick labels by plane (using \code{axis.text.x} or \code{axis.text.y}), or individually
-for each axis (using \code{axis.text.x.bottom}, \code{axis.text.x.top},
-\code{axis.text.y.left}, \code{axis.text.y.right}). \verb{axis.text.*.*} inherits from
-\verb{axis.text.*} which inherits from \code{axis.text}, which in turn inherits
-from \code{text}}
-    \item{\code{axis.ticks}}{tick marks along axes (\code{\link[ggplot2:element]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
+    \item{\code{axis.ticks,axis.ticks.x,axis.ticks.x.top,axis.ticks.x.bottom,axis.ticks.y,axis.ticks.y.left,axis.ticks.y.right}}{tick marks along axes (\code{\link[ggplot2:element_line]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
 ticks by plane (using \code{axis.ticks.x} or \code{axis.ticks.y}), or individually
 for each axis (using \code{axis.ticks.x.bottom}, \code{axis.ticks.x.top},
 \code{axis.ticks.y.left}, \code{axis.ticks.y.right}). \verb{axis.ticks.*.*} inherits from
 \verb{axis.ticks.*} which inherits from \code{axis.ticks}, which in turn inherits
 from \code{line}}
-    \item{\code{axis.ticks.x}}{tick marks along axes (\code{\link[ggplot2:element]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
-ticks by plane (using \code{axis.ticks.x} or \code{axis.ticks.y}), or individually
-for each axis (using \code{axis.ticks.x.bottom}, \code{axis.ticks.x.top},
-\code{axis.ticks.y.left}, \code{axis.ticks.y.right}). \verb{axis.ticks.*.*} inherits from
-\verb{axis.ticks.*} which inherits from \code{axis.ticks}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.ticks.x.top}}{tick marks along axes (\code{\link[ggplot2:element]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
-ticks by plane (using \code{axis.ticks.x} or \code{axis.ticks.y}), or individually
-for each axis (using \code{axis.ticks.x.bottom}, \code{axis.ticks.x.top},
-\code{axis.ticks.y.left}, \code{axis.ticks.y.right}). \verb{axis.ticks.*.*} inherits from
-\verb{axis.ticks.*} which inherits from \code{axis.ticks}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.ticks.x.bottom}}{tick marks along axes (\code{\link[ggplot2:element]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
-ticks by plane (using \code{axis.ticks.x} or \code{axis.ticks.y}), or individually
-for each axis (using \code{axis.ticks.x.bottom}, \code{axis.ticks.x.top},
-\code{axis.ticks.y.left}, \code{axis.ticks.y.right}). \verb{axis.ticks.*.*} inherits from
-\verb{axis.ticks.*} which inherits from \code{axis.ticks}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.ticks.y}}{tick marks along axes (\code{\link[ggplot2:element]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
-ticks by plane (using \code{axis.ticks.x} or \code{axis.ticks.y}), or individually
-for each axis (using \code{axis.ticks.x.bottom}, \code{axis.ticks.x.top},
-\code{axis.ticks.y.left}, \code{axis.ticks.y.right}). \verb{axis.ticks.*.*} inherits from
-\verb{axis.ticks.*} which inherits from \code{axis.ticks}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.ticks.y.left}}{tick marks along axes (\code{\link[ggplot2:element]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
-ticks by plane (using \code{axis.ticks.x} or \code{axis.ticks.y}), or individually
-for each axis (using \code{axis.ticks.x.bottom}, \code{axis.ticks.x.top},
-\code{axis.ticks.y.left}, \code{axis.ticks.y.right}). \verb{axis.ticks.*.*} inherits from
-\verb{axis.ticks.*} which inherits from \code{axis.ticks}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.ticks.y.right}}{tick marks along axes (\code{\link[ggplot2:element]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
-ticks by plane (using \code{axis.ticks.x} or \code{axis.ticks.y}), or individually
-for each axis (using \code{axis.ticks.x.bottom}, \code{axis.ticks.x.top},
-\code{axis.ticks.y.left}, \code{axis.ticks.y.right}). \verb{axis.ticks.*.*} inherits from
-\verb{axis.ticks.*} which inherits from \code{axis.ticks}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.ticks.length}}{length of tick marks (\code{unit})}
-    \item{\code{axis.ticks.length.x}}{length of tick marks (\code{unit})}
-    \item{\code{axis.ticks.length.x.top}}{length of tick marks (\code{unit})}
-    \item{\code{axis.ticks.length.x.bottom}}{length of tick marks (\code{unit})}
-    \item{\code{axis.ticks.length.y}}{length of tick marks (\code{unit})}
-    \item{\code{axis.ticks.length.y.left}}{length of tick marks (\code{unit})}
-    \item{\code{axis.ticks.length.y.right}}{length of tick marks (\code{unit})}
-    \item{\code{axis.line}}{lines along axes (\code{\link[ggplot2:element]{element_line()}}). Specify lines along all axes (\code{axis.line}),
+    \item{\code{axis.ticks.length,axis.ticks.length.x,axis.ticks.length.x.top,axis.ticks.length.x.bottom,axis.ticks.length.y,axis.ticks.length.y.left,axis.ticks.length.y.right}}{length of tick marks (\code{unit})}
+    \item{\code{axis.line,axis.line.x,axis.line.x.top,axis.line.x.bottom,axis.line.y,axis.line.y.left,axis.line.y.right}}{lines along axes (\code{\link[ggplot2:element_line]{element_line()}}). Specify lines along all axes (\code{axis.line}),
 lines for each plane (using \code{axis.line.x} or \code{axis.line.y}), or individually
 for each axis (using \code{axis.line.x.bottom}, \code{axis.line.x.top},
 \code{axis.line.y.left}, \code{axis.line.y.right}). \verb{axis.line.*.*} inherits from
 \verb{axis.line.*} which inherits from \code{axis.line}, which in turn inherits
 from \code{line}}
-    \item{\code{axis.line.x}}{lines along axes (\code{\link[ggplot2:element]{element_line()}}). Specify lines along all axes (\code{axis.line}),
-lines for each plane (using \code{axis.line.x} or \code{axis.line.y}), or individually
-for each axis (using \code{axis.line.x.bottom}, \code{axis.line.x.top},
-\code{axis.line.y.left}, \code{axis.line.y.right}). \verb{axis.line.*.*} inherits from
-\verb{axis.line.*} which inherits from \code{axis.line}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.line.x.top}}{lines along axes (\code{\link[ggplot2:element]{element_line()}}). Specify lines along all axes (\code{axis.line}),
-lines for each plane (using \code{axis.line.x} or \code{axis.line.y}), or individually
-for each axis (using \code{axis.line.x.bottom}, \code{axis.line.x.top},
-\code{axis.line.y.left}, \code{axis.line.y.right}). \verb{axis.line.*.*} inherits from
-\verb{axis.line.*} which inherits from \code{axis.line}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.line.x.bottom}}{lines along axes (\code{\link[ggplot2:element]{element_line()}}). Specify lines along all axes (\code{axis.line}),
-lines for each plane (using \code{axis.line.x} or \code{axis.line.y}), or individually
-for each axis (using \code{axis.line.x.bottom}, \code{axis.line.x.top},
-\code{axis.line.y.left}, \code{axis.line.y.right}). \verb{axis.line.*.*} inherits from
-\verb{axis.line.*} which inherits from \code{axis.line}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.line.y}}{lines along axes (\code{\link[ggplot2:element]{element_line()}}). Specify lines along all axes (\code{axis.line}),
-lines for each plane (using \code{axis.line.x} or \code{axis.line.y}), or individually
-for each axis (using \code{axis.line.x.bottom}, \code{axis.line.x.top},
-\code{axis.line.y.left}, \code{axis.line.y.right}). \verb{axis.line.*.*} inherits from
-\verb{axis.line.*} which inherits from \code{axis.line}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.line.y.left}}{lines along axes (\code{\link[ggplot2:element]{element_line()}}). Specify lines along all axes (\code{axis.line}),
-lines for each plane (using \code{axis.line.x} or \code{axis.line.y}), or individually
-for each axis (using \code{axis.line.x.bottom}, \code{axis.line.x.top},
-\code{axis.line.y.left}, \code{axis.line.y.right}). \verb{axis.line.*.*} inherits from
-\verb{axis.line.*} which inherits from \code{axis.line}, which in turn inherits
-from \code{line}}
-    \item{\code{axis.line.y.right}}{lines along axes (\code{\link[ggplot2:element]{element_line()}}). Specify lines along all axes (\code{axis.line}),
-lines for each plane (using \code{axis.line.x} or \code{axis.line.y}), or individually
-for each axis (using \code{axis.line.x.bottom}, \code{axis.line.x.top},
-\code{axis.line.y.left}, \code{axis.line.y.right}). \verb{axis.line.*.*} inherits from
-\verb{axis.line.*} which inherits from \code{axis.line}, which in turn inherits
-from \code{line}}
-    \item{\code{legend.background}}{background of legend (\code{\link[ggplot2:element]{element_rect()}}; inherits
+    \item{\code{legend.background}}{background of legend (\code{\link[ggplot2:element_rect]{element_rect()}}; inherits
 from \code{rect})}
-    \item{\code{legend.margin}}{the margin around each legend (\code{\link[ggplot2:element]{margin()}})}
-    \item{\code{legend.spacing}}{the spacing between legends (\code{unit}). \code{legend.spacing.x} & \code{legend.spacing.y}
+    \item{\code{legend.margin}}{the margin around each legend (\code{\link[ggplot2:margin]{margin()}})}
+    \item{\code{legend.spacing,legend.spacing.x,legend.spacing.y}}{the spacing between legends (\code{unit}). \code{legend.spacing.x} & \code{legend.spacing.y}
 inherit from \code{legend.spacing} or can be specified separately}
-    \item{\code{legend.spacing.x}}{the spacing between legends (\code{unit}). \code{legend.spacing.x} & \code{legend.spacing.y}
-inherit from \code{legend.spacing} or can be specified separately}
-    \item{\code{legend.spacing.y}}{the spacing between legends (\code{unit}). \code{legend.spacing.x} & \code{legend.spacing.y}
-inherit from \code{legend.spacing} or can be specified separately}
-    \item{\code{legend.key}}{background underneath legend keys (\code{\link[ggplot2:element]{element_rect()}};
+    \item{\code{legend.key}}{background underneath legend keys (\code{\link[ggplot2:element_rect]{element_rect()}};
 inherits from \code{rect})}
-    \item{\code{legend.key.size}}{size of legend keys (\code{unit}); key background height & width inherit from
+    \item{\code{legend.key.size,legend.key.height,legend.key.width}}{size of legend keys (\code{unit}); key background height & width inherit from
 \code{legend.key.size} or can be specified separately}
-    \item{\code{legend.key.height}}{size of legend keys (\code{unit}); key background height & width inherit from
-\code{legend.key.size} or can be specified separately}
-    \item{\code{legend.key.width}}{size of legend keys (\code{unit}); key background height & width inherit from
-\code{legend.key.size} or can be specified separately}
-    \item{\code{legend.text}}{legend item labels (\code{\link[ggplot2:element]{element_text()}}; inherits from
+    \item{\code{legend.text}}{legend item labels (\code{\link[ggplot2:element_text]{element_text()}}; inherits from
 \code{text})}
     \item{\code{legend.text.align}}{alignment of legend labels (number from 0 (left) to
 1 (right))}
-    \item{\code{legend.title}}{title of legend (\code{\link[ggplot2:element]{element_text()}}; inherits from
+    \item{\code{legend.title}}{title of legend (\code{\link[ggplot2:element_text]{element_text()}}; inherits from
 \code{title})}
     \item{\code{legend.title.align}}{alignment of legend title (number from 0 (left) to
 1 (right))}
@@ -253,88 +95,39 @@ the plot area when positioned outside the plot}
 bounding box, when there are multiple legends ("top", "bottom", "left", or
 "right")}
     \item{\code{legend.box.margin}}{margins around the full legend area, as specified
-using \code{\link[ggplot2:element]{margin()}}}
-    \item{\code{legend.box.background}}{background of legend area (\code{\link[ggplot2:element]{element_rect()}};
+using \code{\link[ggplot2:margin]{margin()}}}
+    \item{\code{legend.box.background}}{background of legend area (\code{\link[ggplot2:element_rect]{element_rect()}};
 inherits from \code{rect})}
     \item{\code{legend.box.spacing}}{The spacing between the plotting area and the
 legend box (\code{unit})}
     \item{\code{panel.border}}{border around plotting area, drawn on top of plot so that
 it covers tick marks and grid lines. This should be used with
 \code{fill = NA}
-(\code{\link[ggplot2:element]{element_rect()}}; inherits from \code{rect})}
-    \item{\code{panel.spacing}}{spacing between facet
+(\code{\link[ggplot2:element_rect]{element_rect()}}; inherits from \code{rect})}
+    \item{\code{panel.spacing,panel.spacing.x,panel.spacing.y}}{spacing between facet
 panels (\code{unit}). \code{panel.spacing.x} & \code{panel.spacing.y} inherit from \code{panel.spacing}
 or can be specified separately.}
-    \item{\code{panel.spacing.x}}{spacing between facet
-panels (\code{unit}). \code{panel.spacing.x} & \code{panel.spacing.y} inherit from \code{panel.spacing}
-or can be specified separately.}
-    \item{\code{panel.spacing.y}}{spacing between facet
-panels (\code{unit}). \code{panel.spacing.x} & \code{panel.spacing.y} inherit from \code{panel.spacing}
-or can be specified separately.}
-    \item{\code{panel.grid}}{grid lines (\code{\link[ggplot2:element]{element_line()}}). Specify major grid lines,
-or minor grid lines separately (using \code{panel.grid.major} or \code{panel.grid.minor})
-or individually for each axis (using \code{panel.grid.major.x}, \code{panel.grid.minor.x},
-\code{panel.grid.major.y}, \code{panel.grid.minor.y}).  Y axis grid lines are horizontal
-and x axis grid lines are vertical. \verb{panel.grid.*.*} inherits from
-\verb{panel.grid.*} which inherits from \code{panel.grid}, which in turn inherits
-from \code{line}}
-    \item{\code{panel.grid.major}}{grid lines (\code{\link[ggplot2:element]{element_line()}}). Specify major grid lines,
-or minor grid lines separately (using \code{panel.grid.major} or \code{panel.grid.minor})
-or individually for each axis (using \code{panel.grid.major.x}, \code{panel.grid.minor.x},
-\code{panel.grid.major.y}, \code{panel.grid.minor.y}).  Y axis grid lines are horizontal
-and x axis grid lines are vertical. \verb{panel.grid.*.*} inherits from
-\verb{panel.grid.*} which inherits from \code{panel.grid}, which in turn inherits
-from \code{line}}
-    \item{\code{panel.grid.major.x}}{grid lines (\code{\link[ggplot2:element]{element_line()}}). Specify major grid lines,
-or minor grid lines separately (using \code{panel.grid.major} or \code{panel.grid.minor})
-or individually for each axis (using \code{panel.grid.major.x}, \code{panel.grid.minor.x},
-\code{panel.grid.major.y}, \code{panel.grid.minor.y}).  Y axis grid lines are horizontal
-and x axis grid lines are vertical. \verb{panel.grid.*.*} inherits from
-\verb{panel.grid.*} which inherits from \code{panel.grid}, which in turn inherits
-from \code{line}}
-    \item{\code{panel.grid.minor.x}}{grid lines (\code{\link[ggplot2:element]{element_line()}}). Specify major grid lines,
-or minor grid lines separately (using \code{panel.grid.major} or \code{panel.grid.minor})
-or individually for each axis (using \code{panel.grid.major.x}, \code{panel.grid.minor.x},
-\code{panel.grid.major.y}, \code{panel.grid.minor.y}).  Y axis grid lines are horizontal
-and x axis grid lines are vertical. \verb{panel.grid.*.*} inherits from
-\verb{panel.grid.*} which inherits from \code{panel.grid}, which in turn inherits
-from \code{line}}
-    \item{\code{panel.grid.minor.y}}{grid lines (\code{\link[ggplot2:element]{element_line()}}). Specify major grid lines,
-or minor grid lines separately (using \code{panel.grid.major} or \code{panel.grid.minor})
-or individually for each axis (using \code{panel.grid.major.x}, \code{panel.grid.minor.x},
-\code{panel.grid.major.y}, \code{panel.grid.minor.y}).  Y axis grid lines are horizontal
-and x axis grid lines are vertical. \verb{panel.grid.*.*} inherits from
-\verb{panel.grid.*} which inherits from \code{panel.grid}, which in turn inherits
-from \code{line}}
     \item{\code{panel.ontop}}{option to place the panel (background, gridlines) over
 the data layers (\code{logical}). Usually used with a transparent or blank
 \code{panel.background}.}
-    \item{\code{plot.background}}{background of the entire plot (\code{\link[ggplot2:element]{element_rect()}};
+    \item{\code{plot.background}}{background of the entire plot (\code{\link[ggplot2:element_rect]{element_rect()}};
 inherits from \code{rect})}
-    \item{\code{plot.caption.position}}{Alignment of the plot title/subtitle
+    \item{\code{plot.title.position,plot.caption.position}}{Alignment of the plot title/subtitle
 and caption.  The setting for \code{plot.title.position} applies to both
 the title and the subtitle. A value of "panel" (the default) means that
 titles and/or caption are aligned to the plot panels. A value of "plot" means
 that titles and/or caption are aligned to the entire plot (minus any space
 for margins and plot tag).}
-    \item{\code{plot.subtitle}}{plot subtitle (text appearance) (\code{\link[ggplot2:element]{element_text()}};
+    \item{\code{plot.subtitle}}{plot subtitle (text appearance) (\code{\link[ggplot2:element_text]{element_text()}};
 inherits from \code{title}) left-aligned by default}
     \item{\code{plot.caption}}{caption below the plot (text appearance)
-(\code{\link[ggplot2:element]{element_text()}}; inherits from \code{title}) right-aligned by default}
+(\code{\link[ggplot2:element_text]{element_text()}}; inherits from \code{title}) right-aligned by default}
     \item{\code{plot.tag}}{upper-left label to identify a plot (text appearance)
-(\code{\link[ggplot2:element]{element_text()}}; inherits from \code{title}) left-aligned by default}
+(\code{\link[ggplot2:element_text]{element_text()}}; inherits from \code{title}) left-aligned by default}
     \item{\code{plot.tag.position}}{The position of the tag as a string ("topleft",
 "top", "topright", "left", "right", "bottomleft", "bottom", "bottomright)
 or a coordinate. If a string, extra space will be added to accommodate the
 tag.}
-    \item{\code{strip.background.x}}{background of facet labels (\code{\link[ggplot2:element]{element_rect()}};
-inherits from \code{rect}). Horizontal facet background (\code{strip.background.x})
-& vertical facet background (\code{strip.background.y}) inherit from
-\code{strip.background} or can be specified separately}
-    \item{\code{strip.background.y}}{background of facet labels (\code{\link[ggplot2:element]{element_rect()}};
-inherits from \code{rect}). Horizontal facet background (\code{strip.background.x})
-& vertical facet background (\code{strip.background.y}) inherit from
-\code{strip.background} or can be specified separately}
     \item{\code{strip.clip}}{should strip background edges and strip labels be clipped
 to the extend of the strip background? Options are \code{"on"} to clip, \code{"off"}
 to disable clipping or \code{"inherit"} (default) to take the clipping setting
@@ -342,15 +135,7 @@ from the parent viewport.}
     \item{\code{strip.placement}}{placement of strip with respect to axes,
 either "inside" or "outside". Only important when axes and strips are
 on the same side of the plot.}
-    \item{\code{strip.text}}{facet labels (\code{\link[ggplot2:element]{element_text()}};
-inherits from  \code{text}). Horizontal facet labels (\code{strip.text.x}) & vertical
-facet labels (\code{strip.text.y}) inherit from \code{strip.text} or can be specified
-separately}
-    \item{\code{strip.text.x}}{facet labels (\code{\link[ggplot2:element]{element_text()}};
-inherits from  \code{text}). Horizontal facet labels (\code{strip.text.x}) & vertical
-facet labels (\code{strip.text.y}) inherit from \code{strip.text} or can be specified
-separately}
-    \item{\code{strip.text.y}}{facet labels (\code{\link[ggplot2:element]{element_text()}};
+    \item{\code{strip.text,strip.text.x,strip.text.y}}{facet labels (\code{\link[ggplot2:element_text]{element_text()}};
 inherits from  \code{text}). Horizontal facet labels (\code{strip.text.x}) & vertical
 facet labels (\code{strip.text.y}) inherit from \code{strip.text} or can be specified
 separately}
@@ -359,7 +144,7 @@ switched (\code{unit})}
     \item{\code{strip.switch.pad.wrap}}{space between strips and axes when strips are
 switched (\code{unit})}
     \item{\code{complete}}{set this to \code{TRUE} if this is a complete theme, such as
-the one returned by \code{\link[ggplot2:ggtheme]{theme_grey()}}. Complete themes behave
+the one returned by \code{\link[ggplot2:theme_grey]{theme_grey()}}. Complete themes behave
 differently when added to a ggplot object. Also, when setting
 \code{complete = TRUE} all elements will be set to inherit from blank
 elements.}

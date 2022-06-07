@@ -160,25 +160,7 @@ scales, "top" or "bottom" for horizontal scales}
 
 \item{sec.axis}{specify a secondary axis}
 
-\item{accuracy}{See
-[scales::comma_format()] or [scales::percent_format()]}
-
-\item{scale}{See
-[scales::comma_format()] or [scales::percent_format()]}
-
-\item{prefix}{See
-[scales::comma_format()] or [scales::percent_format()]}
-
-\item{suffix}{See
-[scales::comma_format()] or [scales::percent_format()]}
-
-\item{big.mark}{See
-[scales::comma_format()] or [scales::percent_format()]}
-
-\item{decimal.mark}{See
-[scales::comma_format()] or [scales::percent_format()]}
-
-\item{trim}{See
+\item{accuracy, scale, prefix, suffix, big.mark, decimal.mark, trim}{See
 [scales::comma_format()] or [scales::percent_format()]}
 
 \item{...}{passed on to [scales::comma_format()] or [scales::percent_format()]}
