@@ -5,8 +5,8 @@
 \title{Login to LimeSurvey API}
 \usage{
 ls_login(
- 
-    api_url = "https://dotazniky.scholaempirica.org/limesurvey/index.php/admin/remotecontrol"
+  api_url =
+    "https://dotazniky.scholaempirica.org/limesurvey/index.php/admin/remotecontrol"
 )
 }
 \arguments{
