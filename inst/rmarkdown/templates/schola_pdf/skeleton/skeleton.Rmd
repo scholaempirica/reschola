@@ -1,7 +1,7 @@
 ---
 title: "Schola-styled PDF document"
 subtitle: "A great one, too"
-team: výzkumný tým SCHOLA EMPIRICA # delete whole entry if undesirable
+team: SCHOLA EMPIRICA research team # delete whole entry if undesirable
 author:
 - "First Author^[Contact author. E-mail: first.author@scholaempirica.org]" # complex entry must be quoted
 - Second Author
@@ -14,9 +14,11 @@ toc-title: "Table of contents"
 abstract-title: Abstract
 lang: en # smart-quotes and author variable depends on the lang variable
 logo: logos/pdf/seBlkOrange # chars which are escaped by pandoc (i.e. "_") are prohibited
-logo_height: 20pt
+logo_head: logos/pdf/seInlineBlkOrange # main logo in running head
+logo_height: false # 11pt by default
 logo_client: false
-logo_client_height: 30pt
+logo_client_head: false
+logo_client_height: false
 head_height: false # may be used if fancyhdr complains 
 ---
 
@@ -24,11 +26,10 @@ head_height: false # may be used if fancyhdr complains
 library(reschola)
 library(tidyverse)
 library(here)
-library(scales)
 
 source("shared.R", local = TRUE, encoding = "UTF-8") # helper functions and shared code
 
-set_reschola_ggplot_fonts() # make ggplot2 use ubuntu fonts without you having to set it
+use_reschola_fonts() # make ggplot2 use ubuntu fonts without you having to set it
 theme_set(theme_schola()) # default ggplot theme
 options(scipen = 10) # force R to show full numbers, not scientific notation
 ```

@@ -5,6 +5,12 @@
 
 # reschola (development version)
 
+## Breaking changes
+
+- standard PDF `.tex` template was fixed and updated (with the default `.Rmd` skeleton), **this may break projects using the default template**
+  - provides citaions using `biblatex` with a standard APA (v7) style
+  - more control on logos (different main and client logos in the titlepage and in running header), new header logos height (11pt)
+  
 ## Changes
 
 - `schola_barplot()` puts the legend to the bottom by default now
@@ -19,6 +25,12 @@
 - `theme_schola()` puts 6 pt bottom-margins on title and subtitle
 - in `schola_barplot()` item (facet) label text is slightly bigger, default wrap-width is wider (this does not support auto-wrapping due to some bugs in `ggplot2`)
 - `schola_labeller()` understands `width = NULL`
+
+## Bugfixes
+
+  - typo in the default font name fixed
+  - absent logos paths should not result in render fail, but in missing logos 
+  
 
 # reschola 0.5.2
 

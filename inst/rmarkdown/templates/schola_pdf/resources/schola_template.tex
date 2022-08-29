@@ -6,93 +6,108 @@
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-  \usepackage[utf8]{inputenc}
+\usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+\usepackage[utf8]{inputenc}
 $if(euro)$
   \usepackage{eurosym}
 $endif$
-\else % if luatex or xelatex
-  \makeatletter
-  \@ifpackageloaded{fontspec}{}{\usepackage{fontspec}}
-  \makeatother
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-  \makeatletter
-  \@ifpackageloaded{soul}{
-     \renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
-     \renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
-   }{}
-  \makeatother
-$if(euro)$
-  \newcommand{\euro}{€}
-$endif$
+  \else % if luatex or xelatex
+\makeatletter
+\@ifpackageloaded{fontspec}{}{\usepackage{fontspec}}
+\makeatother
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\makeatletter
+\@ifpackageloaded{soul}{
+  \renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
+    \renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+    }{}
+      \makeatother
+      $if(euro)$
+        \newcommand{\euro}{€}
+      $endif$
 
-% hard-coded fonts
-\setmainfont[]{Ubuntu}
-\setmonofont[]{ubuntu}
+        % hard-coded fonts
+      \setmainfont[]{Ubuntu}
+      \setmonofont[]{Ubuntu}
 
-$if(sansfont)$
-    \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
-$endif$
-$if(mathfont)$
-    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-$endif$
-\fi
+% global parindent
+      \setlength{\parindent}{3em}
+
+      $if(sansfont)$
+        \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+      $endif$
+        $if(mathfont)$
+        \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+      $endif$
+        \fi
 
 
 
-% geometry
-\usepackage[includehead, hmargin={3cm,3cm}, vmargin={2cm,3cm}, headsep=1.2cm, footskip=1.2cm]{geometry}
+      % geometry
+      \usepackage[includehead, includefoot,
+      hmargin={3cm,3cm}, vmargin={1.5cm,2.5cm}, headsep=1cm, footskip=1cm]{geometry}
 
-% figures placement
-\usepackage{floatrow}
-\floatsetup[figure]{capposition=top}
-\floatplacement{figure}{H}
+      % figures placement
+      \usepackage{floatrow}
+      % \floatsetup[figure]{capposition=top}
+      \floatsetup[table]{capposition=top}
+      \floatplacement{figure}{H}
 
-% headers
-\usepackage{fancyhdr}
-\renewcommand{\headruleskip}{10pt} %distance between headrule and header content
-\renewcommand{\footnoterule}{\vfill\kern -3pt \hrule width 0.4\columnwidth \kern 2.6pt}
+      % \usepackage{lastpage}
 
-\pagestyle{fancy}
-$if(logo)$
-\fancyhead[R]{\includegraphics[height=$if(logo_height)$$logo_height$$else$15pt$endif$]{$logo$}}
-$else$
-\fancyhead[R]{}
-$endif$
+      \usepackage{appendix}
 
-$if(logo_client)$
-\fancyhead[L]{\includegraphics[height=$if(logo_client_height)$$logo_client_height$$else$15pt$endif$]{$logo_client$}}
-$else$
-\fancyhead[L]{$title$} % title from YAML header
-$endif$
 
-$if(head_height)$
-\setlength{\headheight}{$head_height$}
-$endif$
+      % headers
+      \usepackage{fancyhdr}
+      % \renewcommand{\headruleskip}{6pt} %distance between headrule and header content
+      % \renewcommand{\footnoterule}{\vfill\kern -3pt \hrule width 0.4\columnwidth \kern 2.6pt}
+      \renewcommand{\headrulewidth}{0pt} % no headrule
 
-% atypical captions above figures
-\usepackage{caption}
-\captionsetup{justification=raggedright,singlelinecheck=false,belowskip=0pt}
+      \pagestyle{fancy}
+      $if(logo_head)$
+        \fancyhead[R]{\includegraphics[height=$if(logo_height)$$logo_height$$else$11pt$endif$]{$logo_head$}}
+      $else$
+        \fancyhead[R]{}
+      $endif$
 
-% graphix
-\usepackage{graphicx}
-\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+        $if(logo_client_head)$
+        \fancyhead[L]{\includegraphics[height=$if(logo_client_height)$$logo_client_height$$else$11pt$endif$]{$logo_client_head$}}
+      $else$
+        \fancyhead[L]{$title$} % title from YAML header
+      $endif$
 
-% booktabs
-\usepackage{booktabs}
+        $if(head_height)$
+        \setlength{\headheight}{$head_height$}
+      $endif$
 
-% url
-\usepackage{url}
+        % \fancyfoot[C]{\thepage/\pageref{LastPage}} % messes up with appendix counter
 
-% hyperref
-\usepackage[hidelinks]{hyperref}
+      % captions alignment
+      \usepackage{caption}
+      \captionsetup{justification=raggedright,singlelinecheck=false}
 
-% units.
-\usepackage{units}
+      % graphix
+      \usepackage{graphicx}
+      \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 
-% use babel whatever engine is used
-$if(lang)$
-  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+      % booktabs
+      \usepackage{booktabs}
+
+      % hyperref
+      \usepackage[hidelinks]{hyperref}
+
+      % url
+      \usepackage{url}
+
+      % units.
+      \usepackage{units}
+
+      % use babel whatever engine is used
+      $if(lang)$
+        \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+      \usepackage[autostyle=true,czech=quotes]{csquotes}
+      \MakeOuterQuote{"}
 \addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
 \addto\captionsczech{\renewcommand{\figurename}{Graf}}
 $if(babel-newcommands)$
@@ -119,8 +134,8 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage{biblatex}
-$for(bibliography)$
+\usepackage[backend=biber,style=apa]{biblatex}
+\DeclareLanguageMapping{czech}{american-apa}$for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
 $endif$
@@ -156,12 +171,12 @@ $endif$
 
 % pandoc syntax highlighting
 $if(highlighting-macros)$
-$highlighting-macros$
+  $highlighting-macros$
 $endif$
 
 % longtable
 $if(tables)$
-\usepackage{longtable,booktabs}
+  \usepackage{longtable,booktabs}
 $endif$
 
 % multiplecol
@@ -176,10 +191,13 @@ $endif$
 % spacing
 \usepackage{setspace}
 
+% figure wrapping text
+\usepackage{wrapfig}
 
 % footnote
-\usepackage[perpage, hang, bottom]{footmisc} %Range of footnote options
+\usepackage[perpage, bottom, ragged, hang]{footmisc} %Range of footnote options
 %\renewcommand{\footnotelayout}{\raggedright20pt}
+% \addtolength{\skip\footins}{18pt plus 5pt}
 \setlength{\footnotemargin}{9pt}
 \setlength{\footnotesep}{15pt}
 \renewcommand{\footnoterule}{%
@@ -190,8 +208,11 @@ $endif$
 }\nointerlineskip
 }
 
-
+% last delimiter for authors
 \newcommand{\tr}[2]{\ifnum\pdfstrcmp{\languagename}{czech}=0 #1\else #2\fi}
+
+% our command to keep quote block reference aligned to the right (the asterisk collided with RStudio visual editor)
+\newcommand{\hspacefill}{\hspace*{\fill}}
 
 % tightlist macro required by pandoc >= 1.14
 \providecommand{\tightlist}{%
@@ -206,39 +227,51 @@ $endfor$
 \begin{titlepage}
     \begin{center}
 
-      \onehalfspacing
+      \singlespacing
 
       \vspace*{1cm}
 
       \begin{figure}
       \centering
       $if(logo_client)$
-      \includegraphics[width=4cm]{$logo_client$}%
+      \includegraphics[width=5cm]{$logo_client$}%
       \hspace{1.5cm}%
       $endif$
-      \includegraphics[width=6.5cm]{$if(logo)$$logo$$endif$}%
+      $if(logo)$
+      \includegraphics[width=5cm]{$logo$}%
       \end{figure}
+      $endif$
 
       \vspace{1cm}
 
-      \textbf{\huge $if(title)$$title$$endif$}
+      $if(title)$
+        \Huge{\textbf{$title$}}
+      $endif$
 
-      \vspace{.25cm}
+      \LARGE
 
-      \textit{\Large $if(subtitle)$$subtitle$$endif$}
+      $if(subtitle)$
+        \vspace{.25cm}
+        $subtitle$
+      $endif$
 
-      \vspace{1cm}
+      \vspace{2cm}
 
-      \large
+      \textit{$if(school-name)$$school-name$$endif$}
+      \textit{$if(school-redizo)$(RED~IZO:~$school-redizo$) $endif$}
+
+      \vspace{2cm}
+
+      \Large
 
       $if(date)$$date$$endif$
 
-      \vspace{1cm}
+      \vspace{.25cm}
 
       $if(team)$
-	  $team$
-	  \vspace{.25cm}
-	  $endif$
+	      $team$
+	      \vspace{.25cm}
+	    $endif$
 
       $if(author/allbutlast)$
       $for(author/allbutlast)$
@@ -260,15 +293,14 @@ $endfor$
       $endif$
       $endif$
 
-      \vspace{1.5cm}
-
     \end{center}
 \end{titlepage}
 
+\onehalfspacing
 
 $if(abstract)$
 \thispagestyle{empty}
-\section*{$if(abstract-title)$$abstract-title$$else$Anotace$endif$}
+\chapter*{$if(abstract-title)$$abstract-title$$else$Anotace$endif$}
 $abstract$
 $endif$
 
@@ -294,26 +326,28 @@ $endif$
 
 $body$
 
-$if(natbib)$
-$if(bibliography)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+% $if(natbib)$
+% $if(bibliography)$
+% $if(biblio-title)$
+% $if(book-class)$
+% \renewcommand\bibname{$biblio-title$}
+% $else$
+% \renewcommand\refname{$biblio-title$}
+% $endif$
+% $endif$
+% \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+%
+% $endif$
+% $endif$
+% $if(biblatex)$
+%
+% $endif$
 
-$endif$
-$endif$
-$if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 
-$endif$
+
 
 $for(include-after)$
-$include-after$
+  $include-after$
 $endfor$
 
 \end{document}
