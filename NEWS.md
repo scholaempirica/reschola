@@ -29,7 +29,8 @@
 ## Bugfixes
 
   - typo in the default font name fixed
-  - absent logos paths should not result in render fail, but in missing logos 
+  - absent logos paths should not result in render fail, but in missing logos
+  - `ls_get_attrs()` no longer fails (even if unexpected output is returned by LS)
   
 
 # reschola 0.5.2
