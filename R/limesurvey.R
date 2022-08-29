@@ -494,7 +494,10 @@ ls_get_attrs <- function(survey_id) {
   # purrr's flatten do not preserve names, but rlang's does
   # and it seems to be reexported to purrr according to Jenny
   # (https://github.com/tidyverse/purrr/issues/165#issuecomment-378282881)
-  attrs %>% fromJSON() %>% map("description") %>% flatten_chr()
+  attrs %>%
+    fromJSON() %>%
+    map("description") %>%
+    flatten_chr()
 }
 
 
