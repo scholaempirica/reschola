@@ -7,7 +7,7 @@
 gd_download_folder(
   folder_url = gd_get_proj(),
   dest_dir = "data/input",
-  files_from_subfolders = F,
+  files_from_subfolders = FALSE,
   overwrite = TRUE
 )
 }
