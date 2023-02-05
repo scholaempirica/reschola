@@ -9,9 +9,9 @@ prepare_lollipop_data(.data, vars, group)
 \arguments{
 \item{.data}{tibble or data.frame with variables}
 
-\item{vars}{variables to reschape from wide to long, uses tidyselect syntax}
+\item{vars}{variables to reshape from wide to long, uses tidyselect syntax}
 
-\item{group}{grouping variable (ahve to be logical!), usually denoting for
+\item{group}{grouping variable (have to be logical!), usually denoting for
 which school the plot should be tailored for}
 }
 \value{

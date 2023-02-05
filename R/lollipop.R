@@ -5,8 +5,8 @@
 #' `r lifecycle::badge("maturing")`
 #'
 #' @param .data tibble or data.frame with variables
-#' @param vars variables to reschape from wide to long, uses tidyselect syntax
-#' @param group grouping variable (ahve to be logical!), usually denoting for
+#' @param vars variables to reshape from wide to long, uses tidyselect syntax
+#' @param group grouping variable (have to be logical!), usually denoting for
 #'   which school the plot should be tailored for
 #'
 #' @return several tibbles inside list, intended for data-mining and for
