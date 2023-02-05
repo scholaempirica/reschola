@@ -641,7 +641,7 @@ ls_invite <- function(survey_id, tid, uninvited_only = TRUE) {
 #' @export
 ls_set_participant_properties <- function(survey_id, participant, ...) {
   attributes <- list(...)
-  if (!is.list(participant) && length(participant) > 1) {
+  if (!is.list(participant) && length(participant) > 1L) {
     ui_stop("You can edit only one participand at the time.")
   }
 
