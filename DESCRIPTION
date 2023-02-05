@@ -46,8 +46,7 @@ Imports:
     tibble,
     tidyr,
     usethis,
-    utils,
-    vctrs
+    utils
 Suggests: 
     testthat (>= 3.0.0),
     spelling,
