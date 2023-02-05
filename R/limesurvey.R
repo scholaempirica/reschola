@@ -603,7 +603,6 @@ ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
 #'
 #' @export
 ls_invite <- function(survey_id, tid, uninvited_only = TRUE) {
-
   # assert integer
   if (!is.numeric(tid)) ui_stop("Token ID must be an integer!")
 

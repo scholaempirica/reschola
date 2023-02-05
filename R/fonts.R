@@ -1,4 +1,3 @@
-
 #' Import Ubuntu fonts for use in charts and in the PDF reports
 #'
 #' @description
@@ -106,7 +105,6 @@ install_reschola_fonts <- function() {
 #' @family Font helpers and shortcuts
 #'
 register_reschola_fonts <- function(family = c("Ubuntu", "Ubuntu Condensed")) {
-
   # only for Windows bitmap devices, cairo and AGG can pick the font on its own
   if (.Platform$OS.type == "windows") {
     args <- list()

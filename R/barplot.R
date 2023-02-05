@@ -1,4 +1,3 @@
-
 #' Plot standard Schola likert-like barplot with groupwise comparison per items
 #'
 #' @description `r lifecycle::badge("maturing")`
@@ -79,7 +78,6 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
 
 
   if (order_by == "weighted total scores") {
-
     # get counts for each response category, multiply by its .resp to get "weight" of some sort
     #  -- higher usage of higher categories results in higher weight
     item_order <- long_data %>%

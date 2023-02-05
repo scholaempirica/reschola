@@ -1,4 +1,3 @@
-
 #' Add or replace logo in the header of a Word document
 #'
 #' Takes an existing Word document created using the `reschola` templates
