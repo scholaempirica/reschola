@@ -75,7 +75,7 @@ ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/
   }
 
   res <- fromJSON(content)$result
-  if (class(res) == "list" && !is.null(res$status)) {
+  if (inherits(res, "list") && !is.null(res$status)) {
     ui_stop(res$status)
   }
 
