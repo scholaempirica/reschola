@@ -1,12 +1,5 @@
 # reschola 0.5.3
 
-
-<!-- TODO -----------------------------------------------------
-- PDF template: incorporate changes from IvP and EZ, especially citations and so on
--->
-
-# reschola (development version)
-
 ## Breaking changes
 
 - standard PDF `.tex` template was fixed and updated (with the default `.Rmd` skeleton), **this may break projects using the default template**
@@ -30,11 +23,11 @@
 
 ## Bugfixes
 
-  -  over-plotting of text-based geoms is fixed in `plot_lollipop()`
-  - `group` argument is now respected in the whole `schola_barplot()`
-  - typo in the default font name fixed
-  - absent logos paths should not result in render fail, but in missing logos
-  - `ls_get_attrs()` no longer fails (even if unexpected output is returned by LS)
+-  over-plotting of text-based geoms is fixed in `plot_lollipop()`
+- `group` argument is now respected in the whole `schola_barplot()`
+- typo in the default font name fixed
+- absent logos paths should not result in render fail, but in missing logos
+- `ls_get_attrs()` no longer fails (even if unexpected output is returned by LS)
   
 
 # reschola 0.5.2
