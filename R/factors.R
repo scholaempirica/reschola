@@ -1,4 +1,3 @@
-
 #' NAnify factor level
 #'
 #' The inverse of `fct_explicit_na()`. Turns the `level` into proper `NA`.

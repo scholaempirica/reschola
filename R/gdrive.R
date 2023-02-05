@@ -1,4 +1,3 @@
-
 #' Download files from Google Drive folder
 #'
 #' Downloads all downloadable files from given Google Drive folder

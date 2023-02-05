@@ -1,4 +1,3 @@
-
 # Stolen from ggplot2 via hrbrthemes
 is.waive <- function(x) {
   inherits(x, "waiver")

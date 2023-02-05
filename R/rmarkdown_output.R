@@ -1,4 +1,3 @@
-
 #' Schola Empirica PDF Format
 #'
 #' Function called in the output section of the YAML header (see examples

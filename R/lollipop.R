@@ -1,5 +1,3 @@
-
-
 #' Prepare data for `plot_lollipop()`
 #'
 #' `r lifecycle::badge("maturing")`

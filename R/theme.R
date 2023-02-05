@@ -1,4 +1,3 @@
-
 #' A Schola Empirica ggplot2 theme
 #'
 #' A wrapper around `theme()` which provides several shortcuts to setting common
