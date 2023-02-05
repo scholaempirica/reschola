@@ -35,7 +35,7 @@
 #' @export
 #'
 gd_download_folder <- function(folder_url = gd_get_proj(), dest_dir = "data/input",
-                               files_from_subfolders = F,
+                               files_from_subfolders = FALSE,
                                overwrite = TRUE) {
   url_id <- as_id(folder_url)
   url_dribble <- as_dribble(url_id)
@@ -51,7 +51,6 @@ gd_download_folder <- function(folder_url = gd_get_proj(), dest_dir = "data/inpu
     mutate(mimetype = map_chr(.data$drive_resource, "mimeType")) %>%
     filter(.data$mimetype != "application/vnd.google-apps.folder")
 
-  # print(drv_files)
 
   walk2(
     drv_files$id, drv_files$name,

@@ -369,7 +369,7 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
   )
 
   # remove the tibble attribute, which is not needed anymore
-  attr(out, "variable.labels") <- NULL
+  attr(out, "variable.labels") <- NULL # nolint: object_name_linter
 
   out
 }
@@ -663,6 +663,7 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
   )
 }
 
+# nolint start
 
 # ls_get_participant_properties <- function(survey_id, tid) {
 #
@@ -682,3 +683,5 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 #      ~ ls_call("set_participant_properties", list(258724, .x, list(attribute_1 = .y)))
 # )
 # # .x is token ID (tid)
+
+# nolint end

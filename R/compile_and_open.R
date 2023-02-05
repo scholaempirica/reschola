@@ -51,9 +51,9 @@ compile_and_open <-
       }
     )
 
-    if (result != "fail" & open_on_success == TRUE) {
+    if (result != "fail" && open_on_success == TRUE) {
       system2("open", result)
-    } else if (result == "fail" & open_on_success == TRUE) {
+    } else if (result == "fail" && open_on_success == TRUE) {
       message("Compilation failed, nothing to open!")
     } else {
       ui_info(c(

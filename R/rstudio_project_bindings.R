@@ -67,8 +67,9 @@ schola_project <- function(path, ...) {
 
 
   # README ------------------------------------------------------------------
-
+# nolint start: object_usage_linter
   title_readme <- ifelse(nzchar(dots$title), dots$title, path)
+# nolint end
 
   readme_text <- c(
     str_glue("# {title_readme}\n\n\n"),
@@ -199,12 +200,11 @@ schola_project <- function(path, ...) {
     gd_download_folder(dots$drive_folder, overwrite = FALSE, files_from_subfolders = TRUE)
   }
 
-  if (dots$drive_download & is.null(dots$drive_folder)) {
+  if (dots$drive_download && is.null(dots$drive_folder)) {
     ui_oops("You asked for the GDrive files to be downloaded, but provided no URL.\nNothing was downloaded.")
   }
 
 
-  # usethis::ui_todo("You should run {usethis::ui_code('usethis::proj_set(getwd())')} in your original session to get your working directory sorted.")
   suppressMessages(proj_set(orig_dir))
   try(setwd(orig_dir), silent = TRUE)
   return(TRUE)

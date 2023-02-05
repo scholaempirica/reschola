@@ -59,7 +59,7 @@ as.character.czech_date <- function(x, ...) {
 #' @importFrom knitr knit_print asis_output
 #' @keywords internal
 #' @export
-knit_print.czech_date <- function(x, ...) {
+knit_print.czech_date <- function(x, ...) { # nolint: object_name_linter
   case <- list(...)[["case"]]
   if (is.null(case)) case <- attr(x, "gramm_case")
   asis_output(czech_date_main(x, case))
@@ -182,7 +182,7 @@ czech_date_interval <- function(start, end) {
 #' @importFrom knitr knit_print asis_output is_latex_output
 #' @keywords internal
 #' @export
-knit_print.czech_date_interval <- function(x, ...) {
+knit_print.czech_date_interval <- function(x, ...) { # nolint: object_name_linter
   if (is_latex_output()) {
     x <- gsub("\u2013", "\\\\nobreakdash\u2013", x)
   }

@@ -102,14 +102,14 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
                          margins = TRUE, plot.title.position = "plot",
                          axis_titles = TRUE, multiplot = FALSE, ...) {
   grd <- match.arg(gridlines)
-  grid_col <- if (grd == "scatter" | multiplot) {
+  grid_col <- if (grd == "scatter" || multiplot) {
     "white"
   } else {
     "grey92"
   }
   tonecol <- "#f6f0e8"
   element_gridline <- element_line(colour = grid_col, size = 0.3)
-  bg_col <- if (grd == "scatter" | multiplot) {
+  bg_col <- if (grd == "scatter" || multiplot) {
     tonecol
   } else {
     "white"

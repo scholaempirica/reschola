@@ -39,8 +39,8 @@ manage_docx_header_logos <- function(docx_path, png_logo_path,
   bookmark_name <- ifelse(logo_action == "add_client", "logo_client", "logo_schola")
   template <- docx_path
 
-  img.file <- file.path(png_logo_path)
-  img <- png::readPNG(img.file)
+  img_file <- file.path(png_logo_path)
+  img <- png::readPNG(img_file)
   dim(img)
   img_ratio <- dim(img)[1] / dim(img)[2]
   # height of primary logo, too keep heights aligned
@@ -48,10 +48,9 @@ manage_docx_header_logos <- function(docx_path, png_logo_path,
   img_w <- img_h_default / img_ratio
 
   doc <- officer::read_docx(path = template)
-  # print(doc, target = "example.docx")
   doc <- officer::headers_replace_img_at_bkm(
     x = doc, bookmark = bookmark_name,
-    value = officer::external_img(src = img.file, height = img_h_default, width = img_w)
+    value = officer::external_img(src = img_file, height = img_h_default, width = img_w)
   )
   newfilename <- paste0(tools::file_path_sans_ext(docx_path), "_addedlogo.docx")
   print(doc, target = newfilename)

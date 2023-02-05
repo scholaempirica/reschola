@@ -39,9 +39,3 @@ draft_word <- function(name = "word_draft", open = TRUE) {
   if (open) edit_file(file)
   invisible(name)
 }
-
-
-# is_installed <- function() {
-#   reschola_namespace <- .getNamespace("reschola")
-#   if (is.null(reschola_namespace$.__DEVTOOLS__)) TRUE else FALSE
-# }

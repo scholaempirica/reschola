@@ -59,13 +59,19 @@
 #' @importFrom RColorBrewer brewer.pal
 #'
 schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
-                           escape_level = "nev\u00edm", n_breaks = 11, desc = TRUE,
-                           labels = TRUE, min_label_width = .09, absolute_counts = TRUE,
-                           fill_cols = NULL, fill_labels = waiver(), facet_label_wrap = 115,
+                           escape_level = "nev\u00edm", n_breaks = 11,
+                           desc = TRUE, labels = TRUE, min_label_width = .09,
+                           absolute_counts = TRUE, fill_cols = NULL,
+                           fill_labels = waiver(), facet_label_wrap = 115,
                            reverse = FALSE, order_by = "chi-square differences",
                            drop = FALSE, drop_na = TRUE, ...) {
-  if (!is.logical(eval_tidy(enquo(group), .data))) abort("`group` variable have to be logical.")
-  order_by <- match.arg(order_by, c("chi-square differences", "weighted total scores"))
+  if (!is.logical(eval_tidy(enquo(group), .data))) {
+    abort("`group` variable have to be logical.")
+  }
+  order_by <- match.arg(
+    order_by,
+    c("chi-square differences", "weighted total scores")
+  )
   # data --------------------------------------------------------------------
 
   long_data <- .data %>%
@@ -78,10 +84,12 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
 
 
   if (order_by == "weighted total scores") {
-    # get counts for each response category, multiply by its .resp to get "weight" of some sort
+    # get counts for each response category, multiply by its .resp to get
+    # "weight" of some sort
     #  -- higher usage of higher categories results in higher weight
     item_order <- long_data %>%
-      mutate(resp_num = fct_nanify(.data$.resp, escape_level, ...) %>% as.integer()) %>%
+      mutate(resp_num = fct_nanify(.data$.resp, escape_level, ...) %>%
+        as.integer()) %>%
       group_by({{ group }}, .data$.item) %>%
       summarise(ts = sum(.data$resp_num, na.rm = TRUE)) %>%
       filter({{ group }}) %>%
@@ -101,7 +109,8 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
       group_by(.data$.item) %>%
       select(-{{ group }}) %>%
       nest() %>%
-      mutate(chsq = map_dbl(.data$data, ~ suppressWarnings(chisq.test(.x)) %>% pluck("statistic"))) %>%
+      mutate(chsq = map_dbl(.data$data, ~ suppressWarnings(chisq.test(.x)) %>%
+        pluck("statistic"))) %>%
       arrange(desc(.data$chsq)) %>%
       pull(.data$.item)
   }

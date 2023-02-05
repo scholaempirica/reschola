@@ -1,3 +1,5 @@
+# nolint start: object_name_linter
+
 # Stolen from ggplot2 via hrbrthemes
 is.waive <- function(x) {
   inherits(x, "waiver")
@@ -58,7 +60,7 @@ scale_x_percent_cz <- function(name = waiver(),
                                decimal.mark = ",",
                                trim = TRUE, ...) {
   if (missing(labels)) {
-    scales::percent_format(
+    labels <- scales::percent_format(
       accuracy = accuracy,
       scale = scale,
       prefix = prefix,
@@ -67,10 +69,10 @@ scale_x_percent_cz <- function(name = waiver(),
       decimal.mark = decimal.mark,
       trim = trim,
       ...
-    ) -> labels
+    )
   }
 
-  ggplot2::continuous_scale(
+  sc <- ggplot2::continuous_scale(
     aesthetics = c(
       "x", "xmin", "xmax", "xend", "xintercept", "xmin_final",
       "xmax_final", "xlower", "xmiddle", "xupper", "x0"
@@ -90,7 +92,7 @@ scale_x_percent_cz <- function(name = waiver(),
     guide = guide,
     position = position,
     super = ggplot2::ScaleContinuousPosition
-  ) -> sc
+  )
 
 
   if (!is.waive(sec.axis)) {
@@ -129,7 +131,7 @@ scale_y_percent_cz <- function(name = waiver(),
                                decimal.mark = ",",
                                trim = TRUE, ...) {
   if (missing(labels)) {
-    scales::percent_format(
+    labels <- scales::percent_format(
       accuracy = accuracy,
       scale = scale,
       prefix = prefix,
@@ -138,10 +140,10 @@ scale_y_percent_cz <- function(name = waiver(),
       decimal.mark = decimal.mark,
       trim = trim,
       ...
-    ) -> labels
+    )
   }
 
-  ggplot2::continuous_scale(
+  sc <- ggplot2::continuous_scale(
     aesthetics = c(
       "y", "ymin", "ymax", "yend", "yintercept",
       "ymin_final", "ymax_final", "lower", "middle", "upper"
@@ -161,7 +163,7 @@ scale_y_percent_cz <- function(name = waiver(),
     guide = guide,
     position = position,
     super = ggplot2::ScaleContinuousPosition
-  ) -> sc
+  )
 
   if (!is.waive(sec.axis)) {
     if (is.formula(sec.axis)) sec.axis <- ggplot2::sec_axis(sec.axis)
@@ -209,7 +211,7 @@ scale_x_number_cz <- function(name = waiver(),
                               decimal.mark = ",",
                               trim = TRUE, ...) {
   if (missing(labels)) {
-    scales::percent_format(
+    labels <- scales::percent_format(
       accuracy = accuracy,
       scale = scale,
       prefix = prefix,
@@ -218,10 +220,10 @@ scale_x_number_cz <- function(name = waiver(),
       decimal.mark = decimal.mark,
       trim = trim,
       ...
-    ) -> labels
+    )
   }
 
-  ggplot2::continuous_scale(
+  sc <- ggplot2::continuous_scale(
     aesthetics = c(
       "x", "xmin", "xmax", "xend", "xintercept", "xmin_final",
       "xmax_final", "xlower", "xmiddle", "xupper", "x0"
@@ -241,7 +243,7 @@ scale_x_number_cz <- function(name = waiver(),
     guide = guide,
     position = position,
     super = ggplot2::ScaleContinuousPosition
-  ) -> sc
+  )
 
 
   if (!is.waive(sec.axis)) {
@@ -278,7 +280,7 @@ scale_y_number_cz <- function(name = waiver(),
                               decimal.mark = ",",
                               trim = TRUE, ...) {
   if (missing(labels)) {
-    scales::percent_format(
+    labels <- scales::percent_format(
       accuracy = accuracy,
       scale = scale,
       prefix = prefix,
@@ -287,10 +289,10 @@ scale_y_number_cz <- function(name = waiver(),
       decimal.mark = decimal.mark,
       trim = trim,
       ...
-    ) -> labels
+    )
   }
 
-  ggplot2::continuous_scale(
+  sc <- ggplot2::continuous_scale(
     aesthetics = c(
       "y", "ymin", "ymax", "yend", "yintercept",
       "ymin_final", "ymax_final", "lower", "middle", "upper"
@@ -310,7 +312,7 @@ scale_y_number_cz <- function(name = waiver(),
     guide = guide,
     position = position,
     super = ggplot2::ScaleContinuousPosition
-  ) -> sc
+  )
 
   if (!is.waive(sec.axis)) {
     if (is.formula(sec.axis)) sec.axis <- ggplot2::sec_axis(sec.axis)
@@ -379,3 +381,6 @@ label_percent_cz_abs <- function(accuracy = NULL, scale = 100, prefix = "", suff
     )
   }
 }
+
+
+# nolint end
