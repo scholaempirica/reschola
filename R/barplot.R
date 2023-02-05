@@ -101,7 +101,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     item_order <- plt_data %>%
       pivot_wider(names_from = .data$.resp, values_from = .data$n, values_fill = 0) %>%
       group_by(.data$.item) %>%
-      select(-.data$digest) %>%
+      select(-{{ group }}) %>%
       nest() %>%
       mutate(chsq = map_dbl(.data$data, ~ suppressWarnings(chisq.test(.x)) %>% pluck("statistic"))) %>%
       arrange(desc(.data$chsq)) %>%

@@ -28,6 +28,7 @@
 
 ## Bugfixes
 
+  - `group` argument is now respected in the whole `schola_barplot()`
   - typo in the default font name fixed
   - absent logos paths should not result in render fail, but in missing logos
   - `ls_get_attrs()` no longer fails (even if unexpected output is returned by LS)
