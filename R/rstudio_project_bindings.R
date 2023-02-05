@@ -67,9 +67,9 @@ schola_project <- function(path, ...) {
 
 
   # README ------------------------------------------------------------------
-# nolint start: object_usage_linter
+  # nolint start: object_usage_linter
   title_readme <- ifelse(nzchar(dots$title), dots$title, path)
-# nolint end
+  # nolint end
 
   readme_text <- c(
     str_glue("# {title_readme}\n\n\n"),
