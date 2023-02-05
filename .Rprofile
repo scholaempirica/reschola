@@ -1,3 +1,4 @@
+source("renv/activate.R")
 source(path.expand("~/.Rprofile"))
 
 # project's Google Drive URL
