@@ -648,9 +648,9 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
   # aTokenQueryProperties can be an array of participant properties,
   # i.e. lastname = "NAME", or TID, as an integer
   # make tid an unboxed list for the API to recognize it as an array
-  if (is.list(participant)) {
-    tid <- I(participant)
-  }
+  # if (is.list(participant)) {
+  #   participant <- I(participant)
+  # }
 
   ls_check_attributes(names(attributes))
 
