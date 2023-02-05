@@ -200,7 +200,7 @@ ls_call <- function(method, params = list()) {
 #' @export
 ls_surveys <- function() {
   ls_call("list_surveys") %>%
-    rename(survey_id = .data$sid, title = .data$surveyls_title)
+    rename(survey_id = "sid", title = "surveyls_title")
 }
 
 
