@@ -73,7 +73,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
 
   # drop NAs column-wise, not excludig rows with just ANY NA present
   if (drop_na) {
-    long_data <- long_data %>% drop_na(.resp)
+    long_data <- long_data %>% drop_na(.data$.resp)
   }
 
 
