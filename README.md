@@ -1,16 +1,15 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit that file x -->
 
 # reschola <a href="https://scholaempirica.github.io/reschola"><img src="man/figures/logo.svg" align="right" height="139" /></a>
 
 <!-- badges: start -->
 
-[![GitHub Workflow
-Status](https://img.shields.io/github/workflow/status/scholaempirica/reschola/R-CMD-check)](https://github.com/scholaempirica/reschola/actions?query=workflow%3AR-CMD-check)
+[![R-CMD-check](https://github.com/scholaempirica/reschola/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/scholaempirica/reschola/actions/workflows/R-CMD-check.yaml)
 [![GitHub release (latest by date including
 pre-releases)](https://img.shields.io/github/v/release/scholaempirica/reschola?include_prereleases)](https://github.com/scholaempirica/reschola/releases)
-[![reschola status
-badge](https://scholaempirica.r-universe.dev/badges/reschola)](https://scholaempirica.r-universe.dev)
+[![r-universe
+build](https://scholaempirica.r-universe.dev/badges/reschola)](https://scholaempirica.r-universe.dev)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/reschola)](https://CRAN.R-project.org/package=reschola)
 [![Lifecycle:
