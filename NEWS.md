@@ -1,5 +1,11 @@
 # reschola 0.5.4
 
+This is a hotfix to align LS API with LS 6.x.
+
+## Bugfixes
+
+- `ls_login()` parameters reflect those in LS RC API.
+
 # reschola 0.5.3
 
 ## Breaking changes
