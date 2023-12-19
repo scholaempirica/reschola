@@ -1,6 +1,6 @@
 Package: reschola
 Title: The Schola Empirica Package
-Version: 0.5.3
+Version: 0.5.4
 Authors@R: c(
     person("Petr", "Bouchal", , "pbouchal@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-0471-716X")),
