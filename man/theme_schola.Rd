@@ -135,10 +135,13 @@ from the parent viewport.}
     \item{\code{strip.placement}}{placement of strip with respect to axes,
 either "inside" or "outside". Only important when axes and strips are
 on the same side of the plot.}
-    \item{\code{strip.text,strip.text.x,strip.text.y}}{facet labels (\code{\link[ggplot2:element_text]{element_text()}};
-inherits from  \code{text}). Horizontal facet labels (\code{strip.text.x}) & vertical
+    \item{\code{strip.text,strip.text.x,strip.text.y,strip.text.x.top,strip.text.x.bottom,strip.text.y.left,strip.text.y.right}}{facet labels (\code{\link[ggplot2:element_text]{element_text()}}; inherits from  \code{text}). Horizontal facet labels (\code{strip.text.x}) & vertical
 facet labels (\code{strip.text.y}) inherit from \code{strip.text} or can be specified
-separately}
+separately. Facet strips have dedicated position-dependent theme elements
+(\code{strip.text.x.top}, \code{strip.text.x.bottom}, \code{strip.text.y.left}, \code{strip.text.y.right})
+that inherit from \code{strip.text.x} and \code{strip.text.y}, respectively.
+As a consequence, some theme stylings need to be applied to
+the position-dependent elements rather than to the parent elements}
     \item{\code{strip.switch.pad.grid}}{space between strips and axes when strips are
 switched (\code{unit})}
     \item{\code{strip.switch.pad.wrap}}{space between strips and axes when strips are

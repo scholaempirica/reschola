@@ -52,7 +52,16 @@ it is a potentially expensive operation so you must opt into it.}
 \code{y}, these suffixes will be added to the output to disambiguate them.
 Should be a character vector of length 2.}
     \item{\code{keep}}{Should the join keys from both \code{x} and \code{y} be preserved in the
-output?}
+output?
+\itemize{
+\item If \code{NULL}, the default, joins on equality retain only the keys from \code{x},
+while joins on inequality retain the keys from both inputs.
+\item If \code{TRUE}, all keys from both inputs are retained.
+\item If \code{FALSE}, only keys from \code{x} are retained. For right and full joins,
+the data in key columns corresponding to rows that only exist in \code{y} are
+merged into the key columns from \code{x}. Can't be used when joining on
+inequality conditions.
+}}
   }}
 }
 \value{
