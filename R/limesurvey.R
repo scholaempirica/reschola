@@ -59,7 +59,7 @@ ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/
   body <- list(
     method = "get_session_key", id = " ",
     params = list(
-      admin = Sys.getenv("LS_USER"),
+      username = Sys.getenv("LS_USER"),
       password = Sys.getenv("LS_PASS")
     )
   )
@@ -69,12 +69,12 @@ ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/
     stop(http_status(r)$message)
   }
 
-  content <- content(r, encoding = "utf-8")
+  content <- content(r, as = "parsed", encoding = "utf-8")
   if (!is.character(content) && is.null(content$result)) {
     ui_stop("Server is responding but not in a proper way. Please check the API URL and server configuration.")
   }
 
-  res <- fromJSON(content)$result
+  res <- content$result
   if (inherits(res, "list") && !is.null(res$status)) {
     ui_stop(res$status)
   }
