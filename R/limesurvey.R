@@ -476,8 +476,7 @@ ls_check_attributes <- function(attributes) {
 #' @importFrom rlang set_names
 #' @importFrom dplyr rename
 #' @importFrom usethis ui_info
-#' @importFrom purrr pluck map
-#' @importFrom rlang flatten_chr
+#' @importFrom purrr pluck map list_c
 #'
 #' @export
 ls_get_attrs <- function(survey_id) {
@@ -491,13 +490,15 @@ ls_get_attrs <- function(survey_id) {
 
   # when LS returns entries with no description slot, map_chr would panic
   # because it cannot concatenate NULLs with chararcter,
-  # purrr's flatten do not preserve names, but rlang's does
-  # and it seems to be reexported to purrr according to Jenny
-  # (https://github.com/tidyverse/purrr/issues/165#issuecomment-378282881)
-  attrs %>%
+  attrs <- attrs %>%
     fromJSON() %>%
-    map("description") %>%
-    flatten_chr()
+    map("description")
+
+  attrs_nms <- names(attrs)
+  attrs <- list_c(attrs)
+  names(attrs) <- attrs_nms
+
+  attrs
 }
 
 
