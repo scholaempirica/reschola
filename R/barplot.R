@@ -89,7 +89,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     #  -- higher usage of higher categories results in higher weight
     item_order <- long_data %>%
       mutate(resp_num = fct_nanify(.data$.resp, escape_level, ...) %>%
-        as.integer()) %>%
+               as.integer()) %>%
       group_by({{ group }}, .data$.item) %>%
       summarise(ts = sum(.data$resp_num, na.rm = TRUE)) %>%
       filter({{ group }}) %>%
@@ -110,7 +110,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
       select(-{{ group }}) %>%
       nest() %>%
       mutate(chsq = map_dbl(.data$data, ~ suppressWarnings(chisq.test(.x)) %>%
-        pluck("statistic"))) %>%
+                              pluck("statistic"))) %>%
       arrange(desc(.data$chsq)) %>%
       pull(.data$.item)
   }
