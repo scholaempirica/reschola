@@ -1,5 +1,9 @@
 # reschola 0.5.5
 
+## Bugfixes
+
+- attributes translation fixed
+
 # reschola 0.5.4
 
 This is a hotfix to align LS API with LS 6.x.
