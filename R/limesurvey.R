@@ -476,7 +476,8 @@ ls_check_attributes <- function(attributes) {
 #' @importFrom rlang set_names
 #' @importFrom dplyr rename
 #' @importFrom usethis ui_info
-#' @importFrom purrr pluck map list_c
+#' @importFrom purrr pluck map keep_at compact
+#' @importFrom stringr str_detect
 #'
 #' @export
 ls_get_attrs <- function(survey_id) {
@@ -494,11 +495,10 @@ ls_get_attrs <- function(survey_id) {
     fromJSON() %>%
     map("description")
 
-  attrs_nms <- names(attrs)
-  attrs <- list_c(attrs)
-  names(attrs) <- attrs_nms
-
-  attrs
+  attrs %>%
+    compact() %>% # be safe, drop nulls
+    keep_at(~ str_detect(.x, "attribute")) %>% # keep only proper LS attributes
+    unlist() # convert to named vector
 }
 
 
