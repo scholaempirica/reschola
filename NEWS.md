@@ -1,3 +1,5 @@
+# reschola 0.5.5
+
 # reschola 0.5.4
 
 This is a hotfix to align LS API with LS 6.x.
