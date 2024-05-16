@@ -69,7 +69,7 @@ ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/
     stop(http_status(r)$message)
   }
 
-  content <- content(r, as = "parsed", encoding = "utf-8")
+  content <- content(r, as = "parsed", encoding = "utf-8", type = "application/json")
   if (!is.character(content) && is.null(content$result)) {
     ui_stop("Server is responding but not in a proper way. Please check the API URL and server configuration.")
   }
