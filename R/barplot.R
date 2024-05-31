@@ -40,6 +40,7 @@
 #'   (listwise).
 #'
 #' @inheritDotParams fct_nanify -f -level
+#' @inheritDotParams ggplot2::layer show.legend
 #'
 #' @family Making charts
 #'
@@ -64,7 +65,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
                            absolute_counts = TRUE, fill_cols = NULL,
                            fill_labels = waiver(), facet_label_wrap = 115,
                            reverse = FALSE, order_by = "chi-square differences",
-                           drop = FALSE, drop_na = TRUE, ...) {
+                           drop = FALSE, drop_na = TRUE, show.legend = TRUE, ...) {
   if (!is.logical(eval_tidy(enquo(group), .data))) {
     abort("`group` variable have to be logical.")
   }
@@ -185,7 +186,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
       y = {{ group }}, x = .data$prop,
       fill = .data$.resp
     )) +
-    geom_col(width = .75, position = "fill", col = "white", size = .4) +
+    geom_col(width = .75, position = "fill", col = "white", size = .4, show.legend = show.legend) +
     labels +
     facet_wrap(
       ~ .data$.item,

@@ -22,6 +22,7 @@ schola_barplot(
   order_by = "chi-square differences",
   drop = FALSE,
   drop_na = TRUE,
+  show.legend = TRUE,
   ...
 )
 }
@@ -76,11 +77,16 @@ statistic to smallest (if desc = TRUE)}
 (listwise).}
 
 \item{...}{
-  Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}
+  Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}, \code{\link[ggplot2:layer]{ggplot2::layer}}
   \describe{
     \item{\code{negate}}{\emph{logical}, whether to return non-matching elements. Defaults to
 \code{FALSE}.}
     \item{\code{ignore_case}}{\emph{logical}, ignore case when matching? Defaults to \code{TRUE}.}
+    \item{\code{show.legend}}{logical. Should this layer be included in the legends?
+\code{NA}, the default, includes if any aesthetics are mapped.
+\code{FALSE} never includes, and \code{TRUE} always includes.
+It can also be a named logical vector to finely select the aesthetics to
+display.}
   }}
 }
 \value{

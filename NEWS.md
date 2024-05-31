@@ -1,3 +1,9 @@
+# reschola 0.5.6
+
+## Bugfixes
+
+- Legend keys are showing up by default even when the level is not present in ggplot2 >= 3.5.0 (see <https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#awareness> for more details).
+
 # reschola 0.5.5
 
 ## Bugfixes
