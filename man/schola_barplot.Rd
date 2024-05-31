@@ -29,12 +29,12 @@ schola_barplot(
 \arguments{
 \item{.data}{data with items and group variable}
 
-\item{vars}{vector of items, supports {tidyselect} syntax (i.e, non-standard
-evaluation)}
+\item{vars}{vector of items, supports \code{{tidyselect}} syntax (i.e,
+non-standard evaluation)}
 
 \item{group}{group variable used to split the results, have to be logical,
 where \code{TRUE} is gonna be considered as "focal" group and displayed as upper
-group with full opacity. Supports {tidyselect} syntax.}
+group Supports \code{{tidyselect}} syntax.}
 
 \item{dict}{item code-label dictionary, if none provided, those are derived
 from the data.}
@@ -69,36 +69,34 @@ computes chi-square test for every item and sort them by largest X2
 statistic to smallest (if desc = TRUE)}
 
 \item{drop}{Drop unobserved levels form the legend? Defaults to \code{FALSE}. See
-\link[ggplot2:discrete_scale]{ggplot2::discrete_scale} for more details.}
+\link[ggplot2:discrete_scale]{ggplot2::discrete_scale} for more details. To always show the legend key,
+make sure you have \code{show.legend} set to \code{TRUE} as well (as done by
+default).}
 
 \item{drop_na}{Drop \code{NA}s from every item (a.k.a. "pairwise")? Defaults to
 \code{TRUE}. Note that the number of observations per item may differ, because
 \code{NA} in one item does not mean the respondent row is discarded completely
 (listwise).}
 
-\item{...}{
-  Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}, \code{\link[ggplot2:layer]{ggplot2::layer}}
-  \describe{
-    \item{\code{negate}}{\emph{logical}, whether to return non-matching elements. Defaults to
-\code{FALSE}.}
-    \item{\code{ignore_case}}{\emph{logical}, ignore case when matching? Defaults to \code{TRUE}.}
-    \item{\code{show.legend}}{logical. Should this layer be included in the legends?
+\item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
 \code{FALSE} never includes, and \code{TRUE} always includes.
 It can also be a named logical vector to finely select the aesthetics to
 display.}
+
+\item{...}{
+  Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}
+  \describe{
+    \item{\code{negate}}{\emph{logical}, whether to return non-matching elements. Defaults to
+\code{FALSE}.}
+    \item{\code{ignore_case}}{\emph{logical}, ignore case when matching? Defaults to \code{TRUE}.}
   }}
 }
 \value{
-object of class "gg", "ggplot"
+Object of class "gg", "ggplot".
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
-
-TODO description...
-}
-\details{
-TODO details...
 }
 \seealso{
 Other Making charts: 

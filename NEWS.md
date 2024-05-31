@@ -1,8 +1,10 @@
 # reschola 0.5.6
 
+This release fixes a minor regression in `schola_barplot()` introduced by `{ggplot2}` 3.5.0+.
+
 ## Bugfixes
 
-- Legend keys are showing up by default even when the level is not present in ggplot2 >= 3.5.0 (see <https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#awareness> for more details).
+- Legend keys in `schola_barplot()` are drawn for all response categories even if not present in the data by default. See [the blogpost](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#awareness) and the `schola_barplot()`'s `show.legend` argument documentation for more details. 
 
 # reschola 0.5.5
 
@@ -23,8 +25,8 @@ This is a hotfix to align LS API with LS 6.x.
 ## Breaking changes
 
 - standard PDF `.tex` template was fixed and updated (with the default `.Rmd` skeleton), **this may break projects using the default template**
-  - provides citaions using `biblatex` with a standard APA (v7) style
-  - more control on logos (different main and client logos in the titlepage and in running header), new header logos height (11pt)
+  - provides citations using `biblatex` with a standard APA (v7) style
+  - more control on logos (different main and client logos in the title page and in running header), new header logos height (11pt)
   
 ## Changes
 

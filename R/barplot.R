@@ -2,16 +2,12 @@
 #'
 #' @description `r lifecycle::badge("maturing")`
 #'
-#'   TODO description...
-#'
-#' @details TODO details...
-#'
 #' @param .data data with items and group variable
-#' @param vars vector of items, supports {tidyselect} syntax (i.e, non-standard
-#'   evaluation)
+#' @param vars vector of items, supports `{tidyselect}` syntax (i.e,
+#'   non-standard evaluation)
 #' @param group group variable used to split the results, have to be logical,
 #'   where `TRUE` is gonna be considered as "focal" group and displayed as upper
-#'   group with full opacity. Supports {tidyselect} syntax.
+#'   group Supports `{tidyselect}` syntax.
 #' @param n_breaks number of breaks displayed at x-axis, outer labels are
 #'   automatically aligned to face inward. Defaults to 11, which results in 10%
 #'   wide breaks.
@@ -33,18 +29,20 @@
 #' @param fill_cols colors to be used for item categories, defaults to NULL,
 #'   meaning standard RdYlBu palette will be used
 #' @param drop Drop unobserved levels form the legend? Defaults to `FALSE`. See
-#'   [ggplot2::discrete_scale] for more details.
+#'   [ggplot2::discrete_scale] for more details. To always show the legend key,
+#'   make sure you have `show.legend` set to `TRUE` as well (as done by
+#'   default).
 #' @param drop_na Drop `NA`s from every item (a.k.a. "pairwise")? Defaults to
 #'   `TRUE`. Note that the number of observations per item may differ, because
 #'   `NA` in one item does not mean the respondent row is discarded completely
 #'   (listwise).
 #'
 #' @inheritDotParams fct_nanify -f -level
-#' @inheritDotParams ggplot2::layer show.legend
+#' @inheritParams ggplot2::layer
 #'
 #' @family Making charts
 #'
-#' @return object of class "gg", "ggplot"
+#' @return Object of class "gg", "ggplot".
 #' @export
 #'
 #' @importFrom ggtext element_markdown
