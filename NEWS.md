@@ -4,7 +4,8 @@ This release fixes a minor regression in `schola_barplot()` introduced by `{ggpl
 
 ## Bugfixes
 
-- Legend keys in `schola_barplot()` are drawn for all response categories even if not present in the data by default. See [the blogpost](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#awareness) and the `schola_barplot()`'s `show.legend` argument documentation for more details. 
+- Legend keys in `schola_barplot()` are drawn for all response categories even if not present in the data by default. See [the blogpost](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#awareness) and the `schola_barplot()`'s `show.legend` argument documentation for more details.
+- `ls_login()` now works with older LimeSurvey versions (@petrbouchal, #103).
 
 # reschola 0.5.5
 
