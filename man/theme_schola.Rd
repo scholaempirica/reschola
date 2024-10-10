@@ -46,20 +46,23 @@ created using \verb{facet_*}.}
     \item{\code{title}}{all title elements: plot, axes, legends (\code{\link[ggplot2:element_text]{element_text()}};
 inherits from \code{text})}
     \item{\code{aspect.ratio}}{aspect ratio of the panel}
-    \item{\code{axis.text,axis.text.x,axis.text.y,axis.text.x.top,axis.text.x.bottom,axis.text.y.left,axis.text.y.right}}{tick labels along axes (\code{\link[ggplot2:element_text]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
+    \item{\code{axis.text,axis.text.x,axis.text.y,axis.text.x.top,axis.text.x.bottom,axis.text.y.left,axis.text.y.right,axis.text.theta,axis.text.r}}{tick labels along axes (\code{\link[ggplot2:element_text]{element_text()}}). Specify all axis tick labels (\code{axis.text}),
 tick labels by plane (using \code{axis.text.x} or \code{axis.text.y}), or individually
 for each axis (using \code{axis.text.x.bottom}, \code{axis.text.x.top},
 \code{axis.text.y.left}, \code{axis.text.y.right}). \verb{axis.text.*.*} inherits from
 \verb{axis.text.*} which inherits from \code{axis.text}, which in turn inherits
 from \code{text}}
-    \item{\code{axis.ticks,axis.ticks.x,axis.ticks.x.top,axis.ticks.x.bottom,axis.ticks.y,axis.ticks.y.left,axis.ticks.y.right}}{tick marks along axes (\code{\link[ggplot2:element_line]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
+    \item{\code{axis.ticks,axis.ticks.x,axis.ticks.x.top,axis.ticks.x.bottom,axis.ticks.y,axis.ticks.y.left,axis.ticks.y.right,axis.ticks.theta,axis.ticks.r}}{tick marks along axes (\code{\link[ggplot2:element_line]{element_line()}}). Specify all tick marks (\code{axis.ticks}),
 ticks by plane (using \code{axis.ticks.x} or \code{axis.ticks.y}), or individually
 for each axis (using \code{axis.ticks.x.bottom}, \code{axis.ticks.x.top},
 \code{axis.ticks.y.left}, \code{axis.ticks.y.right}). \verb{axis.ticks.*.*} inherits from
 \verb{axis.ticks.*} which inherits from \code{axis.ticks}, which in turn inherits
 from \code{line}}
-    \item{\code{axis.ticks.length,axis.ticks.length.x,axis.ticks.length.x.top,axis.ticks.length.x.bottom,axis.ticks.length.y,axis.ticks.length.y.left,axis.ticks.length.y.right}}{length of tick marks (\code{unit})}
-    \item{\code{axis.line,axis.line.x,axis.line.x.top,axis.line.x.bottom,axis.line.y,axis.line.y.left,axis.line.y.right}}{lines along axes (\code{\link[ggplot2:element_line]{element_line()}}). Specify lines along all axes (\code{axis.line}),
+    \item{\code{axis.minor.ticks.x.top,axis.minor.ticks.x.bottom,axis.minor.ticks.y.left,axis.minor.ticks.y.right,axis.minor.ticks.theta,axis.minor.ticks.r}}{minor tick marks along axes (\code{\link[ggplot2:element_line]{element_line()}}). \verb{axis.minor.ticks.*.*}
+inherit from the corresponding major ticks \verb{axis.ticks.*.*}.}
+    \item{\code{axis.ticks.length,axis.ticks.length.x,axis.ticks.length.x.top,axis.ticks.length.x.bottom,axis.ticks.length.y,axis.ticks.length.y.left,axis.ticks.length.y.right,axis.ticks.length.theta,axis.ticks.length.r}}{length of tick marks (\code{unit})}
+    \item{\code{axis.minor.ticks.length,axis.minor.ticks.length.x,axis.minor.ticks.length.x.top,axis.minor.ticks.length.x.bottom,axis.minor.ticks.length.y,axis.minor.ticks.length.y.left,axis.minor.ticks.length.y.right,axis.minor.ticks.length.theta,axis.minor.ticks.length.r}}{length of minor tick marks (\code{unit}), or relative to \code{axis.ticks.length} when provided with \code{rel()}.}
+    \item{\code{axis.line,axis.line.x,axis.line.x.top,axis.line.x.bottom,axis.line.y,axis.line.y.left,axis.line.y.right,axis.line.theta,axis.line.r}}{lines along axes (\code{\link[ggplot2:element_line]{element_line()}}). Specify lines along all axes (\code{axis.line}),
 lines for each plane (using \code{axis.line.x} or \code{axis.line.y}), or individually
 for each axis (using \code{axis.line.x.bottom}, \code{axis.line.x.top},
 \code{axis.line.y.left}, \code{axis.line.y.right}). \verb{axis.line.*.*} inherits from
@@ -74,21 +77,38 @@ inherit from \code{legend.spacing} or can be specified separately}
 inherits from \code{rect})}
     \item{\code{legend.key.size,legend.key.height,legend.key.width}}{size of legend keys (\code{unit}); key background height & width inherit from
 \code{legend.key.size} or can be specified separately}
+    \item{\code{legend.key.spacing,legend.key.spacing.x,legend.key.spacing.y}}{spacing
+between legend keys given as a \code{unit}. Spacing in the horizontal (x) and
+vertical (y) direction inherit from \code{legend.key.spacing} or can be
+specified separately.}
+    \item{\code{legend.frame}}{frame drawn around the bar (\code{\link[ggplot2:element_rect]{element_rect()}}).}
+    \item{\code{legend.ticks}}{tick marks shown along bars or axes (\code{\link[ggplot2:element_line]{element_line()}})}
+    \item{\code{legend.ticks.length}}{length of tick marks in legend (\code{unit})}
+    \item{\code{legend.axis.line}}{lines along axes in legends (\code{\link[ggplot2:element_line]{element_line()}})}
     \item{\code{legend.text}}{legend item labels (\code{\link[ggplot2:element_text]{element_text()}}; inherits from
 \code{text})}
-    \item{\code{legend.text.align}}{alignment of legend labels (number from 0 (left) to
-1 (right))}
+    \item{\code{legend.text.position}}{placement of legend text relative to legend keys
+or bars ("top", "right", "bottom" or "left"). The legend text placement
+might be incompatible with the legend's direction for some guides.}
     \item{\code{legend.title}}{title of legend (\code{\link[ggplot2:element_text]{element_text()}}; inherits from
 \code{title})}
-    \item{\code{legend.title.align}}{alignment of legend title (number from 0 (left) to
-1 (right))}
-    \item{\code{legend.position}}{the position of legends ("none", "left", "right",
-"bottom", "top", or two-element numeric vector)}
+    \item{\code{legend.title.position}}{placement of legend title relative to the main
+legend ("top", "right", "bottom" or "left").}
+    \item{\code{legend.position}}{the default position of legends ("none", "left",
+"right", "bottom", "top", "inside")}
+    \item{\code{legend.position.inside}}{A numeric vector of length two setting the
+placement of legends that have the \code{"inside"} position.}
     \item{\code{legend.direction}}{layout of items in legends ("horizontal" or
 "vertical")}
+    \item{\code{legend.byrow}}{whether the legend-matrix is filled by columns
+(\code{FALSE}, the default) or by rows (\code{TRUE}).}
     \item{\code{legend.justification}}{anchor point for positioning legend inside plot
 ("center" or two-element numeric vector) or the justification according to
 the plot area when positioned outside the plot}
+    \item{\code{legend.justification.top,legend.justification.bottom,legend.justification.left,legend.justification.right,legend.justification.inside}}{Same as \code{legend.justification} but specified per \code{legend.position} option.}
+    \item{\code{legend.location}}{Relative placement of legends outside the plot as a
+string. Can be \code{"panel"} (default) to align legends to the panels or
+\code{"plot"} to align legends to the plot as a whole.}
     \item{\code{legend.box}}{arrangement of multiple legends ("horizontal" or
 "vertical")}
     \item{\code{legend.box.just}}{justification of each legend within the overall
@@ -125,9 +145,14 @@ inherits from \code{title}) left-aligned by default}
     \item{\code{plot.tag}}{upper-left label to identify a plot (text appearance)
 (\code{\link[ggplot2:element_text]{element_text()}}; inherits from \code{title}) left-aligned by default}
     \item{\code{plot.tag.position}}{The position of the tag as a string ("topleft",
-"top", "topright", "left", "right", "bottomleft", "bottom", "bottomright)
-or a coordinate. If a string, extra space will be added to accommodate the
-tag.}
+"top", "topright", "left", "right", "bottomleft", "bottom", "bottomright")
+or a coordinate. If a coordinate, can be a numeric vector of length 2 to
+set the x,y-coordinate relative to the whole plot. The coordinate option
+is unavailable for \code{plot.tag.location = "margin"}.}
+    \item{\code{plot.tag.location}}{The placement of the tag as a string, one of
+\code{"panel"}, \code{"plot"} or \code{"margin"}. Respectively, these will place the tag
+inside the panel space, anywhere in the plot as a whole, or in the margin
+around the panel space.}
     \item{\code{strip.clip}}{should strip background edges and strip labels be clipped
 to the extend of the strip background? Options are \code{"on"} to clip, \code{"off"}
 to disable clipping or \code{"inherit"} (default) to take the clipping setting

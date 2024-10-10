@@ -13,6 +13,7 @@ ls_export(
   part = "all",
   only_unused_tokens = FALSE,
   join_by = "token",
+  standardize_dates = TRUE,
   ...
 )
 }
@@ -40,6 +41,8 @@ Default to FALSE.}
 \item{join_by}{\emph{character}, the joining variable present in both responses
 and participants tibbles. Default to \code{token}. Pass \code{NULL} to join by common
 variables.}
+
+\item{standardize_dates}{\emph{logical}, whether to standardize dates to \code{Date}.}
 
 \item{...}{
   Arguments passed on to \code{\link[dplyr:mutate-joins]{dplyr::left_join}}

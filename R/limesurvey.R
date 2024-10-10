@@ -222,6 +222,7 @@ ls_surveys <- function() {
 #'   Default to FALSE.
 #' @param translate_attrs *logical*, should the custom attributes be
 #'   "translated" to "semantic" version? Default to TRUE.
+#' @param standardize_dates *logical*, whether to standardize dates to `Date`.
 #'
 #' @return A tibble, or raw object if server response cannot be reasonably
 #'   coerced to a tibble.
@@ -240,7 +241,7 @@ ls_surveys <- function() {
 #' @family LimeSurvey functions
 #' @export
 ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
-                            only_unused_tokens = FALSE, translate_attrs = TRUE) {
+                            only_unused_tokens = FALSE, translate_attrs = TRUE, standardize_dates = TRUE) {
   if (is.logical(attributes)) {
     if (attributes) {
       attributes <- .ls_all_attributes
@@ -268,6 +269,10 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
     }
   }
 
+  if (standardize_dates) {
+    res <- ls_standardize_dates(res)
+  }
+
   res
 }
 
@@ -290,6 +295,7 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 #'   or `all` (the default).
 #' @param ... *other named arguments* used by "export_responses" method. Use at
 #'   your own risk.
+#' @param standardize_dates *logical*, whether to standardize dates to `Date`.
 #'
 #' @return  A tibble, or raw object if server response cannot be reasonably
 #'   coerced to a tibble.
@@ -306,7 +312,7 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 #' @family LimeSurvey functions
 #'
 #' @export
-ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "all", ...) {
+ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "all", standardize_dates = TRUE, ...) {
   part <- match.arg(part, c("complete", "incomplete", "all"))
 
   data <- ls_call("export_responses",
@@ -371,6 +377,10 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
   # remove the tibble attribute, which is not needed anymore
   attr(out, "variable.labels") <- NULL # nolint: object_name_linter
 
+  if (standardize_dates) {
+    out <- ls_standardize_dates(out)
+  }
+
   out
 }
 
@@ -382,6 +392,7 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
 #' @param join_by *character*, the joining variable present in both responses
 #'   and participants tibbles. Default to `token`. Pass `NULL` to join by common
 #'   variables.
+#' @param standardize_dates *logical*, whether to standardize dates to `Date`.
 #' @inheritDotParams dplyr::left_join -x -y -by
 #'
 #' @return A tibble.
@@ -397,13 +408,13 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
 #' @export
 ls_export <- function(survey_id, attributes = TRUE, clean_labels = TRUE, n_participants = 999,
                       lang = "cs", part = "all", only_unused_tokens = FALSE,
-                      join_by = "token", ...) {
+                      join_by = "token", standardize_dates = TRUE, ...) {
   participants <- ls_participants(survey_id,
     n_participants = n_participants,
-    only_unused_tokens = only_unused_tokens, attributes = attributes
+    only_unused_tokens = only_unused_tokens, attributes = attributes, standardize_dates = standardize_dates
   )
 
-  responses <- ls_responses(survey_id, clean_labels = clean_labels, lang = lang, part = part)
+  responses <- ls_responses(survey_id, clean_labels = clean_labels, lang = lang, part = part, standardize_dates = standardize_dates)
 
   left_join(participants, responses, by = join_by, ...)
 }
@@ -686,3 +697,29 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 # # .x is token ID (tid)
 
 # nolint end
+
+
+#' Standardize Date Variables in LimeSurvey Data
+#'
+#' @param .data *tibble*, data frame with LimeSurvey data.
+#' @param date_cols *character*, names of date columns to be standardized.
+#' @param as_na *character*, values to be coerced to `NA` (default to `c("", "N", "Y")`).
+#'
+#' @inheritDotParams lubridate::parse_date_time -x
+#'
+#' @return A tibble with standardized date variables.
+#' @export
+#'
+#' @importFrom lubridate parse_date_time
+#' @importFrom dplyr any_of mutate across
+#'
+ls_standardize_dates <- function(.data, date_cols = c("completed", "sent", "submitdate", "startdate", "datestamp"), as_na = c("", "N", "Y"), ...) {
+  .data %>%
+    mutate(
+      across(
+        any_of(date_cols),
+        \(x) if_else(x %in% as_na, NA_character_, x) %>%
+          parse_date_time(c("ymd HMS", "ymd HM"), ...) # parse any of these
+      )
+    )
+}

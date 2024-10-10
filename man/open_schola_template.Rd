@@ -32,8 +32,8 @@ open_schola_template()
 Other Report templates and formats: 
 \code{\link{copy_schola_template}()},
 \code{\link{schola_pdf}()},
-\code{\link{schola_word2}()},
-\code{\link{schola_word}()}
+\code{\link{schola_word}()},
+\code{\link{schola_word2}()}
 }
 \author{
 Jan Netik

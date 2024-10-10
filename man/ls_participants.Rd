@@ -9,7 +9,8 @@ ls_participants(
   attributes = TRUE,
   n_participants = 999,
   only_unused_tokens = FALSE,
-  translate_attrs = TRUE
+  translate_attrs = TRUE,
+  standardize_dates = TRUE
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ Default to FALSE.}
 
 \item{translate_attrs}{\emph{logical}, should the custom attributes be
 "translated" to "semantic" version? Default to TRUE.}
+
+\item{standardize_dates}{\emph{logical}, whether to standardize dates to \code{Date}.}
 }
 \value{
 A tibble, or raw object if server response cannot be reasonably

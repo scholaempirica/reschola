@@ -4,7 +4,14 @@
 \alias{ls_responses}
 \title{Export Responses}
 \usage{
-ls_responses(survey_id, clean_labels = TRUE, lang = "cs", part = "all", ...)
+ls_responses(
+  survey_id,
+  clean_labels = TRUE,
+  lang = "cs",
+  part = "all",
+  standardize_dates = TRUE,
+  ...
+)
 }
 \arguments{
 \item{survey_id}{\emph{integer}, ID of the survey (as found with \code{ls_surveys},
@@ -17,6 +24,8 @@ repeating parts. Defaults to \code{TRUE}.}
 
 \item{part}{\emph{character}, completion status, either \code{complete}, \code{incomplete}
 or \code{all} (the default).}
+
+\item{standardize_dates}{\emph{logical}, whether to standardize dates to \code{Date}.}
 
 \item{...}{\emph{other named arguments} used by "export_responses" method. Use at
 your own risk.}

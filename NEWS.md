@@ -1,6 +1,12 @@
+# reschola (development version)
+
+## Changes
+
+- New function `ls_standardize_dates()` was introduced and applied by default in `ls_responses()` and `ls_export()` to standardize date columns to `Date` class with H:M:S format.
+
 # reschola 0.5.6
 
-This release fixes a minor regression in `schola_barplot()` introduced by `{ggplot2}` 3.5.0+.
+This release fixes a minor regression in `schola_barplot()` introduced by `{ggplot2}` 3.5.0+ and provides compatibility for older LimeSurvey installations.
 
 ## Bugfixes
 
