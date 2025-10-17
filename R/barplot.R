@@ -225,7 +225,7 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
 #'   `dict_from_data()`
 #' @param width maximal string length per line, if `NULL`, this is off
 #'
-#' @return object of class `labeller`, to be used in `facet_*` {ggplot2}
+#' @return object of class `labeller`, to be used in `facet_*` `{ggplot2}`
 #'   functions.
 #' @export
 #' @importFrom rlang set_names

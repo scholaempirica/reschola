@@ -46,11 +46,8 @@ prepare_lollipop_data <- function(.data, vars, group) {
       name = fct_reorder(.data$name, .data$diff, abs, .desc = FALSE)
     )
 
-
   # single obs data for annotation geoms, so they do not "overplot" (print nrow()-times)
   d_single <- d |> slice(1)
-
-
 
   list(
     d = d,
@@ -85,11 +82,16 @@ prepare_lollipop_data <- function(.data, vars, group) {
 #'
 #' @export
 #'
-plot_lollipop <- function(plot_data, direction = "blue_larger",
-                          var_labels = waiver(),
-                          negative_label = NULL, positive_label = NULL, ref_label = NULL,
-                          xlab = "rozd\u00edl mezi Va\u0161\u00ed \u0161kolou a ostatn\u00edmi",
-                          observations_alpha = .2) {
+plot_lollipop <- function(
+  plot_data,
+  direction = "blue_larger",
+  var_labels = waiver(),
+  negative_label = NULL,
+  positive_label = NULL,
+  ref_label = NULL,
+  xlab = "rozd\u00edl mezi Va\u0161\u00ed \u0161kolou a ostatn\u00edmi",
+  observations_alpha = .2
+) {
   direction <- match.arg(direction, c("blue_larger", "red_larger"))
 
   diff_scale <- if (direction == "blue_larger") {
@@ -101,26 +103,39 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
   names_order <- levels(plot_data$main_data$name)
 
   plot_data$main_data %>%
-    ggplot(aes(.data$diff, fct_relevel(.data$name, names_order),
+    ggplot(aes(
+      .data$diff,
+      fct_relevel(.data$name, names_order),
       col = .data$diff > 0
     )) +
     # reference group line
-    geom_vline(xintercept = 0, col = "grey", linetype = "dashed", size = .75) +
+    geom_vline(
+      xintercept = 0,
+      col = "grey",
+      linetype = "dashed",
+      linewidth = .75
+    ) +
     # focal group datapoints
     geom_jitter(
-      height = .25, width = 0, alpha = observations_alpha, shape = 16, size = 2,
+      height = .25,
+      width = 0,
+      alpha = observations_alpha,
+      shape = 16,
+      size = 2,
       data = plot_data$diff_data
     ) +
 
     # lollipop stem
-    geom_linerange(aes(xmax = diff, xmin = 0), size = 2.33, alpha = .5) +
+    geom_linerange(aes(xmax = diff, xmin = 0), linewidth = 2.33, alpha = .5) +
     # lollipop ball-end
     geom_point(size = 4.5) +
 
     # negative (left) half-plane annotation arrow
     geom_segment(
-      x = -.1, xend = -.9,
-      y = .333, yend = .333,
+      x = -.1,
+      xend = -.9,
+      y = .333,
+      yend = .333,
       arrow = arrow(length = unit(.06, "in"), type = "closed"),
       col = "grey",
       data = plot_data$d_single
@@ -129,14 +144,20 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
     geom_richtext(
       aes(x = -.1, y = .333), # without aes(), nudge does not work...
       label = positive_label,
-      vjust = 1.2, hjust = 1, col = "grey", fill = NA, label.color = NA,
+      vjust = 1.2,
+      hjust = 1,
+      col = "grey",
+      fill = NA,
+      label.color = NA,
       data = plot_data$d_single
     ) +
 
     # positive (right) half-plane annotation arrow
     geom_segment(
-      x = .1, xend = .9,
-      y = .333, yend = .333,
+      x = .1,
+      xend = .9,
+      y = .333,
+      yend = .333,
       arrow = arrow(length = unit(.06, "in"), type = "closed"),
       col = "grey",
       data = plot_data$d_single
@@ -145,15 +166,22 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
     geom_richtext(
       aes(x = .1, y = .333),
       label = negative_label,
-      vjust = 1.2, hjust = 0, col = "grey", fill = NA, label.color = NA,
+      vjust = 1.2,
+      hjust = 0,
+      col = "grey",
+      fill = NA,
+      label.color = NA,
       data = plot_data$d_single
     ) +
 
     # reference group annotation arrow
     geom_curve(
-      x = .5, xend = .1,
-      yend = plot_data$n_vars + .4, y = plot_data$n_vars + .5,
-      arrow = arrow(length = unit(.06, "in"), type = "closed"), curvature = .2,
+      x = .5,
+      xend = .1,
+      yend = plot_data$n_vars + .4,
+      y = plot_data$n_vars + .5,
+      arrow = arrow(length = unit(.06, "in"), type = "closed"),
+      curvature = .2,
       col = "grey",
       data = plot_data$d_single
     ) +
@@ -161,14 +189,18 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
     # reference group annotation text
     geom_text(
       label = ref_label,
-      x = .5, y = plot_data$n_vars + .5,
-      vjust = .4, hjust = -.075,
-      col = "grey", lineheight = 1,
+      x = .5,
+      y = plot_data$n_vars + .5,
+      vjust = .4,
+      hjust = -.075,
+      col = "grey",
+      lineheight = 1,
       check_overlap = TRUE,
       data = plot_data$d_single
     ) +
     scale_x_continuous(
-      breaks = scales::breaks_width(2), minor_breaks = scales::breaks_width(1),
+      breaks = scales::breaks_width(2),
+      minor_breaks = scales::breaks_width(1),
       expand = expansion(.025)
     ) +
     scale_y_discrete(
@@ -184,6 +216,6 @@ plot_lollipop <- function(plot_data, direction = "blue_larger",
     ylab(NULL) +
     theme_schola("x") +
     theme(
-      panel.grid.minor.x = element_line(colour = "grey92", size = .15)
+      panel.grid.minor.x = element_line(colour = "grey92", linewidth = .15)
     )
 }

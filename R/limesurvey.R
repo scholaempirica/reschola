@@ -711,7 +711,8 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 #' @export
 #'
 #' @importFrom lubridate parse_date_time
-#' @importFrom dplyr any_of mutate across
+#' @importFrom dplyr mutate across if_else
+#' @importFrom tidyselect any_of
 #'
 ls_standardize_dates <- function(.data, date_cols = c("completed", "sent", "submitdate", "startdate", "datestamp"), as_na = c("", "N", "Y"), ...) {
   .data %>%

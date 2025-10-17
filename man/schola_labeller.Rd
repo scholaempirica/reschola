@@ -13,7 +13,7 @@ schola_labeller(dict, width = 80)
 \item{width}{maximal string length per line, if \code{NULL}, this is off}
 }
 \value{
-object of class \code{labeller}, to be used in \verb{facet_*} {ggplot2}
+object of class \code{labeller}, to be used in \verb{facet_*} \code{{ggplot2}}
 functions.
 }
 \description{
