@@ -1,6 +1,6 @@
 Package: reschola
 Title: The Schola Empirica Package
-Version: 0.5.6.9000
+Version: 0.5.6.9001
 Authors@R: c(
     person("Petr", "Bouchal", , "pbouchal@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-0471-716X")),
@@ -21,7 +21,7 @@ Imports:
     extrafont,
     forcats,
     fs,
-    ggplot2,
+    ggplot2 (>= 3.4.0),
     ggtext,
     googledrive,
     grDevices,
@@ -46,6 +46,7 @@ Imports:
     stringr,
     tibble,
     tidyr,
+    tidyselect,
     usethis,
     utils
 Suggests: 
