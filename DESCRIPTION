@@ -1,6 +1,6 @@
 Package: reschola
 Title: The Schola Empirica Package
-Version: 0.5.6.9001
+Version: 0.5.6.9002
 Authors@R: c(
     person("Petr", "Bouchal", , "pbouchal@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-0471-716X")),
@@ -26,7 +26,7 @@ Imports:
     googledrive,
     grDevices,
     here,
-    hrbrthemes,
+    hrbrthemes (>= 0.8.7),
     htmltools,
     httr,
     jsonlite,
@@ -60,3 +60,5 @@ Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3
+Remotes: 
+    gtihub::hrbrmstr/hrbrthemes
