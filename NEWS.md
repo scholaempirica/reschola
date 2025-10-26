@@ -1,5 +1,9 @@
 # reschola (development version)
 
+## Breaking changes
+
+- Dependency `{hrbrthemes}` was archived on CRAN and will be dropped in `{reschola}` in the next release. Until then, please install `{hrbrthemes}` from GitHub: `remotes::install_github("hrbrmstr/hrbrthemes")`.
+
 ## Changes
 
 - New function `ls_standardize_dates()` was introduced and applied by default in `ls_responses()` and `ls_export()` to standardize date columns to `Date` class with H:M:S format.
