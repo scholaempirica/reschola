@@ -1,0 +1,133 @@
+# Developing this package further
+
+This package should be a living, evolving tool and a set of living
+documents. This vignette describes how this package is being developed
+and thus how it can be extended and updated.
+
+## Development process
+
+This package is being developed on Github using the workflow suggested
+[Hadley Wickham’s R Packages
+book](https://ropensci.org/technotes/2019/12/08/precompute-vignettes/)
+and implemented by the [`usethis`](https://github.com/r-lib/usethis)
+package.
+
+The development roadmap is stored in a primitive form in [Github
+Issues](https://github.com/scholaempirica/reschola/issues).
+
+Releases (of the source package only) are made available in the Relaeses
+part of Github, meaning a last stable release can be installed using
+e.g. `remotes::install_github("scholaempirica/reschola", ref = github_release())`
+regardless of how messy the current state of the repository master
+branch is.
+
+Big changes or new features should be built in branches.
+
+### Dependencies
+
+Try to use as few as is reasonable; avoid obscure ones. Prefer CRAN
+releases.
+
+Prefer versions where CRAN binaries are available for all platforms.
+
+### Quality assurance
+
+[Pre-commit checks](https://github.com/lorenzwalthert/precommit) are
+used to ensure that broken code is not committed.
+
+#### Checks / Continuous integration
+
+Commits are only pushed when they pass local R CMD checks with no errors
+or warnings. Checks are then run on Travis on an Ubuntu system as part
+of building the website. For releases (e.g. v0.1.0) checks are run on
+[r-hub](https://builder.r-hub.io/).
+
+An exception to the automatic continuous integration and check pipeline
+is the `chart.Rmd` vignette, which is prebuilt locally using
+`vignettes/prebuild.r` from `charts.Rmd.orig` to ensure fonts are used
+correctly. (The approach is taken from ropensci as described in [this
+blog
+post](https://ropensci.org/technotes/2019/12/08/precompute-vignettes/)
+and applied in [this
+package](https://github.com/ropensci/eia/blob/master/vignettes/))
+
+#### Test coverage
+
+Currently no tests are included or test coverage tracked, but vignettes
+are written so as to cover and implicitly test the basic functionality
+of the package.
+
+### Making package binaries available
+
+MacOS and Windows binaries of stable (minor and patch, so X.Y.0 and
+X.Y.Z where Z != 9000) releases are made available on the [Schola
+drat](https://scholaempirica.github.io/drat) package repository. This is
+done manually, using the `ptrr::insert_package_into_drat()` utility in
+the `ptrr` package but can be without it by downloading built binaries
+output by r-hub and inserting them into the `gh-pages` branch of the
+`drat` Github repository using the `drat` package.
+
+See installation instructions in README.md for how to install these
+binaries.
+
+## Online documentation
+
+The continuous integration pipeline (Travis CI and Github Pages) means
+that whenever code is pushed to Github, the documentation of the package
+is converted to a website by the `pkgdown` package and published on
+[scholaempirica.github.io/reschola](https://scholaempirica.github.io/reschola)
+via the `gh-pages` branch of the repository.
+
+## Reusing/reshaping the documentation
+
+### Making changes
+
+In principle, small changes (e.g. correcting typos) can be made in the
+web interface on Github by any member of the scholaempirica Github team.
+This is done by going to the relevant file on Github, clicking the
+pencil icon, and editing the text. When saving changes, Github prompts
+you to make a commit, which triggers a rebuild and republish of the web
+documentation.
+
+Function documentation is contained in the functions’ R files in `R/`,
+vignettes are in `/vignettes`. The `charts.Rmd`/`charts.Rmd.orig`
+vignette requires special treatment - see
+[above](#checks-continuous-integration).
+
+Big changes should be done after cloning the repo and opening in
+RStudio, ideally on a separate branch.
+
+### Reusing
+
+The vignettes are in principle Rmd files with a special YAML header so
+can be reused and republished anywhere and in any format if needed.
+
+## How to change key parts
+
+- word template styles: use Word to open and edit styles in
+  `template.docx` in `inst/rmarkdown/templates/schola_*/resources/`
+- text in articles/vignettes: `vignettes/*.Rmd`
+- default content of Rmarkdown files created from `reschola` templates:
+  `inst/rmarkdown/templates/schola_*/skeleton/skeleton.Rmd`
+- Rmarkdown templates knitr param defaults: look at the
+  `base$knitr$opts_chunk` bits in `R/rmarkdown_output.R`
+- behaviour of project template: `inst/rstudio/templates/project` and
+  `R/rstudio_project_bindings.R`; consult
+  <https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html>.
+  `inst/rstudio/templates/project/schola_project.dcf` sets up the dialog
+  and lists files which will be opened in the new project
+- text of function documentation: always next to each function in
+  `R/{function_name/group}.R`; consult <https://r-pkgs.org/man.html> on
+  documenting things.
+- font defaults: look through `R/fonts.R`
+
+## Resources and acknowledgements
+
+The package architecture and many components draw heavily on
+[`ratlas`](https://github.com/atlas-aai/ratlas) by
+@ratlas-aai/@wjakethompson (Jake Thompson), and on
+[`hrbrthemes`](https://github.com/hrbrmstr/hrbrthemes) by Bob Rudis
+(@hrbrmstr).
+
+You can see Jake’s Rstudio::conf talk on `ratlas` at
+<https://resources.rstudio.com/rstudio-conf-2020/branding-and-packaging-reports-with-r-markdown-jake-thompson>.

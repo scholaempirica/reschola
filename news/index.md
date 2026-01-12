@@ -1,0 +1,771 @@
+# Changelog
+
+## reschola (development version)
+
+### Breaking changes
+
+- Dependency `{hrbrthemes}` was archived on CRAN and will be dropped in
+  [reschola](https://github.com/scholaempirica/reschola) in the next
+  release. Until then, please install `{hrbrthemes}` from GitHub:
+  `remotes::install_github("hrbrmstr/hrbrthemes")`.
+
+### Changes
+
+- New function
+  [`ls_standardize_dates()`](https://scholaempirica.github.io/reschola/reference/ls_standardize_dates.md)
+  was introduced and applied by default in
+  [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
+  and
+  [`ls_export()`](https://scholaempirica.github.io/reschola/reference/ls_export.md)
+  to standardize date columns to `Date` class with H:M:S format.
+- [ggplot2](https://ggplot2.tidyverse.org) \>= 3.4.0 is now required to
+  support `linewidth` aesthetics for line geoms as `size` is deprecated
+  for them.
+
+## reschola 0.5.6
+
+This release fixes a minor regression in
+[`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+introduced by [ggplot2](https://ggplot2.tidyverse.org) 3.5.0+ and
+provides compatibility for older LimeSurvey installations.
+
+### Bugfixes
+
+- Legend keys in
+  [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  are drawn for all response categories even if not present in the data
+  by default. See [the
+  blogpost](https://www.tidyverse.org/blog/2024/02/ggplot2-3-5-0-legends/#awareness)
+  and the
+  [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)’s
+  `show.legend` argument documentation for more details.
+- [`ls_login()`](https://scholaempirica.github.io/reschola/reference/ls_login.md)
+  now works with older LimeSurvey versions
+  ([@petrbouchal](https://github.com/petrbouchal),
+  [\#103](https://github.com/scholaempirica/reschola/issues/103)).
+
+## reschola 0.5.5
+
+### Bugfixes
+
+- attributes translation fixed
+
+## reschola 0.5.4
+
+This is a hotfix to align LS API with LS 6.x.
+
+### Bugfixes
+
+- [`ls_login()`](https://scholaempirica.github.io/reschola/reference/ls_login.md)
+  parameters reflect those in LS RC API.
+
+## reschola 0.5.3
+
+### Breaking changes
+
+- standard PDF `.tex` template was fixed and updated (with the default
+  `.Rmd` skeleton), **this may break projects using the default
+  template**
+  - provides citations using `biblatex` with a standard APA (v7) style
+  - more control on logos (different main and client logos in the title
+    page and in running header), new header logos height (11pt)
+
+### Changes
+
+- [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  puts the legend to the bottom by default now
+- [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  now adds 1pt left and bottom margins, so the text is not cut
+- question label cleaning keeps right inner `]` untouched
+- [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  gains a new argument `fill_cols`, so you can override the default
+  palette (`RColorBrewer::brewer.pal(5, "RdYlBu")`, which is suitable
+  only for 5point scales)
+- [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  now understands `escape_level = FALSE` in which case the grey color is
+  not used as they are no escape level or category to mark
+- [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  now ignores `NA`s in a “pairwise” manner, without completely
+  discarding the compromised row. Turn this behavior off with
+  `drop_na = FALSE`.
+- [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  gains a new argument `drop`. When `FALSE` (the default), the levels
+  that are actually not in the data are presented in the legend anyway.
+- default top margin of the
+  [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  plot enlarged from 1.5 pt to 4 pt to “include” Czech accents like in
+  capital `Ř`
+- by default,
+  [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  now dictates that the title, subtitle, and caption is rendered via
+  [`ggtext::element_textbox_simple()`](https://wilkelab.org/ggtext/reference/element_textbox.html) -
+  this provides automatic wrapping to the actual with of the viewport
+  (NOTE: under R 4.2.0, you need `gridtext` of version \> 0.1.4, or the
+  text will be ill-rendered; see [this
+  PR](https://github.com/wilkelab/gridtext/pull/25)), the caption will
+  be in condensed typeface and in grey
+- [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  puts 6 pt bottom-margins on title and subtitle
+- in
+  [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  item (facet) label text is slightly bigger, default wrap-width is
+  wider (this does not support auto-wrapping due to some bugs in
+  `ggplot2`)
+- [`schola_labeller()`](https://scholaempirica.github.io/reschola/reference/schola_labeller.md)
+  understands `width = NULL`
+
+### Bugfixes
+
+- over-plotting of text-based geoms is fixed in
+  [`plot_lollipop()`](https://scholaempirica.github.io/reschola/reference/plot_lollipop.md)
+- `group` argument is now respected in the whole
+  [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+- typo in the default font name fixed
+- absent logos paths should not result in render fail, but in missing
+  logos
+- [`ls_get_attrs()`](https://scholaempirica.github.io/reschola/reference/ls_get_attrs.md)
+  no longer fails (even if unexpected output is returned by LS)
+
+## reschola 0.5.2
+
+### Changes
+
+- package logo slightly updated
+- [`recover_labs()`](https://scholaempirica.github.io/reschola/reference/recover_labs.md)
+  has relaxed assumptions about old and new dataframes column names and
+  number of columns. From now on, only a warning is issued.
+- [`fct_nanify()`](https://scholaempirica.github.io/reschola/reference/fct_nanify.md)
+  will not abort when the factor to NAnify is not present in the data
+  and will return the original input with a warning
+- user `.Rprofile` is now sourced in project’s `.Rprofile`, so you may
+  still use functions or values defined in the user-scoped version
+
+### New features
+
+- [`extract_schola_barplot_info()`](https://scholaempirica.github.io/reschola/reference/extract_schola_barplot_info.md)
+  for easy access to a data underlying
+  [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  output
+
+### Bugfixes
+
+- [`fct_nanify()`](https://scholaempirica.github.io/reschola/reference/fct_nanify.md)
+  no longer fails when there are `NA`s in the match vector
+- [`czech_date_interval()`](https://scholaempirica.github.io/reschola/reference/czech_date_interval.md)
+  is hopefully finally fixed…
+
+## reschola 0.5.1
+
+This is a minor patch solving the following two issues:
+
+### Bugfixes
+
+- [`fct_nanify()`](https://scholaempirica.github.io/reschola/reference/fct_nanify.md)
+  no longer warns about level order each time it is called
+- [`recover_labs()`](https://scholaempirica.github.io/reschola/reference/recover_labs.md)
+  does not check the number of rows of dataframes (too restrictive & not
+  intended originally)
+
+## reschola 0.5.0 (Welcome, Ubuntu)
+
+This release is focused on the new SCHOLA EMPIRICA visual style and
+replaces Roboto with Ubuntu font. It also adds wrappers for creating the
+Schola-styled lollipop and barplot plots to be used in our reports.
+These come with a bunch of utils, such as custom labeller which is
+useful for labeling plots’ facets, tightly tied with
+[`dict_from_data()`](https://scholaempirica.github.io/reschola/reference/dict_from_data.md)
+that you’ll use for extracting labeling specifications from the labels
+that come from LimeSurvey via our API. In case of labels being stripped
+from the dataframe, the new
+[`recover_labs()`](https://scholaempirica.github.io/reschola/reference/recover_labs.md)
+function may be handy. As usual many bugs were fixed and a few utils
+functions were added. Take a look:
+
+### Changes
+
+- [reschola](https://github.com/scholaempirica/reschola) now adheres to
+  SCHOLA EMPIRICA visual style by adopting Ubuntu and Ubuntu Condensed
+  fonts
+- [`gd_download_folder()`](https://scholaempirica.github.io/reschola/reference/gd_download_folder.md)
+  now overwrites existing content by default
+- all files created at project start-up are now committed in the initial
+  “Repo set-up” commit
+- Google Drive URL saved in `.Rprofile` at project set-up is now
+  automatically trimmed and all queries that might boggle
+  [googledrive](https://googledrive.tidyverse.org) are removed
+- [`fct_nanify()`](https://scholaempirica.github.io/reschola/reference/fct_nanify.md)
+  now matches using a regular expression, friendly *message* displaying
+  only once per session
+- Google Drive URL inside `share.R` is removed for future projects, as
+  it is now governed by a feature introduced in
+  [reschola](https://github.com/scholaempirica/reschola) 0.4.0
+
+### New features
+
+- [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
+  for Likert-type items, displaying grouped data per variable for
+  straightforward comparison
+- [`prepare_lollipop_data()`](https://scholaempirica.github.io/reschola/reference/prepare_lollipop_data.md)
+  and
+  [`plot_lollipop()`](https://scholaempirica.github.io/reschola/reference/plot_lollipop.md)
+  for creating lollipop plots
+- [`dict_from_data()`](https://scholaempirica.github.io/reschola/reference/dict_from_data.md)
+  extracts named character vector of item code-label pairs
+- [`schola_labeller()`](https://scholaempirica.github.io/reschola/reference/schola_labeller.md)
+  is a labeller for [ggplot2](https://ggplot2.tidyverse.org) facets that
+  utilizes item labels, with wrapping
+- [`with_clr()`](https://scholaempirica.github.io/reschola/reference/with_clr.md)
+  creates text with color as a span HTML tag, especially useful shortcut
+  when you use
+  [`ggtext::geom_richtext()`](https://wilkelab.org/ggtext/reference/geom_richtext.html)
+  or
+  [`ggtext::element_markdown()`](https://wilkelab.org/ggtext/reference/element_markdown.html)
+  richtext
+- `build_all.R` script now comes with a few lines that’ll process all
+  scripts inside `data` directory
+- new utils functions:
+  - [`recover_labs()`](https://scholaempirica.github.io/reschola/reference/recover_labs.md)
+    for recovering lost variable labels (such as those coming from
+    `ls_*()` export functions); with infix operator available:
+    `%labs_from%`
+  - [`get_labs_df()`](https://scholaempirica.github.io/reschola/reference/get_labs_df.md)
+    for quick labels check (the most user-friendly is to use
+    [`View()`](https://rdrr.io/r/utils/View.html) in RStudio, though)
+  - [`remove_empty_at()`](https://scholaempirica.github.io/reschola/reference/remove_empty_at.md)
+    to drop observations that are completely empty *at specified
+    variables*; note
+    [`tidyr::drop_na()`](https://tidyr.tidyverse.org/reference/drop_na.html)
+    have a similar usage, but it drops rows containing *any* missing
+    values, not those with *all* missings
+
+### Bugfixes
+
+- cropping of PDF figures was silently in charge for users with working
+  `pdfcrop` and `ghostscript`. It is now off by default.
+- project set-up error claiming directories does not exist fixed
+- [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  now uses 1.5pt top margin, so diacritics of certain letters doesn’t
+  get cut.
+- `clean_labels = FALSE` in
+  [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
+  (and fellows) does not fail anymore
+- [`czech_date_interval()`](https://scholaempirica.github.io/reschola/reference/czech_date_interval.md)
+  now returns correct class (should have always been
+  `czech_date_interval` not `character`; furthemore, if start and end
+  dates were identical, it even returned `POSIXct`/`POSIXt`, which
+  produced hard-to-debug issues when used inside
+  [dplyr](https://dplyr.tidyverse.org)’s `summarise`)
+- fixed missing attributes were not recognized in `ls_*()` functions
+  (those are coded `NA` in recent LimeSurvey); more verbose info
+
+### Documentation
+
+- [`gd_get_proj()`](https://scholaempirica.github.io/reschola/reference/gd_get_proj.md)
+  now provides instruction for those who want to use the feature but
+  created their [reschola](https://github.com/scholaempirica/reschola)
+  project before version 0.4.0
+
+## reschola 0.4.0 (New Beginnings)
+
+In this release, we have changed a standard project structure to be more
+organised keeping in mind not to clutter the project’s root directory
+with too many files. Next, font installation and usage backend was
+completely revamped and should now work straight out of the box on any
+machine – without any dependencies needed. Last, but not least, our
+default [ggplot2](https://ggplot2.tidyverse.org) theme has been
+report-first tailored and cropping utilities are not needed any more.
+And as usual, many bugs were fixed.
+
+### Breaking changes
+
+- default project structure changes and clean-up
+- schola project options clean-up
+- new font installation and registration routines for Windows, see
+  [`install_reschola_fonts()`](https://scholaempirica.github.io/reschola/reference/install_reschola_fonts.md)
+  and
+  [`register_reschola_fonts()`](https://scholaempirica.github.io/reschola/reference/register_reschola_fonts.md)
+- updated
+  [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  - no margins by default (argument `margin` supersedes `margin_side`
+    and `margin_bottom`)
+  - axis titles on by default (+ `axis.title` renamed to `axis_title`)
+- figure cropping with `ghostscript` and `pdfcrop` is defunct, so those
+  are no longer needed (see above)
+- new Google Drive handling – URL is set in `.Rprofile` as a hidden
+  object that can be accessed by
+  [`gd_get_proj()`](https://scholaempirica.github.io/reschola/reference/gd_get_proj.md)
+
+### Changes
+
+- current logos added
+- new
+  [`draft_pdf()`](https://scholaempirica.github.io/reschola/reference/draft.md)
+- start-up message
+- project set-up exceptions better handled
+- [`set_reschola_ggplot_fonts()`](https://scholaempirica.github.io/reschola/reference/use_reschola_fonts.md)
+  without dependencies and more customisable (although changes are not
+  recommended); new geoms covered
+- new
+  [`fct_nanify()`](https://scholaempirica.github.io/reschola/reference/fct_nanify.md)
+  for recoding a factor level to `NA`
+- new functions for quick RDS data manipulation:
+  - [`get_input_data()`](https://scholaempirica.github.io/reschola/reference/schola_rds.md)
+  - [`get_intermediate_data()`](https://scholaempirica.github.io/reschola/reference/schola_rds.md)
+  - [`get_processed_data()`](https://scholaempirica.github.io/reschola/reference/schola_rds.md)
+  - [`write_input_data()`](https://scholaempirica.github.io/reschola/reference/schola_rds.md)
+  - [`write_intermediate_data()`](https://scholaempirica.github.io/reschola/reference/schola_rds.md)
+  - [`write_processed_data()`](https://scholaempirica.github.io/reschola/reference/schola_rds.md)
+- new function
+  [`gd_upload_file()`](https://scholaempirica.github.io/reschola/reference/gd_upload_file.md)
+  for quick file uploads
+- [`gd_download_folder()`](https://scholaempirica.github.io/reschola/reference/gd_download_folder.md)
+  now uses project’s Google Drive URL stored in `.Rprofile` as
+  `folder_url` argument by default
+
+### Bugfixes
+
+- [`ls_participants()`](https://scholaempirica.github.io/reschola/reference/ls_participants.md)
+  runs properly when there are no attributes to translate and
+  `translate_attrs = TRUE`
+
+### Documentation
+
+- [pkgdown](https://pkgdown.r-lib.org/) online documentation leverages
+  `Bootstrap 5`
+- info about `babel` TeX package hyphenation warning mitigation in
+  [`schola_pdf()`](https://scholaempirica.github.io/reschola/reference/schola_pdf.md)
+  (using `tinytex::tlmgr_install("hyphen-czech")`)
+- [`?theme_schola`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  enumerates `...` arguments that
+  [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
+  understands
+
+## reschola 0.3.3 (Save the Fonts)
+
+### Breaking changes
+
+- `redoc` reversible Word format is now completely removed from the
+  package; from now on, use
+  [`schola_pdf()`](https://scholaempirica.github.io/reschola/reference/schola_pdf.md)
+  primarily
+  ([`schola_word()`](https://scholaempirica.github.io/reschola/reference/schola_word.md)
+  is still available)
+
+### Changes
+
+- PDF template now handles footnotes better
+- [`czech_date_interval()`](https://scholaempirica.github.io/reschola/reference/czech_date_interval.md)
+  now raises an error when you try to supply more than one entry
+- [`ls_call()`](https://scholaempirica.github.io/reschola/reference/ls_call.md)
+  gives an error when you try to provide another `sSessionKey` in
+  `params`
+- [`ls_call()`](https://scholaempirica.github.io/reschola/reference/ls_call.md)
+  passes `error` message to the user when there is one
+- [`ls_call()`](https://scholaempirica.github.io/reschola/reference/ls_call.md)
+  replaces `NULL`s with `NA`s (thus more API responses can be turned
+  into a tibble)
+- [`ls_call()`](https://scholaempirica.github.io/reschola/reference/ls_call.md)
+  messaging is less disruptive
+- the documentation is more verbose on some topics
+- fonts registration is now more verbose and
+  [`import_fonts()`](https://scholaempirica.github.io/reschola/reference/import_fonts.md)
+  checks that everything went well; solutions are provided otherwise
+
+### New features
+
+- [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
+  (and thus
+  [`ls_export()`](https://scholaempirica.github.io/reschola/reference/ls_export.md))
+  strips out the `tibble`-wide `variable.labels` attribute and spreads
+  it among the individual variables, which enables you to modify the
+  `tibble` without messing the labels positions and/or producing length
+  incompatibilities
+- [`ls_export()`](https://scholaempirica.github.io/reschola/reference/ls_export.md)
+  gains new argument `clean_labels` which by default cleans up repeating
+  parts of labels of sub-questions (i.e., those outside square brackets)
+- new function
+  [`ls_set_participant_properties()`](https://scholaempirica.github.io/reschola/reference/ls_set_participant_properties.md)
+  enabling you to set or edit participant table
+- new function
+  [`copy_schola_template()`](https://scholaempirica.github.io/reschola/reference/copy_schola_template.md)
+  which copies the template (`pdf` by default) into the active project
+  directory
+
+### Bug fixes
+
+- [`czech_date_interval()`](https://scholaempirica.github.io/reschola/reference/czech_date_interval.md)
+  now correctly suppresses redundant information
+- you are now informed about a solution when font registration fails,
+  this concerns a bug in recent version of `Rttf2pt1` utility that the
+  process rely on
+
+## reschola 0.3.2 (Limy Schola)
+
+### Changes
+
+- default LimeSurvey API endpoint protocol changed to HTTPS
+
+## reschola 0.3.1 (Limy Schola)
+
+A tiny patch release resolving the issues with and simplifying the font
+installation process.
+
+### Documentation
+
+- fonts installation described in more detail, warning NOTE added
+
+### Changes
+
+- font installation is now carried out by a single function
+  [`import_fonts()`](https://scholaempirica.github.io/reschola/reference/import_fonts.md)
+- all fonts needed for the package functionality now comes in `reschola`
+  and are not resourced from `hrbrthemes` any more
+- [`import_fonts()`](https://scholaempirica.github.io/reschola/reference/import_fonts.md)
+  is now more verbose on the instruction
+- `reschola` font directory is now opened automatically
+- some namespace-prepended function calls replaced with proper
+  `importFrom` declarations
+
+## reschola 0.3.0 (Limy Schola)
+
+### Breaking changes
+
+- automatically generated build script `build.R` is renamed to
+  `build_all.R`, to allow multiple build scripts (pro tip: use
+  [{buildr}](https://CRAN.r-project.org/web/packages/buildr/) package)
+
+### New features
+
+- new R Markdown document format
+  [`schola_pdf()`](https://scholaempirica.github.io/reschola/reference/schola_pdf.md):
+  - powered by custom LaTeX template and `report` class
+  - uses Roboto font
+  - reasonable defaults are used so the YAML header is not cluttered
+    with stuff
+  - figures are in PDF (via `cairo` device so non-ASCII characters are
+    well supported) and are cropped automatically (new function
+    `ensure_cropping()` that checks for dependencies needed for proper
+    format functioning, providing help when an issue is discovered)
+  - takes care of non-breakable spaces in Czech (especially before
+    single-character prepositions) via pre-release `pandoc` Lua filter
+    (only repo fork currently, thanks
+    [Delanii](https://github.com/Delanii/lua-filters))
+  - handy `author` Pandoc variable (used in YAML header), which takes
+    the language `lang` and automatically typesets the “and” or “a”
+    separator before the last author (when there is only one, no
+    separators are introduced whatsoever)
+- `reschola` is now armed with its own LimeSurvey API interface,
+  providing several functions tailored to our needs:
+  - [`ls_call()`](https://scholaempirica.github.io/reschola/reference/ls_call.md)
+    implements general and fully customisable call to the API (you must
+    adhere to [the
+    documentation](https://api.limesurvey.org/classes/remotecontrol_handle.html))
+  - [`ls_export()`](https://scholaempirica.github.io/reschola/reference/ls_export.md)
+    is going to be used most of the time, as it fetches both
+    participants and their responses, it basically merges outputs from
+    [`ls_participants()`](https://scholaempirica.github.io/reschola/reference/ls_participants.md),
+    and
+    [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
+  - [`ls_login()`](https://scholaempirica.github.io/reschola/reference/ls_login.md)
+    is used for manual session key request; **it may be never used
+    directly**, as every `ls_` call ensures the key is cached and not
+    expired (key is stale after 2 hrs)
+  - [`ls_add_participants()`](https://scholaempirica.github.io/reschola/reference/ls_add_participants.md)
+    inserts one or more participants to the LimeSurvey database
+  - [`ls_invite()`](https://scholaempirica.github.io/reschola/reference/ls_invite.md)
+    sends an email invitation prepared in LimeSurvey web interface to
+    the selected participants
+  - [`ls_get_attrs()`](https://scholaempirica.github.io/reschola/reference/ls_get_attrs.md)
+    for retrieval of the custom survey attributes and their “semantic”
+    form (i.e. human-readable description)
+- new class `czech_date` with S3 method that prints the date in long
+  format and with grammatically correct case, more in
+  [`as_czech_date()`](https://scholaempirica.github.io/reschola/reference/as_czech_date.md)
+- new function
+  [`czech_date_interval()`](https://scholaempirica.github.io/reschola/reference/czech_date_interval.md)
+  that takes two dates and returns nicely formatted Czech date interval
+  - czech date interval tries to print using non-breakable *en dash*
+    when `pandoc` outputs to `LaTeX` (i.e.,
+    [`schola_pdf()`](https://scholaempirica.github.io/reschola/reference/schola_pdf.md)
+    format is used)
+- new function
+  [`compile_and_open()`](https://scholaempirica.github.io/reschola/reference/compile_and_open.md)
+  provides safe and comfortable way to render/compile `.Rmd` documents
+- vector graphics logo of SCHOLA EMPIRICA in `.pdf` added
+- development feature: *spellcheck on package introduced via `usethis`*
+
+### Changes
+
+- `99_reproducibility.Rmd` now uses base R
+  [`sessionInfo()`](https://rdrr.io/r/utils/sessionInfo.html), not
+  `sessioninfo` package, which seems like an unnecessary dependency
+
+### Bug fixes
+
+- organization name change to correct form
+- [`ggplot2::ScaleContinuousPosition`](https://ggplot2.tidyverse.org/reference/Scale.html)
+  correctly imported, but still WIP
+- [`ls_participants()`](https://scholaempirica.github.io/reschola/reference/ls_participants.md)
+  handles attributes correctly when used as a character vector
+
+## reschola 0.2.13
+
+### Documentation additions
+
+- “intelligent” quotation marks introduced
+  ([\#76](https://github.com/scholaempirica/reschola/issues/76))
+- examples and description of template handling in
+  [`schola_word()`](https://scholaempirica.github.io/reschola/reference/schola_word.md)
+- [`schola_word2()`](https://scholaempirica.github.io/reschola/reference/schola_word2.md)
+  deprecated
+
+### Changes
+
+- main Word output format is
+  [`schola_word()`](https://scholaempirica.github.io/reschola/reference/schola_word.md),
+  which now uses default template if no reference document is provided
+  in YAML
+- `pandoc lua` filter for quotation marks integrated into Word template
+- proper Czech number format supported in inline markdown content
+  (i.e. `` `r rnorm(1)` ``)
+- `theme_schola` is set to default in `rmarkdown` skeleton
+- package name changed to comply with CRAN check
+- default caption prefix “Obrázek” changed to “Graf”, “Tabulka” to
+  “Tab.”
+- typos in `build.R` fixed
+  ([\#79](https://github.com/scholaempirica/reschola/issues/79))
+- better-looking date without leading zeros
+- ToC now present in YAML by default
+- `lifecycle` package introduced
+- switched from Travis continuous integration to GitHub Actions
+- GitHub issue templates
+
+### Bug fixes
+
+- [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  works again with
+  [`manage_docx_header_logos()`](https://scholaempirica.github.io/reschola/reference/manage_docx_header_logos.md)
+  and comes with SCHOLA EMPIRICA logo preloaded
+
+## reschola 0.2.12
+
+### Documentation additions
+
+- “templating” explained in
+  [`schola_word2()`](https://scholaempirica.github.io/reschola/reference/schola_word2.md),
+  with a link to `bookdown` manual
+
+### Changes
+
+- the main Word template now uses Roboto font everywhere, pages are
+  auto-numbered, ToC is properly formatted, text is justified
+- two new functions:
+  [`schola_word2()`](https://scholaempirica.github.io/reschola/reference/schola_word2.md)
+  gives the user control over the reference Word document (a.k.a.
+  template), `open_schola_word_template` automatically locates and opens
+  up the aforementioned template that comes with the package to simplify
+  and speed up the work with the template
+
+### Bug fixes
+
+- default `theme_schola` now uses the same colour everywhere (caption
+  colour was in solid black)
+- extra parenthesis in README removed
+
+## reschola 0.2.11
+
+### Documentation additions
+
+- explainer on renv added to workflow vignettes
+- new tips on EDA and CRAN views
+
+### Changes
+
+- template-based project set-up no longer runs redoc so things work on
+  Windows with broken encoding settings
+
+### Bug fixes
+
+- updated repo URLs in install instructions in README.\[R\]md
+
+## reschola 0.2.10
+
+### New features
+
+- New Making charts vignette
+- minor additions to tips and workflow vignettes
+- new scales: `scale_[x|y]_percent_cz()`, `scale_[x|y]_number_cz()`
+- analogous English-locale scales re-exported from `hrbrthemes`:
+  `scale_[x|y]_comma()` and `scale_[x|y]_percent()`
+- new label formatters:
+  [`label_number_cz()`](https://scholaempirica.github.io/reschola/reference/formatscz.md)
+  and
+  [`label_percent_cz()`](https://scholaempirica.github.io/reschola/reference/formatscz.md)
+  (the English-language analogues without `_cz` are in the package
+  `scales`)
+
+### Changes
+
+- minor changes to Word template files around image captions
+- added `margin_bottom` param to
+  [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+- renamed `left_margin` to `margin_left` in
+  [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+
+## reschola 0.2.9
+
+### Improvements
+
+- updated styles in Word templates for both Rmd templates
+- switched logo in Word templates to right side
+- added preparation for using cross-refs in docx: localisation,
+  documentation, examples
+- updated RMarkdown outputs to get figures nice and right size
+
+### Bug fixes
+
+- project set-up now creates `data-raw` and `data-processed` such that
+  the directories can go into git but not its contents; documentation
+  explains this in multiple places.
+- `draft_redoc()` no longer leaves behind a stray docx file
+
+## reschola 0.2.8
+
+### Bug fixes
+
+- `draft_redoc()` now works outside of a reschola-created project
+- project template should no longer fail on Google Drive authentication;
+  guidance added to vignettes to prevent/handle this
+- workflow vignette and getting started guide in new project now
+  correctly refer to `data-processed` directory
+- data reading script created by project template now correctly named
+  `001_read-data.R`.
+
+### Improvements
+
+- new naming scheme of scripts pre-created by project template for
+  better sorting
+- `data-input` and `data-processed` directories in new project are now
+  automatically added to `.gitignore`
+- additions and clarifications in vignettes
+- added search capability to website
+- clarified workflow text on project creation
+- added note on encoding in Workflow article
+- added guidance in set-ups and workflow vignettes on RStudio Cloud, R
+  configuration, citations, and setting CRAN mirrors
+- more guidance in RMarkdown templates
+
+## reschola 0.2.7
+
+### Bug fixes
+
+- fixed bug in project template where a newly created RMd file did not
+  open
+- refactored `draft_redoc()` to fix round-tripping issue and improve UI
+
+### Improvements
+
+- added preliminary set-up documentation on locales
+- added documentation on using schola_redoc template
+- new bits of workflow documentation on good practice and code style
+
+## reschola 0.2.6
+
+- project template now creates a reproducibility script
+- getting-started doc in project template is more fleshed out
+- first draft of new Workflow vignette
+- first draft of new Set-up vignette
+- more detail in Tips & Tricks vignette
+
+## reschola 0.2.5
+
+### Bug fixes
+
+- updated `drat` repo link in README so
+  [`install.packages()`](https://rdrr.io/r/utils/install.packages.html)
+  no longer fails
+- fixed bug where project template failed when copying standard logos
+
+### Improvements
+
+- added basic files to default project structure
+- better file names in default structure
+- clearer wording and layout of project template dialogue
+- Bootstrap-style callouts can now be used in vignettes (will only show
+  on website)
+- added tips on accessing documentation in tips vignette, and on
+  snippets
+
+### New features
+
+- new
+  [`gd_download_folder()`](https://scholaempirica.github.io/reschola/reference/gd_download_folder.md)
+  function for downloading all files in a GDrive folder
+- option in project template to download files from the listed GDrive
+  folder
+- project template now helps user authenticate to GDrive if they set a
+  GDrive URL
+
+## reschola 0.2.4
+
+- removed `font_rc_light` as Roboto Condensed Light does not work in
+  Windows with ggplot2
+- improved guidance in
+  [`import_fonts()`](https://scholaempirica.github.io/reschola/reference/import_fonts.md)
+- added guidance in meta vignette on changing things in the package,
+  plus acknowledgements
+- improved UI for draft_word()
+- improved UI for draft_redoc(); it now also roundtrips the new file for
+  cleaner reversion from docx edits
+- updated docx templates: page size, margins
+- new
+  [`manage_docx_header_logos()`](https://scholaempirica.github.io/reschola/reference/manage_docx_header_logos.md)
+  function for adding/replacing logos in Word docs created using
+  reschola templates
+
+## reschola 0.2.3
+
+- fixed issue which prevented package from loading in some cases
+
+## reschola 0.2.2
+
+- added the right logos into RStudio template\*
+- improved RMarkdown template content
+- font defaults in
+  [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md) +
+  functions for font import and setting `geom_*` defaults
+- font set-up steps documented in vignettes and
+  [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  doc
+
+## reschola 0.2.1
+
+- RStudio project template now creates default folder structure
+- New project creation option to show a Getting started guide
+- New project using template now contains README.md, shared.R and
+  build.R with instructions
+
+## reschola 0.2.0
+
+- improved README and added “Getting started” vignette
+- basic
+  [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  added for early feedback, together with vignette
+- key R and RStudio tips in `tips.html` vignette
+- complete `meta.html` vignette on developing this package
+- handle pre-computing of `charts.html` vignette to get around missing
+  fonts on Travis
+- working project template
+- rely on patched `redoc` which fixes addin error and an error in
+  documentation
+- new pkgdown site
+
+## reschola 0.1.0
+
+- foundations of Rmarkdown templates and output format
+- foundations of an RStudio project template for project initiation
+
+## reschola 0.0.0.9000
+
+- package basics
+- Added a `NEWS.md` file to track changes to the package.

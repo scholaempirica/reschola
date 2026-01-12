@@ -1,0 +1,289 @@
+# Tips and Tricks for R and Rstudio
+
+This vignette provides some handy tips and tricks for working with R in
+RStudio. For more fundamental principles and guidance on getting R and
+RStudio setup for the Schola workflow, see the
+[Setup](https://scholaempirica.github.io/reschola/articles/setup.md)
+vignette. For guidance on the workflow itself, see the
+[Workflow](https://scholaempirica.github.io/reschola/articles/workflow.md)
+vignette.
+
+## RStudio tips
+
+All keyboard shortcuts below are for Windows. See
+<https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts>
+for all shortcuts on all platforms.
+
+### General helpers
+
+\*\*Code completion\*: when typing a function name, press `Tab` and
+RStudio will show functions/objects which match that name. Use the
+arrows to navigate the entry you need and press `Tab` again. Likewise
+with parameters once you are inside parentheses. Note that you can type
+e.g. `usegitrel` to get a suggestion for `use_github_release()` as
+RStudio looks intelligently through functions names
+some_function_name(). (This is also a good reason to use underscores in
+your own object/function names).
+
+**Paths completion**: when inside quotes, type or press tab and RStudio
+will suggest files inside the current project.
+
+**Go to anything**: in RStudio, press `ctrl`+ `.`, and start typing.
+RStudio will suggest files and functions in this project and if you
+click/arrow+enter into one, will take you to the code.
+
+**Cheatsheets**: in help \> Cheatsheets, you can get to two-page
+cheatsheets on some of the most used packages. They are also
+[online](https://rstudio.com/resources/cheatsheets/).
+
+**Multiple cursors**: when making changes to similar lines, you can use
+multiple cursors: press `alt` and drag up or down or press
+`ctrl`+`alt`+`up`/`down` to add cursor in the above or below line. Press
+`ctrl`+`alt` and click to add cursors anywhere. Then type, move around,
+delete etc.; when done, press `esc`.
+
+**Object view**: holding `ctrl` while clicking on any object name in the
+code editor, or pressing `F2`, lets you view that object: code for
+functions, dataset viewer for data.
+
+**Accessing help**: pressing `F1` when your cursor is on a function name
+will display the documentatin for that function, same for package names
+
+### Snippets
+
+When you start typing, some of the suggestions are snippets: they are
+marked ‘snippet’ and have a paper snippet icon.
+
+If you press tab, they insert bits (e.g. the snippet for `%in%` which
+appears when you type `in`) of code or mini-templates (e.g. the `fun`
+snippet). For the mini-templates, you can then `Tab` through the
+different bits to fill in.
+
+You can also [define your
+own](https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets).
+
+### Handy keyboard shortcuts
+
+- `ctrl`+`enter` runs current line or expression (lines bound by `%>%`)
+- `alt`+`-` inserts `<-`
+- `ctrl`+`D` deletes the current line
+- `alt`+`M` inserts `%>%`
+- `alt`+`up`/`down` moves the current line/statement up or down
+- `ctrl`+`alt`+`up`/`down` copies the current line/statement above or
+  below
+- `ctrl`+`shift`+`R` inserts section break in R code (visible in
+  document outline which you can turn on in the top right corner of the
+  code pane)
+- `ctrl`+`F10` restarts R (do it often!)
+
+In RMarkdown:
+
+- `ctrl`+`shift`+`enter` runs current chunk in Rmarkdown
+- `ctrl`+`alt`+`N` runs next chunk in Rmarkdown
+- `ctrl`+`alt`+`P` runs all previous chunk in Rmarkdown
+- `ctrl`+`alt`+`I` inserts new chunk in Rmarkdown
+- `ctrl`+`click` on a web link to open it in browser
+
+Press `ctrl`+`alt`+`K` in RStudio for an overview of shortcuts.
+
+They can also be customised.
+
+## Retrieving documentation
+
+Besides the F1 key, you can use `?function` to get help for `function`
+and `??term` to search for `term` in all documentation of all installed
+packages.
+
+Longer-form documentation for packages is often found in vignettes. Run
+`vignette('vignette-name', 'package-name')` to get a particular one.
+(Intro vignettes often have the name of the package,
+e.g. [`vignette('reschola', 'reschola')`](https://scholaempirica.github.io/reschola/articles/reschola.md)).
+Get list of vignettes for any package `browseVignettes('package-name')`.
+
+## Getting help beyond the documentation
+
+Four resources:
+
+1.  Google the error message or its more generic variant if you can
+    figure it out. This may bring you to the other resources.
+2.  StackExchange: filter for the
+    [`r`](https://stackoverflow.com/questions/tagged/r) tag; likewise,
+    individual packages have their own tags.
+3.  The [RStudio Community](https://community.rstudio.com/)
+4.  Twitter [\#rstats](https://twitter.com/hashtag/rstats)
+
+When asking for help, provide a minimal [reproducible
+example](https://reprex.tidyverse.org/articles/articles/magic-reprex.html)
+if at all possible.
+
+## The `usethis` package: utilities for easy code development
+
+Mostly useful for package development, but some utilities also make your
+life easier in any project:
+
+- `edit_*` for shortcuts to editing setup files e.g. `.Rprofile`
+- `ui_*` for creating nice console output in your code
+- `use_git_*` to quickly set up or configure a git repo in your project,
+  link to Github etc.
+
+## Data exploration
+
+- `dplyr::tally(weight = )` / `dplyr::add_tally(weight = )`
+- `skimr::skim(df)` / `df %>% group_by(var) %>% skim()`
+- [visdat](https://docs.ropensci.org/visdat/) for quick data overview
+- [naniar](http://naniar.njtierney.com/) for missing data analysis
+- [ggcorrplot](https://cran.r-project.org/package=ggcorrplot) for
+  correlation matrices in `ggplot2`
+- [dlookr](https://cran.r-project.org/package=dlookr) is a fairly
+  complete toolbox for EDA and related tasks.
+
+See the recent [R Journal
+article](https://journal.r-project.org/archive/2019/RJ-2019-033/index.html)
+for an overview of packages for automated EDA.
+
+## Data input
+
+- `data.table::fread()` for faster CSV reading
+- [`vroom`](https://vroom.r-lib.org/) for fast CSV reading of large
+  datasets
+- [`readr::read_csv2()`](https://readr.tidyverse.org/reference/read_delim.html)
+  for reading semicolon-separated CSVs with decimal comma
+- [`readr::guess_encoding()`](https://readr.tidyverse.org/reference/encoding.html)
+  if the text comes in garbled.
+- `haven` for importing SPSS, STATA, SAS files
+
+### From LimeSurvey
+
+- [limer](https://github.com/cloudyr/limer) worked fine when I last used
+  it, but it has been a while.
+
+### From Google sheets / Forms
+
+- see [googlesheets4](https://github.com/tidyverse/googlesheets4)
+
+## Data manipulation
+
+- for heavy-duty data manipulation, `data.table` can be worth the speed
+  improvement, and `dtplyr` and `tidytable` provide tidy “front ends” to
+  it.
+
+## Data output
+
+- `readr::write_excel_csv[2]()` for Excel-friendly CSVs
+
+## Data checking
+
+- packages
+  [`validate`](https://cran.r-project.org/web/packages/validate/vignettes/introduction.html),
+  [`assertr`](https://cran.r-project.org/web/packages/assertr/vignettes/assertr.html),
+  [`pointblank`](https://rich-iannone.github.io/pointblank/),
+  [`dlookr`](https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html)
+
+## Data cleaning
+
+- package
+  [`janitor`](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html)
+- [`readr::type_convert()`](https://readr.tidyverse.org/reference/type_convert.html):
+
+## Resources for different data types or analysis areas
+
+This section points to packages and resources you can use in different
+parts of your analysis or to perform various specialised tasks.
+
+[CRAN’s task views](https://cran.r-project.org/web/views/) can also be
+useful: they contain collections of packages organised by task.
+
+### Web scraping
+
+- [rvest](https://rvest.tidyverse.org/) for a scraping tool
+- [httr](https://httr.r-lib.org/) for a simple HTTP client
+
+### Modeling
+
+- [broom](https://broom.tidyverse.org/) for extracting model parameters
+  in a consistent way
+- [tidymodels](https://github.com/tidymodels/tidymodels.org) for tidy
+  modeling generally
+
+### Spatial data
+
+[sf + guides](https://r-spatial.github.io/sf/articles/sf1.html)
+
+<https://geocompr.robinlovelace.net>
+
+#### Displaying geospatial data and making maps
+
+- see [Making
+  charts](https://scholaempirica.github.io/reschola/articles/charts.md)
+  vignette
+
+#### Geodata on Czech Republic
+
+[`CzechData`](https://github.com/JanCaha/CzechData) - recommended:
+
+- provides access to all basic geospatial datasets for CZ (boundaries of
+  admin units, topology of things such as rivers, roads, railways etc.)
+- has a set of codebooks and code conversion tables for spatial entities
+  (municipalities etc.)
+- provides basic demographic data on municipalities
+- not on CRAN but stable and well maintained.
+
+There is also [`RCzechia`](https://cran.r-project.org/package=RCzechia),
+which is on CRAN.
+
+[`pragr`](https://petrbouchal.github.io/pragr/) provides utilities for
+mapping Prague.
+
+### Statistical data
+
+- [eurostat](https://cran.r-project.org/package=eurostat): provides
+  intuitive access from R to all Eurostat open data
+- [oecd](https://cran.r-project.org/package=OECD): ditto for OECD
+- [czso](https://petrbouchal.github.io/czso/): ditto for Czech
+  Statistical Office
+
+### Czech public finance data
+
+[`statnipokladna`](https://petrbouchal.github.io/statnipokladna)
+provides friction-free access to
+
+For other related datasets, see Ondřej Kokeš’s
+[`od`](https://github.com/kokes/od) and
+[`knod`](https://github.com/kokes/knod) (not R, more software-agnostic
+or Python) and the APIs by [Hlídač státu](https://www.hlidacstatu.cz/)
+and [CityVizor](https://cityvizor.cz/).
+
+### Time series
+
+- packages `tsibble`, `feasts`, `fable` - see
+  [tidyverts.org](https://tidyverts.org/);
+  [`brolgar`](http://brolgar.njtierney.com/)
+
+### Network data 
+
+[tidygraph](https://tidygraph.data-imaginist.com/)
+[ggraph](https://ggraph.data-imaginist.com/) for visualisation
+
+### Text data
+
+[tidytext](https://scholaempirica.github.io/reschola/articles/Workflow%20helpers)
+
+## Getting stuff on the web
+
+Two things:
+
+1.  Any Rmarkdown document, unless you have tons of LaTex-specific stuff
+    in it, should render into html; just switch the `output` argument in
+    the YAML header to `html_document`.
+
+2.  [Netlify](https://www.netlify.com/) is an amazing service that lets
+    you quickly get any website to \[something\].netlify.com.
+
+3.  For public repositories on Github, you can use the docs/ folder to
+    publish to scholaempirica.github.io/{reponame}, or you can use the
+    gh-pages branch for that. See [Github
+    Pages](https://pages.github.com/).
+
+## Long-form, multipart reports
+
+Have a look at [`bookdown`](https://bookdown.org/)

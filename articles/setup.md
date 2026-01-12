@@ -1,0 +1,408 @@
+# Setup guide
+
+This vignette describes how to get from a computer with no R or software
+development tools to a system on which you can do data analysis the
+Schola way. It is written primarily with Windows systems in mind.
+
+It is written primarily with Windows computers in mind.
+
+## Quick note on installing the package without all the development paraphernalia
+
+You can install this package on a machine with none of the
+development-related stuff like Rtools or git. Just run
+
+``` r
+options(repos = c(getOption("repos"), "scholaempirica" = "scholaempirica.github.io/drat"))
+install.packages("reschola")
+```
+
+This will install the binary version of the package (i.e. no compilation
+needed, hence no need for the stuff in Rtools) and install all the
+packages you need. You will be able to run code in Schola Empirica
+projects, but you will not be able to follow some components of the
+[workflow](https://scholaempirica.github.io/reschola/articles/workflow.md),
+which relies on git and Github for version control.
+
+## Overview
+
+To get going, you will need:
+
+- an up-to-date installation of R
+- an up-to-date installation of RStudio
+- some additional tools to allow you to install and compile packages
+  from source
+- functioning Git and an account on Github, and the ability to link your
+  R installation and projects to Github
+- possibly a nicer text editor than Notepad
+- possibly a graphical git client
+- possibly Latex
+
+## I already have R and all the other stuff
+
+You can simply install the package - it will automatically install all R
+packages needed to run standard Schola Empirica projects. See above for
+the commands.
+
+## Installing R
+
+### R
+
+Install the latest ‘release’ version from <https://cran.r-project.org/>.
+
+### RStudio
+
+Install the latest version from [rstudio.com](https://rstudio.com).
+There are [preview
+releases](https://www.rstudio.com/products/rstudio/download/preview),
+which are stable, and [dailies](https://dailies.rstudio.com/), which are
+not and are not meant for normal use.
+
+Once installed, set it up for git if you already have it (see
+[below](#rstudio-and-git) for setting up RStudio for git and for
+[installing git](#installing-git-1).)
+
+Also, go to Global Options and under `Workspace`, uncheck
+`Restore .RData into workspace at startup` and set
+`Save workspace to .RData on exit` to `Never`.
+
+##### Workspace in RStudio
+
+**What this does:** it makes sure that whatever objects you have in the
+workspace were created in this session, presumably from code or
+interactively. It also makes sure that when you restart R, you get a
+clean slate so no leftovers interfere with your work.
+
+**Why this is a good thing:** it puts in practice the principle that
+code is real. It also forces you to work in scripts rather than typing
+things into the console (though you can retrieve code from history and
+store it in R files.)
+
+**What to watch out for:** remember that once you close RStudio,
+whatever data is not saved, or whatever data you do not have code for
+recreating, will be lost.
+
+##### RStudio Cloud
+
+If you need someone to run something in R but they don’t have anything
+installed, you can point them to [RStudio
+Cloud](https://rstudio.cloud/).
+
+It requires free registration.
+
+This is a well-functioning installation on a remote server which you can
+run in the browser.
+
+It is also great for teaching.
+
+### Development tools
+
+First, run `install.packages("devtools")`. You may or may not be
+prompted to install Rtools. If you are, go along. If not, run
+`devtools::devtools::dev_sitrep()`. This might prompt you to install
+Rtools - if it does, again, go along. If you run
+`devtools::devtools::dev_sitrep()` again, you should see that Rtools is
+installed and a path to it.
+
+On a Mac, instead of installing Rtools, you install the Xcode
+development tools (`xcode-select --install` in the Terminal).
+
+### Locale: language and related settings
+
+R formats some output - like dates - based on where in the world it
+thinks you are. It derives this information from your system. You can
+see what it thinks by running
+[`Sys.getlocale()`](https://rdrr.io/r/base/locales.html). If you
+something that contains ‘CZ’ or ‘Czech’, you should be all set for work
+on Czech-language projects. It can be changed by
+`Sys.setlocale(locale = "[LOCALE_STRING]")`. You might want to change
+this at the beginning of a script, in a shared
+[`source()`](https://rdrr.io/r/base/source.html)d script, or globally in
+`.Rprofile` if you need a different setting. For English, something like
+`Sys.setlocale(category = "LC_ALL", locale = "English_United Kingdom.1252")`
+(or try with “UTF-8” or at the end.)
+
+The Czech locale you should probably have in Windows 7 is
+`"LC_COLLATE=Czech_Czechia.1250;LC_CTYPE=Czech_Czechia.1250;LC_MONETARY=Czech_Czechia.1250;LC_NUMERIC=C;LC_TIME=Czech_Czechia.1250"`
+so run `Sys.setlocale(locale = "Czech_Czechia.1250")`. On newer Windows,
+you should attempt to run under a UTF-8 locale it at all possible.
+
+On a Mac, this is `Sys.setlocale(locale = "cs_CZ.UTF-8")`.
+
+Note that the ability to display non-ASCII characters e.g. in images
+from `ggplot2` also depends on the font. The default fonts contained in
+this package and
+[`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+handle Czech characters well.
+
+Also, you have to tell `readr` separately how it should (a) read dates
+and (b) parse CSVs, which in CZ tend to be semicolon-separated with
+decimal comma. See
+[`readr::locale()`](https://readr.tidyverse.org/reference/locale.html).
+
+In LaTex this might be a whole different issue…
+
+### R configuration
+
+Generally, the configuration that will affect how R behaves goes into
+`.Rprofile`. This lives somewhere in your user directory and can be
+edited in RStudio using `usethis::use_r_profile()`.
+
+Environment variables - used for things like passwords that you should
+not put in your code can be put into `.Renviron`
+(`usethis::use_r_environ()`). You then use the variable in code using
+`Sys.getenv("VARIABLE_NAME")`. Note that `.Renviron` is not a standard R
+file, so values are not put into quotes.
+
+#### More on this
+
+See the section in Colin Gillespie’s *Efficient R Programming* on [R
+startup
+files](https://csgillespie.github.io/efficientR/set-up.html#an-overview-of-rs-startup-files).
+
+### Packages
+
+All the packages you will normally need will be installed when you
+install `reschola`.
+
+##### CRAN Mirror
+
+To streamline downloading packages, R likes to use a geographically
+close CRAN mirror server. RStudio should set this for you to something
+sensible - see `Tools > Global Options > Packages`.
+
+If this fails or you want to set one yourself, you can put this
+somewhere close to the beginning of your `.Rprofile`:
+
+    local({r <- getOption("repos")
+    r["CRAN"] <- "https://cran.rstudio.com" # change to CRAN mirror URL you like
+    options(repos=r)})
+
+#### Some background on packages
+
+CRAN contains packages that are vetted for correctness, good
+documentation etc. You install these using
+[`install.packages()`](https://rdrr.io/r/utils/install.packages.html).
+
+**CRAN** typically holds *binary* packages. This means they do not need
+compilation, i.e. you don’t need `devtools` and the other tools
+described above.
+
+For some recently released or updated packages, a binary may not be
+available just yet. R will ask you to build from source; go ahead if you
+have the tools above - but the build may fail for some complicated
+packages. Or you can wait, usually a matter of days.
+
+**Github** contains packages without much quality control. Proxies of
+quality include how well documented the package is externally, how
+often/recently it has been updated, whether the author responds to
+issues etc.
+
+You need to build Github packages so your machine may need to have the
+build tools.
+
+Often a CRAN package will have a more recent, but less well tested,
+version on Github. You can install it if you need a newer version but
+beware. Often, package authors also accept issues (bug reports) on
+Github and Github is also where you would contribute to a package.
+
+## Authorize R to access Google Drive
+
+If you plan to retrieve data from Google Drive using the
+[`gd_download_folder()`](https://scholaempirica.github.io/reschola/reference/gd_download_folder.md)
+utility in `reschola`, you will need to authorise R to access your
+Google Drive. Run
+[`googledrive::drive_auth()`](https://googledrive.tidyverse.org/reference/drive_auth.html)
+and follow the instructions. This is legitimate and you should allow
+access.
+
+## TBD: renv
+
+## Installing git
+
+For installing and setting up git *and* finding your way around Git and
+Github, the best you can do is follow Jenny Bryan’s [Happy Git With
+R](https://happygitwithr.com/) step by step. This also has some useful
+troubleshooting tips for the usual hell around authentication to Github
+etc.
+
+This includes the setup of RStudio for git: there are a few options you
+need to check or change.
+
+Then run
+[`usethis::git_vaccinate`](https://usethis.r-lib.org/reference/git_vaccinate.html)
+to get git to always ignore files which you never want committed. You
+only need to do this once per computer.
+
+### RStudio and git
+
+Go to `Tools > Global Options > Git/SVN` and tick
+`Use version control...` You should see a git executable in the field
+below. If you don’t, see [Jenny Bryan’s troubleshooting
+guide](https://happygitwithr.com/rstudio-see-git.html).
+
+If you set a project to use git, you should see a Git pane in the top
+right. (This is done either in the `Project Options` menu or by
+[`usethis::use_git()`](https://usethis.r-lib.org/reference/use_git.html)).
+
+## Github
+
+In brief:
+
+1.  set up an account on Github.
+2.  create a (toy) repo on Github or run
+    [`usethis::use_github()`](https://usethis.r-lib.org/reference/use_github.html)
+    in an existing repo - you can add `organization = "scholaempirica"`
+    to make a repo owned by the `scholaempirica` Github org. Or
+    (recommended) **create a project from the reschola project
+    template**
+    (`File > New Project > New Directory > Standard Reschola Project`)
+    to guide you through this.
+3.  If the former in (2), follow the instructions from Github to link
+    the Github repo to your repository: run `git init` and
+    `gir remote add origin {repo-url}`, then commit and
+    `git push --set-upstream orgin master` (assuming you are on the
+    master branch)
+4.  To make sure things work (or diagnose why not), you can run
+    [`usethis::git_sitrep()`](https://usethis.r-lib.org/reference/git_sitrep.html)
+
+In particular, take a look at the
+[Connect](https://happygitwithr.com/connect-intro.html) chapter of Happy
+Git With R for steps to streamline your connection with Github,
+including (much recommended) caching credentials and using a personal
+access token and (optionally) SSH setup.
+
+#### Some basic concepts for working with Git
+
+The terminology of git can be daunting, so here are my attempts at
+common-sense explanations.
+
+##### Repository (repo)
+
+On your computer, this is a folder (directory). Git knows it is a git
+repository because there is a hidden `.git` directory inside it which
+holds all the “metadata” on versions, commits etc. You can type
+`git status` in your git-bash to see if the current directory is a
+repository. In RStudio, you will see a Git tab on the top right if your
+RStudio is correctly set up and if the current project or working
+directory is a git repo.
+
+Note that this is different from a repository in the context of R, where
+it means “place (server) from which you can install packages”.
+
+You rename a repository on your machine just by renaming the directory -
+no other action needed. You can also move the directory at will.
+
+##### Local and remote
+
+Any repository lives in a local directory. In the context of working
+with Github, this is your local copy. Copies elsewhere with which you
+may want to “sync” (see [*push* and
+*pull*](#some-basic-concepts-for-working-with-git) below) are called
+*remotes*. (You can see the remotes for your repo by `git remotes -v`)
+Each remote has a name; github repose are customarily called origin -
+origin tends to be the default remote.
+
+##### Working copy, staging area, committed files
+
+This is the most crucial distinction which is not often described: as
+you work with a git repo, you are working with three different sets of
+objects:
+
+1.  working copy, i.e. what you see in your file viewer
+2.  staging area (also staging index), i.e. what will be in your next
+    commit
+3.  commit history (also HEAD), i.e what has been committed and is
+    currently checked out - also, the state of things in the git repo
+    which will be the parent of your next commit. Typically that is the
+    last commit on your active branch.
+
+This distinction means that if you have committed work on a file and
+then worked on it further, you can always easily revert your working
+copy to the last committed status.
+
+It also means that the staged files are not just a window in an
+application, but a particular snapshot stored in git’s database. If you
+stage in one client (say RStudio), you will see the same staging status
+in another (say, Fork). It also means that if you stage a file (which
+really means staging all lines changed between the last commit and now),
+and then make changes to it, those changes are not staged and hence will
+not be in the next commit. If you want them there, you need to stage
+those new changes.
+
+See [this
+guide](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
+which I think is the best explanation of moving a file between these
+sets.
+
+##### Diff (`git diff`)
+
+The comparison, line-by-line, between two states of the file, typically
+between what is in your working copy and HEAD. Sometimes, e.g. when
+staging (see below) bits of a file that is already in the staging area,
+you will see a diff between working copy and staging area.
+
+##### Staging (`git add`)
+
+You stage changes to be committed - either whole files or individual
+lines.
+
+##### Commit (`git commit`)
+
+Committing means the current copy of
+
+##### Push (`git push`)
+
+Sending all that has been committed to a remote.
+
+##### Pull
+
+Retrieving the current state of the remote and updating your repository
+(committed stuff/HEAD) with that.
+
+For different workflows of how to use these commands together and in
+sequence, see [Happy Git With
+R](https://happygitwithr.com/git-intro.html).
+
+### Troubleshooting
+
+if any of this fails, there are a couple of components that may be at
+fault: your git setup, the `usethis` package, the `git2r` package, or
+the `gh` package. For git, try reinstalling it from the official
+installer. For the packages, try updating or installing the latest
+github version.
+
+### Git GUI (Graphical User Interface)
+
+Git GUIs are tricky in that they sometimes do under the hood something
+different from what the UI shows. From what I can tell, Fork and
+Gittower largely avoid this, and I really like Fork. Gittower is now an
+annual subscription, Fork will soon cost \$50.
+
+RStudio has a basic GUI in the Git tab. It is OK for making simple
+commits and pushing and pulling. Beyond that (even things like patch
+commits, i.e. committing only some changed lines in a file) I would
+suggest using something else. (Annoyingly it also lacks an option to
+force push and the ability to create a new branch on the remote when
+pushing a locally created new branch - both of which can leave you
+baffled in certain situation.)
+
+## Optional: LaTEX
+
+All I can suggest for now is to use `tidytex` for installing and
+troubleshooting your LaTEX distribution.
+
+## Optional: text editor
+
+On Windows, TextMate is supposed to be fine, as is SublimeText. For
+writing a lot of RMarkdown, you can look for a Markdown editor or
+install a Markdown plugin into these text editors.
+
+## Fonts for reschola charts
+
+To be able to produce charts in the default reschola font - Roboto and
+Roboto Condensed - you need to have these fonts on your machine and
+registered with R. The easiest way to do is to run
+[`reschola::install_reschola_fonts()`](https://scholaempirica.github.io/reschola/reference/install_reschola_fonts.md)
+and then
+[`reschola::register_reschola_fonts()`](https://scholaempirica.github.io/reschola/reference/register_reschola_fonts.md)
+to install and register the fonts with your system.
