@@ -30,7 +30,7 @@ tibble or data.frame without observations with all `vars` empty
 ## Examples
 
 ``` r
-airquality %>% remove_empty_at(c(Ozone, Solar.R))
+airquality |> remove_empty_at(c(Ozone, Solar.R))
 #>     Ozone Solar.R Wind Temp Month Day
 #> 1      41     190  7.4   67     5   1
 #> 2      36     118  8.0   72     5   2

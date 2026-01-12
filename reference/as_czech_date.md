@@ -51,10 +51,10 @@ Czech months listed by case are available in `.czech_months`.
 ## Examples
 
 ``` r
-Sys.time() %>% as_czech_date()
+Sys.time() |> as_czech_date()
 #> [1] "12. ledna 2026"
 
 # in "nominative" grammatical case (note the abbreviation)
-Sys.time() %>% as_czech_date("nom")
+Sys.time() |> as_czech_date("nom")
 #> [1] "12. leden 2026"
 ```

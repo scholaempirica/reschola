@@ -33,7 +33,7 @@ sten(score, standardize = FALSE, bounds = TRUE)
 ## Examples
 
 ``` r
-rnorm(10) %>% sten()
+rnorm(10) |> sten()
 #>  [1] 7.370726 5.852977 5.987371 8.747098 5.724076 5.232006 1.679825 4.941526
 #>  [9] 4.873108 7.634616
 ```

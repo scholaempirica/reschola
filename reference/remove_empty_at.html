@@ -80,7 +80,7 @@ data at the variables specified in <code>vars</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">airquality</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">remove_empty_at</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">Ozone</span>, <span class="va">Solar.R</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">airquality</span> <span class="op">|&gt;</span> <span class="fu">remove_empty_at</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">Ozone</span>, <span class="va">Solar.R</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Ozone Solar.R Wind Temp Month Day</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      41     190  7.4   67     5   1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      36     118  8.0   72     5   2</span>

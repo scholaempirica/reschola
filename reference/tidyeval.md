@@ -21,8 +21,8 @@ R](https://adv-r.hadley.nz) may also be useful for a deeper dive.
   contained in dots, use `...` in the normal way.
 
       my_function <- function(data, var, ...) {
-        data %>%
-          group_by(...) %>%
+        data |>
+          group_by(...) |>
           summarise(mean = mean({{ var }}))
       }
 
@@ -39,8 +39,8 @@ R](https://adv-r.hadley.nz) may also be useful for a deeper dive.
         dots <- enquos(...)
 
         # Inject
-        data %>%
-          group_by(!!!dots) %>%
+        data |>
+          group_by(!!!dots) |>
           summarise(mean = mean(!!var))
       }
 
@@ -54,7 +54,7 @@ R](https://adv-r.hadley.nz) may also be useful for a deeper dive.
   to subset that variable with `[[`.
 
       my_var <- "disp"
-      mtcars %>% summarise(mean = mean(.data[[my_var]]))
+      mtcars |> summarise(mean = mean(.data[[my_var]]))
 
 - Another tidy eval operator is `:=`. It makes it possible to use glue
   and curly-curly syntax on the LHS of `=`. For technical reasons, the R
@@ -64,7 +64,7 @@ R](https://adv-r.hadley.nz) may also be useful for a deeper dive.
       my_function <- function(data, var, suffix = "foo") {
         # Use `{{` to tunnel function arguments and the usual glue
         # operator `{` to interpolate plain strings.
-        data %>%
+        data |>
           summarise("{{ var }}_mean_{suffix}" := mean({{ var }}))
       }
 
@@ -80,7 +80,7 @@ R](https://adv-r.hadley.nz) may also be useful for a deeper dive.
       my_function <- function(data, var, suffix = "foo") {
         var <- enquo(var)
         prefix <- as_label(var)
-        data %>%
+        data |>
           summarise("{prefix}_mean_{suffix}" := mean(!!var))
       }
 

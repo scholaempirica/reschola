@@ -11,6 +11,7 @@
 
 ### Changes
 
+- R \>= 4.1.0 is now required
 - New function
   [`ls_standardize_dates()`](https://scholaempirica.github.io/reschola/reference/ls_standardize_dates.md)
   was introduced and applied by default in
@@ -21,6 +22,8 @@
 - [ggplot2](https://ggplot2.tidyverse.org) \>= 3.4.0 is now required to
   support `linewidth` aesthetics for line geoms as `size` is deprecated
   for them.
+- [magrittr](https://magrittr.tidyverse.org) is no longer a dependency,
+  as the pipe operator is now part of base R.
 
 ## reschola 0.5.6
 
