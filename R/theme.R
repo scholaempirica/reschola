@@ -97,10 +97,17 @@
 #' @import ggplot2
 #' @importFrom ggtext element_textbox_simple
 #' @export
-theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size = 11,
-                         family = "Ubuntu Condensed", title_family = "Ubuntu",
-                         margins = TRUE, plot.title.position = "plot",
-                         axis_titles = TRUE, multiplot = FALSE, ...) {
+theme_schola <- function(
+  gridlines = c("y", "x", "both", "scatter"),
+  base_size = 11,
+  family = "Ubuntu Condensed",
+  title_family = "Ubuntu",
+  margins = TRUE,
+  plot.title.position = "plot",
+  axis_titles = TRUE,
+  multiplot = FALSE,
+  ...
+) {
   grd <- match.arg(gridlines)
   grid_col <- if (grd == "scatter" || multiplot) {
     "white"
@@ -108,7 +115,7 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     "grey92"
   }
   tonecol <- "#f6f0e8"
-  element_gridline <- element_line(colour = grid_col, size = 0.3)
+  element_gridline <- element_line(colour = grid_col, linewidth = 0.3)
   bg_col <- if (grd == "scatter" || multiplot) {
     tonecol
   } else {
@@ -121,8 +128,11 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     plot.title.position = plot.title.position,
     text = element_text(colour = "grey30"),
     plot.title = element_textbox_simple(
-      face = "bold", size = base_size * 1.2, family = title_family,
-      lineheight = 1.1, margin = margin(b = 6)
+      face = "bold",
+      size = base_size * 1.2,
+      family = title_family,
+      lineheight = 1.1,
+      margin = margin(b = 6)
     ),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = if (grd != "y") element_gridline else element_blank(),
@@ -130,11 +140,26 @@ theme_schola <- function(gridlines = c("y", "x", "both", "scatter"), base_size =
     panel.background = element_rect(fill = bg_col, colour = NA),
     axis.title = if (axis_titles) element_text() else element_blank(),
     strip.text = element_text(hjust = 0),
-    plot.margin = if (margins) margin(l = 1, b = 1, t = 4) else base_theme$plot.margin, # top margin this big because of title grob heigh is incorrect
-    strip.background = if (multiplot) element_rect(fill = tonecol, colour = NA) else element_blank(),
-    plot.subtitle = element_textbox_simple(family = title_family, lineheight = 1.1, margin = margin(b = 6)),
+    plot.margin = if (margins) {
+      margin(l = 1, b = 1, t = 4)
+    } else {
+      base_theme$plot.margin
+    }, # top margin this big because of title grob heigh is incorrect
+    strip.background = if (multiplot) {
+      element_rect(fill = tonecol, colour = NA)
+    } else {
+      element_blank()
+    },
+    plot.subtitle = element_textbox_simple(
+      family = title_family,
+      lineheight = 1.1,
+      margin = margin(b = 6)
+    ),
     plot.caption = element_textbox_simple(
-      colour = "grey55", lineheight = 1, halign = 1, margin = margin(t = 5)
+      colour = "grey55",
+      lineheight = 1,
+      halign = 1,
+      margin = margin(t = 5)
     ),
     ...
   )
