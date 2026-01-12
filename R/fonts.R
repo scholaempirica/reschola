@@ -32,17 +32,27 @@
 import_fonts <- function() {
   r_font_dir <- system.file("fonts", package = "reschola")
 
-  ui_info("You are about to register Ubuntu fonts with R. This may take some time. Please, be patient.")
+  ui_info(
+    "You are about to register Ubuntu fonts with R. This may take some time. Please, be patient."
+  )
 
   suppressWarnings(suppressMessages(font_import(r_font_dir, prompt = FALSE)))
 
   if (!any(grepl("Ubuntu|Ubuntu[ ]Condensed", fonts()))) {
     on.exit({
-      ui_todo("You can inspect the fonts that are properly registered by calling {ui_code(\"extrafont::fonts()\")}.")
-      ui_info("If the registration fails repeatedly, please try to downgrade {ui_value(\"Rttf2pt1\")} package to version {ui_value(\"1.3.8\")}:")
-      suppressWarnings(ui_code_block("remotes::install_version(\"Rttf2pt1\", version = \"1.3.8\")"))
+      ui_todo(
+        "You can inspect the fonts that are properly registered by calling {ui_code(\"extrafont::fonts()\")}."
+      )
+      ui_info(
+        "If the registration fails repeatedly, please try to downgrade {ui_value(\"Rttf2pt1\")} package to version {ui_value(\"1.3.8\")}:"
+      )
+      suppressWarnings(ui_code_block(
+        "remotes::install_version(\"Rttf2pt1\", version = \"1.3.8\")"
+      ))
     })
-    abort("At least one of the fonts needed by the package was not registered succesfully.")
+    abort(
+      "At least one of the fonts needed by the package was not registered succesfully."
+    )
   }
 
   ui_done("Fonts successfully registered in R.")
@@ -109,7 +119,9 @@ register_reschola_fonts <- function(family = c("Ubuntu", "Ubuntu Condensed")) {
   if (.Platform$OS.type == "windows") {
     args <- list()
 
-    for (font in family) args[[font]] <- grDevices::windowsFont(font)
+    for (font in family) {
+      args[[font]] <- grDevices::windowsFont(font)
+    }
     do.call(grDevices::windowsFonts, args)
 
     message("Done registering fonts with Windows bitmap devices...")
@@ -139,21 +151,32 @@ register_reschola_fonts <- function(family = c("Ubuntu", "Ubuntu Condensed")) {
 #' @aliases set_reschola_ggplot_fonts
 #' @export
 #'
-use_reschola_fonts <- function(family = "Ubuntu Condensed", face = "plain",
-                               size = 3.5, color = "#2b2b2b") {
+use_reschola_fonts <- function(
+  family = "Ubuntu Condensed",
+  face = "plain",
+  size = 3.5,
+  color = "#2b2b2b"
+) {
   walk(
     c("text", "label", "richtext", "text_box", "text_repel", "label_repel"),
-    ~ try(update_geom_defaults(
-      .x,
-      list(family = family, face = face, size = size, color = color)
-    ), silent = TRUE)
+    ~ try(
+      update_geom_defaults(
+        .x,
+        list(family = family, face = face, size = size, color = color)
+      ),
+      silent = TRUE
+    )
   )
 }
 
 
 #' @rdname use_reschola_fonts
 #' @export
-set_reschola_ggplot_fonts <- function(family = "Ubuntu Condensed", face = "plain",
-                                      size = 3.5, color = "#2b2b2b") {
+set_reschola_ggplot_fonts <- function(
+  family = "Ubuntu Condensed",
+  face = "plain",
+  size = 3.5,
+  color = "#2b2b2b"
+) {
   use_reschola_fonts(family = family, face = face, size = size, color = color)
 }

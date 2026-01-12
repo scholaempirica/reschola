@@ -26,7 +26,9 @@ draft_pdf <- function(name = "pdf_draft", open = TRUE) {
   file <- suppressMessages(
     draft(name, template = "schola_pdf", package = "reschola", edit = FALSE)
   )
-  if (open) edit_file(file)
+  if (open) {
+    edit_file(file)
+  }
   invisible(name)
 }
 
@@ -36,6 +38,8 @@ draft_word <- function(name = "word_draft", open = TRUE) {
   file <- suppressMessages(
     draft(name, template = "schola_word", package = "reschola", edit = FALSE)
   )
-  if (open) edit_file(file)
+  if (open) {
+    edit_file(file)
+  }
   invisible(name)
 }

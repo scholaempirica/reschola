@@ -56,26 +56,46 @@
 #' @importFrom usethis ui_stop ui_code
 #' @export
 #'
-schola_pdf <- function(num_format = NULL, number_sections = FALSE, toc = TRUE,
-                       template = find_resource("schola_pdf", "schola_template.tex"),
-                       latex_engine = "xelatex", fig_crop = FALSE,
-                       document_class = "report", ...) {
+schola_pdf <- function(
+  num_format = NULL,
+  number_sections = FALSE,
+  toc = TRUE,
+  template = find_resource("schola_pdf", "schola_template.tex"),
+  latex_engine = "xelatex",
+  fig_crop = FALSE,
+  document_class = "report",
+  ...
+) {
   base <- pdf_document2(
-    toc = toc, template = template, number_sections = number_sections,
-    latex_engine = latex_engine, fig_crop = fig_crop, ...
+    toc = toc,
+    template = template,
+    number_sections = number_sections,
+    latex_engine = latex_engine,
+    fig_crop = fig_crop,
+    ...
   )
 
   base$pandoc$args <- c(
-    base$pandoc$args, "--variable", paste0("documentclass=", document_class)
+    base$pandoc$args,
+    "--variable",
+    paste0("documentclass=", document_class)
   )
 
   # replaces plain quotation marks with typographic ones
-  quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")
+  quotes_lua_filter <- system.file(
+    "pandoc",
+    "pandoc-quotes.lua",
+    package = "reschola"
+  )
 
   # nonbreakable spaces in Czech/English,
   # a.k.a pandoc Lua reboot of famous "vlna" by Petr Olsak
   # from https://github.com/Delanii/lua-filters
-  vlna_lua_filter <- system.file("pandoc", "pandocVlna.lua", package = "reschola")
+  vlna_lua_filter <- system.file(
+    "pandoc",
+    "pandocVlna.lua",
+    package = "reschola"
+  )
 
   base$pandoc$lua_filters <- c(
     quotes_lua_filter,
@@ -144,11 +164,18 @@ schola_pdf <- function(num_format = NULL, number_sections = FALSE, toc = TRUE,
 #' reference_docx:template.docx
 #' }
 #' @export
-schola_word <- function(reference_docx = find_resource("schola_word", "template.docx"), ...) {
+schola_word <- function(
+  reference_docx = find_resource("schola_word", "template.docx"),
+  ...
+) {
   base <- bookdown::word_document2(reference_docx = reference_docx, ...)
 
   # proper quotes
-  quotes_lua_filter <- system.file("pandoc", "pandoc-quotes.lua", package = "reschola")
+  quotes_lua_filter <- system.file(
+    "pandoc",
+    "pandoc-quotes.lua",
+    package = "reschola"
+  )
   base$pandoc$lua_filters <- c(
     quotes_lua_filter,
     base$pandoc$lua_filters
@@ -180,7 +207,6 @@ schola_word <- function(reference_docx = find_resource("schola_word", "template.
 
   base
 }
-
 
 
 #' Schola Empirica Word document with customisable template
@@ -215,7 +241,11 @@ schola_word <- function(reference_docx = find_resource("schola_word", "template.
 #' reference_docx:template.docx
 #' }
 schola_word2 <- function(...) {
-  deprecate_warn("0.2.13", "reschola::schola_word2()", "reschola::schola_word()")
+  deprecate_warn(
+    "0.2.13",
+    "reschola::schola_word2()",
+    "reschola::schola_word()"
+  )
 
   base <- bookdown::word_document2(...)
 

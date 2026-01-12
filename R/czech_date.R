@@ -27,7 +27,10 @@
 #' @export
 as_czech_date <- function(date, case = "genitive") {
   class(date) <- c("czech_date", class(date))
-  attr(date, "gramm_case") <- match.arg(case, c("genitive", "nominative", "locative"))
+  attr(date, "gramm_case") <- match.arg(
+    case,
+    c("genitive", "nominative", "locative")
+  )
   date
 }
 
@@ -41,7 +44,9 @@ as_czech_date <- function(date, case = "genitive") {
 #' @export
 print.czech_date <- function(x, ...) {
   case <- list(...)[["case"]]
-  if (is.null(case)) case <- attr(x, "gramm_case")
+  if (is.null(case)) {
+    case <- attr(x, "gramm_case")
+  }
   print(czech_date_main(x, case))
   invisible(x)
 }
@@ -51,7 +56,9 @@ print.czech_date <- function(x, ...) {
 #' @export
 as.character.czech_date <- function(x, ...) {
   case <- list(...)[["case"]]
-  if (is.null(case)) case <- attr(x, "gramm_case")
+  if (is.null(case)) {
+    case <- attr(x, "gramm_case")
+  }
   czech_date_main(x, case)
 }
 
@@ -59,9 +66,12 @@ as.character.czech_date <- function(x, ...) {
 #' @importFrom knitr knit_print asis_output
 #' @keywords internal
 #' @export
-knit_print.czech_date <- function(x, ...) { # nolint: object_name_linter
+knit_print.czech_date <- function(x, ...) {
+  # nolint: object_name_linter
   case <- list(...)[["case"]]
-  if (is.null(case)) case <- attr(x, "gramm_case")
+  if (is.null(case)) {
+    case <- attr(x, "gramm_case")
+  }
   asis_output(czech_date_main(x, case))
 }
 
@@ -103,13 +113,46 @@ czech_date_main <- function(date, case) {
 #' @export
 .czech_months <- list(
   nominative = c(
-    "leden", "\u00fanor", "b\u0159ezen", "duben", "kv\u011bten", "\u010derven", "\u010dervenec", "srpen", "z\u00e1\u0159\u00ed", "\u0159\u00edjen", "listopad", "prosinec"
+    "leden",
+    "\u00fanor",
+    "b\u0159ezen",
+    "duben",
+    "kv\u011bten",
+    "\u010derven",
+    "\u010dervenec",
+    "srpen",
+    "z\u00e1\u0159\u00ed",
+    "\u0159\u00edjen",
+    "listopad",
+    "prosinec"
   ),
   locative = c(
-    "lednu", "\u00fanoru", "b\u0159eznu", "dubnu", "kv\u011btnu", "\u010dervnu", "\u010dervenci", "srpnu", "z\u00e1\u0159\u00ed", "\u0159\u00edjnu", "listopadu", "prosinci"
+    "lednu",
+    "\u00fanoru",
+    "b\u0159eznu",
+    "dubnu",
+    "kv\u011btnu",
+    "\u010dervnu",
+    "\u010dervenci",
+    "srpnu",
+    "z\u00e1\u0159\u00ed",
+    "\u0159\u00edjnu",
+    "listopadu",
+    "prosinci"
   ),
   genitive = c(
-    "ledna", "\u00fanora", "b\u0159ezna", "dubna", "kv\u011btna", "\u010dervna", "\u010dervence", "srpna", "z\u00e1\u0159\u00ed", "\u0159\u00edjna", "listopadu", "prosince"
+    "ledna",
+    "\u00fanora",
+    "b\u0159ezna",
+    "dubna",
+    "kv\u011btna",
+    "\u010dervna",
+    "\u010dervence",
+    "srpna",
+    "z\u00e1\u0159\u00ed",
+    "\u0159\u00edjna",
+    "listopadu",
+    "prosince"
   )
 )
 
@@ -158,14 +201,23 @@ czech_date_interval <- function(start, end) {
         paste0(
           day[1],
           ".\u2013",
-          day[2], ". ", czech_months[1], " ", year[1]
+          day[2],
+          ". ",
+          czech_months[1],
+          " ",
+          year[1]
         )
       }
     } else {
       paste0(
-        day[1], ". ", czech_months[1],
+        day[1],
+        ". ",
+        czech_months[1],
         " \u2013\ ",
-        day[2], ". ", czech_months[2], " ",
+        day[2],
+        ". ",
+        czech_months[2],
+        " ",
         year[1]
       )
     }
@@ -182,7 +234,8 @@ czech_date_interval <- function(start, end) {
 #' @importFrom knitr knit_print asis_output is_latex_output
 #' @keywords internal
 #' @export
-knit_print.czech_date_interval <- function(x, ...) { # nolint: object_name_linter
+knit_print.czech_date_interval <- function(x, ...) {
+  # nolint: object_name_linter
   if (is_latex_output()) {
     x <- gsub("\u2013", "\\\\nobreakdash\u2013", x)
   }

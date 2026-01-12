@@ -26,7 +26,11 @@ fct_nanify <- function(f, level, negate = FALSE, ignore_case = TRUE) {
     f <- as.factor(f)
   }
 
-  match <- str_detect(f, regex(level, ignore_case = ignore_case), negate = negate)
+  match <- str_detect(
+    f,
+    regex(level, ignore_case = ignore_case),
+    negate = negate
+  )
 
   if (all(!match, na.rm = TRUE)) {
     warn("No such level in the factor. Nothing will happen.")
@@ -42,7 +46,8 @@ fct_nanify <- function(f, level, negate = FALSE, ignore_case = TRUE) {
         "you have just NAnified is the last one, so no number is skipped!"
       )
     ),
-    .frequency = "once", .frequency_id = "fct_nanify_coercion_warning"
+    .frequency = "once",
+    .frequency_id = "fct_nanify_coercion_warning"
   )
 
   f

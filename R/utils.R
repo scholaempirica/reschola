@@ -2,7 +2,11 @@
 # copied from https://github.com/atlas-aai/ratlas/
 
 find_file <- function(template, file) {
-  template <- system.file("rmarkdown", "templates", template, file,
+  template <- system.file(
+    "rmarkdown",
+    "templates",
+    template,
+    file,
     package = "reschola"
   )
   if (template == "") {
@@ -39,7 +43,8 @@ find_resource <- function(template, file) {
 #' open_schola_template()
 #' }
 open_schola_template <- function(format = "pdf") {
-  switch(format,
+  switch(
+    format,
     word = system2("open", find_resource("schola_word", "template.docx")),
     pdf = system2("open", find_resource("schola_pdf", "schola_template.tex"))
   )
@@ -68,17 +73,29 @@ reschola_file <- function(...) {
 #' copy_schola_template()
 #' }
 copy_schola_template <- function(format = "pdf", path = proj_get(), ...) {
-  switch(format,
-    word = invisible(file.copy(find_resource("schola_word", "template.docx"), path, ...)),
-    docx = invisible(file.copy(find_resource("schola_word", "template.docx"), path, ...)),
-    pdf = invisible(file.copy(find_resource("schola_pdf", "schola_template.tex"), path, ...))
+  switch(
+    format,
+    word = invisible(file.copy(
+      find_resource("schola_word", "template.docx"),
+      path,
+      ...
+    )),
+    docx = invisible(file.copy(
+      find_resource("schola_word", "template.docx"),
+      path,
+      ...
+    )),
+    pdf = invisible(file.copy(
+      find_resource("schola_pdf", "schola_template.tex"),
+      path,
+      ...
+    ))
   )
 }
 
 reschola_file <- function(...) {
   system.file(..., package = "reschola", mustWork = TRUE)
 }
-
 
 
 #' Get RDS from custom dir
@@ -170,7 +187,6 @@ write_processed_data <- function(.data, file) {
 }
 
 
-
 #' Get current reschola project Google Drive URL ID
 #'
 #' Gets a hidden object `.gd_proj_url` (by default) created at project
@@ -256,11 +272,8 @@ clr2hex <- function(color, alpha = 1) {
 #'   theme_void()
 #'
 with_clr <- function(text, color = "black", alpha = 1, ...) {
-  span(text,
-    style = paste("color:", clr2hex(color, alpha = alpha)), ...
-  )
+  span(text, style = paste("color:", clr2hex(color, alpha = alpha)), ...)
 }
-
 
 
 #' Transform to STEN score (Standard Ten)
@@ -281,7 +294,9 @@ with_clr <- function(text, color = "black", alpha = 1, ...) {
 #' @examples
 #' rnorm(10) %>% sten()
 sten <- function(score, standardize = FALSE, bounds = TRUE) {
-  if (standardize) score <- as.numeric(scale(score))
+  if (standardize) {
+    score <- as.numeric(scale(score))
+  }
   sten <- (score * 2) + 5.5
 
   if (bounds) {
@@ -380,11 +395,15 @@ get_labs_df <- function(.data) {
 recover_labs <- function(new_data, orig_data) {
   # assert strucutre
   if (!all(ncol(new_data) == ncol(orig_data))) {
-    warn("Number of columns of the dataframes differ! Check the result carefully!")
+    warn(
+      "Number of columns of the dataframes differ! Check the result carefully!"
+    )
   }
 
   if (!all(colnames(new_data) == colnames(orig_data))) {
-    warn("Dataframes do not have the same variables! Check the result carefully!")
+    warn(
+      "Dataframes do not have the same variables! Check the result carefully!"
+    )
   }
 
   old_labs <- orig_data %>% get_labs_df()
@@ -397,10 +416,14 @@ recover_labs <- function(new_data, orig_data) {
     deframe()
 
   # add new labs as a cols attributes
-  modify2(new_data, new_labs, ~ {
-    attr(.x, "label") <- .y
-    .x
-  })
+  modify2(
+    new_data,
+    new_labs,
+    ~ {
+      attr(.x, "label") <- .y
+      .x
+    }
+  )
 }
 
 # just an infix alias for recover_labs:
@@ -409,8 +432,6 @@ recover_labs <- function(new_data, orig_data) {
 `%labs_from%` <- function(new_data, orig_data) {
   recover_labs(new_data = new_data, orig_data = orig_data)
 }
-
-
 
 
 #' Extract detailed info from Schola barplot
@@ -428,5 +449,9 @@ extract_schola_barplot_info <- function(plot) {
   plt_data <- plot$data
   labeller_fun <- plot$facet$params$labeller
 
-  plt_data %>% mutate(.item_lab = flatten_chr(labeller_fun(.data$.item)), .after = .data$.item)
+  plt_data %>%
+    mutate(
+      .item_lab = flatten_chr(labeller_fun(.data$.item)),
+      .after = .data$.item
+    )
 }

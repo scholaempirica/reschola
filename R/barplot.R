@@ -57,13 +57,27 @@
 #' @importFrom scales percent number
 #' @importFrom RColorBrewer brewer.pal
 #'
-schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
-                           escape_level = "nev\u00edm", n_breaks = 11,
-                           desc = TRUE, labels = TRUE, min_label_width = .09,
-                           absolute_counts = TRUE, fill_cols = NULL,
-                           fill_labels = waiver(), facet_label_wrap = 115,
-                           reverse = FALSE, order_by = "chi-square differences",
-                           drop = FALSE, drop_na = TRUE, show.legend = TRUE, ...) {
+schola_barplot <- function(
+  .data,
+  vars,
+  group,
+  dict = dict_from_data(.data),
+  escape_level = "nev\u00edm",
+  n_breaks = 11,
+  desc = TRUE,
+  labels = TRUE,
+  min_label_width = .09,
+  absolute_counts = TRUE,
+  fill_cols = NULL,
+  fill_labels = waiver(),
+  facet_label_wrap = 115,
+  reverse = FALSE,
+  order_by = "chi-square differences",
+  drop = FALSE,
+  drop_na = TRUE,
+  show.legend = TRUE,
+  ...
+) {
   if (!is.logical(eval_tidy(enquo(group), .data))) {
     abort("`group` variable have to be logical.")
   }
@@ -81,21 +95,21 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     long_data <- long_data %>% drop_na(.data$.resp)
   }
 
-
   if (order_by == "weighted total scores") {
     # get counts for each response category, multiply by its .resp to get
     # "weight" of some sort
     #  -- higher usage of higher categories results in higher weight
     item_order <- long_data %>%
-      mutate(resp_num = fct_nanify(.data$.resp, escape_level, ...) %>%
-        as.integer()) %>%
+      mutate(
+        resp_num = fct_nanify(.data$.resp, escape_level, ...) %>%
+          as.integer()
+      ) %>%
       group_by({{ group }}, .data$.item) %>%
       summarise(ts = sum(.data$resp_num, na.rm = TRUE)) %>%
       filter({{ group }}) %>%
       arrange(desc(.data$ts)) %>%
       pull(.data$.item)
   }
-
 
   plt_data <- long_data %>%
     mutate(.resp = fct_rev(.data$.resp)) %>%
@@ -104,18 +118,28 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
 
   if (order_by == "chi-square differences") {
     item_order <- plt_data %>%
-      pivot_wider(names_from = .data$.resp, values_from = .data$n, values_fill = 0) %>%
+      pivot_wider(
+        names_from = .data$.resp,
+        values_from = .data$n,
+        values_fill = 0
+      ) %>%
       group_by(.data$.item) %>%
       select(-{{ group }}) %>%
       nest() %>%
-      mutate(chsq = map_dbl(.data$data, ~ suppressWarnings(chisq.test(.x)) %>%
-        pluck("statistic"))) %>%
+      mutate(
+        chsq = map_dbl(
+          .data$data,
+          ~ suppressWarnings(chisq.test(.x)) %>%
+            pluck("statistic")
+        )
+      ) %>%
       arrange(desc(.data$chsq)) %>%
       pull(.data$.item)
   }
 
-  if (!desc) item_order <- rev(item_order)
-
+  if (!desc) {
+    item_order <- rev(item_order)
+  }
 
   plt_data <- plt_data %>%
     mutate(
@@ -125,14 +149,15 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     ungroup() %>%
     mutate(.item = fct_relevel(as.factor(.data$.item), item_order)) # sort facets according order table
 
-
   if (absolute_counts) {
-    plt_data <- plt_data %>% mutate(label = paste0(.data$label, " (", number(.data$n, 1), ")"))
+    plt_data <- plt_data %>%
+      mutate(label = paste0(.data$label, " (", number(.data$n, 1), ")"))
   }
 
-  plt_data <- plt_data %>% mutate(
-    label = if_else(.data$prop > min_label_width, .data$label, NA_character_)
-  )
+  plt_data <- plt_data %>%
+    mutate(
+      label = if_else(.data$prop > min_label_width, .data$label, NA_character_)
+    )
 
   # helper values -----------------------------------------------------------
 
@@ -164,8 +189,6 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     }
   }
 
-
-
   # plot --------------------------------------------------------------------
 
   # conditional labels geom
@@ -173,32 +196,53 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
     geom_text(
       aes(
         label = .data$label,
-        col = after_scale(if_else(get_lightness(.data$fill) > .5, "grey30", "white"))
+        col = after_scale(if_else(
+          get_lightness(.data$fill) > .5,
+          "grey30",
+          "white"
+        ))
       ),
-      position = position_fill(vjust = .5), size = 3, na.rm = TRUE
+      position = position_fill(vjust = .5),
+      size = 3,
+      na.rm = TRUE
     )
   }
 
   plt_data %>%
     ggplot(aes(
-      y = {{ group }}, x = .data$prop,
+      y = {{ group }},
+      x = .data$prop,
       fill = .data$.resp
     )) +
-    geom_col(width = .75, position = "fill", col = "white", size = .4, show.legend = show.legend) +
+    geom_col(
+      width = .75,
+      position = "fill",
+      col = "white",
+      size = .4,
+      show.legend = show.legend
+    ) +
     labels +
     facet_wrap(
       ~ .data$.item,
-      ncol = 1, drop = FALSE, labeller = schola_labeller(dict, width = facet_label_wrap)
+      ncol = 1,
+      drop = FALSE,
+      labeller = schola_labeller(dict, width = facet_label_wrap)
     ) +
     scale_x_percent_cz(
-      limits = c(0, 1), breaks = axis_x_breaks, expand = expansion()
+      limits = c(0, 1),
+      breaks = axis_x_breaks,
+      expand = expansion()
     ) +
     scale_y_discrete(limits = c(FALSE, TRUE), labels = c("", "*")) +
     scale_fill_manual(values = legend_cols, labels = fill_labels, drop = drop) +
-    guides(fill = guide_legend(
-      title = NULL, nrow = 1, reverse = TRUE,
-      override.aes = list(size = .75, col = NULL)
-    )) +
+    guides(
+      fill = guide_legend(
+        title = NULL,
+        nrow = 1,
+        reverse = TRUE,
+        override.aes = list(size = .75, col = NULL)
+      )
+    ) +
     theme_schola("x") +
     theme(
       axis.text.x = element_markdown(hjust = axis_x_hjust, colour = "grey30"), # element_text does not support vectorised input, see https://github.com/tidyverse/ggplot2/issues/3492
@@ -206,7 +250,10 @@ schola_barplot <- function(.data, vars, group, dict = dict_from_data(.data),
       axis.title = element_blank(),
       panel.spacing = unit(11, "pt"),
       strip.text = element_text(
-        colour = "grey30", size = 10, hjust = 0, vjust = 0,
+        colour = "grey30",
+        size = 10,
+        hjust = 0,
+        vjust = 0,
         margin = margin(0, 0, 3, 1.5)
       ),
       panel.grid.major.x = element_line(colour = "grey88"),
@@ -241,7 +288,8 @@ schola_labeller <- function(dict, width = 80) {
       if (length(unmatched_labels) != 0) {
         warning(
           "There were unmatched labels for item codes:\n",
-          paste(unmatched_labels, collapse = ", "), ".",
+          paste(unmatched_labels, collapse = ", "),
+          ".",
           call. = FALSE
         )
       }
@@ -260,7 +308,6 @@ schola_labeller <- function(dict, width = 80) {
 }
 
 
-
 #' Extract perceived lightness from colour
 #'
 #' @param col colour .item or hex
@@ -277,7 +324,6 @@ get_lightness <- function(col) {
   cmax <- apply(rgb_col_scaled, 2, max)
   (cmax + cmin) / 2
 }
-
 
 
 #' Get item code-label dictionary from data
@@ -300,7 +346,12 @@ dict_from_data <- function(.data) {
     map(~ attr(.x, "label")) %>%
     unlist()
 
-  if (is.null(out)) warning("No labels were retrieved from the data. Please, provide the dictionary manually.", call. = FALSE)
+  if (is.null(out)) {
+    warning(
+      "No labels were retrieved from the data. Please, provide the dictionary manually.",
+      call. = FALSE
+    )
+  }
 
   out
 }

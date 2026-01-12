@@ -32,11 +32,18 @@
 #'   action = "replace_schola"
 #' )
 #' }
-manage_docx_header_logos <- function(docx_path, png_logo_path,
-                                     action = c("add_client", "replace_schola"),
-                                     height = NULL) {
+manage_docx_header_logos <- function(
+  docx_path,
+  png_logo_path,
+  action = c("add_client", "replace_schola"),
+  height = NULL
+) {
   logo_action <- match.arg(action)
-  bookmark_name <- ifelse(logo_action == "add_client", "logo_client", "logo_schola")
+  bookmark_name <- ifelse(
+    logo_action == "add_client",
+    "logo_client",
+    "logo_schola"
+  )
   template <- docx_path
 
   img_file <- file.path(png_logo_path)
@@ -44,13 +51,22 @@ manage_docx_header_logos <- function(docx_path, png_logo_path,
   dim(img)
   img_ratio <- dim(img)[1] / dim(img)[2]
   # height of primary logo, too keep heights aligned
-  if (is.null(height)) img_h_default <- 1.07 / 2.54 else img_h_default <- height / 2.54
+  if (is.null(height)) {
+    img_h_default <- 1.07 / 2.54
+  } else {
+    img_h_default <- height / 2.54
+  }
   img_w <- img_h_default / img_ratio
 
   doc <- officer::read_docx(path = template)
   doc <- officer::headers_replace_img_at_bkm(
-    x = doc, bookmark = bookmark_name,
-    value = officer::external_img(src = img_file, height = img_h_default, width = img_w)
+    x = doc,
+    bookmark = bookmark_name,
+    value = officer::external_img(
+      src = img_file,
+      height = img_h_default,
+      width = img_w
+    )
   )
   newfilename <- paste0(tools::file_path_sans_ext(docx_path), "_addedlogo.docx")
   print(doc, target = newfilename)

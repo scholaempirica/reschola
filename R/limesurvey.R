@@ -31,7 +31,9 @@
 #' @importFrom rstudioapi showPrompt askForPassword
 #'
 #' @export
-ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/index.php/admin/remotecontrol") {
+ls_login <- function(
+  api_url = "https://dotazniky.scholaempirica.org/limesurvey/index.php/admin/remotecontrol"
+) {
   if (!nzchar(Sys.getenv("LS_USER")) || !nzchar(Sys.getenv("LS_PASS"))) {
     user <- showPrompt(
       "LimeSurvey username",
@@ -42,11 +44,18 @@ ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/
 
     Sys.setenv(LS_USER = user, LS_PASS = pass)
 
-    ui_info("The credentials are saved and available only for this session. To store them safely and permanently...")
-    ui_todo("...append following two lines to your {ui_field('.Renviron')} file, a value per line. The file must end with an empty line.")
+    ui_info(
+      "The credentials are saved and available only for this session. To store them safely and permanently..."
+    )
+    ui_todo(
+      "...append following two lines to your {ui_field('.Renviron')} file, a value per line. The file must end with an empty line."
+    )
     ui_code_block(paste0(
-      "LS_USER=", user, "\n",
-      "LS_PASS=", pass
+      "LS_USER=",
+      user,
+      "\n",
+      "LS_PASS=",
+      pass
     ))
 
     edit_r_environ()
@@ -57,21 +66,34 @@ ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/
   }
 
   body <- list(
-    method = "get_session_key", id = " ",
+    method = "get_session_key",
+    id = " ",
     params = list(
       username = Sys.getenv("LS_USER"),
       password = Sys.getenv("LS_PASS")
     )
   )
 
-  r <- RETRY("POST", api_url, content_type_json(), body = toJSON(body, auto_unbox = TRUE))
+  r <- RETRY(
+    "POST",
+    api_url,
+    content_type_json(),
+    body = toJSON(body, auto_unbox = TRUE)
+  )
   if (status_code(r) != 200) {
     stop(http_status(r)$message)
   }
 
-  content <- content(r, as = "parsed", encoding = "utf-8", type = "application/json")
+  content <- content(
+    r,
+    as = "parsed",
+    encoding = "utf-8",
+    type = "application/json"
+  )
   if (!is.character(content) && is.null(content$result)) {
-    ui_stop("Server is responding but not in a proper way. Please check the API URL and server configuration.")
+    ui_stop(
+      "Server is responding but not in a proper way. Please check the API URL and server configuration."
+    )
   }
 
   res <- content$result
@@ -81,7 +103,6 @@ ls_login <- function(api_url = "https://dotazniky.scholaempirica.org/limesurvey/
 
   assign("sess_key", res, envir = ls_sess_cache)
   assign("sess_key_expiration", Sys.time() + 7200, envir = ls_sess_cache) # default session expiration is 2 hrs = 7200 s
-
 
   if (exists("sess_key", envir = ls_sess_cache)) {
     ui_done("Session key sucessfuly obtained and stored in a cache.")
@@ -135,22 +156,25 @@ ls_call <- function(method, params = list()) {
     ui_stop("{ui_field('sSessionKey')} entry is already provided!")
   }
 
-  if (!exists("sess_key_expiration", envir = ls_sess_cache) || ls_sess_cache$sess_key_expiration < Sys.time()) {
+  if (
+    !exists("sess_key_expiration", envir = ls_sess_cache) ||
+      ls_sess_cache$sess_key_expiration < Sys.time()
+  ) {
     ui_info("Retrieving valid session key...")
     ls_login()
   }
 
   params <- c(sSessionKey = ls_sess_cache$sess_key, params)
   body <- list(method = method, id = " ", params = params)
-  r <- RETRY("POST", Sys.getenv("LS_URL"), content_type_json(),
+  r <- RETRY(
+    "POST",
+    Sys.getenv("LS_URL"),
+    content_type_json(),
     body = toJSON(body, auto_unbox = TRUE, null = "null")
     # when something does not work, look carefully whether param is passed as single value or an array of length 1
   )
 
-  parsed <- fromJSON(content(r,
-    as = "text",
-    encoding = "utf-8"
-  ))
+  parsed <- fromJSON(content(r, as = "text", encoding = "utf-8"))
 
   res <- parsed$result
 
@@ -166,7 +190,8 @@ ls_call <- function(method, params = list()) {
 
   # try to make tibble from everything except character and tibble
   # return raw object when conversion fails
-  if (!inherits(res, c("tbl_df", "character"))) { # add "list" back if something fails
+  if (!inherits(res, c("tbl_df", "character"))) {
+    # add "list" back if something fails
     tryCatch(
       # replace NULLs with NAs (to be able to turn it into a tibble)
       as_tibble(modify_if(res, is.null, ~NA)),
@@ -240,8 +265,14 @@ ls_surveys <- function() {
 #'
 #' @family LimeSurvey functions
 #' @export
-ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
-                            only_unused_tokens = FALSE, translate_attrs = TRUE, standardize_dates = TRUE) {
+ls_participants <- function(
+  survey_id,
+  attributes = TRUE,
+  n_participants = 999,
+  only_unused_tokens = FALSE,
+  translate_attrs = TRUE,
+  standardize_dates = TRUE
+) {
   if (is.logical(attributes)) {
     if (attributes) {
       attributes <- .ls_all_attributes
@@ -250,13 +281,16 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
     ls_check_attributes(attributes)
   }
 
-  res <- ls_call("list_participants", params = list(
-    iSurveyID = survey_id,
-    iStart = 0,
-    iLimit = n_participants,
-    bUnused = only_unused_tokens,
-    aAttributes = as.list(attributes)
-  ))
+  res <- ls_call(
+    "list_participants",
+    params = list(
+      iSurveyID = survey_id,
+      iStart = 0,
+      iLimit = n_participants,
+      bUnused = only_unused_tokens,
+      aAttributes = as.list(attributes)
+    )
+  )
 
   res <- unpack(res, "participant_info")
 
@@ -312,10 +346,18 @@ ls_participants <- function(survey_id, attributes = TRUE, n_participants = 999,
 #' @family LimeSurvey functions
 #'
 #' @export
-ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "all", standardize_dates = TRUE, ...) {
+ls_responses <- function(
+  survey_id,
+  clean_labels = TRUE,
+  lang = "cs",
+  part = "all",
+  standardize_dates = TRUE,
+  ...
+) {
   part <- match.arg(part, c("complete", "incomplete", "all"))
 
-  data <- ls_call("export_responses",
+  data <- ls_call(
+    "export_responses",
     params = list(
       iSurveyID = survey_id,
       sDocumentType = "rdata",
@@ -327,11 +369,10 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
 
   data <- rawToChar(base64_dec(data))
 
-  data <- read.csv2(textConnection(data),
-    encoding = "UTF-8"
-  )
+  data <- read.csv2(textConnection(data), encoding = "UTF-8")
 
-  syntax <- ls_call("export_responses",
+  syntax <- ls_call(
+    "export_responses",
     params = list(
       iSurveyID = survey_id,
       sDocumentType = "rsyntax",
@@ -370,7 +411,8 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
 
   # get the tibble variable.labels attribute and break it to individual items
   out <- modify2(
-    out, labels,
+    out,
+    labels,
     ~ `attr<-`(.x, "label", .y)
   )
 
@@ -406,15 +448,33 @@ ls_responses <- function(survey_id, clean_labels = TRUE, lang = "cs", part = "al
 #'
 #' @family LimeSurvey functions
 #' @export
-ls_export <- function(survey_id, attributes = TRUE, clean_labels = TRUE, n_participants = 999,
-                      lang = "cs", part = "all", only_unused_tokens = FALSE,
-                      join_by = "token", standardize_dates = TRUE, ...) {
-  participants <- ls_participants(survey_id,
+ls_export <- function(
+  survey_id,
+  attributes = TRUE,
+  clean_labels = TRUE,
+  n_participants = 999,
+  lang = "cs",
+  part = "all",
+  only_unused_tokens = FALSE,
+  join_by = "token",
+  standardize_dates = TRUE,
+  ...
+) {
+  participants <- ls_participants(
+    survey_id,
     n_participants = n_participants,
-    only_unused_tokens = only_unused_tokens, attributes = attributes, standardize_dates = standardize_dates
+    only_unused_tokens = only_unused_tokens,
+    attributes = attributes,
+    standardize_dates = standardize_dates
   )
 
-  responses <- ls_responses(survey_id, clean_labels = clean_labels, lang = lang, part = part, standardize_dates = standardize_dates)
+  responses <- ls_responses(
+    survey_id,
+    clean_labels = clean_labels,
+    lang = lang,
+    part = part,
+    standardize_dates = standardize_dates
+  )
 
   left_join(participants, responses, by = join_by, ...)
 }
@@ -492,11 +552,16 @@ ls_check_attributes <- function(attributes) {
 #'
 #' @export
 ls_get_attrs <- function(survey_id) {
-  attrs <- ls_call("get_survey_properties", params = list(iSurveyID = survey_id)) %>%
+  attrs <- ls_call(
+    "get_survey_properties",
+    params = list(iSurveyID = survey_id)
+  ) %>%
     pluck("attributedescriptions")
 
   if (is.null(attrs) || is.na(attrs)) {
-    ui_info("No attributes were found. Ignoring {ui_code(\"attributes = TRUE\")}.")
+    ui_info(
+      "No attributes were found. Ignoring {ui_code(\"attributes = TRUE\")}."
+    )
     return(NULL)
   }
 
@@ -559,7 +624,8 @@ ls_get_attrs <- function(survey_id) {
 #'
 #' @export
 ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
-  ls_call("add_participants",
+  ls_call(
+    "add_participants",
     params = list(
       iSurveyID = survey_id,
       aParticipantData = part_data,
@@ -616,9 +682,12 @@ ls_add_participants <- function(survey_id, part_data, create_token = TRUE) {
 #' @export
 ls_invite <- function(survey_id, tid, uninvited_only = TRUE) {
   # assert integer
-  if (!is.numeric(tid)) ui_stop("Token ID must be an integer!")
+  if (!is.numeric(tid)) {
+    ui_stop("Token ID must be an integer!")
+  }
 
-  ls_call("invite_participants",
+  ls_call(
+    "invite_participants",
     params = list(
       iSurveyID = survey_id,
       aTokenIds = I(tid), # prevent jsonlite from unboxing, as LS expects an array, not a value!!
@@ -666,7 +735,8 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 
   ls_check_attributes(names(attributes))
 
-  ls_call("set_participant_properties",
+  ls_call(
+    "set_participant_properties",
     params = list(
       iSurveyID = survey_id,
       aTokenQueryProperties = participant,
@@ -681,13 +751,11 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 #
 # }
 
-
 # proposals
 
 # add participants to central database
 # particips <- tibble(firstname = "Jan", lastname = "Nalallalaalalaetlkkík", email = "neasdftikja@sdgmail.com")
 # ls_call("cpd_importParticipants", params = list(participants = particips, update = T))
-
 
 # set participant properties
 #
@@ -697,7 +765,6 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 # # .x is token ID (tid)
 
 # nolint end
-
 
 #' Standardize Date Variables in LimeSurvey Data
 #'
@@ -714,13 +781,20 @@ ls_set_participant_properties <- function(survey_id, participant, ...) {
 #' @importFrom dplyr mutate across if_else
 #' @importFrom tidyselect any_of
 #'
-ls_standardize_dates <- function(.data, date_cols = c("completed", "sent", "submitdate", "startdate", "datestamp"), as_na = c("", "N", "Y"), ...) {
+ls_standardize_dates <- function(
+  .data,
+  date_cols = c("completed", "sent", "submitdate", "startdate", "datestamp"),
+  as_na = c("", "N", "Y"),
+  ...
+) {
   .data %>%
     mutate(
       across(
         any_of(date_cols),
-        \(x) if_else(x %in% as_na, NA_character_, x) %>%
-          parse_date_time(c("ymd HMS", "ymd HM"), ...) # parse any of these
+        \(x) {
+          if_else(x %in% as_na, NA_character_, x) %>%
+            parse_date_time(c("ymd HMS", "ymd HM"), ...)
+        } # parse any of these
       )
     )
 }
