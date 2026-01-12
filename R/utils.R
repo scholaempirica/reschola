@@ -43,8 +43,7 @@ find_resource <- function(template, file) {
 #' open_schola_template()
 #' }
 open_schola_template <- function(format = "pdf") {
-  switch(
-    format,
+  switch(format,
     word = system2("open", find_resource("schola_word", "template.docx")),
     pdf = system2("open", find_resource("schola_pdf", "schola_template.tex"))
   )
@@ -73,8 +72,7 @@ reschola_file <- function(...) {
 #' copy_schola_template()
 #' }
 copy_schola_template <- function(format = "pdf", path = proj_get(), ...) {
-  switch(
-    format,
+  switch(format,
     word = invisible(file.copy(
       find_resource("schola_word", "template.docx"),
       path,

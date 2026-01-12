@@ -169,8 +169,7 @@ schola_project <- function(path, ...) {
 
   # git ---------------------------------------------------------------------
 
-  switch(
-    dots[["vcs"]],
+  switch(dots[["vcs"]],
     none = ui_info("Not setting up any version control."),
     "local git" = tryCatch(
       use_git(message = "Repo setup"),
