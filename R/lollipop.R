@@ -20,27 +20,27 @@
 #'
 prepare_lollipop_data <- function(.data, vars, group) {
   # assert group - logical
-  d <- .data %>%
-    pivot_longer({{ vars }}) %>%
+  d <- .data |>
+    pivot_longer({{ vars }}) |>
     mutate(value = sten(.data$value))
 
-  ref_meds <- d %>%
-    filter(!{{ group }}) %>%
-    group_by(.data$name) %>%
+  ref_meds <- d |>
+    filter(!{{ group }}) |>
+    group_by(.data$name) |>
     summarise(med = median(.data$value, na.rm = TRUE))
 
   n_vars <- nrow(ref_meds)
 
-  diff_data <- d %>%
-    filter({{ group }}) %>%
-    left_join(ref_meds, by = "name") %>%
+  diff_data <- d |>
+    filter({{ group }}) |>
+    left_join(ref_meds, by = "name") |>
     mutate(diff = .data$value - .data$med)
 
-  main_data <- d %>%
-    group_by({{ group }}, .data$name) %>%
-    summarise(value = median(.data$value, na.rm = TRUE), .groups = "keep") %>%
-    pivot_wider(names_from = {{ group }}) %>%
-    ungroup() %>%
+  main_data <- d |>
+    group_by({{ group }}, .data$name) |>
+    summarise(value = median(.data$value, na.rm = TRUE), .groups = "keep") |>
+    pivot_wider(names_from = {{ group }}) |>
+    ungroup() |>
     mutate(
       diff = .data$`TRUE` - .data$`FALSE`, # positive = larger foc. group value
       name = fct_reorder(.data$name, .data$diff, abs, .desc = FALSE)
@@ -102,7 +102,7 @@ plot_lollipop <- function(
 
   names_order <- levels(plot_data$main_data$name)
 
-  plot_data$main_data %>%
+  plot_data$main_data |>
     ggplot(aes(
       .data$diff,
       fct_relevel(.data$name, names_order),

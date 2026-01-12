@@ -1,5 +1,7 @@
 linters: linters_with_defaults(
-    line_length_linter = NULL
+    line_length_linter = NULL,
+    return_linter = NULL,
+    object_name_linter = NULL
   )
 exclusions: list(
     "inst/rmarkdown/templates/schola_pdf/skeleton/skeleton.Rmd",

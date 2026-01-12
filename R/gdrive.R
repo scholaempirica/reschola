@@ -53,8 +53,8 @@ gd_download_folder <- function(
 
   drv_items <- drive_ls(url_id, recursive = files_from_subfolders)
 
-  drv_files <- drv_items %>%
-    mutate(mimetype = map_chr(.data$drive_resource, "mimeType")) %>%
+  drv_files <- drv_items |>
+    mutate(mimetype = map_chr(.data$drive_resource, "mimeType")) |>
     filter(.data$mimetype != "application/vnd.google-apps.folder")
 
   walk2(

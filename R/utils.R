@@ -290,7 +290,7 @@ with_clr <- function(text, color = "black", alpha = 1, ...) {
 #' @export
 #'
 #' @examples
-#' rnorm(10) %>% sten()
+#' rnorm(10) |> sten()
 sten <- function(score, standardize = FALSE, bounds = TRUE) {
   if (standardize) {
     score <- as.numeric(scale(score))
@@ -322,10 +322,10 @@ sten <- function(score, standardize = FALSE, bounds = TRUE) {
 #' @importFrom dplyr select
 #'
 #' @examples
-#' airquality %>% remove_empty_at(c(Ozone, Solar.R))
+#' airquality |> remove_empty_at(c(Ozone, Solar.R))
 #'
 remove_empty_at <- function(.data, vars) {
-  selection <- .data %>% select({{ vars }})
+  selection <- .data |> select({{ vars }})
   keep_mask <- rowSums(is.na(selection)) != ncol(selection)
   return(.data[keep_mask, , drop = FALSE])
 }
@@ -349,8 +349,8 @@ remove_empty_at <- function(.data, vars) {
 #' get_labs_df(iris_with_labs)
 #'
 get_labs_df <- function(.data) {
-  .data %>%
-    map(attr, "label") %>%
+  .data |>
+    map(attr, "label") |>
     enframe("variable", "label")
 }
 
@@ -404,13 +404,13 @@ recover_labs <- function(new_data, orig_data) {
     )
   }
 
-  old_labs <- orig_data %>% get_labs_df()
-  new_labs <- new_data %>% get_labs_df()
+  old_labs <- orig_data |> get_labs_df()
+  new_labs <- new_data |> get_labs_df()
 
   # take empty new_labs (but with the structure of new data), and merge in old labels by variable name
-  new_labs <- new_labs %>%
-    left_join(old_labs, by = "variable") %>%
-    transmute(.data$variable, value = .data$label.y) %>%
+  new_labs <- new_labs |>
+    left_join(old_labs, by = "variable") |>
+    transmute(.data$variable, value = .data$label.y) |>
     deframe()
 
   # add new labs as a cols attributes
@@ -447,7 +447,7 @@ extract_schola_barplot_info <- function(plot) {
   plt_data <- plot$data
   labeller_fun <- plot$facet$params$labeller
 
-  plt_data %>%
+  plt_data |>
     mutate(
       .item_lab = flatten_chr(labeller_fun(.data$.item)),
       .after = .data$.item

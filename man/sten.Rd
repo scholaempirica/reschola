@@ -23,5 +23,5 @@ a standard deviation of 2. See the \href{https://en.wikipedia.org/wiki/Sten_scor
 details.
 }
 \examples{
-rnorm(10) \%>\% sten()
+rnorm(10) |> sten()
 }

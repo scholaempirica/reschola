@@ -6,8 +6,10 @@
 
 ## Changes
 
+- R >= 4.1.0 is now required
 - New function `ls_standardize_dates()` was introduced and applied by default in `ls_responses()` and `ls_export()` to standardize date columns to `Date` class with H:M:S format.
 - `{ggplot2}` >= 3.4.0 is now required to support `linewidth` aesthetics for line geoms as `size` is deprecated for them.
+- `{magrittr}` is no longer a dependency, as the pipe operator is now part of base R.
 
 # reschola 0.5.6
 

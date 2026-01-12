@@ -22,6 +22,6 @@ missings. \code{remove_empty_at()} drops only those rows that have no non-missin
 data at the variables specified in \code{vars}.
 }
 \examples{
-airquality \%>\% remove_empty_at(c(Ozone, Solar.R))
+airquality |> remove_empty_at(c(Ozone, Solar.R))
 
 }

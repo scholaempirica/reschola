@@ -17,10 +17,10 @@
 #' @inheritParams czech_date_main
 #'
 #' @examples
-#' Sys.time() %>% as_czech_date()
+#' Sys.time() |> as_czech_date()
 #'
 #' # in "nominative" grammatical case (note the abbreviation)
-#' Sys.time() %>% as_czech_date("nom")
+#' Sys.time() |> as_czech_date("nom")
 #' @return Same as input, but with class `czech_date` and attribute
 #'   `gramm_case`.
 #' @family format related functions

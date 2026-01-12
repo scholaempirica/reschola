@@ -219,12 +219,11 @@ ls_call <- function(method, params = list()) {
 #' }
 #'
 #' @importFrom dplyr rename
-#' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #'
 #' @export
 ls_surveys <- function() {
-  ls_call("list_surveys") %>%
+  ls_call("list_surveys") |>
     rename(survey_id = "sid", title = "surveyls_title")
 }
 
@@ -299,7 +298,7 @@ ls_participants <- function(
     if (!is.null(attrs) && length(attrs) != 0) {
       attrs <- set_names(names(attrs), attrs) # swap names-values
       attrs <- attrs[attrs %in% names(res)] # keep only those present in res
-      res <- res %>% rename(!!!attrs)
+      res <- res |> rename(!!!attrs)
     }
   }
 
@@ -555,7 +554,7 @@ ls_get_attrs <- function(survey_id) {
   attrs <- ls_call(
     "get_survey_properties",
     params = list(iSurveyID = survey_id)
-  ) %>%
+  ) |>
     pluck("attributedescriptions")
 
   if (is.null(attrs) || is.na(attrs)) {
@@ -567,13 +566,13 @@ ls_get_attrs <- function(survey_id) {
 
   # when LS returns entries with no description slot, map_chr would panic
   # because it cannot concatenate NULLs with chararcter,
-  attrs <- attrs %>%
-    fromJSON() %>%
+  attrs <- attrs |>
+    fromJSON() |>
     map("description")
 
-  attrs %>%
-    compact() %>% # be safe, drop nulls
-    keep_at(~ str_detect(.x, "attribute")) %>% # keep only proper LS attributes
+  attrs |>
+    compact() |> # be safe, drop nulls
+    keep_at(~ str_detect(.x, "attribute")) |> # keep only proper LS attributes
     unlist() # convert to named vector
 }
 
@@ -787,12 +786,12 @@ ls_standardize_dates <- function(
   as_na = c("", "N", "Y"),
   ...
 ) {
-  .data %>%
+  .data |>
     mutate(
       across(
         any_of(date_cols),
         \(x) {
-          if_else(x %in% as_na, NA_character_, x) %>%
+          if_else(x %in% as_na, NA_character_, x) |>
             parse_date_time(c("ymd HMS", "ymd HM"), ...)
         } # parse any of these
       )

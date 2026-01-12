@@ -87,53 +87,53 @@ schola_barplot <- function(
   )
   # data --------------------------------------------------------------------
 
-  long_data <- .data %>%
+  long_data <- .data |>
     pivot_longer({{ vars }}, names_to = ".item", values_to = ".resp")
 
   # drop NAs column-wise, not excludig rows with just ANY NA present
   if (drop_na) {
-    long_data <- long_data %>% drop_na(.data$.resp)
+    long_data <- long_data |> drop_na(.data$.resp)
   }
 
   if (order_by == "weighted total scores") {
     # get counts for each response category, multiply by its .resp to get
     # "weight" of some sort
     #  -- higher usage of higher categories results in higher weight
-    item_order <- long_data %>%
+    item_order <- long_data |>
       mutate(
-        resp_num = fct_nanify(.data$.resp, escape_level, ...) %>%
+        resp_num = fct_nanify(.data$.resp, escape_level, ...) |>
           as.integer()
-      ) %>%
-      group_by({{ group }}, .data$.item) %>%
-      summarise(ts = sum(.data$resp_num, na.rm = TRUE)) %>%
-      filter({{ group }}) %>%
-      arrange(desc(.data$ts)) %>%
+      ) |>
+      group_by({{ group }}, .data$.item) |>
+      summarise(ts = sum(.data$resp_num, na.rm = TRUE)) |>
+      filter({{ group }}) |>
+      arrange(desc(.data$ts)) |>
       pull(.data$.item)
   }
 
-  plt_data <- long_data %>%
-    mutate(.resp = fct_rev(.data$.resp)) %>%
-    group_by({{ group }}, .data$.item, .data$.resp) %>%
+  plt_data <- long_data |>
+    mutate(.resp = fct_rev(.data$.resp)) |>
+    group_by({{ group }}, .data$.item, .data$.resp) |>
     summarise(n = n(), .groups = "drop_last")
 
   if (order_by == "chi-square differences") {
-    item_order <- plt_data %>%
+    item_order <- plt_data |>
       pivot_wider(
         names_from = .data$.resp,
         values_from = .data$n,
         values_fill = 0
-      ) %>%
-      group_by(.data$.item) %>%
-      select(-{{ group }}) %>%
-      nest() %>%
+      ) |>
+      group_by(.data$.item) |>
+      select(-{{ group }}) |>
+      nest() |>
       mutate(
         chsq = map_dbl(
           .data$data,
-          ~ suppressWarnings(chisq.test(.x)) %>%
+          ~ suppressWarnings(chisq.test(.x)) |>
             pluck("statistic")
         )
-      ) %>%
-      arrange(desc(.data$chsq)) %>%
+      ) |>
+      arrange(desc(.data$chsq)) |>
       pull(.data$.item)
   }
 
@@ -141,20 +141,20 @@ schola_barplot <- function(
     item_order <- rev(item_order)
   }
 
-  plt_data <- plt_data %>%
+  plt_data <- plt_data |>
     mutate(
       prop = .data$n / sum(.data$n),
       label = percent(.data$prop, 1, suffix = " %") # category size threshold for label to display
-    ) %>%
-    ungroup() %>%
+    ) |>
+    ungroup() |>
     mutate(.item = fct_relevel(as.factor(.data$.item), item_order)) # sort facets according order table
 
   if (absolute_counts) {
-    plt_data <- plt_data %>%
+    plt_data <- plt_data |>
       mutate(label = paste0(.data$label, " (", number(.data$n, 1), ")"))
   }
 
-  plt_data <- plt_data %>%
+  plt_data <- plt_data |>
     mutate(
       label = if_else(.data$prop > min_label_width, .data$label, NA_character_)
     )
@@ -164,9 +164,9 @@ schola_barplot <- function(
   axis_x_breaks <- seq(0, 1, length.out = n_breaks)
   axis_x_hjust <- c(0, rep(.5, n_breaks - 2), 1)
 
-  n_cats <- plt_data %>%
-    pull(.data$.resp) %>%
-    levels() %>%
+  n_cats <- plt_data |>
+    pull(.data$.resp) |>
+    levels() |>
     length()
 
   n_fill_cols <- if (escape_level == FALSE) n_cats else n_cats - 1L
@@ -208,7 +208,7 @@ schola_barplot <- function(
     )
   }
 
-  plt_data %>%
+  plt_data |>
     ggplot(aes(
       y = {{ group }},
       x = .data$prop,
@@ -342,8 +342,8 @@ get_lightness <- function(col) {
 #'
 dict_from_data <- function(.data) {
   # try parent.frame()
-  out <- .data %>%
-    map(~ attr(.x, "label")) %>%
+  out <- .data |>
+    map(~ attr(.x, "label")) |>
     unlist()
 
   if (is.null(out)) {

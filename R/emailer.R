@@ -92,8 +92,8 @@
 #' # contact_list <- read_rds(here("data-input/contact_list.rds"))
 #' #
 #' # # add BCC for MS, make final list
-#' # emails <- contact_list %>%
-#' #   # filter(contact_type != "teacher") %>%
+#' # emails <- contact_list |>
+#' #   # filter(contact_type != "teacher") |>
 #' #   mutate(bcc = if_else(school_type == "MS",
 #' #                        list("michalova@scholaempirica.org"),
 #' #                        list("sloufova@scholaempirica.org")
@@ -102,13 +102,13 @@
 #' # # resend_ZS_contacts <- read_rds(here("data-input/resend_ZS_contacts.rds"))
 #' #
 #' # # resend instructions (contacts from)
-#' # # emails <- emails %>% filter(email %in% resend_ZS_contacts)
+#' # # emails <- emails |> filter(email %in% resend_ZS_contacts)
 #' #
-#' # # emails <- emails %>% filter(school == "MŠ Svémyslice")
-#' # emails <- emails %>% filter(school == "MŠ Sluníčko pod střechou" & is_interv == 0)
+#' # # emails <- emails |> filter(school == "MŠ Svémyslice")
+#' # emails <- emails |> filter(school == "MŠ Sluníčko pod střechou" & is_interv == 0)
 #' #
 #' # # prepare table of recipients, subject, body, file paths, everything
-#' # emails <- emails %>% mutate(
+#' # emails <- emails |> mutate(
 #' #   subject = "Instrukce k prvnímu měření – Rozvoj socio-emočních dovedností v MŠ a ZŠ",
 #' #   group = if_else(is_interv, "intervencni", "kontrolni"),
 #' #   body = if_else(school_type == "MS",
@@ -124,10 +124,10 @@
 #' # )
 #' #
 #' # # sent after contact list repair
-#' # # emails <- emails %>% filter(email %in% c("ms.zilina@seznam.cz", "info@mshavaj.cz", "ludmila.zelinkova@seznam.cz"))
+#' # # emails <- emails |> filter(email %in% c("ms.zilina@seznam.cz", "info@mshavaj.cz", "ludmila.zelinkova@seznam.cz"))
 #' #
 #' # # do files really exist?
-#' # unlist(emails$appdx)[emails$appdx %>% unlist %>% map_lgl(~!file.exists(.x))]
+#' # unlist(emails$appdx)[emails$appdx |> unlist |> map_lgl(~!file.exists(.x))]
 #' #
 #' #
 #' # # prepare email "send job" (object-orienter programming...)
