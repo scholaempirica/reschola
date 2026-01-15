@@ -25,6 +25,12 @@
 - [magrittr](https://magrittr.tidyverse.org) is no longer a dependency,
   as the pipe operator is now part of base R.
 
+### Bugfixes
+
+- [`schola_pdf()`](https://scholaempirica.github.io/reschola/reference/schola_pdf.md)
+  RMarkdown format should properly handle Ubuntu Condensed font on
+  Windows now.
+
 ## reschola 0.5.6
 
 This release fixes a minor regression in

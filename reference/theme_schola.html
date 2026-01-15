@@ -9,7 +9,7 @@ options and several defaults. See more in Details."><meta property="og:image" co
 
     <a class="navbar-brand me-2" href="../index.html">reschola</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.6.9004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.6.9005</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -294,7 +294,10 @@ the data layers (<code>logical</code>). Usually used with a transparent or blank
     <dt><code>panel.widths,panel.heights</code></dt>
 <dd><p>Sizes for panels (<code>units</code>). Can be a
 single unit to set the total size for the panel area, or a unit vector to
-set the size of individual panels.</p></dd>
+set the size of individual panels. Using this setting overrides the
+aspect ratio set by the theme, coord or facets. An exception is made when
+the plot has a single panel and exactly one of the width <em>or</em> height is
+set, in which case an attempt is made to preserve the aspect ratio.</p></dd>
 
     <dt><code>plot.background</code></dt>
 <dd><p>background of the entire plot (<code><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_rect()</a></code>;
