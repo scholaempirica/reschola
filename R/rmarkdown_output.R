@@ -114,6 +114,19 @@ schola_pdf <- function(
     }
   }
 
+  # graphical device (native pdf device is finicky around Czech language)
+  gr_dev <- "cairo_pdf"
+
+  # graphics device workaround for Windows
+  # (grDevices::cairo_pdf cannot map Ubuntu Condensed correctly
+  # for some reason in recent R builds, Cairo::CairoPDF works just fine)
+  if (.Platform$OS.type == "windows") {
+    gr_dev <- "CairoPDF"
+  }
+
+  # TODO we should issue a warning if reschola overrides any setting provided
+  # by user via ellipsis (...)
+
   # nolint start
   base$knitr$opts_chunk$comment <- "#>" # as in reprex package, standard MD
   base$knitr$opts_chunk$message <- FALSE
@@ -123,7 +136,7 @@ schola_pdf <- function(
   base$knitr$opts_chunk$cache <- FALSE
   base$knitr$opts_chunk$fig.width <- 6.29
   base$knitr$opts_chunk$out.width <- "\\textwidth"
-  base$knitr$opts_chunk$dev <- "cairo_pdf" # for support of non-ASCII chars, namely
+  base$knitr$opts_chunk$dev <- gr_dev
   base$knitr$opts_chunk$fig.asp <- .618 # golden ratio
   # base$knitr$opts_chunk$fig.path <- "figures/"
   base$knitr$opts_chunk$fig.align <- "center"

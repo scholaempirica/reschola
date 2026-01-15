@@ -11,6 +11,11 @@
 - `{ggplot2}` >= 3.4.0 is now required to support `linewidth` aesthetics for line geoms as `size` is deprecated for them.
 - `{magrittr}` is no longer a dependency, as the pipe operator is now part of base R.
 
+## Bugfixes
+
+- `schola_pdf()` RMarkdown format should properly handle Ubuntu Condensed font on Windows now.
+
+
 # reschola 0.5.6
 
 This release fixes a minor regression in `schola_barplot()` introduced by `{ggplot2}` 3.5.0+ and provides compatibility for older LimeSurvey installations.
