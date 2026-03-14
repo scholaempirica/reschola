@@ -24,12 +24,24 @@
   for them.
 - [magrittr](https://magrittr.tidyverse.org) is no longer a dependency,
   as the pipe operator is now part of base R.
+- [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
+  now downloads the data with comma delimiter and applies the “rsyntax”
+  `R` script as-is.
 
 ### Bugfixes
 
 - [`schola_pdf()`](https://scholaempirica.github.io/reschola/reference/schola_pdf.md)
   RMarkdown format should properly handle Ubuntu Condensed font on
   Windows now.
+- Since
+  [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
+  now longer uses
+  [`read.csv2()`](https://rdrr.io/r/utils/read.table.html) with its
+  defaults, `NA` in character columns are no longer converted missing
+  values as overwriten by the “rsyntax” `R` script which at the time of
+  writing was using
+  [`read.csv()`](https://rdrr.io/r/utils/read.table.html) without
+  `na.strings = "NA"`.
 
 ## reschola 0.5.6
 

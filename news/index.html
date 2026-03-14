@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">reschola</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.6.9005</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.6.9006</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,11 +53,14 @@
 <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> &gt;= 3.4.0 is now required to support <code>linewidth</code> aesthetics for line geoms as <code>size</code> is deprecated for them.</li>
 <li>
 <a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a> is no longer a dependency, as the pipe operator is now part of base R.</li>
+<li>
+<code><a href="../reference/ls_responses.html">ls_responses()</a></code> now downloads the data with comma delimiter and applies the “rsyntax” <code>R</code> script as-is.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bugfixes-development-version">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-development-version"></a></h3>
 <ul><li>
 <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code> RMarkdown format should properly handle Ubuntu Condensed font on Windows now.</li>
+<li>Since <code><a href="../reference/ls_responses.html">ls_responses()</a></code> now longer uses <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv2()</a></code> with its defaults, <code>NA</code> in character columns are no longer converted missing values as overwriten by the “rsyntax” <code>R</code> script which at the time of writing was using <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code> without <code>na.strings = "NA"</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">

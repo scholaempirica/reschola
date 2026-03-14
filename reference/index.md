@@ -104,6 +104,9 @@ All functions, including uncategorised ones
 
   Make Date of Class `czech_date`
 
+- [`b64_string_to_file()`](https://scholaempirica.github.io/reschola/reference/b64_string_to_file.md)
+  : Write base64 string to file
+
 - [`compile_and_open()`](https://scholaempirica.github.io/reschola/reference/compile_and_open.md)
   : Safely Compile RMarkdown Document(s)
 
