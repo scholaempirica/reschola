@@ -10,10 +10,14 @@
 - New function `ls_standardize_dates()` was introduced and applied by default in `ls_responses()` and `ls_export()` to standardize date columns to `Date` class with H:M:S format.
 - `{ggplot2}` >= 3.4.0 is now required to support `linewidth` aesthetics for line geoms as `size` is deprecated for them.
 - `{magrittr}` is no longer a dependency, as the pipe operator is now part of base R.
+- `ls_responses()` now downloads the data with comma delimiter and applies the "rsyntax" `R` script as-is.
 
 ## Bugfixes
 
 - `schola_pdf()` RMarkdown format should properly handle Ubuntu Condensed font on Windows now.
+- Since `ls_responses()` now longer uses `read.csv2()` with its defaults, `NA` in character 
+columns are no longer converted missing values as overwriten by the "rsyntax" `R` 
+script which at the time of writing was using `read.csv()` without `na.strings = "NA"`.
 
 
 # reschola 0.5.6

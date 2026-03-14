@@ -355,22 +355,32 @@ ls_responses <- function(
 ) {
   part <- match.arg(part, c("complete", "incomplete", "all"))
 
-  data <- ls_call(
+  data_b64_string <- ls_call(
     "export_responses",
     params = list(
       iSurveyID = survey_id,
       sDocumentType = "rdata",
       sLanguageCode = lang,
       sCompletionStatus = part,
+      # LS rsyntax script expects non-default comma separator, so be my guest
+      aAdditionalOptions = list(csvFieldSeparator = ","),
       ...
     )
   )
 
-  data <- rawToChar(base64_dec(data))
+  # the filename have to match the filename expected by LS R-syntax script
+  # https://github.com/LimeSurvey/LimeSurvey/blob/67e6a955332a5b9aba6db16da3e055c6f200c11e/application/core/plugins/ExportR/RDataWriter.php#L21
 
-  data <- read.csv2(textConnection(data), encoding = "UTF-8")
+  temp_dir <- tempdir()
 
-  syntax <- ls_call(
+  csv_file_path <- file.path(
+    temp_dir,
+    paste0("survey_", survey_id, "_R_data_file.csv")
+  )
+
+  b64_string_to_file(data_b64_string, csv_file_path)
+
+  syntax_b64_string <- ls_call(
     "export_responses",
     params = list(
       iSurveyID = survey_id,
@@ -381,18 +391,21 @@ ls_responses <- function(
     )
   )
 
-  syntax <- readLines(
-    textConnection(
-      rawToChar(base64_dec(syntax)),
-      encoding = "UTF-8"
-    ),
-    encoding = "UTF-8"
-  )[-1] # exclude first line (data already read)
+  # https://github.com/LimeSurvey/LimeSurvey/blob/67e6a955332a5b9aba6db16da3e055c6f200c11e/application/core/plugins/ExportR/RSyntaxWriter.php#L28
+  rsyntax_file_path <- file.path(
+    temp_dir,
+    paste0("survey_", survey_id, "_R_syntax_file.R")
+  )
+
+  b64_string_to_file(syntax_b64_string, rsyntax_file_path)
 
   # suppres those "NAs introduced by coercion"
   # warnings of no value (but disturbing)
+  # chdir changes working directory to the one where the script is, so it can find the csv file
+  # calling the rsyntax LS script will create a tibble called "data" in the local environment, which is what we want
+
   suppressWarnings(
-    source(textConnection(syntax), encoding = "UTF-8", local = TRUE)
+    source(rsyntax_file_path, encoding = "UTF-8", local = TRUE, chdir = TRUE)
   )
 
   # repair names (possibly duplicated)

@@ -9,3 +9,5 @@
 ^TODO\.md$
 ^vignettes/charts\.Rmd\.orig$
 ^\.lintr$
+^\.positai$
+^\.claude$

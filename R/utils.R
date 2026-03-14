@@ -43,7 +43,8 @@ find_resource <- function(template, file) {
 #' open_schola_template()
 #' }
 open_schola_template <- function(format = "pdf") {
-  switch(format,
+  switch(
+    format,
     word = system2("open", find_resource("schola_word", "template.docx")),
     pdf = system2("open", find_resource("schola_pdf", "schola_template.tex"))
   )
@@ -72,7 +73,8 @@ reschola_file <- function(...) {
 #' copy_schola_template()
 #' }
 copy_schola_template <- function(format = "pdf", path = proj_get(), ...) {
-  switch(format,
+  switch(
+    format,
     word = invisible(file.copy(
       find_resource("schola_word", "template.docx"),
       path,
@@ -452,4 +454,19 @@ extract_schola_barplot_info <- function(plot) {
       .item_lab = flatten_chr(labeller_fun(.data$.item)),
       .after = .data$.item
     )
+}
+
+
+#' Write base64 string to file
+#'
+#' @param b64_string *character*, base64-encoded string to decode and write to file
+#' @param output_file *character*, path to the output file where the decoded content will be written
+#'
+#' @returns side effect of writing a file
+#'
+#' @importFrom jsonlite base64_dec
+#'
+b64_string_to_file <- function(b64_string, output_file) {
+  decoded <- base64_dec(b64_string)
+  writeBin(decoded, output_file)
 }
