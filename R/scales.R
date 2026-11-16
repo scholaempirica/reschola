@@ -98,7 +98,7 @@ scale_y_percent_cz <- function(
   name = waiver(),
   ...,
   labels,
-  limits = c(0, 1),
+  limits = NULL,
   expand = c(0.01, 0),
   oob = scales::censor,
   position = "left",

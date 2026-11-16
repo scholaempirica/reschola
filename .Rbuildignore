@@ -11,3 +11,4 @@
 ^\.lintr$
 ^\.positai$
 ^\.claude$
+^vignettes/prebuild\.R$

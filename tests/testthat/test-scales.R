@@ -42,8 +42,9 @@ test_that("scales are x or y position scales with the expected defaults", {
     expect_equal(sc$expand, c(0.01, 0))
   }
 
-  expect_equal(scale_y_percent_cz()$limits, c(0, 1))
-  expect_null(scale_x_percent_cz()$limits)
+  for (sc in c(x_scales, y_scales)) {
+    expect_null(sc$limits)
+  }
 })
 
 test_that("labels can be overridden", {

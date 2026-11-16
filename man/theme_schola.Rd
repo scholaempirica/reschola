@@ -207,9 +207,8 @@ In particular, the theme: - displays only major gridlines, allowing you to
 quickly switch which ones; gridlines are thinner, panel has white background
 \itemize{
 \item provides quick option to draw a scatter with grey background - switches
-defaults for title alignment - turns axis labels off by default: in practice,
-x axes are often obvious and y axes are better documented in a subtitle -
-sets backgrounds to a schola-style shade - sets plot title in bold and 120\%
+defaults for title alignment - draws axis titles, which you can turn off with
+\code{axis_titles = FALSE} - sets backgrounds to a schola-style shade - sets plot title in bold and 120\%
 of base_size
 }
 

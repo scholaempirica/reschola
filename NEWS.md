@@ -17,6 +17,9 @@
 
 ## Bugfixes
 
+- `scale_y_percent_cz()` no longer defaults to `limits = c(0, 1)`, so the axis fits the data again like the other scales. Pass `limits = c(0, 1)` to always show the full 0–100 % range.
+- `theme_schola()` documentation no longer claims that axis titles are turned off by default; they are drawn unless `axis_titles = FALSE`.
+- The "Making charts" vignette was rebuilt with the current package; its charts dated from 2020.
 - `ls_responses()` and `ls_export()` gain a `response_type` argument (default `"long"`), passed to LimeSurvey as `sResponseType`. Since LimeSurvey 7.9.0, the "rsyntax" script adds answer labels only for long responses, so both functions returned raw answer codes (e.g. `0`/`1`/`2`) instead of labelled factors ([LimeSurvey bug 19889](https://bugs.limesurvey.org/view.php?id=19889)).
 - `schola_pdf()` RMarkdown format should properly handle Ubuntu Condensed font on Windows now.
 - Since `ls_responses()` now longer uses `read.csv2()` with its defaults, `NA` in character 
