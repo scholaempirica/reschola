@@ -9,6 +9,7 @@ ls_responses(
   clean_labels = TRUE,
   lang = "cs",
   part = "all",
+  response_type = "long",
   standardize_dates = TRUE,
   ...
 )
@@ -24,6 +25,12 @@ repeating parts. Defaults to \code{TRUE}.}
 
 \item{part}{\emph{character}, completion status, either \code{complete}, \code{incomplete}
 or \code{all} (the default).}
+
+\item{response_type}{\emph{character}, either \code{long} (the default) or \code{short}.
+Passed to LimeSurvey as \code{sResponseType}. Since LimeSurvey 7.9.0, the
+"R-syntax" script adds answer labels (factor levels) only with \code{long},
+otherwise you get raw answer codes. See
+\url{https://bugs.limesurvey.org/view.php?id=19889}.}
 
 \item{standardize_dates}{\emph{logical}, whether to standardize dates to \code{Date}.}
 

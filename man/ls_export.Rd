@@ -11,6 +11,7 @@ ls_export(
   n_participants = 999,
   lang = "cs",
   part = "all",
+  response_type = "long",
   only_unused_tokens = FALSE,
   join_by = "token",
   standardize_dates = TRUE,
@@ -34,6 +35,12 @@ to 999.}
 
 \item{part}{\emph{character}, completion status, either \code{complete}, \code{incomplete}
 or \code{all} (the default).}
+
+\item{response_type}{\emph{character}, either \code{long} (the default) or \code{short}.
+Passed to LimeSurvey as \code{sResponseType}. Since LimeSurvey 7.9.0, the
+"R-syntax" script adds answer labels (factor levels) only with \code{long},
+otherwise you get raw answer codes. See
+\url{https://bugs.limesurvey.org/view.php?id=19889}.}
 
 \item{only_unused_tokens}{\emph{logical}, should only the unused tokens be listed?
 Default to FALSE.}
