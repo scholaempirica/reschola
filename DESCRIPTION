@@ -28,7 +28,6 @@ Imports:
     googledrive,
     grDevices,
     here,
-    hrbrthemes (>= 0.8.7),
     htmltools,
     httr,
     jsonlite,
@@ -43,7 +42,7 @@ Imports:
     rlang (>= 0.4.11),
     rmarkdown,
     rstudioapi,
-    scales,
+    scales (>= 1.1.0),
     stringr,
     tibble,
     tidyr,
@@ -56,8 +55,6 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
-Remotes: 
-    github::hrbrmstr/hrbrthemes
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US

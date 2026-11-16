@@ -46,103 +46,103 @@ The examples below serve as (a) guide to the parameters of the theme, (b) test, 
 First, let's see the default plot, no theme
 
 
-```r
+``` r
 p <- ggplot(mpg) +
  geom_bar(aes(y = class)) +
  labs(title = "Lots of cars", subtitle = "Count of numbers")
 p
 ```
 
-<img src="charts-no-theme-1.png" title="plot of chunk no-theme" alt="plot of chunk no-theme" width="100%" />
+<img src="charts-no-theme-1.png" alt="plot of chunk no-theme" width="100%" />
 
 Now let's see what `theme_schola()` defaults do
 
 
-```r
+``` r
 p +
  theme_schola("x") # only setting the first parameter to get the right gridlines
 ```
 
-<img src="charts-schola-default-1.png" title="plot of chunk schola-default" alt="plot of chunk schola-default" width="100%" />
+<img src="charts-schola-default-1.png" alt="plot of chunk schola-default" width="100%" />
 
 in combination with `flush_axis`
 
 
-```r
+``` r
 p +
  theme_schola("x") +
  scale_x_continuous(expand = flush_axis)
 ```
 
-<img src="charts-flush-1.png" title="plot of chunk flush" alt="plot of chunk flush" width="100%" />
+<img src="charts-flush-1.png" alt="plot of chunk flush" width="100%" />
 
 Scatterplot
 
 
-```r
+``` r
 ggplot(mpg) +
  geom_point(aes(cty, hwy)) +
  theme_schola("scatter") +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
-<img src="charts-scatter-1.png" title="plot of chunk scatter" alt="plot of chunk scatter" width="100%" />
+<img src="charts-scatter-1.png" alt="plot of chunk scatter" width="100%" />
 
 Smaller text, flush plot alignment
 
 
-```r
+``` r
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 9, margin_side = 0) +
+ theme_schola("scatter", base_size = 9, margins = FALSE) +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
-<img src="charts-scatter-flush-1.png" title="plot of chunk scatter-flush" alt="plot of chunk scatter-flush" width="100%" />
+<img src="charts-scatter-flush-1.png" alt="plot of chunk scatter-flush" width="100%" />
 
-If you are adding a caption in your Rmarkdown chunk, you may also want `margin_bottom = 0` to cut the bottom margin in the plot and move the caption closer to the plot.
+If you are adding a caption in your Rmarkdown chunk, you may also want `margins = FALSE` to drop the margins around the plot and move the caption closer to it.
 
 #### Override defaults changed inside `theme_schola()`
 
 
-```r
+``` r
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 12, margin_side = 0) +
+ theme_schola("scatter", base_size = 12, margins = FALSE) +
  labs(title = "Lots of cars", subtitle = "Point by point") +
  theme(panel.background = element_rect(fill = "lightpink"))
 ```
 
-<img src="charts-scatter-defaultschanged-1.png" title="plot of chunk scatter-defaultschanged" alt="plot of chunk scatter-defaultschanged" width="100%" />
+<img src="charts-scatter-defaultschanged-1.png" alt="plot of chunk scatter-defaultschanged" width="100%" />
 
 #### Small mutliples
 
 
-```r
+``` r
 p +
  theme_schola("x", multiplot = T) +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
 
-<img src="charts-multiples-1.png" title="plot of chunk multiples" alt="plot of chunk multiples" width="100%" />
+<img src="charts-multiples-1.png" alt="plot of chunk multiples" width="100%" />
 
 Same without aesthetic adjustment for `facet_wrap()`
 
 
-```r
+``` r
 p +
  theme_schola("x", multiplot = F) +
  scale_x_continuous(expand = flush_axis) +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
 
-<img src="charts-multiples-nomultiplot-1.png" title="plot of chunk multiples-nomultiplot" alt="plot of chunk multiples-nomultiplot" width="100%" />
+<img src="charts-multiples-nomultiplot-1.png" alt="plot of chunk multiples-nomultiplot" width="100%" />
 
 Small mutliples scatter
 
 
-```r
+``` r
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = T) +
@@ -150,24 +150,24 @@ ggplot(mpg) +
  facet_wrap(~ class, nrow = 2)
 ```
 
-<img src="charts-multiples-scatter-1.png" title="plot of chunk multiples-scatter" alt="plot of chunk multiples-scatter" width="100%" />
+<img src="charts-multiples-scatter-1.png" alt="plot of chunk multiples-scatter" width="100%" />
 
 Small mutliples grid
 
 
-```r
+``` r
 p +
  theme_schola("x", multiplot = T) +
  scale_x_continuous(expand = flush_axis) +
  facet_grid(cyl ~ drv)
 ```
 
-<img src="charts-multiples-grid-1.png" title="plot of chunk multiples-grid" alt="plot of chunk multiples-grid" width="100%" />
+<img src="charts-multiples-grid-1.png" alt="plot of chunk multiples-grid" width="100%" />
 
 Small mutliples scatter grid
 
 
-```r
+``` r
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = T) +
@@ -175,12 +175,12 @@ ggplot(mpg) +
  facet_grid(cyl ~ class)
 ```
 
-<img src="charts-multiples-scatter-grid-1.png" title="plot of chunk multiples-scatter-grid" alt="plot of chunk multiples-scatter-grid" width="100%" />
+<img src="charts-multiples-scatter-grid-1.png" alt="plot of chunk multiples-scatter-grid" width="100%" />
 
 Same but without multiplot parameter
 
 
-```r
+``` r
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = F) +
@@ -188,7 +188,7 @@ ggplot(mpg) +
  facet_grid(cyl ~ class)
 ```
 
-<img src="charts-multiples-scatter-grid-nomultiplot-1.png" title="plot of chunk multiples-scatter-grid-nomultiplot" alt="plot of chunk multiples-scatter-grid-nomultiplot" width="100%" />
+<img src="charts-multiples-scatter-grid-nomultiplot-1.png" alt="plot of chunk multiples-scatter-grid-nomultiplot" width="100%" />
 
 
 ## Building a diverging Likert plot
@@ -204,7 +204,7 @@ ggplot(mpg) +
 The chartb below illustrates the custom scales
 
 
-```r
+``` r
 ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
   theme_schola() +
@@ -214,11 +214,11 @@ ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   scale_size_binned(labels = label_number_cz())
 ```
 
-<img src="charts-scales-1.png" title="plot of chunk scales" alt="plot of chunk scales" width="100%" />
+<img src="charts-scales-1.png" alt="plot of chunk scales" width="100%" />
 The percent formatter and number formatter also handle the decimal mark correctly. The parameters which you would normally find inside the `scales::format_*()` functions are accessible directly in the `scale_[xy]_continuous()` functions.
 
 
-```r
+``` r
 ggplot(mpg, aes(hwy / 100, cty/max(cty)/100)) +
   geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
   theme_schola() +
@@ -228,12 +228,12 @@ ggplot(mpg, aes(hwy / 100, cty/max(cty)/100)) +
   scale_size_binned(labels = label_number_cz(accuracy = 0.1))
 ```
 
-<img src="charts-scales-decimal-1.png" title="plot of chunk scales-decimal" alt="plot of chunk scales-decimal" width="100%" />
+<img src="charts-scales-decimal-1.png" alt="plot of chunk scales-decimal" width="100%" />
 
-An English-locale version would look like this, using functions in `scales` or reexported from `hrbrthemes`:
+An English-locale version would look like this, using functions in `scales` and the English-locale scales in `reschola` (`scale_[xy]_percent()`, `scale_[xy]_comma()`):
 
 
-```r
+``` r
 ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
   theme_schola() +
@@ -243,7 +243,7 @@ ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   scale_size_binned(labels = scales::label_number(accuracy = .1))
 ```
 
-<img src="charts-scales-en-1.png" title="plot of chunk scales-en" alt="plot of chunk scales-en" width="100%" />
+<img src="charts-scales-en-1.png" alt="plot of chunk scales-en" width="100%" />
 
 ## Sizing images
 

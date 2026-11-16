@@ -2,7 +2,10 @@
 
 ## Breaking changes
 
-- Dependency `{hrbrthemes}` was archived on CRAN and will be dropped in `{reschola}` in the next release. Until then, please install `{hrbrthemes}` from GitHub: `remotes::install_github("hrbrmstr/hrbrthemes")`.
+- `{hrbrthemes}` (archived on CRAN) is no longer a dependency.
+  - `scale_[xy]_percent()` and `scale_[xy]_comma()` are now implemented in `{reschola}` with the same defaults, so existing code keeps working.
+  - `gg_check()` is no longer re-exported. Use `hrbrthemes::gg_check()` if you need it.
+- `scale_[xy]_percent_cz()`, `scale_[xy]_number_cz()`, `scale_[xy]_percent()` and `scale_[xy]_comma()` are now built on `ggplot2::scale_[xy]_continuous()` instead of calling `ggplot2::continuous_scale()` with the `scale_name` and `trans` arguments deprecated in `{ggplot2}` 3.5.0. Their `...` now goes to `ggplot2::scale_[xy]_continuous()` (e.g. `breaks`, `transform`, `sec.axis`) instead of the labelling function; to customise labels beyond the provided arguments, pass a labeller such as `labels = label_number_cz(...)`.
 
 ## Changes
 
@@ -14,6 +17,9 @@
 
 ## Bugfixes
 
+- `scale_y_percent_cz()` no longer defaults to `limits = c(0, 1)`, so the axis fits the data again like the other scales. Pass `limits = c(0, 1)` to always show the full 0–100 % range.
+- `theme_schola()` documentation no longer claims that axis titles are turned off by default; they are drawn unless `axis_titles = FALSE`.
+- The "Making charts" vignette was rebuilt with the current package; its charts dated from 2020.
 - `ls_responses()` and `ls_export()` gain a `response_type` argument (default `"long"`), passed to LimeSurvey as `sResponseType`. Since LimeSurvey 7.9.0, the "rsyntax" script adds answer labels only for long responses, so both functions returned raw answer codes (e.g. `0`/`1`/`2`) instead of labelled factors ([LimeSurvey bug 19889](https://bugs.limesurvey.org/view.php?id=19889)).
 - `schola_pdf()` RMarkdown format should properly handle Ubuntu Condensed font on Windows now.
 - Since `ls_responses()` now longer uses `read.csv2()` with its defaults, `NA` in character 

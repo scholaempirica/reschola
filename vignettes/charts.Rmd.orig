@@ -13,8 +13,14 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.width = 7, fig.height = 4, dev = "png", fig.retina = 3,
   out.width = "100%",
-  fig.path = "charts-"
+  fig.path = "charts-",
+  fig.cap = ""
 )
+# no visible figure captions, but keep a descriptive alt text
+knitr::opts_hooks$set(fig.cap = function(options) {
+  options$fig.alt <- paste("plot of chunk", options$label)
+  options
+})
 library(reschola)
 library(ggplot2)
 ```
@@ -97,18 +103,18 @@ Smaller text, flush plot alignment
 ```{r scatter-flush}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 9, margin_side = 0) +
+ theme_schola("scatter", base_size = 9, margins = FALSE) +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
-If you are adding a caption in your Rmarkdown chunk, you may also want `margin_bottom = 0` to cut the bottom margin in the plot and move the caption closer to the plot.
+If you are adding a caption in your Rmarkdown chunk, you may also want `margins = FALSE` to drop the margins around the plot and move the caption closer to it.
 
 #### Override defaults changed inside `theme_schola()`
 
 ```{r scatter-defaultschanged}
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 12, margin_side = 0) +
+ theme_schola("scatter", base_size = 12, margins = FALSE) +
  labs(title = "Lots of cars", subtitle = "Point by point") +
  theme(panel.background = element_rect(fill = "lightpink"))
 ```
@@ -204,7 +210,7 @@ ggplot(mpg, aes(hwy / 100, cty/max(cty)/100)) +
   scale_size_binned(labels = label_number_cz(accuracy = 0.1))
 ```
 
-An English-locale version would look like this, using functions in `scales` or reexported from `hrbrthemes`:
+An English-locale version would look like this, using functions in `scales` and the English-locale scales in `reschola` (`scale_[xy]_percent()`, `scale_[xy]_comma()`):
 
 ```{r scales-en}
 ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
@@ -218,7 +224,7 @@ ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
 
 ## Sizing images
 
-The `schola_[word|redoc]` formats have opinionated sizing defaults to ensure that resolution, size and font size in the bitmap (PNG) image are in line with the rest of the document.
+The `schola_[word|pdf]` formats have opinionated sizing defaults to ensure that resolution, size and font size in the bitmap (PNG) image are in line with the rest of the document.
 This is particularly tricky in the context of Word documents, hence the baked in defaults. For this reason, the steps to change images sizes are a bit special - see below.
 
 Here is what the defaults are:
@@ -244,12 +250,12 @@ For that reason it is probably the one thing that will look odd or break if you 
 
 ## Making fonts work
 
-The `schola_theme()` is set to use the Roboto and Roboto Condensed font families by default.
+The `schola_theme()` is set to use the Ubuntu and Ubuntu Condensed font families by default.
 These may not be present on your system.
-You can install them by running `reschola::import_fonts()`. (once per machine, and do follow the instructions in the message output when you call this function.)
+You can install them with `reschola::install_reschola_fonts()` and by running `reschola::register_reschola_fonts()` (only needed on Windows if you use Windows bitmap devices -- which are default).
 On package load, these will be registered with R.
 If the fonts do not show up in your charts, run `extrafont::loadfonts()` (once per session).
-You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system - if not, first try using the `cairo_pdf` device and/or running `extrafont::embed_fonts()` on the whole resulting PDF document.)
+You can also set the option `reschola.loadfonts` to have `reschola` register these fonts with the PDF/PostScript ecosystem upon package load. (The fonts may or may not work out of the box when you render into PDF depending on your system -- if not, first try using the `cairo_pdf` device and/or running `extrafont::embed_fonts()` on the whole resulting PDF document.)
 
 ## Using fonts
 

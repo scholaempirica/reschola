@@ -1,214 +1,47 @@
 # nolint start: object_name_linter
 
-# Stolen from ggplot2 via hrbrthemes
-is.waive <- function(x) {
-  inherits(x, "waiver")
-}
-is.sec_axis <- function(x) {
-  inherits(x, "AxisSecondary")
-}
-is.formula <- function(x) {
-  inherits(x, "formula")
-}
-
-## taken from ratlas
-
-#' @importFrom hrbrthemes scale_x_comma
-#' @export
-hrbrthemes::scale_x_comma
-#' @importFrom hrbrthemes scale_y_comma
-#' @export
-hrbrthemes::scale_y_comma
-#' @importFrom hrbrthemes scale_x_percent
-#' @export
-hrbrthemes::scale_x_percent
-#' @importFrom hrbrthemes scale_y_percent
-#' @export
-hrbrthemes::scale_y_percent
-#' @importFrom hrbrthemes gg_check
-#' @export
-hrbrthemes::gg_check
-
-#' Continuous scales with Czech percent labels
-#'
-#' This is exactly the same function as scale_*_continuous, just with different
-#' label defaults to save repetitively setting these parameters, except that
-#'  the parameters which you would normally find inside the `scales::format_*()`
-#'  functions are accessible directly in the `scale_[xy]_*_cz()` functions.
-#'
-#' @inheritParams hrbrthemes::scale_x_percent
-#' @export
-#' @name scalescz
-scale_x_percent_cz <- function(
-  name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
-  labels,
-  limits = NULL,
-  expand = c(0.01, 0),
-  oob = scales::censor,
-  na.value = NA_real_,
-  trans = "identity",
-  position = "bottom",
-  sec.axis = waiver(),
-  accuracy = 1,
-  scale = 100,
-  prefix = "",
-  suffix = " %",
-  big.mark = " ",
-  decimal.mark = ",",
-  trim = TRUE,
-  ...
+# Build a numeric labelling function from the label arguments shared by all
+# the position scales below.
+scale_number_labels <- function(
+  accuracy,
+  scale,
+  prefix,
+  suffix,
+  big.mark,
+  decimal.mark,
+  trim
 ) {
-  if (missing(labels)) {
-    labels <- scales::percent_format(
-      accuracy = accuracy,
-      scale = scale,
-      prefix = prefix,
-      suffix = suffix,
-      big.mark = big.mark,
-      decimal.mark = decimal.mark,
-      trim = trim,
-      ...
-    )
-  }
-
-  sc <- ggplot2::continuous_scale(
-    aesthetics = c(
-      "x",
-      "xmin",
-      "xmax",
-      "xend",
-      "xintercept",
-      "xmin_final",
-      "xmax_final",
-      "xlower",
-      "xmiddle",
-      "xupper",
-      "x0"
-    ),
-    scale_name = "position_c",
-    palette = identity,
-    name = name,
-    breaks = breaks,
-    n.breaks = n.breaks,
-    minor_breaks = minor_breaks,
-    labels = labels,
-    limits = limits,
-    expand = expand,
-    oob = oob,
-    na.value = na.value,
-    trans = trans,
-    guide = guide,
-    position = position,
-    super = ggplot2::ScaleContinuousPosition
+  scales::label_number(
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim
   )
-
-  if (!is.waive(sec.axis)) {
-    if (is.formula(sec.axis)) {
-      sec.axis <- sec_axis(sec.axis)
-    }
-    if (!is.sec_axis(sec.axis)) {
-      stop("Secondary axes must be specified using 'sec_axis()'")
-    }
-
-    sc$secondary.axis <- sec.axis
-  }
-
-  sc
 }
 
 
-#' @rdname scalescz
-#' @export
-#' @examples
-#' # ADD_EXAMPLES_HERE
-scale_y_percent_cz <- function(
-  name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
-  labels,
-  limits = c(0, 1),
-  expand = c(0.01, 0),
-  oob = scales::censor,
-  na.value = NA_real_,
-  trans = "identity",
-  position = "left",
-  sec.axis = waiver(),
-  accuracy = 1,
-  scale = 100,
-  prefix = "",
-  suffix = " %",
-  big.mark = " ",
-  decimal.mark = ",",
-  trim = TRUE,
-  ...
-) {
-  if (missing(labels)) {
-    labels <- scales::percent_format(
-      accuracy = accuracy,
-      scale = scale,
-      prefix = prefix,
-      suffix = suffix,
-      big.mark = big.mark,
-      decimal.mark = decimal.mark,
-      trim = trim,
-      ...
-    )
-  }
-
-  sc <- ggplot2::continuous_scale(
-    aesthetics = c(
-      "y",
-      "ymin",
-      "ymax",
-      "yend",
-      "yintercept",
-      "ymin_final",
-      "ymax_final",
-      "lower",
-      "middle",
-      "upper"
-    ),
-    scale_name = "position_c",
-    palette = identity,
-    name = name,
-    breaks = breaks,
-    n.breaks = n.breaks,
-    minor_breaks = minor_breaks,
-    labels = labels,
-    limits = limits,
-    expand = expand,
-    oob = oob,
-    na.value = na.value,
-    trans = trans,
-    guide = guide,
-    position = position,
-    super = ggplot2::ScaleContinuousPosition
-  )
-
-  if (!is.waive(sec.axis)) {
-    if (is.formula(sec.axis)) {
-      sec.axis <- ggplot2::sec_axis(sec.axis)
-    }
-    if (!is.sec_axis(sec.axis)) {
-      stop("Secondary axes must be specified using 'sec_axis()'")
-    }
-
-    sc$secondary.axis <- sec.axis
-  }
-
-  sc
-}
-
-#' This is exactly the same function as scale_*_continuous, just with different
-#' label defaults to save repetitively setting these parameters.
+#' Continuous position scales with Czech number and percent labels
 #'
-#' @inheritParams hrbrthemes::scale_x_comma
+#' These are [ggplot2::scale_x_continuous()] and
+#' [ggplot2::scale_y_continuous()] with Czech label defaults (decimal comma,
+#' space as the thousands separator, `" %"` suffix for percentages), so you
+#' don't have to set them repeatedly. The arguments you would normally pass to
+#' a `scales::label_*()` function are available directly.
+#'
+#' @inheritParams ggplot2::scale_x_continuous
+#' @inheritParams scales::label_number
+#' @param labels Overrides the default labels built from `accuracy`, `scale`,
+#'   `prefix`, `suffix`, `big.mark`, `decimal.mark` and `trim`. Accepts
+#'   anything [ggplot2::scale_x_continuous()] does, e.g. `NULL` for no labels
+#'   or a labelling function such as [label_number_cz()].
+#' @param ... Other arguments passed on to [ggplot2::scale_x_continuous()] or
+#'   [ggplot2::scale_y_continuous()], e.g. `breaks`, `n.breaks`, `transform`
+#'   or `sec.axis`.
+#'
+#' @return A ggplot2 scale.
 #' @export
 #' @name scalescz
 #' @examples
@@ -219,86 +52,127 @@ scale_y_percent_cz <- function(
 #'   theme_schola(family = "sans", title_family = "sans", gridlines = "scatter") +
 #'   scale_y_percent_cz() +
 #'   scale_x_number_cz()
-#'
-scale_x_number_cz <- function(
+scale_x_percent_cz <- function(
   name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
+  ...,
   labels,
   limits = NULL,
   expand = c(0.01, 0),
   oob = scales::censor,
-  na.value = NA_real_,
-  trans = "identity",
   position = "bottom",
-  sec.axis = waiver(),
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = " %",
+  big.mark = " ",
+  decimal.mark = ",",
+  trim = TRUE
+) {
+  if (missing(labels)) {
+    labels <- scale_number_labels(
+      accuracy,
+      scale,
+      prefix,
+      suffix,
+      big.mark,
+      decimal.mark,
+      trim
+    )
+  }
+
+  ggplot2::scale_x_continuous(
+    name = name,
+    ...,
+    labels = labels,
+    limits = limits,
+    expand = expand,
+    oob = oob,
+    position = position
+  )
+}
+
+
+#' @rdname scalescz
+#' @export
+scale_y_percent_cz <- function(
+  name = waiver(),
+  ...,
+  labels,
+  limits = NULL,
+  expand = c(0.01, 0),
+  oob = scales::censor,
+  position = "left",
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = " %",
+  big.mark = " ",
+  decimal.mark = ",",
+  trim = TRUE
+) {
+  if (missing(labels)) {
+    labels <- scale_number_labels(
+      accuracy,
+      scale,
+      prefix,
+      suffix,
+      big.mark,
+      decimal.mark,
+      trim
+    )
+  }
+
+  ggplot2::scale_y_continuous(
+    name = name,
+    ...,
+    labels = labels,
+    limits = limits,
+    expand = expand,
+    oob = oob,
+    position = position
+  )
+}
+
+
+#' @rdname scalescz
+#' @export
+scale_x_number_cz <- function(
+  name = waiver(),
+  ...,
+  labels,
+  limits = NULL,
+  expand = c(0.01, 0),
+  oob = scales::censor,
+  position = "bottom",
   accuracy = 1,
   scale = 1,
   prefix = "",
   suffix = "",
   big.mark = " ",
   decimal.mark = ",",
-  trim = TRUE,
-  ...
+  trim = TRUE
 ) {
   if (missing(labels)) {
-    labels <- scales::percent_format(
-      accuracy = accuracy,
-      scale = scale,
-      prefix = prefix,
-      suffix = suffix,
-      big.mark = big.mark,
-      decimal.mark = decimal.mark,
-      trim = trim,
-      ...
+    labels <- scale_number_labels(
+      accuracy,
+      scale,
+      prefix,
+      suffix,
+      big.mark,
+      decimal.mark,
+      trim
     )
   }
 
-  sc <- ggplot2::continuous_scale(
-    aesthetics = c(
-      "x",
-      "xmin",
-      "xmax",
-      "xend",
-      "xintercept",
-      "xmin_final",
-      "xmax_final",
-      "xlower",
-      "xmiddle",
-      "xupper",
-      "x0"
-    ),
-    scale_name = "position_c",
-    palette = identity,
+  ggplot2::scale_x_continuous(
     name = name,
-    breaks = breaks,
-    n.breaks = n.breaks,
-    minor_breaks = minor_breaks,
+    ...,
     labels = labels,
     limits = limits,
     expand = expand,
     oob = oob,
-    na.value = na.value,
-    trans = trans,
-    guide = guide,
-    position = position,
-    super = ggplot2::ScaleContinuousPosition
+    position = position
   )
-
-  if (!is.waive(sec.axis)) {
-    if (is.formula(sec.axis)) {
-      sec.axis <- sec_axis(sec.axis)
-    }
-    if (!is.sec_axis(sec.axis)) {
-      stop("Secondary axes must be specified using 'sec_axis()'")
-    }
-
-    sc$secondary.axis <- sec.axis
-  }
-
-  sc
 }
 
 
@@ -306,82 +180,228 @@ scale_x_number_cz <- function(
 #' @export
 scale_y_number_cz <- function(
   name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
+  ...,
   labels,
   limits = NULL,
   expand = c(0.01, 0),
   oob = scales::censor,
-  na.value = NA_real_,
-  trans = "identity",
   position = "left",
-  sec.axis = waiver(),
   accuracy = 1,
   scale = 1,
   prefix = "",
   suffix = "",
   big.mark = " ",
   decimal.mark = ",",
-  trim = TRUE,
-  ...
+  trim = TRUE
 ) {
   if (missing(labels)) {
-    labels <- scales::percent_format(
-      accuracy = accuracy,
-      scale = scale,
-      prefix = prefix,
-      suffix = suffix,
-      big.mark = big.mark,
-      decimal.mark = decimal.mark,
-      trim = trim,
-      ...
+    labels <- scale_number_labels(
+      accuracy,
+      scale,
+      prefix,
+      suffix,
+      big.mark,
+      decimal.mark,
+      trim
     )
   }
 
-  sc <- ggplot2::continuous_scale(
-    aesthetics = c(
-      "y",
-      "ymin",
-      "ymax",
-      "yend",
-      "yintercept",
-      "ymin_final",
-      "ymax_final",
-      "lower",
-      "middle",
-      "upper"
-    ),
-    scale_name = "position_c",
-    palette = identity,
+  ggplot2::scale_y_continuous(
     name = name,
-    breaks = breaks,
-    n.breaks = n.breaks,
-    minor_breaks = minor_breaks,
+    ...,
     labels = labels,
     limits = limits,
     expand = expand,
     oob = oob,
-    na.value = na.value,
-    trans = trans,
-    guide = guide,
-    position = position,
-    super = ggplot2::ScaleContinuousPosition
+    position = position
   )
+}
 
-  if (!is.waive(sec.axis)) {
-    if (is.formula(sec.axis)) {
-      sec.axis <- ggplot2::sec_axis(sec.axis)
-    }
-    if (!is.sec_axis(sec.axis)) {
-      stop("Secondary axes must be specified using 'sec_axis()'")
-    }
 
-    sc$secondary.axis <- sec.axis
+#' Continuous position scales with English number and percent labels
+#'
+#' English-locale counterparts of [scale_x_percent_cz()] and friends:
+#' [ggplot2::scale_x_continuous()] and [ggplot2::scale_y_continuous()] with
+#' percent labels (`"%"` suffix, decimal point) or comma labels (comma as the
+#' thousands separator). These replace the functions formerly re-exported from
+#' `{hrbrthemes}` and keep their defaults.
+#'
+#' @inheritParams scalescz
+#'
+#' @return A ggplot2 scale.
+#' @export
+#' @name scalesen
+#' @examples
+#' library(reschola)
+#' library(ggplot2)
+#' ggplot(mpg, aes(hwy * 1000, cty / max(cty))) +
+#'   geom_point() +
+#'   theme_schola(family = "sans", title_family = "sans", gridlines = "scatter") +
+#'   scale_y_percent(accuracy = .1) +
+#'   scale_x_comma()
+scale_x_percent <- function(
+  name = waiver(),
+  ...,
+  labels,
+  limits = NULL,
+  expand = c(0.01, 0),
+  oob = scales::censor,
+  position = "bottom",
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = "%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE
+) {
+  if (missing(labels)) {
+    labels <- scale_number_labels(
+      accuracy,
+      scale,
+      prefix,
+      suffix,
+      big.mark,
+      decimal.mark,
+      trim
+    )
   }
 
-  sc
+  ggplot2::scale_x_continuous(
+    name = name,
+    ...,
+    labels = labels,
+    limits = limits,
+    expand = expand,
+    oob = oob,
+    position = position
+  )
+}
+
+
+#' @rdname scalesen
+#' @export
+scale_y_percent <- function(
+  name = waiver(),
+  ...,
+  labels,
+  limits = NULL,
+  expand = c(0.01, 0),
+  oob = scales::censor,
+  position = "left",
+  accuracy = 1,
+  scale = 100,
+  prefix = "",
+  suffix = "%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE
+) {
+  if (missing(labels)) {
+    labels <- scale_number_labels(
+      accuracy,
+      scale,
+      prefix,
+      suffix,
+      big.mark,
+      decimal.mark,
+      trim
+    )
+  }
+
+  ggplot2::scale_y_continuous(
+    name = name,
+    ...,
+    labels = labels,
+    limits = limits,
+    expand = expand,
+    oob = oob,
+    position = position
+  )
+}
+
+
+#' @rdname scalesen
+#' @export
+scale_x_comma <- function(
+  name = waiver(),
+  ...,
+  labels,
+  limits = NULL,
+  expand = c(0.01, 0),
+  oob = scales::censor,
+  position = "bottom",
+  accuracy = 1,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE
+) {
+  if (missing(labels)) {
+    labels <- scale_number_labels(
+      accuracy,
+      scale,
+      prefix,
+      suffix,
+      big.mark,
+      decimal.mark,
+      trim
+    )
+  }
+
+  ggplot2::scale_x_continuous(
+    name = name,
+    ...,
+    labels = labels,
+    limits = limits,
+    expand = expand,
+    oob = oob,
+    position = position
+  )
+}
+
+
+#' @rdname scalesen
+#' @export
+scale_y_comma <- function(
+  name = waiver(),
+  ...,
+  labels,
+  limits = NULL,
+  expand = c(0.01, 0),
+  oob = scales::censor,
+  position = "left",
+  accuracy = 1,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE
+) {
+  if (missing(labels)) {
+    labels <- scale_number_labels(
+      accuracy,
+      scale,
+      prefix,
+      suffix,
+      big.mark,
+      decimal.mark,
+      trim
+    )
+  }
+
+  ggplot2::scale_y_continuous(
+    name = name,
+    ...,
+    labels = labels,
+    limits = limits,
+    expand = expand,
+    oob = oob,
+    position = position
+  )
 }
 
 
