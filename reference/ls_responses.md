@@ -15,6 +15,7 @@ ls_responses(
   clean_labels = TRUE,
   lang = "cs",
   part = "all",
+  response_type = "long",
   standardize_dates = TRUE,
   ...
 )
@@ -39,6 +40,14 @@ ls_responses(
 
   *character*, completion status, either `complete`, `incomplete` or
   `all` (the default).
+
+- response_type:
+
+  *character*, either `long` (the default) or `short`. Passed to
+  LimeSurvey as `sResponseType`. Since LimeSurvey 7.9.0, the "R-syntax"
+  script adds answer labels (factor levels) only with `long`, otherwise
+  you get raw answer codes. See
+  <https://bugs.limesurvey.org/view.php?id=19889>.
 
 - standardize_dates:
 

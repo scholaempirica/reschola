@@ -30,6 +30,15 @@
 
 ### Bugfixes
 
+- [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
+  and
+  [`ls_export()`](https://scholaempirica.github.io/reschola/reference/ls_export.md)
+  gain a `response_type` argument (default `"long"`), passed to
+  LimeSurvey as `sResponseType`. Since LimeSurvey 7.9.0, the “rsyntax”
+  script adds answer labels only for long responses, so both functions
+  returned raw answer codes (e.g. `0`/`1`/`2`) instead of labelled
+  factors ([LimeSurvey bug
+  19889](https://bugs.limesurvey.org/view.php?id=19889)).
 - [`schola_pdf()`](https://scholaempirica.github.io/reschola/reference/schola_pdf.md)
   RMarkdown format should properly handle Ubuntu Condensed font on
   Windows now.

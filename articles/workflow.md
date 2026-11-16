@@ -413,7 +413,7 @@ it](https://medium.com/@urban_institute/iterated-fact-sheets-with-r-markdown-d68
 #### Visualising
 
 Charts should be created using `ggplot2` as far as possible. Use the
-`schola_theme()` theme.[¹](#fn1)
+`schola_theme()` theme.[^1]
 
 ### 6. Iterate steps 3-6
 
@@ -598,8 +598,6 @@ Pipelines](https://ukgovdatascience.github.io/rap-website/)
 
 [orderly](https://vimc.github.io/orderly/)
 
-------------------------------------------------------------------------
-
-1.  See the [Making
+[^1]: See the [Making
     charts](https://scholaempirica.github.io/reschola/articles/charts.md)
     vignette for more details.

@@ -42,6 +42,7 @@ The examples below serve as (a) guide to the parameters of the theme,
 First, let’s see the default plot, no theme
 
 ``` r
+
 p <- ggplot(mpg) +
  geom_bar(aes(y = class)) +
  labs(title = "Lots of cars", subtitle = "Count of numbers")
@@ -56,6 +57,7 @@ Now let’s see what
 defaults do
 
 ``` r
+
 p +
  theme_schola("x") # only setting the first parameter to get the right gridlines
 ```
@@ -66,6 +68,7 @@ schola-default](charts-schola-default-1.png "plot of chunk schola-default")
 in combination with `flush_axis`
 
 ``` r
+
 p +
  theme_schola("x") +
  scale_x_continuous(expand = flush_axis)
@@ -76,6 +79,7 @@ p +
 Scatterplot
 
 ``` r
+
 ggplot(mpg) +
  geom_point(aes(cty, hwy)) +
  theme_schola("scatter") +
@@ -87,6 +91,7 @@ ggplot(mpg) +
 Smaller text, flush plot alignment
 
 ``` r
+
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", base_size = 9, margin_side = 0) +
@@ -103,6 +108,7 @@ caption closer to the plot.
 #### Override defaults changed inside `theme_schola()`
 
 ``` r
+
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", base_size = 12, margin_side = 0) +
@@ -116,6 +122,7 @@ scatter-defaultschanged](charts-scatter-defaultschanged-1.png "plot of chunk sca
 #### Small mutliples
 
 ``` r
+
 p +
  theme_schola("x", multiplot = T) +
  scale_x_continuous(expand = flush_axis) +
@@ -129,6 +136,7 @@ Same without aesthetic adjustment for
 [`facet_wrap()`](https://ggplot2.tidyverse.org/reference/facet_wrap.html)
 
 ``` r
+
 p +
  theme_schola("x", multiplot = F) +
  scale_x_continuous(expand = flush_axis) +
@@ -141,6 +149,7 @@ multiples-nomultiplot](charts-multiples-nomultiplot-1.png "plot of chunk multipl
 Small mutliples scatter
 
 ``` r
+
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = T) +
@@ -154,6 +163,7 @@ multiples-scatter](charts-multiples-scatter-1.png "plot of chunk multiples-scatt
 Small mutliples grid
 
 ``` r
+
 p +
  theme_schola("x", multiplot = T) +
  scale_x_continuous(expand = flush_axis) +
@@ -166,6 +176,7 @@ multiples-grid](charts-multiples-grid-1.png "plot of chunk multiples-grid")
 Small mutliples scatter grid
 
 ``` r
+
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = T) +
@@ -179,6 +190,7 @@ multiples-scatter-grid](charts-multiples-scatter-grid-1.png "plot of chunk multi
 Same but without multiplot parameter
 
 ``` r
+
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
  theme_schola("scatter", multiplot = F) +
@@ -202,6 +214,7 @@ multiples-scatter-grid-nomultiplot](charts-multiples-scatter-grid-nomultiplot-1.
 The chartb below illustrates the custom scales
 
 ``` r
+
 ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
   theme_schola() +
@@ -218,6 +231,7 @@ correctly. The parameters which you would normally find inside the
 `scale_[xy]_continuous()` functions.
 
 ``` r
+
 ggplot(mpg, aes(hwy / 100, cty/max(cty)/100)) +
   geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
   theme_schola() +
@@ -234,6 +248,7 @@ An English-locale version would look like this, using functions in
 `scales` or reexported from `hrbrthemes`:
 
 ``` r
+
 ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   geom_point(aes(colour = cty/max(cty), size = hwy*100)) +
   theme_schola() +

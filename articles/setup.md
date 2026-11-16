@@ -12,6 +12,7 @@ You can install this package on a machine with none of the
 development-related stuff like Rtools or git. Just run
 
 ``` r
+
 options(repos = c(getOption("repos"), "scholaempirica" = "scholaempirica.github.io/drat"))
 install.packages("reschola")
 ```

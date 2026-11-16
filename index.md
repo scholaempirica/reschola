@@ -12,6 +12,7 @@ You can install the *released* version of reschola from
 [Github](https://github.com) with:
 
 ``` r
+
 remotes::install_github(
   "scholaempirica/reschola",
   ref = remotes::github_release(),
@@ -24,6 +25,7 @@ current *development versions* for Windows and MacOS, so you can proceed
 with a standard call with `r-universe` repository specified:
 
 ``` r
+
 install.packages("reschola", repos = "https://scholaempirica.r-universe.dev")
 ```
 
@@ -31,6 +33,7 @@ This could be done with `remotes` as well, by ommiting the `ref`
 argument:
 
 ``` r
+
 remotes::install_github("scholaempirica/reschola", build_vignettes = TRUE)
 ```
 
