@@ -438,10 +438,9 @@ to quickly switch which ones; gridlines are thinner, panel has white
 background
 
 - provides quick option to draw a scatter with grey background -
-  switches defaults for title alignment - turns axis labels off by
-  default: in practice, x axes are often obvious and y axes are better
-  documented in a subtitle - sets backgrounds to a schola-style shade -
-  sets plot title in bold and 120% of base_size
+  switches defaults for title alignment - draws axis titles, which you
+  can turn off with `axis_titles = FALSE` - sets backgrounds to a
+  schola-style shade - sets plot title in bold and 120% of base_size
 
 All the changed defaults can be overriden by another call to
 [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html).

@@ -285,7 +285,13 @@ All functions, including uncategorised ones
   [`scale_y_percent_cz()`](https://scholaempirica.github.io/reschola/reference/scalescz.md)
   [`scale_x_number_cz()`](https://scholaempirica.github.io/reschola/reference/scalescz.md)
   [`scale_y_number_cz()`](https://scholaempirica.github.io/reschola/reference/scalescz.md)
-  : Continuous scales with Czech percent labels
+  : Continuous position scales with Czech number and percent labels
+
+- [`scale_x_percent()`](https://scholaempirica.github.io/reschola/reference/scalesen.md)
+  [`scale_y_percent()`](https://scholaempirica.github.io/reschola/reference/scalesen.md)
+  [`scale_x_comma()`](https://scholaempirica.github.io/reschola/reference/scalesen.md)
+  [`scale_y_comma()`](https://scholaempirica.github.io/reschola/reference/scalesen.md)
+  : Continuous position scales with English number and percent labels
 
 - [`schola_barplot()`](https://scholaempirica.github.io/reschola/reference/schola_barplot.md)
   **\[maturing\]** : Plot standard Schola likert-like barplot with

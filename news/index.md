@@ -4,10 +4,23 @@
 
 ### Breaking changes
 
-- Dependency `{hrbrthemes}` was archived on CRAN and will be dropped in
-  [reschola](https://github.com/scholaempirica/reschola) in the next
-  release. Until then, please install `{hrbrthemes}` from GitHub:
-  `remotes::install_github("hrbrmstr/hrbrthemes")`.
+- `{hrbrthemes}` (archived on CRAN) is no longer a dependency.
+  - `scale_[xy]_percent()` and `scale_[xy]_comma()` are now implemented
+    in [reschola](https://github.com/scholaempirica/reschola) with the
+    same defaults, so existing code keeps working.
+  - `gg_check()` is no longer re-exported. Use
+    [`hrbrthemes::gg_check()`](https://rdrr.io/pkg/hrbrthemes/man/gg_check.html)
+    if you need it.
+- `scale_[xy]_percent_cz()`, `scale_[xy]_number_cz()`,
+  `scale_[xy]_percent()` and `scale_[xy]_comma()` are now built on
+  `ggplot2::scale_[xy]_continuous()` instead of calling
+  [`ggplot2::continuous_scale()`](https://ggplot2.tidyverse.org/reference/continuous_scale.html)
+  with the `scale_name` and `trans` arguments deprecated in
+  [ggplot2](https://ggplot2.tidyverse.org) 3.5.0. Their `...` now goes
+  to `ggplot2::scale_[xy]_continuous()` (e.g. `breaks`, `transform`,
+  `sec.axis`) instead of the labelling function; to customise labels
+  beyond the provided arguments, pass a labeller such as
+  `labels = label_number_cz(...)`.
 
 ### Changes
 
@@ -30,6 +43,15 @@
 
 ### Bugfixes
 
+- [`scale_y_percent_cz()`](https://scholaempirica.github.io/reschola/reference/scalescz.md)
+  no longer defaults to `limits = c(0, 1)`, so the axis fits the data
+  again like the other scales. Pass `limits = c(0, 1)` to always show
+  the full 0–100 % range.
+- [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
+  documentation no longer claims that axis titles are turned off by
+  default; they are drawn unless `axis_titles = FALSE`.
+- The “Making charts” vignette was rebuilt with the current package; its
+  charts dated from 2020.
 - [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
   and
   [`ls_export()`](https://scholaempirica.github.io/reschola/reference/ls_export.md)

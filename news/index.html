@@ -43,7 +43,15 @@
 <h2 class="pkg-version" data-toc-text="development version" id="reschola-development-version">reschola (development version)<a class="anchor" aria-label="anchor" href="#reschola-development-version"></a></h2>
 <div class="section level3">
 <h3 id="breaking-changes-development-version">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
-<ul><li>Dependency <code>{hrbrthemes}</code> was archived on CRAN and will be dropped in <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> in the next release. Until then, please install <code>{hrbrthemes}</code> from GitHub: <code>remotes::install_github("hrbrmstr/hrbrthemes")</code>.</li>
+<ul><li>
+<code>{hrbrthemes}</code> (archived on CRAN) is no longer a dependency.
+<ul><li>
+<code>scale_[xy]_percent()</code> and <code>scale_[xy]_comma()</code> are now implemented in <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> with the same defaults, so existing code keeps working.</li>
+<li>
+<code>gg_check()</code> is no longer re-exported. Use <code><a href="https://rdrr.io/pkg/hrbrthemes/man/gg_check.html" class="external-link">hrbrthemes::gg_check()</a></code> if you need it.</li>
+</ul></li>
+<li>
+<code>scale_[xy]_percent_cz()</code>, <code>scale_[xy]_number_cz()</code>, <code>scale_[xy]_percent()</code> and <code>scale_[xy]_comma()</code> are now built on <code>ggplot2::scale_[xy]_continuous()</code> instead of calling <code><a href="https://ggplot2.tidyverse.org/reference/continuous_scale.html" class="external-link">ggplot2::continuous_scale()</a></code> with the <code>scale_name</code> and <code>trans</code> arguments deprecated in <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> 3.5.0. Their <code>...</code> now goes to <code>ggplot2::scale_[xy]_continuous()</code> (e.g. <code>breaks</code>, <code>transform</code>, <code>sec.axis</code>) instead of the labelling function; to customise labels beyond the provided arguments, pass a labeller such as <code>labels = label_number_cz(...)</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-development-version">Changes<a class="anchor" aria-label="anchor" href="#changes-development-version"></a></h3>
@@ -59,6 +67,11 @@
 <div class="section level3">
 <h3 id="bugfixes-development-version">Bugfixes<a class="anchor" aria-label="anchor" href="#bugfixes-development-version"></a></h3>
 <ul><li>
+<code><a href="../reference/scalescz.html">scale_y_percent_cz()</a></code> no longer defaults to <code>limits = c(0, 1)</code>, so the axis fits the data again like the other scales. Pass <code>limits = c(0, 1)</code> to always show the full 0–100 % range.</li>
+<li>
+<code><a href="../reference/theme_schola.html">theme_schola()</a></code> documentation no longer claims that axis titles are turned off by default; they are drawn unless <code>axis_titles = FALSE</code>.</li>
+<li>The “Making charts” vignette was rebuilt with the current package; its charts dated from 2020.</li>
+<li>
 <code><a href="../reference/ls_responses.html">ls_responses()</a></code> and <code><a href="../reference/ls_export.html">ls_export()</a></code> gain a <code>response_type</code> argument (default <code>"long"</code>), passed to LimeSurvey as <code>sResponseType</code>. Since LimeSurvey 7.9.0, the “rsyntax” script adds answer labels only for long responses, so both functions returned raw answer codes (e.g. <code>0</code>/<code>1</code>/<code>2</code>) instead of labelled factors (<a href="https://bugs.limesurvey.org/view.php?id=19889" class="external-link">LimeSurvey bug 19889</a>).</li>
 <li>
 <code><a href="../reference/schola_pdf.html">schola_pdf()</a></code> RMarkdown format should properly handle Ubuntu Condensed font on Windows now.</li>

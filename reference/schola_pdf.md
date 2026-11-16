@@ -89,7 +89,7 @@ schola_pdf(
       an arbitrary function to be used for printing data frames. You can
       disable the `df_print` behavior entirely by setting the option
       `rmarkdown.df_print` to `FALSE`. See [Data frame printing
-      section](https://bookdown.org/yihui/rmarkdown/html-document.html#data-frame-printing)
+      section](https://pkg.yihui.org/rmarkdown-book/html-document.html#data-frame-printing)
       in bookdown book for examples.
 
   `highlight`

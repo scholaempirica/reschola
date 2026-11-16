@@ -44,7 +44,7 @@ of building the website. For releases (e.g. v0.1.0) checks are run on
 
 An exception to the automatic continuous integration and check pipeline
 is the `chart.Rmd` vignette, which is prebuilt locally using
-`vignettes/prebuild.r` from `charts.Rmd.orig` to ensure fonts are used
+`vignettes/prebuild.R` from `charts.Rmd.orig` to ensure fonts are used
 correctly. (The approach is taken from ropensci as described in [this
 blog
 post](https://ropensci.org/technotes/2019/12/08/precompute-vignettes/)

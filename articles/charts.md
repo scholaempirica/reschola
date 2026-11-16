@@ -49,8 +49,7 @@ p <- ggplot(mpg) +
 p
 ```
 
-![plot of chunk
-no-theme](charts-no-theme-1.png "plot of chunk no-theme")
+![plot of chunk no-theme](charts-no-theme-1.png)
 
 Now let’s see what
 [`theme_schola()`](https://scholaempirica.github.io/reschola/reference/theme_schola.md)
@@ -62,8 +61,7 @@ p +
  theme_schola("x") # only setting the first parameter to get the right gridlines
 ```
 
-![plot of chunk
-schola-default](charts-schola-default-1.png "plot of chunk schola-default")
+![plot of chunk schola-default](charts-schola-default-1.png)
 
 in combination with `flush_axis`
 
@@ -74,7 +72,7 @@ p +
  scale_x_continuous(expand = flush_axis)
 ```
 
-![plot of chunk flush](charts-flush-1.png "plot of chunk flush")
+![plot of chunk flush](charts-flush-1.png)
 
 Scatterplot
 
@@ -86,7 +84,7 @@ ggplot(mpg) +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
-![plot of chunk scatter](charts-scatter-1.png "plot of chunk scatter")
+![plot of chunk scatter](charts-scatter-1.png)
 
 Smaller text, flush plot alignment
 
@@ -94,16 +92,15 @@ Smaller text, flush plot alignment
 
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 9, margin_side = 0) +
+ theme_schola("scatter", base_size = 9, margins = FALSE) +
  labs(title = "Lots of cars", subtitle = "Point by point")
 ```
 
-![plot of chunk
-scatter-flush](charts-scatter-flush-1.png "plot of chunk scatter-flush")
+![plot of chunk scatter-flush](charts-scatter-flush-1.png)
 
 If you are adding a caption in your Rmarkdown chunk, you may also want
-`margin_bottom = 0` to cut the bottom margin in the plot and move the
-caption closer to the plot.
+`margins = FALSE` to drop the margins around the plot and move the
+caption closer to it.
 
 #### Override defaults changed inside `theme_schola()`
 
@@ -111,13 +108,13 @@ caption closer to the plot.
 
 ggplot(mpg) +
  geom_point(aes(cty, hwy), alpha = .2) +
- theme_schola("scatter", base_size = 12, margin_side = 0) +
+ theme_schola("scatter", base_size = 12, margins = FALSE) +
  labs(title = "Lots of cars", subtitle = "Point by point") +
  theme(panel.background = element_rect(fill = "lightpink"))
 ```
 
 ![plot of chunk
-scatter-defaultschanged](charts-scatter-defaultschanged-1.png "plot of chunk scatter-defaultschanged")
+scatter-defaultschanged](charts-scatter-defaultschanged-1.png)
 
 #### Small mutliples
 
@@ -129,8 +126,7 @@ p +
  facet_wrap(~ manufacturer, nrow = 2)
 ```
 
-![plot of chunk
-multiples](charts-multiples-1.png "plot of chunk multiples")
+![plot of chunk multiples](charts-multiples-1.png)
 
 Same without aesthetic adjustment for
 [`facet_wrap()`](https://ggplot2.tidyverse.org/reference/facet_wrap.html)
@@ -144,7 +140,7 @@ p +
 ```
 
 ![plot of chunk
-multiples-nomultiplot](charts-multiples-nomultiplot-1.png "plot of chunk multiples-nomultiplot")
+multiples-nomultiplot](charts-multiples-nomultiplot-1.png)
 
 Small mutliples scatter
 
@@ -157,8 +153,7 @@ ggplot(mpg) +
  facet_wrap(~ class, nrow = 2)
 ```
 
-![plot of chunk
-multiples-scatter](charts-multiples-scatter-1.png "plot of chunk multiples-scatter")
+![plot of chunk multiples-scatter](charts-multiples-scatter-1.png)
 
 Small mutliples grid
 
@@ -170,8 +165,7 @@ p +
  facet_grid(cyl ~ drv)
 ```
 
-![plot of chunk
-multiples-grid](charts-multiples-grid-1.png "plot of chunk multiples-grid")
+![plot of chunk multiples-grid](charts-multiples-grid-1.png)
 
 Small mutliples scatter grid
 
@@ -185,7 +179,7 @@ ggplot(mpg) +
 ```
 
 ![plot of chunk
-multiples-scatter-grid](charts-multiples-scatter-grid-1.png "plot of chunk multiples-scatter-grid")
+multiples-scatter-grid](charts-multiples-scatter-grid-1.png)
 
 Same but without multiplot parameter
 
@@ -199,7 +193,7 @@ ggplot(mpg) +
 ```
 
 ![plot of chunk
-multiples-scatter-grid-nomultiplot](charts-multiples-scatter-grid-nomultiplot-1.png "plot of chunk multiples-scatter-grid-nomultiplot")
+multiples-scatter-grid-nomultiplot](charts-multiples-scatter-grid-nomultiplot-1.png)
 
 ## Building a diverging Likert plot
 
@@ -224,11 +218,10 @@ ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   scale_size_binned(labels = label_number_cz())
 ```
 
-![plot of chunk scales](charts-scales-1.png "plot of chunk scales") The
-percent formatter and number formatter also handle the decimal mark
-correctly. The parameters which you would normally find inside the
-`scales::format_*()` functions are accessible directly in the
-`scale_[xy]_continuous()` functions.
+![plot of chunk scales](charts-scales-1.png) The percent formatter and
+number formatter also handle the decimal mark correctly. The parameters
+which you would normally find inside the `scales::format_*()` functions
+are accessible directly in the `scale_[xy]_continuous()` functions.
 
 ``` r
 
@@ -241,11 +234,11 @@ ggplot(mpg, aes(hwy / 100, cty/max(cty)/100)) +
   scale_size_binned(labels = label_number_cz(accuracy = 0.1))
 ```
 
-![plot of chunk
-scales-decimal](charts-scales-decimal-1.png "plot of chunk scales-decimal")
+![plot of chunk scales-decimal](charts-scales-decimal-1.png)
 
 An English-locale version would look like this, using functions in
-`scales` or reexported from `hrbrthemes`:
+`scales` and the English-locale scales in `reschola`
+(`scale_[xy]_percent()`, `scale_[xy]_comma()`):
 
 ``` r
 
@@ -258,8 +251,7 @@ ggplot(mpg, aes(hwy * 100, cty/max(cty))) +
   scale_size_binned(labels = scales::label_number(accuracy = .1))
 ```
 
-![plot of chunk
-scales-en](charts-scales-en-1.png "plot of chunk scales-en")
+![plot of chunk scales-en](charts-scales-en-1.png)
 
 ## Sizing images
 
