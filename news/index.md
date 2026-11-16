@@ -1,6 +1,10 @@
 # Changelog
 
-## reschola (development version)
+## reschola 0.6.0
+
+This release drops the CRAN-archived `{hrbrthemes}` dependency, rebuilds
+the position scales on current [ggplot2](https://ggplot2.tidyverse.org),
+and restores answer labels in LimeSurvey exports since LimeSurvey 7.9.0.
 
 ### Breaking changes
 
@@ -40,6 +44,8 @@
 - [`ls_responses()`](https://scholaempirica.github.io/reschola/reference/ls_responses.md)
   now downloads the data with comma delimiter and applies the “rsyntax”
   `R` script as-is.
+- A new `document` GitHub Actions workflow fails when `man/` or
+  `NAMESPACE` are out of date with the roxygen comments.
 
 ### Bugfixes
 

@@ -19,13 +19,12 @@ Source:
 [`DESCRIPTION`](https://github.com/scholaempirica/reschola/blob/master/DESCRIPTION)
 
 Bouchal P, Netík J (2026). *reschola: The Schola Empirica Package*. R
-package version 0.5.6.9006,
-<https://github.com/scholaempirica/reschola>.
+package version 0.6.0, <https://github.com/scholaempirica/reschola>.
 
     @Manual{,
       title = {reschola: The Schola Empirica Package},
       author = {Petr Bouchal and Jan Netík},
       year = {2026},
-      note = {R package version 0.5.6.9006},
+      note = {R package version 0.6.0},
       url = {https://github.com/scholaempirica/reschola},
     }
