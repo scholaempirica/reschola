@@ -326,6 +326,11 @@ ls_participants <- function(
 #' @param lang *character*, ISO 639 language code, default to `cs`.
 #' @param part *character*, completion status, either `complete`, `incomplete`
 #'   or `all` (the default).
+#' @param response_type *character*, either `long` (the default) or `short`.
+#'   Passed to LimeSurvey as `sResponseType`. Since LimeSurvey 7.9.0, the
+#'   "R-syntax" script adds answer labels (factor levels) only with `long`,
+#'   otherwise you get raw answer codes. See
+#'   <https://bugs.limesurvey.org/view.php?id=19889>.
 #' @param ... *other named arguments* used by "export_responses" method. Use at
 #'   your own risk.
 #' @param standardize_dates *logical*, whether to standardize dates to `Date`.
@@ -350,10 +355,12 @@ ls_responses <- function(
   clean_labels = TRUE,
   lang = "cs",
   part = "all",
+  response_type = "long",
   standardize_dates = TRUE,
   ...
 ) {
   part <- match.arg(part, c("complete", "incomplete", "all"))
+  response_type <- match.arg(response_type, c("long", "short"))
 
   data_b64_string <- ls_call(
     "export_responses",
@@ -362,6 +369,7 @@ ls_responses <- function(
       sDocumentType = "rdata",
       sLanguageCode = lang,
       sCompletionStatus = part,
+      sResponseType = response_type,
       # LS rsyntax script expects non-default comma separator, so be my guest
       aAdditionalOptions = list(csvFieldSeparator = ","),
       ...
@@ -387,6 +395,8 @@ ls_responses <- function(
       sDocumentType = "rsyntax",
       sLanguageCode = lang,
       sCompletionStatus = part,
+      # LS >= 7.9.0 adds answer labels to the syntax only for "long" (bug 19889)
+      sResponseType = response_type,
       ...
     )
   )
@@ -467,6 +477,7 @@ ls_export <- function(
   n_participants = 999,
   lang = "cs",
   part = "all",
+  response_type = "long",
   only_unused_tokens = FALSE,
   join_by = "token",
   standardize_dates = TRUE,
@@ -485,6 +496,7 @@ ls_export <- function(
     clean_labels = clean_labels,
     lang = lang,
     part = part,
+    response_type = response_type,
     standardize_dates = standardize_dates
   )
 
