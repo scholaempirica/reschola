@@ -204,7 +204,7 @@ ggplot(mpg, aes(hwy / 100, cty/max(cty)/100)) +
   scale_size_binned(labels = label_number_cz(accuracy = 0.1))
 ```
 
-An English-locale version would look like this, using functions in `scales` or reexported from `hrbrthemes`:
+An English-locale version would look like this, using functions in `scales` and the English-locale scales in `reschola` (`scale_[xy]_percent()`, `scale_[xy]_comma()`):
 
 ```{r scales-en}
 ggplot(mpg, aes(hwy * 100, cty/max(cty))) +

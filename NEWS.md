@@ -2,7 +2,10 @@
 
 ## Breaking changes
 
-- Dependency `{hrbrthemes}` was archived on CRAN and will be dropped in `{reschola}` in the next release. Until then, please install `{hrbrthemes}` from GitHub: `remotes::install_github("hrbrmstr/hrbrthemes")`.
+- `{hrbrthemes}` (archived on CRAN) is no longer a dependency.
+  - `scale_[xy]_percent()` and `scale_[xy]_comma()` are now implemented in `{reschola}` with the same defaults, so existing code keeps working.
+  - `gg_check()` is no longer re-exported. Use `hrbrthemes::gg_check()` if you need it.
+- `scale_[xy]_percent_cz()`, `scale_[xy]_number_cz()`, `scale_[xy]_percent()` and `scale_[xy]_comma()` are now built on `ggplot2::scale_[xy]_continuous()` instead of calling `ggplot2::continuous_scale()` with the `scale_name` and `trans` arguments deprecated in `{ggplot2}` 3.5.0. Their `...` now goes to `ggplot2::scale_[xy]_continuous()` (e.g. `breaks`, `transform`, `sec.axis`) instead of the labelling function; to customise labels beyond the provided arguments, pass a labeller such as `labels = label_number_cz(...)`.
 
 ## Changes
 
