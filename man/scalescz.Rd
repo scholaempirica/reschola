@@ -6,173 +6,164 @@
 \alias{scale_y_percent_cz}
 \alias{scale_x_number_cz}
 \alias{scale_y_number_cz}
-\title{Continuous scales with Czech percent labels}
+\title{Continuous position scales with Czech number and percent labels}
 \usage{
 scale_x_percent_cz(
   name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
+  ...,
   labels,
   limits = NULL,
   expand = c(0.01, 0),
   oob = scales::censor,
-  na.value = NA_real_,
-  trans = "identity",
   position = "bottom",
-  sec.axis = waiver(),
   accuracy = 1,
   scale = 100,
   prefix = "",
   suffix = " \%",
   big.mark = " ",
   decimal.mark = ",",
-  trim = TRUE,
-  ...
+  trim = TRUE
 )
 
 scale_y_percent_cz(
   name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
+  ...,
   labels,
   limits = c(0, 1),
   expand = c(0.01, 0),
   oob = scales::censor,
-  na.value = NA_real_,
-  trans = "identity",
   position = "left",
-  sec.axis = waiver(),
   accuracy = 1,
   scale = 100,
   prefix = "",
   suffix = " \%",
   big.mark = " ",
   decimal.mark = ",",
-  trim = TRUE,
-  ...
+  trim = TRUE
 )
 
 scale_x_number_cz(
   name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
+  ...,
   labels,
   limits = NULL,
   expand = c(0.01, 0),
   oob = scales::censor,
-  na.value = NA_real_,
-  trans = "identity",
   position = "bottom",
-  sec.axis = waiver(),
   accuracy = 1,
   scale = 1,
   prefix = "",
   suffix = "",
   big.mark = " ",
   decimal.mark = ",",
-  trim = TRUE,
-  ...
+  trim = TRUE
 )
 
 scale_y_number_cz(
   name = waiver(),
-  breaks = waiver(),
-  minor_breaks = waiver(),
-  guide = waiver(),
-  n.breaks = NULL,
+  ...,
   labels,
   limits = NULL,
   expand = c(0.01, 0),
   oob = scales::censor,
-  na.value = NA_real_,
-  trans = "identity",
   position = "left",
-  sec.axis = waiver(),
   accuracy = 1,
   scale = 1,
   prefix = "",
   suffix = "",
   big.mark = " ",
   decimal.mark = ",",
-  trim = TRUE,
-  ...
+  trim = TRUE
 )
 }
 \arguments{
-\item{name}{The name of the scale. Used as axis or legend title. If
+\item{name}{The name of the scale. Used as the axis or legend title. If
 \code{waiver()}, the default, the name of the scale is taken from the first
 mapping used for that aesthetic. If \code{NULL}, the legend title will be
 omitted.}
 
-\item{breaks}{One of:
+\item{...}{Other arguments passed on to \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} or
+\code{\link[ggplot2:scale_continuous]{ggplot2::scale_y_continuous()}}, e.g. \code{breaks}, \code{n.breaks}, \code{transform}
+or \code{sec.axis}.}
+
+\item{labels}{Overrides the default labels built from \code{accuracy}, \code{scale},
+\code{prefix}, \code{suffix}, \code{big.mark}, \code{decimal.mark} and \code{trim}. Accepts
+anything \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} does, e.g. \code{NULL} for no labels
+or a labelling function such as \code{\link[=label_number_cz]{label_number_cz()}}.}
+
+\item{limits}{One of:
 \itemize{
-\item \code{NULL} for no breaks
-\item \code{waiver()} for the default breaks computed by the
-transformation object
-\item A numeric vector of positions
-\item A function that takes the limits as input and returns breaks
-as output
+\item \code{NULL} to use the default scale range
+\item A numeric vector of length two providing limits of the scale.
+Use \code{NA} to refer to the existing minimum or maximum
+\item A function that accepts the existing (automatic) limits and returns
+new limits. Also accepts rlang \link[rlang:as_function]{lambda} function
+notation.
+Note that setting limits on positional scales will \strong{remove} data outside of the limits.
+If the purpose is to zoom, use the limit argument in the coordinate system
+(see \code{\link[ggplot2:coord_cartesian]{coord_cartesian()}}).
 }}
 
-\item{minor_breaks}{One of:
+\item{expand}{For position scales, a vector of range expansion constants used to add some
+padding around the data to ensure that they are placed some distance
+away from the axes. Use the convenience function \code{\link[ggplot2:expansion]{expansion()}}
+to generate the values for the \code{expand} argument. The defaults are to
+expand the scale by 5\% on each side for continuous variables, and by
+0.6 units on each side for discrete variables.}
+
+\item{oob}{One of:
 \itemize{
-\item \code{NULL} for no minor breaks
-\item \code{waiver()} for the default breaks (one minor break between
-each major break)
-\item A numeric vector of positions
-\item A function that given the limits returns a vector of minor breaks.
+\item Function that handles limits outside of the scale limits
+(out of bounds). Also accepts rlang \link[rlang:as_function]{lambda}
+function notation.
+\item The default (\code{\link[scales:oob]{scales::censor()}}) replaces out of
+bounds values with \code{NA}.
+\item \code{\link[scales:oob]{scales::squish()}} for squishing out of bounds values into range.
+\item \code{\link[scales:oob]{scales::squish_infinite()}} for squishing infinite values into range.
 }}
 
-\item{guide}{guide    A function used to create a guide or its name. See \code{\link[=guides]{guides()}} for more information.}
+\item{position}{For position scales, The position of the axis.
+\code{left} or \code{right} for y axes, \code{top} or \code{bottom} for x axes.}
 
-\item{n.breaks}{An integer guiding the number of major breaks. The algorithm may choose a
-slightly different number to ensure nice break labels. Will only have an effect if
-\code{breaks = waiver()}. Use NULL to use the default number of breaks given by the transformation.}
+\item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+places of precision. If \code{NULL}, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.
 
-\item{labels}{Specifying overrides the default format (i.e. you really don't
-want to do that). \code{NULL} means no labels.}
+Applied to rescaled data.}
 
-\item{limits}{A numeric vector of length two providing limits of the scale.
-Use \code{NA} to refer to the existing minimum or maximum.}
+\item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
+formatting. This is useful if the underlying data is very small or very
+large.}
 
-\item{expand}{same as in ggplot2}
+\item{prefix}{Additional text to display before the number. The suffix is
+applied to absolute value before \code{style_positive} and \code{style_negative} are
+processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
 
-\item{oob}{Function that handles limits outside of the scale limits
-(out of bounds). The default replaces out of bounds values with NA.}
+\item{suffix}{Additional text to display after the number.}
 
-\item{na.value}{If \code{na.translate = TRUE}, what value aesthetic
-value should missing be displayed as? Does not apply to position scales
-where \code{NA} is always placed at the far right.}
+\item{big.mark}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[scales:number_options]{number options}.}
 
-\item{trans}{(DEPRECATED) Either the name of a transformation object, or the
-object itself. Built-in transformations include "asn", "atanh",
-"boxcox", "exp", "identity", "log", "log10", "log1p", "log2",
-"logit", "probability", "probit", "reciprocal", "reverse" and "sqrt".}
+\item{decimal.mark}{The character to be used to indicate the numeric
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[scales:number_options]{number options}.}
 
-\item{position}{The position of the axis. "left" or "right" for vertical
-scales, "top" or "bottom" for horizontal scales}
-
-\item{sec.axis}{specify a secondary axis}
-
-\item{accuracy, scale, prefix, suffix, big.mark, decimal.mark, trim}{See
-[scales::comma_format()] or [scales::percent_format()]}
-
-\item{...}{passed on to [scales::comma_format()] or [scales::percent_format()]}
+\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
+width (see \code{\link[base:format]{base::format()}}).}
+}
+\value{
+A ggplot2 scale.
 }
 \description{
-This is exactly the same function as scale_*_continuous, just with different
-label defaults to save repetitively setting these parameters, except that
-the parameters which you would normally find inside the \verb{scales::format_*()}
-functions are accessible directly in the \verb{scale_[xy]_*_cz()} functions.
+These are \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} and
+\code{\link[ggplot2:scale_continuous]{ggplot2::scale_y_continuous()}} with Czech label defaults (decimal comma,
+space as the thousands separator, \code{" \%"} suffix for percentages), so you
+don't have to set them repeatedly. The arguments you would normally pass to
+a \verb{scales::label_*()} function are available directly.
 }
 \examples{
-# ADD_EXAMPLES_HERE
 library(reschola)
 library(ggplot2)
 ggplot(mpg, aes(hwy * 100, cty / max(cty))) +
@@ -180,5 +171,4 @@ ggplot(mpg, aes(hwy * 100, cty / max(cty))) +
   theme_schola(family = "sans", title_family = "sans", gridlines = "scatter") +
   scale_y_percent_cz() +
   scale_x_number_cz()
-
 }
