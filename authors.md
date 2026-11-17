@@ -16,7 +16,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/scholaempirica/reschola/blob/master/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/scholaempirica/reschola/blob/v0.6.0/DESCRIPTION)
 
 Bouchal P, Netík J (2026). *reschola: The Schola Empirica Package*. R
 package version 0.6.0, <https://github.com/scholaempirica/reschola>.
