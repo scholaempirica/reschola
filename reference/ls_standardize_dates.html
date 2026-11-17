@@ -141,6 +141,23 @@ formats. Prior to v1.7.0 this parameter was implicitly <code>TRUE</code>, which
 resulted in occasional surprising behavior when rare patterns where not
 present in the training set.</p></dd>
 
+    <dt><code>lt</code></dt>
+<dd><p>logical. If <code>TRUE</code>, returned object is of class POSIXlt, and POSIXct
+otherwise. For compatibility with <code><a href="https://rdrr.io/r/base/strptime.html" class="external-link">base::strptime()</a></code> the default is <code>TRUE</code>
+for <code>fast_strptime()</code> and <code>FALSE</code> for <code>parse_date_time2()</code>.</p></dd>
+
+    <dt><code>cutoff_2000</code></dt>
+<dd><p>integer. For <code>y</code> format,  two-digit numbers smaller or equal
+to <code>cutoff_2000</code> are parsed as though starting with <code>20</code>, otherwise parsed
+as though starting with <code>19</code>. Available only for functions relying on
+<code>lubridate</code>s internal parser.</p></dd>
+
+    <dt><code>format</code></dt>
+<dd><p>a vector of formats. If multiple formats supplied they are
+applied in turn till success. The formats should include all the
+separators and each format letter must be prefixed with %, just as in the
+format argument of <code><a href="https://rdrr.io/r/base/strptime.html" class="external-link">base::strptime()</a></code>.</p></dd>
+
 
 </dl></dd>
 

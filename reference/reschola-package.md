@@ -18,6 +18,9 @@ Useful links:
 
 Authors:
 
+- Jan Netík <netikja@gmail.com>
+  ([ORCID](https://orcid.org/0000-0002-3888-3203))
+
 - Petr Bouchal <pbouchal@gmail.com>
   ([ORCID](https://orcid.org/0000-0002-0471-716X))
 

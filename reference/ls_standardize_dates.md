@@ -122,6 +122,29 @@ ls_standardize_dates(
       `TRUE`, which resulted in occasional surprising behavior when rare
       patterns where not present in the training set.
 
+  `lt`
+
+  :   logical. If `TRUE`, returned object is of class POSIXlt, and
+      POSIXct otherwise. For compatibility with
+      [`base::strptime()`](https://rdrr.io/r/base/strptime.html) the
+      default is `TRUE` for `fast_strptime()` and `FALSE` for
+      `parse_date_time2()`.
+
+  `cutoff_2000`
+
+  :   integer. For `y` format, two-digit numbers smaller or equal to
+      `cutoff_2000` are parsed as though starting with `20`, otherwise
+      parsed as though starting with `19`. Available only for functions
+      relying on `lubridate`s internal parser.
+
+  `format`
+
+  :   a vector of formats. If multiple formats supplied they are applied
+      in turn till success. The formats should include all the
+      separators and each format letter must be prefixed with %, just as
+      in the format argument of
+      [`base::strptime()`](https://rdrr.io/r/base/strptime.html).
+
 ## Value
 
 A tibble with standardized date variables.

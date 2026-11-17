@@ -23,7 +23,27 @@ schola_word(
   Arguments passed on to
   [`bookdown::word_document2`](https://pkgs.rstudio.com/bookdown/reference/html_document2.html)
 
-  :   
+  `number_sections`
+
+  :   Whether to number section headers: if `TRUE`, figure/table numbers
+      will be of the form `X.i`, where `X` is the current first-level
+      section number, and `i` is an incremental number (the i-th
+      figure/table); if `FALSE`, figures/tables will be numbered
+      sequentially in the document from 1, 2, ..., and you cannot
+      cross-reference section headers in this case.
+
+  `global_numbering`
+
+  :   If `TRUE`, number figures and tables globally throughout a
+      document (e.g., Figure 1, Figure 2, ...). If `FALSE`, number them
+      sequentially within sections (e.g., Figure 1.1, Figure 1.2, ...,
+      Figure 5.1, Figure 5.2, ...). Note that `global_numbering = FALSE`
+      will not work with `number_sections = FALSE` because sections are
+      not numbered.
+
+  `base_format`
+
+  :   An output format function to be used as the base format.
 
 ## Value
 

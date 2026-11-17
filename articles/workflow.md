@@ -238,8 +238,11 @@ project, nor do the package files sit in your project directory, and
 they only get downloaded once if multiple projects’ libraries use the
 save version of a package.
 
-All you need to do is call `renv::init()` at the beginning and then
-`renv::snapshot()` anytime you install new packages or commit code.
+All you need to do is call
+[`renv::init()`](https://rstudio.github.io/renv/reference/init.html) at
+the beginning and then
+[`renv::snapshot()`](https://rstudio.github.io/renv/reference/snapshot.html)
+anytime you install new packages or commit code.
 
 See <https://rstudio.github.io/renv/> for an intro to the package and
 <https://environments.rstudio.com/> for a broader intro.
@@ -484,7 +487,8 @@ then:
 - README.md should contain workable instructions
 
 Additionally, you should use `renv` and snapshot the state of the
-project library using `renv::snapshot()`.
+project library using
+[`renv::snapshot()`](https://rstudio.github.io/renv/reference/snapshot.html).
 
 ## Tools for implementing good practices
 

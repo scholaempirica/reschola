@@ -105,6 +105,94 @@ ls_export(
         exist in `y` are merged into the key columns from `x`. Can't be
         used when joining on inequality conditions.
 
+  `na_matches`
+
+  :   Should two `NA` or two `NaN` values match?
+
+      - `"na"`, the default, treats two `NA` or two `NaN` values as
+        equal, like `%in%`,
+        [`match()`](https://rdrr.io/r/base/match.html), and
+        [`merge()`](https://rdrr.io/r/base/merge.html).
+
+      - `"never"` treats two `NA` or two `NaN` values as different, and
+        will never match them together or to any other values. This is
+        similar to joins for database sources and to
+        `base::merge(incomparables = NA)`.
+
+  `multiple`
+
+  :   Handling of rows in `x` with multiple matches in `y`. For each row
+      of `x`:
+
+      - `"all"`, the default, returns every match detected in `y`. This
+        is the same behavior as SQL.
+
+      - `"any"` returns one match detected in `y`, with no guarantees on
+        which match will be returned. It is often faster than `"first"`
+        and `"last"` if you just need to detect if there is at least one
+        match.
+
+      - `"first"` returns the first match detected in `y`.
+
+      - `"last"` returns the last match detected in `y`.
+
+  `unmatched`
+
+  :   How should unmatched keys that would result in dropped rows be
+      handled?
+
+      - `"drop"` drops unmatched keys from the result.
+
+      - `"error"` throws an error if unmatched keys are detected.
+
+      `unmatched` is intended to protect you from accidentally dropping
+      rows during a join. It only checks for unmatched keys in the input
+      that could potentially drop rows.
+
+      - For left joins, it checks `y`.
+
+      - For right joins, it checks `x`.
+
+      - For inner joins, it checks both `x` and `y`. In this case,
+        `unmatched` is also allowed to be a character vector of length 2
+        to specify the behavior for `x` and `y` independently.
+
+  `relationship`
+
+  :   Handling of the expected relationship between the keys of `x` and
+      `y`. If the expectations chosen from the list below are
+      invalidated, an error is thrown.
+
+      - `NULL`, the default, doesn't expect there to be any relationship
+        between `x` and `y`. However, for equality joins it will check
+        for a many-to-many relationship (which is typically unexpected)
+        and will warn if one occurs, encouraging you to either take a
+        closer look at your inputs or make this relationship explicit by
+        specifying `"many-to-many"`.
+
+        See the *Many-to-many relationships* section for more details.
+
+      - `"one-to-one"` expects:
+
+        - Each row in `x` matches at most 1 row in `y`.
+
+        - Each row in `y` matches at most 1 row in `x`.
+
+      - `"one-to-many"` expects:
+
+        - Each row in `y` matches at most 1 row in `x`.
+
+      - `"many-to-one"` expects:
+
+        - Each row in `x` matches at most 1 row in `y`.
+
+      - `"many-to-many"` doesn't perform any relationship checks, but is
+        provided to allow you to be explicit about this relationship if
+        you know it exists.
+
+      `relationship` doesn't handle cases where there are zero matches.
+      For that, see `unmatched`.
+
 ## Value
 
 A tibble.

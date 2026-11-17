@@ -44,6 +44,14 @@ with_clr(text, color = "black", alpha = 1, ...)
       Additional hooks may also be added to a particular `tag` via
       [`tagAddRenderHook()`](https://rstudio.github.io/htmltools/reference/tagAddRenderHook.html).
 
+  `_tag_name`
+
+  :   A character string to use for the tag name.
+
+  `varArgs`
+
+  :   List of tag attributes and children.
+
 ## Value
 
 an object of class `shiny.tag`, coercible to character

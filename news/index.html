@@ -49,7 +49,7 @@
 <ul><li>
 <code>scale_[xy]_percent()</code> and <code>scale_[xy]_comma()</code> are now implemented in <a href="https://github.com/scholaempirica/reschola" class="external-link">reschola</a> with the same defaults, so existing code keeps working.</li>
 <li>
-<code>gg_check()</code> is no longer re-exported. Use <code><a href="https://rdrr.io/pkg/hrbrthemes/man/gg_check.html" class="external-link">hrbrthemes::gg_check()</a></code> if you need it.</li>
+<code>gg_check()</code> is no longer re-exported. Use <code>hrbrthemes::gg_check()</code> if you need it.</li>
 </ul></li>
 <li>
 <code>scale_[xy]_percent_cz()</code>, <code>scale_[xy]_number_cz()</code>, <code>scale_[xy]_percent()</code> and <code>scale_[xy]_comma()</code> are now built on <code>ggplot2::scale_[xy]_continuous()</code> instead of calling <code><a href="https://ggplot2.tidyverse.org/reference/continuous_scale.html" class="external-link">ggplot2::continuous_scale()</a></code> with the <code>scale_name</code> and <code>trans</code> arguments deprecated in <a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a> 3.5.0. Their <code>...</code> now goes to <code>ggplot2::scale_[xy]_continuous()</code> (e.g. <code>breaks</code>, <code>transform</code>, <code>sec.axis</code>) instead of the labelling function; to customise labels beyond the provided arguments, pass a labeller such as <code>labels = label_number_cz(...)</code>.</li>

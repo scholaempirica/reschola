@@ -12,8 +12,7 @@ and restores answer labels in LimeSurvey exports since LimeSurvey 7.9.0.
   - `scale_[xy]_percent()` and `scale_[xy]_comma()` are now implemented
     in [reschola](https://github.com/scholaempirica/reschola) with the
     same defaults, so existing code keeps working.
-  - `gg_check()` is no longer re-exported. Use
-    [`hrbrthemes::gg_check()`](https://rdrr.io/pkg/hrbrthemes/man/gg_check.html)
+  - `gg_check()` is no longer re-exported. Use `hrbrthemes::gg_check()`
     if you need it.
 - `scale_[xy]_percent_cz()`, `scale_[xy]_number_cz()`,
   `scale_[xy]_percent()` and `scale_[xy]_comma()` are now built on

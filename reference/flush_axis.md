@@ -8,10 +8,6 @@ A shorcut for making axis text flush with axis
 flush_axis
 ```
 
-## Format
-
-An object of class `numeric` of length 4.
-
 ## See also
 
 Other Making charts:

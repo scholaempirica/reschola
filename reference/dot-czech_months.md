@@ -8,7 +8,3 @@ As used by
 ``` r
 .czech_months
 ```
-
-## Format
-
-An object of class `list` of length 3.

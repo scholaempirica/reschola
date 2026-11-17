@@ -27,6 +27,10 @@ copy_schola_template(format = "pdf", path = proj_get(), ...)
 
   :   logical; should existing destination files be overwritten?
 
+  `showWarnings`
+
+  :   logical; should the warnings on failure be shown?
+
   `recursive`
 
   :   logical. If `to` is a directory, should directories in `from` be

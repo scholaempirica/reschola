@@ -20,8 +20,7 @@ License](https://ubuntu.com/legal/font-licence).
 
 ## Details
 
-This is an analogue of
-[`hrbrthemes::import_roboto_condensed()`](https://rdrr.io/pkg/hrbrthemes/man/import_roboto_condensed.html).
+This is an analogue of `hrbrthemes::import_roboto_condensed()`.
 
 There is an option `reschola.loadfonts` which – if set to `TRUE` – will
 call
