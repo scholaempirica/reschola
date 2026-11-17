@@ -82,13 +82,13 @@ scale_y_number_cz(
 mapping used for that aesthetic. If \code{NULL}, the legend title will be
 omitted.}
 
-\item{...}{Other arguments passed on to \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} or
-\code{\link[ggplot2:scale_continuous]{ggplot2::scale_y_continuous()}}, e.g. \code{breaks}, \code{n.breaks}, \code{transform}
+\item{...}{Other arguments passed on to \code{\link[ggplot2:scale_x_continuous]{ggplot2::scale_x_continuous()}} or
+\code{\link[ggplot2:scale_y_continuous]{ggplot2::scale_y_continuous()}}, e.g. \code{breaks}, \code{n.breaks}, \code{transform}
 or \code{sec.axis}.}
 
 \item{labels}{Overrides the default labels built from \code{accuracy}, \code{scale},
 \code{prefix}, \code{suffix}, \code{big.mark}, \code{decimal.mark} and \code{trim}. Accepts
-anything \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} does, e.g. \code{NULL} for no labels
+anything \code{\link[ggplot2:scale_x_continuous]{ggplot2::scale_x_continuous()}} does, e.g. \code{NULL} for no labels
 or a labelling function such as \code{\link[=label_number_cz]{label_number_cz()}}.}
 
 \item{limits}{One of:
@@ -157,8 +157,8 @@ width (see \code{\link[base:format]{base::format()}}).}
 A ggplot2 scale.
 }
 \description{
-These are \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} and
-\code{\link[ggplot2:scale_continuous]{ggplot2::scale_y_continuous()}} with Czech label defaults (decimal comma,
+These are \code{\link[ggplot2:scale_x_continuous]{ggplot2::scale_x_continuous()}} and
+\code{\link[ggplot2:scale_y_continuous]{ggplot2::scale_y_continuous()}} with Czech label defaults (decimal comma,
 space as the thousands separator, \code{" \%"} suffix for percentages), so you
 don't have to set them repeatedly. The arguments you would normally pass to
 a \verb{scales::label_*()} function are available directly.

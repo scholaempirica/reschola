@@ -73,6 +73,17 @@ might slightly speed up parsing in situations involving many
 formats. Prior to v1.7.0 this parameter was implicitly \code{TRUE}, which
 resulted in occasional surprising behavior when rare patterns where not
 present in the training set.}
+    \item{\code{lt}}{logical. If \code{TRUE}, returned object is of class POSIXlt, and POSIXct
+otherwise. For compatibility with \code{\link[base:strptime]{base::strptime()}} the default is \code{TRUE}
+for \code{fast_strptime()} and \code{FALSE} for \code{parse_date_time2()}.}
+    \item{\code{cutoff_2000}}{integer. For \code{y} format,  two-digit numbers smaller or equal
+to \code{cutoff_2000} are parsed as though starting with \code{20}, otherwise parsed
+as though starting with \code{19}. Available only for functions relying on
+\code{lubridate}s internal parser.}
+    \item{\code{format}}{a vector of formats. If multiple formats supplied they are
+applied in turn till success. The formats should include all the
+separators and each format letter must be prefixed with \%, just as in the
+format argument of \code{\link[base:strptime]{base::strptime()}}.}
   }}
 }
 \value{

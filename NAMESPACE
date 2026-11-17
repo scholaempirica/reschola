@@ -77,132 +77,178 @@ export(write_processed_data)
 import(ggplot2)
 importFrom(RColorBrewer,brewer.pal)
 importFrom(bookdown,pdf_document2)
-importFrom(dplyr,across)
-importFrom(dplyr,arrange)
-importFrom(dplyr,filter)
-importFrom(dplyr,group_by)
-importFrom(dplyr,if_else)
-importFrom(dplyr,left_join)
-importFrom(dplyr,mutate)
-importFrom(dplyr,n)
-importFrom(dplyr,pull)
-importFrom(dplyr,rename)
-importFrom(dplyr,select)
-importFrom(dplyr,slice)
-importFrom(dplyr,summarise)
-importFrom(dplyr,transmute)
-importFrom(dplyr,ungroup)
-importFrom(extrafont,font_import)
-importFrom(extrafont,fonts)
-importFrom(forcats,fct_relevel)
-importFrom(forcats,fct_reorder)
-importFrom(forcats,fct_rev)
-importFrom(fs,dir_copy)
-importFrom(fs,dir_create)
-importFrom(fs,dir_delete)
-importFrom(fs,file_copy)
-importFrom(fs,file_create)
-importFrom(fs,path_ext_set)
-importFrom(ggplot2,update_geom_defaults)
-importFrom(ggplot2,waiver)
-importFrom(ggtext,element_markdown)
-importFrom(ggtext,element_textbox_simple)
-importFrom(ggtext,geom_richtext)
-importFrom(googledrive,as_dribble)
-importFrom(googledrive,as_id)
-importFrom(googledrive,drive_download)
-importFrom(googledrive,drive_ls)
-importFrom(googledrive,drive_put)
-importFrom(googledrive,is_folder)
-importFrom(grDevices,col2rgb)
-importFrom(grDevices,rgb)
+importFrom(dplyr,
+  across,
+  arrange,
+  filter,
+  group_by,
+  if_else,
+  left_join,
+  mutate,
+  n,
+  pull,
+  rename,
+  select,
+  slice,
+  summarise,
+  transmute,
+  ungroup
+)
+importFrom(extrafont,
+  font_import,
+  fonts
+)
+importFrom(forcats,
+  fct_relevel,
+  fct_reorder,
+  fct_rev
+)
+importFrom(fs,
+  dir_copy,
+  dir_create,
+  dir_delete,
+  file_copy,
+  file_create,
+  path_ext_set
+)
+importFrom(ggplot2,
+  update_geom_defaults,
+  waiver
+)
+importFrom(ggtext,
+  element_markdown,
+  element_textbox_simple,
+  geom_richtext
+)
+importFrom(googledrive,
+  as_dribble,
+  as_id,
+  drive_download,
+  drive_ls,
+  drive_put,
+  is_folder
+)
+importFrom(grDevices,
+  col2rgb,
+  rgb
+)
 importFrom(here,here)
 importFrom(htmltools,span)
-importFrom(httr,POST)
-importFrom(httr,RETRY)
-importFrom(httr,content)
-importFrom(httr,content_type_json)
-importFrom(httr,http_status)
-importFrom(httr,status_code)
-importFrom(jsonlite,base64_dec)
-importFrom(jsonlite,fromJSON)
-importFrom(jsonlite,toJSON)
-importFrom(knitr,asis_output)
-importFrom(knitr,is_latex_output)
-importFrom(knitr,knit_print)
-importFrom(lifecycle,deprecate_warn)
-importFrom(lifecycle,deprecated)
+importFrom(httr,
+  POST,
+  RETRY,
+  content,
+  content_type_json,
+  http_status,
+  status_code
+)
+importFrom(jsonlite,
+  base64_dec,
+  fromJSON,
+  toJSON
+)
+importFrom(knitr,
+  asis_output,
+  is_latex_output,
+  knit_print
+)
+importFrom(lifecycle,
+  deprecate_warn,
+  deprecated
+)
 importFrom(lubridate,parse_date_time)
-importFrom(purrr,compact)
-importFrom(purrr,keep_at)
-importFrom(purrr,map)
-importFrom(purrr,map_chr)
-importFrom(purrr,map_dbl)
-importFrom(purrr,modify2)
-importFrom(purrr,modify_if)
-importFrom(purrr,pluck)
-importFrom(purrr,walk)
-importFrom(purrr,walk2)
-importFrom(readr,read_rds)
-importFrom(readr,write_rds)
-importFrom(rlang,"!!!")
-importFrom(rlang,":=")
-importFrom(rlang,.data)
-importFrom(rlang,abort)
-importFrom(rlang,as_label)
-importFrom(rlang,as_name)
-importFrom(rlang,enquo)
-importFrom(rlang,enquos)
-importFrom(rlang,eval_tidy)
-importFrom(rlang,flatten_chr)
-importFrom(rlang,inform)
-importFrom(rlang,set_names)
-importFrom(rlang,warn)
-importFrom(rmarkdown,draft)
-importFrom(rmarkdown,render)
-importFrom(rstudioapi,askForPassword)
-importFrom(rstudioapi,documentSaveAll)
-importFrom(rstudioapi,executeCommand)
-importFrom(rstudioapi,isAvailable)
-importFrom(rstudioapi,showPrompt)
-importFrom(scales,number)
-importFrom(scales,percent)
+importFrom(purrr,
+  compact,
+  keep_at,
+  map,
+  map_chr,
+  map_dbl,
+  modify2,
+  modify_if,
+  pluck,
+  walk,
+  walk2
+)
+importFrom(readr,
+  read_rds,
+  write_rds
+)
+importFrom(rlang,
+  "!!!",
+  ":=",
+  .data,
+  abort,
+  as_label,
+  as_name,
+  enquo,
+  enquos,
+  eval_tidy,
+  flatten_chr,
+  inform,
+  set_names,
+  warn
+)
+importFrom(rmarkdown,
+  draft,
+  render
+)
+importFrom(rstudioapi,
+  askForPassword,
+  documentSaveAll,
+  executeCommand,
+  isAvailable,
+  showPrompt
+)
+importFrom(scales,
+  number,
+  percent
+)
 importFrom(stats,median)
-importFrom(stringr,regex)
-importFrom(stringr,str_detect)
-importFrom(stringr,str_glue)
-importFrom(stringr,str_remove)
-importFrom(stringr,str_replace)
-importFrom(stringr,str_trim)
-importFrom(stringr,str_wrap)
-importFrom(tibble,as_tibble)
-importFrom(tibble,deframe)
-importFrom(tibble,enframe)
-importFrom(tibble,tibble)
-importFrom(tidyr,drop_na)
-importFrom(tidyr,nest)
-importFrom(tidyr,pivot_longer)
-importFrom(tidyr,pivot_wider)
-importFrom(tidyr,unpack)
+importFrom(stringr,
+  regex,
+  str_detect,
+  str_glue,
+  str_remove,
+  str_replace,
+  str_trim,
+  str_wrap
+)
+importFrom(tibble,
+  as_tibble,
+  deframe,
+  enframe,
+  tibble
+)
+importFrom(tidyr,
+  drop_na,
+  nest,
+  pivot_longer,
+  pivot_wider,
+  unpack
+)
 importFrom(tidyselect,any_of)
-importFrom(usethis,create_project)
-importFrom(usethis,edit_file)
-importFrom(usethis,edit_r_environ)
-importFrom(usethis,proj_get)
-importFrom(usethis,proj_set)
-importFrom(usethis,proj_sitrep)
-importFrom(usethis,ui_code)
-importFrom(usethis,ui_code_block)
-importFrom(usethis,ui_done)
-importFrom(usethis,ui_field)
-importFrom(usethis,ui_info)
-importFrom(usethis,ui_oops)
-importFrom(usethis,ui_path)
-importFrom(usethis,ui_stop)
-importFrom(usethis,ui_todo)
-importFrom(usethis,ui_value)
-importFrom(usethis,use_git)
-importFrom(usethis,use_git_ignore)
-importFrom(usethis,use_github)
-importFrom(utils,packageVersion)
-importFrom(utils,read.csv2)
+importFrom(usethis,
+  create_project,
+  edit_file,
+  edit_r_environ,
+  proj_get,
+  proj_set,
+  proj_sitrep,
+  ui_code,
+  ui_code_block,
+  ui_done,
+  ui_field,
+  ui_info,
+  ui_oops,
+  ui_path,
+  ui_stop,
+  ui_todo,
+  ui_value,
+  use_git,
+  use_git_ignore,
+  use_github
+)
+importFrom(utils,
+  packageVersion,
+  read.csv2
+)

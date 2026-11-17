@@ -37,9 +37,9 @@ Geoms covered: "text", "label", "richtext", "text_box", "text_repel", and
 "label_repel".
 }
 \seealso{
-Other Font helpers and shortcuts: 
-\code{\link{import_fonts}()},
-\code{\link{install_reschola_fonts}()},
-\code{\link{register_reschola_fonts}()}
+Other Font helpers and shortcuts:
+\code{\link[=import_fonts]{import_fonts()}},
+\code{\link[=install_reschola_fonts]{install_reschola_fonts()}},
+\code{\link[=register_reschola_fonts]{register_reschola_fonts()}}
 }
 \concept{Font helpers and shortcuts}

@@ -13,9 +13,10 @@ copy_schola_template(format = "pdf", path = proj_get(), ...)
 root.}
 
 \item{...}{
-  Arguments passed on to \code{\link[base:files]{base::file.copy}}
+  Arguments passed on to \code{\link[base:file.copy]{base::file.copy}}
   \describe{
     \item{\code{overwrite}}{logical; should existing destination files be overwritten?}
+    \item{\code{showWarnings}}{logical; should the warnings on failure be shown?}
     \item{\code{recursive}}{logical.  If \code{to} is a directory, should
     directories in \code{from} be copied (and their contents)?  (Like
     \command{cp -R} on POSIX OSes.)}
@@ -37,11 +38,11 @@ copy_schola_template()
 }
 }
 \seealso{
-Other Report templates and formats: 
-\code{\link{open_schola_template}()},
-\code{\link{schola_pdf}()},
-\code{\link{schola_word}()},
-\code{\link{schola_word2}()}
+Other Report templates and formats:
+\code{\link[=open_schola_template]{open_schola_template()}},
+\code{\link[=schola_pdf]{schola_pdf()}},
+\code{\link[=schola_word]{schola_word()}},
+\code{\link[=schola_word2]{schola_word2()}}
 }
 \author{
 Jan Netik

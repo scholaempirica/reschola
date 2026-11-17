@@ -133,11 +133,11 @@ toc:false
 
 }
 \seealso{
-Other Report templates and formats: 
-\code{\link{copy_schola_template}()},
-\code{\link{open_schola_template}()},
-\code{\link{schola_word}()},
-\code{\link{schola_word2}()}
+Other Report templates and formats:
+\code{\link[=copy_schola_template]{copy_schola_template()}},
+\code{\link[=open_schola_template]{open_schola_template()}},
+\code{\link[=schola_word]{schola_word()}},
+\code{\link[=schola_word2]{schola_word2()}}
 }
 \author{
 Jan Netik

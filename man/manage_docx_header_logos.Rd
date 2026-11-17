@@ -51,8 +51,8 @@ manage_docx_header_logos("draft.docx",
 }
 }
 \seealso{
-Other Workflow helpers: 
-\code{\link{draft_pdf}()},
-\code{\link{gd_download_folder}()}
+Other Workflow helpers:
+\code{\link[=draft_pdf]{draft_pdf()}},
+\code{\link[=gd_download_folder]{gd_download_folder()}}
 }
 \concept{Workflow helpers}

@@ -39,10 +39,10 @@ ggplot2 plot
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 }
 \seealso{
-Other Making charts: 
+Other Making charts:
 \code{\link{flush_axis}},
-\code{\link{prepare_lollipop_data}()},
-\code{\link{schola_barplot}()},
-\code{\link{theme_schola}()}
+\code{\link[=prepare_lollipop_data]{prepare_lollipop_data()}},
+\code{\link[=schola_barplot]{schola_barplot()}},
+\code{\link[=theme_schola]{theme_schola()}}
 }
 \concept{Making charts}

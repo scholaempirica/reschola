@@ -24,9 +24,9 @@ instruct RStudio to use smarter graphics device, such as "AGG" or "Cairo"
 (\emph{Tools > Global Options > General > Graphics > Backend}).
 }
 \seealso{
-Other Font helpers and shortcuts: 
-\code{\link{import_fonts}()},
-\code{\link{install_reschola_fonts}()},
-\code{\link{use_reschola_fonts}()}
+Other Font helpers and shortcuts:
+\code{\link[=import_fonts]{import_fonts()}},
+\code{\link[=install_reschola_fonts]{install_reschola_fonts()}},
+\code{\link[=use_reschola_fonts]{use_reschola_fonts()}}
 }
 \concept{Font helpers and shortcuts}

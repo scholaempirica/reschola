@@ -13,9 +13,21 @@ schola_word(
 \item{reference_docx}{Path to custom template. By default, the built-in one is used.}
 
 \item{...}{
-  Arguments passed on to \code{\link[bookdown:html_document2]{bookdown::word_document2}}
+  Arguments passed on to \code{\link[bookdown:word_document2]{bookdown::word_document2}}
   \describe{
-    \item{\code{}}{}
+    \item{\code{number_sections}}{Whether to number section headers: if \code{TRUE},
+figure/table numbers will be of the form \code{X.i}, where \code{X} is the
+current first-level section number, and \code{i} is an incremental number
+(the i-th figure/table); if \code{FALSE}, figures/tables will be numbered
+sequentially in the document from 1, 2, ..., and you cannot cross-reference
+section headers in this case.}
+    \item{\code{global_numbering}}{If \code{TRUE}, number figures and tables globally
+throughout a document (e.g., Figure 1, Figure 2, ...). If \code{FALSE},
+number them sequentially within sections (e.g., Figure 1.1, Figure 1.2,
+..., Figure 5.1, Figure 5.2, ...). Note that \code{global_numbering =
+FALSE} will not work with \code{number_sections = FALSE} because sections
+are not numbered.}
+    \item{\code{base_format}}{An output format function to be used as the base format.}
   }}
 }
 \value{
@@ -45,11 +57,11 @@ reference_docx:template.docx
 }
 }
 \seealso{
-Other Report templates and formats: 
-\code{\link{copy_schola_template}()},
-\code{\link{open_schola_template}()},
-\code{\link{schola_pdf}()},
-\code{\link{schola_word2}()}
+Other Report templates and formats:
+\code{\link[=copy_schola_template]{copy_schola_template()}},
+\code{\link[=open_schola_template]{open_schola_template()}},
+\code{\link[=schola_pdf]{schola_pdf()}},
+\code{\link[=schola_word2]{schola_word2()}}
 }
 \author{
 Petr Bouchal

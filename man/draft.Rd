@@ -28,8 +28,8 @@ draft_pdf("best_report")
 
 }
 \seealso{
-Other Workflow helpers: 
-\code{\link{gd_download_folder}()},
-\code{\link{manage_docx_header_logos}()}
+Other Workflow helpers:
+\code{\link[=gd_download_folder]{gd_download_folder()}},
+\code{\link[=manage_docx_header_logos]{manage_docx_header_logos()}}
 }
 \concept{Workflow helpers}

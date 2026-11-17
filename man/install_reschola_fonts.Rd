@@ -13,9 +13,9 @@ Side effects.
 Just a simple wizard.
 }
 \seealso{
-Other Font helpers and shortcuts: 
-\code{\link{import_fonts}()},
-\code{\link{register_reschola_fonts}()},
-\code{\link{use_reschola_fonts}()}
+Other Font helpers and shortcuts:
+\code{\link[=import_fonts]{import_fonts()}},
+\code{\link[=register_reschola_fonts]{register_reschola_fonts()}},
+\code{\link[=use_reschola_fonts]{use_reschola_fonts()}}
 }
 \concept{Font helpers and shortcuts}

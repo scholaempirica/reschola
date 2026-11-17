@@ -15,7 +15,7 @@ with_clr(text, color = "black", alpha = 1, ...)
 i.e. full opacity}
 
 \item{...}{
-  Arguments passed on to \code{\link[htmltools:builder]{htmltools::span}}
+  Arguments passed on to \code{\link[htmltools:span]{htmltools::span}}
   \describe{
     \item{\code{.noWS}}{Character vector used to omit some of the whitespace that would
 normally be written around this tag. Valid options include \code{before},
@@ -25,6 +25,8 @@ Any number of these options can be specified.}
 function should have at least one argument (the \code{tag}) and return anything
 that can be converted into tags via \code{\link[htmltools:as.tags]{as.tags()}}. Additional hooks may also be
 added to a particular \code{tag} via \code{\link[htmltools:tagAddRenderHook]{tagAddRenderHook()}}.}
+    \item{\code{_tag_name}}{A character string to use for the tag name.}
+    \item{\code{varArgs}}{List of tag attributes and children.}
   }}
 }
 \value{

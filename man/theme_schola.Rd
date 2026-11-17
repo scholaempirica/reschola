@@ -277,10 +277,10 @@ ggplot(mpg) +
   theme(panel.background = element_rect(fill = "lightpink"))
 }
 \seealso{
-Other Making charts: 
+Other Making charts:
 \code{\link{flush_axis}},
-\code{\link{plot_lollipop}()},
-\code{\link{prepare_lollipop_data}()},
-\code{\link{schola_barplot}()}
+\code{\link[=plot_lollipop]{plot_lollipop()}},
+\code{\link[=prepare_lollipop_data]{prepare_lollipop_data()}},
+\code{\link[=schola_barplot]{schola_barplot()}}
 }
 \concept{Making charts}

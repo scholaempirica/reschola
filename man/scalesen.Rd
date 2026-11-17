@@ -82,13 +82,13 @@ scale_y_comma(
 mapping used for that aesthetic. If \code{NULL}, the legend title will be
 omitted.}
 
-\item{...}{Other arguments passed on to \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} or
-\code{\link[ggplot2:scale_continuous]{ggplot2::scale_y_continuous()}}, e.g. \code{breaks}, \code{n.breaks}, \code{transform}
+\item{...}{Other arguments passed on to \code{\link[ggplot2:scale_x_continuous]{ggplot2::scale_x_continuous()}} or
+\code{\link[ggplot2:scale_y_continuous]{ggplot2::scale_y_continuous()}}, e.g. \code{breaks}, \code{n.breaks}, \code{transform}
 or \code{sec.axis}.}
 
 \item{labels}{Overrides the default labels built from \code{accuracy}, \code{scale},
 \code{prefix}, \code{suffix}, \code{big.mark}, \code{decimal.mark} and \code{trim}. Accepts
-anything \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} does, e.g. \code{NULL} for no labels
+anything \code{\link[ggplot2:scale_x_continuous]{ggplot2::scale_x_continuous()}} does, e.g. \code{NULL} for no labels
 or a labelling function such as \code{\link[=label_number_cz]{label_number_cz()}}.}
 
 \item{limits}{One of:
@@ -158,7 +158,7 @@ A ggplot2 scale.
 }
 \description{
 English-locale counterparts of \code{\link[=scale_x_percent_cz]{scale_x_percent_cz()}} and friends:
-\code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}} and \code{\link[ggplot2:scale_continuous]{ggplot2::scale_y_continuous()}} with
+\code{\link[ggplot2:scale_x_continuous]{ggplot2::scale_x_continuous()}} and \code{\link[ggplot2:scale_y_continuous]{ggplot2::scale_y_continuous()}} with
 percent labels (\code{"\%"} suffix, decimal point) or comma labels (comma as the
 thousands separator). These replace the functions formerly re-exported from
 \code{{hrbrthemes}} and keep their defaults.

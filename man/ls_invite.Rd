@@ -56,15 +56,15 @@ ls_invite(123456, 18)
 
 }
 \seealso{
-Other LimeSurvey functions: 
-\code{\link{ls_add_participants}()},
-\code{\link{ls_call}()},
-\code{\link{ls_export}()},
-\code{\link{ls_get_attrs}()},
-\code{\link{ls_login}()},
-\code{\link{ls_participants}()},
-\code{\link{ls_responses}()},
-\code{\link{ls_set_participant_properties}()},
-\code{\link{ls_surveys}()}
+Other LimeSurvey functions:
+\code{\link[=ls_add_participants]{ls_add_participants()}},
+\code{\link[=ls_call]{ls_call()}},
+\code{\link[=ls_export]{ls_export()}},
+\code{\link[=ls_get_attrs]{ls_get_attrs()}},
+\code{\link[=ls_login]{ls_login()}},
+\code{\link[=ls_participants]{ls_participants()}},
+\code{\link[=ls_responses]{ls_responses()}},
+\code{\link[=ls_set_participant_properties]{ls_set_participant_properties()}},
+\code{\link[=ls_surveys]{ls_surveys()}}
 }
 \concept{LimeSurvey functions}

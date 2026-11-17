@@ -87,7 +87,7 @@ when no data exists, use \code{TRUE}.  If \code{NA}, all levels are shown in leg
 but unobserved levels are omitted.}
 
 \item{...}{
-  Arguments passed on to \code{\link[=fct_nanify]{fct_nanify}}
+  Arguments passed on to \code{\link{fct_nanify}}
   \describe{
     \item{\code{negate}}{\emph{logical}, whether to return non-matching elements. Defaults to
 \code{FALSE}.}
@@ -101,10 +101,10 @@ Object of class "gg", "ggplot".
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 }
 \seealso{
-Other Making charts: 
+Other Making charts:
 \code{\link{flush_axis}},
-\code{\link{plot_lollipop}()},
-\code{\link{prepare_lollipop_data}()},
-\code{\link{theme_schola}()}
+\code{\link[=plot_lollipop]{plot_lollipop()}},
+\code{\link[=prepare_lollipop_data]{prepare_lollipop_data()}},
+\code{\link[=theme_schola]{theme_schola()}}
 }
 \concept{Making charts}

@@ -6,6 +6,8 @@
 \alias{reschola-package}
 \title{reschola: The Schola Empirica Package}
 \description{
+\if{html}{\figure{logo.svg}{options: style='float: right' alt='logo' width='120'}}
+
 A collection of utilies, themes and templates for data analysis at Schola Empirica.
 }
 \seealso{
@@ -21,6 +23,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Jan Netík \email{netikja@gmail.com} (\href{https://orcid.org/0000-0002-3888-3203}{ORCID})
   \item Petr Bouchal \email{pbouchal@gmail.com} (\href{https://orcid.org/0000-0002-0471-716X}{ORCID})
 }
 
